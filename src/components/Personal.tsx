@@ -59,7 +59,7 @@ const Personal: React.FC = () => {
               Stock Market
             </h3>
             <p className="text-gray-300">
-              Personal mutual fund portfolio ranked in top 1% of all Indians according to ET Money (XIRR >50%).
+              Personal mutual fund portfolio ranked in top 1% of all Indians according to ET Money (XIRR &gt;50%).
             </p>
           </div>
         </div>

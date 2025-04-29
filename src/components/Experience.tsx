@@ -73,7 +73,7 @@ const experiences: ExperienceItem[] = [
             Designed an arbitrage strategy between Delta Exchange and Deribit, yielding 50% return on $150k.
           </li>
           <li>
-            Hedged >$50M fund exposure using futures and options on BTC, ETH, and Solana.
+            Hedged &gt;$50M fund exposure using futures and options on BTC, ETH, and Solana.
           </li>
         </ul>
       </>
