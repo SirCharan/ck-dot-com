@@ -54,7 +54,7 @@ const Contact: React.FC = () => {
             
             <div className="flex flex-col space-y-6">
               <a 
-                href="#" 
+                href="https://calendly.com/charan-kapoor/30min" 
                 className="flex items-center p-4 border border-crypto-purple/20 rounded-lg hover:bg-crypto-purple/5 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
