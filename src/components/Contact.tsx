@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, MessageSquare } from 'lucide-react';
+import { Mail, MessageSquare, Linkedin, Twitter } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
@@ -17,11 +17,25 @@ const Contact: React.FC = () => {
             <div className="flex flex-col space-y-6">
               <div className="flex">
                 <div className="w-12 h-12 rounded-full bg-crypto-purple/20 flex items-center justify-center flex-shrink-0">
-                  <MessageSquare size={20} className="text-crypto-purple" />
+                  <Linkedin size={20} className="text-crypto-purple" />
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-white font-medium mb-1">WhatsApp</h3>
-                  <p className="text-gray-300">+91 6388527291</p>
+                  <h3 className="text-white font-medium mb-1">LinkedIn</h3>
+                  <a href="https://www.linkedin.com/in/charandeep-kapoor/" target="_blank" rel="noopener noreferrer" className="text-crypto-purple hover:text-crypto-purple/80 transition-colors">
+                    charandeep-kapoor
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex">
+                <div className="w-12 h-12 rounded-full bg-crypto-purple/20 flex items-center justify-center flex-shrink-0">
+                  <Twitter size={20} className="text-crypto-purple" />
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-white font-medium mb-1">Twitter</h3>
+                  <a href="https://x.com/yourasianquant" target="_blank" rel="noopener noreferrer" className="text-crypto-purple hover:text-crypto-purple/80 transition-colors">
+                    @yourasianquant
+                  </a>
                 </div>
               </div>
               
@@ -31,7 +45,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-white font-medium mb-1">Telegram</h3>
-                  <a href="#" className="text-crypto-purple hover:text-crypto-purple/80 transition-colors">
+                  <a href="https://t.me/charandeep_kapoor" target="_blank" rel="noopener noreferrer" className="text-crypto-purple hover:text-crypto-purple/80 transition-colors">
                     @charandeep_kapoor
                   </a>
                 </div>
@@ -57,7 +71,7 @@ const Contact: React.FC = () => {
               <div className="flex flex-col p-4 border border-crypto-purple/20 rounded-lg">
                 <h3 className="text-white font-medium mb-3">Quick Response</h3>
                 <p className="text-gray-300 text-sm mb-2">
-                  I typically respond within 24 hours. For urgent matters, WhatsApp is the fastest way to reach me.
+                  I typically respond within 24 hours. For urgent matters, Telegram is the fastest way to reach me.
                 </p>
               </div>
             </div>
