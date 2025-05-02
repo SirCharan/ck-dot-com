@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
       <div className="container mx-auto px-4">
         <h2 className="section-title">Get In Touch</h2>
         
-        <div className="glass-card p-6 md:p-8 animate-fade-in">
+        <div className="glass-card p-6 md:p-8">
           <p className="text-gray-300 mb-6">
             I'm always open to discussing crypto projects, trading strategies, or potential collaborations. Feel free to reach out through any of the channels below:
           </p>

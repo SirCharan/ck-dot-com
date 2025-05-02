@@ -23,9 +23,9 @@ const Hero: React.FC = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Create particles
+    // Create particles with optimized rendering
     const particlesArray: Particle[] = [];
-    const particleCount = window.innerWidth < 768 ? 80 : 150;
+    const particleCount = window.innerWidth < 768 ? 50 : 80; // Reduced particle count
     
     class Particle {
       x: number;
@@ -40,11 +40,11 @@ const Hero: React.FC = () => {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 4 + 1;
-        this.speedX = (Math.random() - 0.5) * 1.2;
-        this.speedY = (Math.random() - 0.5) * 1.2;
+        this.size = Math.random() * 3 + 1; // Slightly smaller particles
+        this.speedX = (Math.random() - 0.5) * 0.8; // Slower speed
+        this.speedY = (Math.random() - 0.5) * 0.8; // Slower speed
         this.color = `rgba(139, 92, 246, ${Math.random() * 0.7 + 0.3})`;
-        this.blinkSpeed = Math.random() * 0.01 + 0.005;
+        this.blinkSpeed = Math.random() * 0.005 + 0.002; // Slower blinking
         this.opacity = Math.random() * 0.7 + 0.3;
       }
       
@@ -52,9 +52,11 @@ const Hero: React.FC = () => {
         this.x += this.speedX;
         this.y += this.speedY;
         
-        // Animate opacity for a pulsing effect
-        this.opacity += Math.sin(Date.now() * this.blinkSpeed) * 0.01;
-        this.opacity = Math.max(0.2, Math.min(0.9, this.opacity));
+        // Less frequent opacity updates (reduced animation calculations)
+        if (Math.random() > 0.7) {
+          this.opacity += Math.sin(Date.now() * this.blinkSpeed) * 0.01;
+          this.opacity = Math.max(0.2, Math.min(0.9, this.opacity));
+        }
 
         // Wrap around the edges
         if (this.x > canvas.width) this.x = 0;
@@ -69,10 +71,6 @@ const Hero: React.FC = () => {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
-        
-        // Add glow effect
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = 'rgba(139, 92, 246, 0.5)';
       }
     }
 
@@ -81,12 +79,16 @@ const Hero: React.FC = () => {
       particlesArray.push(new Particle());
     }
 
-    // Connect particles with lines
+    // Connect particles with lines - optimized
     const connectParticles = () => {
       if (!ctx) return;
-      const maxDistance = 180;
-      for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a; b < particlesArray.length; b++) {
+      const maxDistance = 120; // Reduced connection distance
+      
+      // Using fewer connection checks
+      const connectStep = window.innerWidth < 768 ? 1 : 2;
+      
+      for (let a = 0; a < particlesArray.length; a += connectStep) {
+        for (let b = a; b < particlesArray.length; b += connectStep) {
           const dx = particlesArray[a].x - particlesArray[b].x;
           const dy = particlesArray[a].y - particlesArray[b].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
@@ -103,36 +105,52 @@ const Hero: React.FC = () => {
       }
     };
 
-    // Animation loop
-    const animate = () => {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.shadowBlur = 0; // Reset shadow before drawing connections
+    // Use requestAnimationFrame for smoother animation with throttling
+    let animationFrameId: number;
+    let lastTime = 0;
+    const fps = 30; // Target 30fps instead of 60fps
+    const fpsInterval = 1000 / fps;
+    
+    const animate = (currentTime: number = 0) => {
+      animationFrameId = requestAnimationFrame(animate);
       
-      particlesArray.forEach(particle => {
-        particle.update();
-        particle.draw();
-      });
+      const elapsed = currentTime - lastTime;
       
-      connectParticles();
-      requestAnimationFrame(animate);
+      // Only render if enough time has passed (throttling)
+      if (elapsed > fpsInterval) {
+        lastTime = currentTime - (elapsed % fpsInterval);
+        
+        if (!ctx) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particlesArray.forEach(particle => {
+          particle.update();
+          particle.draw();
+        });
+        
+        connectParticles();
+      }
     };
     
+    // Start animation
     animate();
 
     // Cleanup
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, []);
 
   return <div className="min-h-screen flex flex-col justify-center relative overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
-      <div className="absolute inset-0 bg-crypto-gradient z-0 animate-pulse-subtle"></div>
+      <div className="absolute inset-0 bg-crypto-gradient z-0"></div>
       <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 animate-fade-in">
-            <span className="text-crypto-purple animate-text-glow">Charandeep Kapoor</span>
+            <span className="text-crypto-purple">Charandeep Kapoor</span>
           </h1>
           <h2 className="text-xl md:text-2xl text-gray-300 mb-6 animate-fade-in" style={{
           animationDelay: "200ms"
@@ -146,7 +164,7 @@ const Hero: React.FC = () => {
           <div className="flex flex-wrap gap-4 animate-fade-in" style={{
           animationDelay: "600ms"
         }}>
-            <a href="#experience" className={cn("px-6 py-2 rounded-md bg-crypto-purple text-white", "hover:bg-crypto-purple/80 transition-all", "flex items-center justify-center", "animate-button-pulse")}>
+            <a href="#experience" className={cn("px-6 py-2 rounded-md bg-crypto-purple text-white", "hover:bg-crypto-purple/80 transition-all", "flex items-center justify-center")}>
               View My Work
             </a>
             <a href="#contact" className={cn("px-6 py-2 rounded-md bg-transparent border border-crypto-purple text-crypto-purple", "hover:bg-crypto-purple/10 transition-all", "flex items-center justify-center")}>
@@ -156,7 +174,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <a href="#about" className="text-crypto-purple">
           <ArrowDown size={24} />
         </a>

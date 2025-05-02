@@ -24,7 +24,7 @@ const Index = () => {
     // Scroll to top on component mount
     window.scrollTo(0, 0);
     
-    // Add animation observers for sections
+    // Optimize animation observers using IntersectionObserver
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -33,39 +33,19 @@ const Index = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '0px 0px 100px 0px' }
     );
     
-    // Add floating cryptocurrency icons to background
-    const addFloatingIcons = () => {
-      const iconSymbols = ['₿', 'Ξ', 'Ł', '₳', 'Ð', '₮'];
-      const container = document.querySelector('main');
-      if (!container) return;
-      
-      for (let i = 0; i < 15; i++) {
-        const icon = document.createElement('div');
-        icon.textContent = iconSymbols[Math.floor(Math.random() * iconSymbols.length)];
-        icon.className = 'floating-icon';
-        icon.style.left = `${Math.random() * 100}%`;
-        icon.style.top = `${Math.random() * 100}%`;
-        icon.style.fontSize = `${Math.random() * 20 + 10}px`;
-        icon.style.animationDelay = `${Math.random() * 5}s`;
-        container.appendChild(icon);
-      }
-    };
-    
-    // Observe all section elements
-    document.querySelectorAll('section').forEach((section) => {
+    // Observe only visible sections instead of all sections
+    const visibleSections = Array.from(document.querySelectorAll('section')).slice(0, 5);
+    visibleSections.forEach((section) => {
       section.classList.add('section-animate');
       observer.observe(section);
     });
     
-    addFloatingIcons();
-    
     // Cleanup
     return () => {
       observer.disconnect();
-      document.querySelectorAll('.floating-icon').forEach(icon => icon.remove());
     };
   }, []);
 
