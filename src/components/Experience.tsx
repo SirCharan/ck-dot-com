@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -17,10 +16,15 @@ const experiences: ExperienceItem[] = [
       <>
         <ul className="list-disc list-inside space-y-2 text-gray-300">
           <li>
-            Ideated and developed <a href="#" className="crypto-link"><strong>Timelock Trade</strong></a>: Enabled traders to access <strong>high-leverage</strong> positions on all ERC20 tokens with <strong>zero liquidation risk</strong> for fixed durations. Each position is fully collateralized and created by borrowing tick liquidity from Uniswap V3 LP positions. This eliminates the need for liquidations during the trade duration while preserving risk-neutral optionality for LPs. <a href="#" className="crypto-link">Pitch deck</a> | <a href="#" className="crypto-link">Docs</a>
+            Ideated & built <strong>Timelock Trade</strong>, <strong>a groundbreaking idea in crypto.</strong> <a href="https://www.timelock.trade/" className="crypto-link" target="_blank" rel="noopener noreferrer">[Live Beta.]</a>
+            <ul className="list-disc list-inside ml-6 mt-2">
+              <li>
+                Timelock enables traders to access leverage without liquidations for fixed durations of their choice by borrowing tick liquidity from Uniswap V3 LPs.
+              </li>
+            </ul>
           </li>
           <li>
-            Contributed to <a href="#" className="crypto-link"><strong>Methlab</strong></a>, offering non-liquidable loans and leverage trading, by developing pricing and risk management strategies.
+            Contributed to <a href="https://www.methlab.xyz/" className="crypto-link" target="_blank" rel="noopener noreferrer">Methlab</a>, a revolutionary product offering non-liquidable loans by developing pricing and risk management strategies.
           </li>
         </ul>
       </>
@@ -35,10 +39,10 @@ const experiences: ExperienceItem[] = [
           <h4 className="text-white font-medium mb-2">Algo Trading:</h4>
           <ul className="list-disc list-inside space-y-2 text-gray-300">
             <li>
-              <strong>BTC ATM Short Straddles</strong>: 2860% return in 1 year. (<a href="#" className="crypto-link">Video</a>, <a href="#" className="crypto-link">Blog</a>)
+              <strong>BTC ATM Short Straddles</strong>: 2860% return in 1 year. (<a href="https://www.youtube.com/watch?v=DuPdKyXKNh0" className="crypto-link">Video</a>, <a href="https://www.delta.exchange/blog/the-algo-trading-strategy-which-made-2860-returns-in-the-past-2-years" className="crypto-link">Blog</a>)
             </li>
             <li>
-              <strong>Refined MACD Strategy</strong>: 100% in 2 years. (<a href="#" className="crypto-link">Video</a>, <a href="#" className="crypto-link">Blog</a>)
+              <strong>Refined MACD Strategy</strong>: 100% in 2 years. (<a href="https://youtu.be/1h_JSM_ZtkU" className="crypto-link">Video</a>, <a href="https://www.delta.exchange/blog/optimising-returns-pairing-ma-crossovers-with-a-trend-indicator?category=all" className="crypto-link">Blog</a>)
             </li>
           </ul>
         </div>
@@ -50,7 +54,7 @@ const experiences: ExperienceItem[] = [
               Grew YouTube channel from <strong>3k to 25k</strong> subscribers as the 1st hire.
             </li>
             <li>
-              Showcased portfolio, live trading, and interacted with audience to grow the brand and educate the masses.
+              Showcased portfolio, did live trading, and interacted with audience to grow the brand and educate the masses.
             </li>
           </ul>
         </div>
@@ -58,7 +62,8 @@ const experiences: ExperienceItem[] = [
         <div className="mt-4">
           <h4 className="text-white font-medium mb-2">Product:</h4>
           <p className="text-gray-300 pl-5">
-            Took feedback from YouTube audience and worked on building new products like <strong>Signal Trading</strong> (<a href="#" className="crypto-link">Video</a>) to increase user adoption and experience.
+            <li>
+            Built new products based on Youtube feedback including a pioneering product in algo trading automation, Signal Trading <a href="https://www.youtube.com/watch?v=S_D8W_oqo-A" className="crypto-link" target="_blank" rel="noopener noreferrer">(Video)</a>            </li>
           </p>
         </div>
       </>
@@ -71,13 +76,13 @@ const experiences: ExperienceItem[] = [
       <>
         <ul className="list-disc list-inside space-y-2 text-gray-300">
           <li>
-            Managed a <strong>$500k fund</strong>, achieving a <strong>30% return</strong> ($145k) in 9 months during the 2022 bear market.
+            <strong>Managed $500k</strong> for HNIs & uHNIs. <strong>30% return in 9 months</strong> in 2022 bear.
           </li>
           <li>
-            Designed an <strong>arbitrage strategy</strong> between Delta Exchange and Deribit, yielding <strong>50% return</strong> on $150k.
+            <strong>Designed an arbitrage strategy</strong> yielding 50% return on $150k by exploiting price discrepancies between Delta Exchange and Deribit.
           </li>
           <li>
-            Hedged <strong>&gt;$50M</strong> fund exposure using futures and options on BTC, ETH, and Solana.
+            Hedged &gt;$50M fund's exposure with BTC & ETH futures and options.
           </li>
         </ul>
       </>
