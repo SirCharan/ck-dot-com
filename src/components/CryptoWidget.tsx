@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Bitcoin, TrendingUp, TrendingDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -9,24 +8,39 @@ interface CryptoPrice {
   change24h: number;
 }
 
+const COINGECKO_API =
+  'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true';
+
 const CryptoWidget: React.FC = () => {
   const [cryptoPrices, setCryptoPrices] = useState<CryptoPrice[]>([
-    { symbol: 'BTC', price: 62547, change24h: 2.3 },
-    { symbol: 'ETH', price: 3162, change24h: -0.7 }
+    { symbol: 'BTC', price: 0, change24h: 0 },
+    { symbol: 'ETH', price: 0, change24h: 0 }
   ]);
-  
-  // Simulate live price updates
+
+  const fetchPrices = async () => {
+    try {
+      const res = await fetch(COINGECKO_API);
+      const data = await res.json();
+      setCryptoPrices([
+        {
+          symbol: 'BTC',
+          price: data.bitcoin.usd,
+          change24h: data.bitcoin.usd_24h_change
+        },
+        {
+          symbol: 'ETH',
+          price: data.ethereum.usd,
+          change24h: data.ethereum.usd_24h_change
+        }
+      ]);
+    } catch (err) {
+      // Optionally handle error
+    }
+  };
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCryptoPrices(prevPrices => 
-        prevPrices.map(crypto => ({
-          ...crypto,
-          price: crypto.price * (1 + (Math.random() * 0.01 - 0.005)),
-          change24h: crypto.change24h + (Math.random() * 0.2 - 0.1)
-        }))
-      );
-    }, 5000);
-    
+    fetchPrices();
+    const interval = setInterval(fetchPrices, 10000); // update every 10 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -46,9 +60,9 @@ const CryptoWidget: React.FC = () => {
             </div>
             <div className="flex flex-col items-end">
               <span className="text-sm font-medium">
-                ${Math.floor(crypto.price).toLocaleString()}
+                ${crypto.price ? Math.floor(crypto.price).toLocaleString() : '--'}
               </span>
-              <span 
+              <span
                 className={cn(
                   "text-xs flex items-center",
                   crypto.change24h >= 0 ? "text-crypto-green" : "text-crypto-red"
@@ -59,7 +73,7 @@ const CryptoWidget: React.FC = () => {
                 ) : (
                   <TrendingDown size={12} className="mr-1" />
                 )}
-                {crypto.change24h.toFixed(2)}%
+                {crypto.change24h ? crypto.change24h.toFixed(2) : '--'}%
               </span>
             </div>
           </div>
