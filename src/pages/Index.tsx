@@ -102,6 +102,9 @@ const Index = () => {
     sections.forEach((section) => {
       section.classList.add('section-animate');
       observer.observe(section);
+      
+      // Add hover effect to sections
+      section.classList.add('hover:shadow-lg', 'hover:shadow-crypto-purple/10', 'transition-all', 'duration-500');
     });
     
     // Setup background particles after a short delay
@@ -119,19 +122,19 @@ const Index = () => {
       
       <main>
         <Hero />
-        <section ref={addToSectionsRef}>
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
           <About />
         </section>
-        <section ref={addToSectionsRef}>
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
           <Experience />
         </section>
-        <section ref={addToSectionsRef}>
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
           <Academic />
         </section>
-        <section ref={addToSectionsRef}>
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
           <Personal />
         </section>
-        <section ref={addToSectionsRef}>
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
           <Contact />
         </section>
       </main>

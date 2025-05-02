@@ -8,7 +8,7 @@ const Personal: React.FC = () => {
         <h2 className="section-title">Personal Achievements</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="glass-card p-6 animate-fade-in">
+          <div className="glass-card p-6 animate-fade-in transition-all duration-300 hover:shadow-lg hover:shadow-crypto-purple/20 hover:-translate-y-1">
             <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
               <span className="inline-block w-8 h-8 rounded-full bg-crypto-purple/20 text-crypto-purple flex items-center justify-center mr-2">
                 <span className="text-sm">№1</span>
@@ -31,7 +31,7 @@ const Personal: React.FC = () => {
             </a>
           </div>
           
-          <div className="glass-card p-6 animate-fade-in" style={{
+          <div className="glass-card p-6 animate-fade-in transition-all duration-300 hover:shadow-lg hover:shadow-crypto-purple/20 hover:-translate-y-1" style={{
           animationDelay: "100ms"
         }}>
             <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
@@ -49,7 +49,7 @@ const Personal: React.FC = () => {
             </a>
           </div>
           
-          <div className="glass-card p-6 animate-fade-in" style={{
+          <div className="glass-card p-6 animate-fade-in transition-all duration-300 hover:shadow-lg hover:shadow-crypto-purple/20 hover:-translate-y-1" style={{
           animationDelay: "200ms"
         }}>
             <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
