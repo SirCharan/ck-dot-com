@@ -1,3 +1,4 @@
+
 import React from 'react';
 interface AcademicItem {
   title: string;
@@ -40,7 +41,7 @@ const certifications: AcademicItem[] = [{
 }];
 const Academic: React.FC = () => {
   return <section id="academic" className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-8 md:px-12 max-w-6xl">
         <h2 className="section-title">Academic Background</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

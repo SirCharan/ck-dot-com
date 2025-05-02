@@ -120,7 +120,7 @@ const experiences: ExperienceItem[] = [
 const Experience: React.FC = () => {
   return (
     <section id="experience" className="py-20 bg-crypto-black/80">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-8 md:px-12 max-w-6xl">
         <h2 className="section-title">Work Experience</h2>
         
         <div className="space-y-12">

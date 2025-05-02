@@ -1,7 +1,8 @@
+
 import React from 'react';
 const About: React.FC = () => {
   return <section id="about" className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-8 md:px-12 max-w-6xl">
         <h2 className="section-title">About Me</h2>
         
         <div className="glass-card p-6 md:p-8 mb-8 animate-fade-in">

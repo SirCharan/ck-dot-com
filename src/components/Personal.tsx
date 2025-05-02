@@ -4,7 +4,7 @@ import { Linkedin, ExternalLink } from 'lucide-react';
 
 const Personal: React.FC = () => {
   return <section id="personal" className="py-20 bg-crypto-black/80">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-8 md:px-12 max-w-6xl">
         <h2 className="section-title">Personal Achievements</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
