@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { Linkedin, ExternalLink } from 'lucide-react';
+
 const Personal: React.FC = () => {
   return <section id="personal" className="py-20 bg-crypto-black/80">
       <div className="container mx-auto px-4">
@@ -13,6 +15,13 @@ const Personal: React.FC = () => {
               </span>
               Topmate Creator
             </h3>
+            <div className="mb-4">
+              <img 
+                src="/lovable-uploads/4e6f0209-d05c-46d9-b7fd-fafbf4370013.png" 
+                alt="Topmate Creator Achievements" 
+                className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+              />
+            </div>
             <p className="text-gray-300 mb-4">
               Top 0.1% creator in finance, rated 4.9/5 across 30+ client reviews.
             </p>
@@ -49,14 +58,21 @@ const Personal: React.FC = () => {
               </span>
               Stock Market
             </h3>
+            <div className="mb-4">
+              <img 
+                src="/lovable-uploads/5c63e2fd-b03f-4df6-94b6-1491914231a5.png" 
+                alt="Portfolio Performance" 
+                className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+              />
+            </div>
             <p className="text-gray-300">
               Personal mutual fund portfolio ranked in top 1% of all Indians according to ET Money (XIRR &gt;50%).
             </p>
           </div>
         </div>
         
-        
       </div>
     </section>;
 };
+
 export default Personal;
