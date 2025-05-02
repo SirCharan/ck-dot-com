@@ -1,73 +1,87 @@
-# Welcome to your Lovable project
+# Charandeep Kapoor - Personal Portfolio
 
-## Project info
+A modern, responsive portfolio website showcasing expertise in crypto, finance, and mathematics. Built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/561b7e48-bb2a-4161-a4f4-daab21d31aaa
+## 🚀 Features
 
-## How can I edit this code?
+- **Modern UI**: Built with React and TypeScript
+- **Responsive Design**: Fully responsive across all devices
+- **Performance Optimized**: Built with Vite for fast development and production builds
+- **SEO Friendly**: Optimized meta tags and structured content
+- **Interactive Elements**: Animated sections and floating particles
+- **Dark Theme**: Crypto-themed dark mode design
+- **Component Library**: Uses shadcn/ui components for consistent design
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Frontend**: React 18, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Build Tool**: Vite
+- **State Management**: React Query
+- **Routing**: React Router
+- **UI Components**: Radix UI, shadcn/ui
+- **Animations**: CSS Animations, IntersectionObserver
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/561b7e48-bb2a-4161-a4f4-daab21d31aaa) and start prompting.
+## 📦 Installation
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Clone the repository:
+```bash
+git clone https://github.com/SirCharan/crypto-math-folio-web.git
+cd crypto-math-folio-web
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+bun install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+bun dev
+```
 
-**Use GitHub Codespaces**
+## 🏗️ Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/         # Reusable UI components
+├── pages/             # Page components
+├── hooks/             # Custom React hooks
+├── lib/               # Utility functions and configurations
+├── App.tsx            # Main application component
+└── main.tsx           # Application entry point
+```
 
-## What technologies are used for this project?
+## 🎨 Design System
 
-This project is built with:
+The project uses a custom design system with the following key colors:
+- Primary: Crypto Purple (#8B5CF6)
+- Secondary: Crypto Indigo (#6366F1)
+- Background: Crypto Black
+- Text: White
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📝 Documentation
 
-## How can I deploy this project?
+For detailed documentation about the codebase, see:
+- [LLM Documentation](./docs/llm-documentation.md)
+- [Codebase Overview](./docs/codebase-overview.txt)
 
-Simply open [Lovable](https://lovable.dev/projects/561b7e48-bb2a-4161-a4f4-daab21d31aaa) and click on Share -> Publish.
+## 🌐 Deployment
 
-## Can I connect a custom domain to my Lovable project?
+The website is deployed at [charandeepkapoor.com](https://charandeepkapoor.com)
 
-Yes, you can!
+## 🤝 Contributing
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

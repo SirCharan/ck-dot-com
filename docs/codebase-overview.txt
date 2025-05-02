@@ -1,0 +1,100 @@
+CHARANDEEP KAPOOR - PERSONAL PORTFOLIO - CODEBASE OVERVIEW
+
+PROJECT STRUCTURE
+----------------
+src/
+├── components/         # UI Components
+│   ├── Hero.tsx       # Landing section
+│   ├── About.tsx      # About section
+│   ├── Experience.tsx # Experience section
+│   ├── Academic.tsx   # Academic section
+│   ├── Personal.tsx   # Personal section
+│   ├── Contact.tsx    # Contact section
+│   ├── Sidebar.tsx    # Navigation sidebar
+│   ├── CryptoWidget.tsx # Crypto widget
+│   └── ui/            # shadcn/ui components
+├── pages/             # Page components
+│   ├── Index.tsx      # Main page
+│   └── NotFound.tsx   # 404 page
+├── hooks/             # Custom React hooks
+├── lib/               # Utility functions
+├── App.tsx            # Main app component
+└── main.tsx           # Entry point
+
+KEY FILES
+---------
+1. App.tsx
+   - Sets up React Query
+   - Configures React Router
+   - Initializes UI providers
+   - Defines main routes
+
+2. Index.tsx
+   - Main page component
+   - SEO optimization
+   - Section animations
+   - Floating particles
+   - Section composition
+
+3. Hero.tsx
+   - Landing section
+   - Animated text
+   - Background effects
+   - Call-to-action
+
+4. Experience.tsx
+   - Professional timeline
+   - Work history
+   - Skills showcase
+   - Achievements
+
+5. Contact.tsx
+   - Contact form
+   - Social links
+   - Contact info
+   - Form validation
+
+TECHNICAL STACK
+--------------
+- React 18
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- React Query
+- React Router
+- Radix UI
+
+STYLING SYSTEM
+-------------
+Primary Colors:
+- Crypto Purple: #8B5CF6
+- Crypto Indigo: #6366F1
+- Crypto Black: Background
+- White: Text
+
+ANIMATIONS
+----------
+1. Section Animations
+   - IntersectionObserver
+   - Fade-in effects
+   - Scroll triggers
+
+2. Floating Particles
+   - Dynamic creation
+   - Random positioning
+   - Smooth animations
+
+PERFORMANCE
+----------
+- Lazy loading
+- Optimized animations
+- Efficient CSS
+- SEO optimization
+- Custom domain: charandeepkapoor.com
+
+ACCESSIBILITY
+------------
+- Semantic HTML
+- ARIA attributes
+- Keyboard navigation
+- Screen reader support 
