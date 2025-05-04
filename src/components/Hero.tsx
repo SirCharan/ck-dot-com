@@ -165,7 +165,7 @@ const Hero: React.FC = () => {
           </h2>
           <p className="text-gray-400 text-lg mb-8 leading-relaxed animate-fade-in" style={{
           animationDelay: "400ms"
-        }}>Crypto professional with 5+ years of experience across trading, quant research, VC, and product — blending finance, math, and 0→1 execution.</p>
+        }}>Crypto professional with 5+ years of experience across product development, research, VC, and trading — blending finance, math, and 0→1 execution.</p>
           
           <div className="flex flex-wrap gap-4 animate-fade-in" style={{
           animationDelay: "600ms"
