@@ -1,4 +1,3 @@
-
 import React from 'react';
 interface AcademicItem {
   title: string;
@@ -9,10 +8,10 @@ const academics: AcademicItem[] = [{
   details: "IIT Kanpur (2018-2022)"
 }, {
   title: "JEE Advanced 2018",
-  details: "AIR 638"
+  details: "AIR 638 (99.96% percentile)"
 }, {
   title: "JEE Main 2018",
-  details: "AIR 272"
+  details: "AIR 272 (99.98% percentile)"
 }, {
   title: "CAT 2022",
   details: "99.79%ile"
