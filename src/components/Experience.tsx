@@ -10,21 +10,24 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    company: "Diffusion Labs",
-    position: "Quantitative Researcher",
+    company: "Timelock Trade",
+    position: "Founder",
     description: (
       <>
         <ul className="list-disc list-inside space-y-2 text-gray-300">
           <li>
-            Ideated & built <strong>Timelock Trade</strong>, <strong>a groundbreaking idea in crypto.</strong> <a href="https://www.timelock.trade/" className="crypto-link" target="_blank" rel="noopener noreferrer">[Live Beta.]</a>
+            Ideated & built <strong>Timelock Trade</strong>, a novel DeFi protocol that enables:
             <ul className="list-disc list-inside ml-6 mt-2">
               <li>
-                Timelock enables traders to access leverage without liquidations for fixed durations of their choice by borrowing tick liquidity from Uniswap V3 LPs.
+                Traders to access higher (&gt;1000x) leverage on any token without liquidations for fixed durations
+              </li>
+              <li>
+                Uniswap LPs to earn higher risk-neutral premium yield with 1-click deposits into managed vaults
               </li>
             </ul>
           </li>
           <li>
-            Contributed to <a href="https://www.methlab.xyz/" className="crypto-link" target="_blank" rel="noopener noreferrer">Methlab</a>, a revolutionary product offering non-liquidable loans by developing pricing and risk management strategies.
+            <a href="https://www.canva.com/design/DAGm2s_RFrg/do31HlTouT9NRVeG3pjH8w/edit?utm_content=DAGm2s_RFrg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" className="crypto-link" target="_blank" rel="noopener noreferrer">Pitch Deck</a> | <a href="https://docs.timelock.trade/docs" className="crypto-link" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://www.timelock.trade/" className="crypto-link" target="_blank" rel="noopener noreferrer">Live Beta</a>
           </li>
         </ul>
       </>
@@ -51,10 +54,7 @@ const experiences: ExperienceItem[] = [
           <h4 className="text-white font-medium mb-2">Growth:</h4>
           <ul className="list-disc list-inside space-y-2 text-gray-300">
             <li>
-              Grew YouTube channel from <strong>3k to 25k</strong> subscribers as the 1st hire.
-            </li>
-            <li>
-              Showcased portfolio, did live trading, and interacted with audience to grow the brand and educate the masses.
+              First Hire, grew YouTube channel by 733% from 3k to 25k subscribers in 6 months via creating educational content and live trading
             </li>
           </ul>
         </div>
@@ -79,7 +79,7 @@ const experiences: ExperienceItem[] = [
             <strong>Managed $500k</strong> for HNIs & uHNIs. <strong>30% return in 9 months</strong> in 2022 bear.
           </li>
           <li>
-            <strong>Designed an arbitrage strategy</strong> yielding 50% return on $150k by exploiting price discrepancies between Delta Exchange and Deribit.
+            Built arbitrage strategy with 50% APR exploiting price discrepancies between Delta Exchange and Deribit
           </li>
           <li>
             Hedged &gt;$50M fund's exposure with BTC & ETH futures and options.
@@ -111,10 +111,7 @@ const experiences: ExperienceItem[] = [
       <>
         <ul className="list-disc list-inside space-y-2 text-gray-300">
           <li>
-            Optimized <strong>incentive mechanisms</strong> for MaticX token on Polygon.
-          </li>
-          <li>
-            Analyzed trends and growth drivers for DeFi products to formulate launch strategies.
+            Optimized incentive mechanisms (bribe, reward) using data-driven systems for MaticX on Polygon.
           </li>
         </ul>
       </>
