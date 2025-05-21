@@ -161,7 +161,7 @@ const Hero: React.FC = () => {
           <h2 className="text-xl md:text-2xl text-gray-300 mb-6 animate-fade-in" style={{
           animationDelay: "200ms"
         }}>
-            Portfolio Manager, Quantitative Researcher, Trader
+            Portfolio Manager | Quantitative Researcher | Trader
           </h2>
           <p className="text-gray-400 text-lg mb-8 leading-relaxed animate-fade-in" style={{
           animationDelay: "400ms"
