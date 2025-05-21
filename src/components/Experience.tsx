@@ -34,6 +34,19 @@ const experiences: ExperienceItem[] = [
     )
   },
   {
+    company: "Diffusion Labs",
+    position: "Quantitative Researcher",
+    description: (
+      <>
+        <ul className="list-disc list-inside space-y-2 text-gray-300">
+          <li>
+            Worked on developing mechanism, pricing and risk management strategies for <a href="https://www.methlab.xyz/" className="crypto-link" target="_blank" rel="noopener noreferrer">Methlab</a>
+          </li>
+        </ul>
+      </>
+    )
+  },
+  {
     company: "Delta Exchange",
     position: "Product & Growth",
     description: (

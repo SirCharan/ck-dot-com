@@ -1,4 +1,3 @@
-
 # Allow all crawlers
 User-agent: *
 Allow: /
@@ -16,5 +15,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-# Sitemap location (add when you have a sitemap)
-# Sitemap: https://charandeepkapoor.com/sitemap.xml
+# Sitemap location
+Sitemap: https://charandeepkapoor.com/sitemap.xml

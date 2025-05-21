@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -7,6 +6,9 @@ import Academic from '@/components/Academic';
 import Personal from '@/components/Personal';
 import Contact from '@/components/Contact';
 import Sidebar from '@/components/Sidebar';
+import FinancialTools from '@/components/FinancialTools';
+import SEO from '@/components/SEO';
+import StructuredData from '@/components/StructuredData';
 
 const Index = () => {
   const sectionsRef = useRef<HTMLElement[]>([]);
@@ -18,35 +20,6 @@ const Index = () => {
   };
 
   useEffect(() => {
-    // Update document title and meta tags for SEO
-    document.title = "Charandeep Kapoor | Crypto, Finance & Mathematics Expert";
-    
-    // Add meta description for better SEO
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Charandeep Kapoor - Crypto professional with 5+ years of experience in trading, quant research, VC, and product management. Expert in finance and mathematics.');
-    }
-    
-    // Add meta keywords for SEO
-    const metaKeywords = document.head.querySelector('meta[name="keywords"]');
-    if (!metaKeywords) {
-      const keywordsTag = document.createElement('meta');
-      keywordsTag.name = 'keywords';
-      keywordsTag.content = 'crypto, finance, mathematics, trading, quant research, blockchain, DeFi, venture capital, Charandeep Kapoor';
-      document.head.appendChild(keywordsTag);
-    }
-
-    // Update social media OG tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', 'Charandeep Kapoor | Crypto, Finance & Mathematics Expert');
-    }
-
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) {
-      ogDesc.setAttribute('content', 'Crypto professional with 5+ years of experience across trading, quant research, VC, and product.');
-    }
-    
     // Scroll to top on component mount
     window.scrollTo(0, 0);
     
@@ -118,6 +91,55 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-crypto-black text-white">
+      <SEO 
+        title="Charandeep Kapoor | Crypto, Finance & Mathematics Expert"
+        description="Charandeep Kapoor - Crypto professional with 5+ years of experience in trading, quant research, VC, and product management. Expert in finance and mathematics."
+        keywords={[
+          "crypto", 
+          "finance", 
+          "mathematics", 
+          "trading", 
+          "quant research", 
+          "blockchain", 
+          "DeFi", 
+          "venture capital", 
+          "Charandeep Kapoor",
+          "cryptocurrency expert",
+          "financial analyst",
+          "mathematics specialist",
+          "blockchain analyst"
+        ]}
+      />
+      <StructuredData 
+        type="Person"
+        data={{
+          name: "Charandeep Kapoor",
+          url: "https://charandeepkapoor.com",
+          image: "https://charandeepkapoor.com/favicon.png",
+          sameAs: [
+            "https://twitter.com/yourasianquant",
+            "https://linkedin.com/in/charandeepkapoor"
+          ],
+          jobTitle: "Crypto, Finance & Mathematics Expert",
+          worksFor: {
+            "@type": "Organization",
+            "name": "Crypto Industry"
+          },
+          description: "Crypto professional with 5+ years of experience in trading, quant research, VC, and product management. Expert in finance and mathematics."
+        }}
+      />
+      <StructuredData 
+        type="WebSite"
+        data={{
+          name: "Charandeep Kapoor - Portfolio",
+          url: "https://charandeepkapoor.com",
+          description: "Personal portfolio of Charandeep Kapoor, showcasing expertise in crypto, finance, and mathematics.",
+          author: {
+            "@type": "Person",
+            "name": "Charandeep Kapoor"
+          }
+        }}
+      />
       <Sidebar />
       
       <main>
@@ -130,6 +152,9 @@ const Index = () => {
         </section>
         <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
           <Academic />
+        </section>
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
+          <FinancialTools />
         </section>
         <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
           <Personal />
