@@ -8,7 +8,7 @@ A modern, responsive portfolio website showcasing expertise in crypto, finance, 
 - **Responsive Design**: Fully responsive across all devices
 - **Performance Optimized**: Built with Vite for fast development and production builds
 - **SEO Friendly**: Comprehensive SEO strategy with structured data, meta tags, sitemap, and React Helmet integration
-- **Interactive Elements**: Animated sections and components
+- **Interactive Elements**: Animated sections and components with particle effects
 - **Crypto Integration**: Live crypto price widgets and financial tools
 - **Academic & Professional Profile**: Showcases experience, education, and skills
 - **Dark Theme**: Crypto-themed dark mode design
@@ -26,6 +26,7 @@ A modern, responsive portfolio website showcasing expertise in crypto, finance, 
 - **Form Management**: React Hook Form with Zod validation
 - **Analytics**: Vercel Analytics
 - **SEO**: React Helmet Async, Structured Data
+- **Animation**: Framer Motion, Canvas API
 
 ## 📦 Installation
 
@@ -67,23 +68,23 @@ bun build
 ```
 src/
 ├── components/         # Reusable UI components
-│   ├── ui/             # shadcn UI components
-│   ├── About.tsx       # About section component
-│   ├── Academic.tsx    # Academic background component
-│   ├── Contact.tsx     # Contact form component
+│   ├── ui/            # shadcn UI components
+│   ├── About.tsx      # About section component
+│   ├── Academic.tsx   # Academic background component
+│   ├── Contact.tsx    # Contact form component
 │   ├── CryptoWidget.tsx # Crypto price widget
-│   ├── Experience.tsx  # Professional experience component
+│   ├── Experience.tsx # Professional experience component
 │   ├── FinancialTools.tsx # Financial calculators component
-│   ├── Hero.tsx        # Hero/landing section component
-│   ├── Personal.tsx    # Personal details component
-│   └── Sidebar.tsx     # Navigation sidebar component
-├── pages/              # Page components
-│   ├── Index.tsx       # Main landing page
-│   └── NotFound.tsx    # 404 page
-├── hooks/              # Custom React hooks
-├── lib/                # Utility functions and configurations
-├── App.tsx             # Main application component
-└── main.tsx            # Application entry point
+│   ├── Hero.tsx       # Hero/landing section with particle effects
+│   ├── Personal.tsx   # Personal details component
+│   └── Sidebar.tsx    # Navigation sidebar component
+├── pages/             # Page components
+│   ├── Index.tsx      # Main landing page
+│   └── NotFound.tsx   # 404 page
+├── hooks/             # Custom React hooks
+├── lib/               # Utility functions and configurations
+├── App.tsx            # Main application component
+└── main.tsx           # Application entry point
 ```
 
 ## 🎨 Design System
@@ -93,10 +94,11 @@ The project uses a custom design system with the following key colors:
 - Secondary: Crypto Indigo (#6366F1)
 - Background: Crypto Black
 - Text: White
+- Accent: Crypto Gradient
 
 ## 📱 Key Components
 
-- **Hero**: Animated landing section with particles effect
+- **Hero**: Animated landing section with interactive particle effects
 - **About**: Professional summary and key skills
 - **Experience**: Timeline of professional experience
 - **Academic**: Education background and qualifications
