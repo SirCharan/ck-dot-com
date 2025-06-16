@@ -53,6 +53,50 @@ const FinancialTools: React.FC = () => {
               </div>
             </div>
           </div>
+
+          <div className="glass-card p-6 md:p-8 animate-fade-in border-l-4 border-crypto-purple transition-all duration-300 hover:shadow-lg hover:shadow-crypto-purple/20 hover:-translate-y-1" style={{
+            animationDelay: "200ms"
+          }}>
+            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
+              <span className="inline-block w-3 h-3 rounded-full bg-crypto-purple mr-3"></span>
+              Market Matters With CK
+            </h3>
+            <div className="mb-4">
+              <p className="text-gray-300 mb-3">
+                Built a user-friendly ChatGPT wrapper to deliver daily stock market updates, news highlights, and quick insights for retail and professional traders. Integrated LLM-powered Q&A interface to allow users to explore financial terms, stock-specific news, and macroeconomic trends conversationally.
+              </p>
+              <div className="flex items-center space-x-3">
+                <a href="https://chatgpt.com/share/684fbf8b-196c-800f-a41f-9502a50cc8a9" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-crypto-purple hover:text-crypto-purple/80 transition-colors">
+                  <ExternalLink size={16} className="mr-1" />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="glass-card p-6 md:p-8 animate-fade-in border-l-4 border-crypto-purple transition-all duration-300 hover:shadow-lg hover:shadow-crypto-purple/20 hover:-translate-y-1" style={{
+            animationDelay: "300ms"
+          }}>
+            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
+              <span className="inline-block w-3 h-3 rounded-full bg-crypto-purple mr-3"></span>
+              Voice-Activated Delta Trading Bot
+            </h3>
+            <div className="mb-4">
+              <p className="text-gray-300 mb-3">
+                Voice-activated trading bot integrates Claude's MCP server with Delta Exchange API, enabling natural language processing to decode commands, identify product IDs, craft request headers, and execute trades in under an hour. Supports seamless Ethereum trading with simple voice commands like "Buy 1000 rupees of Ethereum."
+              </p>
+              <div className="flex items-center space-x-3">
+                <a href="https://github.com/SirCharan/Delta" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-crypto-purple hover:text-crypto-purple/80 transition-colors">
+                  <Github size={16} className="mr-1" />
+                  <span>Github</span>
+                </a>
+                <a href="https://www.linkedin.com/posts/charandeep-kapoor_crypto-claude-vibecoding-activity-7334621565780721664-SDqO?utm_source=share&utm_medium=member_desktop&rcm=ACoAACo1UwcBKImygIilymyjMGilKAFSb3fWG7Y" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-crypto-purple hover:text-crypto-purple/80 transition-colors">
+                  <ExternalLink size={16} className="mr-1" />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
