@@ -5,12 +5,17 @@ const SITE_URL = "https://charandeepkapoor.com";
 export async function GET() {
   const posts = getAllPosts();
 
+  const lastBuildDate = new Date().toUTCString();
+
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Charandeep Kapoor - Writings</title>
     <link>${SITE_URL}/blog</link>
-    <description>Writings on crypto, quant trading, markets, and building systems.</description>
+    <description>Writings on crypto, quant trading, protected perps, DeFi, markets, and building systems.</description>
+    <language>en-us</language>
+    <lastBuildDate>${lastBuildDate}</lastBuildDate>
+    <managingEditor>charandeep@charandeepkapoor.com (Charandeep Kapoor)</managingEditor>
     <atom:link href="${SITE_URL}/blog/feed.xml" rel="self" type="application/rss+xml"/>
     ${posts
       .map(

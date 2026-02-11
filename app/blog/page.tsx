@@ -78,7 +78,17 @@ export default function BlogIndexPage() {
       </header>
 
       <main className="blog-main">
-        <h1 className="blog-title">Writings</h1>
+        <div className="flex items-center justify-between gap-4 flex-wrap mb-8">
+          <h1 className="blog-title">Writings</h1>
+          <a
+            href="/blog/feed.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+          >
+            Subscribe via RSS ↗
+          </a>
+        </div>
 
         <div className="blog-list">
           {allPosts.length === 0 ? (
