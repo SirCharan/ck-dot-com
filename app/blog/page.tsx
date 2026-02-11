@@ -10,6 +10,8 @@ const SUB_ARTICLE_SLUGS = new Set([
   "clubs-perps",
   "why-perps",
   "perps-next",
+  "perps-pm-design",
+  "extract-money",
 ]);
 
 export const metadata: Metadata = {

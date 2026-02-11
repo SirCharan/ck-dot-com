@@ -56,7 +56,7 @@ content/
 - **Display label**: "Writings" (nav, page title, back links)
 - **Route**: `/blog` (kept for URLs)
 - **Nav**: Codex-style header (Home · Writings · RSS) in layout; prev/next post links at bottom of each post.
-- **Content**: Markdown in `content/blog/*.md`. Front matter: title, date (for sort only, not shown), excerpt, tags. Copy `_template.md` for new posts. Current posts: clubs-perps, lps-downside, exchange-payoffs, money-first, power-law-waste, perps-payoff, web2-perps, perps-next, ai-genius, why-perps, traders-losing.
+- **Content**: Markdown in `content/blog/*.md`. Front matter: title, date (for sort only, not shown), excerpt, tags. Copy `_template.md` for new posts. Current posts: clubs-perps, lps-downside, exchange-payoffs, money-first, power-law-waste, perps-payoff, web2-perps, perps-next, ai-genius, why-perps, traders-losing, perps-pm-design, extract-money.
 - **RSS**: `/blog/feed.xml`
 
 ## Stocky AI (Featured Tool)

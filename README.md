@@ -62,7 +62,7 @@ src/
 └── index.css
 
 content/
-└── blog/                 # Markdown posts: clubs-perps, lps-downside, exchange-payoffs, money-first, power-law-waste, perps-payoff, web2-perps, perps-next, ai-genius, why-perps, traders-losing, _template.md, README.md
+└── blog/                 # Markdown posts: clubs-perps, lps-downside, exchange-payoffs, money-first, power-law-waste, perps-payoff, web2-perps, perps-next, ai-genius, why-perps, traders-losing, perps-pm-design, extract-money, _template.md, README.md
 ```
 
 ## Quick Start

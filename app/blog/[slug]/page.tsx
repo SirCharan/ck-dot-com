@@ -93,6 +93,8 @@ export default async function BlogPostPage({ params }: Props) {
                 "clubs-perps",
                 "why-perps",
                 "perps-next",
+                "perps-pm-design",
+                "extract-money",
               ]}
               title="Read in order"
             />

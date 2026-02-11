@@ -10,6 +10,8 @@
 ## Essays (Markdown)
 
 - [Why I Built Protected Perps](https://charandeepkapoor.com/blog/md/why-perps): Helping gamblers gamble better – no liquidation, maximum leverage
+- [How I Would Build Protected Perps](https://charandeepkapoor.com/blog/md/perps-pm-design): PM/designer perspective – two platforms for sophisticated vs mass users
+- [Speedrun Money from Protected Perps](https://charandeepkapoor.com/blog/md/extract-money): Monetization strategy, extraction vs value
 - [What Next After Protected Perps](https://charandeepkapoor.com/blog/md/perps-next): Roadmap and future of protected perps
 - [Protected Perps: A Novel Payoff](https://charandeepkapoor.com/blog/md/perps-payoff): Core payoff structure explained
 - [Life Is Exchange of Payoffs](https://charandeepkapoor.com/blog/md/exchange-payoffs): Conceptual foundation
