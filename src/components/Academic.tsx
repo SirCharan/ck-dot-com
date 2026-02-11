@@ -35,12 +35,9 @@ const Academic: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <h2 className="font-orbitron text-4xl md:text-6xl font-black uppercase tracking-wide text-white mb-4">
+          <h2 className="font-orbitron text-3xl md:text-5xl font-black uppercase tracking-wide text-white mb-4">
             Academic Background
           </h2>
-          <p className="font-rajdhani text-lg md:text-2xl uppercase tracking-[0.2em] text-gray-200">
-            <span className="text-[var(--neon-purple)]">|</span> Education <span className="text-[var(--neon-cyan)]">|</span> Certifications
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -51,7 +48,7 @@ const Academic: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <GlassCard className="p-8 md:p-10">
-              <h3 className="font-orbitron text-xl font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-6">
+              <h3 className="font-orbitron text-lg font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-6">
                 Education & Achievements
               </h3>
               <div className="space-y-6">
@@ -64,7 +61,7 @@ const Academic: React.FC = () => {
                     transition={{ delay: index * 0.05 }}
                     className="border-b border-white/10 last:border-b-0 pb-4 last:pb-0"
                   >
-                    <h4 className="font-rajdhani text-sm uppercase tracking-widest text-[var(--neon-cyan)] font-semibold">
+                    <h4 className="font-rajdhani text-base uppercase tracking-widest text-[var(--neon-cyan)] font-semibold">
                       {item.title}
                     </h4>
                     <p className="text-gray-300 mt-1 font-mono text-sm">{item.details}</p>
@@ -81,7 +78,7 @@ const Academic: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <GlassCard className="p-8 md:p-10">
-              <h3 className="font-orbitron text-xl font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-6">
+              <h3 className="font-orbitron text-lg font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-6">
                 Certifications
               </h3>
               <div className="space-y-6">
@@ -94,7 +91,7 @@ const Academic: React.FC = () => {
                     transition={{ delay: index * 0.05 + 0.1 }}
                     className="border-b border-white/10 last:border-b-0 pb-4 last:pb-0"
                   >
-                    <h4 className="font-rajdhani text-sm uppercase tracking-widest text-[var(--neon-cyan)] font-semibold">
+                    <h4 className="font-rajdhani text-base uppercase tracking-widest text-[var(--neon-cyan)] font-semibold">
                       {item.title}
                     </h4>
                     {item.details && <p className="text-gray-300 mt-1 font-mono text-sm">{item.details}</p>}

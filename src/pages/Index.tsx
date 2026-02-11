@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import BackgroundEffects from '@/components/BackgroundEffects';
 import Experience from '@/components/Experience';
 import Academic from '@/components/Academic';
 import Personal from '@/components/Personal';
@@ -127,7 +126,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen text-white relative" style={{ background: 'var(--deep-bg)' }}>
-      <BackgroundEffects />
       <SEO 
         title="Charandeep Kapoor | Crypto, Finance & Mathematics Expert"
         description="Charandeep Kapoor - Crypto professional with 5+ years of experience in trading, quant research, VC, and product management. Expert in finance and mathematics."

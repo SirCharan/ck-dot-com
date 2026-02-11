@@ -88,7 +88,7 @@ const Sidebar: React.FC = () => {
           <div className="flex items-center justify-between mb-8 px-2">
             <div className="flex items-center gap-2">
               <Bitcoin size={24} className="text-[var(--neon-purple)]" strokeWidth={2} />
-              <h2 className="font-orbitron text-lg font-bold uppercase tracking-wide text-white">
+              <h2 className="font-orbitron text-base font-bold uppercase tracking-wide text-white">
                 Charandeep
               </h2>
             </div>

@@ -13,10 +13,10 @@ const About: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <h2 className="font-orbitron text-4xl md:text-6xl font-black uppercase tracking-wide text-white mb-4">
+          <h2 className="font-orbitron text-3xl md:text-5xl font-black uppercase tracking-wide text-white mb-4">
             About Me
           </h2>
-          <p className="font-rajdhani text-lg md:text-2xl uppercase tracking-[0.2em] text-gray-200">
+          <p className="font-rajdhani text-base md:text-xl uppercase tracking-[0.2em] text-gray-200">
             <span className="text-[var(--neon-purple)]">|</span> Crypto native · Quant · Builder
           </p>
         </motion.div>

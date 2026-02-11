@@ -72,10 +72,10 @@ const FinancialTools: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <h2 className="font-orbitron text-4xl md:text-6xl font-black uppercase tracking-wide text-white mb-4">
+          <h2 className="font-orbitron text-3xl md:text-5xl font-black uppercase tracking-wide text-white mb-4">
             Financial Tools
           </h2>
-          <p className="font-rajdhani text-lg md:text-2xl uppercase tracking-[0.2em] text-gray-200">
+          <p className="font-rajdhani text-base md:text-xl uppercase tracking-[0.2em] text-gray-200">
             <span className="text-[var(--neon-purple)]">|</span> Custom-built <span className="text-[var(--neon-cyan)]">|</span> Live
           </p>
         </motion.div>
@@ -92,7 +92,7 @@ const FinancialTools: React.FC = () => {
               <GlassCard className="p-6 md:p-8 border-l-4 border-l-[var(--neon-purple)]">
                 <div className="flex items-start gap-3 mb-3">
                   <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0 mt-1.5" title="Live" />
-                  <h3 className="font-orbitron text-lg font-bold uppercase tracking-wide text-white">
+                  <h3 className="font-orbitron text-base font-bold uppercase tracking-wide text-white">
                     {tool.title}
                   </h3>
                 </div>

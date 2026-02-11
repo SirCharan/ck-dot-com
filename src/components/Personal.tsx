@@ -14,10 +14,10 @@ const Personal: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <h2 className="font-orbitron text-4xl md:text-6xl font-black uppercase tracking-wide text-white mb-4">
+          <h2 className="font-orbitron text-3xl md:text-5xl font-black uppercase tracking-wide text-white mb-4">
             Personal Achievements
           </h2>
-          <p className="font-rajdhani text-lg md:text-2xl uppercase tracking-[0.2em] text-gray-200">
+          <p className="font-rajdhani text-base md:text-xl uppercase tracking-[0.2em] text-gray-200">
             <span className="text-[var(--neon-purple)]">|</span> Social <span className="text-[var(--neon-cyan)]">|</span> Portfolio
           </p>
         </motion.div>
@@ -30,7 +30,7 @@ const Personal: React.FC = () => {
             transition={{ duration: 0.4, delay: 0 }}
           >
             <GlassCard className="p-6 h-full hover:scale-[1.02] transition-transform transform-gpu">
-              <h3 className="font-orbitron text-lg font-bold uppercase tracking-wide text-white mb-3 flex items-center gap-2">
+              <h3 className="font-orbitron text-base font-bold uppercase tracking-wide text-white mb-3 flex items-center gap-2">
                 <span className="inline-flex w-8 h-8 rounded-full bg-[var(--neon-purple)]/20 text-[var(--neon-purple)] items-center justify-center text-sm font-mono">
                   №1
                 </span>
@@ -60,7 +60,7 @@ const Personal: React.FC = () => {
             transition={{ duration: 0.4, delay: 0.1 }}
           >
             <GlassCard className="p-6 h-full hover:scale-[1.02] transition-transform transform-gpu">
-              <h3 className="font-orbitron text-lg font-bold uppercase tracking-wide text-white mb-3 flex items-center gap-2">
+              <h3 className="font-orbitron text-base font-bold uppercase tracking-wide text-white mb-3 flex items-center gap-2">
                 <span className="inline-flex w-8 h-8 rounded-full bg-[var(--neon-purple)]/20 text-[var(--neon-purple)] items-center justify-center text-sm font-mono">
                   №2
                 </span>
@@ -92,22 +92,34 @@ const Personal: React.FC = () => {
             transition={{ duration: 0.4, delay: 0.2 }}
           >
             <GlassCard className="p-6 h-full hover:scale-[1.02] transition-transform transform-gpu">
-              <h3 className="font-orbitron text-lg font-bold uppercase tracking-wide text-white mb-3 flex items-center gap-2">
+              <h3 className="font-orbitron text-base font-bold uppercase tracking-wide text-white mb-4 flex items-center gap-2">
                 <span className="inline-flex w-8 h-8 rounded-full bg-[var(--neon-purple)]/20 text-[var(--neon-purple)] items-center justify-center text-sm font-mono">
                   №3
                 </span>
                 Stock Market
               </h3>
-              <div className="mb-4">
-                <img
-                  src="/lovable-uploads/5c63e2fd-b03f-4df6-94b6-1491914231a5.png"
-                  alt="Portfolio Performance"
-                  className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 transform-gpu"
-                />
+              <div className="flex flex-col gap-6">
+                <div>
+                  <div className="mb-3 space-y-3">
+                    <img
+                      src="/lovable-uploads/portfolio-dashboard.png"
+                      alt="Portfolio Dashboard - Account Overview"
+                      className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 transform-gpu"
+                    />
+                    <p className="text-gray-300 text-sm">
+                      Achieved 100%+ ROI in 9 months, with Share 2.29 and 73% win rate on INR 15L capital.
+                    </p>
+                    <img
+                      src="/lovable-uploads/5c63e2fd-b03f-4df6-94b6-1491914231a5.png"
+                      alt="Portfolio Performance"
+                      className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 transform-gpu"
+                    />
+                  </div>
+                  <p className="text-gray-300 text-sm">
+                    Personal mutual fund portfolio ranked in top 1% of all Indians according to ET Money (XIRR &gt;50%).
+                  </p>
+                </div>
               </div>
-              <p className="text-gray-300 text-sm">
-                Personal mutual fund portfolio ranked in top 1% of all Indians according to ET Money (XIRR &gt;50%).
-              </p>
             </GlassCard>
           </motion.div>
         </div>
