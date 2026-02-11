@@ -21,6 +21,6 @@ CONVENTIONS:
 - Tailwind + CSS variables for styling
 - Collapsible for expandable sections
 
-CONTENT: Stocky AI = title. Writings at /blog, Codex nav, prev/next links, no dates shown. Copy _template.md for new posts. Posts: order-of-things-to-target-money-first, why-ai-cant-replace-a-genius, power-law-average-waste-150-crore-country.
+CONTENT: Stocky AI = title. Writings at /blog, Codex nav, prev/next links, no dates shown. Copy _template.md for new posts. Posts: why-traders-like-losing-90-percent-failure, order-of-things-to-target-money-first, why-ai-cant-replace-a-genius, power-law-average-waste-150-crore-country.
 
 DO NOT: Remove gptengineer.js from index.html if present. Change OG/Twitter tags only with matching updates in app/layout.tsx and SEO.tsx.

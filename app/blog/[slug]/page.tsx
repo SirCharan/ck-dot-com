@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllSlugs, getAdjacentPosts } from "@/lib/blog";
 import { MarkdownRenderer } from "@/components/blog/MarkdownRenderer";
+import { BlogVote } from "@/components/blog/BlogVote";
+import { BlogShare } from "@/components/blog/BlogShare";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -57,6 +59,11 @@ export default async function BlogPostPage({ params }: Props) {
               ))}
             </div>
           )}
+
+          <div className="mt-8 flex flex-wrap items-center gap-6">
+            <BlogVote slug={slug} />
+            <BlogShare slug={slug} title={post.title} />
+          </div>
 
           <nav className="blog-post-nav">
             <div className="blog-post-nav-inner">

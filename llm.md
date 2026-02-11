@@ -56,7 +56,7 @@ content/
 - **Display label**: "Writings" (nav, page title, back links)
 - **Route**: `/blog` (kept for URLs)
 - **Nav**: Codex-style header (Home · Writings · RSS) in layout; prev/next post links at bottom of each post.
-- **Content**: Markdown in `content/blog/*.md`. Front matter: title, date (for sort only, not shown), excerpt, tags. Copy `_template.md` for new posts. Current posts: order-of-things-to-target-money-first, why-ai-cant-replace-a-genius, power-law-average-waste-150-crore-country.
+- **Content**: Markdown in `content/blog/*.md`. Front matter: title, date (for sort only, not shown), excerpt, tags. Copy `_template.md` for new posts. Current posts: why-traders-like-losing-90-percent-failure, order-of-things-to-target-money-first, why-ai-cant-replace-a-genius, power-law-average-waste-150-crore-country.
 - **RSS**: `/blog/feed.xml`
 
 ## Stocky AI (Featured Tool)

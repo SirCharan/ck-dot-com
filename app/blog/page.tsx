@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
+import { BlogVote } from "@/components/blog/BlogVote";
 
 export const metadata: Metadata = {
   title: "Writings | Charandeep Kapoor",
@@ -21,9 +22,6 @@ export default function BlogIndexPage() {
 
       <main className="blog-main">
         <h1 className="blog-title">Writings</h1>
-        <p className="blog-intro">
-          Essays and notes on crypto, quantitative trading, and building systems at the intersection of math and markets.
-        </p>
 
         <div className="blog-list">
           {posts.length === 0 ? (
@@ -31,21 +29,26 @@ export default function BlogIndexPage() {
           ) : (
             posts.map((post) => (
               <article key={post.slug} className="blog-list-item">
-                <Link href={`/blog/${post.slug}`} className="blog-list-title">
-                  {post.title}
-                </Link>
-                {post.excerpt && (
-                  <p className="blog-list-excerpt">{post.excerpt}</p>
-                )}
-                {post.tags && post.tags.length > 0 && (
-                  <div className="blog-tags">
-                    {post.tags.map((tag) => (
-                      <span key={tag} className="blog-tag">
-                        {tag}
-                      </span>
-                    ))}
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    <Link href={`/blog/${post.slug}`} className="blog-list-title">
+                      {post.title}
+                    </Link>
+                    {post.excerpt && (
+                      <p className="blog-list-excerpt">{post.excerpt}</p>
+                    )}
+                    {post.tags && post.tags.length > 0 && (
+                      <div className="blog-tags">
+                        {post.tags.map((tag) => (
+                          <span key={tag} className="blog-tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
+                  <BlogVote slug={post.slug} className="shrink-0 mt-1" />
+                </div>
               </article>
             ))
           )}
