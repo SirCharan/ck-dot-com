@@ -10,17 +10,15 @@ This is the personal portfolio website of Charandeep Kapoor, built with React, T
 
 ### 1. Core Application Structure
 
-- **App.tsx**: Main application component that sets up:
-  - React Query for data fetching
-  - React Router for navigation
-  - UI providers (Tooltip, Toaster)
-  - Main routing structure
+- **app/layout.tsx**: Root layout with meta, fonts, providers
+- **app/page.tsx**: Main entry, renders Index view
+- **app/blog/**: Writings at /blog (index, [slug] with prev/next nav, layout nav, feed.xml)
 
-- **Index.tsx**: Main page component that:
-  - Manages SEO meta tags
+- **Index.tsx** (src/views/): Main page component that:
+  - Manages SEO meta tags (via SEO.tsx)
   - Handles section animations
   - Implements floating particles
-  - Composes all main sections
+  - Composes all main sections (Hero, About, Experience, etc.)
 
 ### 2. Main Sections
 
@@ -90,9 +88,9 @@ This is the personal portfolio website of Charandeep Kapoor, built with React, T
 - Animation classes and utilities
 
 ### State Management
-- React Query for data fetching
+- React Query for data fetching (TanStack Query)
 - Local state for UI interactions
-- Context for theme management
+- next-themes for theme management
 
 ### Performance Optimizations
 - Lazy loading of components
@@ -109,11 +107,12 @@ This is the personal portfolio website of Charandeep Kapoor, built with React, T
 
 - React 18
 - TypeScript
+- Next.js 15 (App Router)
 - Tailwind CSS
-- shadcn/ui
-- React Query
-- React Router
-- Radix UI
+- shadcn/ui (Radix UI)
+- TanStack React Query
+- Framer Motion
+- gray-matter, react-markdown (for blog)
 
 ## Development Guidelines
 

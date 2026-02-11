@@ -9,7 +9,7 @@ A cyberpunk-themed portfolio showcasing expertise in crypto, finance, and mathem
 
 - **Cyberpunk UI** – Neon purple/cyan accents, glass cards, HUD-style corners
 - **Animated Hero** – Canvas particles, 3D polyhedron, aurora background, rotating subtitles
-- **Writings** – Light, Codex-style blog at `/blog` with markdown posts, RSS feed, nav (Home · Writings · RSS), prev/next post links
+- **Writings** – Light, Codex-style blog at `/blog` with markdown posts, RSS feed, nav (Home · Writings · RSS), prev/next post links (AI, life philosophy, priorities, power laws)
 - **Stocky AI** – Featured financial tool: Claude-powered Zerodha trading system (100%+ ROI, 73% win rate)
 - **Financial Tools** – Voice-powered Zerodha automation, Option Premium Calculator, Market Matters With CK, Delta trading bot
 - **Responsive Design** – Mobile-first, dark theme
@@ -62,7 +62,7 @@ src/
 └── index.css
 
 content/
-└── blog/                 # Markdown posts, _template.md, README.md
+└── blog/                 # Markdown posts: order-of-things-to-target-money-first, why-ai-cant-replace-a-genius, power-law-average-waste-150-crore-country, _template.md, README.md
 ```
 
 ## Quick Start

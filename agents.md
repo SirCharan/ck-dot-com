@@ -33,7 +33,7 @@ Personal portfolio for **Charandeep Kapoor** – crypto, finance, and mathematic
 
 - **Stocky AI**: Title is "Stocky AI". Links: Live (stockai-red.vercel.app), Latest (LinkedIn post), Sensibull showcase.
 - **Personal bio**: 6+ years in crypto, quant, product, research, VC. Building products 0→1.
-- **Writings**: Display label "Writings"; route `/blog`. Codex-style nav (Home · Writings · RSS). Prev/next post links. No dates shown. Copy `_template.md` for new posts.
+- **Writings**: Display label "Writings"; route `/blog`. Codex-style nav (Home · Writings · RSS). Prev/next post links. No dates shown. Copy `_template.md` for new posts. Current posts: order-of-things-to-target-money-first, why-ai-cant-replace-a-genius, power-law-average-waste-150-crore-country.
 - **Social**: @yourasianquant (Twitter), LinkedIn, Telegram (ck_timekeeper), GitHub.
 
 ## Do Not

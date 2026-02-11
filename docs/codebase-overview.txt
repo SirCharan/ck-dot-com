@@ -2,34 +2,27 @@ CHARANDEEP KAPOOR - PERSONAL PORTFOLIO - CODEBASE OVERVIEW
 
 PROJECT STRUCTURE
 ----------------
+app/
+├── blog/              # Writings at /blog (index, [slug], layout, feed.xml)
+├── layout.tsx         # Root layout, meta
+└── page.tsx           # Main entry
+
 src/
-├── components/         # UI Components
-│   ├── Hero.tsx       # Landing section
-│   ├── About.tsx      # About section
-│   ├── Experience.tsx # Experience section
-│   ├── Academic.tsx   # Academic section
-│   ├── Personal.tsx   # Personal section
-│   ├── Contact.tsx    # Contact section
-│   ├── Sidebar.tsx    # Navigation sidebar
-│   ├── CryptoWidget.tsx # Crypto widget
-│   └── ui/            # shadcn/ui components
-├── pages/             # Page components
-│   ├── Index.tsx      # Main page
-│   └── NotFound.tsx   # 404 page
-├── hooks/             # Custom React hooks
-├── lib/               # Utility functions
-├── App.tsx            # Main app component
-└── main.tsx           # Entry point
+├── components/        # UI Components (Hero, About, Experience, FinancialTools, etc.)
+├── views/             # Index (main portfolio), NotFound
+├── lib/               # blog.ts, utils
+└── index.css          # Global styles, design tokens
+
+content/
+└── blog/              # Markdown posts (*.md)
 
 KEY FILES
 ---------
-1. App.tsx
-   - Sets up React Query
-   - Configures React Router
-   - Initializes UI providers
-   - Defines main routes
+1. app/layout.tsx, app/page.tsx
+   - Next.js App Router root
+   - Renders main Index view
 
-2. Index.tsx
+2. src/views/Index.tsx
    - Main page component
    - SEO optimization
    - Section animations
@@ -56,13 +49,10 @@ KEY FILES
 
 TECHNICAL STACK
 --------------
-- React 18
-- TypeScript
-- Tailwind CSS
-- shadcn/ui
-- React Query
-- React Router
-- Radix UI
+- React 18, TypeScript
+- Next.js 15 (App Router)
+- Tailwind CSS, shadcn/ui, Radix UI
+- TanStack React Query, Framer Motion
 
 STYLING SYSTEM
 -------------
