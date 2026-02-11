@@ -494,7 +494,7 @@ const Hero: React.FC = () => {
               Experience
             </a>
             <a href="#research-papers" className="px-6 py-2 bg-white/5 border border-white/10 text-[10px] font-orbitron tracking-widest text-gray-400 hover:bg-purple-900/40 hover:border-purple-500 hover:text-white transition-all">
-              Research Papers
+              Research
             </a>
             <a href="/blog" className="px-6 py-2 bg-white/5 border border-white/10 text-[10px] font-orbitron tracking-widest text-gray-400 hover:bg-purple-900/40 hover:border-purple-500 hover:text-white transition-all">
               Writings

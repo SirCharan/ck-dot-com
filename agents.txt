@@ -1,6 +1,6 @@
 AGENT INSTRUCTIONS: crypto-math-folio-web
 
-PROJECT: Personal portfolio for Charandeep Kapoor - crypto, finance, mathematics expert. Next.js app with Writings at /blog.
+PROJECT: Personal portfolio for Charandeep Kapoor - crypto, quant finance, mathematics expert. Next.js app with Writings at /blog. SEO & AI discoverability: Perplexity, ChatGPT, llms.txt.
 
 STACK: React 18, TypeScript, Next.js 15 (App Router), Tailwind CSS, shadcn/ui, Framer Motion.
 
@@ -10,17 +10,21 @@ KEY FILES:
 - src/components/Hero.tsx - Landing, particles, nav
 - src/components/Experience.tsx - Work history (collapsible)
 - src/components/FinancialTools.tsx - Stocky AI, Zerodha MCP, etc.
+- src/components/RootStructuredData.tsx - Person + WebSite schema (all pages)
 - src/views/Index.tsx - Main page (sections)
-- app/blog/ - Writings index, post page (prev/next nav), layout nav (Home·Writings·RSS), RSS
+- app/blog/ - Writings index, [slug] post page, md/[slug] raw markdown, layout nav (Home·Writings·RSS), feed.xml
+- app/sitemap.ts - Dynamic sitemap (home, blog, posts, blog/md/*)
 - src/lib/blog.ts - Load posts, getAdjacentPosts; content/blog/_template.md for new posts
 - src/index.css - Design tokens
-- app/layout.tsx - Root layout, meta, RSS link
+- app/layout.tsx - Root layout, meta
+- public/llms.txt - LLM manifest (served at /llms.txt)
+- public/robots.txt - Allows PerplexityBot, OAI-SearchBot, GPTBot, Claude-Web
 
 CONVENTIONS:
 - Functional components, TypeScript interfaces
 - Tailwind + CSS variables for styling
 - Collapsible for expandable sections
 
-CONTENT: Stocky AI = title. Writings at /blog, Codex nav, prev/next links, no dates shown. Copy _template.md for new posts. Posts: traders-losing, money-first, ai-genius, power-law-waste.
+CONTENT: Stocky AI = title. Writings at /blog, Codex nav, prev/next links, no dates on index. Copy _template.md for new posts.
 
-DO NOT: Remove gptengineer.js from index.html if present. Change OG/Twitter tags only with matching updates in app/layout.tsx and SEO.tsx.
+DO NOT: Remove gptengineer.js from index.html if present. Block PerplexityBot or OAI-SearchBot. Change OG/schema without updating app/layout.tsx and SEO.tsx.

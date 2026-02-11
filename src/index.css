@@ -730,6 +730,69 @@
   padding: 0.2rem 0.4rem;
 }
 
+/* Protected Perps collapsible */
+.blog-perps-collapsible {
+  padding-top: 0.25rem;
+}
+
+.blog-perps-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.25rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #222;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s;
+}
+
+.blog-perps-trigger:hover {
+  color: #555;
+}
+
+.blog-perps-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.blog-perps-trigger-text {
+  flex: 1;
+}
+
+.blog-perps-trigger-count {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #888;
+}
+
+.blog-perps-list {
+  margin-top: 0.75rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.blog-perps-list .blog-list-item {
+  border-bottom: none;
+  padding: 0.875rem 0 0.875rem 1rem;
+}
+
+.blog-perps-list .blog-list-item:last-child {
+  padding-bottom: 0;
+}
+
+.blog-perps-num {
+  font-weight: 500;
+  color: #888;
+  margin-right: 0.25rem;
+}
+
 .blog-list-title {
   font-size: 1.125rem;
   font-weight: 600;

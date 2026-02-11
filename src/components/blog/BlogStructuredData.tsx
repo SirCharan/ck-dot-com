@@ -21,20 +21,31 @@ export function BlogStructuredData({ post, slug }: BlogStructuredDataProps) {
       "@type": "Person",
       name: "Charandeep Kapoor",
       url: SITE_URL,
+      jobTitle: "Crypto & Quant Finance Expert",
     },
     publisher: {
       "@type": "Organization",
       name: "Charandeep Kapoor",
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/favicon.png`,
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
       },
+    },
+    image: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/og-image.png`,
+      width: 1200,
+      height: 630,
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
     },
     ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(", ") }),
+    isAccessibleForFree: true,
+    inLanguage: "en-US",
   };
 
   const breadcrumbData = {

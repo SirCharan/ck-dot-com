@@ -11,13 +11,13 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "Charandeep Kapoor | Crypto, Finance & Mathematics Expert",
-  description = "Charandeep Kapoor - 6+ years across product, research and VC in crypto & stock markets. Building products 0→1. Stocky AI creator, quantitative trader.",
+  title = "Charandeep Kapoor | Crypto, Quant Finance & Mathematics Expert",
+  description = "Charandeep Kapoor - 6+ years in crypto, quant finance & product. Creator of Stocky AI (100%+ ROI). Essays on protected perps, DeFi, trading psychology. Expert in algorithmic trading, blockchain, mathematical finance.",
   canonicalUrl = "https://charandeepkapoor.com",
   ogImage = "https://charandeepkapoor.com/og-image.png",
   ogType = "website",
   twitterCard = "summary_large_image",
-  keywords = ["crypto", "finance", "mathematics", "blockchain", "DeFi", "quant research", "trading", "charandeep kapoor"],
+  keywords = ["Charandeep Kapoor", "crypto expert", "quantitative finance", "algorithmic trading", "blockchain", "DeFi", "Stocky AI", "protected perps", "trading psychology", "mathematical finance"],
 }: SEOProps) => {
   const keywordsString = keywords.join(", ");
 

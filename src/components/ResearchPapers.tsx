@@ -33,7 +33,7 @@ const ResearchPapers: React.FC = () => {
           className="mb-12"
         >
           <h2 className="font-orbitron text-3xl md:text-5xl font-black uppercase tracking-wide text-white mb-4">
-            Research Papers
+            Research
           </h2>
           <p className="font-rajdhani text-base md:text-xl uppercase tracking-[0.2em] text-gray-200">
             <span className="text-[var(--neon-purple)]">|</span> Academic &amp; Technical Research

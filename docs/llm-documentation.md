@@ -98,9 +98,12 @@ This is the personal portfolio website of Charandeep Kapoor, built with React, T
 - Efficient CSS with Tailwind's JIT compiler
 
 ### SEO Implementation
-- Dynamic meta tags
-- Semantic HTML structure
-- Optimized content structure
+- Dynamic meta tags (app/layout.tsx, app/blog/[slug]/page.tsx, SEO.tsx)
+- Schema.org structured data: Person, WebSite, Article, BreadcrumbList (RootStructuredData.tsx, BlogStructuredData.tsx)
+- Dynamic sitemap at app/sitemap.ts (home, blog, posts, blog/md/* for LLM ingestion)
+- llms.txt at /llms.txt for AI crawlers (Perplexity, ChatGPT, Claude)
+- robots.txt allows PerplexityBot, OAI-SearchBot (ChatGPT Search), Claude-Web, GPTBot
+- RSS feed at /blog/feed.xml
 - Custom domain (charandeepkapoor.com)
 
 ## Key Dependencies

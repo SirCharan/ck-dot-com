@@ -10,7 +10,6 @@ import Contact from '@/components/Contact';
 import Sidebar from '@/components/Sidebar';
 import FinancialTools from '@/components/FinancialTools';
 import SEO from '@/components/SEO';
-import StructuredData from '@/components/StructuredData';
 
 const ParallaxSection = React.forwardRef<
   HTMLElement,
@@ -128,53 +127,20 @@ const Index = () => {
   return (
     <div className="min-h-screen text-white relative" style={{ background: 'var(--deep-bg)' }}>
       <SEO 
-        title="Charandeep Kapoor | Crypto, Finance & Mathematics Expert"
-        description="Charandeep Kapoor - 6+ years across product, research and VC in crypto & stock markets. Building products 0→1. Stocky AI creator, quantitative trader."
+        title="Charandeep Kapoor | Crypto, Quant Finance & Mathematics Expert"
+        description="Charandeep Kapoor - 6+ years in crypto, quant finance & product. Creator of Stocky AI (100%+ ROI). Essays on protected perps, DeFi, trading psychology. Expert in algorithmic trading, blockchain, mathematical finance."
         keywords={[
-          "crypto", 
-          "finance", 
-          "mathematics", 
-          "trading", 
-          "quant research", 
-          "blockchain", 
-          "DeFi", 
-          "venture capital", 
           "Charandeep Kapoor",
-          "cryptocurrency expert",
-          "financial analyst",
-          "mathematics specialist",
-          "blockchain analyst"
+          "crypto expert",
+          "quantitative finance",
+          "algorithmic trading",
+          "blockchain",
+          "DeFi",
+          "Stocky AI",
+          "protected perps",
+          "trading psychology",
+          "mathematical finance",
         ]}
-      />
-      <StructuredData 
-        type="Person"
-        data={{
-          name: "Charandeep Kapoor",
-          url: "https://charandeepkapoor.com",
-          image: "https://charandeepkapoor.com/favicon.png",
-          sameAs: [
-            "https://twitter.com/yourasianquant",
-            "https://linkedin.com/in/charandeepkapoor"
-          ],
-          jobTitle: "Crypto, Finance & Mathematics Expert",
-          worksFor: {
-            "@type": "Organization",
-            "name": "Crypto Industry"
-          },
-          description: "6+ years across product, research and VC in crypto & stock markets. Building products 0→1. Creator of Stocky AI."
-        }}
-      />
-      <StructuredData 
-        type="WebSite"
-        data={{
-          name: "Charandeep Kapoor - Portfolio",
-          url: "https://charandeepkapoor.com",
-          description: "Personal portfolio of Charandeep Kapoor, showcasing expertise in crypto, finance, and mathematics.",
-          author: {
-            "@type": "Person",
-            "name": "Charandeep Kapoor"
-          }
-        }}
       />
       <Sidebar />
       

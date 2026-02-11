@@ -1,69 +1,76 @@
 # Charandeep Kapoor – Personal Portfolio
 
-A cyberpunk-themed portfolio showcasing expertise in crypto, finance, and mathematics. Built with React, TypeScript, Tailwind CSS, Framer Motion, and Next.js.
+A cyberpunk-themed portfolio showcasing expertise in **crypto**, **quant finance**, and **mathematics**. Built with React, TypeScript, Tailwind CSS, Framer Motion, and Next.js.
 
 **Live:** [charandeepkapoor.com](https://charandeepkapoor.com)  
 **Repo:** [github.com/SirCharan/crypto-math-folio-web](https://github.com/SirCharan/crypto-math-folio-web)
+
+---
 
 ## Features
 
 - **Cyberpunk UI** – Neon purple/cyan accents, glass cards, HUD-style corners
 - **Animated Hero** – Canvas particles, 3D polyhedron, aurora background, rotating subtitles
-- **Writings** – Light, Codex-style blog at `/blog` with markdown posts, RSS feed, nav (Home · Writings · RSS), prev/next post links (AI, life philosophy, priorities, power laws, trading psychology)
+- **Writings** – Light, Codex-style blog at `/blog` with markdown posts, RSS feed, prev/next nav
 - **Stocky AI** – Featured financial tool: Claude-powered Zerodha trading system (100%+ ROI, 73% win rate)
-- **Financial Tools** – Voice-powered Zerodha automation, Option Premium Calculator, Market Matters With CK, Delta trading bot
+- **Financial Tools** – Voice-powered Zerodha automation, Option Premium Calculator, Delta trading bot
 - **Responsive Design** – Mobile-first, dark theme
-- **SEO** – OG tags, Twitter cards, structured data, sitemap, robots.txt
+- **SEO & AI Discoverability** – OG tags, Twitter cards, Schema.org structured data, dynamic sitemap, robots.txt (PerplexityBot, OAI-SearchBot, GPTBot), llms.txt for AI crawlers
+
+---
 
 ## Tech Stack
 
-- **Frontend**: React 18, TypeScript
-- **Framework**: Next.js 15 (App Router)
-- **Styling**: Tailwind CSS, shadcn/ui
-- **Animation**: Framer Motion, Canvas API
-- **Analytics**: Vercel Analytics
+| Layer      | Tech                       |
+|-----------|----------------------------|
+| Frontend  | React 18, TypeScript       |
+| Framework | Next.js 15 (App Router)    |
+| Styling   | Tailwind CSS, shadcn/ui   |
+| Animation | Framer Motion, Canvas API  |
+| Analytics | Vercel Analytics           |
 
-## Design System
+---
 
-- **Fonts**: Orbitron (headings), Rajdhani (subtitles), Inter (body)
-- **Colors**: `--neon-purple`, `--neon-cyan`, `--deep-bg`, `--glass-bg`
-- **Components**: GlassCard (HUD corners), collapsible tool/experience cards
+## SEO & AI Visibility
+
+- **Dynamic sitemap** – `app/sitemap.ts` generates sitemap for home, blog, blog posts, and `/blog/md/*` (raw markdown for LLM ingestion)
+- **Structured data** – Person, WebSite, Article schemas (Schema.org JSON-LD) for Perplexity & ChatGPT citation
+- **llms.txt** – At `/llms.txt` for AI crawlers (manifest of key pages and essays)
+- **robots.txt** – Allows PerplexityBot, OAI-SearchBot (ChatGPT Search), Claude-Web, GPTBot
+- **RSS** – `/blog/feed.xml` for syndication
+
+---
 
 ## Project Structure
 
 ```
 app/
-├── blog/               # Writings at /blog (light, Codex-style)
-│   ├── [slug]/page.tsx # Post page (with prev/next nav)
-│   ├── feed.xml/       # RSS
-│   ├── layout.tsx     # Nav: Home · Writings · RSS
+├── blog/                 # Writings at /blog
+│   ├── [slug]/page.tsx    # Post page (prev/next nav)
+│   ├── md/[slug]/route.ts # Raw markdown for AI ingestion
+│   ├── feed.xml/route.ts  # RSS
+│   ├── layout.tsx         # Nav: Home · Writings · RSS
 │   └── page.tsx
-├── layout.tsx
-└── page.tsx
+├── layout.tsx             # Root layout, meta, structured data
+├── page.tsx
+└── sitemap.ts             # Dynamic sitemap
 
 src/
 ├── components/
-│   ├── Hero.tsx          # Landing, particles, 3D, nav
-│   ├── About.tsx
-│   ├── Experience.tsx    # Collapsible role cards
-│   ├── Academic.tsx
-│   ├── Personal.tsx      # Stock market, portfolio
-│   ├── FinancialTools.tsx # Stocky AI, Zerodha MCP, etc.
-│   ├── ResearchPapers.tsx
-│   ├── Contact.tsx
-│   ├── Sidebar.tsx
-│   ├── CryptoWidget.tsx
-│   └── blog/             # MarkdownRenderer for writings
-├── views/
-│   ├── Index.tsx         # Main portfolio
-│   └── NotFound.tsx
-├── lib/
-│   └── blog.ts           # Post loading, getAdjacentPosts
-└── index.css
+│   ├── Hero.tsx, About.tsx, Experience.tsx
+│   ├── FinancialTools.tsx, ResearchPapers.tsx
+│   ├── SEO.tsx, StructuredData.tsx, RootStructuredData.tsx
+│   └── blog/              # MarkdownRenderer, BlogStructuredData, etc.
+├── views/Index.tsx
+└── lib/blog.ts
 
-content/
-└── blog/                 # Markdown posts: clubs-perps, lps-downside, exchange-payoffs, money-first, power-law-waste, perps-payoff, web2-perps, perps-next, ai-genius, why-perps, traders-losing, perps-pm-design, extract-money, _template.md, README.md
+content/blog/              # Markdown posts
+public/
+├── llms.txt               # LLM manifest (served at /llms.txt)
+└── robots.txt
 ```
+
+---
 
 ## Quick Start
 
@@ -74,28 +81,33 @@ npm install   # or bun install
 npm run dev   # or bun dev
 ```
 
-## Scripts
+| Command        | Description          |
+|----------------|----------------------|
+| `npm run dev`  | Start dev server     |
+| `npm run build`| Production build     |
+| `npm run start`| Run production       |
+| `npm run lint` | Run ESLint           |
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start dev server (Next.js) |
-| `npm run build` | Production build |
-| `npm run start` | Run production server |
-| `npm run lint` | Run ESLint |
+---
 
 ## Deployment
 
-Deployed via Vercel at [charandeepkapoor.com](https://charandeepkapoor.com).
+Deployed via **Vercel** at [charandeepkapoor.com](https://charandeepkapoor.com).
+
+---
 
 ## Agents & LLMs
 
-Guidance for AI assistants (Cursor, Copilot, etc.) working on this codebase:
+Guidance for AI assistants (Cursor, Copilot, Claude, etc.) working on this codebase:
 
-| File | Purpose |
-|------|---------|
-| `agents.md` | Agent instructions: conventions, file locations, content guidelines |
-| `llm.md` | LLM-friendly project summary and common tasks |
-| `docs/llm-documentation.md` | Detailed architecture and component docs |
+| File                      | Purpose                                             |
+|---------------------------|-----------------------------------------------------|
+| `agents.md`                | Agent instructions: conventions, file locations    |
+| `llm.md`                   | LLM-friendly project summary and common tasks       |
+| `docs/llm-documentation.md`| Detailed architecture and component docs            |
+| `public/llms.txt`          | LLM manifest for AI crawlers (served at /llms.txt) |
+
+---
 
 ## License
 
