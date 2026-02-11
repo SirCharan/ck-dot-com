@@ -1,0 +1,27 @@
+# Charandeep Kapoor
+
+> Personal portfolio – crypto, finance, and mathematics expert. 6+ years across product, research, and VC in crypto & stock markets. Building products 0→1. Creator of Stocky AI (Claude-powered Zerodha trading, 100%+ ROI). Writings on trading psychology, markets, protected perps, DeFi, and building systems.
+
+## Main
+
+- [Home](https://charandeepkapoor.com/): Portfolio – crypto, quant, financial tools, experience
+- [Writings](https://charandeepkapoor.com/blog/): Essays on crypto, quant trading, markets, AI, and life philosophy
+
+## Essays (Markdown)
+
+- [Why I Built Protected Perps](https://charandeepkapoor.com/blog/md/why-perps): Helping gamblers gamble better – no liquidation, maximum leverage
+- [What Next After Protected Perps](https://charandeepkapoor.com/blog/md/perps-next): Roadmap and future of protected perps
+- [Protected Perps: A Novel Payoff](https://charandeepkapoor.com/blog/md/perps-payoff): Core payoff structure explained
+- [Life Is Exchange of Payoffs](https://charandeepkapoor.com/blog/md/exchange-payoffs): Conceptual foundation
+- [Everything Has a Price: LPs & ETH Downside](https://charandeepkapoor.com/blog/md/lps-downside): LP economics
+- [Web2 Equivalent of Protected Perps](https://charandeepkapoor.com/blog/md/web2-perps): Traditional finance analog
+- [Clubs, Wagers, Costs: Protected Perps](https://charandeepkapoor.com/blog/md/clubs-perps): Mechanism design
+- [Why AI Can't Replace a Genius](https://charandeepkapoor.com/blog/md/ai-genius): AI and human creativity
+- [Why Traders Like Losing](https://charandeepkapoor.com/blog/md/traders-losing): Trading psychology
+- [Order of Things: Money First](https://charandeepkapoor.com/blog/md/money-first): Priorities
+- [Power Law, Average, Waste](https://charandeepkapoor.com/blog/md/power-law-waste): Power laws in life and markets
+
+## Optional
+
+- [RSS Feed](https://charandeepkapoor.com/blog/feed.xml): Subscribe to writings
+- [Stocky AI](https://stockai-red.vercel.app): Claude-powered Zerodha trading system

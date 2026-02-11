@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-# Specific allowances for major search engines
+# Search engines
 User-agent: Googlebot
 Allow: /
 
@@ -15,5 +15,21 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-# Sitemap location
+# AI / LLM crawlers (Perplexity, ChatGPT, Claude, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Cohere-AI
+Allow: /
+
+# Sitemap & LLM manifest
 Sitemap: https://charandeepkapoor.com/sitemap.xml

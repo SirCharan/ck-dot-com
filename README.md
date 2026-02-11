@@ -3,7 +3,7 @@
 A cyberpunk-themed portfolio showcasing expertise in crypto, finance, and mathematics. Built with React, TypeScript, Tailwind CSS, Framer Motion, and Next.js.
 
 **Live:** [charandeepkapoor.com](https://charandeepkapoor.com)  
-**Repo:** [github.com/SirCharan/ck-dot-com](https://github.com/SirCharan/ck-dot-com)
+**Repo:** [github.com/SirCharan/crypto-math-folio-web](https://github.com/SirCharan/crypto-math-folio-web)
 
 ## Features
 
@@ -62,14 +62,14 @@ src/
 └── index.css
 
 content/
-└── blog/                 # Markdown posts: why-traders-like-losing-90-percent-failure, order-of-things-to-target-money-first, why-ai-cant-replace-a-genius, power-law-average-waste-150-crore-country, _template.md, README.md
+└── blog/                 # Markdown posts: clubs-perps, lps-downside, exchange-payoffs, money-first, power-law-waste, perps-payoff, web2-perps, perps-next, ai-genius, why-perps, traders-losing, _template.md, README.md
 ```
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/SirCharan/ck-dot-com.git
-cd ck-dot-com
+git clone https://github.com/SirCharan/crypto-math-folio-web.git
+cd crypto-math-folio-web
 npm install   # or bun install
 npm run dev   # or bun dev
 ```

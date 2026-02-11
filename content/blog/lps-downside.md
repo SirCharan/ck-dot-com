@@ -25,7 +25,7 @@ Here Abhinav's cost of accepting the payoff of throwing his phone was somewhere 
 Similarly I argue that humans will do anything, if paid the right price.  
 Good or bad outcomes can be justified provided the right price is paid.
 
-Going back to [Protected Perps](/blog/protected-perps-novel-payoff),
+Going back to [Protected Perps](/blog/perps-payoff),
 Similarly there is a price for LPs to accept the payoff of ETH's downside without the upside.  
 And that is the premium they charge the traders.
 

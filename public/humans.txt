@@ -1,0 +1,11 @@
+/* TEAM */
+Developer: Charandeep Kapoor
+Site: https://charandeepkapoor.com
+Twitter: @yourasianquant
+Location: India
+
+/* SITE */
+Last update: 2026
+Standards: HTML5, CSS3
+Components: React, Next.js, Tailwind CSS, Framer Motion
+Software: Vercel

@@ -6,6 +6,7 @@ import { MarkdownRenderer } from "@/components/blog/MarkdownRenderer";
 import { BlogVote } from "@/components/blog/BlogVote";
 import { BlogShare } from "@/components/blog/BlogShare";
 import { BlogRelatedReadings } from "@/components/blog/BlogRelatedReadings";
+import { BlogStructuredData } from "@/components/blog/BlogStructuredData";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -68,6 +69,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className="blog-container">
+      <BlogStructuredData post={post} slug={slug} />
       <header className="blog-header">
         <Link href="/blog" className="blog-back-link">
           ← Back to Writings
@@ -82,15 +84,15 @@ export default async function BlogPostPage({ params }: Props) {
             <MarkdownRenderer content={post.content} />
           </div>
 
-          {slug === "protected-perps-novel-payoff" && (
+          {slug === "perps-payoff" && (
             <BlogRelatedReadings
               slugs={[
-                "life-is-exchange-of-payoffs",
-                "everything-has-a-price-lps-eth-downside",
-                "web2-equivalent-protected-perps",
-                "clubs-wagers-costs-protected-perps",
-                "why-i-built-protected-perps",
-                "what-next-after-protected-perps",
+                "exchange-payoffs",
+                "lps-downside",
+                "web2-perps",
+                "clubs-perps",
+                "why-perps",
+                "perps-next",
               ]}
               title="Read in order"
             />
