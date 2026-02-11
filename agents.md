@@ -25,7 +25,7 @@ Personal portfolio for **Charandeep Kapoor** – crypto, finance, and mathematic
 | Experience entries | `src/components/Experience.tsx` |
 | Financial tools (Stocky AI, etc.) | `src/components/FinancialTools.tsx` |
 | Main page layout | `src/views/Index.tsx` |
-| Writings (blog) | `app/blog/`, `src/lib/blog.ts`, `content/blog/` |
+| Writings (blog) | `app/blog/`, `src/lib/blog.ts`, `content/blog/`. Nav in layout; prev/next in post page. |
 | SEO meta | `app/layout.tsx`, `src/components/SEO.tsx` |
 | Design tokens | `src/index.css` |
 
@@ -33,7 +33,7 @@ Personal portfolio for **Charandeep Kapoor** – crypto, finance, and mathematic
 
 - **Stocky AI**: Title is "Stocky AI". Links: Live (stockai-red.vercel.app), Latest (LinkedIn post), Sensibull showcase.
 - **Personal bio**: 6+ years in crypto, quant, product, research, VC. Building products 0→1.
-- **Writings**: Display label is "Writings"; route stays `/blog`. Markdown posts in `content/blog/`.
+- **Writings**: Display label "Writings"; route `/blog`. Codex-style nav (Home · Writings · RSS). Prev/next post links. No dates shown. Copy `_template.md` for new posts.
 - **Social**: @yourasianquant (Twitter), LinkedIn, Telegram (ck_timekeeper), GitHub.
 
 ## Do Not

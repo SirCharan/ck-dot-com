@@ -11,8 +11,8 @@ KEY FILES:
 - src/components/Experience.tsx - Work history (collapsible)
 - src/components/FinancialTools.tsx - Stocky AI, Zerodha MCP, etc.
 - src/views/Index.tsx - Main page (sections)
-- app/blog/ - Writings index, post page, RSS at /blog
-- src/lib/blog.ts - Load posts from content/blog
+- app/blog/ - Writings index, post page (prev/next nav), layout nav (Home·Writings·RSS), RSS
+- src/lib/blog.ts - Load posts, getAdjacentPosts; content/blog/_template.md for new posts
 - src/index.css - Design tokens
 - app/layout.tsx - Root layout, meta, RSS link
 
@@ -21,6 +21,6 @@ CONVENTIONS:
 - Tailwind + CSS variables for styling
 - Collapsible for expandable sections
 
-CONTENT: Stocky AI = title. Live: stockai-red.vercel.app. Latest: LinkedIn post. Sensibull link in FinancialTools. Writings = display name for /blog.
+CONTENT: Stocky AI = title. Writings at /blog, Codex nav, prev/next links, no dates shown. Copy _template.md for new posts.
 
 DO NOT: Remove gptengineer.js from index.html if present. Change OG/Twitter tags only with matching updates in app/layout.tsx and SEO.tsx.

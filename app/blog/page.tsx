@@ -8,19 +8,6 @@ export const metadata: Metadata = {
     "Writings on crypto, quant trading, markets, and building systems.",
 };
 
-function formatDate(dateStr: string): string {
-  try {
-    const d = new Date(dateStr);
-    return d.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch {
-    return dateStr;
-  }
-}
-
 export default function BlogIndexPage() {
   const posts = getAllPosts();
 
@@ -47,9 +34,6 @@ export default function BlogIndexPage() {
                 <Link href={`/blog/${post.slug}`} className="blog-list-title">
                   {post.title}
                 </Link>
-                <time className="blog-list-date" dateTime={post.date}>
-                  {formatDate(post.date)}
-                </time>
                 {post.excerpt && (
                   <p className="blog-list-excerpt">{post.excerpt}</p>
                 )}

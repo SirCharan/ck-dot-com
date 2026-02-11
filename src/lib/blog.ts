@@ -63,3 +63,17 @@ export function getAllPosts(): BlogPost[] {
 
   return posts.sort((a, b) => (b.date > a.date ? 1 : -1));
 }
+
+/**
+ * Get previous (newer) and next (older) posts for a given slug.
+ * Posts are ordered newest first.
+ */
+export function getAdjacentPosts(slug: string): { prev: BlogPost | null; next: BlogPost | null } {
+  const posts = getAllPosts();
+  const idx = posts.findIndex((p) => p.slug === slug);
+  if (idx < 0) return { prev: null, next: null };
+  return {
+    prev: idx > 0 ? posts[idx - 1]! : null,
+    next: idx < posts.length - 1 ? posts[idx + 1]! : null,
+  };
+}

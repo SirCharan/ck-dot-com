@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
   const obj3dRef = useRef<HTMLDivElement>(null);
   const [cardVisible, setCardVisible] = useState(false);
   const gridOffsetRef = useRef(0);
-
+  
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -295,11 +295,11 @@ const Hero: React.FC = () => {
                     </a>
                     <a href="https://github.com/SirCharan" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg cursor-pointer flex items-center justify-center transition-all duration-300 text-gray-500 hover:text-purple-400 hover:bg-purple-500/10 hover:scale-110 hover:shadow-[0_0_15px_rgba(168,85,247,0.5)]" aria-label="GitHub">
                       <Github className="w-5 h-5" strokeWidth={2} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
+            </a>
+          </div>
+        </div>
+      </div>
+      
               <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-purple-900/10 rounded-full blur-3xl -z-10"
                 aria-hidden

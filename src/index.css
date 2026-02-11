@@ -528,6 +528,58 @@
   color-scheme: light;
 }
 
+/* Codex-style nav: minimal, text-only */
+.blog-nav {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.25rem 1.5rem;
+}
+
+.blog-nav-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.blog-nav-brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color 0.15s;
+}
+
+.blog-nav-brand:hover {
+  color: #555;
+}
+
+.blog-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.blog-nav-link {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.blog-nav-link:hover {
+  color: #222;
+}
+
+.blog-nav-sep {
+  color: #ccc;
+  user-select: none;
+}
+
 .blog-container {
   max-width: 720px;
   margin: 0 auto;
@@ -647,6 +699,60 @@
 .blog-post-body {
   font-size: 1.125rem;
   line-height: 1.85;
+}
+
+/* Post-to-post navigation (Codex-style) */
+.blog-post-nav {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.blog-post-nav-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.blog-post-nav-link {
+  display: block;
+  text-decoration: none;
+  color: #666;
+  transition: color 0.15s;
+}
+
+.blog-post-nav-link:hover {
+  color: #222;
+}
+
+.blog-post-nav-prev .blog-post-nav-title,
+.blog-post-nav-next .blog-post-nav-title {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #222;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+.blog-post-nav-link:hover .blog-post-nav-title {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.blog-post-nav-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.blog-post-nav-prev {
+  text-align: left;
+}
+
+.blog-post-nav-next {
+  text-align: right;
 }
 
 /* Markdown prose (Codex-style) */

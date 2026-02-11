@@ -8,7 +8,7 @@ A cyberpunk-themed portfolio showcasing expertise in crypto, finance, and mathem
 
 - **Cyberpunk UI** – Neon purple/cyan accents, glass cards, HUD-style corners
 - **Animated Hero** – Canvas particles, 3D polyhedron, aurora background, rotating subtitles
-- **Writings** – Light, Codex-style blog at `/blog` with markdown posts, RSS feed
+- **Writings** – Light, Codex-style blog at `/blog` with markdown posts, RSS feed, nav (Home · Writings · RSS), prev/next post links
 - **Stocky AI** – Featured financial tool: Claude-powered Zerodha trading system (100%+ ROI, 73% win rate)
 - **Financial Tools** – Voice-powered Zerodha automation, Option Premium Calculator, Market Matters With CK, Delta trading bot
 - **Responsive Design** – Mobile-first, dark theme
@@ -33,9 +33,9 @@ A cyberpunk-themed portfolio showcasing expertise in crypto, finance, and mathem
 ```
 app/
 ├── blog/               # Writings at /blog (light, Codex-style)
-│   ├── [slug]/page.tsx # Post page
+│   ├── [slug]/page.tsx # Post page (with prev/next nav)
 │   ├── feed.xml/       # RSS
-│   ├── layout.tsx
+│   ├── layout.tsx     # Nav: Home · Writings · RSS
 │   └── page.tsx
 ├── layout.tsx
 └── page.tsx
@@ -57,11 +57,11 @@ src/
 │   ├── Index.tsx         # Main portfolio
 │   └── NotFound.tsx
 ├── lib/
-│   └── blog.ts           # Post loading from content/blog
+│   └── blog.ts           # Post loading, getAdjacentPosts
 └── index.css
 
 content/
-└── blog/                 # Markdown posts
+└── blog/                 # Markdown posts, _template.md, README.md
 ```
 
 ## Quick Start

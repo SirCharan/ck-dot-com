@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPostBySlug, getAllSlugs } from "@/lib/blog";
+import { getPostBySlug, getAllSlugs, getAdjacentPosts } from "@/lib/blog";
 import { MarkdownRenderer } from "@/components/blog/MarkdownRenderer";
 
 interface Props {
@@ -25,22 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function formatDate(dateStr: string): string {
-  try {
-    const d = new Date(dateStr);
-    return d.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch {
-    return dateStr;
-  }
-}
-
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
+  const { prev, next } = getAdjacentPosts(slug);
 
   if (!post) notFound();
 
@@ -55,9 +43,6 @@ export default async function BlogPostPage({ params }: Props) {
       <main className="blog-main">
         <article>
           <h1 className="blog-post-title">{post.title}</h1>
-          <time className="blog-post-date" dateTime={post.date}>
-            {formatDate(post.date)}
-          </time>
 
           <div className="blog-post-body">
             <MarkdownRenderer content={post.content} />
@@ -72,6 +57,27 @@ export default async function BlogPostPage({ params }: Props) {
               ))}
             </div>
           )}
+
+          <nav className="blog-post-nav">
+            <div className="blog-post-nav-inner">
+              {prev ? (
+                <Link href={`/blog/${prev.slug}`} className="blog-post-nav-link blog-post-nav-prev">
+                  <span className="blog-post-nav-label">← Newer</span>
+                  <span className="blog-post-nav-title">{prev.title}</span>
+                </Link>
+              ) : (
+                <span />
+              )}
+              {next ? (
+                <Link href={`/blog/${next.slug}`} className="blog-post-nav-link blog-post-nav-next">
+                  <span className="blog-post-nav-label">Older →</span>
+                  <span className="blog-post-nav-title">{next.title}</span>
+                </Link>
+              ) : (
+                <span />
+              )}
+            </div>
+          </nav>
 
           <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-700">
             <Link href="/blog" className="blog-back-link">

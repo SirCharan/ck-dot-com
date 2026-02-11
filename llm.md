@@ -19,7 +19,7 @@ Next.js portfolio for **Charandeep Kapoor** – crypto, finance, and mathematics
 
 ```
 app/
-  blog/           Writings at /blog (index, [slug], feed.xml)
+  blog/           Writings at /blog (index, [slug] with prev/next nav, layout nav, feed.xml)
   layout.tsx      Root layout, meta, RSS link
   page.tsx        Main entry
 
@@ -55,7 +55,8 @@ content/
 
 - **Display label**: "Writings" (nav, page title, back links)
 - **Route**: `/blog` (kept for URLs)
-- **Content**: Markdown in `content/blog/*.md`. Front matter: title, date, excerpt, tags.
+- **Nav**: Codex-style header (Home · Writings · RSS) in layout; prev/next post links at bottom of each post.
+- **Content**: Markdown in `content/blog/*.md`. Front matter: title, date (for sort only, not shown), excerpt, tags. Copy `_template.md` for new posts.
 - **RSS**: `/blog/feed.xml`
 
 ## Stocky AI (Featured Tool)
@@ -67,7 +68,7 @@ content/
 ## Common Tasks
 
 - **Add a tool**: Edit `tools` array in `src/components/FinancialTools.tsx`.
-- **Add a writing**: Create `.md` in `content/blog/` with front matter (title, date, excerpt, tags).
+- **Add a writing**: Copy `content/blog/_template.md` to `your-slug.md`; edit front matter (title, date, excerpt, tags).
 - **Change meta**: `app/layout.tsx` for static defaults, `SEO.tsx` for dynamic overrides.
 - **Update experience**: Edit `experiences` in `src/components/Experience.tsx`.
 
