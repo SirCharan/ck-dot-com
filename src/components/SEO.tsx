@@ -12,9 +12,9 @@ interface SEOProps {
 
 const SEO = ({
   title = "Charandeep Kapoor | Crypto, Finance & Mathematics Expert",
-  description = "Charandeep Kapoor - Crypto professional with 5+ years of experience in trading, quant research, VC, and product management. Expert in finance and mathematics.",
+  description = "Charandeep Kapoor - 6+ years across product, research and VC in crypto & stock markets. Building products 0→1. Stocky AI creator, quantitative trader.",
   canonicalUrl = "https://charandeepkapoor.com",
-  ogImage = "https://charandeepkapoor.com/favicon.png",
+  ogImage = "https://charandeepkapoor.com/og-image.png",
   ogType = "website",
   twitterCard = "summary_large_image",
   keywords = ["crypto", "finance", "mathematics", "blockchain", "DeFi", "quant research", "trading", "charandeep kapoor"],

@@ -516,3 +516,198 @@
 .group:hover .hero-btn-shine {
   animation: hero-shine 1s ease-out;
 }
+
+/* ============================================
+   Blog (Codex theme): light mode only, minimal
+   Inspired by hugo-theme-codex
+   ============================================ */
+.blog-root {
+  background: #fffef7;
+  color: #222;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+
+.blog-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.blog-header {
+  margin-bottom: 3.5rem;
+}
+
+.blog-back-link {
+  font-size: 0.875rem;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.blog-root .blog-back-link:hover {
+  color: #222;
+}
+
+.blog-main {
+  /* Narrow column, wide margins */
+}
+
+.blog-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+  color: #222;
+}
+
+.blog-intro {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 3rem;
+}
+
+.blog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-list-item {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.blog-list-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #222;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.25rem;
+  transition: color 0.15s;
+}
+
+.blog-list-title:hover {
+  color: #555;
+}
+
+.blog-list-date {
+  font-size: 0.8125rem;
+  color: #888;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.blog-list-excerpt {
+  font-size: 0.9375rem;
+  color: #555;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.blog-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(0, 0, 0, 0.06);
+  color: #666;
+  border-radius: 3px;
+}
+
+.blog-empty {
+  color: #888;
+  font-size: 1rem;
+}
+
+/* Blog post */
+.blog-post-title {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.blog-post-date {
+  font-size: 0.875rem;
+  color: #888;
+  display: block;
+  margin-bottom: 2.5rem;
+}
+
+.blog-post-body {
+  font-size: 1.125rem;
+  line-height: 1.85;
+}
+
+/* Markdown prose (Codex-style) */
+.blog-prose { font-size: 1.0625rem; line-height: 1.85; color: #222; }
+.blog-prose h1 { font-size: 1.5rem; font-weight: 600; margin: 2.5rem 0 1rem; line-height: 1.35; color: #222; }
+.blog-prose h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 0.75rem; line-height: 1.4; color: #222; }
+.blog-prose h3 { font-size: 1.0625rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #222; }
+.blog-prose p { margin: 0 0 1.35rem; }
+.blog-prose ul, .blog-prose ol { margin: 0 0 1.35rem; padding-left: 1.5rem; }
+.blog-prose li { margin-bottom: 0.35rem; }
+.blog-prose blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid #ccc;
+  color: #555;
+  font-style: italic;
+}
+.blog-prose a {
+  color: #555;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.blog-prose a:hover {
+  color: #222;
+}
+.blog-inline-code {
+  font-size: 0.9em;
+  padding: 0.15rem 0.4rem;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 3px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.blog-code-block {
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.blog-code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.75rem;
+  background: rgba(0, 0, 0, 0.04);
+  font-size: 0.75rem;
+  color: #666;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.blog-code-copy {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+.blog-code-copy:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #222;
+}
+.blog-code-lang { text-transform: uppercase; }
+/* KaTeX math */
+.blog-prose .katex { font-size: 1.1em; }

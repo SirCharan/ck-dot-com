@@ -174,15 +174,17 @@ const Hero: React.FC = () => {
               </span>
               <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-white/30" />
             </div>
-            <div className="hidden md:flex flex-col">
-              <span className="font-orbitron text-xs tracking-widest text-gray-400">SYS.STATUS</span>
-              <span className="font-mono text-[10px] text-green-400 tracking-widest">ONLINE</span>
-            </div>
           </a>
 
           <nav className="hidden md:flex gap-12 font-rajdhani text-sm tracking-widest uppercase text-gray-300">
             <a href="#about" className="hero-nav-link hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
               About
+            </a>
+            <a href="/blog" className="hero-nav-link hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+              Writings
+            </a>
+            <a href="#research-papers" className="hero-nav-link hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+              Research
             </a>
             <a href="#tools" className="hero-nav-link hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
               Tools
@@ -246,10 +248,10 @@ const Hero: React.FC = () => {
 
                 <div className="relative font-rajdhani text-base md:text-xl text-gray-200 tracking-[0.2em] uppercase overflow-hidden">
                   <span className="invisible block" aria-hidden>
-                    Founder | Product | Engineering
+                    Building and scaling products 0→1
                   </span>
                   <span className="hero-subtitle-line1 absolute inset-x-0 top-0 text-center md:text-left">
-                    Founder | Product | Engineering
+                    Building and scaling products 0→1
                   </span>
                   <span className="hero-subtitle-line2 absolute inset-x-0 top-0 text-center md:text-left">
                     Crypto | AI | Stock Markets
@@ -257,7 +259,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 <p className="font-sans text-gray-400 text-sm md:text-base max-w-lg mt-4 leading-relaxed tracking-wide">
-                  Specializing in high-frequency algorithmic strategies and blockchain node infrastructure. Bridging the gap between stochastic calculus and decentralized finance protocols.
+                  6+ years of experience across product, research and VC in crypto & stock markets. Building and scaling products 0→1.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-6">
@@ -334,29 +336,18 @@ const Hero: React.FC = () => {
           }}
         >
           <div className="hidden md:flex gap-1">
-            <a href="#about" className="px-6 py-2 bg-white/5 border border-white/10 text-[10px] font-orbitron tracking-widest text-gray-400 hover:bg-purple-900/40 hover:border-purple-500 hover:text-white transition-all">
-              About
-            </a>
             <a href="#experience" className="px-6 py-2 bg-white/5 border border-white/10 text-[10px] font-orbitron tracking-widest text-gray-400 hover:bg-purple-900/40 hover:border-purple-500 hover:text-white transition-all">
               Experience
+            </a>
+            <a href="#research-papers" className="px-6 py-2 bg-white/5 border border-white/10 text-[10px] font-orbitron tracking-widest text-gray-400 hover:bg-purple-900/40 hover:border-purple-500 hover:text-white transition-all">
+              Research Papers
+            </a>
+            <a href="/blog" className="px-6 py-2 bg-white/5 border border-white/10 text-[10px] font-orbitron tracking-widest text-gray-400 hover:bg-purple-900/40 hover:border-purple-500 hover:text-white transition-all">
+              Writings
             </a>
             <a href="#tools" className="px-6 py-2 bg-white/5 border border-white/10 text-[10px] font-orbitron tracking-widest text-gray-400 hover:bg-purple-900/40 hover:border-purple-500 hover:text-white transition-all">
               Open Source Tools
             </a>
-            <a href="#contact" className="px-6 py-2 bg-white/5 border border-white/10 text-[10px] font-orbitron tracking-widest text-gray-400 hover:bg-cyan-900/40 hover:border-cyan-500 hover:text-white transition-all">
-              Get In Touch
-            </a>
-          </div>
-
-          <div className="flex flex-col items-end">
-            <div className="flex gap-4 mb-2">
-              <span className="w-1 h-1 bg-gray-500 rounded-full" />
-              <span className="w-1 h-1 bg-gray-500 rounded-full" />
-              <span className="w-1 h-1 bg-white rounded-full shadow-[0_0_5px_white]" />
-            </div>
-            <span className="font-mono text-[10px] text-gray-500 tracking-widest">
-              35.6895° N, 139.6917° E
-            </span>
           </div>
         </footer>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, User, Briefcase, GraduationCap, Star, Wrench, Mail, Bitcoin } from 'lucide-react';
+import { Menu, X, User, FileText, Briefcase, GraduationCap, Star, Wrench, Mail, Bitcoin, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CryptoWidget from './CryptoWidget';
 
@@ -11,7 +11,9 @@ type NavigationItem = {
 
 const navigation: NavigationItem[] = [
   { name: 'About', href: '#about', icon: User },
+  { name: 'Writings', href: '/blog', icon: BookOpen },
   { name: 'Experience', href: '#experience', icon: Briefcase },
+  { name: 'Research Papers', href: '#research-papers', icon: FileText },
   { name: 'Academic', href: '#academic', icon: GraduationCap },
   { name: 'Tools', href: '#tools', icon: Wrench },
   { name: 'Personal', href: '#personal', icon: Star },

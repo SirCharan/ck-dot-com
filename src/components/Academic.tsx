@@ -48,7 +48,7 @@ const Academic: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <GlassCard className="p-8 md:p-10">
-              <h3 className="font-orbitron text-lg font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-6">
+              <h3 className="font-orbitron text-xl font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-8">
                 Education & Achievements
               </h3>
               <div className="space-y-6">
@@ -59,12 +59,12 @@ const Academic: React.FC = () => {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
-                    className="border-b border-white/10 last:border-b-0 pb-4 last:pb-0"
+                    className="border-b border-white/10 last:border-b-0 pb-5 last:pb-0"
                   >
-                    <h4 className="font-rajdhani text-base uppercase tracking-widest text-[var(--neon-cyan)] font-semibold">
+                    <h4 className="font-orbitron text-lg md:text-xl font-semibold uppercase tracking-wider text-[var(--neon-cyan)]">
                       {item.title}
                     </h4>
-                    <p className="text-gray-300 mt-1 font-mono text-sm">{item.details}</p>
+                    <p className="text-gray-200 mt-2 text-base md:text-lg font-medium leading-relaxed">{item.details}</p>
                   </motion.div>
                 ))}
               </div>
@@ -78,7 +78,7 @@ const Academic: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <GlassCard className="p-8 md:p-10">
-              <h3 className="font-orbitron text-lg font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-6">
+              <h3 className="font-orbitron text-xl font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-8">
                 Certifications
               </h3>
               <div className="space-y-6">
@@ -89,12 +89,12 @@ const Academic: React.FC = () => {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 + 0.1 }}
-                    className="border-b border-white/10 last:border-b-0 pb-4 last:pb-0"
+                    className="border-b border-white/10 last:border-b-0 pb-5 last:pb-0"
                   >
-                    <h4 className="font-rajdhani text-base uppercase tracking-widest text-[var(--neon-cyan)] font-semibold">
+                    <h4 className="font-orbitron text-lg md:text-xl font-semibold uppercase tracking-wider text-[var(--neon-cyan)]">
                       {item.title}
                     </h4>
-                    {item.details && <p className="text-gray-300 mt-1 font-mono text-sm">{item.details}</p>}
+                    {item.details && <p className="text-gray-200 mt-2 text-base md:text-lg font-medium leading-relaxed">{item.details}</p>}
                   </motion.div>
                 ))}
               </div>

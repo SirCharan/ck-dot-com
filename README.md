@@ -1,127 +1,91 @@
-# Charandeep Kapoor - Personal Portfolio
+# Charandeep Kapoor – Personal Portfolio
 
-A modern, responsive portfolio website showcasing expertise in crypto, finance, and mathematics. Built with React, TypeScript, and Tailwind CSS.
+A cyberpunk-themed portfolio showcasing expertise in crypto, finance, and mathematics. Built with React, TypeScript, Tailwind CSS, Framer Motion, and Next.js.
 
-## 🚀 Features
+**Live:** [charandeepkapoor.com](https://charandeepkapoor.com)
 
-- **Modern UI**: Built with React 18, TypeScript, and shadcn/ui
-- **Responsive Design**: Fully responsive across all devices
-- **Performance Optimized**: Built with Vite for fast development and production builds
-- **SEO Friendly**: Comprehensive SEO strategy with structured data, meta tags, sitemap, and React Helmet integration
-- **Interactive Elements**: Animated sections and components with particle effects
-- **Crypto Integration**: Live crypto price widgets and financial tools
-- **Academic & Professional Profile**: Showcases experience, education, and skills
-- **Dark Theme**: Crypto-themed dark mode design
-- **Component Library**: Uses shadcn/ui components for consistent design
+## Features
 
-## 🛠️ Tech Stack
+- **Cyberpunk UI** – Neon purple/cyan accents, glass cards, HUD-style corners
+- **Animated Hero** – Canvas particles, 3D polyhedron, aurora background, rotating subtitles
+- **Writings** – Light, Codex-style blog at `/blog` with markdown posts, RSS feed
+- **Stocky AI** – Featured financial tool: Claude-powered Zerodha trading system (100%+ ROI, 73% win rate)
+- **Financial Tools** – Voice-powered Zerodha automation, Option Premium Calculator, Market Matters With CK, Delta trading bot
+- **Responsive Design** – Mobile-first, dark theme
+- **SEO** – OG tags, Twitter cards, structured data, sitemap, robots.txt
+
+## Tech Stack
 
 - **Frontend**: React 18, TypeScript
+- **Framework**: Next.js 15 (App Router)
 - **Styling**: Tailwind CSS, shadcn/ui
-- **Build Tool**: Vite
-- **State Management**: React Query (TanStack Query)
-- **Routing**: React Router
-- **UI Components**: Radix UI primitives, shadcn/ui
-- **Data Visualization**: Recharts
-- **Form Management**: React Hook Form with Zod validation
-- **Analytics**: Vercel Analytics
-- **SEO**: React Helmet Async, Structured Data
 - **Animation**: Framer Motion, Canvas API
+- **Analytics**: Vercel Analytics
 
-## 📦 Installation
+## Design System
 
-1. Clone the repository:
+- **Fonts**: Orbitron (headings), Rajdhani (subtitles), Inter (body)
+- **Colors**: `--neon-purple`, `--neon-cyan`, `--deep-bg`, `--glass-bg`
+- **Components**: GlassCard (HUD corners), collapsible tool/experience cards
+
+## Project Structure
+
+```
+app/
+├── blog/               # Writings at /blog (light, Codex-style)
+│   ├── [slug]/page.tsx # Post page
+│   ├── feed.xml/       # RSS
+│   ├── layout.tsx
+│   └── page.tsx
+├── layout.tsx
+└── page.tsx
+
+src/
+├── components/
+│   ├── Hero.tsx          # Landing, particles, 3D, nav
+│   ├── About.tsx
+│   ├── Experience.tsx    # Collapsible role cards
+│   ├── Academic.tsx
+│   ├── Personal.tsx      # Stock market, portfolio
+│   ├── FinancialTools.tsx # Stocky AI, Zerodha MCP, etc.
+│   ├── ResearchPapers.tsx
+│   ├── Contact.tsx
+│   ├── Sidebar.tsx
+│   ├── CryptoWidget.tsx
+│   └── blog/             # MarkdownRenderer for writings
+├── views/
+│   ├── Index.tsx         # Main portfolio
+│   └── NotFound.tsx
+├── lib/
+│   └── blog.ts           # Post loading from content/blog
+└── index.css
+
+content/
+└── blog/                 # Markdown posts
+```
+
+## Quick Start
+
 ```bash
 git clone https://github.com/SirCharan/crypto-math-folio-web.git
 cd crypto-math-folio-web
+npm install   # or bun install
+npm run dev   # or bun dev
 ```
 
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-# or
-bun install
-```
+## Scripts
 
-3. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-# or
-bun dev
-```
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server (Next.js) |
+| `npm run build` | Production build |
+| `npm run start` | Run production server |
+| `npm run lint` | Run ESLint |
 
-4. Build for production:
-```bash
-npm run build
-# or
-yarn build
-# or
-bun build
-```
+## Deployment
 
-## 🏗️ Project Structure
+Deployed via Vercel at [charandeepkapoor.com](https://charandeepkapoor.com).
 
-```
-src/
-├── components/         # Reusable UI components
-│   ├── ui/            # shadcn UI components
-│   ├── About.tsx      # About section component
-│   ├── Academic.tsx   # Academic background component
-│   ├── Contact.tsx    # Contact form component
-│   ├── CryptoWidget.tsx # Crypto price widget
-│   ├── Experience.tsx # Professional experience component
-│   ├── FinancialTools.tsx # Financial calculators component
-│   ├── Hero.tsx       # Hero/landing section with particle effects
-│   ├── Personal.tsx   # Personal details component
-│   └── Sidebar.tsx    # Navigation sidebar component
-├── pages/             # Page components
-│   ├── Index.tsx      # Main landing page
-│   └── NotFound.tsx   # 404 page
-├── hooks/             # Custom React hooks
-├── lib/               # Utility functions and configurations
-├── App.tsx            # Main application component
-└── main.tsx           # Application entry point
-```
+## License
 
-## 🎨 Design System
-
-The project uses a custom design system with the following key colors:
-- Primary: Crypto Purple (#8B5CF6)
-- Secondary: Crypto Indigo (#6366F1)
-- Background: Crypto Black
-- Text: White
-- Accent: Crypto Gradient
-
-## 📱 Key Components
-
-- **Hero**: Animated landing section with interactive particle effects
-- **About**: Professional summary and key skills
-- **Experience**: Timeline of professional experience
-- **Academic**: Education background and qualifications
-- **FinancialTools**: Interactive financial calculators
-- **CryptoWidget**: Live cryptocurrency price tracker
-- **Contact**: Contact form with validation
-
-## 🌐 Deployment
-
-The website is deployed at [charandeepkapoor.com](https://charandeepkapoor.com)
-
-## 🧪 Development Commands
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run build:dev` - Build for development
-- `npm run lint` - Run ESLint
-- `npm run preview` - Preview production build locally
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT

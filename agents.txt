@@ -1,0 +1,26 @@
+AGENT INSTRUCTIONS: crypto-math-folio-web
+
+PROJECT: Personal portfolio for Charandeep Kapoor - crypto, finance, mathematics expert. Next.js app with Writings at /blog.
+
+STACK: React 18, TypeScript, Next.js 15 (App Router), Tailwind CSS, shadcn/ui, Framer Motion.
+
+DESIGN: Dark cyberpunk theme on main portfolio. Light Codex-style theme for Writings at /blog. Colors: --neon-purple, --neon-cyan. Fonts: Orbitron, Rajdhani, Inter. Use GlassCard for cards.
+
+KEY FILES:
+- src/components/Hero.tsx - Landing, particles, nav
+- src/components/Experience.tsx - Work history (collapsible)
+- src/components/FinancialTools.tsx - Stocky AI, Zerodha MCP, etc.
+- src/views/Index.tsx - Main page (sections)
+- app/blog/ - Writings index, post page, RSS at /blog
+- src/lib/blog.ts - Load posts from content/blog
+- src/index.css - Design tokens
+- app/layout.tsx - Root layout, meta, RSS link
+
+CONVENTIONS:
+- Functional components, TypeScript interfaces
+- Tailwind + CSS variables for styling
+- Collapsible for expandable sections
+
+CONTENT: Stocky AI = title. Live: stockai-red.vercel.app. Latest: LinkedIn post. Sensibull link in FinancialTools. Writings = display name for /blog.
+
+DO NOT: Remove gptengineer.js from index.html if present. Change OG/Twitter tags only with matching updates in app/layout.tsx and SEO.tsx.

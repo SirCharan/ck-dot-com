@@ -29,18 +29,18 @@ const About: React.FC = () => {
         >
           <GlassCard className="max-w-5xl mx-auto p-8 md:p-12">
             <div className="relative z-10">
-              <p className="text-gray-300 leading-relaxed mb-6 font-medium text-base md:text-lg">
-                Crypto native with 5+ years in product, research, and trading. I blend math and finance expertise to build DeFi products and quant strategies, transforming concepts into functional tools at the intersection of models and markets.
+              <p className="text-gray-200 leading-relaxed mb-6 font-medium text-base md:text-lg">
+                6+ years of experience across product, research and VC in crypto & stock markets. Building and scaling products 0→1. I blend math and finance expertise to build DeFi products and quant strategies, transforming concepts into functional tools at the intersection of models and markets.
               </p>
 
               <div className="mt-6 border-t border-[var(--glass-border)] pt-6">
-                <h3 className="font-orbitron text-lg font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-3">
+                <h3 className="font-orbitron text-xl font-bold uppercase tracking-wide text-[var(--neon-purple)] mb-4">
                   Highlights
                 </h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-300">
-                  <li>Founded <strong>Timelock Trade</strong> — non-liquidable leverage protocol</li>
-                  <li>Managed $500k at <strong>Heru Finance</strong> with 30% returns in bear market</li>
-                  <li>Specialized in quantitative research and strategy development</li>
+                <ul className="list-disc list-inside space-y-2 text-gray-200 text-base md:text-lg font-medium leading-relaxed">
+                  <li>Founder, Timelock Trade. Built leverage without liquidations.</li>
+                  <li>Fine tuned a claude 3.5 sonnet model to generate 150%+ returns trading options.</li>
+                  <li>Top 0.1% in academics. Engineering, IIT Kanpur.</li>
                 </ul>
               </div>
             </div>

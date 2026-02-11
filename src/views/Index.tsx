@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Experience from '@/components/Experience';
+import ResearchPapers from '@/components/ResearchPapers';
 import Academic from '@/components/Academic';
 import Personal from '@/components/Personal';
 import Contact from '@/components/Contact';
@@ -128,7 +129,7 @@ const Index = () => {
     <div className="min-h-screen text-white relative" style={{ background: 'var(--deep-bg)' }}>
       <SEO 
         title="Charandeep Kapoor | Crypto, Finance & Mathematics Expert"
-        description="Charandeep Kapoor - Crypto professional with 5+ years of experience in trading, quant research, VC, and product management. Expert in finance and mathematics."
+        description="Charandeep Kapoor - 6+ years across product, research and VC in crypto & stock markets. Building products 0→1. Stocky AI creator, quantitative trader."
         keywords={[
           "crypto", 
           "finance", 
@@ -160,7 +161,7 @@ const Index = () => {
             "@type": "Organization",
             "name": "Crypto Industry"
           },
-          description: "Crypto professional with 5+ years of experience in trading, quant research, VC, and product management. Expert in finance and mathematics."
+          description: "6+ years across product, research and VC in crypto & stock markets. Building products 0→1. Creator of Stocky AI."
         }}
       />
       <StructuredData 
@@ -184,6 +185,9 @@ const Index = () => {
         </ParallaxSection>
         <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
           <Experience />
+        </ParallaxSection>
+        <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
+          <ResearchPapers />
         </ParallaxSection>
         <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
           <Academic />
