@@ -1,5 +1,84 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Linkedin, Twitter, MessageCircle, Github } from 'lucide-react';
+import { Slider } from '@/components/ui/slider';
+
+const VERTEX_SHADER = `
+  attribute vec2 position;
+  void main() {
+    gl_Position = vec4(position, 0.0, 1.0);
+  }
+`;
+
+const FRAGMENT_SHADER = `
+  precision highp float;
+  uniform vec2 u_resolution;
+  uniform float u_time;
+  uniform float u_zoom;
+  uniform vec2 u_center;
+
+  const vec3 COLOR_PURPLE = vec3(0.659, 0.333, 0.969);
+  const vec3 COLOR_CYAN = vec3(0.024, 0.714, 0.831);
+  const vec3 COLOR_BLACK = vec3(0.012, 0.000, 0.020);
+  void main() {
+    vec2 st = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / u_resolution.y;
+
+    vec2 c = u_center + st / u_zoom;
+    vec2 z = vec2(0.0);
+
+    float iter = 0.0;
+    float max_iter = 200.0 + log(u_zoom) * 20.0;
+
+    for (float i = 0.0; i < 500.0; i++) {
+      if (i > max_iter) break;
+
+      float x = (z.x * z.x - z.y * z.y) + c.x;
+      float y = (2.0 * z.x * z.y) + c.y;
+
+      if (x * x + y * y > 4.0) break;
+      z.x = x;
+      z.y = y;
+      iter++;
+    }
+
+    vec3 color = COLOR_BLACK;
+
+    if (iter < max_iter) {
+
+      float log_zn = log(z.x * z.x + z.y * z.y) / 2.0;
+      float nu = log(log_zn / log(2.0)) / log(2.0);
+      float smooth_iter = iter + 1.0 - nu;
+
+      float t = smooth_iter / 60.0;
+
+      float glow = pow(sin(t * 3.0), 4.0) * 0.8 + 0.2;
+      float fade = smoothstep(0.0, 20.0, smooth_iter);
+
+      float breathe = 0.5 + 0.5 * sin(u_time * 0.5);
+      vec3 edgeColor = mix(COLOR_PURPLE, COLOR_CYAN, breathe + 0.3 * sin(smooth_iter * 0.1));
+
+      float intensity = 0.15 * glow * fade;
+
+      color = mix(COLOR_BLACK, edgeColor, intensity * 2.0);
+
+      float sparkle = pow(sin(smooth_iter * 0.5 + u_time), 20.0);
+      color += sparkle * 0.05 * COLOR_CYAN;
+    }
+
+    gl_FragColor = vec4(color, 1.0);
+  }
+`;
+
+const MANDELBROT_CENTER = { x: -0.743643887037158, y: 0.131825904205311 };
+const ZOOM_MIN = 1.0;
+const ZOOM_MAX = 20000.0;
+
+function zoomToSliderValue(zoom: number): number {
+  return (Math.log(zoom) / Math.log(ZOOM_MAX)) * 100;
+}
+
+function sliderValueToZoom(value: number): number {
+  return Math.pow(ZOOM_MAX, value / 100);
+}
 
 interface ParticleType {
   x: number;
@@ -12,11 +91,15 @@ interface ParticleType {
 
 const Hero: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mandelbrotCanvasRef = useRef<HTMLCanvasElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const obj3dRef = useRef<HTMLDivElement>(null);
   const [cardVisible, setCardVisible] = useState(false);
+  const [zoom, setZoom] = useState(1.0);
+  const zoomRef = useRef(1.0);
   const gridOffsetRef = useRef(0);
-  
+
+  zoomRef.current = zoom;
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -127,15 +210,93 @@ const Hero: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const canvas = mandelbrotCanvasRef.current;
+    if (!canvas) return;
+
+    const gl = canvas.getContext('webgl');
+    if (!gl) return;
+
+    const createShader = (type: number, source: string): WebGLShader | null => {
+      const shader = gl.createShader(type);
+      if (!shader) return null;
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        gl.deleteShader(shader);
+        return null;
+      }
+      return shader;
+    };
+
+    const vertexShader = createShader(gl.VERTEX_SHADER, VERTEX_SHADER);
+    const fragmentShader = createShader(gl.FRAGMENT_SHADER, FRAGMENT_SHADER);
+    if (!vertexShader || !fragmentShader) return;
+
+    const program = gl.createProgram();
+    if (!program) return;
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return;
+
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
+      gl.STATIC_DRAW
+    );
+
+    const positionLoc = gl.getAttribLocation(program, 'position');
+    const uResolutionLoc = gl.getUniformLocation(program, 'u_resolution');
+    const uTimeLoc = gl.getUniformLocation(program, 'u_time');
+    const uZoomLoc = gl.getUniformLocation(program, 'u_zoom');
+    const uCenterLoc = gl.getUniformLocation(program, 'u_center');
+
+    const resize = () => {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      const rect = parent.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      gl.viewport(0, 0, canvas.width, canvas.height);
+    };
+
+    let animationId: number;
+    const render = (timestamp: number) => {
+      gl.useProgram(program);
+      gl.enableVertexAttribArray(positionLoc);
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
+      gl.uniform2f(uResolutionLoc, canvas.width, canvas.height);
+      gl.uniform1f(uTimeLoc, timestamp * 0.001);
+      gl.uniform1f(uZoomLoc, zoomRef.current);
+      gl.uniform2f(uCenterLoc, MANDELBROT_CENTER.x, MANDELBROT_CENTER.y);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      animationId = requestAnimationFrame(render);
+    };
+
+    resize();
+    animationId = requestAnimationFrame(render);
+
+    const handleResize = () => resize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
+
+  useEffect(() => {
     const card = cardRef.current;
-    const obj3d = obj3dRef.current;
 
     const handleMouseMove = (e: MouseEvent) => {
       const x = (window.innerWidth / 2 - e.pageX) / 25;
       const y = (window.innerHeight / 2 - e.pageY) / 25;
       if (window.innerWidth > 768) {
         if (card) card.style.transform = `rotateY(${x * 0.5}deg) rotateX(${y * 0.5}deg)`;
-        if (obj3d) obj3d.style.transform = `translateX(${x * 2}px) translateY(${y * 2}px)`;
       }
     };
     document.addEventListener('mousemove', handleMouseMove);
@@ -149,7 +310,14 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-hidden relative">
+      <canvas
+        id="canvas-webgl"
+        ref={mandelbrotCanvasRef}
+        className="absolute top-0 left-0 w-full h-full -z-[1] opacity-60 pointer-events-none"
+        style={{ width: '100%', height: '100%' }}
+        aria-hidden
+      />
       <canvas
         ref={canvasRef}
         className="fixed top-0 left-0 w-full h-full z-0 opacity-60"
@@ -306,24 +474,6 @@ const Hero: React.FC = () => {
               />
             </div>
 
-            <div
-              ref={obj3dRef}
-              className="relative hidden md:block opacity-0"
-              style={{
-                animation: 'hero-fade-in-up 1s ease-out forwards',
-                animationDelay: '1.5s',
-                animationFillMode: 'forwards',
-              }}
-            >
-              <div className="hero-scene-3d">
-                <div className="hero-polyhedron">
-                  {[...Array(8)].map((_, i) => (
-                    <div key={i} className="hero-face" aria-hidden />
-                  ))}
-                  <div className="hero-core" aria-hidden />
-                </div>
-              </div>
-            </div>
           </div>
         </main>
 
@@ -350,6 +500,23 @@ const Hero: React.FC = () => {
             </a>
           </div>
         </footer>
+      </div>
+
+      <div
+        className="absolute bottom-4 right-4 z-10 flex items-center gap-3 w-48 px-3 py-2 rounded-lg bg-black/30 backdrop-blur-sm border border-purple-500/20"
+        aria-label="Mandelbrot zoom control"
+      >
+        <Slider
+          value={[zoomToSliderValue(zoom)]}
+          onValueChange={([v]) => setZoom(sliderValueToZoom(v))}
+          min={0}
+          max={100}
+          step={0.5}
+          className="flex-1"
+        />
+        <span className="font-mono text-[10px] text-gray-400 tabular-nums min-w-[4.5rem]">
+          {zoom.toExponential(3)}
+        </span>
       </div>
     </div>
   );

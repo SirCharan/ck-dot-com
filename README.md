@@ -2,7 +2,8 @@
 
 A cyberpunk-themed portfolio showcasing expertise in crypto, finance, and mathematics. Built with React, TypeScript, Tailwind CSS, Framer Motion, and Next.js.
 
-**Live:** [charandeepkapoor.com](https://charandeepkapoor.com)
+**Live:** [charandeepkapoor.com](https://charandeepkapoor.com)  
+**Repo:** [github.com/SirCharan/ck-dot-com](https://github.com/SirCharan/ck-dot-com)
 
 ## Features
 
@@ -67,8 +68,8 @@ content/
 ## Quick Start
 
 ```bash
-git clone https://github.com/SirCharan/crypto-math-folio-web.git
-cd crypto-math-folio-web
+git clone https://github.com/SirCharan/ck-dot-com.git
+cd ck-dot-com
 npm install   # or bun install
 npm run dev   # or bun dev
 ```
