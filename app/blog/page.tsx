@@ -3,6 +3,12 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
 import { BlogVote } from "@/components/blog/BlogVote";
 
+const SUB_ARTICLE_SLUGS = new Set([
+  "life-is-exchange-of-payoffs",
+  "everything-has-a-price-lps-eth-downside",
+  "web2-equivalent-protected-perps",
+]);
+
 export const metadata: Metadata = {
   title: "Writings | Charandeep Kapoor",
   description:
@@ -51,7 +57,10 @@ export default function BlogIndexPage() {
             <p className="blog-empty">No posts yet.</p>
           ) : (
             posts.map((post) => (
-              <article key={post.slug} className="blog-list-item">
+              <article
+                key={post.slug}
+                className={`blog-list-item ${SUB_ARTICLE_SLUGS.has(post.slug) ? "blog-list-item--sub" : ""}`}
+              >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">
                     <Link href={`/blog/${post.slug}`} className="blog-list-title">
