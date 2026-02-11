@@ -407,9 +407,13 @@ const Hero: React.FC = () => {
               <div className="hero-hud-corner br" aria-hidden />
 
               <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-                <h1 className="font-orbitron text-4xl md:text-6xl font-bold uppercase tracking-wide leading-tight bg-gradient-to-r from-purple-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-                  Charandeep
-                  <br className="hidden md:block" /> Kapoor
+                <h1 className="text-3xl md:text-4xl leading-tight text-center md:text-left">
+                  <span className="hero-name-glitch block" data-text="Charandeep">
+                    <span className="hero-name-text">Charandeep</span>
+                  </span>
+                  <span className="hero-name-glitch block" data-text="Kapoor">
+                    <span className="hero-name-text">Kapoor</span>
+                  </span>
                 </h1>
 
                 <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent my-6" />
