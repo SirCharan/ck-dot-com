@@ -2,10 +2,49 @@ import type { Metadata } from "next";
 import { Providers } from "@/components/Providers";
 import "@/index.css";
 
+const SITE_URL = "https://charandeepkapoor.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Charandeep Kapoor | Crypto, Finance & Mathematics Expert",
   description:
     "Charandeep Kapoor - 6+ years across product, research and VC in crypto & stock markets. Building products 0→1. Stocky AI creator, quantitative trader.",
+  authors: [{ name: "Charandeep Kapoor", url: SITE_URL }],
+  creator: "Charandeep Kapoor",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: "Charandeep Kapoor",
+    title: "Charandeep Kapoor | Crypto, Finance & Mathematics Expert",
+    description:
+      "Charandeep Kapoor - 6+ years across product, research and VC in crypto & stock markets. Building products 0→1. Stocky AI creator, quantitative trader.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Charandeep Kapoor - Crypto, Finance & Mathematics Expert",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@yourasianquant",
+    creator: "@yourasianquant",
+    title: "Charandeep Kapoor | Crypto, Finance & Mathematics Expert",
+    description:
+      "Charandeep Kapoor - 6+ years across product, research and VC in crypto & stock markets. Building products 0→1. Stocky AI creator, quantitative trader.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

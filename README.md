@@ -87,6 +87,16 @@ npm run dev   # or bun dev
 
 Deployed via Vercel at [charandeepkapoor.com](https://charandeepkapoor.com).
 
+## Agents & LLMs
+
+Guidance for AI assistants (Cursor, Copilot, etc.) working on this codebase:
+
+| File | Purpose |
+|------|---------|
+| `agents.md` | Agent instructions: conventions, file locations, content guidelines |
+| `llm.md` | LLM-friendly project summary and common tasks |
+| `docs/llm-documentation.md` | Detailed architecture and component docs |
+
 ## License
 
 MIT

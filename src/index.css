@@ -779,6 +779,102 @@
   line-height: 1.85;
 }
 
+/* Related readings (embedded in post) */
+.blog-related-readings {
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.25rem;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+.blog-related-readings-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin: 0 0 1rem;
+}
+
+.blog-related-readings-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blog-related-readings-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.blog-related-readings-item:hover {
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.blog-related-readings-num {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #888;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+}
+
+.blog-related-readings-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.blog-related-readings-item-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.blog-related-readings-excerpt {
+  font-size: 0.8125rem;
+  color: #555;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-related-readings-arrow {
+  flex-shrink: 0;
+  font-size: 1rem;
+  color: #888;
+  opacity: 0;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.blog-related-readings-item:hover .blog-related-readings-arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
 /* Post-to-post navigation (Codex-style) */
 .blog-post-nav {
   margin-top: 3rem;

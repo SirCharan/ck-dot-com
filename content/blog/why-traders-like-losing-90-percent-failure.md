@@ -1,6 +1,6 @@
 ---
 title: "Why Do Traders Like Losing?"
-date: "2026-02-11"
+date: "2026-02-12"
 excerpt: "90% of traders lose. Still they keep coming back."
 tags: ["trading", "options", "futures", "leverage", "psychology", "gambling"]
 ---

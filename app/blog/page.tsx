@@ -7,6 +7,29 @@ export const metadata: Metadata = {
   title: "Writings | Charandeep Kapoor",
   description:
     "Writings on crypto, quant trading, markets, and building systems.",
+  openGraph: {
+    type: "website",
+    url: "https://charandeepkapoor.com/blog",
+    title: "Writings | Charandeep Kapoor",
+    description: "Writings on crypto, quant trading, markets, and building systems.",
+    siteName: "Charandeep Kapoor",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Charandeep Kapoor Writings",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@yourasianquant",
+    creator: "@yourasianquant",
+    title: "Writings | Charandeep Kapoor",
+    description: "Writings on crypto, quant trading, markets, and building systems.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function BlogIndexPage() {

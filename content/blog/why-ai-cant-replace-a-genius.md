@@ -1,6 +1,6 @@
 ---
 title: "Why AI Can't Replace Humans"
-date: "2026-02-11"
+date: "2026-02-12"
 excerpt: "Genius remains irreplaceable."
 tags: ["AI", "human", "creativity", "genius", "innovation"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Power Laws"
-date: "2026-02-11"
+date: "2026-02-12"
 excerpt: "Average is a tragedy. Be legendary."
 tags: ["power-law", "success", "excellence", "legacy", "India"]
 ---

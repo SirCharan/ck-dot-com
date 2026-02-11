@@ -5,6 +5,7 @@ import { getPostBySlug, getAllSlugs, getAdjacentPosts } from "@/lib/blog";
 import { MarkdownRenderer } from "@/components/blog/MarkdownRenderer";
 import { BlogVote } from "@/components/blog/BlogVote";
 import { BlogShare } from "@/components/blog/BlogShare";
+import { BlogRelatedReadings } from "@/components/blog/BlogRelatedReadings";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -17,13 +18,44 @@ export async function generateStaticParams() {
   }));
 }
 
+const SITE_URL = "https://charandeepkapoor.com";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
+  const title = `${post.title} | Charandeep Kapoor`;
+  const description = post.excerpt || post.title;
+  const url = `${SITE_URL}/blog/${slug}`;
   return {
-    title: `${post.title} | Charandeep Kapoor`,
-    description: post.excerpt || post.title,
+    title,
+    description,
+    openGraph: {
+      type: "article",
+      url,
+      title,
+      description,
+      siteName: "Charandeep Kapoor",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@yourasianquant",
+      creator: "@yourasianquant",
+      title,
+      description,
+      images: ["/og-image.png"],
+    },
+    alternates: {
+      canonical: url,
+    },
   };
 }
 
@@ -49,6 +81,17 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="blog-post-body">
             <MarkdownRenderer content={post.content} />
           </div>
+
+          {slug === "protected-perps-novel-payoff" && (
+            <BlogRelatedReadings
+              slugs={[
+                "life-is-exchange-of-payoffs",
+                "everything-has-a-price-lps-eth-downside",
+                "web2-equivalent-protected-perps",
+              ]}
+              title="Read in order"
+            />
+          )}
 
           {post.tags && post.tags.length > 0 && (
             <div className="blog-tags mt-10">

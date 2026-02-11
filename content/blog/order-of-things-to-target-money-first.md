@@ -1,6 +1,6 @@
 ---
 title: "Why Chase Money?"
-date: "2026-02-11"
+date: "2026-02-12"
 excerpt: "I'd rather be rich and sick. Than poor and healthy."
 tags: ["money", "priorities", "success", "health", "life-philosophy"]
 ---
