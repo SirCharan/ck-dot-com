@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { Menu, X, User, Briefcase, GraduationCap, Star, Link, Mail, Bitcoin } from 'lucide-react';
+import { Menu, X, User, Briefcase, GraduationCap, Star, Wrench, Mail, Bitcoin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CryptoWidget from './CryptoWidget';
 
@@ -14,6 +13,7 @@ const navigation: NavigationItem[] = [
   { name: 'About', href: '#about', icon: User },
   { name: 'Experience', href: '#experience', icon: Briefcase },
   { name: 'Academic', href: '#academic', icon: GraduationCap },
+  { name: 'Tools', href: '#tools', icon: Wrench },
   { name: 'Personal', href: '#personal', icon: Star },
   { name: 'Contact', href: '#contact', icon: Mail },
 ];
@@ -21,7 +21,7 @@ const navigation: NavigationItem[] = [
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section[id]');
@@ -32,10 +32,7 @@ const Sidebar: React.FC = () => {
         const sectionTop = (section as HTMLElement).offsetTop;
         const sectionHeight = (section as HTMLElement).offsetHeight;
 
-        if (
-          scrollPosition >= sectionTop &&
-          scrollPosition < sectionTop + sectionHeight
-        ) {
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           setActiveSection(sectionId);
         }
       });
@@ -49,13 +46,8 @@ const Sidebar: React.FC = () => {
     };
   }, []);
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeSidebar = () => {
-    setIsOpen(false);
-  };
+  const toggleSidebar = () => setIsOpen(!isOpen);
+  const closeSidebar = () => setIsOpen(false);
 
   return (
     <>
@@ -63,43 +55,49 @@ const Sidebar: React.FC = () => {
       <div className="fixed top-4 right-4 z-50">
         <button
           onClick={toggleSidebar}
-          className="flex items-center justify-center p-2 rounded-full bg-crypto-darkBlue border border-crypto-purple/30 shadow-lg hover:shadow-glow-purple hover:border-crypto-neon-violet group transition-all"
+          className="flex items-center justify-center p-2 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:border-[var(--neon-purple)] transition-all group"
           aria-label="Toggle menu"
         >
           {isOpen ? (
-            <X size={24} className="text-crypto-purple icon-hover-animate" strokeWidth={2} />
+            <X size={24} className="text-[var(--neon-purple)]" strokeWidth={2} />
           ) : (
-            <Menu size={24} className="text-crypto-purple icon-hover-animate" strokeWidth={2} />
+            <Menu size={24} className="text-[var(--neon-purple)]" strokeWidth={2} />
           )}
         </button>
       </div>
 
-      {/* Sidebar backdrop */}
+      {/* Sidebar backdrop - glass overlay */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
           onClick={closeSidebar}
+          aria-hidden
         />
       )}
 
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed top-0 right-0 h-full w-64 bg-crypto-darkBlue border-l border-crypto-purple/20 shadow-xl z-40 transform transition-transform duration-300 ease-in-out",
-          isOpen ? "translate-x-0" : "translate-x-full"
+          'fixed top-0 right-0 h-full w-64 z-40 transform transition-transform duration-300 ease-out',
+          'bg-[var(--glass-bg)] backdrop-blur-2xl border-l border-[var(--glass-border)]',
+          'shadow-[-10px_0_40px_rgba(0,0,0,0.3)]',
+          isOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
         <div className="flex flex-col h-full py-6 px-4">
           <div className="flex items-center justify-between mb-8 px-2">
-            <div className="flex items-center">
-              <Bitcoin size={24} className="text-crypto-purple mr-2 icon-hover-animate" strokeWidth={2} />
-              <h2 className="text-xl font-bold font-heading text-white">Charandeep</h2>
+            <div className="flex items-center gap-2">
+              <Bitcoin size={24} className="text-[var(--neon-purple)]" strokeWidth={2} />
+              <h2 className="font-orbitron text-lg font-bold uppercase tracking-wide text-white">
+                Charandeep
+              </h2>
             </div>
-              <button
-              onClick={toggleSidebar}
-              className="p-1 rounded-full hover:bg-white/5 group"
+            <button
+              onClick={closeSidebar}
+              className="p-1 rounded hover:bg-white/5 transition-colors group"
+              aria-label="Close menu"
             >
-              <X size={20} className="text-gray-400 group-hover:text-crypto-purple icon-hover-animate transition-colors" strokeWidth={2} />
+              <X size={20} className="text-gray-400 group-hover:text-[var(--neon-purple)] transition-colors" strokeWidth={2} />
             </button>
           </div>
 
@@ -111,21 +109,35 @@ const Sidebar: React.FC = () => {
                     href={item.href}
                     onClick={closeSidebar}
                     className={cn(
-                      "flex items-center px-3 py-2 rounded-md transition-colors",
+                      'group flex items-center px-3 py-2.5 rounded transition-all duration-300',
+                      'font-rajdhani font-semibold text-sm uppercase tracking-[0.15em]',
+                      'relative overflow-hidden',
                       activeSection === item.href.substring(1)
-                        ? "bg-crypto-neon-deep/20 text-crypto-neon-fuchsia"
-                        : "text-gray-300 hover:bg-crypto-purple/15 hover:text-crypto-neon-violet"
+                        ? 'text-[var(--neon-purple)] bg-[var(--neon-purple)]/10'
+                        : 'text-gray-300 hover:text-white'
                     )}
                   >
-                    <item.icon size={18} className="mr-3 flex-shrink-0 icon-hover-animate" strokeWidth={2} />
-                    <span>{item.name}</span>
+                    {activeSection === item.href.substring(1) && (
+                      <span className="absolute left-0 top-0 bottom-0 w-1 bg-[var(--neon-purple)] rounded-r" />
+                    )}
+                    <item.icon size={18} className="mr-3 flex-shrink-0" strokeWidth={2} />
+                    <span
+                      className={cn(
+                        'inline-block border-b-2 border-transparent -mb-0.5 pb-0.5',
+                        activeSection === item.href.substring(1)
+                          ? 'border-[var(--neon-purple)] text-[var(--neon-purple)]'
+                          : 'group-hover:border-[var(--neon-cyan)] group-hover:text-white'
+                      )}
+                    >
+                      {item.name}
+                    </span>
                   </a>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <div className="pt-4 px-2 border-t border-white/10">
+          <div className="pt-4 px-2 border-t border-[var(--glass-border)]">
             <CryptoWidget />
           </div>
         </div>

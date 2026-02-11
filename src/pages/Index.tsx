@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import BackgroundEffects from '@/components/BackgroundEffects';
 import Experience from '@/components/Experience';
 import Academic from '@/components/Academic';
 import Personal from '@/components/Personal';
@@ -9,6 +11,40 @@ import Sidebar from '@/components/Sidebar';
 import FinancialTools from '@/components/FinancialTools';
 import SEO from '@/components/SEO';
 import StructuredData from '@/components/StructuredData';
+
+const ParallaxSection = React.forwardRef<
+  HTMLElement,
+  { children: React.ReactNode; className?: string }
+>(({ children, className = '' }, forwardedRef) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const setRef = (el: HTMLElement | null) => {
+    (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+    if (typeof forwardedRef === 'function') forwardedRef(el);
+    else if (forwardedRef) (forwardedRef as React.MutableRefObject<HTMLElement | null>).current = el;
+  };
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [0, 40, 0]);
+
+  return (
+    <section ref={setRef} className={`relative overflow-hidden ${className}`}>
+      <motion.div
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{ y }}
+        aria-hidden
+      >
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[var(--neon-purple)]/5 via-transparent to-[var(--neon-cyan)]/5"
+          style={{ backgroundSize: '100% 200%' }}
+        />
+      </motion.div>
+      <div className="relative z-10">{children}</div>
+    </section>
+  );
+});
+ParallaxSection.displayName = 'ParallaxSection';
 
 const Index = () => {
   const sectionsRef = useRef<HTMLElement[]>([]);
@@ -90,7 +126,8 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen text-white bg-gradient-to-br from-purple-950/50 via-indigo-950/30 to-crypto-black">
+    <div className="min-h-screen text-white relative" style={{ background: 'var(--deep-bg)' }}>
+      <BackgroundEffects />
       <SEO 
         title="Charandeep Kapoor | Crypto, Finance & Mathematics Expert"
         description="Charandeep Kapoor - Crypto professional with 5+ years of experience in trading, quant research, VC, and product management. Expert in finance and mathematics."
@@ -142,26 +179,26 @@ const Index = () => {
       />
       <Sidebar />
       
-      <main>
+      <main className="relative z-10">
         <Hero />
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
+        <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
           <About />
-        </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
+        </ParallaxSection>
+        <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
           <Experience />
-        </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
+        </ParallaxSection>
+        <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
           <Academic />
-        </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
+        </ParallaxSection>
+        <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
           <FinancialTools />
-        </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
+        </ParallaxSection>
+        <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
           <Personal />
-        </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
+        </ParallaxSection>
+        <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
           <Contact />
-        </section>
+        </ParallaxSection>
       </main>
     </div>
   );

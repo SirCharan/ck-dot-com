@@ -26,6 +26,8 @@ export default {
       fontFamily: {
         heading: ['Orbitron', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
+        orbitron: ['Orbitron', 'system-ui', 'sans-serif'],
+        rajdhani: ['Rajdhani', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

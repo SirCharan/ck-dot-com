@@ -170,8 +170,8 @@ const Hero: React.FC = () => {
           <div className="flex flex-wrap gap-4 animate-fade-in" style={{
           animationDelay: "600ms"
         }}>
-            <a href="https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl" className={cn("px-6 py-2 rounded-md bg-crypto-purple text-white", "hover:bg-crypto-neon-fuchsia hover:shadow-glow-neon active:bg-crypto-neon-deep transition-all", "flex items-center justify-center animate-button-pulse btn-glow")}>
-              View Me on Sensibull Showcase
+            <a href="https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl" className={cn("px-6 py-2 rounded-md bg-crypto-purple text-white", "hover:bg-crypto-neon-fuchsia hover:shadow-glow-neon active:bg-crypto-neon-deep transition-all", "flex items-center justify-center btn-glow")}>
+              Sensibull Showcase
             </a>
             <a href="#contact" className={cn("px-6 py-2 rounded-md bg-transparent border-2 border-crypto-purple text-crypto-purple", "hover:border-crypto-neon-fuchsia hover:text-crypto-neon-fuchsia hover:shadow-glow-purple hover:bg-crypto-neon-deep/10 transition-all", "flex items-center justify-center btn-glow")}>
               Contact Me
