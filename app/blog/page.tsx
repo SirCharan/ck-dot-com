@@ -7,6 +7,9 @@ const SUB_ARTICLE_SLUGS = new Set([
   "life-is-exchange-of-payoffs",
   "everything-has-a-price-lps-eth-downside",
   "web2-equivalent-protected-perps",
+  "clubs-wagers-costs-protected-perps",
+  "why-i-built-protected-perps",
+  "what-next-after-protected-perps",
 ]);
 
 export const metadata: Metadata = {

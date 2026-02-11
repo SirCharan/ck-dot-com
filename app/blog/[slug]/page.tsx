@@ -88,6 +88,9 @@ export default async function BlogPostPage({ params }: Props) {
                 "life-is-exchange-of-payoffs",
                 "everything-has-a-price-lps-eth-downside",
                 "web2-equivalent-protected-perps",
+                "clubs-wagers-costs-protected-perps",
+                "why-i-built-protected-perps",
+                "what-next-after-protected-perps",
               ]}
               title="Read in order"
             />
