@@ -77,7 +77,7 @@ const Index = () => {
       observer.observe(section);
       
       // Add hover effect to sections
-      section.classList.add('hover:shadow-lg', 'hover:shadow-crypto-purple/10', 'transition-all', 'duration-500');
+      section.classList.add('hover:shadow-glow-card', 'transition-all', 'duration-500');
     });
     
     // Setup background particles after a short delay
@@ -90,7 +90,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-crypto-black text-white">
+    <div className="min-h-screen text-white bg-gradient-to-br from-purple-950/50 via-indigo-950/30 to-crypto-black">
       <SEO 
         title="Charandeep Kapoor | Crypto, Finance & Mathematics Expert"
         description="Charandeep Kapoor - Crypto professional with 5+ years of experience in trading, quant research, VC, and product management. Expert in finance and mathematics."
@@ -144,22 +144,22 @@ const Index = () => {
       
       <main>
         <Hero />
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
           <About />
         </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
           <Experience />
         </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
           <Academic />
         </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
           <FinancialTools />
         </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
           <Personal />
         </section>
-        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-black/90">
+        <section ref={addToSectionsRef} className="transition-all duration-300 hover:bg-crypto-neon-deep/5">
           <Contact />
         </section>
       </main>

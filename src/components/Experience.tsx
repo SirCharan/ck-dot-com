@@ -52,7 +52,7 @@ const experiences: ExperienceItem[] = [
     description: (
       <>
         <div className="mb-4">
-          <h4 className="text-white font-medium mb-2">Algo Trading:</h4>
+          <h4 className="text-white font-heading font-medium mb-2">Algo Trading:</h4>
           <ul className="list-disc list-inside space-y-2 text-gray-300">
             <li>
               <strong>BTC ATM Short Straddles</strong>: 2860% return in 1 year. (<a href="https://www.youtube.com/watch?v=DuPdKyXKNh0" className="crypto-link">Video</a>, <a href="https://www.delta.exchange/blog/the-algo-trading-strategy-which-made-2860-returns-in-the-past-2-years" className="crypto-link">Blog</a>)
@@ -64,7 +64,7 @@ const experiences: ExperienceItem[] = [
         </div>
         
         <div>
-          <h4 className="text-white font-medium mb-2">Growth:</h4>
+          <h4 className="text-white font-heading font-medium mb-2">Growth:</h4>
           <ul className="list-disc list-inside space-y-2 text-gray-300">
             <li>
               First Hire, grew YouTube channel by 733% from 3k to 25k subscribers in 6 months via creating educational content and live trading
@@ -73,7 +73,7 @@ const experiences: ExperienceItem[] = [
         </div>
 
         <div className="mt-4">
-          <h4 className="text-white font-medium mb-2">Product:</h4>
+          <h4 className="text-white font-heading font-medium mb-2">Product:</h4>
           <p className="text-gray-300 pl-5">
             <li>
             Built new products based on Youtube feedback including a pioneering product in algo trading automation, Signal Trading <a href="https://www.youtube.com/watch?v=S_D8W_oqo-A" className="crypto-link" target="_blank" rel="noopener noreferrer">(Video)</a>            </li>
@@ -145,12 +145,12 @@ const Experience: React.FC = () => {
               className={cn(
                 "glass-card p-6 md:p-8 animate-fade-in",
                 "border-l-4 border-crypto-purple",
-                "transition-all duration-300 hover:shadow-lg hover:shadow-crypto-purple/20 hover:-translate-y-1 hover:border-crypto-purple/80"
+                "transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-purple hover:border-crypto-neon-fuchsia"
               )}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">{exp.position}</h3>
+                <h3 className="text-xl font-bold font-heading gradient-heading">{exp.position}</h3>
                 <div className="flex items-center">
                   <span className="text-crypto-purple font-medium">{exp.company}</span>
                   {exp.duration && (

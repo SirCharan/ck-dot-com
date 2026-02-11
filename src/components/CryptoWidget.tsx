@@ -52,7 +52,7 @@ const CryptoWidget: React.FC = () => {
           <div key={crypto.symbol} className="flex items-center justify-between">
             <div className="flex items-center">
               {crypto.symbol === 'BTC' ? (
-                <Bitcoin size={16} className="text-yellow-500 mr-2" />
+                <Bitcoin size={16} className="text-yellow-500 mr-2 icon-hover-animate" strokeWidth={2} />
               ) : (
                 <span className="w-4 h-4 rounded-full bg-crypto-blue mr-2 flex items-center justify-center text-[8px]">Ξ</span>
               )}
@@ -69,9 +69,9 @@ const CryptoWidget: React.FC = () => {
                 )}
               >
                 {crypto.change24h >= 0 ? (
-                  <TrendingUp size={12} className="mr-1" />
+                  <TrendingUp size={12} className="mr-1 icon-hover-animate" strokeWidth={2} />
                 ) : (
-                  <TrendingDown size={12} className="mr-1" />
+                  <TrendingDown size={12} className="mr-1 icon-hover-animate" strokeWidth={2} />
                 )}
                 {crypto.change24h ? crypto.change24h.toFixed(2) : '--'}%
               </span>

@@ -52,9 +52,12 @@
   }
   
   body {
-    @apply bg-crypto-black text-foreground antialiased;
+    @apply text-foreground antialiased font-body;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    font-weight: 500;
     position: relative;
+    background: linear-gradient(to bottom right, #0f0a1a 0%, #0c0812 30%, #121218 70%, #080510 100%);
+    min-height: 100vh;
   }
 
   body::before {
@@ -65,8 +68,10 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.03), transparent 80%),
-                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.03), transparent 80%);
+    background: 
+      radial-gradient(ellipse 80% 50% at 20% 0%, rgba(124, 58, 237, 0.08), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(192, 132, 252, 0.06), transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.03), transparent 80%);
     pointer-events: none;
   }
 
@@ -90,31 +95,45 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-image: 
-      radial-gradient(rgba(139, 92, 246, 0.02) 1px, transparent 1px),
-      radial-gradient(rgba(139, 92, 246, 0.02) 1px, transparent 1px);
-    background-size: 30px 30px;
-    background-position: 0 0, 15px 15px;
+    background: 
+      linear-gradient(to bottom, transparent 0%, rgba(124, 58, 237, 0.03) 60%, transparent 100%),
+      radial-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+      radial-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 30px 30px, 30px 30px;
+    background-position: 0 0, 0 0, 15px 15px;
     pointer-events: none;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-lg bg-white/5 border border-white/10 shadow-lg rounded-lg;
+    @apply backdrop-blur-lg border rounded-lg overflow-hidden;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(192, 132, 252, 0.06) 50%, rgba(217, 70, 239, 0.04) 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+  .glass-card:hover {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.12), 0 0 80px rgba(124, 58, 237, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
   
   .section-title {
-    @apply text-2xl md:text-3xl font-bold text-white mb-6 relative inline-block;
+    @apply text-2xl md:text-3xl font-bold font-heading mb-6 relative inline-block;
+    @apply bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent;
   }
 
   .section-title::after {
     content: '';
-    @apply absolute -bottom-2 left-0 w-2/3 h-1 bg-crypto-purple rounded;
+    @apply absolute -bottom-2 left-0 w-2/3 h-1 rounded;
+    background: linear-gradient(90deg, #8B5CF6, #C084FC);
+    box-shadow: 0 0 8px rgba(192, 132, 252, 0.5);
   }
 
   .crypto-link {
-    @apply text-crypto-purple hover:text-crypto-purple/80 transition-colors underline underline-offset-4;
+    @apply text-crypto-purple transition-colors underline underline-offset-4;
+  }
+  .crypto-link:hover {
+    color: #C084FC;
+    text-shadow: 0 0 12px rgba(192, 132, 252, 0.5);
   }
 
   .grid-bg {
@@ -140,10 +159,10 @@
   
   @keyframes text-glow {
     0%, 100% {
-      text-shadow: 0 0 5px rgba(139, 92, 246, 0.3);
+      text-shadow: 0 0 8px rgba(192, 132, 252, 0.3);
     }
     50% {
-      text-shadow: 0 0 15px rgba(139, 92, 246, 0.8);
+      text-shadow: 0 0 20px rgba(192, 132, 252, 0.6), 0 0 30px rgba(124, 58, 237, 0.4);
     }
   }
   
@@ -166,15 +185,41 @@
   
   @keyframes button-pulse {
     0%, 100% {
-      box-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+      box-shadow: 0 0 8px rgba(139, 92, 246, 0.5), 0 0 20px rgba(124, 58, 237, 0.2);
     }
     50% {
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.8);
+      box-shadow: 0 0 20px rgba(192, 132, 252, 0.6), 0 0 40px rgba(124, 58, 237, 0.3);
     }
   }
   
   .animate-button-pulse {
     animation: button-pulse 2s infinite ease-in-out;
+  }
+
+  /* Gradient text for main headings */
+  .gradient-heading {
+    @apply bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent font-heading;
+  }
+
+  /* Animated icon on hover - lucide icons */
+  .icon-hover-animate {
+    @apply transition-all duration-300 ease-out;
+  }
+  .icon-hover-animate:hover,
+  .group:hover .icon-hover-animate {
+    @apply scale-110 -translate-y-0.5;
+    filter: drop-shadow(0 0 12px rgba(192, 132, 252, 0.7));
+  }
+
+  /* Glow on interactive elements */
+  .btn-glow {
+    @apply transition-all duration-300;
+  }
+  .btn-glow:hover {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(124, 58, 237, 0.3);
+  }
+  .btn-glow:active {
+    box-shadow: 0 0 15px rgba(192, 132, 252, 0.6);
   }
 }
 

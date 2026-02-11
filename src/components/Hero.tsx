@@ -155,25 +155,25 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-crypto-gradient z-0"></div>
       <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 animate-fade-in">
-            <span className="text-crypto-purple animate-text-glow">Charandeep Kapoor</span>
+          <h1 className="text-3xl md:text-5xl font-bold font-heading mb-4 animate-fade-in bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent animate-text-glow">
+            Charandeep Kapoor
           </h1>
-          <h2 className="text-xl md:text-2xl text-gray-300 mb-6 animate-fade-in" style={{
+          <h2 className="text-xl md:text-2xl font-heading font-medium text-gray-300 mb-6 animate-fade-in" style={{
           animationDelay: "200ms"
         }}>
             Portfolio Manager | Quantitative Researcher | Trader
           </h2>
-          <p className="text-gray-400 text-lg mb-8 leading-relaxed animate-fade-in" style={{
+          <p className="text-gray-400 text-lg md:text-xl font-body font-medium mb-8 leading-relaxed animate-fade-in" style={{
           animationDelay: "400ms"
         }}>Crypto professional with 5+ years of experience across product development, research, VC, and trading — blending finance, math, and 0→1 execution.</p>
           
           <div className="flex flex-wrap gap-4 animate-fade-in" style={{
           animationDelay: "600ms"
         }}>
-            <a href="https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl" className={cn("px-6 py-2 rounded-md bg-crypto-purple text-white", "hover:bg-crypto-purple/80 transition-all", "flex items-center justify-center animate-button-pulse")}>
+            <a href="https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl" className={cn("px-6 py-2 rounded-md bg-crypto-purple text-white", "hover:bg-crypto-neon-fuchsia hover:shadow-glow-neon active:bg-crypto-neon-deep transition-all", "flex items-center justify-center animate-button-pulse btn-glow")}>
               View Me on Sensibull Showcase
             </a>
-            <a href="#contact" className={cn("px-6 py-2 rounded-md bg-transparent border border-crypto-purple text-crypto-purple", "hover:bg-crypto-purple/10 transition-all", "flex items-center justify-center")}>
+            <a href="#contact" className={cn("px-6 py-2 rounded-md bg-transparent border-2 border-crypto-purple text-crypto-purple", "hover:border-crypto-neon-fuchsia hover:text-crypto-neon-fuchsia hover:shadow-glow-purple hover:bg-crypto-neon-deep/10 transition-all", "flex items-center justify-center btn-glow")}>
               Contact Me
             </a>
           </div>
@@ -181,8 +181,8 @@ const Hero: React.FC = () => {
       </div>
       
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float-slow">
-        <a href="#about" className="text-crypto-purple hover:text-white transition-colors">
-          <ArrowDown size={24} />
+        <a href="#about" className="text-crypto-purple hover:text-crypto-neon-fuchsia transition-colors inline-block">
+          <ArrowDown size={28} className="icon-hover-animate" strokeWidth={2.5} />
         </a>
       </div>
     </div>;

@@ -5,12 +5,12 @@ const About: React.FC = () => {
         <h2 className="section-title">About Me</h2>
         
         <div className="glass-card p-6 md:p-8 mb-8 animate-fade-in">
-          <p className="text-gray-300 leading-relaxed mb-4">
+          <p className="text-gray-300 leading-relaxed mb-4 font-medium text-base md:text-lg">
             Crypto native with 5+ years in product, research, and trading. I blend math and finance expertise to build DeFi products and quant strategies, transforming concepts into functional tools at the intersection of models and markets.
           </p>
           
           <div className="mt-4 border-t border-crypto-purple/30 pt-4">
-            <h3 className="text-crypto-purple text-lg font-medium mb-2">Highlights:</h3>
+            <h3 className="gradient-heading text-lg font-semibold mb-2">Highlights:</h3>
             <ul className="list-disc list-inside space-y-1 text-gray-300">
               <li>Founded <strong>Timelock Trade</strong> — non-liquidable leverage protocol</li>
               <li>Managed $500k at <strong>Heru Finance</strong> with 30% returns in bear market</li>

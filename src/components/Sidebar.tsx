@@ -63,13 +63,13 @@ const Sidebar: React.FC = () => {
       <div className="fixed top-4 right-4 z-50">
         <button
           onClick={toggleSidebar}
-          className="flex items-center justify-center p-2 rounded-full bg-crypto-darkBlue border border-crypto-purple/30 shadow-lg"
+          className="flex items-center justify-center p-2 rounded-full bg-crypto-darkBlue border border-crypto-purple/30 shadow-lg hover:shadow-glow-purple hover:border-crypto-neon-violet group transition-all"
           aria-label="Toggle menu"
         >
           {isOpen ? (
-            <X size={24} className="text-crypto-purple" />
+            <X size={24} className="text-crypto-purple icon-hover-animate" strokeWidth={2} />
           ) : (
-            <Menu size={24} className="text-crypto-purple" />
+            <Menu size={24} className="text-crypto-purple icon-hover-animate" strokeWidth={2} />
           )}
         </button>
       </div>
@@ -92,14 +92,14 @@ const Sidebar: React.FC = () => {
         <div className="flex flex-col h-full py-6 px-4">
           <div className="flex items-center justify-between mb-8 px-2">
             <div className="flex items-center">
-              <Bitcoin size={24} className="text-crypto-purple mr-2" />
-              <h2 className="text-xl font-bold text-white">Charandeep</h2>
+              <Bitcoin size={24} className="text-crypto-purple mr-2 icon-hover-animate" strokeWidth={2} />
+              <h2 className="text-xl font-bold font-heading text-white">Charandeep</h2>
             </div>
-            <button
+              <button
               onClick={toggleSidebar}
-              className="p-1 rounded-full hover:bg-white/5"
+              className="p-1 rounded-full hover:bg-white/5 group"
             >
-              <X size={20} className="text-gray-400" />
+              <X size={20} className="text-gray-400 group-hover:text-crypto-purple icon-hover-animate transition-colors" strokeWidth={2} />
             </button>
           </div>
 
@@ -113,11 +113,11 @@ const Sidebar: React.FC = () => {
                     className={cn(
                       "flex items-center px-3 py-2 rounded-md transition-colors",
                       activeSection === item.href.substring(1)
-                        ? "bg-crypto-purple/20 text-crypto-purple"
-                        : "text-gray-300 hover:bg-crypto-purple/10 hover:text-crypto-purple"
+                        ? "bg-crypto-neon-deep/20 text-crypto-neon-fuchsia"
+                        : "text-gray-300 hover:bg-crypto-purple/15 hover:text-crypto-neon-violet"
                     )}
                   >
-                    <item.icon size={18} className="mr-3 flex-shrink-0" />
+                    <item.icon size={18} className="mr-3 flex-shrink-0 icon-hover-animate" strokeWidth={2} />
                     <span>{item.name}</span>
                   </a>
                 </li>

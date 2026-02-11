@@ -45,13 +45,13 @@ const Academic: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Education & Achievements</h3>
+            <h3 className="text-xl font-semibold font-heading gradient-heading mb-4">Education & Achievements</h3>
             <div className="glass-card p-6">
               <div className="space-y-6">
                 {academics.map((item, index) => <div key={index} className="border-b border-white/10 last:border-b-0 pb-4 last:pb-0 animate-fade-in" style={{
                 animationDelay: `${index * 100}ms`
               }}>
-                    <h4 className="text-crypto-purple font-semibold">{item.title}</h4>
+                    <h4 className="text-crypto-purple font-heading font-semibold">{item.title}</h4>
                     <p className="text-gray-300 mt-1">{item.details}</p>
                   </div>)}
               </div>
@@ -59,13 +59,13 @@ const Academic: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Certifications</h3>
+            <h3 className="text-xl font-semibold font-heading gradient-heading mb-4">Certifications</h3>
             <div className="glass-card p-6">
               <div className="space-y-6">
                 {certifications.map((item, index) => <div key={index} className="border-b border-white/10 last:border-b-0 pb-4 last:pb-0 animate-fade-in" style={{
                 animationDelay: `${index * 100 + 400}ms`
               }}>
-                    <h4 className="text-crypto-purple font-semibold">{item.title}</h4>
+                    <h4 className="text-crypto-purple font-heading font-semibold">{item.title}</h4>
                     {item.details && <p className="text-gray-300 mt-1">{item.details}</p>}
                   </div>)}
               </div>

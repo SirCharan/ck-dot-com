@@ -23,6 +23,10 @@ export default {
       }
     },
     extend: {
+      fontFamily: {
+        heading: ['Orbitron', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -65,6 +69,11 @@ export default {
           black: '#121218',
           green: '#10B981',
           red: '#EF4444',
+          neon: {
+            fuchsia: '#C084FC',
+            violet: '#A78BFA',
+            deep: '#7C3AED',
+          },
         },
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar-background))',
@@ -133,8 +142,16 @@ export default {
       },
       backgroundImage: {
         'grid-pattern': 'linear-gradient(to right, rgba(139, 92, 246, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(139, 92, 246, 0.1) 1px, transparent 1px)',
-        'crypto-gradient': 'linear-gradient(102.3deg, rgba(147, 39, 143, 0.2) 5.9%, rgba(126, 105, 171, 0.2) 64%)',
+        'crypto-gradient': 'linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(147, 39, 143, 0.12) 30%, rgba(192, 132, 252, 0.06) 70%, transparent 100%)',
         'shimmer-gradient': 'linear-gradient(90deg, rgba(139, 92, 246, 0) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(139, 92, 246, 0) 100%)',
+        'section-gradient': 'linear-gradient(to bottom, #0a0a0f 0%, #121218 40%, rgba(124, 58, 237, 0.04) 100%)',
+        'card-gradient': 'linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(192, 132, 252, 0.08) 50%, rgba(217, 70, 239, 0.06) 100%)',
+      },
+      boxShadow: {
+        'glow-purple': '0 0 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)',
+        'glow-blue': '0 0 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(99, 102, 241, 0.2)',
+        'glow-neon': '0 0 15px rgba(192, 132, 252, 0.5), 0 0 30px rgba(124, 58, 237, 0.3)',
+        'glow-card': '0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(124, 58, 237, 0.08)',
       },
     }
   },
