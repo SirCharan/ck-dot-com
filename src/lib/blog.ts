@@ -24,7 +24,7 @@ export interface BlogPost {
  */
 export function getAllSlugs(): string[] {
   if (!fs.existsSync(BLOG_DIR)) return [];
-  return fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".md"));
+  return fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".md") && !f.startsWith("_") && f.toLowerCase() !== "readme.md");
 }
 
 /**
