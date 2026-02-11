@@ -23,28 +23,20 @@ I believe people trade for:
 2. Fun of speculation + leverage  
 3. Gambler's fallacy  
 4. Martingale mentality  
-5. Social status — to be part of the community  
-6. Low IQ (or at least poor risk assessment)
+5. Social status (to be part of the community)  
+6. Low IQ 
 
 ### First-principles explanation
 
-Think of an amusement park.
+If I go to an amusement park, I feel thrill, some rides are near death experiences like a bungee drop from a 100-200ft height.
 
-You pay money to ride something that gives you a massive **adrenaline rush** — a bungee jump from 100–200 ft, or a rollercoaster that feels like near-death.
+I accept the downside payoff of a very minor chance of death, minor chance of physical damage, dizziness, puking etc for the upside payoff of an adrenaline boost and having fun with friends. 
 
-You *accept* the downside: a tiny chance of serious injury, death, dizziness, puking, etc.  
-You accept it because the upside — the thrill, the story, the fun with friends — feels worth it.
+And I even pay a cost for it.
 
-Parkour without a harness on top of a 100-floor building is the same:  
-Upside is limited (bragging rights, adrenaline, social proof).  
-Downside in a black swan event is catastrophic — almost certain liquidation.
+Probably same is for people who parkour without a harness on top of 100 floor buildings.
+The upside is limited. The downside in case of a blackswan is huge, almost a liquidation event.
 
-Yet people still do it.
+But people still do it. 
 
-**That is exactly why so many trade leveraged derivatives.**
-
-They are paying (with their capital) for the thrill, the dopamine hit, the status of "being in the game," and the fantasy of being the one who beats the odds — even when the math says almost nobody does.
-
-> Trading isn't investing.  
-> It's gambling dressed up as skill — with better graphics and a community to cheer you on.  
-> And most people love the ride… until they don't.
+Probably that is why they trade derivatives with leverage.

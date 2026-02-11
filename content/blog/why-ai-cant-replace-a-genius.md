@@ -1,7 +1,7 @@
 ---
 title: "Why AI Can't Replace Humans"
 date: "2026-02-11"
-excerpt: "AI automates tasks. Only humans create true breakthroughs. That’s why real geniuses remain irreplaceable."
+excerpt: "Genius remains irreplaceable."
 tags: ["AI", "human", "creativity", "genius", "innovation"]
 ---
 
