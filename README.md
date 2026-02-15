@@ -36,6 +36,8 @@ A cyberpunk-themed portfolio showcasing expertise in **crypto**, **quant finance
 - **Dynamic sitemap** – `app/sitemap.ts` generates sitemap for home, blog, blog posts, and `/blog/md/*` (raw markdown for LLM ingestion)
 - **Structured data** – Person, WebSite, Article schemas (Schema.org JSON-LD) for Perplexity & ChatGPT citation
 - **llms.txt** – At `/llms.txt` for AI crawlers (manifest of key pages and essays)
+- **llm.txt** – At `/llm.txt` concise LLM manifest (links to full llms.txt)
+- **agents.txt** – At `/agents.txt` agent instructions for AI systems
 - **robots.txt** – Allows PerplexityBot, OAI-SearchBot (ChatGPT Search), Claude-Web, GPTBot
 - **RSS** – `/blog/feed.xml` for syndication
 
@@ -67,6 +69,8 @@ src/
 content/blog/              # Markdown posts
 public/
 ├── llms.txt               # LLM manifest (served at /llms.txt)
+├── llm.txt                # Concise LLM manifest (served at /llm.txt)
+├── agents.txt             # Agent instructions (served at /agents.txt)
 └── robots.txt
 ```
 
@@ -106,6 +110,8 @@ Guidance for AI assistants (Cursor, Copilot, Claude, etc.) working on this codeb
 | `llm.md`                   | LLM-friendly project summary and common tasks       |
 | `docs/llm-documentation.md`| Detailed architecture and component docs            |
 | `public/llms.txt`          | LLM manifest for AI crawlers (served at /llms.txt) |
+| `public/llm.txt`           | Concise LLM manifest (served at /llm.txt)          |
+| `public/agents.txt`        | Agent instructions (served at /agents.txt)        |
 
 ---
 

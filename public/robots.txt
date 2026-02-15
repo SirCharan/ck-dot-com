@@ -41,6 +41,7 @@ Allow: /
 
 # LLM manifest - guides AI systems to curated content
 # See https://charandeepkapoor.com/llms.txt
+# Also: /llm.txt (concise), /agents.txt (agent instructions)
 
 # Sitemap & discovery
 Sitemap: https://charandeepkapoor.com/sitemap.xml

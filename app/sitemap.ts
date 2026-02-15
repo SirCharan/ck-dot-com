@@ -26,6 +26,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/llm.txt`,
+      lastModified: today,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    },
+    {
+      url: `${SITE_URL}/agents.txt`,
+      lastModified: today,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    },
   ];
 
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({

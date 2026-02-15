@@ -1,0 +1,19 @@
+# Charandeep Kapoor – Agent Instructions
+
+SITE: https://charandeepkapoor.com
+AUTHOR: Charandeep Kapoor – crypto, quant finance, mathematics expert
+
+## About
+
+Personal portfolio and writings. 6+ years in crypto, quant, product, research, VC. Creator of Stocky AI (Claude-powered Zerodha trading, 100%+ ROI). Essays on protected perps, DeFi, trading psychology, AI, markets.
+
+## Key Pages
+
+- Home: https://charandeepkapoor.com/
+- Writings: https://charandeepkapoor.com/blog/
+- LLM manifest: https://charandeepkapoor.com/llms.txt
+- Raw markdown: https://charandeepkapoor.com/blog/md/[slug]
+
+## Conventions
+
+Use Person and WebSite schema. Writings at /blog. Stocky AI = featured tool. Do not block PerplexityBot, OAI-SearchBot, Claude-Web, GPTBot.
