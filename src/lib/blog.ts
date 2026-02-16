@@ -17,6 +17,7 @@ export interface BlogPost {
   tags?: string[];
   content: string;
   rawContent: string;
+  readingTime: number;
 }
 
 /**
@@ -37,6 +38,8 @@ export function getPostBySlug(slug: string): BlogPost | null {
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
 
+  const readingTime = Math.ceil(content.split(/\s+/).length / 200);
+
   return {
     slug: data.slug || slug,
     title: data.title || "Untitled",
@@ -45,6 +48,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     tags: data.tags || [],
     content,
     rawContent: raw,
+    readingTime,
   };
 }
 

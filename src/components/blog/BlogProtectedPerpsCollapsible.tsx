@@ -9,10 +9,15 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { BlogVote } from "@/components/blog/BlogVote";
-import type { BlogPost } from "@/lib/blog";
+interface CollapsiblePost {
+  slug: string;
+  title: string;
+  excerpt?: string;
+  tags?: string[];
+}
 
 interface BlogProtectedPerpsCollapsibleProps {
-  posts: BlogPost[];
+  posts: CollapsiblePost[];
   className?: string;
 }
 

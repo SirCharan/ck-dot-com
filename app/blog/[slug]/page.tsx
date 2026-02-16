@@ -7,6 +7,7 @@ import { BlogVote } from "@/components/blog/BlogVote";
 import { BlogShare } from "@/components/blog/BlogShare";
 import { BlogRelatedReadings } from "@/components/blog/BlogRelatedReadings";
 import { BlogStructuredData } from "@/components/blog/BlogStructuredData";
+import { BlogTableOfContents } from "@/components/blog/BlogTableOfContents";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -37,14 +38,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       siteName: "Charandeep Kapoor",
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -52,7 +45,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       creator: "@yourasianquant",
       title,
       description,
-      images: ["/og-image.png"],
     },
     alternates: {
       canonical: url,
@@ -79,6 +71,11 @@ export default async function BlogPostPage({ params }: Props) {
       <main className="blog-main">
         <article>
           <h1 className="blog-post-title">{post.title}</h1>
+          <time className="blog-post-date">
+            {post.date} · {post.readingTime} min read
+          </time>
+
+          <BlogTableOfContents content={post.content} />
 
           <div className="blog-post-body">
             <MarkdownRenderer content={post.content} />

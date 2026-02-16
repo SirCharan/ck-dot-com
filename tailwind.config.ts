@@ -24,11 +24,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Orbitron', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
-        orbitron: ['Orbitron', 'system-ui', 'sans-serif'],
-        rajdhani: ['Rajdhani', 'system-ui', 'sans-serif'],
-        syne: ['Syne', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-orbitron)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        orbitron: ['var(--font-orbitron)', 'system-ui', 'sans-serif'],
+        rajdhani: ['var(--font-rajdhani)', 'system-ui', 'sans-serif'],
+        syne: ['var(--font-syne)', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

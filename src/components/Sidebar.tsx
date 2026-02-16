@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, User, FileText, Briefcase, GraduationCap, Star, Wrench, Mail, Bitcoin, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';

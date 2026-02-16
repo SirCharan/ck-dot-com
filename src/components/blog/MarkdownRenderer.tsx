@@ -6,6 +6,7 @@
  */
 
 import React, { useCallback } from "react";
+import { slugify } from "@/lib/slugify";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
@@ -37,12 +38,16 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
           h1: ({ children }) => (
             <h1 className="blog-h1">{children}</h1>
           ),
-          h2: ({ children }) => (
-            <h2 className="blog-h2">{children}</h2>
-          ),
-          h3: ({ children }) => (
-            <h3 className="blog-h3">{children}</h3>
-          ),
+          h2: ({ children }) => {
+            const text = typeof children === "string" ? children : String(children);
+            const id = slugify(text);
+            return <h2 id={id} className="blog-h2">{children}</h2>;
+          },
+          h3: ({ children }) => {
+            const text = typeof children === "string" ? children : String(children);
+            const id = slugify(text);
+            return <h3 id={id} className="blog-h3">{children}</h3>;
+          },
           p: ({ children }) => (
             <p className="blog-p">{children}</p>
           ),

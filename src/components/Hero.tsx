@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Linkedin, Twitter, MessageCircle, Github } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';

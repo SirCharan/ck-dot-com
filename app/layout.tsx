@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Providers } from "@/components/Providers";
 import { RootStructuredData } from "@/components/RootStructuredData";
+import { inter, orbitron, rajdhani, syne } from "@/lib/fonts";
 import "@/index.css";
 
 const SITE_URL = "https://charandeepkapoor.com";
@@ -83,15 +84,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${rajdhani.variable} ${syne.variable}`}>
       <head>
+        <link rel="dns-prefetch" href="https://api.coingecko.com" />
         <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
         <link
           rel="alternate"
           type="application/rss+xml"

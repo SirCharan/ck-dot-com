@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Hero from '@/components/Hero';
@@ -9,7 +11,7 @@ import Personal from '@/components/Personal';
 import Contact from '@/components/Contact';
 import Sidebar from '@/components/Sidebar';
 import FinancialTools from '@/components/FinancialTools';
-import SEO from '@/components/SEO';
+import { SectionParticles } from '@/components/SectionParticles';
 
 const ParallaxSection = React.forwardRef<
   HTMLElement,
@@ -39,6 +41,7 @@ const ParallaxSection = React.forwardRef<
           style={{ backgroundSize: '100% 200%' }}
         />
       </motion.div>
+      <SectionParticles />
       <div className="relative z-10">{children}</div>
     </section>
   );
@@ -55,10 +58,8 @@ const Index = () => {
   };
 
   useEffect(() => {
-    // Scroll to top on component mount
     window.scrollTo(0, 0);
-    
-    // Optimize animation observers using IntersectionObserver
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -70,55 +71,13 @@ const Index = () => {
       { threshold: 0.1, rootMargin: '0px 0px 100px 0px' }
     );
 
-    // Background particles setup
-    const setupBackgroundParticles = () => {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => {
-        if (!section.querySelector('.floating-particles')) {
-          const colors = ['#8B5CF6', '#6366F1', '#8B5CF6'];
-          const count = 5;
-          
-          for (let i = 0; i < count; i++) {
-            const particle = document.createElement('div');
-            const size = Math.random() * 50 + 20;
-            
-            particle.className = 'floating-icon';
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.borderRadius = '50%';
-            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            
-            // Randomize animation duration and delay
-            particle.style.animationDuration = `${Math.random() * 10 + 8}s`;
-            particle.style.animationDelay = `${Math.random() * 5}s`;
-            
-            section.appendChild(particle);
-          }
-          
-          // Add class to mark that we've added particles
-          const particlesContainer = document.createElement('div');
-          particlesContainer.className = 'floating-particles';
-          section.appendChild(particlesContainer);
-        }
-      });
-    };
-    
-    // Observe sections and set up animations
     const sections = Array.from(document.querySelectorAll('section'));
     sections.forEach((section) => {
       section.classList.add('section-animate');
       observer.observe(section);
-      
-      // Add hover effect to sections
       section.classList.add('hover:shadow-glow-card', 'transition-all', 'duration-500');
     });
-    
-    // Setup background particles after a short delay
-    setTimeout(setupBackgroundParticles, 500);
-    
-    // Cleanup
+
     return () => {
       observer.disconnect();
     };
@@ -126,24 +85,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen text-white relative" style={{ background: 'var(--deep-bg)' }}>
-      <SEO 
-        title="Charandeep Kapoor | Crypto, Quant Finance & Mathematics Expert"
-        description="Charandeep Kapoor - 6+ years in crypto, quant finance & product. Creator of Stocky AI (100%+ ROI). Essays on protected perps, DeFi, trading psychology. Expert in algorithmic trading, blockchain, mathematical finance."
-        keywords={[
-          "Charandeep Kapoor",
-          "crypto expert",
-          "quantitative finance",
-          "algorithmic trading",
-          "blockchain",
-          "DeFi",
-          "Stocky AI",
-          "protected perps",
-          "trading psychology",
-          "mathematical finance",
-        ]}
-      />
       <Sidebar />
-      
+
       <main className="relative z-10">
         <Hero />
         <ParallaxSection ref={addToSectionsRef} className="transition-all duration-300">
