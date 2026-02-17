@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { BlogVote } from "@/components/blog/BlogVote";
 import { BlogProtectedPerpsCollapsible } from "@/components/blog/BlogProtectedPerpsCollapsible";
@@ -67,16 +67,6 @@ export function BlogListClient({ posts, subArticles, vcJourneyArticles = [] }: B
         />
       </div>
 
-      {!query && vcJourneyArticles.length > 0 && (
-        <div className="mb-6">
-          <BlogSeriesCollapsible
-            title="My VC Journey"
-            posts={vcJourneyArticles}
-            numbered={false}
-          />
-        </div>
-      )}
-
       <div className="blog-list">
         {filtered.length === 0 ? (
           <p className="blog-empty">
@@ -84,37 +74,48 @@ export function BlogListClient({ posts, subArticles, vcJourneyArticles = [] }: B
           </p>
         ) : (
           filtered.map((post) => (
-            <article key={post.slug} className="blog-list-item">
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0 flex-1">
-                  <Link href={`/blog/${post.slug}`} className="blog-list-title">
-                    {post.title}
-                  </Link>
-                  <span className="blog-list-date">
-                    {post.date} · {post.readingTime} min read
-                  </span>
-                  {post.excerpt && (
-                    <p className="blog-list-excerpt">{post.excerpt}</p>
-                  )}
-                  {post.tags && post.tags.length > 0 && (
-                    <div className="blog-tags">
-                      {post.tags.map((tag) => (
-                        <span key={tag} className="blog-tag">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  {post.slug === "perps-payoff" && subArticles.length > 0 && !query && (
-                    <BlogProtectedPerpsCollapsible
-                      posts={subArticles}
-                      className="mt-4"
-                    />
-                  )}
+            <React.Fragment key={post.slug}>
+              <article className="blog-list-item">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    <Link href={`/blog/${post.slug}`} className="blog-list-title">
+                      {post.title}
+                    </Link>
+                    <span className="blog-list-date">
+                      {post.date} · {post.readingTime} min read
+                    </span>
+                    {post.excerpt && (
+                      <p className="blog-list-excerpt">{post.excerpt}</p>
+                    )}
+                    {post.tags && post.tags.length > 0 && (
+                      <div className="blog-tags">
+                        {post.tags.map((tag) => (
+                          <span key={tag} className="blog-tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {post.slug === "perps-payoff" && subArticles.length > 0 && !query && (
+                      <BlogProtectedPerpsCollapsible
+                        posts={subArticles}
+                        className="mt-4"
+                      />
+                    )}
+                  </div>
+                  <BlogVote slug={post.slug} className="shrink-0 mt-1" />
                 </div>
-                <BlogVote slug={post.slug} className="shrink-0 mt-1" />
-              </div>
-            </article>
+              </article>
+              {post.slug === "perps-payoff" && !query && vcJourneyArticles.length > 0 && (
+                <div className="mb-2">
+                  <BlogSeriesCollapsible
+                    title="My VC Journey"
+                    posts={vcJourneyArticles}
+                    numbered={false}
+                  />
+                </div>
+              )}
+            </React.Fragment>
           ))
         )}
       </div>
