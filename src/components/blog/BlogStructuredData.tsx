@@ -28,14 +28,14 @@ export function BlogStructuredData({ post, slug }: BlogStructuredDataProps) {
       name: "Charandeep Kapoor",
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/og-image.png`,
+        url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
       },
     },
     image: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/og-image.png`,
+      url: `${SITE_URL}/og-image.jpg`,
       width: 1200,
       height: 630,
     },

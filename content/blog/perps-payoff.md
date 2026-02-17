@@ -8,7 +8,7 @@ tags: ["protected-perps", "crypto", "derivatives", "payoffs", "options", "financ
 **Protected Perps is a novel payoff.**  
 It is a game with a payoff which didn't exist before.
 
-![Protected Perps: LPs take only loss, Traders take only profit, with cost flowing from Traders to LPs](/images/protected-perps-diagram.png)
+![Protected Perps: LPs take only loss, Traders take only profit, with cost flowing from Traders to LPs](/images/protected-perps-diagram.jpg)
 
 In this payoff:
 

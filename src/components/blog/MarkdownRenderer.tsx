@@ -5,16 +5,58 @@
  * Supports: headings, blockquotes, code blocks (with copy), lists, links, math (KaTeX).
  */
 
-import React, { useCallback } from "react";
+import React, { useCallback, lazy, Suspense } from "react";
 import { slugify } from "@/lib/slugify";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import rehypeRaw from "rehype-raw";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { prism } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import "katex/dist/katex.min.css";
+
+// Lazy-load the heavy syntax highlighter (~280KB) — only loaded when a code block exists
+const SyntaxHighlighter = lazy(() =>
+  import("react-syntax-highlighter").then((mod) => ({ default: mod.Prism }))
+);
+const prismStylePromise = import("react-syntax-highlighter/dist/cjs/styles/prism").then(
+  (mod) => mod.prism
+);
+
+function CodeBlock({ language, code, onCopy }: { language: string; code: string; onCopy: (s: string) => void }) {
+  const [style, setStyle] = React.useState<Record<string, React.CSSProperties> | null>(null);
+
+  React.useEffect(() => {
+    prismStylePromise.then(setStyle);
+  }, []);
+
+  return (
+    <div className="blog-code-block">
+      <div className="blog-code-header">
+        <span className="blog-code-lang">{language}</span>
+        <button
+          type="button"
+          onClick={() => onCopy(code)}
+          className="blog-code-copy"
+        >
+          Copy
+        </button>
+      </div>
+      <Suspense fallback={<pre style={{ margin: 0, padding: "1rem", fontSize: "0.875rem" }}><code>{code}</code></pre>}>
+        {style && (
+          <SyntaxHighlighter
+            style={style}
+            language={language}
+            PreTag="div"
+            customStyle={{ margin: 0, borderRadius: "0 0 6px 6px" }}
+            codeTagProps={{ className: "blog-syntax" }}
+          >
+            {code}
+          </SyntaxHighlighter>
+        )}
+      </Suspense>
+    </div>
+  );
+}
 
 interface MarkdownRendererProps {
   content: string;
@@ -79,27 +121,11 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
 
             if (match) {
               return (
-                <div className="blog-code-block">
-                  <div className="blog-code-header">
-                    <span className="blog-code-lang">{match[1]}</span>
-                    <button
-                      type="button"
-                      onClick={() => handleCopy(codeString)}
-                      className="blog-code-copy"
-                    >
-                      Copy
-                    </button>
-                  </div>
-                  <SyntaxHighlighter
-                    style={prism}
-                    language={match[1]}
-                    PreTag="div"
-                    customStyle={{ margin: 0, borderRadius: "0 0 6px 6px" }}
-                    codeTagProps={{ className: "blog-syntax" }}
-                  >
-                    {codeString}
-                  </SyntaxHighlighter>
-                </div>
+                <CodeBlock
+                  language={match[1]}
+                  code={codeString}
+                  onCopy={handleCopy}
+                />
               );
             }
 

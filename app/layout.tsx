@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Charandeep Kapoor - Crypto, Quant Finance & Mathematics Expert",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     creator: "@yourasianquant",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,

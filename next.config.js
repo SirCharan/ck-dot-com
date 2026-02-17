@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: true,
+    formats: ["image/webp"],
   },
   eslint: {
     ignoreDuringBuilds: true,

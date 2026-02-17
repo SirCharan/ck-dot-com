@@ -118,9 +118,11 @@ const Hero: React.FC = () => {
       height = canvas.height = window.innerHeight;
     };
 
+    const isMobile = window.innerWidth < 768;
+
     const initParticles = () => {
       particles = [];
-      const count = window.innerWidth < 768 ? 40 : 100;
+      const count = isMobile ? 12 : 60;
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
@@ -175,7 +177,7 @@ const Hero: React.FC = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
-      drawGrid();
+      if (!isMobile) drawGrid();
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -191,7 +193,7 @@ const Hero: React.FC = () => {
         ctx.fill();
       });
       ctx.globalAlpha = 1;
-      drawConnections();
+      if (!isMobile) drawConnections();
       animationId = requestAnimationFrame(animate);
     };
 
@@ -212,6 +214,9 @@ const Hero: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    // Skip heavy WebGL Mandelbrot on mobile
+    if (window.innerWidth < 768) return;
+
     const canvas = mandelbrotCanvasRef.current;
     if (!canvas) return;
 

@@ -1,9 +1,8 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 const COLORS = ["#8B5CF6", "#6366F1", "#8B5CF6"];
-const COUNT = 5;
 
 interface Particle {
   width: number;
@@ -15,8 +14,15 @@ interface Particle {
 }
 
 export function SectionParticles() {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
   const particles = useMemo<Particle[]>(() => {
-    return Array.from({ length: COUNT }, () => {
+    if (isMobile) return [];
+    return Array.from({ length: 2 }, () => {
       const size = Math.random() * 50 + 20;
       return {
         width: size,
@@ -27,7 +33,7 @@ export function SectionParticles() {
         delay: `${Math.random() * 5}s`,
       };
     });
-  }, []);
+  }, [isMobile]);
 
   return (
     <>

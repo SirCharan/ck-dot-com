@@ -1,7 +1,7 @@
 ---
 title: "The Future"
 date: "2026-02-16"
-excerpt: "Some bets and predictions for the future — AI, capitalism, social media, demographics, biotech, green energy, and crypto."
+excerpt: "Some bets and predictions for the future"
 tags: ["VC", "predictions", "AI", "crypto", "future", "investing"]
 ---
 
@@ -10,7 +10,7 @@ Some bets/predictions for the future.
 ## AI
 
 - **Infra layer wins first**, then the final vision is a very user-friendly app
-- Time for work goes down, free time goes up
+- Time for work ↓, free time ↑
   - 3–4 day work weeks, <6 hour work days
   - People find real work-life balance, explore other interests
     - Hobbies become structured
@@ -19,8 +19,8 @@ Some bets/predictions for the future.
 
 ## Capitalism
 
-- Gap between rich & poor goes up
-  - Growing unrest, push for charity, socialism increases
+- Gap between rich & poor ↑
+  - Growing unrest, push for charity, socialism ↑
   - USA can lose its reserve currency status (WW3?)
 - Unique human skills and specific knowledge stand out. <1% get disproportionately rewarded.
 
@@ -28,7 +28,7 @@ Some bets/predictions for the future.
 
 - **Authenticity beats AI replicability**
   - Creators rise multi-fold in value as:
-    - Free time up, people consume more content
+    - Free time ↑, people consume more content
     - Marketing for consumer products becomes founder or social media creator driven
     - High investment follows in creators and creator economy ancillaries
 - We see a social media creator in the 500 richest people
@@ -36,11 +36,11 @@ Some bets/predictions for the future.
 
 ## Demographics
 
-- Fertility rates go down, DINK is the new sexy
+- Fertility rates ↓, DINK is the new sexy
 - Richer countries (USA, China, Europe) see fertility drop faster than poorer countries (Change of power?)
 - Millennials become the first tech-enabled aging population
-  - Elder care, old age retreats, communities up
-  - Tech products for elderly up
+  - Elder care, old age retreats, communities ↑
+  - Tech products for elderly ↑
   - Big opportunity for serving this section who is tech-enabled, and has a lot of money for which they have little use for
 
 ## Biotech
@@ -57,5 +57,5 @@ Some bets/predictions for the future.
 ## Crypto
 
 - Loses out in value, some 5–10 crypto capture the entire market, rest everything dies a slow death
-- Blockchain stays important, increases in value
+- Blockchain stays important, value ↑
 - Crypto enables rails for shift in USA reserve currency?

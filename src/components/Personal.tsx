@@ -40,7 +40,7 @@ const Personal: React.FC = () => {
               </h3>
               <div className="mb-4">
                 <img
-                  src="/lovable-uploads/4e6f0209-d05c-46d9-b7fd-fafbf4370013.png"
+                  src="/lovable-uploads/4e6f0209-d05c-46d9-b7fd-fafbf4370013.jpg"
                   alt="Topmate Creator Achievements"
                   className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 transform-gpu"
                 />
@@ -104,7 +104,7 @@ const Personal: React.FC = () => {
                 <div>
                   <div className="mb-3 space-y-3">
                     <img
-                      src="/lovable-uploads/portfolio-dashboard.png"
+                      src="/lovable-uploads/portfolio-dashboard.jpg"
                       alt="Portfolio Dashboard - Account Overview"
                       className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 transform-gpu"
                     />
@@ -112,7 +112,7 @@ const Personal: React.FC = () => {
                       Achieved 100%+ ROI in 9 months, with Share 2.29 and 73% win rate on INR 15L capital.
                     </p>
                     <img
-                      src="/lovable-uploads/5c63e2fd-b03f-4df6-94b6-1491914231a5.png"
+                      src="/lovable-uploads/5c63e2fd-b03f-4df6-94b6-1491914231a5.jpg"
                       alt="Portfolio Performance"
                       className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 transform-gpu"
                     />

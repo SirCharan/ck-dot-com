@@ -11,7 +11,7 @@ export function RootStructuredData() {
     "@type": "Person",
     name: "Charandeep Kapoor",
     url: SITE_URL,
-    image: `${SITE_URL}/og-image.png`,
+    image: `${SITE_URL}/og-image.jpg`,
     jobTitle: "Crypto, Quant Finance & Mathematics Expert",
     description:
       "6+ years in crypto, quant finance and product. Creator of Stocky AI (Claude-powered Zerodha trading, 100%+ ROI). Writes on protected perps, DeFi, trading psychology, and building systems.",
