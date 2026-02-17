@@ -14,6 +14,11 @@ const PROTECTED_PERPS_SUB_ORDER = [
   "extract-money",
 ];
 
+const VC_JOURNEY_ORDER = [
+  "the-future",
+  "my-ideal-company",
+];
+
 export const metadata: Metadata = {
   title: "Writings",
   description:
@@ -59,6 +64,12 @@ export default function BlogIndexPage() {
       slug, title, date, excerpt, tags, readingTime,
     }));
 
+  const vcJourneyArticles = VC_JOURNEY_ORDER.map((s) => getPostBySlug(s))
+    .filter((p): p is NonNullable<typeof p> => p !== null)
+    .map(({ slug, title, date, excerpt, tags, readingTime }) => ({
+      slug, title, date, excerpt, tags, readingTime,
+    }));
+
   const serializedPosts = allPosts.map(({ slug, title, date, excerpt, tags, readingTime }) => ({
     slug, title, date, excerpt, tags, readingTime,
   }));
@@ -84,7 +95,7 @@ export default function BlogIndexPage() {
           </a>
         </div>
 
-        <BlogListClient posts={serializedPosts} subArticles={subArticles} />
+        <BlogListClient posts={serializedPosts} subArticles={subArticles} vcJourneyArticles={vcJourneyArticles} />
       </main>
     </div>
   );

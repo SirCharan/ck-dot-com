@@ -30,9 +30,10 @@ Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of e
 - [Order of Things: Money First](https://charandeepkapoor.com/blog/money-first): Priorities
 - [Power Law, Average, Waste](https://charandeepkapoor.com/blog/power-law-waste): Power laws in life and markets
 
-## VC / Predictions
+## My VC Journey
 
 - [The Future](https://charandeepkapoor.com/blog/the-future): Bets on AI, capitalism, social media, demographics, biotech, green energy, crypto
+- [My Ideal Company](https://charandeepkapoor.com/blog/my-ideal-company): Philosophy and ethics for building a company — incentive alignment, first principles, hiring for talent
 
 ## RSS & Tools
 
@@ -56,7 +57,8 @@ LLMs may prefer raw markdown at `/blog/md/[slug]`:
 - https://charandeepkapoor.com/blog/md/money-first
 - https://charandeepkapoor.com/blog/md/power-law-waste
 - https://charandeepkapoor.com/blog/md/the-future
+- https://charandeepkapoor.com/blog/md/my-ideal-company
 
 ## Keywords (for AI retrieval)
 
-Charandeep Kapoor, crypto expert, quantitative finance, algorithmic trading, protected perps, DeFi, Stocky AI, trading psychology, blockchain, mathematical finance, zerodha, perpetual futures, LP economics, exchange design, VC, predictions, AI future, demographics, biotech, green energy
+Charandeep Kapoor, crypto expert, quantitative finance, algorithmic trading, protected perps, DeFi, Stocky AI, trading psychology, blockchain, mathematical finance, zerodha, perpetual futures, LP economics, exchange design, VC, predictions, AI future, demographics, biotech, green energy, company building, startups, incentive alignment

@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { BlogVote } from "@/components/blog/BlogVote";
 import { BlogProtectedPerpsCollapsible } from "@/components/blog/BlogProtectedPerpsCollapsible";
+import { BlogSeriesCollapsible } from "@/components/blog/BlogSeriesCollapsible";
 
 interface SerializedPost {
   slug: string;
@@ -25,16 +26,24 @@ const PROTECTED_PERPS_SUB_SLUGS = new Set([
   "extract-money",
 ]);
 
+const VC_JOURNEY_SLUGS = new Set([
+  "the-future",
+  "my-ideal-company",
+]);
+
+const HIDDEN_SLUGS = new Set([...PROTECTED_PERPS_SUB_SLUGS, ...VC_JOURNEY_SLUGS]);
+
 interface BlogListClientProps {
   posts: SerializedPost[];
   subArticles: SerializedPost[];
+  vcJourneyArticles?: SerializedPost[];
 }
 
-export function BlogListClient({ posts, subArticles }: BlogListClientProps) {
+export function BlogListClient({ posts, subArticles, vcJourneyArticles = [] }: BlogListClientProps) {
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {
-    const visible = posts.filter((p) => !PROTECTED_PERPS_SUB_SLUGS.has(p.slug));
+    const visible = posts.filter((p) => !HIDDEN_SLUGS.has(p.slug));
     if (!query.trim()) return visible;
     const q = query.toLowerCase();
     return visible.filter(
@@ -57,6 +66,16 @@ export function BlogListClient({ posts, subArticles }: BlogListClientProps) {
           aria-label="Search writings"
         />
       </div>
+
+      {!query && vcJourneyArticles.length > 0 && (
+        <div className="mb-6">
+          <BlogSeriesCollapsible
+            title="My VC Journey"
+            posts={vcJourneyArticles}
+            numbered={false}
+          />
+        </div>
+      )}
 
       <div className="blog-list">
         {filtered.length === 0 ? (

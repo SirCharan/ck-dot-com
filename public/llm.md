@@ -24,6 +24,7 @@ Protected perpetuals, DeFi mechanics, trading psychology, algorithmic trading, b
 | Why AI Can't Replace a Genius | /blog/ai-genius |
 | Why Traders Like Losing | /blog/traders-losing |
 | The Future | /blog/the-future |
+| My Ideal Company | /blog/my-ideal-company |
 | Power Laws | /blog/power-law-waste |
 | Why Chase Money? | /blog/money-first |
 
