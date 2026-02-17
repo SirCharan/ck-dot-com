@@ -18,53 +18,73 @@ const FRAGMENT_SHADER = `
   uniform float u_zoom;
   uniform vec2 u_center;
 
-  const vec3 COLOR_PURPLE = vec3(0.659, 0.333, 0.969);
-  const vec3 COLOR_CYAN = vec3(0.024, 0.714, 0.831);
-  const vec3 COLOR_BLACK = vec3(0.012, 0.000, 0.020);
+  // Palette: deep space → electric purple → cyan → gold → white
+  vec3 palette(float t) {
+    // 5-stop gradient that cycles smoothly
+    vec3 a = vec3(0.02, 0.0, 0.04);   // deep void
+    vec3 b = vec3(0.55, 0.15, 0.95);  // electric purple
+    vec3 c = vec3(0.02, 0.72, 0.84);  // cyan
+    vec3 d = vec3(0.95, 0.65, 0.15);  // gold
+    vec3 e = vec3(1.0, 1.0, 1.0);     // white hot
+
+    t = fract(t);
+    if (t < 0.25) return mix(a, b, t * 4.0);
+    if (t < 0.5)  return mix(b, c, (t - 0.25) * 4.0);
+    if (t < 0.75) return mix(c, d, (t - 0.5) * 4.0);
+    return mix(d, e, (t - 0.75) * 4.0);
+  }
+
   void main() {
     vec2 st = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / u_resolution.y;
-
     vec2 c = u_center + st / u_zoom;
     vec2 z = vec2(0.0);
 
+    float max_iter = 300.0 + log(u_zoom) * 40.0;
+
     float iter = 0.0;
-    float max_iter = 200.0 + log(u_zoom) * 20.0;
-
-    for (float i = 0.0; i < 500.0; i++) {
+    for (float i = 0.0; i < 800.0; i++) {
       if (i > max_iter) break;
-
       float x = (z.x * z.x - z.y * z.y) + c.x;
       float y = (2.0 * z.x * z.y) + c.y;
-
-      if (x * x + y * y > 4.0) break;
+      if (x * x + y * y > 256.0) break;
       z.x = x;
       z.y = y;
       iter++;
     }
 
-    vec3 color = COLOR_BLACK;
+    vec3 color = vec3(0.01, 0.0, 0.02);
 
     if (iter < max_iter) {
-
+      // Smooth iteration count (normalized escape)
       float log_zn = log(z.x * z.x + z.y * z.y) / 2.0;
       float nu = log(log_zn / log(2.0)) / log(2.0);
       float smooth_iter = iter + 1.0 - nu;
 
-      float t = smooth_iter / 60.0;
+      // Slowly rotating color cycle
+      float t = smooth_iter / 45.0 + u_time * 0.03;
+      vec3 baseColor = palette(t);
 
-      float glow = pow(sin(t * 3.0), 4.0) * 0.8 + 0.2;
-      float fade = smoothstep(0.0, 20.0, smooth_iter);
+      // Intensity: bright near boundary, fading into deep set
+      float fade = smoothstep(0.0, 15.0, smooth_iter);
+      float glow = 0.3 + 0.7 * pow(sin(smooth_iter * 0.15), 2.0);
+      float intensity = fade * glow;
 
-      float breathe = 0.5 + 0.5 * sin(u_time * 0.5);
-      vec3 edgeColor = mix(COLOR_PURPLE, COLOR_CYAN, breathe + 0.3 * sin(smooth_iter * 0.1));
+      color = baseColor * intensity * 0.7;
 
-      float intensity = 0.15 * glow * fade;
+      // Edge glow — brighter right at the boundary
+      float edgeDist = smooth_iter / max_iter;
+      float edgeGlow = exp(-edgeDist * 8.0) * 0.4;
+      color += vec3(0.4, 0.2, 0.9) * edgeGlow;
 
-      color = mix(COLOR_BLACK, edgeColor, intensity * 2.0);
-
-      float sparkle = pow(sin(smooth_iter * 0.5 + u_time), 20.0);
-      color += sparkle * 0.05 * COLOR_CYAN;
+      // Subtle sparkle
+      float sparkle = pow(max(sin(smooth_iter * 0.4 + u_time * 1.5), 0.0), 16.0);
+      color += sparkle * 0.08 * vec3(0.2, 0.9, 1.0);
     }
+
+    // Vignette
+    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+    float vignette = 1.0 - 0.3 * length(uv - 0.5);
+    color *= vignette;
 
     gl_FragColor = vec4(color, 1.0);
   }
@@ -72,7 +92,7 @@ const FRAGMENT_SHADER = `
 
 const MANDELBROT_CENTER = { x: -0.743643887037158, y: 0.131825904205311 };
 const ZOOM_MIN = 1.0;
-const ZOOM_MAX = 20000.0;
+const ZOOM_MAX = 500000.0;
 
 function zoomToSliderValue(zoom: number): number {
   return (Math.log(zoom) / Math.log(ZOOM_MAX)) * 100;
@@ -97,10 +117,13 @@ const Hero: React.FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [cardVisible, setCardVisible] = useState(false);
   const [zoom, setZoom] = useState(1.0);
+  const [autoZoom, setAutoZoom] = useState(true);
   const zoomRef = useRef(1.0);
   const gridOffsetRef = useRef(0);
+  const autoZoomRef = useRef(true);
 
   zoomRef.current = zoom;
+  autoZoomRef.current = autoZoom;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -271,7 +294,17 @@ const Hero: React.FC = () => {
     };
 
     let animationId: number;
+    let lastTime = 0;
     const render = (timestamp: number) => {
+      const dt = lastTime ? (timestamp - lastTime) / 1000 : 0;
+      lastTime = timestamp;
+
+      // Auto-zoom: slowly zoom in over time (exponential growth)
+      if (autoZoomRef.current && dt > 0 && dt < 0.1) {
+        const newZoom = Math.min(zoomRef.current * (1 + 0.15 * dt), ZOOM_MAX);
+        zoomRef.current = newZoom;
+      }
+
       gl.useProgram(program);
       gl.enableVertexAttribArray(positionLoc);
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
@@ -321,7 +354,7 @@ const Hero: React.FC = () => {
       <canvas
         id="canvas-webgl"
         ref={mandelbrotCanvasRef}
-        className="absolute top-0 left-0 w-full h-full -z-[1] opacity-60 pointer-events-none"
+        className="absolute top-0 left-0 w-full h-full -z-[1] opacity-70 pointer-events-none"
         style={{ width: '100%', height: '100%' }}
         aria-hidden
       />
@@ -514,19 +547,43 @@ const Hero: React.FC = () => {
       </div>
 
       <div
-        className="absolute bottom-4 right-4 z-10 flex items-center gap-3 w-48 px-3 py-2 rounded-lg bg-black/30 backdrop-blur-sm border border-purple-500/20"
+        className="absolute bottom-4 right-4 z-10 hidden md:flex items-center gap-2 w-56 px-3 py-2 rounded-lg bg-black/30 backdrop-blur-sm border border-purple-500/20"
         aria-label="Mandelbrot zoom control"
       >
+        <button
+          type="button"
+          onClick={() => {
+            if (autoZoom) {
+              setAutoZoom(false);
+              setZoom(zoomRef.current);
+            } else {
+              setAutoZoom(true);
+            }
+          }}
+          className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-gray-400 hover:text-cyan-400 transition-colors"
+          aria-label={autoZoom ? "Pause auto-zoom" : "Resume auto-zoom"}
+        >
+          {autoZoom ? (
+            <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><rect x="0" y="0" width="3" height="12"/><rect x="7" y="0" width="3" height="12"/></svg>
+          ) : (
+            <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><polygon points="0,0 10,6 0,12"/></svg>
+          )}
+        </button>
         <Slider
-          value={[zoomToSliderValue(zoom)]}
-          onValueChange={([v]) => setZoom(sliderValueToZoom(v))}
+          value={[zoomToSliderValue(autoZoom ? zoomRef.current : zoom)]}
+          onValueChange={([v]) => {
+            setAutoZoom(false);
+            setZoom(sliderValueToZoom(v));
+          }}
           min={0}
           max={100}
-          step={0.5}
+          step={0.25}
           className="flex-1"
         />
-        <span className="font-mono text-[10px] text-gray-400 tabular-nums min-w-[4.5rem]">
-          {zoom.toExponential(3)}
+        <span className="font-mono text-[10px] text-gray-400 tabular-nums min-w-[3rem] text-right">
+          {(autoZoom ? zoomRef.current : zoom) >= 1000
+            ? `${((autoZoom ? zoomRef.current : zoom) / 1000).toFixed(0)}k×`
+            : `${(autoZoom ? zoomRef.current : zoom).toFixed(0)}×`}
         </span>
       </div>
     </div>
