@@ -32,6 +32,7 @@ Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of e
 
 ## My VC Journey
 
+- [The Strongest Intrinsic Motivations](https://charandeepkapoor.com/blog/vc-motivations): Why VC is addictive — front-row seat to the future, exceptional people, high-leverage impact
 - [The Future](https://charandeepkapoor.com/blog/the-future): Bets on AI, capitalism, social media, demographics, biotech, green energy, crypto
 - [My Ideal Company](https://charandeepkapoor.com/blog/my-ideal-company): Philosophy and ethics for building a company — incentive alignment, first principles, hiring for talent
 
@@ -56,6 +57,7 @@ LLMs may prefer raw markdown at `/blog/md/[slug]`:
 - https://charandeepkapoor.com/blog/md/traders-losing
 - https://charandeepkapoor.com/blog/md/money-first
 - https://charandeepkapoor.com/blog/md/power-law-waste
+- https://charandeepkapoor.com/blog/md/vc-motivations
 - https://charandeepkapoor.com/blog/md/the-future
 - https://charandeepkapoor.com/blog/md/my-ideal-company
 

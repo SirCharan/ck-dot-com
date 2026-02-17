@@ -102,19 +102,18 @@ export function BlogListClient({ posts, subArticles, vcJourneyArticles = [] }: B
                         className="mt-4"
                       />
                     )}
+                    {post.slug === "vc-motivations" && vcJourneyArticles.length > 0 && !query && (
+                      <BlogSeriesCollapsible
+                        title="My VC Journey"
+                        posts={vcJourneyArticles}
+                        numbered={false}
+                        className="mt-4"
+                      />
+                    )}
                   </div>
                   <BlogVote slug={post.slug} className="shrink-0 mt-1" />
                 </div>
               </article>
-              {post.slug === "perps-payoff" && !query && vcJourneyArticles.length > 0 && (
-                <div className="mb-2">
-                  <BlogSeriesCollapsible
-                    title="My VC Journey"
-                    posts={vcJourneyArticles}
-                    numbered={false}
-                  />
-                </div>
-              )}
             </React.Fragment>
           ))
         )}
