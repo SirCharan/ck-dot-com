@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, User, FileText, Briefcase, GraduationCap, Star, Wrench, Mail, Bitcoin, BookOpen } from 'lucide-react';
+import { Menu, X, User, FileText, Briefcase, GraduationCap, Star, Wrench, Mail, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import CryptoWidget from './CryptoWidget';
 
 type NavigationItem = {
   name: string;
@@ -91,7 +90,6 @@ const Sidebar: React.FC = () => {
         <div className="flex flex-col h-full py-6 px-4">
           <div className="flex items-center justify-between mb-8 px-2">
             <div className="flex items-center gap-2">
-              <Bitcoin size={24} className="text-[var(--neon-purple)]" strokeWidth={2} />
               <h2 className="font-orbitron text-base font-bold uppercase tracking-wide text-white">
                 Charandeep
               </h2>
@@ -142,7 +140,9 @@ const Sidebar: React.FC = () => {
           </nav>
 
           <div className="pt-4 px-2 border-t border-[var(--glass-border)]">
-            <CryptoWidget />
+            <p className="font-rajdhani text-xs text-gray-500 tracking-wider uppercase">
+              charandeepkapoor.com
+            </p>
           </div>
         </div>
       </aside>

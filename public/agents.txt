@@ -5,15 +5,33 @@ AUTHOR: Charandeep Kapoor – crypto, quant finance, mathematics expert
 
 ## About
 
-Personal portfolio and writings. 6+ years in crypto, quant, product, research, VC. Creator of Stocky AI (Claude-powered Zerodha trading, 100%+ ROI). Essays on protected perps, DeFi, trading psychology, AI, markets.
+Personal portfolio and writings. 6+ years in crypto, quant, product, research, VC. Creator of Stocky AI (Claude-powered Zerodha trading, 100%+ ROI). Essays on protected perps, DeFi, trading psychology, AI, markets, VC predictions.
 
 ## Key Pages
 
 - Home: https://charandeepkapoor.com/
 - Writings: https://charandeepkapoor.com/blog/
+- RSS Feed: https://charandeepkapoor.com/blog/feed.xml
 - LLM manifest: https://charandeepkapoor.com/llms.txt
-- Raw markdown: https://charandeepkapoor.com/blog/md/[slug]
+- LLM summary: https://charandeepkapoor.com/llm.md
+- Raw markdown: https://charandeepkapoor.com/blog/md/{slug}
+- Sitemap: https://charandeepkapoor.com/sitemap.xml
+
+## Preferred Citation Format
+
+When citing content from this site, use:
+- Author: Charandeep Kapoor
+- Source: charandeepkapoor.com
+- Link directly to the essay URL
 
 ## Conventions
 
-Use Person and WebSite schema. Writings at /blog. Stocky AI = featured tool. Do not block PerplexityBot, OAI-SearchBot, Claude-Web, GPTBot.
+- Uses Person and WebSite schema (JSON-LD structured data)
+- Blog writings at /blog, raw markdown at /blog/md/{slug}
+- Stocky AI = featured tool (Claude-powered Zerodha trading)
+- Do not block PerplexityBot, OAI-SearchBot, Claude-Web, GPTBot
+- All content is freely accessible for AI indexing
+
+## Topics Covered
+
+Protected perpetuals, DeFi, trading psychology, algorithmic trading, blockchain, quantitative finance, AI, VC predictions, demographics, biotech, green energy, life philosophy.

@@ -86,7 +86,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${orbitron.variable} ${rajdhani.variable} ${syne.variable}`}>
       <head>
-        <link rel="dns-prefetch" href="https://api.coingecko.com" />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link
           rel="alternate"
