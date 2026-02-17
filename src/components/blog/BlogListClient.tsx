@@ -44,14 +44,25 @@ export function BlogListClient({ posts, subArticles, vcJourneyArticles = [] }: B
 
   const filtered = useMemo(() => {
     const visible = posts.filter((p) => !HIDDEN_SLUGS.has(p.slug));
-    if (!query.trim()) return visible;
-    const q = query.toLowerCase();
-    return visible.filter(
-      (p) =>
-        p.title.toLowerCase().includes(q) ||
-        (p.excerpt && p.excerpt.toLowerCase().includes(q)) ||
-        (p.tags && p.tags.some((t) => t.toLowerCase().includes(q)))
-    );
+    const list = !query.trim()
+      ? visible
+      : visible.filter((p) => {
+          const q = query.toLowerCase();
+          return (
+            p.title.toLowerCase().includes(q) ||
+            (p.excerpt && p.excerpt.toLowerCase().includes(q)) ||
+            (p.tags && p.tags.some((t) => t.toLowerCase().includes(q)))
+          );
+        });
+    // Pin vc-motivations right after perps-payoff
+    const perpsIdx = list.findIndex((p) => p.slug === "perps-payoff");
+    const vcIdx = list.findIndex((p) => p.slug === "vc-motivations");
+    if (perpsIdx !== -1 && vcIdx !== -1 && vcIdx !== perpsIdx + 1) {
+      const [vcPost] = list.splice(vcIdx, 1);
+      const newPerpsIdx = list.findIndex((p) => p.slug === "perps-payoff");
+      list.splice(newPerpsIdx + 1, 0, vcPost);
+    }
+    return list;
   }, [posts, query]);
 
   return (
