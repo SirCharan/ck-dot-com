@@ -7,7 +7,7 @@ tags: ["VC", "startups", "investing", "pitching", "fundraising"]
 
 A simple 1 pager on
 
-## 1. Why this
+### 1. Why this
 
 You can either be better better than the incumbent or build something entirely novel.
 Better - why are you better/faster/cheaper than the incumbent?
