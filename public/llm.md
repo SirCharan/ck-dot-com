@@ -26,6 +26,7 @@ Protected perpetuals, DeFi mechanics, trading psychology, algorithmic trading, b
 | My VC Journey | /blog/vc-motivations |
 | The Future | /blog/the-future |
 | My Ideal Company | /blog/my-ideal-company |
+| How to Pitch to Me | /blog/how-to-pitch |
 | Power Laws | /blog/power-law-waste |
 | Why Chase Money? | /blog/money-first |
 

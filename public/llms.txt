@@ -35,6 +35,7 @@ Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of e
 - [My VC Journey](https://charandeepkapoor.com/blog/vc-motivations): Why I chose VC — front-row seat to the future, exceptional people, highest-leverage game
 - [The Future](https://charandeepkapoor.com/blog/the-future): Bets on AI, capitalism, social media, demographics, biotech, green energy, crypto
 - [My Ideal Company](https://charandeepkapoor.com/blog/my-ideal-company): Philosophy and ethics for building a company — incentive alignment, first principles, hiring for talent
+- [How to Pitch to Me](https://charandeepkapoor.com/blog/how-to-pitch): Six things I need to see before I write a cheque — why this, why now, why you, evidence, use of funds, unfair advantage
 
 ## RSS & Tools
 
@@ -60,6 +61,7 @@ LLMs may prefer raw markdown at `/blog/md/[slug]`:
 - https://charandeepkapoor.com/blog/md/vc-motivations
 - https://charandeepkapoor.com/blog/md/the-future
 - https://charandeepkapoor.com/blog/md/my-ideal-company
+- https://charandeepkapoor.com/blog/md/how-to-pitch
 
 ## Keywords (for AI retrieval)
 

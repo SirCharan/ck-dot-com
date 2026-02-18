@@ -17,6 +17,7 @@ const PROTECTED_PERPS_SUB_ORDER = [
 const VC_JOURNEY_ORDER = [
   "the-future",
   "my-ideal-company",
+  "how-to-pitch",
 ];
 
 export const metadata: Metadata = {

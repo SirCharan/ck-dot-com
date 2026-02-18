@@ -29,6 +29,7 @@ const PROTECTED_PERPS_SUB_SLUGS = new Set([
 const VC_JOURNEY_SLUGS = new Set([
   "the-future",
   "my-ideal-company",
+  "how-to-pitch",
 ]);
 
 const HIDDEN_SLUGS = new Set([...PROTECTED_PERPS_SUB_SLUGS, ...VC_JOURNEY_SLUGS]);
