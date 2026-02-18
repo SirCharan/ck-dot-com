@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Providers } from "@/components/Providers";
 import { RootStructuredData } from "@/components/RootStructuredData";
 import { inter, orbitron, rajdhani, syne } from "@/lib/fonts";
 import "@/index.css";
+
+const GA_ID = "G-37HWVDVZ5N";
 
 const SITE_URL = "https://charandeepkapoor.com";
 
@@ -95,6 +98,10 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
+        </Script>
         <RootStructuredData />
         <Providers>{children}</Providers>
       </body>
