@@ -5,7 +5,7 @@ import { RootStructuredData } from "@/components/RootStructuredData";
 import { inter, orbitron, rajdhani, syne } from "@/lib/fonts";
 import "@/index.css";
 
-const GA_ID = "G-37HWVDVZ5N";
+const GA_ID = "G-J6SY9N1Y3W";
 
 const SITE_URL = "https://charandeepkapoor.com";
 
