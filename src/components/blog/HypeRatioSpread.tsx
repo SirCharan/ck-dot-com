@@ -90,7 +90,7 @@ export function HypeRatioSpread() {
           <span className="hype-payoff-stat-value hype-payoff-profit">${MAX_PROFIT_VAL}.00</span>
         </div>
         <div className="hype-payoff-stat">
-          <span className="hype-payoff-stat-label">MAX LOSS (DOWN)</span>
+          <span className="hype-payoff-stat-label">MAX LOSS</span>
           <span className="hype-payoff-stat-value hype-payoff-loss">-${NET_PREMIUM}.00</span>
         </div>
         <div className="hype-payoff-stat hype-payoff-stat-hide-mobile">
