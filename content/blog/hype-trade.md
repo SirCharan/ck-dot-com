@@ -39,9 +39,11 @@ Overall sentiment is not bullish.
 
 **Long HYPE, but limit downside.** If crypto goes up, \$HYPE & \$BTC will win. Need to hedge downside.
 
+Macro is bad, but the token is good. So the play is simple — get long, but cap the downside.
+
 ---
 
-## Trade Idea #1: Bull Call Spread
+## Trade Idea #1: Bull Call Spread (5x upside)
 
 Bet on HYPE reaching its ATH, with fixed downside costs, no liquidation/funding risks. Effective 5x if HYPE reaches ATH (\$60).
 
@@ -77,7 +79,7 @@ Bet on HYPE reaching its ATH, with fixed downside costs, no liquidation/funding 
 
 ---
 
-## Trade Idea #2: Call Ratio Spread
+## Trade Idea #2: Call Ratio Spread (Limiting all risks)
 
 Limits further downside to \$1 per HYPE, exposes upside risk above \$92 (unlikely, and manageable over time).
 
