@@ -1365,3 +1365,29 @@
     align-items: center;
   }
 }
+
+/* HYPE Trade Callouts */
+.hype-callout {
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid #1a5276;
+  background: rgba(26, 82, 118, 0.04);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.hype-callout p {
+  margin: 0;
+}
+
+.hype-callout strong:first-child {
+  color: #1a5276;
+}
+
+.hype-callout-note {
+  border-left-color: #d97706;
+  background: rgba(217, 119, 6, 0.05);
+  margin-top: 2rem;
+  font-style: italic;
+}

@@ -1,104 +1,103 @@
 ---
-title: "HYPE Trade"
+title: "The HYPE Trade"
 date: "2026-02-26"
-excerpt: "27/60 call spread on Hyperliquid. 4.5x risk-reward. Why I'm taking this trade."
+excerpt: "My big bet for 2026."
 tags: ["trading", "options", "crypto", "hyperliquid", "HYPE", "call-spread"]
 ---
 
-**Hyperliquid is the most interesting exchange in crypto right now.**
+## HYPE Thesis (Bullish)
 
-Not because of the hype. Because of the numbers.
+I think we don't need to dive deep into the HYPE bullish thesis a lot, but:
 
-They've built the fastest on-chain orderbook that actually works. Real volume. Real liquidity. No VC unlock overhang — the token launched via airdrop. The team is small, focused, and printing money from fees.
+- Best perp dex (yet).
+- HIP 4.
+- Challenging Binance (which is shooting its own foot)
+- ETF/DAT → Increasing investor base.
+- 50% down from ATH. Price to earnings of 8. **Undervalued.**
+- HyperEVM → Vaults, lending, DeFi. Value accrual.
+- Bull market → Higher volume → Revenue → **Buyback & Burn**
 
-Most L1s are ghost chains with inflated FDVs. Hyperliquid is an actual business generating revenue from day one.
+## Macro/Market Thesis (Not Bullish)
 
-### The Thesis
+Overall sentiment is not bullish.
 
-HYPE is undervalued relative to its fundamentals.
+- Hurst Principle
+- Second Presidential Year thesis
+- Buffett indicator at 220%
+- Hawkish Rate Cut
+- Elliott Wave, C wave pullbacks
 
-It trades volumes that rival top CEXs. It has a fee structure that generates real cash flow. And unlike every other L1 token, it doesn't have a mountain of VC tokens waiting to dump on retail.
+## Overall Trade Thesis
 
-The market hasn't priced in what Hyperliquid becomes when it expands beyond perps — spot, options, RWAs, all on the same high-performance chain. The infrastructure is already there. The users are already there. It just needs time.
-
-### The Trade
-
-**27/60 HYPE December 25 Call Spread.**
-
-- **Buy** the 27 strike call — pay **$11** premium
-- **Sell** the 60 strike call — receive **$5** premium
-- **Net cost**: **$6** per contract
-
-This is a bull call spread. I'm betting HYPE goes up, but I'm capping my upside at $60 to reduce the cost of entry.
-
-### The Numbers
-
-- **Max loss**: **$6** — if HYPE is below $27 at expiry, both options expire worthless. I lose the net premium.
-- **Max profit**: **$27** — if HYPE is at or above $60 at expiry. Calculated as (60 - 27) - 6 = $27.
-- **Breakeven**: **$33** — the lower strike plus the net premium paid (27 + 6).
-- **Risk-reward**: **4.5x** — I'm risking $6 to make $27.
-
-### Why a Call Spread, Not Spot
-
-I could just buy HYPE spot. But a call spread gives me **defined risk** with **leveraged upside**.
-
-If I'm wrong, I lose $6. Not $27. Not my entire position to a liquidation wick at 3am.
-
-If I'm right and HYPE is at $60 by December, I've made **4.5x** on my capital. Buying spot from here to $60 wouldn't give me that kind of return on the same capital.
-
-The trade-off is capped upside. If HYPE goes to $100, I still only make $27. I'm okay with that. I'd rather have a defined, asymmetric bet than an unbounded one with more capital at risk.
-
-### Why Now
-
-December 25 expiry gives me **10 months**. That's enough time for:
-
-1. **HyperEVM** to fully mature and attract builders
-2. **New products** — spot trading, options, whatever they ship next
-3. **Market cycle** — if we're in a bull market by Q4, HYPE is one of the first tokens to rip
-
-The 27 strike is near the money. The 60 strike represents a ~2.2x from here — aggressive but not absurd for a 10-month crypto bet in a bull cycle.
+**Long HYPE, but limit downside.** If crypto goes up, $HYPE & $BTC will win. Need to hedge downside.
 
 ---
 
-### The Safer Alternative: Call Ratio Spread
+## Trade Idea #1: Bull Call Spread
 
-Not bullish enough for a full send? There's a cheaper way in.
+Bet on HYPE reaching its ATH, with fixed downside costs, no liquidation/funding risks. Effective 5x if HYPE reaches ATH ($60).
 
-**27/50/70 HYPE December 25 Call Ratio Spread.**
+**25th December 2026 expiry:**
 
-- **Buy** the 27 strike call — pay **$11** premium
-- **Sell** the 50 strike call — receive **$6** premium
-- **Sell** the 70 strike call — receive **$4** premium
-- **Net cost**: **$1** per contract
+- **Buy** 27 HYPE CE: Pay premium of **$11**
+- **Sell** 60 HYPE CE: Receive premium of **$5**
+- **Net pay**: **$6** per HYPE (5x leverage)
 
-Instead of paying $6 to enter, I pay **$1**. The downside risk drops to almost nothing.
+|  | Value |
+|--|-------|
+| **Max Profit** | $27 per HYPE |
+| **Max Loss** | $6 per HYPE |
+| **Breakeven** | $33 |
 
-### How It Works
+**Trade Payoff:** Long HYPE at $33, with upside capped until $60 (ATH of HYPE)
 
-I'm buying one call and selling two calls at higher strikes. The two short calls finance almost the entire position. The payoff has four zones:
+**Thesis:** Bet on HYPE reaching its ATH.
 
-1. **Below $27** — everything expires worthless. I lose **$1**. That's it.
-2. **$27 to $50** — the long call prints. P/L rises from -$1 to +$22.
-3. **$50 to $70** — the long call and first short call offset. I'm flat at **$22** max profit.
-4. **Above $70** — the second short call kicks in. P/L declines by $1 for every $1 HYPE goes up. **Uncapped loss.**
+<!-- CHART_1 -->
 
-### The Numbers
+<div class="hype-callout">
 
-- **Max loss (downside)**: **$1** — if HYPE stays below $27
-- **Max profit**: **$22** — if HYPE is between $50 and $70 at expiry
-- **Lower breakeven**: **$28** — the long strike plus net premium (27 + 1)
-- **Upper breakeven**: **$92** — where the declining payoff crosses zero
-- **Danger zone**: above **$92** — losses grow without limit
+**Better than perps:** 5x leverage perp long requires similar (higher) cost, same max risk. But carries liquidation risk and costs $2–3 per HYPE in funding costs (assume 10% funding).
 
-### The Trade-Off
+</div>
 
-This trade costs **$1** instead of **$6**. The downside risk is minimal.
+<div class="hype-callout">
 
-But the catch is real. If HYPE absolutely rips past $92, I'm underwater and the loss is uncapped. The bull call spread caps my upside at $27 profit but never exposes me to unlimited loss. The ratio spread gives me $22 max profit for almost nothing down — but if I'm too right on HYPE, I get punished for it.
+**Better than spot:** 5x leverage, frees up $22 per HYPE to be used for USDC yield. Opportunity cost goes down. (5% yields $1, 10% yields $2). Net premium paid reduces to ~$3, effectively long HYPE at $30, max upside becomes $30 (6x upside).
 
-**Pick the call spread** if you're very bullish and want zero tail risk.
+</div>
 
-**Pick the ratio spread** if you're moderately bullish, want cheaper entry, and can manage the position if HYPE goes parabolic.
+---
 
-> Two ways to play the same thesis.
-> One costs more but sleeps easy. The other costs less but keeps one eye open.
+## Trade Idea #2: Call Ratio Spread
+
+Limits further downside to $1 per HYPE, exposes upside risk above $92 (unlikely, and manageable over time).
+
+**25th December 2026 expiry:**
+
+- **Buy** 27 HYPE CE: Pay premium of **$11**
+- **Sell** 50 HYPE CE: Receive premium of **$6**
+- **Sell** 70 HYPE CE: Receive premium of **$4**
+- **Net pay**: **$1** per HYPE
+
+|  | Value |
+|--|-------|
+| **Max Profit** | $22 per HYPE |
+| **Max Loss (down)** | $1 per HYPE |
+| **Max Loss (up)** | Unlimited above $92 |
+| **Lower Breakeven** | $28 |
+| **Upper Breakeven** | $92 |
+
+**Trade Payoff:** Long HYPE at $28, with upside capped until $50.
+
+**Thesis:** Pay only $1 per HYPE.
+
+<!-- CHART_2 -->
+
+---
+
+<div class="hype-callout hype-callout-note">
+
+I already entered Trade #1, and will be adding size over time on dips. I trade on **STS Digital's** client portal OTC.
+
+</div>

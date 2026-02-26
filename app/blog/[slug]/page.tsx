@@ -79,15 +79,21 @@ export default async function BlogPostPage({ params }: Props) {
 
           <BlogTableOfContents content={post.content} />
 
-          <div className="blog-post-body">
-            <MarkdownRenderer content={post.content} />
-          </div>
-
-          {slug === "hype-trade" && (
-            <>
-              <HypeTradePayoff />
-              <HypeRatioSpread />
-            </>
+          {slug === "hype-trade" ? (() => {
+            const parts = post.content.split(/<!--\s*CHART_[12]\s*-->/);
+            return (
+              <div className="blog-post-body">
+                <MarkdownRenderer content={parts[0] || ""} />
+                <HypeTradePayoff />
+                <MarkdownRenderer content={parts[1] || ""} />
+                <HypeRatioSpread />
+                <MarkdownRenderer content={parts[2] || ""} />
+              </div>
+            );
+          })() : (
+            <div className="blog-post-body">
+              <MarkdownRenderer content={post.content} />
+            </div>
           )}
 
           {slug === "perps-payoff" && (
