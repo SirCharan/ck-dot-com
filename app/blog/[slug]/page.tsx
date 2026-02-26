@@ -8,6 +8,7 @@ import { BlogShare } from "@/components/blog/BlogShare";
 import { BlogRelatedReadings } from "@/components/blog/BlogRelatedReadings";
 import { BlogStructuredData } from "@/components/blog/BlogStructuredData";
 import { BlogTableOfContents } from "@/components/blog/BlogTableOfContents";
+import { HypeTradePayoff } from "@/components/blog/HypeTradePayoff";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -80,6 +81,8 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="blog-post-body">
             <MarkdownRenderer content={post.content} />
           </div>
+
+          {slug === "hype-trade" && <HypeTradePayoff />}
 
           {slug === "perps-payoff" && (
             <BlogRelatedReadings

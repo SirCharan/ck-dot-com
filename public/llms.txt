@@ -25,6 +25,7 @@ Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of e
 
 ## Other Essays
 
+- [HYPE Trade](https://charandeepkapoor.com/blog/hype-trade): 27/60 Hyperliquid call spread — 4.5x risk-reward, defined risk, December 2025 expiry
 - [Why AI Can't Replace a Genius](https://charandeepkapoor.com/blog/ai-genius): AI and human creativity
 - [Why Traders Like Losing](https://charandeepkapoor.com/blog/traders-losing): Trading psychology
 - [Order of Things: Money First](https://charandeepkapoor.com/blog/money-first): Priorities
@@ -62,6 +63,7 @@ LLMs may prefer raw markdown at `/blog/md/[slug]`:
 - https://charandeepkapoor.com/blog/md/the-future
 - https://charandeepkapoor.com/blog/md/my-ideal-company
 - https://charandeepkapoor.com/blog/md/how-to-pitch
+- https://charandeepkapoor.com/blog/md/hype-trade
 
 ## Keywords (for AI retrieval)
 
