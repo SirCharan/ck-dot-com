@@ -1356,13 +1356,15 @@
 
 @media (max-width: 640px) {
   .hype-payoff-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .hype-payoff-stat {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+  }
+
+  .hype-payoff-stat-hide-mobile {
+    display: none;
   }
 }
 

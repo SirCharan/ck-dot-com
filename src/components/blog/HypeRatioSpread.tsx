@@ -93,11 +93,11 @@ export function HypeRatioSpread() {
           <span className="hype-payoff-stat-label">MAX LOSS (DOWN)</span>
           <span className="hype-payoff-stat-value hype-payoff-loss">-${NET_PREMIUM}.00</span>
         </div>
-        <div className="hype-payoff-stat">
+        <div className="hype-payoff-stat hype-payoff-stat-hide-mobile">
           <span className="hype-payoff-stat-label">LOWER B/E</span>
           <span className="hype-payoff-stat-value hype-payoff-breakeven">${LOWER_BE}.00</span>
         </div>
-        <div className="hype-payoff-stat">
+        <div className="hype-payoff-stat hype-payoff-stat-hide-mobile">
           <span className="hype-payoff-stat-label">UPPER B/E</span>
           <span className="hype-payoff-stat-value hype-payoff-breakeven">${UPPER_BE}.00</span>
         </div>
