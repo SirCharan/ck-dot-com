@@ -39,8 +39,6 @@ Overall sentiment is not bullish.
 
 **Long HYPE, but limit downside.** If crypto goes up, \$HYPE & \$BTC will win. Need to hedge downside.
 
-Macro is bad, but the token is good. So the play is simple — get long, but cap the downside.
-
 ---
 
 ## Trade Idea #1: Bull Call Spread (5x upside)
