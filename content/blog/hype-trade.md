@@ -58,5 +58,47 @@ December 25 expiry gives me **10 months**. That's enough time for:
 
 The 27 strike is near the money. The 60 strike represents a ~2.2x from here — aggressive but not absurd for a 10-month crypto bet in a bull cycle.
 
-> Defined risk. 4.5x reward. 10 months.
-> That's the kind of asymmetry I live for.
+---
+
+### The Safer Alternative: Call Ratio Spread
+
+Not bullish enough for a full send? There's a cheaper way in.
+
+**27/50/70 HYPE December 25 Call Ratio Spread.**
+
+- **Buy** the 27 strike call — pay **$11** premium
+- **Sell** the 50 strike call — receive **$6** premium
+- **Sell** the 70 strike call — receive **$4** premium
+- **Net cost**: **$1** per contract
+
+Instead of paying $6 to enter, I pay **$1**. The downside risk drops to almost nothing.
+
+### How It Works
+
+I'm buying one call and selling two calls at higher strikes. The two short calls finance almost the entire position. The payoff has four zones:
+
+1. **Below $27** — everything expires worthless. I lose **$1**. That's it.
+2. **$27 to $50** — the long call prints. P/L rises from -$1 to +$22.
+3. **$50 to $70** — the long call and first short call offset. I'm flat at **$22** max profit.
+4. **Above $70** — the second short call kicks in. P/L declines by $1 for every $1 HYPE goes up. **Uncapped loss.**
+
+### The Numbers
+
+- **Max loss (downside)**: **$1** — if HYPE stays below $27
+- **Max profit**: **$22** — if HYPE is between $50 and $70 at expiry
+- **Lower breakeven**: **$28** — the long strike plus net premium (27 + 1)
+- **Upper breakeven**: **$92** — where the declining payoff crosses zero
+- **Danger zone**: above **$92** — losses grow without limit
+
+### The Trade-Off
+
+This trade costs **$1** instead of **$6**. The downside risk is minimal.
+
+But the catch is real. If HYPE absolutely rips past $92, I'm underwater and the loss is uncapped. The bull call spread caps my upside at $27 profit but never exposes me to unlimited loss. The ratio spread gives me $22 max profit for almost nothing down — but if I'm too right on HYPE, I get punished for it.
+
+**Pick the call spread** if you're very bullish and want zero tail risk.
+
+**Pick the ratio spread** if you're moderately bullish, want cheaper entry, and can manage the position if HYPE goes parabolic.
+
+> Two ways to play the same thesis.
+> One costs more but sleeps easy. The other costs less but keeps one eye open.
