@@ -1414,3 +1414,129 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   Blog Mobile Responsive — tighten spacing
+   ============================================ */
+@media (max-width: 640px) {
+  /* Container */
+  .blog-container {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .blog-header {
+    margin-bottom: 2rem;
+  }
+
+  .blog-intro {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Post title */
+  .blog-post-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Blog listing items */
+  .blog-list-item {
+    padding: 1rem 0.75rem;
+  }
+
+  .blog-list-item--sub {
+    padding: 0.75rem 0 0.75rem 1rem;
+  }
+
+  .blog-list-title {
+    font-size: 1rem;
+  }
+
+  /* Prose body */
+  .blog-post-body {
+    font-size: 1rem;
+  }
+
+  /* Headings */
+  .blog-prose h2 {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+
+  .blog-prose h3 {
+    font-size: 1.05rem;
+    margin: 1rem 0 0.4rem;
+  }
+
+  /* Paragraphs */
+  .blog-prose p {
+    margin: 0 0 1rem;
+    line-height: 1.7;
+  }
+
+  /* Lists */
+  .blog-prose ul,
+  .blog-prose ol {
+    margin: 0 0 1rem;
+    padding-left: 1.25rem;
+  }
+
+  .blog-prose li {
+    line-height: 1.6;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Blockquotes */
+  .blog-prose blockquote {
+    margin: 1.25rem 0;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Tables */
+  .blog-prose table {
+    font-size: 0.85rem;
+    margin: 1rem 0;
+  }
+
+  .blog-prose th {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .blog-prose td {
+    padding: 0.35rem 0.5rem;
+  }
+
+  /* TOC */
+  .blog-toc {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+  }
+
+  .blog-toc-title {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-toc-link {
+    font-size: 0.85rem;
+  }
+
+  /* Callouts */
+  .hype-callout {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .hype-callout-note {
+    margin-top: 1rem;
+  }
+
+  /* Payoff chart stats */
+  .hype-payoff-stat-value {
+    font-size: 1.1rem;
+  }
+
+  /* Nav post links */
+  .blog-post-nav-title {
+    font-size: 0.85rem;
+  }
+}
