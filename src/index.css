@@ -1356,22 +1356,28 @@
 
 @media (max-width: 640px) {
   .hype-payoff-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0;
   }
 
   .hype-payoff-stat {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
+    gap: 0.5rem;
     padding: 0.5rem 0.75rem;
     border-radius: 0;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-  .hype-payoff-stat:last-child {
-    border-bottom: none;
+  .hype-payoff-stat:nth-child(odd):not(:last-child) {
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .hype-payoff-stat-label {
+    white-space: nowrap;
+    font-size: 0.6rem;
   }
 
   .hype-payoff-stat-hide-mobile {
@@ -1543,7 +1549,7 @@
 
   /* Payoff chart stats */
   .hype-payoff-stat-value {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
 
   /* Nav post links */

@@ -94,10 +94,6 @@ export function HypeTradePayoff() {
           <span className="hype-payoff-stat-label">MAX LOSS</span>
           <span className="hype-payoff-stat-value hype-payoff-loss">-${NET_PREMIUM}.00</span>
         </div>
-        <div className="hype-payoff-stat">
-          <span className="hype-payoff-stat-label">BREAKEVEN</span>
-          <span className="hype-payoff-stat-value hype-payoff-breakeven">${BREAKEVEN}.00</span>
-        </div>
       </div>
 
       {/* Chart */}
