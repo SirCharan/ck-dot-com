@@ -32,15 +32,20 @@ const VC_JOURNEY_SLUGS = new Set([
   "how-to-pitch",
 ]);
 
-const HIDDEN_SLUGS = new Set([...PROTECTED_PERPS_SUB_SLUGS, ...VC_JOURNEY_SLUGS]);
+const STOCKY_SLUGS = new Set([
+  "stocky-ai",
+]);
+
+const HIDDEN_SLUGS = new Set([...PROTECTED_PERPS_SUB_SLUGS, ...VC_JOURNEY_SLUGS, ...STOCKY_SLUGS]);
 
 interface BlogListClientProps {
   posts: SerializedPost[];
   subArticles: SerializedPost[];
   vcJourneyArticles?: SerializedPost[];
+  stockyArticles?: SerializedPost[];
 }
 
-export function BlogListClient({ posts, subArticles, vcJourneyArticles = [] }: BlogListClientProps) {
+export function BlogListClient({ posts, subArticles, vcJourneyArticles = [], stockyArticles = [] }: BlogListClientProps) {
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {
@@ -62,6 +67,14 @@ export function BlogListClient({ posts, subArticles, vcJourneyArticles = [] }: B
       const [vcPost] = list.splice(vcIdx, 1);
       const newPerpsIdx = list.findIndex((p) => p.slug === "perps-payoff");
       list.splice(newPerpsIdx + 1, 0, vcPost);
+    }
+    // Pin stocky-story right after vc-motivations
+    const vcMotivIdx = list.findIndex((p) => p.slug === "vc-motivations");
+    const stockyIdx = list.findIndex((p) => p.slug === "stocky-story");
+    if (vcMotivIdx !== -1 && stockyIdx !== -1 && stockyIdx !== vcMotivIdx + 1) {
+      const [stockyPost] = list.splice(stockyIdx, 1);
+      const newVcIdx = list.findIndex((p) => p.slug === "vc-motivations");
+      list.splice(newVcIdx + 1, 0, stockyPost);
     }
     return list;
   }, [posts, query]);
@@ -94,7 +107,7 @@ export function BlogListClient({ posts, subArticles, vcJourneyArticles = [] }: B
                       {post.title}
                     </Link>
                     <span className="blog-list-date">
-                      {post.date} · {post.readingTime} min read
+                      {post.date ? `${post.date} · ` : ""}{post.readingTime} min read
                     </span>
                     {post.excerpt && (
                       <p className="blog-list-excerpt">{post.excerpt}</p>
@@ -118,6 +131,14 @@ export function BlogListClient({ posts, subArticles, vcJourneyArticles = [] }: B
                       <BlogSeriesCollapsible
                         title="My VC Journey"
                         posts={vcJourneyArticles}
+                        numbered={false}
+                        className="mt-4"
+                      />
+                    )}
+                    {post.slug === "stocky-story" && stockyArticles.length > 0 && !query && (
+                      <BlogSeriesCollapsible
+                        title="Stocky"
+                        posts={stockyArticles}
                         numbered={false}
                         className="mt-4"
                       />

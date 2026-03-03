@@ -74,7 +74,7 @@ export default async function BlogPostPage({ params }: Props) {
         <article>
           <h1 className="blog-post-title">{post.title}</h1>
           <time className="blog-post-date">
-            {post.date} · {post.readingTime} min read
+            {post.date ? `${post.date} · ` : ""}{post.readingTime} min read
           </time>
 
           <BlogTableOfContents content={post.content} />

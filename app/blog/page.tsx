@@ -20,6 +20,10 @@ const VC_JOURNEY_ORDER = [
   "how-to-pitch",
 ];
 
+const STOCKY_ORDER = [
+  "stocky-ai",
+];
+
 export const metadata: Metadata = {
   title: "Writings",
   description:
@@ -71,6 +75,12 @@ export default function BlogIndexPage() {
       slug, title, date, excerpt, tags, readingTime,
     }));
 
+  const stockyArticles = STOCKY_ORDER.map((s) => getPostBySlug(s))
+    .filter((p): p is NonNullable<typeof p> => p !== null)
+    .map(({ slug, title, date, excerpt, tags, readingTime }) => ({
+      slug, title, date, excerpt, tags, readingTime,
+    }));
+
   const serializedPosts = allPosts.map(({ slug, title, date, excerpt, tags, readingTime }) => ({
     slug, title, date, excerpt, tags, readingTime,
   }));
@@ -96,7 +106,7 @@ export default function BlogIndexPage() {
           </a>
         </div>
 
-        <BlogListClient posts={serializedPosts} subArticles={subArticles} vcJourneyArticles={vcJourneyArticles} />
+        <BlogListClient posts={serializedPosts} subArticles={subArticles} vcJourneyArticles={vcJourneyArticles} stockyArticles={stockyArticles} />
       </main>
     </div>
   );
