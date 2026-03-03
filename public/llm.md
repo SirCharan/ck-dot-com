@@ -30,6 +30,8 @@ Protected perpetuals, DeFi mechanics, trading psychology, algorithmic trading, b
 | HYPE Trade | /blog/hype-trade |
 | Power Laws | /blog/power-law-waste |
 | Why Chase Money? | /blog/money-first |
+| The Stocky Story | /blog/stocky-story |
+| Stocky AI: The Money Printer | /blog/stocky-ai |
 
 ## Raw Markdown
 

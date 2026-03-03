@@ -107,7 +107,7 @@ export function BlogListClient({ posts, subArticles, vcJourneyArticles = [], sto
                       {post.title}
                     </Link>
                     <span className="blog-list-date">
-                      {post.date ? `${post.date} · ` : ""}{post.readingTime} min read
+                      {post.readingTime} min read
                     </span>
                     {post.excerpt && (
                       <p className="blog-list-excerpt">{post.excerpt}</p>
