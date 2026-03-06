@@ -11,7 +11,7 @@ import { BlogTableOfContents } from "@/components/blog/BlogTableOfContents";
 import { HypeTradePayoff } from "@/components/blog/HypeTradePayoff";
 import { HypeRatioSpread } from "@/components/blog/HypeRatioSpread";
 import { BlogFAQSchema } from "@/components/blog/BlogFAQSchema";
-import { CusdisComments } from "@/components/blog/CusdisComments";
+import { Remark42Comments } from "@/components/blog/Remark42Comments";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -170,7 +170,7 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </nav>
 
-          <CusdisComments slug={slug} title={post.title} />
+          <Remark42Comments />
 
           {post.faqs && post.faqs.length > 0 && (
             <>
