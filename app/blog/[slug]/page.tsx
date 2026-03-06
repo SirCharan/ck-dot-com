@@ -11,7 +11,7 @@ import { BlogTableOfContents } from "@/components/blog/BlogTableOfContents";
 import { HypeTradePayoff } from "@/components/blog/HypeTradePayoff";
 import { HypeRatioSpread } from "@/components/blog/HypeRatioSpread";
 import { BlogFAQSchema } from "@/components/blog/BlogFAQSchema";
-import { GiscusComments } from "@/components/blog/GiscusComments";
+import { CusdisComments } from "@/components/blog/CusdisComments";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -134,21 +134,6 @@ export default async function BlogPostPage({ params }: Props) {
             />
           )}
 
-          {post.faqs && post.faqs.length > 0 && (
-            <>
-              <BlogFAQSchema faqs={post.faqs} />
-              <section className="mt-10">
-                <h2 className="blog-h2">Frequently Asked Questions</h2>
-                {post.faqs.map((faq, i) => (
-                  <details key={i} className="mb-4 border-b border-gray-200 pb-4">
-                    <summary className="cursor-pointer font-semibold text-lg">{faq.question}</summary>
-                    <p className="mt-2 text-gray-600">{faq.answer}</p>
-                  </details>
-                ))}
-              </section>
-            </>
-          )}
-
           {post.tags && post.tags.length > 0 && (
             <div className="blog-tags mt-10">
               {post.tags.map((tag) => (
@@ -185,7 +170,22 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </nav>
 
-          <GiscusComments slug={slug} />
+          <CusdisComments slug={slug} title={post.title} />
+
+          {post.faqs && post.faqs.length > 0 && (
+            <>
+              <BlogFAQSchema faqs={post.faqs} />
+              <section className="mt-10">
+                <h2 className="blog-h2">Frequently Asked Questions</h2>
+                {post.faqs.map((faq, i) => (
+                  <details key={i} className="mb-4 border-b border-gray-200 pb-4">
+                    <summary className="cursor-pointer font-semibold text-lg">{faq.question}</summary>
+                    <p className="mt-2 text-gray-600">{faq.answer}</p>
+                  </details>
+                ))}
+              </section>
+            </>
+          )}
 
           <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-700">
             <Link href="/blog" className="blog-back-link">
