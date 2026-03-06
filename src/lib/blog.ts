@@ -9,12 +9,18 @@ import matter from "gray-matter";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
+export interface BlogFAQ {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
   date: string;
   excerpt?: string;
   tags?: string[];
+  faqs?: BlogFAQ[];
   content: string;
   rawContent: string;
   readingTime: number;
@@ -46,6 +52,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     date: data.date || "",
     excerpt: data.excerpt,
     tags: data.tags || [],
+    faqs: data.faqs || [],
     content,
     rawContent: raw,
     readingTime,

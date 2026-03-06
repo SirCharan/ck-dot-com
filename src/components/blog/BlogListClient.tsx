@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { Suspense, useState, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { BlogVote } from "@/components/blog/BlogVote";
 import { BlogProtectedPerpsCollapsible } from "@/components/blog/BlogProtectedPerpsCollapsible";
@@ -47,8 +48,17 @@ interface BlogListClientProps {
   stockyArticles?: SerializedPost[];
 }
 
-export function BlogListClient({ posts, subArticles, vcJourneyArticles = [], stockyArticles = [] }: BlogListClientProps) {
-  const [query, setQuery] = useState("");
+export function BlogListClient(props: BlogListClientProps) {
+  return (
+    <Suspense fallback={null}>
+      <BlogListClientInner {...props} />
+    </Suspense>
+  );
+}
+
+function BlogListClientInner({ posts, subArticles, vcJourneyArticles = [], stockyArticles = [] }: BlogListClientProps) {
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("q") || "");
 
   const filtered = useMemo(() => {
     const visible = posts.filter((p) => !HIDDEN_SLUGS.has(p.slug));

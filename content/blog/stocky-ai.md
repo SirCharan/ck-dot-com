@@ -3,6 +3,13 @@ title: "Stocky AI: The Money Printer"
 date: "2025-09-30"
 excerpt: "Fine-tuned Claude to trade Indian F&O and commodities — 15L capital, 16.57L profit, 73% win rate. Stocky AI in action."
 tags: ["stocky", "AI", "trading", "algo-trading"]
+faqs:
+  - question: "How does Stocky AI trade?"
+    answer: "Stocky AI uses fine-tuned Claude and Deepseek models to trade Indian F&O and commodities automatically. It analyzes weekly expiries on Bank Nifty, Nifty, and Sensex with real-time data pipelines."
+  - question: "What are Stocky AI's trading results?"
+    answer: "In its first year, Stocky AI generated 16.57L profit on 15L capital — 14.2L from commodities and 2.37L from F&O. It achieved a 73% win rate with 212 profitable days and only 2 loss days in the first 6 months."
+  - question: "Can AI really trade Indian markets profitably?"
+    answer: "Yes. Stocky AI demonstrated consistent profitability in Indian F&O and commodities markets with a Sharpe Ratio of 2.29 and Sortino Ratio of 5.98, proving AI can outperform in Indian market conditions."
 ---
 
 ## June 2025

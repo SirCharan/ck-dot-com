@@ -3,6 +3,13 @@ title: "Third Stint"
 date: "2025-12-15"
 excerpt: "Stocky AI products: Terminal, LLM, Fun, Analyse — building an AI-native hedge fund for Indian markets."
 tags: ["stocky", "AI", "trading", "hedge-fund"]
+faqs:
+  - question: "What is Stocky Terminal?"
+    answer: "Stocky Terminal is India's first global OSINT dashboard for traders. It tracks every news headline, Twitter feed, and video for crypto, commodities, and stocks, plus maps all of India's infrastructure — ports, railways, refineries, power grids, and trade routes."
+  - question: "What AI models does Stocky use?"
+    answer: "Stocky uses fine-tuned Deepseek V3 and Qwen3 (multi-lingual) models focused on Indian stock market and commodities. They have access to real-time data on block deals, bulk deals, supply chain disruptions, and more."
+  - question: "Is Stocky AI an AI-native hedge fund?"
+    answer: "Yes, Stocky AI is building towards becoming an AI-native hedge fund, responding to Y Combinator's RFS. With a 73% win rate, 2.29 Sharpe Ratio, and 5.98 Sortino Ratio, they're exploring PMS and AIF CAT III structures in India."
 ---
 
 ## AI Native Hedge Fund

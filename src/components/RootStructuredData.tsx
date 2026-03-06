@@ -54,8 +54,12 @@ export function RootStructuredData() {
     },
     inLanguage: "en-US",
     potentialAction: {
-      "@type": "ReadAction",
-      target: [`${SITE_URL}/blog`, `${SITE_URL}`],
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/blog?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
     },
   };
 
