@@ -56,6 +56,8 @@ Imagine putting a prompt for AI to give buy/sell signals based on what happening
 
 Will convert this to a high adrenaline, gamified UX and let people trade.
 
+![Stocky Fun](/images/stocky/stocky-fun-trading.png)
+
 Imagine replacing a 15 min insta scrolling session with 2-3 quick trades. (reduce time of trade and absolute PnL, increase overall brokerage)
 
 ## [Stocky Analyse](https://analyse.stockyai.xyz)

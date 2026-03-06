@@ -33,6 +33,7 @@ Protected perpetuals, DeFi mechanics, trading psychology, algorithmic trading, b
 | The Stocky Story | /blog/stocky-story |
 | Stocky AI: The Money Printer | /blog/stocky-ai |
 | Third Stint | /blog/stocky-third-stint |
+| Special Founder/Insights | /blog/stocky-insights |
 
 ## Raw Markdown
 
