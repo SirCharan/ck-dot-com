@@ -7,9 +7,18 @@ tags: ["stocky", "AI", "trading", "hedge-fund"]
 
 ## AI Native Hedge Fund
 
-Y Combinator put out a RFS for a AI Native Hedge Fund. Given past returns and already incoming interest, can explore a PMS or a AIF CAT III.
+Y Combinator put out a RFS for a AI Native Hedge Fund.
 
-Focus on commodities will apply to YC too, if selected will build a global hedge fund.
+Stocky stats:
+
+- 73% win rate
+- Win Loss Ratio: 1.66
+- Sharpe Ratio: 2.29
+- Sortino Ratio: 5.98
+
+Given past returns and already incoming interest, can explore a PMS or a AIF CAT III in India
+
+Will apply to YC, focus on commodities
 
 ## Making Trading Cool & Fun
 
