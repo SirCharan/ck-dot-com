@@ -28,10 +28,13 @@ export function BlogTableOfContents({ content }: BlogTableOfContentsProps) {
 
       const match = line.match(/^(#{2,3})\s+(.+)/);
       if (match) {
+        // Strip markdown link syntax: [text](url) → text
+        const raw = match[2].replace(/[*_`]/g, "");
+        const text = raw.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
         items.push({
           level: match[1].length,
-          text: match[2].replace(/[*_`]/g, ""),
-          id: slugify(match[2].replace(/[*_`]/g, "")),
+          text,
+          id: slugify(text),
         });
       }
     }

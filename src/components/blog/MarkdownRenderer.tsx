@@ -5,8 +5,17 @@
  * Supports: headings, blockquotes, code blocks (with copy), lists, links, math (KaTeX).
  */
 
-import React, { useCallback, lazy, Suspense } from "react";
+import React, { useCallback, lazy, Suspense, ReactNode } from "react";
 import { slugify } from "@/lib/slugify";
+
+function extractText(node: ReactNode): string {
+  if (typeof node === "string") return node;
+  if (typeof node === "number") return String(node);
+  if (!node) return "";
+  if (Array.isArray(node)) return node.map(extractText).join("");
+  if (typeof node === "object" && "props" in node) return extractText(node.props.children);
+  return "";
+}
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
@@ -81,13 +90,11 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
             <h1 className="blog-h1">{children}</h1>
           ),
           h2: ({ children }) => {
-            const text = typeof children === "string" ? children : String(children);
-            const id = slugify(text);
+            const id = slugify(extractText(children));
             return <h2 id={id} className="blog-h2">{children}</h2>;
           },
           h3: ({ children }) => {
-            const text = typeof children === "string" ? children : String(children);
-            const id = slugify(text);
+            const id = slugify(extractText(children));
             return <h3 id={id} className="blog-h3">{children}</h3>;
           },
           p: ({ children }) => (
