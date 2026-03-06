@@ -9,6 +9,8 @@ tags: ["stocky", "AI", "trading", "hedge-fund"]
 
 Y Combinator put out a RFS for a AI Native Hedge Fund.
 
+![Stocky Financial Overview](/images/stocky/stocky-financial-overview.png)
+
 Stocky stats:
 
 - 73% win rate
