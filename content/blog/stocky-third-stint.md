@@ -24,7 +24,7 @@ Will apply to YC, focus on commodities
 
 ## Making Trading Cool & Fun
 
-## Stocky Terminal
+## [Stocky Terminal](https://terminal.stockyai.xyz/)
 
 India's first global OSINT dashboard. Tracks every news headline, twitter & video feed for crypto, commodities & stock market.
 
@@ -36,7 +36,7 @@ Makes trading cool, imagine 4 screen setups, people tracking every event, tradin
 
 ![Stocky Terminal](/images/stocky/stocky-terminal.png)
 
-## Stocky LLM
+## [Stocky LLM](https://stocky-ai.vercel.app)
 
 ![Stocky AI](/images/stocky/stocky-llm-compare.png)
 
@@ -46,7 +46,7 @@ A fine tuned Claude 4.6 Opus with full focus on indian stock market and commodit
 
 Simple 1 button click for most requested features + backtesting tools, connect to Zerodha for portfolio analysis and live trading.
 
-## Stocky Fun
+## [Stocky Fun](https://stocky-fun.vercel.app/)
 
 Bringing LLM intellegence into live video building real time vision APIs with faster than human eye response speeds. YC companies like Overshoot are building AI for security, OCR, sports.
 
@@ -59,3 +59,5 @@ Will convert this to a high adrenaline, gamified UX and let people trade.
 ![AI Analysis](/images/stocky/stocky-fun-analysis.png)
 
 ![Stocky AI quick actions](/images/stocky/stocky-llm-buttons.png)
+
+## [Stocky Analyse](https://analyse.stockyai.xyz)
