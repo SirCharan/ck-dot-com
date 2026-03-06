@@ -34,6 +34,7 @@ const VC_JOURNEY_SLUGS = new Set([
 
 const STOCKY_SLUGS = new Set([
   "stocky-ai",
+  "stocky-third-stint",
 ]);
 
 const HIDDEN_SLUGS = new Set([...PROTECTED_PERPS_SUB_SLUGS, ...VC_JOURNEY_SLUGS, ...STOCKY_SLUGS]);

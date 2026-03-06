@@ -22,6 +22,7 @@ const VC_JOURNEY_ORDER = [
 
 const STOCKY_ORDER = [
   "stocky-ai",
+  "stocky-third-stint",
 ];
 
 export const metadata: Metadata = {

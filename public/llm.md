@@ -32,6 +32,7 @@ Protected perpetuals, DeFi mechanics, trading psychology, algorithmic trading, b
 | Why Chase Money? | /blog/money-first |
 | The Stocky Story | /blog/stocky-story |
 | Stocky AI: The Money Printer | /blog/stocky-ai |
+| Third Stint | /blog/stocky-third-stint |
 
 ## Raw Markdown
 
