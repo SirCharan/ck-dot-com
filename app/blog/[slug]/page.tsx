@@ -24,6 +24,23 @@ export async function generateStaticParams() {
 
 const SITE_URL = "https://charandeepkapoor.com";
 
+const SERIES: string[][] = [
+  ["perps-payoff", "exchange-payoffs", "lps-downside", "web2-perps", "clubs-perps", "why-perps", "perps-next", "perps-pm-design", "extract-money"],
+  ["vc-motivations", "the-future", "my-ideal-company", "how-to-pitch"],
+  ["stocky-story", "stocky-ai", "stocky-third-stint", "stocky-insights"],
+];
+
+function getSeriesAdjacent(slug: string) {
+  for (const series of SERIES) {
+    const idx = series.indexOf(slug);
+    if (idx >= 0) return {
+      prev: idx > 0 ? getPostBySlug(series[idx - 1]) : null,
+      next: idx < series.length - 1 ? getPostBySlug(series[idx + 1]) : null,
+    };
+  }
+  return null;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
@@ -57,7 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  const { prev, next } = getAdjacentPosts(slug);
+  const { prev, next } = getSeriesAdjacent(slug) ?? getAdjacentPosts(slug);
 
   if (!post) notFound();
 
