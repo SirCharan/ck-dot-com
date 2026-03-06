@@ -40,7 +40,7 @@ Makes trading cool, imagine 4 screen setups, people tracking every event, tradin
 
 ![Stocky AI](/images/stocky/stocky-llm-compare.png)
 
-A fine tuned Claude 4.6 Opus with full focus on indian stock market and commodities. Access to real time data pipelines on block deals, bulk deals, supply chain disruptions etc from Stocky Terminal.
+Fine tuned models (Deepseek V3, Qwen3(multi-lingual)) with full focus on indian stock market and commodities. Access to real time data pipelines on block deals, bulk deals, supply chain disruptions etc from data sources built for Stocky Terminal.
 
 ![Stocky AI quick actions](/images/stocky/stocky-llm-buttons.png)
 
@@ -48,7 +48,7 @@ Simple 1 button click for most requested features + backtesting tools, connect t
 
 ## [Stocky Fun](https://stocky-fun.vercel.app/)
 
-Bringing LLM intellegence into live video building real time vision APIs with faster than human eye response speeds. YC companies like Overshoot are building AI for security, OCR, sports.
+Bringing LLM intellegence into live video,real time vision APIs with faster than human eye response speeds. YC companies are building AI for security, OCR, sports.
 
 I just thought lets make it a consumer use case.
 
@@ -56,8 +56,14 @@ Imagine putting a prompt for AI to give buy/sell signals based on what happening
 
 Will convert this to a high adrenaline, gamified UX and let people trade.
 
-![AI Analysis](/images/stocky/stocky-fun-analysis.png)
-
-![Stocky AI quick actions](/images/stocky/stocky-llm-buttons.png)
+Imagine replacing a 15 min insta scrolling session with 2-3 quick trades. (reduce time of trade and absolute PnL, increase overall brokerage)
 
 ## [Stocky Analyse](https://analyse.stockyai.xyz)
+
+Hedge fund level analysis for your past trading history. AI insights for what you're doing right and what you need to improve.
+
+![Stocky Analyse](/images/stocky/stocky-analyse.png)
+
+## [Hands Free Trading](https://www.linkedin.com/posts/charandeep-kapoor_itc-claude-zerodha-activity-7330161190741987329-Ge1d)
+
+Execute trades, backtest strategies with just your voice. (sounds cool!)

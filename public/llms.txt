@@ -42,7 +42,7 @@ Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of e
 
 - [The Stocky Story](https://charandeepkapoor.com/blog/stocky-story): Trading since 16 — building trading businesses, communities, and bots. Stocky is the culmination of all interests.
 - [Stocky AI: The Money Printer](https://charandeepkapoor.com/blog/stocky-ai): Fine-tuned Claude to trade Indian markets — 15L capital, 3.6L profit in 4 months, 51 days zero losses. Overall: 16.57L profit across F&O and commodities.
-- [Third Stint](https://charandeepkapoor.com/blog/stocky-third-stint): The AI Arc — AI Native Hedge Fund (YC RFS), Stocky Terminal (OSINT dashboard), Stocky LLM (fine-tuned Claude 4.6 Opus), Stocky Fun (live vision APIs for trading).
+- [Third Stint](https://charandeepkapoor.com/blog/stocky-third-stint): The AI Arc — AI Native Hedge Fund (YC RFS), Stocky Terminal (OSINT dashboard), Stocky LLM (fine-tuned Deepseek V3, Qwen3), Stocky Fun (live vision APIs for trading).
 
 ## RSS & Tools
 
