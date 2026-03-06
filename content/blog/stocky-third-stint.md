@@ -23,6 +23,8 @@ Can track earthquakes, monsoons, war updates, FED news, macro all in 1 place.
 
 Makes trading cool, imagine 4 screen setups, people tracking every event, trading commodities 12+ hours (Industry like feeling at home with your friends)
 
+![Stocky Terminal](/images/stocky/stocky-terminal.png)
+
 ## Stocky LLM
 
 ![Stocky AI](/images/stocky/stocky-llm-compare.png)
