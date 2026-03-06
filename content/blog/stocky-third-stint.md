@@ -1,7 +1,7 @@
 ---
 title: "Third Stint"
-date: ""
-excerpt: "The AI Arc: Hedge Fund, Terminal, LLM & Fun."
+date: "2025-12-15"
+excerpt: "Stocky AI products: Terminal, LLM, Fun, Analyse — building an AI-native hedge fund for Indian markets."
 tags: ["stocky", "AI", "trading", "hedge-fund"]
 ---
 

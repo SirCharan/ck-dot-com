@@ -57,6 +57,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       siteName: "Charandeep Kapoor",
+      publishedTime: post.date || undefined,
+      authors: ["Charandeep Kapoor"],
+      tags: post.tags,
     },
     twitter: {
       card: "summary_large_image",

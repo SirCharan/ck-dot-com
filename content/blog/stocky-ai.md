@@ -1,7 +1,7 @@
 ---
 title: "Stocky AI: The Money Printer"
-date: ""
-excerpt: "Fine-tuned Claude, gave it 15L, zero losses for 4 months."
+date: "2025-09-30"
+excerpt: "Fine-tuned Claude to trade Indian F&O and commodities — 15L capital, 16.57L profit, 73% win rate. Stocky AI in action."
 tags: ["stocky", "AI", "trading", "algo-trading"]
 ---
 

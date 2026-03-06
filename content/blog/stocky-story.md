@@ -1,7 +1,7 @@
 ---
 title: "The Stocky Story"
-date: ""
-excerpt: "Always a trader, always a gambler."
+date: "2025-06-01"
+excerpt: "Always a trader, always a gambler. Trading since 16, building AI trading systems for Indian markets."
 tags: ["stocky", "trading", "AI"]
 ---
 

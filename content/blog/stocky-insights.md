@@ -1,7 +1,7 @@
 ---
 title: "Special Founder/Insights"
-date: ""
-excerpt: "IIT. Trading since 16. Ex hedge fund quant. AI native."
+date: "2026-01-15"
+excerpt: "Stocky AI founder: IIT, trading since 16, ex hedge fund quant. Strategy, monetization roadmap, and vision for AI trading in India."
 tags: ["stocky", "trading", "founder"]
 ---
 

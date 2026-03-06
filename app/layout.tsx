@@ -10,9 +10,9 @@ const GA_ID = "G-J6SY9N1Y3W";
 const SITE_URL = "https://charandeepkapoor.com";
 
 const DEFAULT_DESCRIPTION =
-  "Charandeep Kapoor - 6+ years in crypto, quant finance & product. Creator of Stocky AI (100%+ ROI). Essays on protected perps, DeFi, trading psychology. Expert in algorithmic trading, blockchain, mathematical finance.";
+  "Charandeep Kapoor - Creator of Stocky AI (AI-powered trading for Indian markets, 100%+ ROI, 73% win rate). 6+ years in crypto, quant finance & product. Essays on protected perps, DeFi, algorithmic trading, and trading psychology.";
 
-const DEFAULT_TITLE = "Charandeep Kapoor | Crypto, Quant Finance & Mathematics Expert";
+const DEFAULT_TITLE = "Charandeep Kapoor | Stocky AI Creator, Quant Finance & Crypto Expert";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -23,16 +23,22 @@ export const metadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   keywords: [
     "Charandeep Kapoor",
+    "Stocky AI",
+    "AI trading India",
+    "algorithmic trading India",
+    "AI stock trading",
     "crypto expert",
     "quantitative finance",
-    "algorithmic trading",
-    "blockchain",
-    "DeFi",
-    "Stocky AI",
     "protected perps",
+    "DeFi",
     "trading psychology",
-    "mathematical finance",
+    "Zerodha AI trading",
+    "commodities trading India",
   ],
+  verification: {
+    // Replace with actual code from Google Search Console
+    // google: "YOUR_GSC_VERIFICATION_CODE",
+  },
   authors: [{ name: "Charandeep Kapoor", url: SITE_URL }],
   creator: "Charandeep Kapoor",
   publisher: "Charandeep Kapoor",
