@@ -175,6 +175,7 @@ export default async function BlogPostPage({ params }: Props) {
               <BlogFAQSchema faqs={post.faqs} />
               <section className="mt-10">
                 <h2 className="blog-h2">Frequently Asked Questions</h2>
+                <p className="text-xs text-gray-400 mb-4">AI-generated</p>
                 {post.faqs.map((faq, i) => (
                   <details key={i} className="mb-4 border-b border-gray-200 pb-4">
                     <summary className="cursor-pointer font-semibold text-lg">{faq.question}</summary>
