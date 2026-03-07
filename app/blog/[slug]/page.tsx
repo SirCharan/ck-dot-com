@@ -170,8 +170,6 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </nav>
 
-          <Remark42Comments />
-
           {post.faqs && post.faqs.length > 0 && (
             <>
               <BlogFAQSchema faqs={post.faqs} />
@@ -186,6 +184,8 @@ export default async function BlogPostPage({ params }: Props) {
               </section>
             </>
           )}
+
+          <Remark42Comments />
 
           <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-700">
             <Link href="/blog" className="blog-back-link">

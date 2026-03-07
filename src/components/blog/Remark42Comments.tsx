@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const REMARK_HOST = "https://remark42-production-fcfc.up.railway.app";
+const REMARK_HOST = "/remark42";
 const SITE_ID = "charandeepkapoor";
 
 declare global {
