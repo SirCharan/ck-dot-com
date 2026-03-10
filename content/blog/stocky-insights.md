@@ -14,12 +14,6 @@ faqs:
 
 ## Special Founder
 
-### Stocky Terminal
-
-![Stocky Terminal](/images/special%20founder/stocky%20terminal.png)
-
-![AI Insights](/images/special%20founder/aiinsights.png)
-
 - Top 0.05% in JEE, **IIT Kanpur** graduate.
 - Hedge fund quant trader, managed $750K, returned **35%** in a delta-neutral strategy.
 - Ex-founder, built something cool in crypto: **Timelock** ([Perps without liquidations](https://perps.timelock.trade/)).
@@ -71,6 +65,10 @@ The system gives a signal based on user inputs (RSI, MACD, volume, etc.), which 
 
 We want trading to feel like a cool, fun game instead of the serious business of “becoming profitable.”
 
+![Stocky Terminal](/images/special%20founder/stocky%20terminal.png)
+
+![AI Insights](/images/special%20founder/aiinsights.png)
+
 ### Terminal.stockyai.xyz – The Global Trading Portal
 
 - [terminal.stockyai.xyz](https://terminal.stockyai.xyz/) is a **global OSINT dashboard**.  
@@ -106,5 +104,5 @@ This can become anything from a Bloomberg terminal to a Zerodha competitor to a 
 - **Timelock Perps without liquidations**: [perps.timelock.trade](https://perps.timelock.trade/).
 - **Timelock Options**: custom expiry, custom strike options (abandoned).
 - **Stocky LLM**: ChatGPT for traders—news, research, Q&A, and trade execution all in one place: [llm.stockyai.xyz](https://llm.stockyai.xyz/).
-- **Voice-powered trading for Zerodha**: looks cool and showcases UX and AI-first thinking; demoed here: [Voice Trading with Zerodha and Claude](https://www.linkedin.com/posts/charandeep-kapoor_itc-claude-zerodha-activity-7330161190741987329-Ge1d/?utm_source=share&utm_medium=member_desktop&rcm=ACoAACo1UwcBKImygIilymyjMGilKAFSb3fWG7Y).
+- **Voice-powered trading for Zerodha** – demo and details on LinkedIn: [Voice Trading with Zerodha and Claude](https://www.linkedin.com/posts/charandeep-kapoor_itc-claude-zerodha-activity-7330161190741987329-Ge1d/).
 - **Stocky Analyse**: hedge-fund-level trade analysis with AI insights on what is working and what to improve in your trading style (currently for Zerodha).
