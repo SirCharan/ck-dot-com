@@ -45,6 +45,7 @@ const About: React.FC = () => {
                   <li>Top 0.1% in academics. Engineering, IIT Kanpur.</li>
                 </ul>
               </div>
+
             </div>
           </GlassCard>
         </motion.div>

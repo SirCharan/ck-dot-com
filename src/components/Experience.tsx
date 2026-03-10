@@ -16,11 +16,12 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     company: "Timelock Trade",
-    position: "Founder",
+    position: "Founder / Product Manager",
+    duration: "Apr 2025 – Present",
     description: (
       <Collapsible>
         <p className="text-gray-300">
-          Create, Launch & Bet on anything.
+          Bootstrapped Timelock Trade and led a cross-functional team of 6 across tech, product, design, BD and marketing.
         </p>
         <CollapsibleTrigger asChild>
           <button
@@ -35,8 +36,7 @@ const experiences: ExperienceItem[] = [
         <CollapsibleContent>
           <ul className="list-disc list-inside space-y-2 text-gray-300 mt-3 pl-0">
             <li>House of Finance (perpetual futures, options, prediction markets, binary options etc.) decentralized, oracle-less and liquidation free.</li>
-            <li>Led end-to-end product vision, strategy, and execution to build a DeFi protocol from scratch on top of Uniswap</li>
-            <li>Designed core vault architecture where LPs earn Uniswap fees, trader premiums, and stablecoin yields (up to 15% APY)</li>
+            <li>Bootstrapped and led a team of 6; owned cross-functional execution across tech, product, design, BD and marketing.</li>
             <li>Achieved $7.3M in trading volume, $2M Total Value Locked (TVL), and onboarded 1,000+ active users on Monad testnet.</li>
             <li>
               <a href="https://www.canva.com/design/DAGm2s_RFrg/do31HlTouT9NRVeG3pjH8w/edit?utm_content=DAGm2s_RFrg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" className="crypto-link" target="_blank" rel="noopener noreferrer">Pitch Deck</a> | <a href="https://docs.timelock.trade/docs" className="crypto-link" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://perps.timelock.trade/" className="crypto-link" target="_blank" rel="noopener noreferrer">Perps</a> | <a href="https://swap.timelock.trade/" className="crypto-link" target="_blank" rel="noopener noreferrer">Swap</a>
@@ -48,11 +48,12 @@ const experiences: ExperienceItem[] = [
   },
   {
     company: "Diffusion Labs",
-    position: "Founding Engineer",
+    position: "Product Manager",
+    duration: "Dec 2023 – Apr 2025",
     description: (
       <Collapsible>
         <p className="text-gray-300">
-          Built prediction markets & liquidation free lending
+          0→1 product leader for DeFi protocols, prediction markets and liquidation-free lending.
         </p>
         <CollapsibleTrigger asChild>
           <button
@@ -66,10 +67,10 @@ const experiences: ExperienceItem[] = [
         </CollapsibleTrigger>
         <CollapsibleContent>
           <ul className="list-disc list-inside space-y-2 text-gray-300 mt-3 pl-0">
-            <li>Defined product roadmap, mechanism design for liquidation-free lending; developed dynamic interest rate & risk pricing models.</li>
-            <li>Drove go-to-market and community growth strategy, scaling to 20,000+ users and $50M TVL within six months of launch.</li>
-            <li>Spearheaded the launch of <a href="https://puffthedragon.xyz/" className="crypto-link" target="_blank" rel="noopener noreferrer">Puff</a>, a +EV prediction marketplace that reached $75M market cap and generated $2.5M in revenue.</li>
-            <li>Partnered cross-functionally with design, engineering, and growth teams and scaled live products with measurable user traction.</li>
+            <li>0→1: Defined roadmap and led a 15-person team across product, engineering, design and growth for Methlab.</li>
+            <li>Scaled Methlab to 20,000+ users and $50M TVL in 6 months with tight GTM and community strategy.</li>
+            <li>0→1: Launched <a href="https://puffthedragon.xyz/" className="crypto-link" target="_blank" rel="noopener noreferrer">Puff</a>, a +EV prediction marketplace that reached $75M market cap and generated $2.5M in revenue.</li>
+            <li>Partnered cross-functionally with design, engineering, and growth teams to ship and scale live products with measurable traction.</li>
           </ul>
         </CollapsibleContent>
       </Collapsible>
@@ -78,6 +79,7 @@ const experiences: ExperienceItem[] = [
   {
     company: "Delta Exchange",
     position: "Product & Growth",
+    duration: "Jun 2023 – Jul 2024",
     description: (
       <Collapsible>
         <p className="text-gray-300">
@@ -105,7 +107,8 @@ const experiences: ExperienceItem[] = [
             <div>
               <h4 className="font-orbitron text-sm font-bold uppercase tracking-wider text-[var(--neon-cyan)] mb-2">Growth</h4>
               <ul className="list-disc list-inside space-y-2 text-gray-300 pl-0">
-                <li>Led growth on Youtube, channel grew from 3k to 25k subs in 9 months. Shared live trading strategies, market news, product explainers. Took user interviews and collated feedback.</li>
+                <li>Scaled social and education verticals; grew YouTube from 3K → 25K subscribers (+733%) in ~6 months.</li>
+                <li>Led interactive live-trading sessions focused on strategy explainers, algo trading setups, AMAs and user feedback collection.</li>
               </ul>
             </div>
           </div>
@@ -114,12 +117,13 @@ const experiences: ExperienceItem[] = [
     ),
   },
   {
-    company: "Heru Finance",
-    position: "Investment Analyst",
+    company: "Stader Labs",
+    position: "Analyst",
+    duration: "Mar 2023 – Nov 2023",
     description: (
       <Collapsible>
         <p className="text-gray-300">
-          Managed $500K, generated 30%+
+          On-chain analytics and treasury optimisation for multi-chain staking products.
         </p>
         <CollapsibleTrigger asChild>
           <button
@@ -133,9 +137,37 @@ const experiences: ExperienceItem[] = [
         </CollapsibleTrigger>
         <CollapsibleContent>
           <ul className="list-disc list-inside space-y-2 text-gray-300 mt-3 pl-0">
-            <li>Managed &gt;$500K fund, focusing on delta neutral yields &gt;30% from arbitrage, basis trading and exploiting pricing inefficiencies.</li>
-            <li>Engineered hedging strategies via derivatives to offset &gt;$50M portfolio exposures and mitigate drawdown risk across market cycles.</li>
-            <li>Conducted end-to-end technical due diligence and risk assessments on DeFi protocols for seed investments for the VC arm</li>
+            <li>Delivered data-driven insights from blockchain analytics to guide Stader’s token launch, cross-chain growth and partnership strategy.</li>
+            <li>Optimised stablecoin treasury yield generation using AMMs, lending, looping and Pendle.</li>
+          </ul>
+        </CollapsibleContent>
+      </Collapsible>
+    ),
+  },
+  {
+    company: "Heru Finance",
+    position: "Trader & Investment Analyst",
+    duration: "May 2022 – Feb 2023",
+    description: (
+      <Collapsible>
+        <p className="text-gray-300">
+          Managed a $500K fund with a focus on delta-neutral DeFi strategies and risk management.
+        </p>
+        <CollapsibleTrigger asChild>
+          <button
+            type="button"
+            className="group flex items-center gap-1.5 mt-2 text-[var(--neon-cyan)] hover:text-[var(--neon-purple)] transition-colors font-rajdhani text-sm uppercase tracking-wider cursor-pointer"
+          >
+            <span className="group-data-[state=open]:hidden">Show more</span>
+            <span className="hidden group-data-[state=open]:inline">Show less</span>
+            <ChevronDown className="w-4 h-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+          </button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <ul className="list-disc list-inside space-y-2 text-gray-300 mt-3 pl-0">
+            <li>Managed $500K fund, targeting &gt;30% delta-neutral yields from arbitrage, basis trading and pricing inefficiencies.</li>
+            <li>Engineered hedging strategies using derivatives to offset &gt;$5M portfolio exposures and mitigate drawdowns across market cycles.</li>
+            <li>Conducted technical due diligence and risk assessments on DeFi protocols for seed investments for the VC arm.</li>
           </ul>
         </CollapsibleContent>
       </Collapsible>
@@ -144,6 +176,7 @@ const experiences: ExperienceItem[] = [
   {
     company: "Tykhe Block Ventures",
     position: "VC Analyst",
+    duration: "Mar 2023 – Nov 2023",
     description: (
       <Collapsible>
         <p className="text-gray-300">
@@ -163,6 +196,34 @@ const experiences: ExperienceItem[] = [
           <ul className="list-disc list-inside space-y-2 text-gray-300 mt-3 pl-0">
             <li>Conducted <strong>technical due diligence</strong> on DeFi protocols, identifying critical mechanism flaws.</li>
             <li>Supported portfolio company <strong>NFTPerp</strong> in developing trading mechanisms and derivative pricing.</li>
+          </ul>
+        </CollapsibleContent>
+      </Collapsible>
+    ),
+  },
+  {
+    company: "Valiane Solutions",
+    position: "Digital Marketing Executive",
+    duration: "Jul 2020 – Feb 2023",
+    description: (
+      <Collapsible>
+        <p className="text-gray-300">
+          Led multi-channel digital marketing and shipped an NLP-powered support widget as a college project.
+        </p>
+        <CollapsibleTrigger asChild>
+          <button
+            type="button"
+            className="group flex items-center gap-1.5 mt-2 text-[var(--neon-cyan)] hover:text-[var(--neon-purple)] transition-colors font-rajdhani text-sm uppercase tracking-wider cursor-pointer"
+          >
+            <span className="group-data-[state=open]:hidden">Show more</span>
+            <span className="hidden group-data-[state=open]:inline">Show less</span>
+            <ChevronDown className="w-4 h-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+          </button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <ul className="list-disc list-inside space-y-2 text-gray-300 mt-3 pl-0">
+            <li>Led a team of 3 for full-cycle content creation, publishing, and multi-channel marketing campaigns and SEO improvements for clients.</li>
+            <li>Built an NLP-powered chat support widget for customer support (before Intercom) and sold it to clients as a college project.</li>
           </ul>
         </CollapsibleContent>
       </Collapsible>
