@@ -12,221 +12,167 @@ faqs:
     answer: "Charandeep Kapoor is an IIT graduate who's been trading since 16, managed $750k as a hedge fund quant, with 12+ hours daily screen time. He combines founder-led marketing with consistent shipping and an entirely trading-focused team."
 ---
 
-> *This page is a living memo on why Stocky AI exists, who is building it, and what we’ve learned about making trading feel like a game instead of a chore.*
-
 ## Special Founder
 
-> *Top 0.05% in JEE. IIT Kanpur. Ex–hedge fund quant trader.*
+> *I’m a founder, quant, and trader obsessed with building better ways to trade — and making it fun again.*
 
-- **IIT Kanpur, top 0.05% in JEE**  
-  Trading since 16, deeply technical, and comfortable thinking in probabilities, edge and risk.
-- **Hedge fund quant trader**  
-  Managed **$750k** in a **delta-neutral book**, returning **35%+** while keeping risk tightly controlled.
-- **Ex-founder in crypto (Timelock)**  
-  Built **Timelock**, a crypto product experimenting with **perps without liquidations** and **custom-expiry options**.
-- **Stocky AI is not theory**  
-  I have already seen **100%+ returns** using Stocky AI internally. The tools work in the real world before they touch users.
-- **A team that actually trades**  
-  The core team actively trades **crypto, forex, weather, commodities, and almost every liquid market**.
-- **12+ hours of screen time, daily**  
-  Trading is not just work—it *is* the hobby. Markets are open, screens are on.
-- **Founder-led marketing, proven distribution**  
-  Content-led growth with **100k+ weekly views**, **9k+ followers**, and experiments across multiple revenue streams.
+- **Top 0.05% in JEE. IIT Kanpur.**
+- **Hedge fund quant trader** – managed **\$750K**, returned **35% delta-neutral**.
+- **Ex-founder**, built something cool in crypto (**Timelock**).
+- **100%+ returns using Stocky AI** (*it works!*).
+- **Team trades crypto, forex, weather, and almost every market.**
+- **12+ hours screen time** – trading is my (our) hobby, not just work.
+- **Founder-led marketing** – 100k+ weekly views, 9k followers, explored multiple revenue sources.
 
 ---
 
-## Thesis: Where Stocky AI Plays
+## Thesis
 
-> *RMG (real-money gaming) is getting regulated out. Gambling capital does not disappear; it migrates.*
+> *RMG is on its way out. That gambling capital needs a new, better-designed home.*
 
-- **RMG out → capital needs a new arena**  
-  As RMG faces regulatory pressure, the same audience will look for **high-adrenaline, money-linked games** elsewhere.
-- **Replace 15-minute Instagram scrolls with trading sessions**  
-  Modern attention comes in **short, 5–15 minute windows**. We want those windows to go to **trading**, not reels.
-- **Trading should feel like a cool, social game**  
-  Not a lonely spreadsheet obsession. Think **friend groups, shared PnLs, bragging rights**, and **fast decisions**.
-- **More trades, shorter trades, lower decision fatigue**  
-  - Reduce **time-to-decision** from minutes to **under 60 seconds**  
-  - Increase **number of trades** (scalping, quick rotations)  
-  - Reduce **average trade duration** (aim for **< 15 minutes** per idea)  
-  - Encourage **smaller size, more frequency** → more brokerage, less chance of catastrophic loss
-- **Our edge: commodities and global markets**  
-  - **Commodities** (gold, crude, etc.) are **less crowded** than large-cap equities  
-  - **Extended trading hours** (all-day vs 6-hour equity sessions)  
-  - Global macro + **forex** + **US stocks** provide a **24×7 canvas** for ideas.
+- **RMG out → gambling capital needs a new platform.**
+- **Replace Instagram scrolls with trading.**
+- **Make trading a cool, fun, social game** instead of something that feels inaccessible or boring.
+- **Reduce decision fatigue to trade**, increase number of trades, and reduce trade duration → more brokerage, less overall loss.
+- **Edge in commodities**: non‑competitive market, long session **(all-day vs 6‑hour equity markets)**.
+- **Globalisation of trading** → trade **commodities, forex, and US stocks** from a single system.
 
 ---
 
-## Insight 1: What the RMG Audience Actually Likes
+## Insight 1 – What RMG audiences actually like
 
-> *The RMG user is not “a gambler”. They are optimising for emotion, pace and social status.*
+From real-money gaming, we know what this audience enjoys:
 
-From watching RMG and casino-style products, a few patterns are obvious:
+- **High adrenaline, casino‑style UX.**
+- **Quick play-and-finish loops** (*\<15–30 minute* game duration).
+- **24‑hour markets** – the ability to play whenever they want.
+- **Social capital** – form groups, discuss games and strategy, share scores and outcomes.
 
-- **High-adrenaline, casino-like UX**  
-  Fast feedback loops, bright states, clear win/loss moments.
-- **Short game cycles**  
-  Typical session is **< 15–30 minutes**. Users want to *play, finish, feel something, move on*.
-- **24-hour access**  
-  The game should be available whenever they have a free window, not just 9:15–3:30.
-- **Social capital**  
-  - Groups and chats  
-  - Shared screenshots  
-  - “What are you playing today?” moments  
-  Strategy and banter matter as much as money.
+### How to make them trade futures instead – Stocky Fun
 
-### How to move them from RMG → Stocky Fun (Futures & Trading)
+1. **Gamified UX + social layer**
+   - Chat, groups, inline reactions.
+   - Share PnL and “what your friends are trading”.
+   - Leaderboards and social proof, without turning it into pure gambling.
 
-1. **Gamified UX + Social Layer**
-   - In-app **chat and groups**
-   - **Share PnL** and positions with friends
-   - See **what your friends are trading** and why
-   - Leaderboards and streaks tuned to **discipline and consistency**, not reckless YOLO
+2. **AI signals as the “thinking brain”**
+   - Reduce the flow: *open app → research → signal → trade* to **\<1 minute**.
+   - Replace the user’s manual thinking process (*RSI levels, support/resistance, indicators*) with **an AI prompt**.
+   - AI returns a **Buy/Sell** signal with a **confidence level**, not a guarantee.
 
-2. **AI Signals as a First-Class Citizen**
-   - Goal: **time from app open → research → signal → trade < 60 seconds**
-   - Replace the manual “RSI / MACD / support-resistance mental math” with a **single AI prompt**  
-   - User input:  
-     - Market (e.g. gold, NIFTY, BTC)  
-     - Context (RSI, MACD, volume, levels, news)  
-   - AI output:  
-     - **Buy / Sell** suggestion  
-     - **Confidence score**  
-     - Tight **time horizon** (e.g. “next 15 minutes”)  
-   - The point is not **100% strike rate**. The point is **crushing research time** and making the workflow *addictive*.
+3. **Create a new behaviour: trade instead of scroll**
+   - Capture the **\<15‑minute windows of free time** that currently go to reels/shorts.
+   - Turn them into **micro trading sessions**.
 
-3. **New Behaviour: Trading Instead of Reels**
-   - Take the 5–15 minute boredom window and seed a habit:  
-     *“Open Stocky → get a signal → place a small trade → close in 10–15 minutes.”*
-   - If the UX is crisp and the emotional payoff is high, this becomes the **default micro-activity**.
+4. **Increase number of trades, reduce risk per trade**
+   - Encourage **small scalps** – promote **\$5–\$10 profit & close within ~15 minutes.**
+   - Reduce decision fatigue, push for **more but smaller** trades.
+   - This reduces risk of large drawdowns and prevents most liquidations.
+   - Makes users come back often and **view this like a game**, not a once‑in‑a‑year big bet.
 
-4. **Scalping with Safety**
-   - Encourage **many small trades** with **$5–10 profit targets** and **quick exits**
-   - Reduce chances of **deep drawdowns and liquidations**
-   - Keep users **alive and engaged** for years, not just one boom-bust cycle.
+> **Key point:** The target of AI is *not* to be 100% profitable. It is to **compress research + decision time to \<1 minute** and support the trader’s workflow.
 
-> **Important:** The AI is an *assistant*, not a magical PnL machine. Signals are made from inputs (RSI, MACD, volume, etc.) that are *not* perfectly profitable by themselves. The edge is **workflow speed + behaviour design**, not a fantasy 100% win-rate.
+The AI:
 
-**Analogy:**  
-Matiks built a habit loop where kids solve **math problems** instead of scrolling Instagram.  
-Stocky aims to build a loop where traders **play structured, data-backed trading “games”** instead of doomscrolling.
+- Takes user inputs (RSI, MACD, volume, structure, etc.).
+- Understands these are **not** perfect signals on their own.
+- Returns **structured, confidence‑scored suggestions**, so the user can trade faster, not blindly.
+
+*Matiks is a good analogy*: it created a new user behavior to solve math instead of scrolling Instagram.  
+**Stocky Fun** aims to create a new behavior: **trade instead of scroll**.
 
 ---
 
-## Insight 2: Making Trading Feel Cool
+## Insight 2 – Make trading cool, social, and fun
 
-> *Trading should feel like using a sci‑fi terminal, not a clunky back-office system.*
+> *Trading doesn’t have to be a lonely, serious grind. It can feel like a multiplayer game with real skills and real markets.*
 
-**Terminal.stockyai.xyz** is designed as:
+**Terminal.stockyai.xyz – The global trading portal**
 
-- **The global trading portal**  
-  A front-end for **multi-market, multi-asset** situational awareness.
-- **A global OSINT dashboard**  
-  Real-time:
-  - News
-  - X/Twitter streams
-  - Macro feeds (wars, supply chain shocks, Fed policy, regulations)
-- **All in one place**  
-  One terminal instead of 5 fragmented tabs, feeds and tools.
+- A **global OSINT dashboard**.
+- Real‑time **news, Twitter, and macro** (wars, supply chain disruptions, FED news, regulation changes) in **one place**.
+- This feels **new, cool, and differentiated** from existing brokers and terminals.
+- More events → more news → more AI signals → **more trades**.
 
-Why this matters:
+### AI insights on top of OSINT
 
-- It feels **new** and visually **cool**, which *pulls users in*.
-- More events → more news → more signals → more **trading opportunities**.
-- There is clear **platform differentiation** vs generic brokers or charting tools.
+- **Summarize news and macro events** into simple, tradeable insights.
+- Connect **commodities, forex, and global macro** to direct trade ideas:
+  - “Gold long bias.”
+  - “Crude oil volatility spike → short‑term mean reversion setup.”
+  - “USD strength vs INR → FX positioning.”
 
-On top of this, **AI layers**:
+This is how Terminal can evolve into:
 
-- Summarise relevant news into **simple narratives**  
-- Convert narratives into **actionable trade ideas**  
-- Route users directly into **commodities, forex, crypto, and equities** with clear entry/exit thinking.
+- A **Bloomberg‑style terminal** for OSINT and macro.
+- A **Zerodha‑style broker** for execution.
+- A **news + AI signal engine** for new traders and pros.
 
 ---
 
-## Business Model: From Sub-Broking to an AI-Native Hedge Fund
+## Business – How Stocky makes money
 
-> *Stocky is not “just an app”. It is a multi-layer stack: brokerage, research, infra, and AI.*
+> *Build a trading OS first, then monetize flows at multiple layers.*
 
-**1. Sub-broking**  
-- Partner with existing brokers to **drive extra volume**.  
-- Monetise via **revenue share on incremental trades** Stocky drives.
+- **Sub‑broking**: Monetize the ability to bring extra volume and engaged traders to brokers.
+- **Full broking**: Build **AI‑native broking** with a UX that feels like Sahi – clean, fast, and tool‑rich.
+- **Subscription services**:
+  - Alerts.
+  - Real‑time news and AI insights.
+  - Premium dashboards and signal sets.
+- **Sell APIs**:
+  - Hedge funds and proprietary desks.
+  - Reinsurance and insurance analytics.
+  - Consulting firms and SMBs that need **OSINT + signal pipelines**.
 
-**2. Full Broking (AI-Native Broker)**  
-- Evolve from sub-broker to **full-stack broker**.  
-- Rebuild the trading stack with:
-  - Better onboarding
-  - Cleaner margin UX
-  - Smarter nudges and risk controls  
-  - The north star: **“Sahi, but AI-native and global.”**
-
-**3. Subscription Products**
-- **Alerts and Signals**: Real-time AI signals, risk alerts, and structured playbooks.  
-+- **Real-time news & macro insights**: A curated firehose tuned to traders, not tourists.  
-  - **Research & education**: Deep dives, playbooks, experiments.
-
-**4. APIs as a Product**
-- Sell **data + AI outputs** to:
-  - Hedge funds
-  - Reinsurers
-  - Consulting firms
-  - SMBs needing market-linked decision support
-
-The long-term vision is to sit at the intersection of:
-
-- **Zerodha** (execution)
-- **A news site** (signal)
-- **ChatGPT** (reasoning)
-- **TradingView** (charts & ideas)
-- **Bloomberg** (terminal UX)
-
-All fused into a **single AI-native trading layer**.
+> Over time, this can look like **anything from a Bloomberg terminal to a Zerodha to a news site** – all powered by AI.
 
 ---
 
-## Insight 3: Better UX Beats Better Balance Sheets
+## Why better UX wins (and will here too)
 
-> *The history of consumer fintech is full of “small” UX decisions that beat “big” incumbents.*
+History is clear:
 
-- **Sahi’s story**  
-  Sahi grew to **100M+ users in under two years**, beating older and better-capitalised players by building **simply better UX**, charting, and tools.
-- **The pattern**  
-  - Put **option chain**, **positions table**, **payoff chart**, and **BTC/underlying chart** on *one* coherent screen.  
-  - Make trades **visible and editable directly on the chart**.  
-  - Reduce the friction between **idea → position → management**.
+- **Sahi** gained **100M users in \<2 years**, beating older and “better capitalized” companies with **superior UX, charting, and tools**.
+- **Zerodha** won by offering a **full ecosystem** and being an **all‑in‑one platform** for serious traders.
+- **Groww** won (or at least scaled) on **simple, clean UX** that made first trades feel easy.
 
-Stocky takes this lesson seriously:
+Stocky’s bet:
 
-- UX is a **core edge**, not an afterthought.  
-- We are willing to **rebuild** standard screens if it means shaving seconds off thinking time.
+- Bring **that level of UX** to **trading + AI**.
+- Wrap it with **gamified, social, RMG‑compatible loops**.
 
 ---
 
-## Other Stocky Experiments & Proof of Work
+## Stocky Analyse – Hedge fund level analysis for retail
 
-> *We ship, test in real markets, and discard what doesn’t hit our bar.*
+**Stocky Analyse** gives **hedge fund‑style trade analysis** with AI insights into:
 
-- **Stocky Analyse**  
-  Hedge-fund-grade trade analytics for retail accounts (currently focused on **Zerodha**):
-  - What is working in *your* trading style?
-  - Where are you over-trading or under-sizing?
-  - How can you adjust behaviours rather than just tweak setups?
+- What’s working in your trading.
+- What is not working.
+- How your style should change across **markets, timeframes, instruments**, and **risk profiles**.
 
-- **Timelock Perps (without Liquidations)**  
-  Perpetual-like exposure where **liquidation risk is redesigned**, aimed at safer, time-bounded risk for users.
+Currently, this is built **for Zerodha**, but the same architecture can extend across brokers and geographies.
 
-- **Timelock Options (custom expiry & strike)**  
-  Experiments with **non-standard expiries and strikes**. Ambitious, but currently **on hold/abandoned** to focus on clearer paths.
+---
 
-- **Stocky LLM**  
-  A **ChatGPT for traders**:  
-  - News, research, and Q&A  
-  - Context-aware reasoning on trades  
-  - Eventually, **trade execution from the same interface**
+## Proof of Work – Things actually built
 
-- **Voice-powered trading for Zerodha**  
-  A voice layer over trading flows that looks and feels incredibly futuristic—less typing, more **natural-language execution**.
+> *This is not a deck‑only vision. It’s backed by shipping and trading results.*
 
-All of this sits on a simple belief:
+- **Timelock Perps without liquidations** – on‑chain perps design that removes classic liquidation risk via time‑based mechanics.
+- **Timelock Options** – custom expiry, custom strike options (*later abandoned, but solved the hard problems*).
+- **Stocky LLM** – ChatGPT for traders:
+  - News.
+  - Research.
+  - Q&A.
+  - Trade execution – all **in one interface**.
+- **Voice‑powered trading for Zerodha** – a **“feels like the future”** interface that lets you place trades using voice, while keeping risk controls sane.
+- **Terminal already used for real trading** (e.g., on Polymarket).
+- Fine‑tuned models are **already used for trading**, not just for demo dashboards.
 
-> *If you make trading feel like a well-designed game, powered by serious infra and careful risk thinking, you can build the next wave of global trading behaviour.*
+And underlying all of this:
 
+- **12+ hour daily screen time** – trading is work *and* hobby.
+- A **team entirely trading‑focused** across **commodities, crypto, forex, and stocks**.
+- **Consistent shipping**, week after week.
