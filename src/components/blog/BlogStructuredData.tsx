@@ -11,7 +11,7 @@ export function BlogStructuredData({ post, slug }: BlogStructuredDataProps) {
   const url = `${SITE_URL}/blog/${slug}`;
   const articleData = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt || post.title,
     url,
@@ -43,6 +43,9 @@ export function BlogStructuredData({ post, slug }: BlogStructuredDataProps) {
       "@type": "WebPage",
       "@id": url,
     },
+    ...(post.tags && post.tags.length > 0 && {
+      articleSection: post.tags[0],
+    }),
     ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(", ") }),
     isAccessibleForFree: true,
     inLanguage: "en-US",

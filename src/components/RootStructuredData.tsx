@@ -20,6 +20,13 @@ export function RootStructuredData() {
       "https://linkedin.com/in/charandeepkapoor",
       "https://github.com/SirCharan",
     ],
+    affiliation: {
+      "@type": "Organization",
+      name: "Stocky AI",
+      url: "https://stockai-red.vercel.app",
+      description:
+        "AI-powered Zerodha trading system for Indian stock and commodity markets with 100%+ ROI and 73% win rate.",
+    },
     worksFor: {
       "@type": "Organization",
       name: "Crypto & FinTech Industry",
@@ -32,6 +39,8 @@ export function RootStructuredData() {
       "Protected Perpetuals",
       "Blockchain",
       "Stocky AI",
+      "AI Trading Systems",
+      "Zerodha API Trading",
     ],
   };
 
@@ -42,6 +51,20 @@ export function RootStructuredData() {
     url: SITE_URL,
     description:
       "Portfolio and writings of Charandeep Kapoor - crypto, quant finance, and mathematics expert.",
+    about: {
+      "@type": "Thing",
+      name: "AI-powered trading systems, DeFi derivatives and quantitative finance research",
+    },
+    keywords: [
+      "Charandeep Kapoor",
+      "Stocky AI",
+      "AI trading India",
+      "Zerodha AI trading bot",
+      "quantitative finance research",
+      "protected perps",
+      "DeFi derivatives",
+      "algorithmic trading strategies",
+    ],
     author: {
       "@type": "Person",
       name: "Charandeep Kapoor",
