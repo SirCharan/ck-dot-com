@@ -12,27 +12,14 @@ faqs:
     answer: "Charandeep Kapoor is an IIT graduate who's been trading since 16, managed $750k as a hedge fund quant, with 12+ hours daily screen time. He combines founder-led marketing with consistent shipping and an entirely trading-focused team."
 ---
 
-- \<1000 IIT. Trading since 16. Ex hedge fund quant. Managed \$750k. Ex Founder. AI native.
-- Create high adrenaline trading. Encourage smaller trade sizes, taken quickly.
-- Target to replace a 15 min Insta scroll with a trading session
-- Focus on commodities vs stocks - not overcrowded, proven skillset, 14 hours(all day) vs 6 hours
-- Make trading social, and fun again.
-- After Stocky tools→
-    - B2C charge subscriptions
-    - B2B sell these tools for brokers
-    - Subbroker (get paid for extra trades)
-    - Broker (same, but more pay and more flexibility with all tools built in)
-    - AI Native Hedge fund (Situational Awareness)
-- Team is entirely trading focussed across commodities, crypto and stocks
-- Founder led marketing
-- Terminal already used for trading on polymarket. Fine tuned models already used for trading.
-- 12hr+ screen time, trading is my work and hobby.
-- Consistent shipping.
-
 ## Special Founder
 
+![Stocky Terminal](/images/special%20founder/stocky%20terminal.png)
+
+![AI Insights](/images/special%20founder/aiinsights.png)
+
 - Top 0.05% in JEE, **IIT Kanpur** graduate.
-- Hedge fund quant trader, managed \$750K, returned **35%** in a delta-neutral strategy.
+- Hedge fund quant trader, managed $750K, returned **35%** in a delta-neutral strategy.
 - Ex-founder, built something cool in crypto: **Timelock** ([Perps without liquidations](https://perps.timelock.trade/)).
 - **100%+ returns** using Stocky AI (it works!).
 - Team trades crypto, forex, weather, and almost every market.
@@ -68,7 +55,7 @@ faqs:
 3. **Create a new user behaviour**:  
    - Replace those sub-15-minute free-time windows with trading instead of scrolling reels.
 4. **Increase number of trades (scalping)**:  
-   - Reduce fees, promote \$5–10 profit and close in 15 minutes.  
+   - Reduce fees, promote $5–10 profit and close in 15 minutes.  
    - This reduces overall drawdowns and prevents liquidations.  
    - Makes users come back often and view this like a game.
 
@@ -118,3 +105,4 @@ This can become anything from a Bloomberg terminal to a Zerodha competitor to a 
 - **Timelock Options**: custom expiry, custom strike options (abandoned).
 - **Stocky LLM**: ChatGPT for traders—news, research, Q&A, and trade execution all in one place: [llm.stockyai.xyz](https://llm.stockyai.xyz/).
 - **Voice-powered trading for Zerodha**: looks cool and showcases UX and AI-first thinking.
+- **Stocky Analyse**: hedge-fund-level trade analysis with AI insights on what is working and what to improve in your trading style (currently for Zerodha).
