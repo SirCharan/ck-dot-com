@@ -37,7 +37,9 @@ function getSeriesAdjacent(slug: string) {
     const idx = series.indexOf(slug);
     if (idx >= 0) return {
       prev: idx > 0 ? getPostBySlug(series[idx - 1]) : null,
-      next: idx < series.length - 1 ? getPostBySlug(series[idx + 1]) : null,
+      next: idx < series.length - 1
+        ? getPostBySlug(series[idx + 1])
+        : series.length > 2 ? getPostBySlug(series[1]) : null,
     };
   }
   return null;
