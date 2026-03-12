@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 import { GlassCard } from '@/components/ui/GlassCard';
 
 const Personal: React.FC = () => {
@@ -39,10 +40,13 @@ const Personal: React.FC = () => {
                 Topmate Creator
               </h3>
               <div className="mb-4">
-                <img
+                <Image
                   src="/lovable-uploads/4e6f0209-d05c-46d9-b7fd-fafbf4370013.jpg"
                   alt="Topmate Creator Achievements"
+                  width={1002}
+                  height={1548}
                   className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 transform-gpu"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <p className="text-gray-300 mb-4 text-sm">
@@ -103,18 +107,24 @@ const Personal: React.FC = () => {
               <div className="flex flex-col gap-6">
                 <div>
                   <div className="mb-3 space-y-3">
-                    <img
+                    <Image
                       src="/lovable-uploads/portfolio-dashboard.jpg"
                       alt="Portfolio Dashboard - Account Overview"
+                      width={1596}
+                      height={1208}
                       className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 transform-gpu"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <p className="text-gray-300 text-sm">
                       Achieved 100%+ ROI in 9 months, with Share 2.29 and 73% win rate on INR 15L capital.
                     </p>
-                    <img
+                    <Image
                       src="/lovable-uploads/5c63e2fd-b03f-4df6-94b6-1491914231a5.jpg"
                       alt="Portfolio Performance"
+                      width={1256}
+                      height={1049}
                       className="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 transform-gpu"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
                   <p className="text-gray-300 text-sm">

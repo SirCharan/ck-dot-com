@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -22,11 +22,26 @@ const HUD_CORNER = ({ position }: { position: 'tl' | 'tr' | 'bl' | 'br' }) => {
 const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
   ({ children, className, enableTilt = false, ...props }, ref) => {
     const cardRef = useRef<HTMLDivElement>(null);
+    const cachedRect = useRef<DOMRect | null>(null);
     const [transform, setTransform] = useState({ rotateX: 0, rotateY: 0 });
 
+    useEffect(() => {
+      if (!enableTilt) return;
+      const updateRect = () => {
+        if (cardRef.current) cachedRect.current = cardRef.current.getBoundingClientRect();
+      };
+      updateRect();
+      window.addEventListener('resize', updateRect);
+      window.addEventListener('scroll', updateRect, { passive: true });
+      return () => {
+        window.removeEventListener('resize', updateRect);
+        window.removeEventListener('scroll', updateRect);
+      };
+    }, [enableTilt]);
+
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!enableTilt || !cardRef.current) return;
-      const rect = cardRef.current.getBoundingClientRect();
+      if (!enableTilt || !cachedRect.current) return;
+      const rect = cachedRect.current;
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
       setTransform({ rotateX: -y * 6, rotateY: x * 6 });
@@ -43,7 +58,7 @@ const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
         }}
         className={cn(
           'relative bg-[var(--glass-bg)] backdrop-blur-2xl border border-[var(--glass-border)] rounded-lg overflow-hidden',
-          'transition-all duration-300 ease-out',
+          'transition-[transform,box-shadow,border-color] duration-300 ease-out',
           'shadow-[0_4px_24px_rgba(0,0,0,0.2),0_0_30px_rgba(168,85,247,0.06),inset_0_1px_0_rgba(255,255,255,0.03)]',
           'hover:scale-[1.01] hover:shadow-[0_12px_40px_rgba(0,0,0,0.35),0_0_50px_rgba(168,85,247,0.15),0_0_80px_rgba(124,58,237,0.08),inset_0_0_30px_rgba(168,85,247,0.06)]',
           'hover:border-[rgba(168,85,247,0.5)]',

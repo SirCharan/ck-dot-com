@@ -102,10 +102,12 @@ export default function RootLayout({
           title="Charandeep Kapoor Writings"
           href="/blog/feed.xml"
         />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
       </head>
       <body>
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-        <Script id="gtag-init" strategy="afterInteractive">
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="lazyOnload" />
+        <Script id="gtag-init" strategy="lazyOnload">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
         </Script>
         <RootStructuredData />
