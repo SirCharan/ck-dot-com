@@ -80,7 +80,7 @@ const BtnPrimary = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-flex items-center px-5 py-2.5 rounded font-orbitron text-base uppercase tracking-wider border border-[var(--neon-purple)] bg-purple-600/20 text-white hover:bg-purple-600/40 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] btn-shine transition-all duration-300"
+    className="inline-flex items-center px-5 py-2.5 rounded font-orbitron text-base uppercase tracking-wider border border-[var(--neon-purple)] bg-purple-600/20 text-white hover:bg-purple-600/40 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] btn-shine transition-[background-color,box-shadow] duration-300"
   >
     <Icon size={16} className="mr-2" strokeWidth={2} />
     {children}

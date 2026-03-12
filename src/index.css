@@ -120,7 +120,7 @@
 @layer components {
   /* Glassmorphism card: glass-bg + backdrop-blur + neon border + HUD feel */
   .glass-card {
-    @apply backdrop-blur-2xl rounded-lg overflow-hidden transition-all duration-300 ease-out;
+    @apply backdrop-blur-2xl rounded-lg overflow-hidden transition-[transform,box-shadow,border-color] duration-300 ease-out;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), 0 0 30px rgba(168, 85, 247, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.03);
@@ -235,7 +235,7 @@
 
   /* Animated icon on hover - lucide icons */
   .icon-hover-animate {
-    @apply transition-all duration-300 ease-out;
+    @apply transition-[transform,filter] duration-300 ease-out;
   }
   .icon-hover-animate:hover,
   .group:hover .icon-hover-animate {
@@ -245,7 +245,7 @@
 
   /* Glow on interactive elements */
   .btn-glow {
-    @apply transition-all duration-300;
+    @apply transition-[box-shadow] duration-300;
   }
   .btn-glow:hover {
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(124, 58, 237, 0.3);

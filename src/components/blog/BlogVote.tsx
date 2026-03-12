@@ -100,7 +100,7 @@ export function BlogVote({ slug, className }: BlogVoteProps) {
         type="button"
         onClick={() => handleVote("up")}
         className={cn(
-          "group/up inline-flex items-center justify-center w-7 h-6 rounded-sm transition-all duration-100",
+          "group/up inline-flex items-center justify-center w-7 h-6 rounded-sm transition-[color,background-color,transform] duration-100",
           "text-gray-400 hover:text-[#ff4500] hover:bg-[#ff4500]/10",
           "focus:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4500]/60 focus-visible:ring-offset-0",
           "active:scale-90",
@@ -116,7 +116,7 @@ export function BlogVote({ slug, className }: BlogVoteProps) {
         type="button"
         onClick={() => handleVote("down")}
         className={cn(
-          "group/down inline-flex items-center justify-center w-7 h-6 rounded-sm transition-all duration-100",
+          "group/down inline-flex items-center justify-center w-7 h-6 rounded-sm transition-[color,background-color,transform] duration-100",
           "text-gray-400 hover:text-[#7193ff] hover:bg-[#7193ff]/10",
           "focus:outline-none focus-visible:ring-1 focus-visible:ring-[#7193ff]/60 focus-visible:ring-offset-0",
           "active:scale-90",

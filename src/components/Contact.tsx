@@ -20,9 +20,9 @@ const SocialLink = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center p-4 rounded-lg border border-[var(--glass-border)] bg-transparent hover:border-[var(--neon-purple)] hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] transition-all duration-300 group"
+    className="flex items-center p-4 rounded-lg border border-[var(--glass-border)] bg-transparent hover:border-[var(--neon-purple)] hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] transition-[border-color,box-shadow] duration-300 group"
   >
-    <div className="w-12 h-12 rounded-full bg-[var(--neon-purple)]/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-[0_0_15px_var(--neon-purple)] transition-all duration-300">
+    <div className="w-12 h-12 rounded-full bg-[var(--neon-purple)]/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-[0_0_15px_var(--neon-purple)] transition-[transform,box-shadow] duration-300">
       <Icon size={20} className="text-[var(--neon-purple)]" strokeWidth={2} />
     </div>
     <div className="ml-4">
@@ -74,9 +74,9 @@ const Contact: React.FC = () => {
                   href="https://calendly.com/charan-kapoor/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-4 rounded-lg border border-[var(--glass-border)] bg-transparent hover:border-[var(--neon-purple)] hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] transition-all duration-300 btn-shine group"
+                  className="flex items-center p-4 rounded-lg border border-[var(--glass-border)] bg-transparent hover:border-[var(--neon-purple)] hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] transition-[border-color,box-shadow] duration-300 btn-shine group"
                 >
-                  <div className="w-12 h-12 rounded-full bg-[var(--neon-purple)]/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-[0_0_15px_var(--neon-purple)] transition-all duration-300">
+                  <div className="w-12 h-12 rounded-full bg-[var(--neon-purple)]/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-[0_0_15px_var(--neon-purple)] transition-[transform,box-shadow] duration-300">
                     <Mail size={20} className="text-[var(--neon-purple)]" strokeWidth={2} />
                   </div>
                   <div className="ml-4">

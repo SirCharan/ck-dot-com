@@ -71,7 +71,7 @@ const ResearchPapers: React.FC = () => {
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-orbitron text-base uppercase tracking-wider border border-[var(--neon-cyan)] bg-cyan-600/20 text-cyan-400 hover:bg-cyan-600/40 transition-all shrink-0"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-orbitron text-base uppercase tracking-wider border border-[var(--neon-cyan)] bg-cyan-600/20 text-cyan-400 hover:bg-cyan-600/40 transition-[background-color] shrink-0"
                     >
                       <ExternalLink size={16} strokeWidth={2} />
                       Read

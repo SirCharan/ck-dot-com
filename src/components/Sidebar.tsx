@@ -58,7 +58,7 @@ const Sidebar: React.FC = () => {
       <div className="fixed top-4 right-4 z-50">
         <button
           onClick={toggleSidebar}
-          className="flex items-center justify-center p-2 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:border-[var(--neon-purple)] transition-all group"
+          className="flex items-center justify-center p-2 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:border-[var(--neon-purple)] transition-[border-color,box-shadow] group"
           aria-label="Toggle menu"
         >
           {isOpen ? (
@@ -111,7 +111,7 @@ const Sidebar: React.FC = () => {
                     href={item.href}
                     onClick={closeSidebar}
                     className={cn(
-                      'group flex items-center px-3 py-2.5 rounded transition-all duration-300',
+                      'group flex items-center px-3 py-2.5 rounded transition-[color,background-color] duration-300',
                       'font-rajdhani font-semibold text-sm uppercase tracking-[0.15em]',
                       'relative overflow-hidden',
                       activeSection === item.href.substring(1)
