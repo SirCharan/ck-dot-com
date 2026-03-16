@@ -80,6 +80,12 @@ AI insights summarize news and generate signals:
 
 - Commodities (gold, crude oil), forex, and other markets get direct insights that can be traded.
 
+## Nationalist Goals
+
+- Palantir for India.
+- Predict monsoon, floods, earthquakes. Emergency services.
+- Govt contracts (defense).
+
 ## Business Model
 
 - **Sub-broking**: monetize the ability to bring in extra volume.
@@ -95,18 +101,12 @@ This can become anything from a Bloomberg terminal to a Zerodha competitor to a 
 - **Zerodha** won by having a full ecosystem and being an all-in-one platform.
 - **Groww** won on a clean, simple UX.
 
-## Other Products and Angles
-
-- **Stocky Analyse**: hedge-fund-level trade analysis with AI insights on what is working and what to improve in your trading style (currently for Zerodha). Try it at [analyse.stockyai.xyz](https://analyse.stockyai.xyz/).
-
 ## Proof of Work
 
 - **Timelock Perps without liquidations**: [perps.timelock.trade](https://perps.timelock.trade/).
 - **Timelock Options**: custom expiry, custom strike options (abandoned).
 - **Stocky LLM**: ChatGPT for traders—news, research, Q&A, and trade execution all in one place: [llm.stockyai.xyz](https://llm.stockyai.xyz/).
 - **Voice-powered trading for Zerodha** – demo and details on LinkedIn: [Voice Trading with Zerodha and Claude](https://www.linkedin.com/posts/charandeep-kapoor_itc-claude-zerodha-activity-7330161190741987329-Ge1d/).
-- **Stocky Analyse**: hedge-fund-level trade analysis with AI insights on what is working and what to improve in your trading style (currently for Zerodha). Product: [analyse.stockyai.xyz](https://analyse.stockyai.xyz/).
-
 ---
 
 ## AI Native Hedge Fund
