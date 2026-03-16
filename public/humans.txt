@@ -2,7 +2,15 @@
 Developer: Charandeep Kapoor
 Site: https://charandeepkapoor.com
 Twitter: @yourasianquant
+GitHub: github.com/SirCharan
 Location: India
+
+/* PRODUCTS */
+Stocky AI: AI-powered Zerodha trading (100%+ ROI)
+Stocky Terminal: Open-source Bloomberg Terminal alternative (terminal.stockyai.xyz)
+Stocky LLM: Fine-tuned trading models
+Stocky Fun: Live vision APIs for trading
+Stocky Analyse: Hedge fund level portfolio analysis
 
 /* SITE */
 Last update: 2026

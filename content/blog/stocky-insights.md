@@ -17,10 +17,10 @@ faqs:
 - Top 0.05% in JEE, **IIT Kanpur** graduate.
 - Hedge fund quant trader, managed $750K, returned **35%** in a delta-neutral strategy.
 - Ex-founder, built something cool in crypto: **Timelock** ([Perps without liquidations](https://perps.timelock.trade/)).
-- **100%+ returns** using Stocky AI (it works!).
+- **100%+ returns** using Stocky AI ([it works!](/blog/stocky-ai)).
 - Team trades crypto, forex, weather, and almost every market.
 - 12+ hours screen time; trading is my/our hobby.
-- Founder-led marketing: 100k+ weekly views, 9k followers, explored multiple revenue sources.
+- Founder-led marketing: 100k+ weekly views on [LinkedIn](https://www.linkedin.com/posts/charandeep-kapoor_bloomberg-terminal-costs-30000year-we-activity-7435319882793041920-lbl2), 9k followers, explored multiple revenue sources.
 
 ## Thesis
 
@@ -69,7 +69,7 @@ We want trading to feel like a cool, fun game instead of the serious business of
 
 ![AI Insights](/images/special%20founder/aiinsights.png)
 
-### [Stocky Terminal](https://terminal.stockyai.xyz/) – The Global Trading Portal
+### [Stocky Terminal](https://terminal.stockyai.xyz/) – India's Bloomberg
 
 - [terminal.stockyai.xyz](https://terminal.stockyai.xyz/) is a **global OSINT dashboard**.
 - Real-time news, Twitter, and macro (wars, supply chain disruptions, FED news, regulation changes) all in one place.

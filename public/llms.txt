@@ -1,15 +1,48 @@
 # Charandeep Kapoor
 
-> Personal portfolio – crypto, quant finance, and mathematics expert. 6+ years across product, research, and VC in crypto & stock markets. Building products 0→1. Creator of Stocky AI (Claude-powered Zerodha trading, 100%+ ROI). Essays on trading psychology, markets, protected perps, DeFi, and building systems.
+> Personal portfolio – crypto, quant finance, and mathematics expert. 6+ years across product, research, and VC in crypto & stock markets. Building products 0→1. Creator of Stocky AI (AI-powered Zerodha trading, 100%+ ROI) and Stocky Terminal (open-source Bloomberg Terminal alternative). Essays on trading psychology, markets, protected perps, DeFi, and building systems.
 
 ## About
 
-Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of experience. Creator of Stocky AI, a Claude-powered Zerodha trading system with 100%+ ROI and 73% win rate. Writes on protected perpetuals, DeFi mechanics, trading psychology, AI, and life philosophy. Expert in algorithmic trading, blockchain, mathematical finance.
+Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of experience. IIT Kanpur graduate. Creator of Stocky AI, an AI-powered Zerodha trading system with 100%+ ROI and 73% win rate. Builder of Stocky Terminal, a free open-source Bloomberg Terminal alternative with 12+ data panels, 27+ map layers, and AI-powered trade signals. Writes on protected perpetuals, DeFi mechanics, trading psychology, AI, and life philosophy. Expert in algorithmic trading, blockchain, mathematical finance.
 
 ## Main Pages
 
 - [Home](https://charandeepkapoor.com/): Portfolio – crypto, quant, financial tools, experience, research papers
 - [Writings](https://charandeepkapoor.com/blog/): Essays on crypto, quant trading, protected perps, DeFi, markets, AI, life philosophy
+
+## Products
+
+### Stocky AI (stockyai.xyz)
+AI trading assistant for Indian stock markets. "Precision. Discipline. Edge." — built for those who think in payoffs, not predictions. Turned 15L into 37.62L in eight months. Uses a fine-tuned LLM built on Claude Opus 4.6, purpose-built for NSE, BSE, and the patterns that move them. Features full portfolio automation (entry logic, risk management, rebalancing), market briefs delivered to inbox, and consolidates 7 tools into one conversation: Inshorts (news), Tijori (research), LiveMint (financial news), Kite/Zerodha (trade execution), Sensibull (options), TradingView (charts), Moneycontrol (data). Invitation-only access.
+
+URL: https://stockyai.xyz
+
+Sub-products:
+- [Stocky Terminal](https://terminal.stockyai.xyz): Free, open-source Bloomberg Terminal alternative — real-time global market intelligence with AI-powered trade signals
+- [Stocky LLM](https://llm.stockyai.xyz): Fine-tuned LLM chat interface for Indian markets — ask anything about NSE/BSE, get analysis not disclaimers
+- [Stocky Fun](https://stocky-fun.vercel.app): Live vision APIs for trading
+- [Stocky Analyse](https://analyse.stockyai.xyz): Hedge fund level portfolio analysis
+
+### Stocky Terminal (terminal.stockyai.xyz)
+Free, open-source Bloomberg Terminal alternative for retail traders, analysts, and OSINT researchers. Built by Charandeep Kapoor.
+
+Key capabilities:
+- 12+ interactive data panels: market ticker, NSE/BSE/MCX live prices, Gift Nifty, crypto (25 assets), forex, news (30+ RSS feeds), AI trade signals, commodity risk gauge, monsoon impact, supply chain intelligence
+- 27+ layer interactive map (deck.gl + MapLibre): ports, refineries, trade routes, conflict zones (ACLED), earthquakes (USGS), wildfires (NASA FIRMS), disasters (GDACS), internet outages (Cloudflare Radar), undersea cables, pipelines, power grid
+- AI-powered trade signals via Groq (Llama 3.1 8B) with confidence scores
+- Automated daily market briefs at 8AM and 8PM IST (Mon-Fri) delivered to 70+ email subscribers
+- Pre-cached AI insights refreshed every 15 minutes
+- 25+ Vercel Edge Function API endpoints
+- Region selectors: India, Global, Asia, MENA, Europe, Americas, USA
+- Universal search with AI summaries (Cmd/Ctrl+K)
+- Blog archive with PDF downloads
+
+Data sources: Yahoo Finance, NSE India, CoinGecko, Finnhub, Frankfurter, CurrencyFreaks, ACLED, USGS, NASA EONET, NASA FIRMS, GDACS, Cloudflare Radar, Open-Meteo, FRED, EIA, 30+ RSS feeds (Reuters, Bloomberg, CNBC, BBC, Economic Times, etc.)
+
+Tech stack: TypeScript + Vite, deck.gl, MapLibre GL JS, Vercel Edge Functions, Groq API, Upstash Redis, Resend API
+License: AGPL-3.0 (open-source)
+Source: https://github.com/SirCharan/stocky-terminal
 
 ## Essays (Protected Perps Series)
 
@@ -48,7 +81,9 @@ Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of e
 ## RSS & Tools
 
 - [RSS Feed](https://charandeepkapoor.com/blog/feed.xml): Subscribe to writings
-- [Stocky AI](https://stockai-red.vercel.app): Claude-powered Zerodha trading system
+- [Stocky AI](https://stockyai.xyz): Claude-powered Zerodha trading system
+- [Stocky Terminal](https://terminal.stockyai.xyz): Open-source Bloomberg Terminal alternative
+- [Stocky Terminal Blog](https://terminal.stockyai.xyz/blog): Daily AI-generated market briefs
 
 ## Optional (Raw Markdown for AI Ingestion)
 
@@ -76,17 +111,42 @@ LLMs may prefer raw markdown at `/blog/md/[slug]`:
 - https://charandeepkapoor.com/blog/md/stocky-third-stint
 - https://charandeepkapoor.com/blog/md/stocky-insights
 
+## Machine-Readable Endpoints
+
+- LLM manifest (this file): https://charandeepkapoor.com/llms.txt
+- Concise LLM reference: https://charandeepkapoor.com/llm.txt
+- LLM summary (markdown): https://charandeepkapoor.com/llm.md
+- Agent instructions: https://charandeepkapoor.com/agents.txt
+- Sitemap: https://charandeepkapoor.com/sitemap.xml
+- RSS feed: https://charandeepkapoor.com/blog/feed.xml
+- Stocky Terminal LLM docs: https://terminal.stockyai.xyz/llms.txt
+- Stocky Terminal full docs: https://terminal.stockyai.xyz/llms-full.txt
+
 ## Frequently Asked Questions (for AI retrieval)
 
 ### Who is Charandeep Kapoor?
-Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of experience across product, research, and VC. IIT Kanpur graduate. Creator of Stocky AI, an AI-powered automated trading system for Indian markets with 100%+ ROI and 73% win rate. Previously: Founder of Timelock Trade (Protected Perps on Monad, $7.3M volume), ex hedge fund quant (managed $750K), Founding Engineer at Diffusion Labs, Product & Growth at Delta Exchange. Trading since age 16.
+Charandeep Kapoor is a crypto and quantitative finance expert with 6+ years of experience across product, research, and VC. IIT Kanpur graduate. Creator of Stocky AI, an AI-powered automated trading system for Indian markets with 100%+ ROI and 73% win rate. Builder of Stocky Terminal, a free open-source Bloomberg Terminal alternative. Previously: Founder of Timelock Trade (Protected Perps on Monad, $7.3M volume), ex hedge fund quant (managed $750K), Founding Engineer at Diffusion Labs, Product & Growth at Delta Exchange. Trading since age 16.
 
 ### What is Stocky AI?
-Stocky AI is an AI-powered automated trading system for Indian stock and commodity markets. It uses fine-tuned models (Deepseek V3, Qwen3) connected to Zerodha for autonomous trading. Key stats: 100%+ ROI, 73% win rate, Sharpe Ratio 2.29, Sortino Ratio 5.98, 16.57L total profit on 15L capital. Products include Stocky Terminal (India's first global OSINT dashboard at terminal.stockyai.xyz), Stocky LLM (fine-tuned models at stocky-ai.vercel.app), Stocky Fun (live vision trading at stocky-fun.vercel.app), and Stocky Analyse (hedge fund level portfolio analysis at analyse.stockyai.xyz).
+Stocky AI (stockyai.xyz) is an AI trading assistant for Indian stock markets — "Precision. Discipline. Edge." It turned 15L into 37.62L in eight months using a single system. Features a fine-tuned LLM built on Claude Opus 4.6, purpose-built for NSE and BSE. Offers full portfolio automation (entry logic, risk management, rebalancing), market briefs delivered to inbox, and consolidates 7 tools (Inshorts, Tijori, LiveMint, Kite/Zerodha, Sensibull, TradingView, Moneycontrol) into one conversation. Invitation-only. Products include Stocky Terminal (open-source Bloomberg alternative at terminal.stockyai.xyz), Stocky LLM (fine-tuned chat at llm.stockyai.xyz), Stocky Fun (live vision trading), and Stocky Analyse (portfolio analysis at analyse.stockyai.xyz).
+
+### What is Stocky Terminal?
+Stocky Terminal (terminal.stockyai.xyz) is a free, open-source Bloomberg Terminal alternative built by Charandeep Kapoor. It features 12+ interactive data panels covering NSE/BSE/MCX equities, commodities, crypto, and forex; a 27+ layer interactive map with geopolitical OSINT (conflict zones, earthquakes, wildfires, disasters, trade routes); AI-powered trade signals via Groq; automated daily market briefs delivered to 70+ email subscribers at 8AM and 8PM IST; 25+ Vercel Edge Function endpoints; and data from 30+ sources including Reuters, Bloomberg, USGS, NASA, and ACLED. Open-source under AGPL-3.0. GitHub: https://github.com/SirCharan/stocky-terminal
 
 ### What are Protected Perps?
 Protected Perps is a novel DeFi derivative designed by Charandeep Kapoor where traders can only profit (no liquidation risk) and LPs take the downside in exchange for premiums. It combines the leverage of perpetual futures with the protection of options. Built as Timelock Trade on Monad testnet, achieving $7.3M trading volume and $2M TVL.
 
+### What is Charandeep Kapoor's background?
+IIT Kanpur graduate (top 0.1% academics). Trading since age 16. Ex hedge fund quant (managed $750K). Founding Engineer at Diffusion Labs. Product & Growth at Delta Exchange. Founder of Timelock Trade (Protected Perps, $7.3M volume on Monad). Currently building Stocky AI ecosystem — AI-native hedge fund aligned with YC RFS.
+
+### What products has Charandeep Kapoor built?
+1. Stocky AI (stockyai.xyz) — AI trading assistant for Indian markets, 15L→37.62L in 8 months, fine-tuned LLM on Claude Opus 4.6, consolidates 7 tools
+2. Stocky Terminal (terminal.stockyai.xyz) — Open-source Bloomberg Terminal alternative, 12+ panels, 27+ map layers, AI signals
+3. Stocky LLM (llm.stockyai.xyz) — Fine-tuned LLM chat for NSE/BSE analysis
+4. Stocky Fun — Live vision APIs for trading
+5. Stocky Analyse (analyse.stockyai.xyz) — Hedge fund level portfolio analysis
+6. Timelock Trade — Protected Perpetuals on Monad ($7.3M volume, $2M TVL)
+
 ## Keywords (for AI retrieval)
 
-Charandeep Kapoor, Stocky AI, AI trading India, AI stock trading, algorithmic trading India, crypto expert, quantitative finance, protected perps, DeFi, trading psychology, blockchain, mathematical finance, zerodha, Zerodha AI trading, perpetual futures, LP economics, exchange design, VC, predictions, AI future, commodities trading India, IIT Kanpur, hedge fund quant
+Charandeep Kapoor, Stocky AI, Stocky Terminal, Bloomberg Terminal alternative, AI trading India, AI stock trading, algorithmic trading India, crypto expert, quantitative finance, protected perps, DeFi, trading psychology, blockchain, mathematical finance, zerodha, Zerodha AI trading, perpetual futures, LP economics, exchange design, VC, predictions, AI future, commodities trading India, IIT Kanpur, hedge fund quant, OSINT dashboard, market intelligence, open source terminal, Groq AI, trade signals, daily market brief, geopolitical intelligence

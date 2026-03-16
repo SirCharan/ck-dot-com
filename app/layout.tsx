@@ -10,9 +10,9 @@ const GA_ID = "G-J6SY9N1Y3W";
 const SITE_URL = "https://charandeepkapoor.com";
 
 const DEFAULT_DESCRIPTION =
-  "Charandeep Kapoor - Creator of Stocky AI (AI-powered trading for Indian markets, 100%+ ROI, 73% win rate). 6+ years in crypto, quant finance & product. Essays on protected perps, DeFi, algorithmic trading, and trading psychology.";
+  "Charandeep Kapoor - Creator of Stocky AI (AI-powered trading, 100%+ ROI) and Stocky Terminal (open-source Bloomberg Terminal alternative). 6+ years in crypto, quant finance & product. Essays on protected perps, DeFi, algorithmic trading, and trading psychology.";
 
-const DEFAULT_TITLE = "Charandeep Kapoor | Stocky AI Creator, Quant Finance & Crypto Expert";
+const DEFAULT_TITLE = "Charandeep Kapoor | Stocky AI & Stocky Terminal Creator, Quant Finance Expert";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -34,6 +34,10 @@ export const metadata: Metadata = {
     "trading psychology",
     "Zerodha AI trading",
     "commodities trading India",
+    "Stocky Terminal",
+    "Bloomberg Terminal alternative",
+    "open source terminal",
+    "OSINT dashboard",
   ],
   verification: {
     // Replace with actual code from Google Search Console

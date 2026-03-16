@@ -1,11 +1,19 @@
 # Charandeep Kapoor
 
-Personal portfolio – crypto, quant finance, and mathematics expert. 6+ years across product, research, and VC.
+Personal portfolio – crypto, quant finance, and mathematics expert. 6+ years across product, research, and VC. Creator of Stocky AI (AI trading, 100%+ ROI) and Stocky Terminal (open-source Bloomberg Terminal alternative).
 
 ## Main Pages
 
 - https://charandeepkapoor.com/
 - https://charandeepkapoor.com/blog/
+
+## Products
+
+- Stocky AI: https://stockyai.xyz (AI trading assistant for Indian markets — 15L→37.62L in 8 months, fine-tuned LLM on Claude Opus 4.6 for NSE/BSE, consolidates 7 tools, invitation-only)
+- Stocky Terminal: https://terminal.stockyai.xyz (free open-source Bloomberg Terminal alternative, 12+ panels, 27+ map layers, AI signals, daily briefs to 70+ subscribers)
+- Stocky LLM: https://llm.stockyai.xyz (fine-tuned LLM chat interface for Indian markets — NSE/BSE analysis)
+- Stocky Fun: https://stocky-fun.vercel.app (live vision APIs for trading)
+- Stocky Analyse: https://analyse.stockyai.xyz (portfolio analysis)
 
 ## Full Manifest
 
@@ -13,4 +21,4 @@ For complete page list and essay links, see: https://charandeepkapoor.com/llms.t
 
 ## Keywords
 
-Charandeep Kapoor, crypto expert, quantitative finance, algorithmic trading, protected perps, DeFi, Stocky AI, trading psychology, blockchain, mathematical finance
+Charandeep Kapoor, crypto expert, quantitative finance, algorithmic trading, protected perps, DeFi, Stocky AI, Stocky Terminal, Bloomberg Terminal alternative, trading psychology, blockchain, mathematical finance, OSINT dashboard, AI trade signals, daily market brief
