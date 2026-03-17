@@ -1,18 +1,20 @@
 ---
 title: "Special Founder/Insights"
 date: "2026-01-15"
-excerpt: "Stocky AI founder: IIT, trading since 16, ex hedge fund quant. Strategy, monetization roadmap, and vision for AI trading in India."
+excerpt: "Two theses for AI-native trading in India: democratizing data & compute, and making trading fun. From the founder of Stocky AI."
 tags: ["stocky", "trading", "founder"]
 faqs:
-  - question: "What is Stocky AI's business model?"
-    answer: "Stocky AI's roadmap: B2C subscriptions for trading tools, B2B tools for brokers, becoming a sub-broker then broker, and ultimately an AI-native hedge fund. Revenue grows at each stage with more flexibility."
-  - question: "Why does Stocky AI focus on commodities?"
-    answer: "Commodities trading is less crowded than stocks, offers 14-hour trading windows (vs 6 hours for equities), and the Stocky team has a proven skillset in commodities with 14.2L profit from commodity trades alone."
+  - question: "What is Stocky AI's Thesis 1?"
+    answer: "Democratizing Data & Compute — hedge funds hold an edge in data and compute, extracting money from retail traders. Stocky Terminal aggregates 100+ news sources, satellite data, weather, and macro into one dashboard, with AI to filter noise and generate signals. Goal: become India's Palantir."
+  - question: "What is Stocky AI's Thesis 2?"
+    answer: "Trading as a fun game — with RMG banned, gambling capital needs a new platform. Stocky Fun makes trading feel like a high-adrenaline game with AI signals, social features, and sub-15-minute trades that replace Instagram scrolling."
   - question: "What makes Stocky AI's founder unique?"
-    answer: "Charandeep Kapoor is an IIT graduate who's been trading since 16, managed $750k as a hedge fund quant, with 12+ hours daily screen time. He combines founder-led marketing with consistent shipping and an entirely trading-focused team."
+    answer: "Charandeep Kapoor: IIT Kanpur (top 0.05% JEE), hedge fund quant ($750K managed, 35% delta-neutral returns), ex-crypto founder (Timelock), 100%+ returns with Stocky AI, 100k+ weekly LinkedIn views, 12+ hours daily screen time."
 ---
 
 ## Special Founder
+
+**IIT Kanpur, top 0.05% JEE. Hedge fund quant — $750K managed, 35% delta-neutral returns. Built [Timelock](https://perps.timelock.trade/) (perps without liquidations). [100%+ returns](/blog/stocky-ai) with Stocky AI. 12+ hours screen time. 100k+ weekly views on [LinkedIn](https://www.linkedin.com/posts/charandeep-kapoor_bloomberg-terminal-costs-30000year-we-activity-7435319882793041920-lbl2). Team trades every market.**
 
 - Top 0.05% in JEE, **IIT Kanpur** graduate.
 - Hedge fund quant trader, managed $750K, returned **35%** in a delta-neutral strategy.
@@ -22,84 +24,80 @@ faqs:
 - 12+ hours screen time; trading is my/our hobby.
 - Founder-led marketing: 100k+ weekly views on [LinkedIn](https://www.linkedin.com/posts/charandeep-kapoor_bloomberg-terminal-costs-30000year-we-activity-7435319882793041920-lbl2), 9k followers, explored multiple revenue sources.
 
-## Thesis
+## Thesis 1: Democratizing Data & Compute
 
-- **RMG out → gambling capital needs a new platform.**
-- Replace Instagram scrolls with trading.
-- Make trading a cool, fun, social game.
-- Reduce decision fatigue to trade, increase number of trades, reduce trade duration → more brokerage, less overall loss.
-- Edge in commodities (non-competitive market, all-day markets vs 6 hours).
-- Globalisation → trade commodities, forex, and US stocks.
+**Problem:** Increasing globalisation (trade, geopolitics, forex) + increasing velocity of information (news, social media, technical) → noise, information asymmetry, dilution of edge → **risk**.
 
-## Insights on the RMG Audience
-
-**What RMG audience likes:**
-
-- High adrenaline, casino-style UX.
-- Quick play-and-finish games (under 15–30 minutes per game).
-- 24-hour markets.
-- Social capital: form groups, discuss games and strategy.
-
-### How to Make Them Trade Futures Instead: [Stocky Fun](https://fun.stockyai.xyz/)
-
-1. **Gamified UX + social sharing**: chat, groups, share PnL, and see what your friends are trading.
-   - See: [Stocky Fun](https://fun.stockyai.xyz/).
-2. **AI signals**:
-   - Reduce time from app open → research → signal → trade to under 1 minute.
-   - Replace the user's manual thinking process (RSI levels, support/resistance) with an AI prompt.
-   - AI returns a Buy/Sell signal with a confidence level.
-3. **Create a new user behaviour**:
-   - Replace those sub-15-minute free-time windows with trading instead of scrolling reels.
-4. **Increase number of trades (scalping)**:
-   - Reduce fees, promote $5–10 profit and close in 15 minutes.
-   - This reduces overall drawdowns and prevents liquidations.
-   - Makes users come back often and view this like a game.
-
-> **Note:** The target of AI is *not* to be 100% profitable, only to aid the research-to-trade workflow and reduce it to under 1 minute.
-
-The system gives a signal based on user inputs (RSI, MACD, volume, etc.), which are not 100% profitable signals themselves.
-
-> **Analogy:** Matiks is an example of creating a new user behaviour to solve math instead of scrolling Instagram.
-
-## Making Trading Cool and Fun
-
-We want trading to feel like a cool, fun game instead of the serious business of "becoming profitable."
-
-![Stocky Terminal](/images/special%20founder/stocky%20terminal.png)
-
-![AI Insights](/images/special%20founder/aiinsights.png)
+1. Hedge funds and institutions hold an edge in data & compute → extract money from retail.
+2. 90% of participants are loss-making. Only 10% profitable — only 2% from India, the rest are foreign institutions extracting capital from markets.
 
 ### [Stocky Terminal](https://terminal.stockyai.xyz/) – India's Bloomberg
 
-- [terminal.stockyai.xyz](https://terminal.stockyai.xyz/) is a **global OSINT dashboard**.
-- Real-time news, Twitter, and macro (wars, supply chain disruptions, FED news, regulation changes) all in one place.
-- This is new, feels cool, and attracts user interest while creating strong platform differentiation.
-- More events → more news → more signals → **more trades**.
+[terminal.stockyai.xyz](https://terminal.stockyai.xyz/) — Global Intelligence Dashboard (God's Eye):
 
-AI insights summarize news and generate signals:
+<div style="display: flex; gap: 1.5rem; align-items: center; margin: 1.5rem 0;">
+<div style="flex: 1; border: 1px solid #333; background: #0A0A0A; border-radius: 8px; padding: 1rem 1.25rem;">
 
-- Commodities (gold, crude oil), forex, and other markets get direct insights that can be traded.
+- Real-time news: 100+ news sites + RSS feeds + scraping
+- Twitter
+- Satellite data & trade route monitoring: live ship, flight tracking, supply chain disruptions
+- Weather: monsoon, temperature, wind patterns
+- Macro: wars, FED news, regulatory changes
 
-## Nationalist Goals
+</div>
+<div style="flex: 0 0 auto; font-weight: bold; font-size: 1.1rem;">
 
-- Palantir for India.
-- Predict monsoon, floods, earthquakes. Emergency services.
-- Govt contracts ([defense/intelligence](https://axionorbital.space/research)).
+\+ AI to filter the noise, summarize & generate signals
 
-## Business Model
+</div>
+</div>
 
-- **Sub-broking**: monetize the ability to bring in extra volume.
-- **Broking**: build an AI-native broker with improved UX (Sahi is a good example of UX-led disruption).
-- **Subscription service**: alerts, real-time news, and AI insights.
-- **Sell API access**: to hedge funds, reinsurance, consulting firms, and SMBs.
+Track important notifications on stuff that can impact your portfolio & cause volatility — leading to timely safeguards and exits.
 
-This can become anything from a Bloomberg terminal to a Zerodha competitor to a news site.
+### Business Model
 
-## Better UX Wins Against Incumbents
+More data + AI → better signal → better trades + better risk management.
 
-- **Sahi** gained 100M users in under 2 years, ahead of older and "better" companies, by building better UX, charting, and tools.
-- **Zerodha** won by having a full ecosystem and being an all-in-one platform.
-- **Groww** won on a clean, simple UX.
+- **Sub Broker**: monetize ability to bring in extra volume.
+- **B2B API**: real-time alerts, large data streams to hedge funds, reinsurance, consulting companies.
+- **AI Native Broker**: rethink trading UX (Sahi is a good example that UX-led disruption is required).
+- **B2C Subscriptions**.
+
+### Nationalist Goal
+
+Build the ability to store, process & handle large amounts of data. Fine-tune AI models.
+
+- Predict floods, monsoons, earthquakes. Help emergency services.
+- [Defense/Intelligence](https://axionorbital.space/research) for GOI.
+- **Become India's Palantir.**
+
+## Thesis 2: Trading → Fun game/Gambling
+
+New accounts ↓. Trading is being viewed as a serious business where only top institutions make money.
+
+- **RMG out → gambling capital needs a new platform.**
+- Make trading a cool, fun, social game.
+  - High adrenaline, casino-style UX (addiction loops).
+  - App open → trade open → close in 15–30 mins.
+  - Social capital: gamified UX, social trading, chat.
+- Replace Instagram scrolls with trading.
+  - Replace a 15-min reel session with trading.
+  - Reduce decision fatigue to trade.
+  - No. of trades ↑. Trade duration ↓ → more brokerage, less overall loss.
+- Edge in commodities:
+  - Non-competitive market.
+  - All-day markets (vs 6 hours).
+  - Globalisation → trade commodities, forex, and US stocks.
+
+### [Stocky Fun](https://fun.stockyai.xyz/)
+
+Real-time vision API to signal the next move (up or down).
+
+> *Note: The target of AI is not to be 100% profitable, only to aid the research-to-trade workflow and reduce it to under 1 minute.*
+
+> *Analogy: Matiks is an example of creating a new user behaviour to solve math instead of scrolling Instagram.*
+
+---
 
 ## Proof of Work
 
@@ -115,8 +113,6 @@ This can become anything from a Bloomberg terminal to a Zerodha competitor to a 
 
 Y Combinator put out a RFS for a AI Native Hedge Fund.
 
-![Stocky Financial Overview](/images/stocky/stocky-financial-overview.png)
-
 Stocky stats:
 
 - 73% win rate
@@ -124,6 +120,6 @@ Stocky stats:
 - Sharpe Ratio: 2.29
 - Sortino Ratio: 5.98
 
-Given past returns and already incoming interest, can explore a PMS or a AIF CAT III in India
+Given past returns and already incoming interest, can explore a PMS or a AIF CAT III in India.
 
-Will apply to YC, focus on commodities
+Will apply to YC, focus on commodities.
