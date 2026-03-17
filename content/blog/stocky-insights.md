@@ -14,62 +14,69 @@ faqs:
 
 ## Special Founder
 
-**IIT Kanpur, top 0.05% JEE. Hedge fund quant — $750K managed, 35% delta-neutral returns. Built [Timelock](https://perps.timelock.trade/) (perps without liquidations). [100%+ returns](/blog/stocky-ai) with Stocky AI. 12+ hours screen time. 100k+ weekly views on [LinkedIn](https://www.linkedin.com/posts/charandeep-kapoor_bloomberg-terminal-costs-30000year-we-activity-7435319882793041920-lbl2). Team trades every market.**
-
 - Top 0.05% in JEE, **IIT Kanpur** graduate.
-- Hedge fund quant trader, managed $750K, returned **35%** in a delta-neutral strategy.
-- Ex-founder, built something cool in crypto: **Timelock** ([Perps without liquidations](https://perps.timelock.trade/)).
-- **100%+ returns** using Stocky AI ([it works!](/blog/stocky-ai)).
+- Hedge fund quant. Managed $750K. **35% APY** Delta-Neutral.
+- Ex-founder, built something cool in crypto: **Timelock** ([Perpetual Options](https://perps.timelock.trade/)).
+- **100%+ returns** trading options using Stocky AI ([it works!](/blog/stocky-ai)).
+- **50%+ returns** trading events on Polymarket.
 - Team trades crypto, forex, weather, and almost every market.
 - 12+ hours screen time; trading is my/our hobby.
-- Founder-led marketing: 100k+ weekly views on [LinkedIn](https://www.linkedin.com/posts/charandeep-kapoor_bloomberg-terminal-costs-30000year-we-activity-7435319882793041920-lbl2), 9k followers, explored multiple revenue sources.
-
+- Founder-led marketing: 200k+ views on [LinkedIn](https://www.linkedin.com/posts/charandeep-kapoor_bloomberg-terminal-costs-30000year-we-activity-7435319882793041920-lbl2), 9k followers, [$2k MRR digital products.](/blog/stocky-story)
+---
 ## Thesis 1: Democratizing Data & Compute
 
-**Problem:** Increasing globalisation (trade, geopolitics, forex) + increasing velocity of information (news, social media, technical) → noise, information asymmetry, dilution of edge → **risk**.
+**Problem:** 
+Increasing Globalisation + Information velocity → Noise, Information Asymmetry → **Risk**.
 
-1. Hedge funds and institutions hold an edge in data & compute → extract money from retail.
-2. 90% of participants are loss-making. Only 10% profitable — only 2% from India, the rest are foreign institutions extracting capital from markets.
+1. Institutions can afford an edge in data & compute → extract money from retail.
+2. 90% participants → Loss. 10% → Profitable. Only 2% from India. Rest are foreign institutions extracting capital from the country.
+
+Trading is not a discipline or a skill problem. Its a information problem.
 
 ### [Stocky Terminal](https://terminal.stockyai.xyz/) – India's Bloomberg
 
-[terminal.stockyai.xyz](https://terminal.stockyai.xyz/) — Global Intelligence Dashboard (God's Eye):
+Global Intelligence Dashboard (God's Eye View):
 
-<div style="display: flex; gap: 1.5rem; align-items: center; margin: 1.5rem 0;">
-<div style="flex: 1; border: 1px solid #333; background: #0A0A0A; border-radius: 8px; padding: 1rem 1.25rem;">
+![Stocky Terminal — God's Eye View](/images/stocky/stocky-terminal-gods-eye.png)
 
-- Real-time news: 100+ news sites + RSS feeds + scraping
-- Twitter
-- Satellite data & trade route monitoring: live ship, flight tracking, supply chain disruptions
+<div style="display: flex; gap: 0.9rem; align-items: center; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0; width: min(1200px, calc(100vw - 2rem)); position: relative; left: 50%; transform: translateX(-50%); color: #1D4ED8;">
+<div style="flex: 0 1 auto; width: fit-content; max-width: min(820px, calc(100vw - 2rem)); border: 1px solid #D1D5DB; background: #F3F4F6; border-radius: 10px; padding: 1rem 1.25rem; color: inherit;">
+
+- Real-time news (RSS + Scraping)
+- Twitter 
+- Satellite data & trade route monitoring
+- Live ship, Flight tracking, supply chain disruptions.
 - Weather: monsoon, temperature, wind patterns
-- Macro: wars, FED news, regulatory changes
+- Macro: Wars, FED news, Regulatory changes
 
 </div>
-<div style="flex: 0 0 auto; font-weight: bold; font-size: 1.1rem;">
+<div style="flex: 0 0 auto; width: fit-content; font-weight: 700; font-size: 1.1rem; color: #111827; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0.5rem 0.25rem;">
 
-\+ AI to filter the noise, summarize & generate signals
+\+ AI → Filter noise + Generate signal
 
 </div>
 </div>
-
-Track important notifications on stuff that can impact your portfolio & cause volatility — leading to timely safeguards and exits.
 
 ### Business Model
 
-More data + AI → better signal → better trades + better risk management.
+Information + AI → Signal → More trades + Better risk management.
 
-- **Sub Broker**: monetize ability to bring in extra volume.
-- **B2B API**: real-time alerts, large data streams to hedge funds, reinsurance, consulting companies.
-- **AI Native Broker**: rethink trading UX (Sahi is a good example that UX-led disruption is required).
+- **Sub Broker**: Monetize extra volume.
+- **B2B API**: Data streams to hedge funds, reinsurance & consulting companies.
+- **AI Native Broker**: Rethink trading UX (Sahi → UX-led disruption).
 - **B2C Subscriptions**.
 
 ### Nationalist Goal
 
-Build the ability to store, process & handle large amounts of data. Fine-tune AI models.
+Store, process & handle large data over time. Fine-tune AI models.
 
 - Predict floods, monsoons, earthquakes. Help emergency services.
 - [Defense/Intelligence](https://axionorbital.space/research) for GOI.
-- **Become India's Palantir.**
+
+
+**Become India's Palantir.**
+
+---
 
 ## Thesis 2: Trading → Fun game/Gambling
 
@@ -79,17 +86,19 @@ New accounts ↓. Trading is being viewed as a serious business where only top i
 - Make trading a cool, fun, social game.
   - High adrenaline, casino-style UX (addiction loops).
   - App open → trade open → close in 15–30 mins.
-  - Social capital: gamified UX, social trading, chat.
+  - Social capital: gamified UX, social trading, chat, share PnL.
 - Replace Instagram scrolls with trading.
   - Replace a 15-min reel session with trading.
   - Reduce decision fatigue to trade.
-  - No. of trades ↑. Trade duration ↓ → more brokerage, less overall loss.
+  - No. of trades ↑. Trade duration ↓ → Brokerage ↑ Loss ↓
 - Edge in commodities:
   - Non-competitive market.
-  - All-day markets (vs 6 hours).
-  - Globalisation → trade commodities, forex, and US stocks.
+  - All-day markets vs 6 hours.
+  - Globalisation → Trade commodities, forex & US stocks.
 
 ### [Stocky Fun](https://fun.stockyai.xyz/)
+
+![Stocky Fun — Real-time AI Trading](/images/stocky/stocky-fun-btc.png)
 
 Real-time vision API to signal the next move (up or down).
 
@@ -101,11 +110,11 @@ Real-time vision API to signal the next move (up or down).
 
 ## Proof of Work
 
-- **Timelock Perps without liquidations**: [perps.timelock.trade](https://perps.timelock.trade/).
-- **Timelock Options**: custom expiry, custom strike options (abandoned).
-- **Stocky LLM**: ChatGPT for traders—news, research, Q&A, and trade execution all in one place: [llm.stockyai.xyz](https://llm.stockyai.xyz/).
-- **Voice-powered trading for Zerodha** – demo and details on LinkedIn: [Voice Trading with Zerodha and Claude](https://www.linkedin.com/posts/charandeep-kapoor_itc-claude-zerodha-activity-7330161190741987329-Ge1d/).
-- **Stocky Analyse**: hedge-fund-level trade analysis with AI insights on what is working and what to improve in your trading style (currently for Zerodha): [analyse.stockyai.xyz](https://analyse.stockyai.xyz/).
+- **[Timelock Perps](https://perps.timelock.trade/)**: Everlasting Option [perps.timelock.trade].
+- **Timelock Options**: Custom expiry, Custom strike options (abandoned).
+- **[Stocky LLM](https://llm.stockyai.xyz/)**: ChatGPT for Stock Market.
+- **[Voice-powered trading for Zerodha](https://www.linkedin.com/posts/charandeep-kapoor_itc-claude-zerodha-activity-7330161190741987329-Ge1d/)**
+- **[Stocky Analyse](https://analyse.stockyai.xyz/)**: Hedge-fund-level trade analysis with AI insights on what's working & what to improve.
 
 ---
 
@@ -113,12 +122,13 @@ Real-time vision API to signal the next move (up or down).
 
 Y Combinator put out a RFS for a AI Native Hedge Fund.
 
+![Stocky AI — Trading Stats](/images/stocky/stocky-pnl-stats.png)
+
 Stocky stats:
 
-- 73% win rate
-- Win Loss Ratio: 1.66
+- 15L to 31L in 9 months
+- 69% win rate
 - Sharpe Ratio: 2.29
-- Sortino Ratio: 5.98
 
 Given past returns and already incoming interest, can explore a PMS or a AIF CAT III in India.
 
