@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Stocky AI — Seed Deck</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; font-family: 'Inter', sans-serif; }
+  .slide {
+    width: 1920px; height: 1080px; background: #0A0A0A;
+    position: relative; overflow: hidden; page-break-after: always;
+    margin: 40px auto; border: 1px solid #222;
+  }
+  .slide-inner { padding: 80px 120px; height: 100%; display: flex; flex-direction: column; }
+  h1 { color: #C9A96E; font-size: 48px; font-weight: 700; letter-spacing: -0.5px; }
+  h2 { color: #FFFFFF; font-size: 36px; font-weight: 600; margin-top: 8px; }
+  h3 { color: #C9A96E; font-size: 28px; font-weight: 600; }
+  p, li { color: #FFFFFF; font-size: 24px; line-height: 1.6; }
+  .secondary { color: #A0A0A0; }
+  .gold { color: #C9A96E; }
+  .accent-border { border: 1px solid #C9A96E; border-radius: 12px; padding: 32px; }
+  .stat { font-size: 56px; font-weight: 800; color: #C9A96E; }
+  .stat-label { font-size: 20px; color: #FFFFFF; font-weight: 500; }
+  .stat-detail { font-size: 16px; color: #A0A0A0; }
+  .image-placeholder {
+    border: 2px dashed #333; border-radius: 12px; display: flex;
+    align-items: center; justify-content: center; color: #555; font-size: 18px;
+  }
+  .slide-number {
+    position: absolute; bottom: 32px; right: 48px;
+    color: #333; font-size: 16px; font-weight: 500;
+  }
+  .wordmark { font-size: 72px; font-weight: 900; color: #C9A96E; letter-spacing: 4px; }
+  .tagline { font-size: 24px; color: #A0A0A0; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; }
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 8px 0; padding-left: 24px; position: relative; }
+  ul li::before { content: '→'; position: absolute; left: 0; color: #C9A96E; }
+  .grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .grid-3x2 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .card { background: #111; border: 1px solid #1a1a1a; border-radius: 12px; padding: 28px; }
+  .two-col { display: flex; gap: 60px; flex: 1; }
+  .col { flex: 1; }
+  .divider { width: 100%; height: 1px; background: #1a1a1a; margin: 24px 0; }
+  .badge { display: inline-block; background: #C9A96E; color: #0A0A0A; padding: 4px 16px; border-radius: 20px; font-weight: 700; font-size: 20px; }
+  .callout-box { background: #111; border-left: 3px solid #C9A96E; padding: 16px 24px; margin: 16px 0; }
+  .matrix-container { position: relative; width: 100%; flex: 1; }
+  .source { position: absolute; bottom: 32px; left: 120px; color: #333; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title -->
+<div class="slide">
+  <div class="slide-inner" style="justify-content: center; align-items: center; text-align: center;">
+    <div class="wordmark">STOCKY AI</div>
+    <div style="height: 24px;"></div>
+    <h2 style="font-weight: 400; font-size: 32px;">AI Trading Infrastructure for India</h2>
+    <div style="height: 40px;"></div>
+    <div class="tagline">Precision &nbsp;·&nbsp; Discipline &nbsp;·&nbsp; Edge</div>
+    <div style="height: 48px;"></div>
+    <p class="secondary" style="font-size: 20px;">stockyai.xyz</p>
+  </div>
+  <div class="slide-number">1</div>
+</div>
+
+<!-- SLIDE 2: Problem -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>The Problem</h1>
+    <div style="height: 40px;"></div>
+    <p style="font-size: 36px; font-weight: 600; color: #C9A96E; line-height: 1.4; max-width: 1200px;">
+      "Trading is not a skill problem.<br>It's an information problem."
+    </p>
+    <div style="height: 48px;"></div>
+    <div class="grid-2x2" style="max-width: 1400px;">
+      <div class="card">
+        <div class="stat">91%</div>
+        <div class="stat-label">of retail F&O traders lose money</div>
+        <div class="stat-detail">SEBI FY25 Study</div>
+      </div>
+      <div class="card">
+        <div class="stat">₹1.05L Cr</div>
+        <div class="stat-label">Aggregate losses in one year</div>
+        <div class="stat-detail">Retail traders, FY 2024-25</div>
+      </div>
+      <div class="card">
+        <div class="stat">2%</div>
+        <div class="stat-label">Profitable traders are Indian</div>
+        <div class="stat-detail">Rest are foreign institutions extracting capital</div>
+      </div>
+      <div class="card">
+        <div class="stat" style="font-size: 40px;">Data & Compute</div>
+        <div class="stat-label">Institutions hold the edge</div>
+        <div class="stat-detail">Retail trades blind — institutions trade informed</div>
+      </div>
+    </div>
+  </div>
+  <div class="source">Source: SEBI Study, September 2024</div>
+  <div class="slide-number">2</div>
+</div>
+
+<!-- SLIDE 3: Solution — Two Theses -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>The Solution — Two Theses</h1>
+    <div style="height: 48px;"></div>
+    <div class="two-col" style="align-items: stretch;">
+      <div class="col accent-border" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+        <p class="secondary" style="font-size: 18px; text-transform: uppercase; letter-spacing: 3px;">Thesis 1</p>
+        <div style="height: 16px;"></div>
+        <h3 style="font-size: 32px;">Democratize<br>Data & Compute</h3>
+        <div style="height: 20px;"></div>
+        <p style="font-size: 20px; color: #A0A0A0;">Give retail traders the same intelligence layer that hedge funds have.</p>
+        <div style="height: 24px;"></div>
+        <div class="badge">Stocky Terminal</div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; flex: 0 0 80px;">
+        <p style="font-size: 48px; color: #333;">+</p>
+      </div>
+      <div class="col accent-border" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+        <p class="secondary" style="font-size: 18px; text-transform: uppercase; letter-spacing: 3px;">Thesis 2</p>
+        <div style="height: 16px;"></div>
+        <h3 style="font-size: 32px;">Make Trading<br>Fun</h3>
+        <div style="height: 20px;"></div>
+        <p style="font-size: 20px; color: #A0A0A0;">Replace doomscrolling with dopamine-driven, AI-assisted trading.</p>
+        <div style="height: 24px;"></div>
+        <div class="badge">Stocky Fun</div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <p style="font-size: 20px; color: #333;">▼</p>
+      <div class="wordmark" style="font-size: 36px; letter-spacing: 2px;">STOCKY AI</div>
+    </div>
+  </div>
+  <div class="slide-number">3</div>
+</div>
+
+<!-- SLIDE 4: Product — Stocky Terminal -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>Stocky Terminal — India's Bloomberg</h1>
+    <h2 style="font-size: 24px; font-weight: 400; color: #A0A0A0;">Global Intelligence Dashboard (God's Eye View) &nbsp;·&nbsp; terminal.stockyai.xyz</h2>
+    <div style="height: 32px;"></div>
+    <div class="two-col">
+      <div class="col">
+        <div style="background: #111; border: 1px solid #222; border-radius: 10px; padding: 28px;">
+          <ul style="font-size: 22px;">
+            <li>Real-time news: 100+ sources (RSS + scraping)</li>
+            <li>Twitter / X sentiment</li>
+            <li>Satellite data & trade route monitoring</li>
+            <li>Live ship & flight tracking</li>
+            <li>Weather: monsoon, temperature, wind</li>
+            <li>Macro: wars, FED, regulatory changes</li>
+          </ul>
+        </div>
+        <div style="height: 24px;"></div>
+        <div class="callout-box">
+          <p style="font-size: 24px; font-weight: 700; color: #C9A96E;">+ AI → Filter noise + Generate signals</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="image-placeholder" style="height: 100%; min-height: 400px;">
+          📷 stocky-terminal-gods-eye.png
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">4</div>
+</div>
+
+<!-- SLIDE 5: Edge in Action -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>Edge in Action</h1>
+    <h2 style="font-size: 24px; font-weight: 400; color: #A0A0A0;">Data no one sees → Trades no one makes</h2>
+    <div style="height: 36px;"></div>
+    <div class="two-col">
+      <div class="col">
+        <div class="card" style="height: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3>La Niña → NFL Fertilizers</h3>
+            <div class="badge">+30%</div>
+          </div>
+          <div style="height: 20px;"></div>
+          <ul style="font-size: 20px;">
+            <li>Monitored abnormally cool sea surface temps in Pacific Ocean</li>
+            <li>Identified La Niña → strong monsoons → fertilizer demand ↑</li>
+            <li>Bought National Fertilizers (NFL) stock</li>
+            <li>NFL rose ~30% from June 2024 in 2 months</li>
+          </ul>
+          <div style="height: 20px;"></div>
+          <div class="image-placeholder" style="height: 180px;">📷 La Niña / NFL trade screenshot</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="height: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3>Iran / Strait of Hormuz</h3>
+            <div class="badge">+75%</div>
+          </div>
+          <div style="height: 20px;"></div>
+          <ul style="font-size: 20px;">
+            <li>US struck Iran at 06:15 UTC, Feb 28, 2026</li>
+            <li>Tracked AIS shipping & satellite data in real-time</li>
+            <li>Detected Hormuz closure 8 hours before media</li>
+            <li>Bet on Polymarket: $100 → $175 (+75% alpha)</li>
+          </ul>
+          <div style="height: 20px;"></div>
+          <div class="image-placeholder" style="height: 180px;">📷 Polymarket Hormuz trade screenshot</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">5</div>
+</div>
+
+<!-- SLIDE 6: Product — Stocky Fun -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>Stocky Fun — Trading as a Game</h1>
+    <h2 style="font-size: 24px; font-weight: 400; color: #A0A0A0;">fun.stockyai.xyz</h2>
+    <div style="height: 32px;"></div>
+    <div class="two-col">
+      <div class="col">
+        <ul style="font-size: 22px;">
+          <li><strong style="color: #C9A96E;">RMG banned Aug 2025</strong> → $2.5B displaced gambling capital</li>
+          <li>High adrenaline, casino-style UX (addiction loops)</li>
+          <li>App open → trade open → close in 15–30 mins</li>
+          <li>Social capital: gamified UX, social trading, share PnL</li>
+          <li>Replace a 15-min Instagram reel session with trading</li>
+          <li>Real-time vision API to signal the next move</li>
+        </ul>
+        <div style="height: 24px;"></div>
+        <div class="callout-box">
+          <p style="font-size: 22px; font-weight: 600; color: #C9A96E;">
+            No. of trades ↑ &nbsp; Trade duration ↓ &nbsp; → &nbsp; Brokerage ↑ &nbsp; Loss ↓
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="image-placeholder" style="height: 100%; min-height: 500px;">
+          📷 stocky-fun-btc.png
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">6</div>
+</div>
+
+<!-- SLIDE 7: Why Now -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>Why Now</h1>
+    <div style="height: 48px;"></div>
+    <div class="grid-2x2" style="flex: 1; max-width: 1400px; margin: 0 auto;">
+      <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 48px;">
+        <div class="stat">210M</div>
+        <div class="stat-label" style="font-size: 24px;">Demat accounts in India</div>
+        <div class="stat-detail" style="font-size: 18px; margin-top: 8px;">Growth slowing → need better UX to retain</div>
+      </div>
+      <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 48px;">
+        <div class="stat">$2.5B</div>
+        <div class="stat-label" style="font-size: 24px;">Displaced RMG capital</div>
+        <div class="stat-detail" style="font-size: 18px; margin-top: 8px;">Real-money gaming banned Aug 2025</div>
+      </div>
+      <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 48px;">
+        <div class="stat">$32K/yr</div>
+        <div class="stat-label" style="font-size: 24px;">Bloomberg Terminal</div>
+        <div class="stat-detail" style="font-size: 18px; margin-top: 8px;">No affordable alternative for India</div>
+      </div>
+      <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 48px;">
+        <div class="stat" style="font-size: 48px;">YC RFS</div>
+        <div class="stat-label" style="font-size: 24px;">AI Native Hedge Fund</div>
+        <div class="stat-detail" style="font-size: 18px; margin-top: 8px;">Y Combinator actively seeking, Spring 2026</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">7</div>
+</div>
+
+<!-- SLIDE 8: Market Size -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>Market Size</h1>
+    <div style="height: 40px;"></div>
+    <div class="two-col" style="align-items: center;">
+      <div class="col" style="display: flex; justify-content: center; align-items: center;">
+        <!-- Concentric circles -->
+        <div style="position: relative; width: 560px; height: 560px;">
+          <div style="position: absolute; top: 0; left: 0; width: 560px; height: 560px; border-radius: 50%; border: 2px solid #222; display: flex; flex-direction: column; align-items: center; padding-top: 40px;">
+            <span style="font-size: 16px; color: #555; text-transform: uppercase; letter-spacing: 2px;">TAM</span>
+            <span class="stat" style="font-size: 40px;">$142B+</span>
+            <span class="stat-detail" style="font-size: 14px;">Indian Fintech → $990B by 2032</span>
+          </div>
+          <div style="position: absolute; top: 100px; left: 80px; width: 400px; height: 400px; border-radius: 50%; border: 2px solid #333; display: flex; flex-direction: column; align-items: center; padding-top: 50px;">
+            <span style="font-size: 16px; color: #555; text-transform: uppercase; letter-spacing: 2px;">SAM</span>
+            <span class="stat" style="font-size: 36px;">$5B+</span>
+            <span class="stat-detail" style="font-size: 14px;">Trading & brokerage revenue</span>
+          </div>
+          <div style="position: absolute; top: 200px; left: 160px; width: 240px; height: 240px; border-radius: 50%; border: 2px solid #C9A96E; background: rgba(201,169,110,0.05); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <span style="font-size: 16px; color: #C9A96E; text-transform: uppercase; letter-spacing: 2px;">SOM</span>
+            <span class="stat" style="font-size: 32px;">10M+</span>
+            <span class="stat-detail" style="font-size: 14px;">Active AI traders</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="accent-border">
+          <p class="secondary" style="font-size: 16px; text-transform: uppercase; letter-spacing: 2px;">Comparable</p>
+          <div style="height: 16px;"></div>
+          <h3 style="font-size: 36px;">Palantir</h3>
+          <div style="height: 12px;"></div>
+          <div style="display: flex; gap: 40px;">
+            <div>
+              <div class="stat" style="font-size: 44px;">$360B</div>
+              <div class="stat-label">Market Cap</div>
+            </div>
+            <div>
+              <div class="stat" style="font-size: 44px;">$4.5B</div>
+              <div class="stat-label">Revenue</div>
+            </div>
+          </div>
+          <div style="height: 16px;"></div>
+          <p class="secondary" style="font-size: 18px;">Data + AI infrastructure for defense & enterprise.<br>Stocky AI = Palantir for Indian markets.</p>
+        </div>
+        <div style="height: 24px;"></div>
+        <div class="card">
+          <p style="font-size: 20px; color: #A0A0A0;">
+            <span class="gold">30% CAGR</span> — Indian fintech growth rate<br>
+            <span class="gold">210M</span> — Demat accounts (4th largest market globally)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">8</div>
+</div>
+
+<!-- SLIDE 9: Business Model -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>Business Model</h1>
+    <h2 style="font-size: 24px; font-weight: 400; color: #A0A0A0;">Information + AI → Signal → More trades + Better risk management</h2>
+    <div style="height: 40px;"></div>
+    <!-- Timeline -->
+    <div style="position: relative; flex: 1;">
+      <!-- Timeline line -->
+      <div style="position: absolute; top: 0; left: 120px; width: 3px; height: 100%; background: linear-gradient(to bottom, #C9A96E, #333);"></div>
+      <!-- Items -->
+      <div style="display: flex; flex-direction: column; gap: 32px;">
+        <div style="display: flex; align-items: center; gap: 24px;">
+          <div style="width: 96px; text-align: right;"><span class="badge" style="font-size: 16px;">Now</span></div>
+          <div style="width: 20px; height: 20px; background: #C9A96E; border-radius: 50%; z-index: 1;"></div>
+          <div>
+            <p style="font-size: 24px; font-weight: 600;">Sub Broker</p>
+            <p class="secondary" style="font-size: 18px;">Monetize extra volume through Zerodha partnership</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 24px;">
+          <div style="width: 96px; text-align: right;"><span style="color: #A0A0A0; font-size: 16px; font-weight: 600;">Year 1</span></div>
+          <div style="width: 20px; height: 20px; background: #C9A96E; border-radius: 50%; z-index: 1;"></div>
+          <div>
+            <p style="font-size: 24px; font-weight: 600;">B2B API</p>
+            <p class="secondary" style="font-size: 18px;">Data streams to hedge funds, reinsurance & consulting companies</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 24px;">
+          <div style="width: 96px; text-align: right;"><span style="color: #A0A0A0; font-size: 16px; font-weight: 600;">Year 1</span></div>
+          <div style="width: 20px; height: 20px; background: #C9A96E; border-radius: 50%; z-index: 1;"></div>
+          <div>
+            <p style="font-size: 24px; font-weight: 600;">B2C Subscriptions</p>
+            <p class="secondary" style="font-size: 18px;">Premium terminal features, alerts, AI analysis</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 24px;">
+          <div style="width: 96px; text-align: right;"><span style="color: #A0A0A0; font-size: 16px; font-weight: 600;">Year 2</span></div>
+          <div style="width: 20px; height: 20px; background: #C9A96E; border-radius: 50%; z-index: 1;"></div>
+          <div>
+            <p style="font-size: 24px; font-weight: 600;">AI Native Broker</p>
+            <p class="secondary" style="font-size: 18px;">Rethink trading UX — Sahi proved UX-led disruption works</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 24px;">
+          <div style="width: 96px; text-align: right;"><span style="color: #A0A0A0; font-size: 16px; font-weight: 600;">Year 3+</span></div>
+          <div style="width: 20px; height: 20px; background: #C9A96E; border-radius: 50%; z-index: 1;"></div>
+          <div>
+            <p style="font-size: 24px; font-weight: 600;">PMS / AIF CAT III</p>
+            <p class="secondary" style="font-size: 18px;">Regulated fund management with proven AI strategy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">9</div>
+</div>
+
+<!-- SLIDE 10: Competition -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>Competitive Landscape</h1>
+    <p class="secondary" style="font-size: 20px; margin-top: 8px;">Everyone else uses ChatGPT API keys + VC money to subsidize. We have our own fine-tuned model with proven results.</p>
+    <div style="height: 32px;"></div>
+    <div class="two-col" style="flex: 1;">
+      <div class="col" style="position: relative;">
+        <!-- 2x2 Matrix -->
+        <div style="position: relative; width: 100%; height: 100%; border-left: 2px solid #333; border-bottom: 2px solid #333;">
+          <!-- Y axis label -->
+          <div style="position: absolute; left: -80px; top: 50%; transform: rotate(-90deg) translateX(50%); color: #555; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap;">Intelligence Layer →</div>
+          <!-- X axis label -->
+          <div style="position: absolute; bottom: -32px; left: 50%; transform: translateX(-50%); color: #555; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">India Native →</div>
+          <!-- Quadrant lines -->
+          <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: #222;"></div>
+          <div style="position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background: #222;"></div>
+          <!-- Top-left: Global Intelligence -->
+          <div style="position: absolute; top: 15%; left: 10%; color: #666; font-size: 16px;">
+            Bloomberg ($32K/yr)<br>Palantir ($360B)
+          </div>
+          <!-- Bottom-right: India Execution -->
+          <div style="position: absolute; top: 65%; left: 60%; color: #666; font-size: 16px;">
+            Zerodha<br>Sahi<br>Groww
+          </div>
+          <!-- Bottom-left: Generic -->
+          <div style="position: absolute; top: 60%; left: 5%; color: #555; font-size: 14px;">
+            Tradomate ($238K)<br>Multibagg (₹1.5Cr)<br>Jarvis (stalled)<br>Tradl.in<br>Wright (backtested)
+          </div>
+          <!-- Top-right: STOCKY AI -->
+          <div style="position: absolute; top: 10%; right: 10%; text-align: center;">
+            <div style="font-size: 28px; font-weight: 800; color: #C9A96E;">★ STOCKY AI</div>
+            <div style="font-size: 14px; color: #A0A0A0; margin-top: 4px;">Fine-tuned model<br>Proven 100%+ returns</div>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="display: flex; flex-direction: column; justify-content: center;">
+        <h3 style="margin-bottom: 24px;">Our Edge</h3>
+        <ul style="font-size: 20px;">
+          <li><strong>Live track record</strong> — no competitor has verified, live trading results</li>
+          <li><strong>Proprietary data</strong> — satellite, shipping, weather infrastructure</li>
+          <li><strong>End-to-end</strong> — data → AI → execution in one platform</li>
+          <li><strong>Own model</strong> — not renting ChatGPT API keys</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">10</div>
+</div>
+
+<!-- SLIDE 11: Traction -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>Traction</h1>
+    <div style="height: 36px;"></div>
+    <div class="two-col">
+      <div class="col">
+        <div class="grid-3x2" style="grid-template-columns: 1fr 1fr;">
+          <div class="card" style="text-align: center;">
+            <div class="stat" style="font-size: 40px;">15L → 31L</div>
+            <div class="stat-label">in 9 months</div>
+          </div>
+          <div class="card" style="text-align: center;">
+            <div class="stat" style="font-size: 40px;">69%</div>
+            <div class="stat-label">Win rate</div>
+          </div>
+          <div class="card" style="text-align: center;">
+            <div class="stat" style="font-size: 40px;">2.29</div>
+            <div class="stat-label">Sharpe Ratio</div>
+          </div>
+          <div class="card" style="text-align: center;">
+            <div class="stat" style="font-size: 40px;">5</div>
+            <div class="stat-label">Products shipped</div>
+            <div class="stat-detail">Terminal · LLM · Fun · Analyse · Voice</div>
+          </div>
+          <div class="card" style="text-align: center;">
+            <div class="stat" style="font-size: 40px;">200K+</div>
+            <div class="stat-label">Weekly LinkedIn views</div>
+          </div>
+          <div class="card" style="text-align: center;">
+            <div class="stat" style="font-size: 40px;">$2K</div>
+            <div class="stat-label">MRR</div>
+            <div class="stat-detail">Digital products</div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="image-placeholder" style="height: 100%; min-height: 500px;">
+          📷 stocky-pnl-stats.png
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">11</div>
+</div>
+
+<!-- SLIDE 12: Team -->
+<div class="slide">
+  <div class="slide-inner">
+    <h1>Founder</h1>
+    <div style="height: 48px;"></div>
+    <div class="two-col" style="align-items: center;">
+      <div class="col" style="flex: 0 0 360px;">
+        <div class="image-placeholder" style="width: 320px; height: 320px; border-radius: 50%;">
+          📷 founder-photo.png
+        </div>
+      </div>
+      <div class="col">
+        <h3 style="font-size: 40px; color: #C9A96E;">Charandeep Kapoor</h3>
+        <div style="height: 32px;"></div>
+        <ul style="font-size: 22px;">
+          <li><strong>IIT Kanpur</strong> — top 0.05% JEE</li>
+          <li><strong>Hedge fund quant</strong> — $750K managed, 35% APY delta-neutral</li>
+          <li><strong>Ex-crypto founder</strong> — Timelock (perps without liquidations)</li>
+          <li><strong>100%+ returns</strong> with Stocky AI</li>
+          <li><strong>50%+ returns</strong> on Polymarket</li>
+          <li><strong>12+ hours/day</strong> screen time — trading is the hobby</li>
+          <li><strong>200K+</strong> weekly LinkedIn views, 9K followers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12</div>
+</div>
+
+<!-- SLIDE 13: Vision + Ask -->
+<div class="slide">
+  <div class="slide-inner" style="justify-content: center;">
+    <!-- Ask box -->
+    <div class="accent-border" style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <p class="secondary" style="font-size: 16px; text-transform: uppercase; letter-spacing: 3px;">The Ask</p>
+      <div style="height: 12px;"></div>
+      <div class="stat" style="font-size: 52px;">$1.5M</div>
+      <p style="font-size: 22px; color: #A0A0A0;">at $15M pre-money valuation</p>
+      <div style="height: 12px;"></div>
+      <p style="font-size: 18px; color: #666;">Fine-tune models · Scale data infrastructure · Hire · YC application</p>
+    </div>
+    <div style="height: 48px;"></div>
+    <!-- Vision timeline -->
+    <div style="display: flex; justify-content: center; align-items: center; gap: 48px;">
+      <div style="text-align: center;">
+        <div class="badge" style="font-size: 14px;">Now</div>
+        <p style="font-size: 20px; margin-top: 8px;">AI Trading Assistant<br>for India</p>
+      </div>
+      <div style="color: #333; font-size: 36px;">→</div>
+      <div style="text-align: center;">
+        <div class="badge" style="font-size: 14px;">Year 2</div>
+        <p style="font-size: 20px; margin-top: 8px;">AI Native Broker<br>+ Hedge Fund (YC)</p>
+      </div>
+      <div style="color: #333; font-size: 36px;">→</div>
+      <div style="text-align: center;">
+        <div class="badge" style="font-size: 14px;">Year 5</div>
+        <p style="font-size: 20px; margin-top: 8px;"><strong style="color: #C9A96E;">India's Palantir</strong></p>
+      </div>
+    </div>
+    <div style="height: 32px;"></div>
+    <!-- Nationalist goals -->
+    <div style="text-align: center;">
+      <p class="secondary" style="font-size: 18px;">Predict floods, monsoons, earthquakes → Emergency services → Defense/Intelligence for GOI</p>
+    </div>
+    <div style="height: 48px;"></div>
+    <!-- Closing -->
+    <div style="text-align: center;">
+      <p class="tagline" style="font-size: 20px;">Built for those who move first.</p>
+      <div style="height: 16px;"></div>
+      <p class="secondary" style="font-size: 18px;">stockyai.xyz &nbsp;·&nbsp; linkedin.com/in/charandeep-kapoor</p>
+    </div>
+  </div>
+  <div class="slide-number">13</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#C9A96E">Why Now</text>
+  <!-- 2x2 grid -->
+  <rect x="120" y="220" width="820" height="340" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="530" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="56" font-weight="800" fill="#C9A96E">210M</text>
+  <text x="530" y="390" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="500" fill="#FFFFFF">Demat accounts in India</text>
+  <text x="530" y="430" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#A0A0A0">Growth slowing → need better UX to retain</text>
+  <rect x="980" y="220" width="820" height="340" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="1390" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="56" font-weight="800" fill="#C9A96E">$2.5B</text>
+  <text x="1390" y="390" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="500" fill="#FFFFFF">Displaced RMG capital</text>
+  <text x="1390" y="430" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#A0A0A0">Real-money gaming banned Aug 2025</text>
+  <rect x="120" y="600" width="820" height="340" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="530" y="720" text-anchor="middle" font-family="Inter, sans-serif" font-size="56" font-weight="800" fill="#C9A96E">$32K/yr</text>
+  <text x="530" y="770" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="500" fill="#FFFFFF">Bloomberg Terminal</text>
+  <text x="530" y="810" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#A0A0A0">No affordable alternative for India</text>
+  <rect x="980" y="600" width="820" height="340" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="1390" y="720" text-anchor="middle" font-family="Inter, sans-serif" font-size="48" font-weight="800" fill="#C9A96E">YC RFS</text>
+  <text x="1390" y="770" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="500" fill="#FFFFFF">AI Native Hedge Fund</text>
+  <text x="1390" y="810" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#A0A0A0">Y Combinator actively seeking, Spring 2026</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">7</text>
+</svg>

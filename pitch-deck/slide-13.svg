@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <!-- Ask box -->
+  <rect x="460" y="80" width="1000" height="240" rx="12" fill="none" stroke="#C9A96E"/>
+  <text x="960" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0" letter-spacing="3">THE ASK</text>
+  <text x="960" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="56" font-weight="800" fill="#C9A96E">$1.5M</text>
+  <text x="960" y="255" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#A0A0A0">at $15M pre-money valuation</text>
+  <text x="960" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#666">Fine-tune models  ·  Scale data infrastructure  ·  Hire  ·  YC application</text>
+  <!-- Vision timeline -->
+  <text x="360" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">
+    <tspan>Now</tspan>
+  </text>
+  <rect x="310" y="440" width="100" height="28" rx="14" fill="#C9A96E"/>
+  <text x="360" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Now</text>
+  <text x="360" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">AI Trading</text>
+  <text x="360" y="550" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Assistant for India</text>
+  <!-- Arrow -->
+  <text x="620" y="510" text-anchor="middle" font-family="Inter, sans-serif" font-size="36" fill="#333">→</text>
+  <rect x="730" y="440" width="100" height="28" rx="14" fill="#C9A96E"/>
+  <text x="780" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Year 2</text>
+  <text x="780" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">AI Native Broker</text>
+  <text x="780" y="550" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">+ Hedge Fund (YC)</text>
+  <!-- Arrow -->
+  <text x="1040" y="510" text-anchor="middle" font-family="Inter, sans-serif" font-size="36" fill="#333">→</text>
+  <rect x="1150" y="440" width="100" height="28" rx="14" fill="#C9A96E"/>
+  <text x="1200" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Year 5</text>
+  <text x="1200" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#C9A96E">India's Palantir</text>
+  <!-- Arrow -->
+  <text x="1460" y="510" text-anchor="middle" font-family="Inter, sans-serif" font-size="36" fill="#333">→</text>
+  <rect x="1520" y="440" width="120" height="28" rx="14" fill="#C9A96E"/>
+  <text x="1580" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Year 10</text>
+  <text x="1580" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Defense &amp;</text>
+  <text x="1580" y="550" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Intelligence</text>
+  <!-- Nationalist goals -->
+  <text x="960" y="680" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#A0A0A0">Predict floods, monsoons, earthquakes → Emergency services → Defense/Intelligence for GOI</text>
+  <!-- Closing -->
+  <text x="960" y="820" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="300" fill="#A0A0A0" letter-spacing="6">BUILT FOR THOSE WHO MOVE FIRST.</text>
+  <text x="960" y="880" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#666">stockyai.xyz  ·  linkedin.com/in/charandeep-kapoor</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">13</text>
+</svg>

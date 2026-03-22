@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#C9A96E">The Solution — Two Theses</text>
+  <!-- Thesis 1 Box -->
+  <rect x="120" y="200" width="780" height="480" rx="12" fill="none" stroke="#C9A96E"/>
+  <text x="510" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#A0A0A0" letter-spacing="3">THESIS 1</text>
+  <text x="510" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="32" font-weight="600" fill="#C9A96E">Democratize</text>
+  <text x="510" y="385" text-anchor="middle" font-family="Inter, sans-serif" font-size="32" font-weight="600" fill="#C9A96E">Data &amp; Compute</text>
+  <text x="510" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#A0A0A0">Give retail traders the same</text>
+  <text x="510" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#A0A0A0">intelligence layer that hedge funds have.</text>
+  <rect x="410" y="520" width="200" height="40" rx="20" fill="#C9A96E"/>
+  <text x="510" y="547" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#0A0A0A">Stocky Terminal</text>
+  <!-- Plus -->
+  <text x="960" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="48" fill="#333">+</text>
+  <!-- Thesis 2 Box -->
+  <rect x="1020" y="200" width="780" height="480" rx="12" fill="none" stroke="#C9A96E"/>
+  <text x="1410" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#A0A0A0" letter-spacing="3">THESIS 2</text>
+  <text x="1410" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="32" font-weight="600" fill="#C9A96E">Make Trading</text>
+  <text x="1410" y="385" text-anchor="middle" font-family="Inter, sans-serif" font-size="32" font-weight="600" fill="#C9A96E">Fun</text>
+  <text x="1410" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#A0A0A0">Replace doomscrolling with</text>
+  <text x="1410" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#A0A0A0">dopamine-driven, AI-assisted trading.</text>
+  <rect x="1310" y="520" width="200" height="40" rx="20" fill="#C9A96E"/>
+  <text x="1410" y="547" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#0A0A0A">Stocky Fun</text>
+  <!-- Converge arrow -->
+  <text x="960" y="760" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#333">▼</text>
+  <text x="960" y="830" text-anchor="middle" font-family="Inter, sans-serif" font-size="36" font-weight="900" fill="#C9A96E" letter-spacing="2">STOCKY AI</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">3</text>
+</svg>

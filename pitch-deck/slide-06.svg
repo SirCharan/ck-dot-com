@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#C9A96E">Stocky Fun — Trading as a Game</text>
+  <text x="120" y="170" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="#A0A0A0">fun.stockyai.xyz</text>
+  <!-- Bullets -->
+  <text x="160" y="250" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="250" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E" font-weight="600">RMG banned Aug 2025</text>
+  <text x="560" y="250" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF"> → $2.5B displaced gambling capital</text>
+  <text x="160" y="310" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="310" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">High adrenaline, casino-style UX (addiction loops)</text>
+  <text x="160" y="370" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="370" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">App open → trade open → close in 15–30 mins</text>
+  <text x="160" y="430" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="430" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Social capital: gamified UX, social trading, share PnL</text>
+  <text x="160" y="490" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="490" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Replace a 15-min Instagram reel session with trading</text>
+  <text x="160" y="550" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="550" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Real-time vision API to signal the next move</text>
+  <!-- Callout -->
+  <rect x="120" y="620" width="800" height="60" rx="8" fill="none" stroke="#C9A96E"/>
+  <line x1="120" y1="620" x2="120" y2="680" stroke="#C9A96E" stroke-width="3"/>
+  <text x="160" y="658" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#C9A96E">No. of trades ↑   Trade duration ↓   →   Brokerage ↑   Loss ↓</text>
+  <!-- Image placeholder -->
+  <rect x="1000" y="220" width="800" height="700" rx="12" fill="none" stroke="#333" stroke-dasharray="8,4"/>
+  <text x="1400" y="580" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#555">📷 stocky-fun-btc.png</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">6</text>
+</svg>

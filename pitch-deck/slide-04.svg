@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#C9A96E">Stocky Terminal — India's Bloomberg</text>
+  <text x="120" y="170" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="#A0A0A0">Global Intelligence Dashboard (God's Eye View)  ·  terminal.stockyai.xyz</text>
+  <!-- Data box -->
+  <rect x="120" y="220" width="780" height="420" rx="10" fill="#111111" stroke="#222222"/>
+  <text x="160" y="280" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="280" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Real-time news: 100+ sources (RSS + scraping)</text>
+  <text x="160" y="330" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="330" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Twitter / X sentiment</text>
+  <text x="160" y="380" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="380" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Satellite data &amp; trade route monitoring</text>
+  <text x="160" y="430" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="430" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Live ship &amp; flight tracking</text>
+  <text x="160" y="480" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="480" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Weather: monsoon, temperature, wind patterns</text>
+  <text x="160" y="530" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="190" y="530" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF">Macro: wars, FED news, regulatory changes</text>
+  <!-- AI callout -->
+  <rect x="120" y="670" width="780" height="60" rx="8" fill="none" stroke="#C9A96E" stroke-width="1"/>
+  <line x1="120" y1="670" x2="120" y2="730" stroke="#C9A96E" stroke-width="3"/>
+  <text x="160" y="710" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#C9A96E">+ AI → Filter noise + Generate signals</text>
+  <!-- Image placeholder -->
+  <rect x="960" y="220" width="840" height="540" rx="12" fill="none" stroke="#333" stroke-dasharray="8,4"/>
+  <text x="1380" y="500" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#555">📷 stocky-terminal-gods-eye.png</text>
+  <text x="120" y="820" font-family="Inter, sans-serif" font-size="20" fill="#A0A0A0">Track notifications that impact your portfolio — timely safeguards and exits.</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">4</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#C9A96E">Market Size</text>
+  <!-- Concentric circles -->
+  <circle cx="520" cy="560" r="360" fill="none" stroke="#222" stroke-width="2"/>
+  <text x="520" y="260" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#555" letter-spacing="2">TAM</text>
+  <text x="520" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" fill="#C9A96E">$142B+</text>
+  <text x="520" y="330" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#A0A0A0">Indian Fintech → $990B by 2032</text>
+  <circle cx="520" cy="560" r="240" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="520" y="400" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#555" letter-spacing="2">SAM</text>
+  <text x="520" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="36" font-weight="800" fill="#C9A96E">$5B+</text>
+  <text x="520" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#A0A0A0">Trading &amp; brokerage revenue</text>
+  <circle cx="520" cy="560" r="120" fill="rgba(201,169,110,0.05)" stroke="#C9A96E" stroke-width="2"/>
+  <text x="520" y="530" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#C9A96E" letter-spacing="2">SOM</text>
+  <text x="520" y="570" text-anchor="middle" font-family="Inter, sans-serif" font-size="32" font-weight="800" fill="#C9A96E">10M+</text>
+  <text x="520" y="600" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#A0A0A0">Active AI traders</text>
+  <!-- Palantir comp -->
+  <rect x="1000" y="300" width="780" height="300" rx="12" fill="none" stroke="#C9A96E"/>
+  <text x="1040" y="360" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0" letter-spacing="2">COMPARABLE</text>
+  <text x="1040" y="410" font-family="Inter, sans-serif" font-size="36" font-weight="600" fill="#C9A96E">Palantir</text>
+  <text x="1040" y="480" font-family="Inter, sans-serif" font-size="44" font-weight="800" fill="#C9A96E">$360B</text>
+  <text x="1040" y="510" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">Market Cap</text>
+  <text x="1400" y="480" font-family="Inter, sans-serif" font-size="44" font-weight="800" fill="#C9A96E">$4.5B</text>
+  <text x="1400" y="510" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">Revenue</text>
+  <text x="1040" y="560" font-family="Inter, sans-serif" font-size="18" fill="#A0A0A0">Data + AI infrastructure for defense &amp; enterprise.</text>
+  <!-- Extra stats -->
+  <rect x="1000" y="660" width="780" height="140" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="1040" y="720" font-family="Inter, sans-serif" font-size="20" fill="#A0A0A0"><tspan fill="#C9A96E" font-weight="700">30% CAGR</tspan> — Indian fintech growth rate</text>
+  <text x="1040" y="760" font-family="Inter, sans-serif" font-size="20" fill="#A0A0A0"><tspan fill="#C9A96E" font-weight="700">210M</tspan> — Demat accounts (4th largest market globally)</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">8</text>
+</svg>

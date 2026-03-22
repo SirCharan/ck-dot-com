@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#C9A96E">Competitive Landscape</text>
+  <text x="120" y="170" font-family="Inter, sans-serif" font-size="20" fill="#A0A0A0">Everyone else uses ChatGPT API keys + VC money to subsidize. We have our own fine-tuned model with proven results.</text>
+  <!-- 2x2 Matrix -->
+  <line x1="200" y1="900" x2="1100" y2="900" stroke="#333" stroke-width="2"/>
+  <line x1="200" y1="250" x2="200" y2="900" stroke="#333" stroke-width="2"/>
+  <line x1="200" y1="575" x2="1100" y2="575" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="650" y1="250" x2="650" y2="900" stroke="#1a1a1a" stroke-width="1"/>
+  <!-- Axis labels -->
+  <text x="100" y="575" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#555" transform="rotate(-90 100 575)" letter-spacing="2">INTELLIGENCE LAYER →</text>
+  <text x="650" y="950" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#555" letter-spacing="2">INDIA NATIVE →</text>
+  <!-- Top-left: Global Intelligence -->
+  <text x="280" y="340" font-family="Inter, sans-serif" font-size="16" fill="#666">Bloomberg ($32K/yr)</text>
+  <text x="280" y="370" font-family="Inter, sans-serif" font-size="16" fill="#666">Palantir ($360B)</text>
+  <!-- Bottom-right: India Execution -->
+  <text x="750" y="700" font-family="Inter, sans-serif" font-size="16" fill="#666">Zerodha</text>
+  <text x="750" y="730" font-family="Inter, sans-serif" font-size="16" fill="#666">Sahi</text>
+  <text x="750" y="760" font-family="Inter, sans-serif" font-size="16" fill="#666">Groww</text>
+  <!-- Bottom-left: Generic -->
+  <text x="260" y="660" font-family="Inter, sans-serif" font-size="14" fill="#555">Tradomate ($238K)</text>
+  <text x="260" y="690" font-family="Inter, sans-serif" font-size="14" fill="#555">Multibagg (₹1.5Cr)</text>
+  <text x="260" y="720" font-family="Inter, sans-serif" font-size="14" fill="#555">Jarvis (stalled)</text>
+  <text x="260" y="750" font-family="Inter, sans-serif" font-size="14" fill="#555">Tradl.in</text>
+  <text x="260" y="780" font-family="Inter, sans-serif" font-size="14" fill="#555">Wright (backtested)</text>
+  <!-- Top-right: STOCKY AI -->
+  <text x="900" y="350" text-anchor="middle" font-family="Inter, sans-serif" font-size="32" font-weight="800" fill="#C9A96E">★ STOCKY AI</text>
+  <text x="900" y="385" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#A0A0A0">Fine-tuned model · Proven 100%+ returns</text>
+  <!-- Our Edge box -->
+  <rect x="1160" y="250" width="640" height="650" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="1200" y="310" font-family="Inter, sans-serif" font-size="28" font-weight="600" fill="#C9A96E">Our Edge</text>
+  <text x="1220" y="380" font-family="Inter, sans-serif" font-size="20" fill="#C9A96E">→</text>
+  <text x="1250" y="380" font-family="Inter, sans-serif" font-size="20" fill="#FFFFFF" font-weight="600">Live track record</text>
+  <text x="1250" y="410" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">No competitor has verified, live</text>
+  <text x="1250" y="435" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">trading results</text>
+  <text x="1220" y="490" font-family="Inter, sans-serif" font-size="20" fill="#C9A96E">→</text>
+  <text x="1250" y="490" font-family="Inter, sans-serif" font-size="20" fill="#FFFFFF" font-weight="600">Proprietary data</text>
+  <text x="1250" y="520" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">Satellite, shipping, weather</text>
+  <text x="1250" y="545" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">infrastructure</text>
+  <text x="1220" y="600" font-family="Inter, sans-serif" font-size="20" fill="#C9A96E">→</text>
+  <text x="1250" y="600" font-family="Inter, sans-serif" font-size="20" fill="#FFFFFF" font-weight="600">End-to-end</text>
+  <text x="1250" y="630" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">Data → AI → Execution</text>
+  <text x="1250" y="655" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">in one platform</text>
+  <text x="1220" y="710" font-family="Inter, sans-serif" font-size="20" fill="#C9A96E">→</text>
+  <text x="1250" y="710" font-family="Inter, sans-serif" font-size="20" fill="#FFFFFF" font-weight="600">Own model</text>
+  <text x="1250" y="740" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">Not renting ChatGPT API keys</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">10</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#C9A96E">Founder</text>
+  <!-- Photo placeholder -->
+  <circle cx="400" cy="540" r="200" fill="none" stroke="#333" stroke-dasharray="8,4"/>
+  <text x="400" y="545" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#555">📷 founder-photo.png</text>
+  <!-- Name and credentials -->
+  <text x="720" y="340" font-family="Inter, sans-serif" font-size="40" font-weight="700" fill="#C9A96E">Charandeep Kapoor</text>
+  <text x="740" y="420" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="780" y="420" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF"><tspan font-weight="600">IIT Kanpur</tspan> — top 0.05% JEE</text>
+  <text x="740" y="470" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="780" y="470" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF"><tspan font-weight="600">Hedge fund quant</tspan> — $750K managed, 35% APY</text>
+  <text x="740" y="520" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="780" y="520" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF"><tspan font-weight="600">Ex-crypto founder</tspan> — Timelock (perps without liquidations)</text>
+  <text x="740" y="570" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="780" y="570" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF"><tspan font-weight="600">100%+ returns</tspan> with Stocky AI</text>
+  <text x="740" y="620" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="780" y="620" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF"><tspan font-weight="600">50%+ returns</tspan> on Polymarket</text>
+  <text x="740" y="670" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="780" y="670" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF"><tspan font-weight="600">12+ hours/day</tspan> screen time — trading is the hobby</text>
+  <text x="740" y="720" font-family="Inter, sans-serif" font-size="22" fill="#C9A96E">→</text>
+  <text x="780" y="720" font-family="Inter, sans-serif" font-size="22" fill="#FFFFFF"><tspan font-weight="600">200K+</tspan> weekly LinkedIn views, 9K followers</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">12</text>
+</svg>

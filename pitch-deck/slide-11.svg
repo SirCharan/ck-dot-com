@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#C9A96E">Traction</text>
+  <!-- Metric grid (3x2) -->
+  <rect x="120" y="220" width="360" height="200" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="300" y="310" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" fill="#C9A96E">15L → 31L</text>
+  <text x="300" y="350" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">in 9 months</text>
+  <rect x="520" y="220" width="360" height="200" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="700" y="310" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" fill="#C9A96E">69%</text>
+  <text x="700" y="350" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">Win rate</text>
+  <rect x="120" y="460" width="360" height="200" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="300" y="550" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" fill="#C9A96E">2.29</text>
+  <text x="300" y="590" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">Sharpe Ratio</text>
+  <rect x="520" y="460" width="360" height="200" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="700" y="550" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" fill="#C9A96E">5</text>
+  <text x="700" y="590" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">Products shipped</text>
+  <text x="700" y="620" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#A0A0A0">Terminal · LLM · Fun · Analyse · Voice</text>
+  <rect x="120" y="700" width="360" height="200" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="300" y="790" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" fill="#C9A96E">200K+</text>
+  <text x="300" y="830" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">Weekly LinkedIn views</text>
+  <rect x="520" y="700" width="360" height="200" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="700" y="790" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" fill="#C9A96E">$2K</text>
+  <text x="700" y="830" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">MRR</text>
+  <text x="700" y="860" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#A0A0A0">Digital products</text>
+  <!-- Image placeholder -->
+  <rect x="960" y="220" width="840" height="680" rx="12" fill="none" stroke="#333" stroke-dasharray="8,4"/>
+  <text x="1380" y="570" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#555">📷 stocky-pnl-stats.png</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">11</text>
+</svg>

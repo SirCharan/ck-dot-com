@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0A0A0A"/>
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#C9A96E">The Problem</text>
+  <text x="120" y="210" font-family="Inter, sans-serif" font-size="36" font-weight="600" fill="#C9A96E">"Trading is not a skill problem.</text>
+  <text x="120" y="260" font-family="Inter, sans-serif" font-size="36" font-weight="600" fill="#C9A96E">It's an information problem."</text>
+  <!-- Stat cards -->
+  <rect x="120" y="320" width="780" height="180" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="160" y="400" font-family="Inter, sans-serif" font-size="56" font-weight="800" fill="#C9A96E">91%</text>
+  <text x="160" y="440" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">of retail F&amp;O traders lose money</text>
+  <text x="160" y="470" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">SEBI FY25 Study</text>
+  <rect x="940" y="320" width="780" height="180" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="980" y="400" font-family="Inter, sans-serif" font-size="56" font-weight="800" fill="#C9A96E">₹1.05L Cr</text>
+  <text x="980" y="440" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">Aggregate losses in one year</text>
+  <text x="980" y="470" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">Retail traders, FY 2024-25</text>
+  <rect x="120" y="530" width="780" height="180" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="160" y="610" font-family="Inter, sans-serif" font-size="56" font-weight="800" fill="#C9A96E">2%</text>
+  <text x="160" y="650" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">Profitable traders are Indian</text>
+  <text x="160" y="680" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">Rest are foreign institutions extracting capital</text>
+  <rect x="940" y="530" width="780" height="180" rx="12" fill="#111111" stroke="#1a1a1a"/>
+  <text x="980" y="600" font-family="Inter, sans-serif" font-size="40" font-weight="800" fill="#C9A96E">Data &amp; Compute</text>
+  <text x="980" y="650" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF">Institutions hold the edge</text>
+  <text x="980" y="680" font-family="Inter, sans-serif" font-size="16" fill="#A0A0A0">Retail trades blind — institutions trade informed</text>
+  <text x="120" y="1050" font-family="Inter, sans-serif" font-size="14" fill="#333">Source: SEBI Study, September 2024</text>
+  <text x="1880" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-size="16" fill="#333">2</text>
+</svg>

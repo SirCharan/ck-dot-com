@@ -1,0 +1,331 @@
+{
+  "deck": {
+    "title": "Stocky AI — Seed Deck",
+    "version": "1.0",
+    "raise": "$1.5M at $15M valuation",
+    "design": {
+      "width": 1920,
+      "height": 1080,
+      "background": "#0A0A0A",
+      "accent": "#C9A96E",
+      "textPrimary": "#FFFFFF",
+      "textSecondary": "#A0A0A0",
+      "font": "Inter",
+      "titleSize": 48,
+      "bodySize": 28,
+      "labelSize": 20
+    }
+  },
+  "slides": [
+    {
+      "id": 1,
+      "slug": "title",
+      "title": "STOCKY AI",
+      "subtitle": "AI Trading Infrastructure for India",
+      "tagline": "Precision. Discipline. Edge.",
+      "url": "stockyai.xyz",
+      "layout": "centered",
+      "notes": "Logo wordmark in gold (#C9A96E), subtitle in white, tagline in secondary gray"
+    },
+    {
+      "id": 2,
+      "slug": "problem",
+      "title": "The Problem",
+      "headline": "Trading is not a skill problem. It's an information problem.",
+      "bullets": [
+        "91% of retail F&O traders lose money — SEBI FY25",
+        "₹1.05 lakh crore aggregate losses in one year",
+        "Institutions hold edge in data & compute → extract money from retail",
+        "Only 2% profitable traders are Indian; rest are foreign institutions extracting capital"
+      ],
+      "source": "SEBI Study, September 2024",
+      "layout": "headline-with-bullets",
+      "notes": "Headline in large gold text. Bullets below in white. Source citation in small gray at bottom."
+    },
+    {
+      "id": 3,
+      "slug": "solution",
+      "title": "Two Theses",
+      "columns": [
+        {
+          "label": "Thesis 1",
+          "title": "Democratize Data & Compute",
+          "description": "Give retail traders the same intelligence layer that hedge funds have.",
+          "product": "Stocky Terminal",
+          "icon": "📡"
+        },
+        {
+          "label": "Thesis 2",
+          "title": "Make Trading Fun",
+          "description": "Replace doomscrolling with dopamine-driven, AI-assisted trading.",
+          "product": "Stocky Fun",
+          "icon": "🎮"
+        }
+      ],
+      "convergence": "STOCKY AI",
+      "layout": "two-column-converge",
+      "notes": "Two columns with a converging arrow/line to 'Stocky AI' at bottom center"
+    },
+    {
+      "id": 4,
+      "slug": "product-terminal",
+      "title": "Stocky Terminal — India's Bloomberg",
+      "subtitle": "Global Intelligence Dashboard (God's Eye View)",
+      "bullets": [
+        "Real-time news: 100+ sources (RSS + scraping)",
+        "Twitter / X sentiment",
+        "Satellite data & trade route monitoring",
+        "Live ship & flight tracking, supply chain disruptions",
+        "Weather: monsoon, temperature, wind patterns",
+        "Macro: wars, FED news, regulatory changes"
+      ],
+      "callout": "+ AI → Filter noise + Generate signals",
+      "url": "terminal.stockyai.xyz",
+      "imagePlaceholder": "stocky-terminal-gods-eye.png",
+      "layout": "product-showcase",
+      "notes": "Left side: bullets in a bordered box. Right side: '+AI' callout. Bottom: screenshot placeholder."
+    },
+    {
+      "id": 5,
+      "slug": "edge-in-action",
+      "title": "Edge in Action",
+      "subtitle": "Data no one sees → Trades no one makes",
+      "trades": [
+        {
+          "title": "La Niña → NFL Fertilizers",
+          "result": "+30% in 2 months",
+          "steps": [
+            "Monitored abnormally cool sea surface temperatures in the Pacific Ocean",
+            "Identified La Niña pattern → strong monsoons → boosted agriculture & fertilizer demand",
+            "Bought National Fertilizers (NFL) stock",
+            "NFL rose ~30% from June 2024 in 2 months"
+          ],
+          "imagePlaceholder": "image-v47.png (La Nina/NFL trade)"
+        },
+        {
+          "title": "Iran / Strait of Hormuz → Polymarket",
+          "result": "+75% ($100 → $175)",
+          "steps": [
+            "US struck Iran at 06:15 UTC on February 28, 2026",
+            "Iran closed the Strait of Hormuz at 07:15 UTC",
+            "First media report at 15:52 UTC (~8 hours later)",
+            "We tracked real-time AIS shipping & satellite data, detecting the closure early",
+            "Leveraged edge to bet on Polymarket, generating 75% alpha"
+          ],
+          "imagePlaceholder": "image-v48.png (Polymarket Hormuz trade)"
+        }
+      ],
+      "layout": "two-column-trades",
+      "notes": "Two trade case studies side by side. Each with title, result badge, and step bullets. Image placeholders below each."
+    },
+    {
+      "id": 6,
+      "slug": "product-fun",
+      "title": "Stocky Fun — Trading as a Game",
+      "bullets": [
+        "RMG banned Aug 2025 → $2.5B displaced gambling capital needs a new platform",
+        "High adrenaline, casino-style UX (addiction loops)",
+        "App open → trade open → close in 15–30 mins",
+        "Social capital: gamified UX, social trading, share PnL",
+        "Replace a 15-min Instagram reel session with trading",
+        "Real-time vision API to signal the next move (up or down)"
+      ],
+      "callout": "No. of trades ↑  Trade duration ↓  →  Brokerage ↑  Loss ↓",
+      "url": "fun.stockyai.xyz",
+      "imagePlaceholder": "stocky-fun-btc.png",
+      "layout": "product-showcase",
+      "notes": "Bullets left, screenshot placeholder right. Callout bar at bottom."
+    },
+    {
+      "id": 7,
+      "slug": "why-now",
+      "title": "Why Now",
+      "bullets": [
+        {
+          "stat": "210M",
+          "label": "Demat accounts in India",
+          "detail": "Growth slowing → need better UX to retain"
+        },
+        {
+          "stat": "$2.5B",
+          "label": "Displaced RMG capital",
+          "detail": "Real-money gaming banned Aug 2025"
+        },
+        {
+          "stat": "$32K/yr",
+          "label": "Bloomberg Terminal cost",
+          "detail": "No affordable alternative for India"
+        },
+        {
+          "stat": "YC RFS",
+          "label": "AI Native Hedge Fund",
+          "detail": "Y Combinator actively seeking, Spring 2026"
+        }
+      ],
+      "layout": "stat-grid-2x2",
+      "notes": "2×2 grid of stat cards. Large gold number, white label, gray detail."
+    },
+    {
+      "id": 8,
+      "slug": "market-size",
+      "title": "Market Size",
+      "tiers": [
+        {
+          "label": "TAM",
+          "value": "$142B+",
+          "description": "Indian fintech market (→ $990B by 2032, 30% CAGR)"
+        },
+        {
+          "label": "SAM",
+          "value": "$5B+",
+          "description": "Trading & brokerage revenue — 210M demat accounts"
+        },
+        {
+          "label": "SOM",
+          "value": "10M+",
+          "description": "Active traders using AI-powered tools"
+        }
+      ],
+      "comparables": [
+        {
+          "name": "Palantir",
+          "marketCap": "$360B",
+          "revenue": "$4.5B",
+          "note": "Data + AI infrastructure"
+        }
+      ],
+      "layout": "concentric-circles",
+      "notes": "Three concentric circles (TAM > SAM > SOM) with Palantir comp card on the right."
+    },
+    {
+      "id": 9,
+      "slug": "business-model",
+      "title": "Business Model",
+      "subtitle": "Information + AI → Signal → More trades + Better risk management",
+      "revenue_streams": [
+        {
+          "name": "Sub Broker",
+          "description": "Monetize extra volume through Zerodha partnership",
+          "timeline": "Now"
+        },
+        {
+          "name": "B2B API",
+          "description": "Data streams to hedge funds, reinsurance & consulting companies",
+          "timeline": "Year 1"
+        },
+        {
+          "name": "AI Native Broker",
+          "description": "Rethink trading UX (Sahi proved UX-led disruption works)",
+          "timeline": "Year 2"
+        },
+        {
+          "name": "B2C Subscriptions",
+          "description": "Premium terminal features, alerts, AI analysis",
+          "timeline": "Year 1"
+        },
+        {
+          "name": "PMS / AIF CAT III",
+          "description": "Regulated fund management with proven AI strategy",
+          "timeline": "Year 3+"
+        }
+      ],
+      "layout": "timeline-rows",
+      "notes": "Horizontal rows with timeline indicator (Now → Year 1 → Year 2 → Year 3+). Each row: name, description, dot on timeline."
+    },
+    {
+      "id": 10,
+      "slug": "competition",
+      "title": "Competitive Landscape",
+      "headline": "Everyone else uses ChatGPT API keys + VC money to subsidize. We have our own fine-tuned model with proven results.",
+      "matrix": {
+        "xAxis": "India Native →",
+        "yAxis": "Intelligence Layer →",
+        "quadrants": {
+          "topRight": {
+            "label": "Goal",
+            "players": ["STOCKY AI"]
+          },
+          "topLeft": {
+            "label": "Global Intelligence",
+            "players": ["Bloomberg ($32K/yr)", "Palantir ($360B)"]
+          },
+          "bottomRight": {
+            "label": "India Execution",
+            "players": ["Zerodha", "Sahi", "Groww"]
+          },
+          "bottomLeft": {
+            "label": "Generic",
+            "players": ["Tradomate ($238K seed)", "Multibagg (₹1.5Cr)", "Jarvis (stalled)", "Tradl.in", "Wright (backtested only)"]
+          }
+        }
+      },
+      "differentiators": [
+        "No competitor has a live, verified trading track record",
+        "No competitor has proprietary data infrastructure (satellite, shipping, weather)",
+        "No competitor integrates data → AI → execution end-to-end"
+      ],
+      "layout": "2x2-matrix",
+      "notes": "2×2 matrix with Stocky AI in top-right (gold star). Competitors plotted in other quadrants. Three differentiator bullets below."
+    },
+    {
+      "id": 11,
+      "slug": "traction",
+      "title": "Traction",
+      "metrics": [
+        { "value": "15L → 31L", "label": "in 9 months", "detail": "Stocky AI trading" },
+        { "value": "69%", "label": "Win rate", "detail": "" },
+        { "value": "2.29", "label": "Sharpe Ratio", "detail": "" },
+        { "value": "5", "label": "Products shipped", "detail": "Terminal, LLM, Fun, Analyse, Voice" },
+        { "value": "200K+", "label": "Weekly LinkedIn views", "detail": "" },
+        { "value": "$2K", "label": "MRR", "detail": "Digital products" }
+      ],
+      "imagePlaceholder": "stocky-pnl-stats.png",
+      "layout": "metric-grid-with-image",
+      "notes": "3×2 grid of metric cards on left. PnL screenshot placeholder on right."
+    },
+    {
+      "id": 12,
+      "slug": "team",
+      "title": "Founder",
+      "name": "Charandeep Kapoor",
+      "credentials": [
+        "IIT Kanpur — top 0.05% JEE",
+        "Hedge fund quant: $750K managed, 35% APY delta-neutral",
+        "Ex-crypto founder: Timelock (perps without liquidations)",
+        "100%+ returns with Stocky AI",
+        "50%+ returns on Polymarket",
+        "12+ hours/day screen time — trading is the hobby",
+        "Founder-led marketing: 200K+ weekly LinkedIn views, 9K followers"
+      ],
+      "imagePlaceholder": "founder-photo.png",
+      "layout": "founder-profile",
+      "notes": "Photo placeholder on left. Name + credentials on right. Gold accent on name."
+    },
+    {
+      "id": 13,
+      "slug": "vision-ask",
+      "title": "Vision + Ask",
+      "ask": {
+        "amount": "$1.5M",
+        "valuation": "$15M pre-money",
+        "use": "Fine-tune models, scale data infrastructure, hire, YC application"
+      },
+      "vision": [
+        { "timeline": "Now", "goal": "AI trading assistant for India" },
+        { "timeline": "Year 2", "goal": "AI Native Broker + Hedge Fund (YC)" },
+        { "timeline": "Year 5", "goal": "India's Palantir" }
+      ],
+      "nationalist_goals": [
+        "Predict floods, monsoons, earthquakes → emergency services",
+        "Defense/Intelligence for GOI"
+      ],
+      "closing": "Built for those who move first.",
+      "contact": {
+        "url": "stockyai.xyz",
+        "linkedin": "linkedin.com/in/charandeep-kapoor"
+      },
+      "layout": "vision-timeline-with-ask",
+      "notes": "Ask box in gold border at top. Vision timeline below (horizontal). Nationalist goals as callout. Closing tagline at bottom."
+    }
+  ]
+}
