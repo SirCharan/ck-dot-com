@@ -1,4 +1,4 @@
-import { Inter, Orbitron, Rajdhani, Syne } from "next/font/google";
+import { Inter, EB_Garamond, JetBrains_Mono } from "next/font/google";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -6,21 +6,17 @@ export const inter = Inter({
   display: "swap",
 });
 
-export const orbitron = Orbitron({
+export const garamond = EB_Garamond({
   subsets: ["latin"],
-  variable: "--font-orbitron",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-garamond",
   display: "swap",
 });
 
-export const rajdhani = Rajdhani({
+export const mono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-rajdhani",
-  display: "swap",
-});
-
-export const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-syne",
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
   display: "swap",
 });

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Providers } from "@/components/Providers";
 import { RootStructuredData } from "@/components/RootStructuredData";
-import { inter, orbitron, rajdhani, syne } from "@/lib/fonts";
+import { inter, garamond, mono } from "@/lib/fonts";
 import "@/index.css";
 
 const GA_ID = "G-J6SY9N1Y3W";
@@ -10,39 +10,30 @@ const GA_ID = "G-J6SY9N1Y3W";
 const SITE_URL = "https://charandeepkapoor.com";
 
 const DEFAULT_DESCRIPTION =
-  "Charandeep Kapoor - Creator of Stocky AI (AI-powered trading, 100%+ ROI) and Stocky Terminal (open-source Bloomberg Terminal alternative). 6+ years in crypto, quant finance & product. Essays on protected perps, DeFi, algorithmic trading, and trading psychology.";
+  "Charandeep Kapoor — founder of Timelock Trade, creator of Stocky AI (Claude-driven Zerodha trading, 150%+ ROI). Six years across product, research, and VC in crypto and quant finance. Essays on perps, DeFi, and trading.";
 
-const DEFAULT_TITLE = "Charandeep Kapoor | Stocky AI & Stocky Terminal Creator, Quant Finance Expert";
+const DEFAULT_TITLE =
+  "Charandeep Kapoor — Perpetuals, Quant Finance, AI Trading";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: DEFAULT_TITLE,
-    template: "%s | Charandeep Kapoor",
+    template: "%s — Charandeep Kapoor",
   },
   description: DEFAULT_DESCRIPTION,
   keywords: [
     "Charandeep Kapoor",
     "Stocky AI",
-    "AI trading India",
-    "algorithmic trading India",
-    "AI stock trading",
-    "crypto expert",
+    "Timelock Trade",
+    "perpetual futures",
+    "AI trading",
+    "Claude trading bot",
     "quantitative finance",
-    "protected perps",
     "DeFi",
-    "trading psychology",
-    "Zerodha AI trading",
-    "commodities trading India",
-    "Stocky Terminal",
-    "Bloomberg Terminal alternative",
-    "open source terminal",
-    "OSINT dashboard",
+    "Delta Exchange",
+    "crypto product",
   ],
-  verification: {
-    // Replace with actual code from Google Search Console
-    // google: "YOUR_GSC_VERIFICATION_CODE",
-  },
   authors: [{ name: "Charandeep Kapoor", url: SITE_URL }],
   creator: "Charandeep Kapoor",
   publisher: "Charandeep Kapoor",
@@ -58,7 +49,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Charandeep Kapoor - Crypto, Quant Finance & Mathematics Expert",
+        alt: "Charandeep Kapoor",
       },
     ],
   },
@@ -73,10 +64,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
+    googleBot: { index: true, follow: true },
   },
   icons: {
     icon: "/favicon.png",
@@ -84,9 +72,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
-    types: {
-      "application/rss+xml": "/blog/feed.xml",
-    },
+    types: { "application/rss+xml": "/blog/feed.xml" },
   },
   category: "Finance",
 };
@@ -97,7 +83,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${rajdhani.variable} ${syne.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${garamond.variable} ${mono.variable}`}
+    >
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link
@@ -110,7 +99,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.google-analytics.com" />
       </head>
       <body>
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="lazyOnload" />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="lazyOnload"
+        />
         <Script id="gtag-init" strategy="lazyOnload">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
         </Script>

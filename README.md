@@ -1,117 +1,72 @@
-# Charandeep Kapoor – Personal Portfolio
+# Charandeep Kapoor — Personal Site
 
-A cyberpunk-themed portfolio showcasing expertise in **crypto**, **quant finance**, and **mathematics**. Built with React, TypeScript, Tailwind CSS, Framer Motion, and Next.js.
+Editorial-style personal site for Charandeep Kapoor — founder of Timelock Trade, creator of Stocky AI, six years across product, research and VC in crypto and quant finance.
 
-**Live:** [charandeepkapoor.com](https://charandeepkapoor.com)  
-**Repo:** [github.com/SirCharan/crypto-math-folio-web](https://github.com/SirCharan/crypto-math-folio-web)
-
----
-
-## Features
-
-- **Cyberpunk UI** – Neon purple/cyan accents, glass cards, HUD-style corners
-- **Animated Hero** – Canvas particles, 3D polyhedron, aurora background, rotating subtitles
-- **Writings** – Light, Codex-style blog at `/blog` with markdown posts, RSS feed, prev/next nav
-- **Stocky AI** – Featured financial tool: Claude-powered Zerodha trading system (100%+ ROI, 73% win rate)
-- **Financial Tools** – Voice-powered Zerodha automation, Option Premium Calculator, Delta trading bot
-- **Responsive Design** – Mobile-first, dark theme
-- **SEO & AI Discoverability** – OG tags, Twitter cards, Schema.org structured data, dynamic sitemap, robots.txt (PerplexityBot, OAI-SearchBot, GPTBot), llms.txt for AI crawlers
+**Live:** [charandeepkapoor.com](https://charandeepkapoor.com)
 
 ---
 
-## Tech Stack
+## Stack
 
-| Layer      | Tech                       |
-|-----------|----------------------------|
-| Frontend  | React 18, TypeScript       |
-| Framework | Next.js 15 (App Router)    |
-| Styling   | Tailwind CSS, shadcn/ui   |
-| Animation | Framer Motion, Canvas API  |
-| Analytics | Vercel Analytics           |
-
----
-
-## SEO & AI Visibility
-
-- **Dynamic sitemap** – `app/sitemap.ts` generates sitemap for home, blog, blog posts, and `/blog/md/*` (raw markdown for LLM ingestion)
-- **Structured data** – Person, WebSite, Article schemas (Schema.org JSON-LD) for Perplexity & ChatGPT citation
-- **llms.txt** – At `/llms.txt` for AI crawlers (manifest of key pages and essays)
-- **llm.txt** – At `/llm.txt` concise LLM manifest (links to full llms.txt)
-- **agents.txt** – At `/agents.txt` agent instructions for AI systems
-- **robots.txt** – Allows PerplexityBot, OAI-SearchBot (ChatGPT Search), Claude-Web, GPTBot
-- **RSS** – `/blog/feed.xml` for syndication
+| Layer      | Tech                                             |
+|------------|--------------------------------------------------|
+| Framework  | Next.js 15 (App Router)                          |
+| UI         | React 18 + TypeScript + Tailwind CSS             |
+| Typography | EB Garamond (display), Inter (body), JetBrains Mono (data) |
+| Content    | Markdown blog under `content/blog/`              |
+| Hosting    | Vercel                                           |
 
 ---
 
-## Project Structure
+## Layout
 
-```
-app/
-├── blog/                 # Writings at /blog
-│   ├── [slug]/page.tsx    # Post page (prev/next nav)
-│   ├── md/[slug]/route.ts # Raw markdown for AI ingestion
-│   ├── feed.xml/route.ts  # RSS
-│   ├── layout.tsx         # Nav: Home · Writings · RSS
-│   └── page.tsx
-├── layout.tsx             # Root layout, meta, structured data
-├── page.tsx
-└── sitemap.ts             # Dynamic sitemap
-
-src/
-├── components/
-│   ├── Hero.tsx, About.tsx, Experience.tsx
-│   ├── FinancialTools.tsx, ResearchPapers.tsx
-│   ├── SEO.tsx, StructuredData.tsx, RootStructuredData.tsx
-│   └── blog/              # MarkdownRenderer, BlogStructuredData, etc.
-├── views/Index.tsx
-└── lib/blog.ts
-
-content/blog/              # Markdown posts
-public/
-├── llms.txt               # LLM manifest (served at /llms.txt)
-├── llm.txt                # Concise LLM manifest (served at /llm.txt)
-├── agents.txt             # Agent instructions (served at /agents.txt)
-└── robots.txt
-```
+- **Home (`app/page.tsx`)** — single editorial flow: Hero · Stocky verified-PnL module · Latest essay · Work · Tools · Research · Bio · Footer.
+- **Blog (`/blog`)** — `content/blog/*.md` is the source of truth. Codex-style typography, RSS at `/blog/feed.xml`, raw markdown at `/blog/md/[slug]`, OG images, llms.txt.
+- **Data (`src/data/site.ts`)** — single source for bio, experience, tools, research.
+- **Stocky PnL (`src/data/stocky-pnl.json`)** — bumped by `npm run pull:pnl` (see below).
 
 ---
 
-## Quick Start
+## Develop
 
 ```bash
-git clone https://github.com/SirCharan/crypto-math-folio-web.git
-cd crypto-math-folio-web
-npm install   # or bun install
-npm run dev   # or bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
 ```
 
-| Command        | Description          |
-|----------------|----------------------|
-| `npm run dev`  | Start dev server     |
-| `npm run build`| Production build     |
-| `npm run start`| Run production       |
-| `npm run lint` | Run ESLint           |
+---
+
+## Refresh Stocky verified-PnL
+
+The Stocky module on the homepage reads from `src/data/stocky-pnl.json`. The numbers come from the verified-PnL page at [Sensibull](https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl), which is a JS-rendered SPA — so refreshing the JSON requires a headless browser.
+
+One-time setup:
+
+```bash
+npm i -D tsx playwright
+npx playwright install chromium
+```
+
+Then to refresh:
+
+```bash
+npm run pull:pnl
+```
+
+Inspect the diff in `src/data/stocky-pnl.json`, commit when happy, deploy.
 
 ---
 
-## Deployment
+## SEO & AI discoverability
 
-Deployed via **Vercel** at [charandeepkapoor.com](https://charandeepkapoor.com).
-
----
-
-## Agents & LLMs
-
-Guidance for AI assistants (Cursor, Copilot, Claude, etc.) working on this codebase:
-
-| File                      | Purpose                                             |
-|---------------------------|-----------------------------------------------------|
-| `agents.md`                | Agent instructions: conventions, file locations    |
-| `llm.md`                   | LLM-friendly project summary and common tasks       |
-| `docs/llm-documentation.md`| Detailed architecture and component docs            |
-| `public/llms.txt`          | LLM manifest for AI crawlers (served at /llms.txt) |
-| `public/llm.txt`           | Concise LLM manifest (served at /llm.txt)          |
-| `public/agents.txt`        | Agent instructions (served at /agents.txt)        |
+- Dynamic sitemap at `app/sitemap.ts`
+- Robots at `app/robots.ts` (allows PerplexityBot, OAI-SearchBot, Claude-Web, GPTBot)
+- RSS at `app/blog/feed.xml/route.ts`
+- Raw markdown for LLM ingestion at `app/blog/md/[slug]/route.ts`
+- `public/llms.txt`, `public/llm.txt`, `public/agents.txt`
+- Schema.org structured data in `src/components/RootStructuredData.tsx` and `src/components/blog/BlogStructuredData.tsx`
 
 ---
 

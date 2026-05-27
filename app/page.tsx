@@ -1,37 +1,42 @@
 import type { Metadata } from "next";
-import Index from "@/views/Index";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { StockyModule } from "@/components/StockyModule";
+import { LatestEssay } from "@/components/LatestEssay";
+import { Experience } from "@/components/Experience";
+import { ToolStrip } from "@/components/ToolStrip";
+import { Research } from "@/components/Research";
+import { Bio } from "@/components/Bio";
+import { Footer } from "@/components/Footer";
+import { FadeIn } from "@/components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Crypto, Quant Finance & Stocky AI Portfolio",
+  title: "Charandeep Kapoor — Perpetuals, Quant Finance, AI Trading",
   description:
-    "Portfolio of Charandeep Kapoor – creator of Stocky AI (AI-powered Zerodha trading, 100%+ ROI). Crypto, quant finance, algorithmic trading and DeFi essays, tools and research.",
-  keywords: [
-    "Charandeep Kapoor portfolio",
-    "Stocky AI trading",
-    "AI Zerodha trading bot",
-    "AI trading India",
-    "crypto quant portfolio",
-    "algorithmic trading systems",
-    "DeFi research",
-    "quant finance essays",
-  ],
+    "Founder of Timelock Trade and creator of Stocky AI (Claude-driven Zerodha trading, 150%+ ROI). Writings on perpetuals, DeFi, and trading.",
   openGraph: {
     type: "website",
     url: "https://charandeepkapoor.com/",
-    title: "Crypto, Quant Finance & Stocky AI Portfolio",
+    title: "Charandeep Kapoor — Perpetuals, Quant Finance, AI Trading",
     description:
-      "Explore Charandeep Kapoor’s portfolio – Stocky AI trading system, crypto & quant research, protected perps, and trading psychology essays.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@yourasianquant",
-    creator: "@yourasianquant",
-    title: "Crypto, Quant Finance & Stocky AI Portfolio",
-    description:
-      "Creator of Stocky AI with 100%+ ROI. Crypto, DeFi, algorithmic trading and quantitative finance portfolio by Charandeep Kapoor.",
+      "Founder of Timelock Trade and creator of Stocky AI. Writings on perpetuals, DeFi, and trading.",
   },
 };
 
 export default function Home() {
-  return <Index />;
+  return (
+    <>
+      <Header />
+      <main className="mx-auto max-w-3xl px-6">
+        <Hero />
+        <FadeIn><StockyModule /></FadeIn>
+        <FadeIn><LatestEssay /></FadeIn>
+        <FadeIn><Experience /></FadeIn>
+        <FadeIn><ToolStrip /></FadeIn>
+        <FadeIn><Research /></FadeIn>
+        <FadeIn><Bio /></FadeIn>
+        <Footer />
+      </main>
+    </>
+  );
 }

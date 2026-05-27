@@ -1,6 +1,5 @@
 /**
- * Blog layout: Codex-style light theme, minimal chrome.
- * Uses CSS variables for light mode (overrides root dark theme when .blog-root is present).
+ * Blog layout: editorial light theme, minimal chrome.
  */
 
 import Link from "next/link";
