@@ -21,6 +21,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${SITE_URL}/delta`,
+      lastModified: today,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/markets`,
+      lastModified: today,
+      changeFrequency: "daily" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/work`,
+      lastModified: today,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URL}/llms.txt`,
       lastModified: today,
       changeFrequency: "monthly" as const,

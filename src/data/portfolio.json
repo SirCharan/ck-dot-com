@@ -1,0 +1,29 @@
+{
+  "source": "seed",
+  "asOf": "2026-06-30",
+  "currency": "INR",
+  "startValue": 1500000,
+  "currentValue": 2310000,
+  "growthPct": 54.0,
+  "dayChangePct": 1.2,
+  "note": "Seed data — replace with live Dhan pull via `npm run pull:portfolio`.",
+  "equityCurve": [
+    { "date": "2025-10-01", "value": 1500000 },
+    { "date": "2025-11-01", "value": 1562000 },
+    { "date": "2025-12-01", "value": 1648000 },
+    { "date": "2026-01-01", "value": 1715000 },
+    { "date": "2026-02-01", "value": 1689000 },
+    { "date": "2026-03-01", "value": 1822000 },
+    { "date": "2026-04-01", "value": 1955000 },
+    { "date": "2026-05-01", "value": 2087000 },
+    { "date": "2026-06-01", "value": 2204000 },
+    { "date": "2026-06-30", "value": 2310000 }
+  ],
+  "recentTrades": [
+    { "date": "2026-06-30", "symbol": "NIFTY 25JUL 24500 CE", "side": "BUY", "qty": 150, "pnl": 18750 },
+    { "date": "2026-06-27", "symbol": "RELIANCE FUT", "side": "SELL", "qty": 250, "pnl": -6200 },
+    { "date": "2026-06-26", "symbol": "BANKNIFTY 25JUL 52000 PE", "side": "BUY", "qty": 130, "pnl": 24100 },
+    { "date": "2026-06-25", "symbol": "HDFCBANK FUT", "side": "BUY", "qty": 275, "pnl": 9450 },
+    { "date": "2026-06-24", "symbol": "NIFTY 25JUL 24000 PE", "side": "SELL", "qty": 150, "pnl": 12300 }
+  ]
+}

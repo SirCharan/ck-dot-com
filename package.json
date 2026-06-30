@@ -8,7 +8,8 @@
     "build": "next build",
     "lint": "eslint .",
     "start": "next start",
-    "pull:pnl": "tsx scripts/refresh-pnl.ts"
+    "pull:pnl": "tsx scripts/refresh-pnl.ts",
+    "pull:portfolio": "tsx scripts/refresh-portfolio.ts"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.0",

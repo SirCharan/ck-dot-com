@@ -14,18 +14,40 @@ export const SITE = {
 
 export const HERO = {
   lede:
-    "I build perpetuals, write about how exchanges work, and run a Claude-driven trading system.",
-  kicker: "Bombay",
+    "AI Product Manager at Delta Exchange. I build perpetuals and AI-driven trading systems — and run a Claude-powered bot trading real capital across crypto and Indian equities.",
+  kicker: "Delta Exchange · Bombay",
 } as const;
+
+// Headline proof numbers for the data-forward hero. Stocky figures mirror
+// src/data/stocky-pnl.json (refresh via `npm run pull:pnl`); Timelock numbers
+// come from the EXPERIENCE entry below.
+export interface HeroStat {
+  value: string;
+  label: string;
+  sub: string;
+  href?: string;
+  tone?: "pos" | "accent" | "neutral";
+}
+
+const STOCKY_VERIFIED =
+  "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl";
+
+export const HERO_STATS: HeroStat[] = [
+  { value: "150%+", label: "Stocky AI ROI", sub: "9 mo · ₹15L · verified", href: STOCKY_VERIFIED, tone: "pos" },
+  { value: "2.29", label: "Sharpe ratio", sub: "Stocky AI", href: STOCKY_VERIFIED, tone: "accent" },
+  { value: "73%", label: "Win rate", sub: "Stocky AI", href: STOCKY_VERIFIED, tone: "accent" },
+  { value: "$7.3M", label: "Timelock volume", sub: "$2M TVL · 1k+ users", href: "https://perps.timelock.trade/", tone: "neutral" },
+];
 
 export const BIO = {
   paragraphs: [
-    "Six years across product, research, and VC in crypto and stock markets — currently founder of Timelock Trade, building leverage without liquidations. Earlier at Diffusion Labs, Delta Exchange, Stader, Heru, Tykhe.",
-    "I blend math and finance to ship DeFi products and quant strategies — taking concepts to functional tools that live at the intersection of models and markets.",
+    "I'm an AI Product Manager at Delta Exchange, building perpetual futures and AI-driven trading tools at India's largest crypto derivatives exchange. Earlier I founded Timelock Trade (oracle-less, liquidation-free derivatives) and led 0→1 DeFi products at Diffusion Labs, with earlier stints at Stader, Heru, and Tykhe Ventures.",
+    "I blend math and finance to ship products and quant strategies that live at the intersection of models and markets — from protocol design to Claude-driven bots that trade real capital.",
   ],
   highlights: [
-    "Founder, Timelock Trade — perpetuals, options, prediction markets — oracle-less and liquidation-free.",
-    "Fine-tuned Claude 3.5 Sonnet to run a Zerodha trading system — 150%+ ROI, Sharpe 2.29, 73% win rate on ₹15L capital.",
+    "AI Product Manager, Delta Exchange — perpetuals and AI-driven trading products.",
+    "Built Stocky: fine-tuned Claude on a custom Zerodha MCP — 150%+ ROI, Sharpe 2.29, 73% win rate on ₹15L.",
+    "Founded Timelock Trade — oracle-less, liquidation-free perps & options. $7.3M volume · $2M TVL · 1,000+ users.",
     "B.Tech, IIT Kanpur. JEE Advanced AIR 638 (99.96%ile). National Maths Olympiad AIR 3.",
   ],
 } as const;
@@ -40,9 +62,20 @@ export interface Experience {
 
 export const EXPERIENCE: Experience[] = [
   {
+    company: "Delta Exchange",
+    position: "AI Product Manager",
+    duration: "Apr 2026 – Present",
+    one:
+      "Building perpetuals and AI-driven trading products at India's largest crypto derivatives exchange.",
+    bullets: [
+      { html: "Product for AI / LLM features across the trading, signals and research stack." },
+      { html: "Perpetual futures and options on crypto — design, growth and quant tooling." },
+    ],
+  },
+  {
     company: "Timelock Trade",
     position: "Founder / Product",
-    duration: "Apr 2025 – Present",
+    duration: "Apr 2025 – Apr 2026",
     one:
       "Bootstrapped Timelock and led 6 across tech, product, design, BD and marketing.",
     bullets: [
@@ -103,7 +136,11 @@ export interface Tool {
   latest?: string;
   latestLabel?: string;
   verified?: string;
+  tags?: string[];
 }
+
+// Filter pills for the Proof-of-Work grid (order matters; "All" is implicit).
+export const TOOL_TAGS = ["Delta", "Markets", "AI", "Tools"] as const;
 
 export const TOOLS: Tool[] = [
   {
@@ -119,6 +156,7 @@ export const TOOLS: Tool[] = [
     latestLabel: "Latest update",
     verified:
       "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl",
+    tags: ["Markets", "AI"],
   },
   {
     title: "Voice-Powered Zerodha Trading",
@@ -130,12 +168,14 @@ export const TOOLS: Tool[] = [
     live:
       "https://www.linkedin.com/posts/charandeep-kapoor_itc-claude-zerodha-activity-7330161190741987329-Ge1d",
     liveLabel: "Demo",
+    tags: ["Markets", "AI"],
   },
   {
     title: "Option Premium Calculator",
     one: "Live prices and real-time IV for options portfolio management.",
     github: "https://github.com/SirCharan/option-bloom-calculator",
     live: "https://option-premium-calculator.vercel.app/",
+    tags: ["Tools"],
   },
   {
     title: "Voice-Activated Delta Trading Bot",
@@ -147,11 +187,13 @@ export const TOOLS: Tool[] = [
     live:
       "https://www.linkedin.com/posts/charandeep-kapoor_crypto-claude-vibecoding-activity-7334621565780721664-SDqO",
     liveLabel: "Demo",
+    tags: ["Delta", "AI"],
   },
   {
     title: "Market Matters with CK",
     one: "ChatGPT wrapper for daily stock market updates and insights.",
     live: "https://chatgpt.com/share/684fbf8b-196c-800f-a41f-9502a50cc8a9",
+    tags: ["Markets", "AI"],
   },
 ];
 
