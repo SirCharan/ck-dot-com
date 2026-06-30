@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageShell, PageIntro } from "@/components/PageShell";
-import { PayoffMorph } from "@/components/PayoffMorph";
 import { EXPERIENCE, TOOLS } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -47,8 +46,6 @@ export default function DeltaPage() {
           ))}
         </ul>
       </section>
-
-      <PayoffMorph />
 
       {deltaTools.length > 0 && (
         <section className="py-10 rule">

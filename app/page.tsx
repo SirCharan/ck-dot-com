@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { PayoffMorph } from "@/components/PayoffMorph";
 import { LivePortfolio } from "@/components/LivePortfolio";
 import { Experience } from "@/components/Experience";
 import { ProofOfWork } from "@/components/ProofOfWork";
@@ -33,7 +32,6 @@ export default function Home() {
       <Header />
       <main className="relative z-10 mx-auto max-w-3xl px-6">
         <Hero />
-        <PayoffMorph />
         <LivePortfolio />
         <FadeIn>
           <Experience />

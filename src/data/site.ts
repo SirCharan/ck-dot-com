@@ -73,6 +73,18 @@ export const EXPERIENCE: Experience[] = [
     ],
   },
   {
+    company: "Drishti",
+    position: "Creator · AI Trading Signals",
+    duration: "Apr 2026 – Present",
+    one:
+      "Built and run Drishti — a live, LLM-driven trading-signal system for Delta crypto perpetuals.",
+    bullets: [
+      { html: "Claude-driven signals on a 15-minute, regime-aware cycle across 8 perpetual markets." },
+      { html: "Live executor places real, risk-managed orders (reduce-only SL/TP) on Delta." },
+      { html: '<a href="https://drishti-beryl.vercel.app">Live dashboard</a> — signals, equity curve and stats, updated continuously.' },
+    ],
+  },
+  {
     company: "Timelock Trade",
     position: "Founder / Product",
     duration: "Apr 2025 – Apr 2026",
@@ -143,6 +155,13 @@ export interface Tool {
 export const TOOL_TAGS = ["Delta", "Markets", "AI", "Tools"] as const;
 
 export const TOOLS: Tool[] = [
+  {
+    title: "Drishti",
+    one: "Live LLM-driven trading signals for Delta crypto perpetuals — 15-min regime-aware cycles with a real-money executor.",
+    live: "https://drishti-beryl.vercel.app",
+    liveLabel: "Live",
+    tags: ["Delta", "AI"],
+  },
   {
     title: "Stocky AI",
     one: "Claude-driven Zerodha trading — 150%+ ROI, Sharpe 2.29, 73% win rate.",
