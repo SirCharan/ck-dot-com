@@ -193,6 +193,31 @@
   }
 }
 
+/* Viz3D — ambient placeholder + WebGL container (real scenes mount in Phase 1) */
+.viz3d { background: rgb(var(--surface-1)); }
+.viz3d canvas { display: block; }
+.viz-blob {
+  position: absolute;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.5;
+  will-change: transform;
+}
+.viz-blob-a {
+  left: -10%; top: -20%;
+  background: radial-gradient(circle, rgb(var(--accent) / 0.5), transparent 70%);
+  animation: vizfloat-a 16s ease-in-out infinite;
+}
+.viz-blob-b {
+  right: -12%; bottom: -22%;
+  background: radial-gradient(circle, rgb(var(--positive) / 0.35), transparent 70%);
+  animation: vizfloat-b 20s ease-in-out infinite;
+}
+@keyframes vizfloat-a { 0%,100% { transform: translate(0,0); } 50% { transform: translate(12%, 10%); } }
+@keyframes vizfloat-b { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-10%, -8%); } }
+
 /* ============================================
    Blog (Codex theme): light mode only, minimal
    Inspired by hugo-theme-codex

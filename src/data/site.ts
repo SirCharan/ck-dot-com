@@ -9,6 +9,8 @@ export const SITE = {
     telegram: "https://t.me/charandeep_kapoor",
     github: "https://github.com/SirCharan",
     calendly: "https://calendly.com/charan-kapoor/30min",
+    // TODO(ck): confirm the exact Topmate handle — placeholder until verified.
+    topmate: "https://topmate.io/charandeep_kapoor",
   },
 } as const;
 
@@ -239,4 +241,232 @@ export const CERTIFICATIONS = [
   { title: "NISM Series VA", detail: "Mutual Fund Distributor" },
   { title: "NISM Series VIII", detail: "Equity Derivatives" },
   { title: "NISM Series XV", detail: "Research Analyst" },
+];
+
+// ── Case studies ─────────────────────────────────────────────────────────────
+// Long-form project pages at /work/<slug>. `accent` selects the section
+// visualization (see Viz3D). Content sourced from the live systems + docs.
+export interface CaseStudyMetric {
+  value: string;
+  label: string;
+  tone?: "pos" | "accent" | "neutral";
+}
+export interface CaseStudySection {
+  heading: string;
+  body: string[]; // paragraphs (may contain inline HTML links)
+}
+export interface CaseStudyLink {
+  label: string;
+  href: string;
+}
+export interface CaseStudy {
+  slug: string;
+  title: string;
+  kicker: string;
+  tagline: string;
+  role: string;
+  period: string;
+  stack: string[];
+  metrics: CaseStudyMetric[];
+  sections: CaseStudySection[];
+  links: CaseStudyLink[];
+  /** Screenshots under /public/images/work/<slug>/ — captured in Phase 4. */
+  shots?: { src: string; alt: string }[];
+  /** Section-accent visualization key handled by Viz3D. */
+  accent?: "fractal" | "spiral" | "orbits" | "none";
+}
+
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    slug: "drishti",
+    title: "Drishti",
+    kicker: "Creator · Live AI Trading Signals",
+    tagline:
+      "An LLM decides, a machine executes: live, regime-aware trading signals for Delta crypto perpetuals, trading real capital.",
+    role: "Creator, sole builder & operator",
+    period: "Apr 2026 – Present",
+    stack: [
+      "Claude Opus 4.8",
+      "Reasoning-first tool-calling",
+      "Python",
+      "systemd on VM",
+      "Cloudflare R2",
+      "Next.js / Vercel",
+      "Delta Exchange API",
+    ],
+    metrics: [
+      { value: "~64%", label: "Win rate (closed set)", tone: "pos" },
+      { value: "8", label: "Perp markets", tone: "accent" },
+      { value: "15 min", label: "Decision cycle", tone: "neutral" },
+      { value: "99", label: "PageSpeed (landing)", tone: "accent" },
+    ],
+    sections: [
+      {
+        heading: "The idea",
+        body: [
+          "Drishti asks a frontier LLM one disciplined question every cycle: given everything the market is showing right now, is there an edge — and if so, where are entry, stop and target? The model reasons first, then emits a structured decision the system can act on.",
+          "It runs a 15-minute, regime-aware cycle across 8 Delta crypto perpetual markets, with 30+ engineered features per asset (CVD, IV term structure, basis, global long/short, OI by exchange, Coinbase premium and more).",
+        ],
+      },
+      {
+        heading: "From signal to real orders",
+        body: [
+          "A live executor turns accepted signals into real, risk-managed orders on Delta India — reduce-only stop-loss and take-profit brackets, fixed sizing, a guardian process, and hard kill-switches.",
+          "The publisher runs as a systemd service on a VM, writes snapshots to Cloudflare R2, and a Vercel front-end renders signals, the equity curve and closed-trade stats continuously.",
+        ],
+      },
+      {
+        heading: "What it demonstrates",
+        body: [
+          "Prompt and context engineering under real money, cost-aware model routing, and an operational loop that has to be right every 15 minutes — not just in a notebook.",
+        ],
+      },
+    ],
+    links: [
+      { label: "Live dashboard", href: "https://drishti-beryl.vercel.app" },
+      { label: "App + APK", href: "https://drishti-signals.vercel.app" },
+      { label: "How it works", href: "https://drishti-explainer.vercel.app" },
+      { label: "Research", href: "https://drishti-research.vercel.app" },
+    ],
+    accent: "orbits",
+  },
+  {
+    slug: "timelock",
+    title: "Timelock Trade",
+    kicker: "Founder · Oracle-less DeFi Derivatives",
+    tagline:
+      "A house of finance where traders can only profit and LPs earn premium for taking the other side — no oracles, no liquidations.",
+    role: "Founder — led a team of 6 (tech, product, design, BD, marketing)",
+    period: "Apr 2025 – Apr 2026",
+    stack: [
+      "Monad testnet",
+      "Solidity",
+      "Oracle-less pricing",
+      "Black-Scholes (adapted)",
+      "Uniswap-derived IV",
+      "Next.js",
+    ],
+    metrics: [
+      { value: "$7.3M", label: "Trading volume", tone: "pos" },
+      { value: "$2M", label: "TVL", tone: "accent" },
+      { value: "1,000+", label: "Active users", tone: "accent" },
+      { value: "6", label: "Team led", tone: "neutral" },
+    ],
+    sections: [
+      {
+        heading: "The thesis",
+        body: [
+          "On-chain derivatives break in two places: they depend on price oracles that can be manipulated, and they liquidate users at the worst possible moment. Timelock removed both.",
+          "\"Protected Perps\" let traders only realize profit; the downside is borne by liquidity providers who are paid a premium for it — a structurally different risk transfer than a standard perp.",
+        ],
+      },
+      {
+        heading: "The hard part: pricing without an oracle",
+        body: [
+          "Options were priced with a Black-Scholes model adapted for crypto, implied volatility derived from Uniswap pool data, and theta approximated via Dirac distributions — so the protocol could quote fair prices without trusting an external feed.",
+          "The product spanned perps, options, prediction markets and binary options.",
+        ],
+      },
+      {
+        heading: "As a founder",
+        body: [
+          "I raised the idea, built the team of six across tech, product, design, BD and marketing, and drove it to $7.3M volume, $2M TVL and 1,000+ users on Monad testnet.",
+        ],
+      },
+    ],
+    links: [
+      { label: "Perps", href: "https://perps.timelock.trade/" },
+      { label: "Swap", href: "https://swap.timelock.trade/" },
+      { label: "Docs", href: "https://docs.timelock.trade/docs" },
+      {
+        label: "Pricing mechanism",
+        href: "https://docs.timelock.trade/docs/protocol/mechanism/pricing",
+      },
+    ],
+    accent: "spiral",
+  },
+  {
+    slug: "delta-support-audit",
+    title: "Delta Support Audit",
+    kicker: "Builder · RAG Quality System",
+    tagline:
+      "A production system that reads Delta's entire support knowledge base every night and flags where it contradicts the source of truth.",
+    role: "Builder & triager",
+    period: "2026",
+    stack: [
+      "Next.js 15 / TypeScript",
+      "OpenRouter → Claude Sonnet",
+      "Upstash Redis + Vector",
+      "BGE-large-en-v1.5 embeddings",
+      "RAG",
+      "Slack + Notion",
+      "Vercel Cron",
+    ],
+    metrics: [
+      { value: "344", label: "Articles audited", tone: "accent" },
+      { value: "14/14", label: "P0 true-positives (trial)", tone: "pos" },
+      { value: "~4 min", label: "Wall-clock / run", tone: "neutral" },
+      { value: "$2.45", label: "Cost / run", tone: "neutral" },
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        body: [
+          "Support content drifts. Freshdesk articles quietly fall out of step with the product docs and guides that are the real source of truth — and nobody notices until a customer is misled.",
+          "The system embeds 344 support articles (1,067 chunks) into a vector store and compares them against the canonical docs for contradictions and coverage gaps.",
+        ],
+      },
+      {
+        heading: "How it works",
+        body: [
+          "RAG detectors classify each article for conflicts, contradictions and coverage gaps. P0 issues page a Slack channel; the full report lands in Notion. A Vercel cron runs the whole sweep at 04:00 IST.",
+          "On a 100-article trial it caught 14/14 P0 issues (100% true-positive) with a combined P0+P1 false-positive rate of 5–9% — at $2.45 and four minutes per run.",
+        ],
+      },
+    ],
+    links: [],
+    accent: "fractal",
+  },
+  {
+    slug: "delta-mcp",
+    title: "Delta MCP",
+    kicker: "GTM Lead · Contributor",
+    tagline:
+      "Taking the first official MCP server for a crypto-derivatives exchange to market — and shipping the PnL tool that makes it useful.",
+    role: "Go-to-market lead + contributor",
+    period: "2026",
+    stack: [
+      "Model Context Protocol",
+      "FastMCP",
+      "Next.js 15",
+      "React 19 / Vite",
+      "FastAPI (serverless)",
+      "MIT-licensed",
+    ],
+    metrics: [
+      { value: "21", label: "MCP tools", tone: "accent" },
+      { value: "1st", label: "Official exchange MCP", tone: "pos" },
+      { value: "90-day", label: "India-first rollout", tone: "neutral" },
+    ],
+    sections: [
+      {
+        heading: "The bet",
+        body: [
+          "No crypto-derivatives venue had an official MCP server. Delta's read-only beta exposes 21 tools that let any LLM client query markets, positions and history directly — a first-mover surface for the agentic-trading era.",
+        ],
+      },
+      {
+        heading: "My part",
+        body: [
+          "I led the go-to-market — a Next.js microsite, a three-act 90-day India-first rollout plan, and launch copy — and contributed a queued PR porting a FIFO PnL analyzer into the server as the analyze_pnl tool.",
+        ],
+      },
+    ],
+    links: [
+      { label: "MCP site", href: "https://delta-mcp.vercel.app" },
+      { label: "PnL analytics", href: "https://delta-pnl-analytics.vercel.app" },
+      { label: "Docs", href: "https://delta-mcp-docs-eta.vercel.app" },
+    ],
+    accent: "none",
+  },
 ];

@@ -5,10 +5,11 @@ import { usePathname } from "next/navigation";
 import { SITE } from "@/data/site";
 
 const NAV = [
+  { label: "Work", href: "/work" },
+  { label: "Résumé", href: "/resume" },
+  { label: "Track record", href: "/track-record" },
   { label: "Writings", href: "/blog" },
   { label: "Delta", href: "/delta" },
-  { label: "Markets", href: "/markets" },
-  { label: "Projects", href: "/work" },
   { label: "About", href: "/#about" },
 ];
 
