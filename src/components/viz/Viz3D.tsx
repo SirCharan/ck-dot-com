@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { renderScene as defaultRenderScene } from "./renderScene";
 
 /**
  * Viz3D — the perf-safe wrapper for every WebGL/canvas visual on the site.
@@ -24,7 +25,7 @@ export function Viz3D({
   height = 420,
   mobile = "fallback",
   fallback,
-  renderScene,
+  renderScene = defaultRenderScene,
 }: {
   variant: VizVariant;
   className?: string;

@@ -6,7 +6,7 @@ export function Experience() {
       <p className="kicker mb-6">Work</p>
       <ul className="space-y-7">
         {EXPERIENCE.map((exp) => (
-          <li key={exp.company} className="grid grid-cols-[1fr] md:grid-cols-[12rem_1fr] gap-2 md:gap-8">
+          <li key={`${exp.company}-${exp.duration}`} className="grid grid-cols-[1fr] md:grid-cols-[12rem_1fr] gap-2 md:gap-8">
             <div>
               <div className="display text-lg text-ink leading-tight">
                 {exp.company}
