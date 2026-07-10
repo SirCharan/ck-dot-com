@@ -9,7 +9,7 @@ export const SITE = {
     telegram: "https://t.me/charandeep_kapoor",
     github: "https://github.com/SirCharan",
     calendly: "https://calendly.com/charan-kapoor/30min",
-    // TODO(ck): confirm the exact Topmate handle — placeholder until verified.
+    // Confirmed by ck 2026-07-10.
     topmate: "https://topmate.io/charandeep_kapoor",
   },
 } as const;
