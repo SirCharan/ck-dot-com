@@ -3,6 +3,7 @@ import { PageShell, PageIntro } from "@/components/PageShell";
 import { Caption, MetaGutter, Rule } from "@/components/lab/Primitives";
 import { TickNumber } from "@/components/lab/TickNumber";
 import { PnlCalendar } from "@/components/track/PnlCalendar";
+import { ClientOnly } from "@/components/lab/ClientOnly";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -197,7 +198,11 @@ export default async function TrackRecordPage() {
       {/* P&L calendar */}
       <figure className="m-0 mt-12">
         {data && data.series.length > 0 ? (
-          <PnlCalendar series={data.series} />
+          <ClientOnly
+            fallback={<div className="h-[116px]" aria-hidden />}
+          >
+            <PnlCalendar series={data.series} />
+          </ClientOnly>
         ) : (
           <div className="grid h-28 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
             <span className="num text-[0.75rem] uppercase tracking-[0.15em] text-[rgb(var(--bone-dim))]">

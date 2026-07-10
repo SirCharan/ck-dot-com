@@ -62,18 +62,24 @@ export function TickNumber({
   });
 
   const spring = useSpring(0, { stiffness: 90, damping: 20, mass: 1 });
-  const [display, setDisplay] = useState(reduced ? num : fmt.format(0));
+  // SSR-deterministic: render the settled digits on the server AND the first
+  // client render (no dependence on useReducedMotion, which differs across the
+  // hydration boundary → mismatch). The count-up starts only after mount.
+  const [mounted, setMounted] = useState(false);
+  const [display, setDisplay] = useState(num);
 
   useMotionValueEvent(spring, "change", (v) => setDisplay(fmt.format(v)));
 
+  useEffect(() => setMounted(true), []);
+
   useEffect(() => {
-    if (Number.isNaN(target)) return;
+    if (!mounted || Number.isNaN(target)) return;
     if (reduced) {
       setDisplay(num);
       return;
     }
     if (inView) spring.set(target);
-  }, [inView, target, reduced, num, spring]);
+  }, [mounted, inView, target, reduced, num, spring]);
 
   const cls = `num relative inline-block tabular-nums ${className}`.trim();
 

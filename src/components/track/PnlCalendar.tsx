@@ -16,9 +16,12 @@ export function PnlCalendar({ series }: { series: { date: string; net: number }[
   const byDate = new Map(series.map((s) => [s.date, s.net]));
   const maxAbs = Math.max(1, ...series.map((s) => Math.abs(s.net)));
 
-  // End at today (UTC date is fine for grid layout); start 52 weeks back, aligned to Sunday.
-  const now = new Date();
-  const end = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  // End at the latest data date (NOT new Date() — that differs across the
+  // server/client hydration boundary and corrupts the month labels). Deterministic
+  // from props → identical HTML on both sides. Start 52 weeks back, aligned to Sunday.
+  const maxIso = series.reduce((m, s) => (s.date > m ? s.date : m), series[0]?.date ?? "1970-01-01");
+  const [ey, em, ed] = maxIso.split("-").map(Number);
+  const end = new Date(Date.UTC(ey, (em || 1) - 1, ed || 1));
   const start = new Date(end);
   start.setUTCDate(end.getUTCDate() - 7 * (WEEKS - 1) - end.getUTCDay());
 
