@@ -49,7 +49,12 @@ type Payload = {
 
 async function getTrackRecord(): Promise<Payload | null> {
   try {
-    const res = await fetch(TRACK_URL, { next: { revalidate: 86400 } });
+    // Daily cache-bust: the endpoint is CDN-cached (s-maxage 3600); a per-day
+    // query key guarantees the first fetch each IST day gets fresh data even if
+    // the CDN copy is up to an hour stale at the boundary.
+    const d = new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
+    const url = `${TRACK_URL}${TRACK_URL.includes("?") ? "&" : "?"}d=${d}`;
+    const res = await fetch(url, { next: { revalidate: 86400 } });
     if (!res.ok) return null;
     const json = await res.json();
     return json?.ok ? (json as Payload) : null;
