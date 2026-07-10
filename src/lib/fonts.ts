@@ -1,19 +1,24 @@
-import { Inter, EB_Garamond, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Newsreader, JetBrains_Mono } from "next/font/google";
 
-export const inter = Inter({
+// Ephemeris tri-role type system.
+// Display / labels — Space Grotesk (tight, left-aligned).
+export const grotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-grotesk",
   display: "swap",
 });
 
-export const garamond = EB_Garamond({
+// Prose — Newsreader, the notebook voice (optical sizing on by default).
+export const serif = Newsreader({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
-  variable: "--font-garamond",
+  variable: "--font-serif",
   display: "swap",
 });
 
+// Data — JetBrains Mono for every number, ticker, timestamp, coordinate, equation.
 export const mono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],

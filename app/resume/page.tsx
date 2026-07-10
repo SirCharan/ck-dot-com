@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Experience } from "@/components/Experience";
 import { Viz3D } from "@/components/viz/Viz3D";
+import { Caption, Figure, MetaGutter, Rule } from "@/components/lab/Primitives";
 import { ACADEMICS, CERTIFICATIONS, BIO, SITE } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -48,6 +49,20 @@ const SKILLS: { group: string; items: string[] }[] = [
   },
 ];
 
+/** A hairline-ruled ledger row: label left, mono detail right. */
+function LedgerRow({ title, detail }: { title: string; detail: string }) {
+  return (
+    <li className="flex items-baseline justify-between gap-4 border-b border-[rgb(var(--bone)/0.11)] py-3">
+      <span className="font-serif text-[1.02rem] leading-snug text-[rgb(var(--bone)/0.9)]">
+        {title}
+      </span>
+      <span className="num shrink-0 text-[0.8rem] text-[rgb(var(--bone-dim))]">
+        {detail}
+      </span>
+    </li>
+  );
+}
+
 export default function ResumePage() {
   return (
     <PageShell>
@@ -57,61 +72,75 @@ export default function ResumePage() {
         lede="AI Product Manager at Delta Exchange. Founder, quant, and builder at the intersection of models and markets."
       />
 
-      <div className="mb-10">
+      {/* Golden spiral — captioned figure */}
+      <Figure
+        className="mb-14"
+        label="Fig. 1"
+        caption="golden spiral · φ = 1.618 growth"
+      >
         <Viz3D variant="spiral" height={280} />
-      </div>
+      </Figure>
 
-      {/* Skills */}
-      <section className="mb-12">
-        <h2 className="kicker mb-5">Skills</h2>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {SKILLS.map((s) => (
-            <div key={s.group}>
-              <h3 className="mb-3 text-sm font-medium text-ink">{s.group}</h3>
-              <div className="flex flex-wrap gap-2">
-                {s.items.map((i) => (
-                  <span key={i} className="pill num text-xs">
-                    {i}
-                  </span>
-                ))}
+      {/* Skills — mono tabular, grouped */}
+      <section className="mt-12">
+        <Rule className="mb-8" />
+        <MetaGutter meta={["§ 01", "skills"]}>
+          <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
+            {SKILLS.map((s) => (
+              <div key={s.group}>
+                <Caption className="text-[rgb(var(--bone))]">{s.group}</Caption>
+                <ul className="mt-2 space-y-1">
+                  {s.items.map((i) => (
+                    <li
+                      key={i}
+                      className="num text-[0.82rem] leading-relaxed text-[rgb(var(--bone)/0.78)]"
+                    >
+                      {i}
+                    </li>
+                  ))}
+                </ul>
               </div>
+            ))}
+          </div>
+        </MetaGutter>
+      </section>
+
+      {/* Experience — reused journal grid */}
+      <section className="mt-12">
+        <Rule className="mb-8" />
+        <MetaGutter meta={["§ 02", "history"]}>
+          <Experience />
+        </MetaGutter>
+      </section>
+
+      {/* Education + certifications — mono tabular ledgers */}
+      <section className="mt-12">
+        <Rule className="mb-8" />
+        <MetaGutter meta={["§ 03", "credentials"]}>
+          <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
+            <div>
+              <Caption className="text-[rgb(var(--bone))]">Education & honors</Caption>
+              <ul className="mt-3 border-t border-[rgb(var(--bone)/0.11)]">
+                {ACADEMICS.map((a) => (
+                  <LedgerRow key={a.title} title={a.title} detail={a.detail} />
+                ))}
+              </ul>
             </div>
-          ))}
-        </div>
+            <div>
+              <Caption className="text-[rgb(var(--bone))]">Certifications</Caption>
+              <ul className="mt-3 border-t border-[rgb(var(--bone)/0.11)]">
+                {CERTIFICATIONS.map((c) => (
+                  <LedgerRow key={c.title} title={c.title} detail={c.detail} />
+                ))}
+              </ul>
+            </div>
+          </div>
+        </MetaGutter>
       </section>
 
-      {/* Experience (reused) */}
-      <Experience />
-
-      {/* Education + certs */}
-      <section className="mt-12 grid gap-10 sm:grid-cols-2">
-        <div>
-          <h2 className="kicker mb-5">Education & honors</h2>
-          <ul className="space-y-3">
-            {ACADEMICS.map((a) => (
-              <li key={a.title} className="flex justify-between gap-4">
-                <span className="text-ink/90">{a.title}</span>
-                <span className="num shrink-0 text-sm text-mute">{a.detail}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 className="kicker mb-5">Certifications</h2>
-          <ul className="space-y-3">
-            {CERTIFICATIONS.map((c) => (
-              <li key={c.title} className="flex justify-between gap-4">
-                <span className="text-ink/90">{c.title}</span>
-                <span className="num shrink-0 text-sm text-mute">{c.detail}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <p className="mt-12 text-sm text-mute">
+      <p className="mt-12 max-w-[64ch] font-serif text-[1.05rem] leading-[1.6] text-[rgb(var(--bone)/0.78)]">
         {BIO.highlights[0]}{" "}
-        <a href={SITE.socials.linkedin} className="text-accent hover:underline">
+        <a href={SITE.socials.linkedin} className="link-ink">
           Full profile on LinkedIn ↗
         </a>
       </p>

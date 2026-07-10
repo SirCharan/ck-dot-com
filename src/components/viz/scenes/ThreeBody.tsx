@@ -2,37 +2,38 @@
 
 import { useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Trail } from "@react-three/drei";
 import * as THREE from "three";
 import { makeGlowTexture, PALETTE } from "../lib/textures";
 
 /**
- * ThreeBody — a softened-gravity three-body simulation.
+ * ThreeBody — live restricted three-body integration (Ephemeris hero).
  *
- * Three point masses are integrated with velocity-Verlet. Gravity is softened
- * (Plummer epsilon) so close passes never blow up to infinity, a gentle central
- * spring keeps the system framed, and a guard re-seeds a fresh, centred triangle
- * if it ever tries to fly apart — so the canvas is never blank.
+ * Three softened-gravity point masses integrated with velocity-Verlet
+ * (Plummer epsilon so close passes don't blow up; a gentle central spring
+ * keeps the composition framed; a guard re-seeds if it flies apart).
  *
- * Each mass is a glowing sphere (additive halo sprite, no postprocessing) that
- * trails a fading luminous ribbon. The camera slowly auto-orbits and parallaxes
- * to the pointer. Transparent clear so the container / page background shows.
+ * Each body draws a TRAIL-point line whose per-vertex colour fades from
+ * near-black (oldest) to full colour (newest); with ADDITIVE blending the
+ * older tail reads as fainter and crossings glow. Each head is a small sphere
+ * plus a glow sprite whose scale/opacity tracks the body's velocity.
+ * Body colours: bone / amber / slate — no neon. Transparent clear.
  */
 
 const G = 1.25;
-const EPS2 = 0.32 * 0.32; // softening squared
-const SPRING = 0.016; // gentle pull toward centre
+const EPS2 = 0.32 * 0.32;
+const SPRING = 0.016;
 const MASS = [1.12, 1.0, 0.9];
-const BODY_COLORS = [PALETTE.accent, PALETTE.green, PALETTE.pale];
+const BODY_COLORS = [PALETTE.bone, PALETTE.amber, PALETTE.slate];
 const RESET_DIST = 8.5;
 const RESET_SPEED = 5.2;
+const TRAIL = 256; // 3 bodies × 256 = 768 trail vertices
 
 type SimState = {
   pos: THREE.Vector3[];
   vel: THREE.Vector3[];
   acc: THREE.Vector3[];
   nacc: THREE.Vector3[];
-  d: THREE.Vector3; // scratch
+  d: THREE.Vector3;
 };
 
 function makeState(): SimState {
@@ -56,7 +57,6 @@ function seed(s: SimState) {
     s.vel[i].set(-Math.sin(a) * v, (Math.random() - 0.5) * 0.08, Math.cos(a) * v);
     s.acc[i].set(0, 0, 0);
   }
-  // Zero net momentum + centre position → system stays framed.
   const mp = new THREE.Vector3();
   const mv = new THREE.Vector3();
   for (let i = 0; i < 3; i++) {
@@ -82,26 +82,63 @@ function computeAcc(s: SimState, pos: THREE.Vector3[], out: THREE.Vector3[]) {
       out[i].addScaledVector(s.d, f * MASS[j]);
       out[j].addScaledVector(s.d, -f * MASS[i]);
     }
-    // gentle central spring keeps the composition inside frame
     out[i].addScaledVector(pos[i], -SPRING);
   }
 }
 
 function Bodies() {
+  const glow = useMemo(() => makeGlowTexture(), []);
   const meshes = [
     useRef<THREE.Mesh>(null),
     useRef<THREE.Mesh>(null),
     useRef<THREE.Mesh>(null),
   ];
-  const glow = useMemo(() => makeGlowTexture(), []);
+  const sprites = [
+    useRef<THREE.Sprite>(null),
+    useRef<THREE.Sprite>(null),
+    useRef<THREE.Sprite>(null),
+  ];
+  const geoms = [
+    useRef<THREE.BufferGeometry>(null),
+    useRef<THREE.BufferGeometry>(null),
+    useRef<THREE.BufferGeometry>(null),
+  ];
+
+  const { camera } = useThree();
+  const parallax = useRef(new THREE.Vector2(0, 0));
+
+  // Per-body trail position buffers + static age-gradient colour buffers.
+  const trails = useMemo(() => {
+    const s = makeState();
+    seed(s);
+    computeAcc(s, s.pos, s.acc);
+    const col = new THREE.Color();
+    return BODY_COLORS.map((hex, b) => {
+      const positions = new Float32Array(TRAIL * 3);
+      const colors = new Float32Array(TRAIL * 3);
+      const base = col.set(hex);
+      for (let i = 0; i < TRAIL; i++) {
+        // seed the whole trail at the body's start point
+        positions[i * 3] = s.pos[b].x;
+        positions[i * 3 + 1] = s.pos[b].y;
+        positions[i * 3 + 2] = s.pos[b].z;
+        // age gradient: index 0 = oldest (near-black), last = newest (full).
+        const age = i / (TRAIL - 1);
+        const k = age * age; // ease so only the recent tail is bright
+        colors[i * 3] = base.r * k;
+        colors[i * 3 + 1] = base.g * k;
+        colors[i * 3 + 2] = base.b * k;
+      }
+      return { positions, colors };
+    });
+  }, []);
+
   const state = useMemo(() => {
     const s = makeState();
     seed(s);
     computeAcc(s, s.pos, s.acc);
     return s;
   }, []);
-  const parallax = useRef(new THREE.Vector2(0, 0));
-  const { camera } = useThree();
 
   useFrame((st, delta) => {
     const s = state;
@@ -115,12 +152,14 @@ function Bodies() {
       }
       computeAcc(s, s.pos, s.nacc);
       for (let i = 0; i < 3; i++) {
-        s.vel[i].addScaledVector(s.acc[i], 0.5 * h).addScaledVector(s.nacc[i], 0.5 * h);
+        s.vel[i]
+          .addScaledVector(s.acc[i], 0.5 * h)
+          .addScaledVector(s.nacc[i], 0.5 * h);
         s.acc[i].copy(s.nacc[i]);
       }
     }
 
-    // Guard: re-seed gently if it flies apart or gets too hot.
+    // Guard: gently re-seed if it escapes or overheats.
     let maxD = 0;
     let maxV = 0;
     for (let i = 0; i < 3; i++) {
@@ -134,49 +173,85 @@ function Bodies() {
       computeAcc(s, s.pos, s.acc);
     }
 
-    for (let i = 0; i < 3; i++) {
-      const m = meshes[i].current;
-      if (m) m.position.copy(s.pos[i]);
+    // Advance each trail (shift left, append head) + move head sprites.
+    for (let b = 0; b < 3; b++) {
+      const p = trails[b].positions;
+      p.copyWithin(0, 3); // drop oldest vertex
+      const last = (TRAIL - 1) * 3;
+      p[last] = s.pos[b].x;
+      p[last + 1] = s.pos[b].y;
+      p[last + 2] = s.pos[b].z;
+      const g = geoms[b].current;
+      if (g) {
+        const attr = g.getAttribute("position") as THREE.BufferAttribute;
+        attr.needsUpdate = true;
+      }
+      const m = meshes[b].current;
+      if (m) m.position.copy(s.pos[b]);
+      const sp = sprites[b].current;
+      if (sp) {
+        sp.position.copy(s.pos[b]);
+        // emissive-like: scale + opacity track velocity.
+        const speed = s.vel[b].length();
+        const e = 0.55 + Math.min(speed / RESET_SPEED, 1) * 1.1;
+        sp.scale.setScalar(1.25 * e);
+        const mat = sp.material as THREE.SpriteMaterial;
+        mat.opacity = 0.4 + Math.min(speed / RESET_SPEED, 1) * 0.5;
+      }
     }
 
-    // Auto-orbit camera + subtle pointer parallax.
+    // Gentle auto-orbit + subtle pointer parallax.
     const t = st.clock.elapsedTime;
     parallax.current.lerp(st.pointer, 0.05);
-    const rad = 7.4;
-    const cx = Math.sin(t * 0.075) * rad + parallax.current.x * 1.4;
-    const cz = Math.cos(t * 0.075) * rad;
-    const cy = 2.3 - parallax.current.y * 1.1;
+    const rad = 5.7; // pulled in — bodies read larger in the frame
+    const cx = Math.sin(t * 0.07) * rad + parallax.current.x * 1.3;
+    const cz = Math.cos(t * 0.07) * rad;
+    const cy = 1.85 - parallax.current.y * 1.0;
     camera.position.lerp(new THREE.Vector3(cx, cy, cz), 0.045);
     camera.lookAt(0, 0, 0);
   });
 
   return (
     <>
-      {BODY_COLORS.map((col, i) => (
-        <Trail
-          key={i}
-          width={0.5}
-          length={22}
-          decay={1}
-          color={col}
-          attenuation={(w) => w * w}
-          local={false}
-        >
-          <mesh ref={meshes[i]}>
-            <sphereGeometry args={[0.16, 20, 20]} />
-            <meshBasicMaterial color={col} toneMapped={false} />
-            <sprite scale={[1.5, 1.5, 1.5]}>
-              <spriteMaterial
-                map={glow}
-                color={col}
-                transparent
-                opacity={0.85}
-                depthWrite={false}
-                blending={THREE.AdditiveBlending}
-              />
-            </sprite>
-          </mesh>
-        </Trail>
+      {BODY_COLORS.map((_col, b) => (
+        <line key={`t${b}`}>
+          <bufferGeometry ref={geoms[b]}>
+            <bufferAttribute
+              attach="attributes-position"
+              args={[trails[b].positions, 3]}
+            />
+            <bufferAttribute
+              attach="attributes-color"
+              args={[trails[b].colors, 3]}
+            />
+          </bufferGeometry>
+          <lineBasicMaterial
+            vertexColors
+            transparent
+            depthWrite={false}
+            blending={THREE.AdditiveBlending}
+            toneMapped={false}
+          />
+        </line>
+      ))}
+      {BODY_COLORS.map((col, b) => (
+        <mesh key={`b${b}`} ref={meshes[b]}>
+          <sphereGeometry args={[0.16, 20, 20]} />
+          <meshBasicMaterial color={col} toneMapped={false} />
+        </mesh>
+      ))}
+      {BODY_COLORS.map((col, b) => (
+        <sprite key={`s${b}`} ref={sprites[b]} scale={[1.4, 1.4, 1.4]}>
+          <spriteMaterial
+            map={glow}
+            color={col}
+            transparent
+            opacity={0.7}
+            depthWrite={false}
+            blending={THREE.AdditiveBlending}
+            toneMapped={false}
+          />
+        </sprite>
       ))}
     </>
   );
@@ -188,7 +263,7 @@ export default function ThreeBodyScene() {
       dpr={[1, 2]}
       frameloop="always"
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-      camera={{ position: [0, 2.3, 7.4], fov: 52 }}
+      camera={{ position: [0, 1.85, 5.7], fov: 54 }}
       style={{ position: "absolute", inset: 0 }}
       onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
     >

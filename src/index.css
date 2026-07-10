@@ -2,14 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   EPHEMERIS — a quant-engineer's dark lab-notebook.
+   phi-scale (type ramp): 15 · 20 · 30 · 48 · 78px.
+   Palette is bespoke; the .terminal scope (below) re-maps
+   the semantic tokens so existing components inherit it.
+   The blog (.blog-root) stays light, untouched.
+   ============================================ */
 @layer base {
   :root {
+    /* Light defaults kept for any non-terminal, non-blog surface. */
     --bg: 250 247 242;
     --ink: 22 21 19;
     --mute: 92 87 79;
     --rule: 229 223 211;
-    --accent: 26 82 118;
-    --positive: 22 101 52;
+    --accent: 232 163 61;
+    --positive: 127 184 138;
+    --neg: 232 116 107;
+    --bone: 232 228 218;
+    --bone-dim: 140 136 126;
+    --amber: 232 163 61;
+    --slate: 107 138 175;
   }
 
   html {
@@ -23,166 +36,187 @@
   body {
     background: rgb(var(--bg));
     color: rgb(var(--ink));
-    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-    font-feature-settings: "kern", "liga", "calt", "onum";
+    /* Prose is the notebook voice: Newsreader serif. */
+    font-family: var(--font-serif), Newsreader, Georgia, serif;
+    font-feature-settings: "kern", "liga", "calt";
     line-height: 1.6;
     min-height: 100vh;
   }
 
   ::selection {
-    background: rgb(var(--accent) / 0.18);
+    background: rgb(var(--amber) / 0.22);
     color: rgb(var(--ink));
   }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-thumb { background: rgb(var(--rule)); border-radius: 999px; }
-  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--mute) / 0.4); }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--bone) / 0.14); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--bone) / 0.28); }
 }
 
 @layer components {
+  /* Data role — every number/ticker/timestamp/coordinate/equation. */
   .num {
     font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-feature-settings: "tnum", "lnum";
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum", "lnum", "zero";
   }
 
+  /* Display role — Space Grotesk, tight, LEFT-aligned always. */
   .display {
-    font-family: var(--font-garamond), 'Iowan Old Style', Baskerville, 'Times New Roman', serif;
-    font-feature-settings: "kern", "liga", "lnum";
-    letter-spacing: -0.012em;
+    font-family: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-align: left;
   }
 
+  /* §-label / kicker — mono micro-label, uppercase, wide tracking. */
   .kicker {
-    font-family: var(--font-inter), system-ui, sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.6875rem; /* 11px */
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: rgb(var(--mute));
+    letter-spacing: 0.12em;
+    color: rgb(var(--bone-dim));
+    font-variant-numeric: tabular-nums;
   }
 
   .rule {
-    border-top: 1px solid rgb(var(--rule));
+    border-top: 1px solid rgb(var(--bone) / 0.12);
   }
 
   .link-ink {
-    color: rgb(var(--accent));
+    color: rgb(var(--amber));
     text-decoration: underline;
-    text-decoration-color: rgb(var(--accent) / 0.35);
+    text-decoration-color: rgb(var(--amber) / 0.4);
     text-underline-offset: 3px;
     transition: color 150ms ease, text-decoration-color 150ms ease;
   }
 
   .link-ink:hover {
-    color: rgb(var(--ink));
-    text-decoration-color: rgb(var(--ink));
+    color: rgb(var(--bone));
+    text-decoration-color: rgb(var(--bone));
   }
 }
 
 /* ============================================
-   Terminal theme — homepage + section pages.
-   Dark quant-terminal scope; re-maps the semantic
-   tokens so existing components flip automatically.
-   The blog (.blog-root) stays light, untouched.
+   Ephemeris — dark lab scope (home + section pages).
+   Re-maps the semantic tokens so existing components
+   inherit the bespoke palette. Blog (.blog-root) stays light.
    ============================================ */
 .terminal {
-  --bg: 13 13 15;          /* #0D0D0F canvas        */
-  --ink: 232 232 236;      /* #E8E8EC primary text  */
-  --mute: 150 150 162;     /* #9696A2 secondary     */
-  --rule: 42 42 51;        /* #2A2A33 hairline      */
-  --accent: 59 159 232;    /* #3B9FE8 cyan          */
-  --positive: 34 201 122;  /* #22C97A gain          */
-  --surface-0: 13 13 15;
-  --surface-1: 19 19 23;   /* #131317 */
-  --surface-2: 26 26 32;   /* #1A1A20 */
-  --neg: 240 79 90;        /* #F04F5A loss */
+  --bg: 11 11 13;          /* --ink-void  #0B0B0D warm near-black */
+  --ink: 232 228 218;      /* --bone      #E8E4DA paper ink       */
+  --mute: 140 136 126;     /* --bone-dim  #8C887E muted           */
+  --rule: 42 41 38;        /* bone @ ~0.12 over void (hairline)   */
+  --accent: 232 163 61;    /* --amber     #E8A33D signal          */
+  --positive: 127 184 138; /* --pos       #7FB88A                 */
+  --neg: 232 116 107;      /* --neg       #E8746B                 */
+
+  /* raw Ephemeris tokens (for rgb(var(--x)/a) use) */
+  --ink-void: 11 11 13;
+  --ink-void-2: 16 16 19;  /* sim band #101013 */
+  --bone: 232 228 218;
+  --bone-dim: 140 136 126;
+  --amber: 232 163 61;
+  --slate: 107 138 175;    /* data / 3rd body */
+  --pos: 127 184 138;
+  /* the ONLY elevated surface = a faint bone overlay */
+  --surface-0: 11 11 13;
+  --surface-1: 11 11 13;
+  --surface-2: 16 16 19;
 
   color-scheme: dark;
-  background: rgb(var(--bg));
-  color: rgb(var(--ink));
+  background: rgb(var(--ink-void));
+  color: rgb(var(--bone));
 }
 
-/* faint dot-grid + aurora wash behind terminal content */
+/* Retired dot-grid/aurora — now a bare, near-inert warm base.
+   Texture comes from <GrainOverlay/>; separation from hairlines. */
 .terminal-grid {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image:
-    radial-gradient(40rem 22rem at 78% -4%, rgb(var(--accent) / 0.10), transparent 70%),
-    radial-gradient(circle, rgb(var(--ink) / 0.045) 1px, transparent 1px);
-  background-size: auto, 26px 26px;
-  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+  background:
+    radial-gradient(60rem 30rem at 82% -8%, rgb(var(--bone) / 0.02), transparent 70%);
 }
 
-/* KPI stat tile (data-forward hero) */
+/* Stat cell — flat lab material: bone overlay + hairline, no glow. */
 .stat-tile {
   position: relative;
-  border: 1px solid rgb(var(--rule));
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgb(var(--surface-2)), rgb(var(--surface-1)));
-  padding: 1rem 1.1rem 0.9rem;
+  background: rgb(var(--bone) / 0.025);
+  box-shadow: 0 0 0 1px rgb(var(--bone) / 0.09);
+  padding: 0.95rem 1.05rem 0.85rem;
   overflow: hidden;
   will-change: transform;
 }
-.stat-tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(130% 90% at 0% 0%, rgb(255 255 255 / 0.06), transparent 55%);
-  pointer-events: none;
-}
-.stat-tile:hover { border-color: rgb(var(--accent) / 0.45); }
+.stat-tile:hover { box-shadow: 0 0 0 1px rgb(var(--bone) / 0.18); }
 .stat-value {
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   font-variant-numeric: tabular-nums lining-nums;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-feature-settings: "tnum", "lnum", "zero";
+  font-weight: 500;
+  letter-spacing: -0.01em;
   line-height: 1;
 }
 
-/* interactive pill (nav + filters) */
+/* Nav / filter pill — mono label, hairline, flat. */
 .pill {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid rgb(var(--rule));
-  border-radius: 9999px;
-  font-size: 0.8125rem;
+  padding: 0.35rem 0.7rem;
+  box-shadow: 0 0 0 1px rgb(var(--bone) / 0.09);
+  border-radius: 2px;
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
   font-weight: 500;
-  color: rgb(var(--mute));
-  background: rgb(var(--surface-1) / 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgb(var(--bone-dim));
+  background: transparent;
   cursor: pointer;
-  transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
+  transition: color 150ms ease, box-shadow 150ms ease, background 150ms ease;
   white-space: nowrap;
 }
-.pill:hover { color: rgb(var(--ink)); border-color: rgb(var(--accent) / 0.5); }
+.pill:hover { color: rgb(var(--bone)); box-shadow: 0 0 0 1px rgb(var(--bone) / 0.2); }
 .pill[data-active="true"] {
-  color: rgb(var(--bg));
-  background: rgb(var(--accent));
-  border-color: rgb(var(--accent));
+  color: rgb(var(--ink-void));
+  background: rgb(var(--amber));
+  box-shadow: 0 0 0 1px rgb(var(--amber));
 }
 
-/* ambient float for the God's Eye surface (on the <svg>, not the tilt wrapper) */
+/* ambient float for the God's Eye surface (retained, unused as hero) */
 @keyframes gefloat {
   0%, 100% { transform: translateY(-7px); }
   50% { transform: translateY(7px); }
 }
 .godseye-float { animation: gefloat 10s ease-in-out infinite; }
 
-/* frosted glass surface (header, floating cards) */
+/* Retired glassmorphism — now a flat near-opaque lab surface, NO blur.
+   Kept so existing .glass consumers (header, track-record) inherit. */
 .glass {
-  background: rgb(255 255 255 / 0.04);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgb(255 255 255 / 0.09);
+  background: rgb(var(--ink-void) / 0.9);
+  box-shadow: inset 0 -1px 0 0 rgb(var(--bone) / 0.1);
 }
 
-/* a11y baseline (was missing) */
+/* ~3% film-grain overlay, fixed, over base + sim well. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  background-repeat: repeat;
+}
+
+/* a11y baseline */
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
   outline: 2px solid rgb(var(--accent));
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -193,30 +227,28 @@
   }
 }
 
-/* Viz3D — ambient placeholder + WebGL container (real scenes mount in Phase 1) */
-.viz3d { background: rgb(var(--surface-1)); }
+/* Viz3D — flat lab container + static fallback (no blur blobs). */
+.viz3d { background: rgb(var(--ink-void-2)); box-shadow: 0 0 0 1px rgb(var(--bone) / 0.09); }
 .viz3d canvas { display: block; }
 .viz-blob {
   position: absolute;
   width: 60%;
   aspect-ratio: 1;
-  border-radius: 9999px;
-  filter: blur(60px);
-  opacity: 0.5;
+  opacity: 0.08;
   will-change: transform;
 }
 .viz-blob-a {
-  left: -10%; top: -20%;
-  background: radial-gradient(circle, rgb(var(--accent) / 0.5), transparent 70%);
+  left: -6%; top: -14%;
+  background: radial-gradient(circle, rgb(var(--amber)), transparent 68%);
   animation: vizfloat-a 16s ease-in-out infinite;
 }
 .viz-blob-b {
-  right: -12%; bottom: -22%;
-  background: radial-gradient(circle, rgb(var(--positive) / 0.35), transparent 70%);
+  right: -8%; bottom: -16%;
+  background: radial-gradient(circle, rgb(var(--slate)), transparent 68%);
   animation: vizfloat-b 20s ease-in-out infinite;
 }
-@keyframes vizfloat-a { 0%,100% { transform: translate(0,0); } 50% { transform: translate(12%, 10%); } }
-@keyframes vizfloat-b { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-10%, -8%); } }
+@keyframes vizfloat-a { 0%,100% { transform: translate(0,0); } 50% { transform: translate(10%, 8%); } }
+@keyframes vizfloat-b { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-8%, -6%); } }
 
 /* ============================================
    Blog (Codex theme): light mode only, minimal
@@ -225,7 +257,7 @@
 .blog-root {
   background: #fffef7;
   color: #222;
-  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   color-scheme: light;
 }
 
@@ -252,7 +284,7 @@
   text-decoration: none;
   letter-spacing: -0.01em;
   transition: color 0.15s;
-  font-family: var(--font-garamond), 'Iowan Old Style', Baskerville, serif;
+  font-family: var(--font-serif), 'Iowan Old Style', Baskerville, serif;
   font-size: 1.125rem;
 }
 
@@ -309,7 +341,7 @@
 }
 
 .blog-title {
-  font-family: var(--font-garamond), 'Iowan Old Style', Baskerville, serif;
+  font-family: var(--font-serif), 'Iowan Old Style', Baskerville, serif;
   font-size: 2.25rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -480,7 +512,7 @@
 
 /* Blog post */
 .blog-post-title {
-  font-family: var(--font-garamond), 'Iowan Old Style', Baskerville, serif;
+  font-family: var(--font-serif), 'Iowan Old Style', Baskerville, serif;
   font-size: 2.5rem;
   font-weight: 500;
   line-height: 1.15;
@@ -651,14 +683,19 @@
   text-align: right;
 }
 
-/* Markdown prose (Codex-style) */
+/* Markdown prose (Codex-style) — Ephemeris adopts Newsreader serif for the
+   reading body; headings/code/dates stay as-is. Light theme untouched. */
 .blog-prose {
-  font-size: 1.0625rem;
-  line-height: 1.85;
+  font-family: var(--font-serif), 'Iowan Old Style', Baskerville, Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.8;
   color: #222;
 }
+.blog-post-body {
+  font-family: var(--font-serif), 'Iowan Old Style', Baskerville, Georgia, serif;
+}
 .blog-prose h1 {
-  font-family: var(--font-garamond), 'Iowan Old Style', Baskerville, serif;
+  font-family: var(--font-serif), 'Iowan Old Style', Baskerville, serif;
   font-size: 1.875rem;
   font-weight: 500;
   margin: 2.5rem 0 1rem;
@@ -667,7 +704,7 @@
   letter-spacing: -0.015em;
 }
 .blog-prose h2 {
-  font-family: var(--font-garamond), 'Iowan Old Style', Baskerville, serif;
+  font-family: var(--font-serif), 'Iowan Old Style', Baskerville, serif;
   font-size: 1.5rem;
   font-weight: 500;
   margin: 2.5rem 0 0.85rem;

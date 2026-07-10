@@ -31,10 +31,15 @@ export function makeGlowTexture(): THREE.Texture {
   return tex;
 }
 
-/** Token palette as THREE colors (kept in sync with src/index.css .terminal). */
+/** Ephemeris palette as THREE colors (kept in sync with src/index.css .terminal). */
 export const PALETTE = {
-  accent: "#3B9FE8", // cyan
-  green: "#22C97A", // soft green
-  pale: "#CFE8FF", // pale blue-white (restrained third body)
-  bg: "#0D0D0F",
+  bone: "#E8E4DA", // body 1 — paper ink
+  amber: "#E8A33D", // body 2 — signal
+  slate: "#6B8AAF", // body 3 — data
+  void: "#0B0B0D",
+  // legacy aliases (any older consumer)
+  accent: "#E8A33D",
+  green: "#7FB88A",
+  pale: "#E8E4DA",
+  bg: "#0B0B0D",
 } as const;

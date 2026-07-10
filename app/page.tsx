@@ -9,6 +9,7 @@ import { LatestEssay } from "@/components/LatestEssay";
 import { Bio } from "@/components/Bio";
 import { Footer } from "@/components/Footer";
 import { EquityThread } from "@/components/EquityThread";
+import { GrainOverlay } from "@/components/GrainOverlay";
 import { FadeIn } from "@/components/FadeIn";
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function Home() {
   return (
     <div className="terminal relative min-h-dvh overflow-x-clip">
       <div className="terminal-grid" />
+      <GrainOverlay />
       <EquityThread />
       <Header />
       <main className="relative z-10 mx-auto max-w-3xl px-6">

@@ -2,12 +2,14 @@ import type { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { EquityThread } from "./EquityThread";
+import { GrainOverlay } from "./GrainOverlay";
 
-/** Dark terminal chrome shared by the homepage's siblings (section pages). */
+/** Dark lab chrome shared by the homepage's siblings (section pages). */
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div className="terminal relative min-h-dvh overflow-x-clip">
       <div className="terminal-grid" />
+      <GrainOverlay />
       <EquityThread />
       <Header />
       <main className="relative z-10 mx-auto max-w-3xl px-6">

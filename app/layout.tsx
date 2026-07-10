@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Providers } from "@/components/Providers";
 import { RootStructuredData } from "@/components/RootStructuredData";
-import { inter, garamond, mono } from "@/lib/fonts";
+import { grotesk, serif, mono } from "@/lib/fonts";
 import "@/index.css";
 
 const GA_ID = "G-J6SY9N1Y3W";
@@ -85,7 +85,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${garamond.variable} ${mono.variable}`}
+      className={`${grotesk.variable} ${serif.variable} ${mono.variable}`}
     >
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />

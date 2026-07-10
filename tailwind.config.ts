@@ -22,10 +22,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['var(--font-garamond)', 'Iowan Old Style', 'Apple Garamond', 'Baskerville', 'Times New Roman', 'serif'],
-        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+        // Ephemeris tri-role: display=grotesk, prose=serif, data=mono.
+        serif: ['var(--font-serif)', 'Newsreader', 'Iowan Old Style', 'Baskerville', 'Georgia', 'serif'],
+        grotesk: ['var(--font-grotesk)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-grotesk)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
-        body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-serif)', 'Newsreader', 'Georgia', 'serif'],
       },
       colors: {
         bg: 'rgb(var(--bg) / <alpha-value>)',
@@ -34,6 +36,11 @@ export default {
         rule: 'rgb(var(--rule) / <alpha-value>)',
         accent: 'rgb(var(--accent) / <alpha-value>)',
         positive: 'rgb(var(--positive) / <alpha-value>)',
+        neg: 'rgb(var(--neg) / <alpha-value>)',
+        bone: 'rgb(var(--bone) / <alpha-value>)',
+        'bone-dim': 'rgb(var(--bone-dim) / <alpha-value>)',
+        amber: 'rgb(var(--amber) / <alpha-value>)',
+        slate: 'rgb(var(--slate) / <alpha-value>)',
       },
       typography: {
         DEFAULT: {
