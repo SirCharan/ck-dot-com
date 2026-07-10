@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Caption, MetaGutter, Rule } from "@/components/lab/Primitives";
 import { TickNumber } from "@/components/lab/TickNumber";
+import { PnlCalendar } from "@/components/track/PnlCalendar";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -26,6 +27,15 @@ type Metrics = {
   maxDrawdown: number | null;
   maxDrawdownPct: number | null;
   positiveDays: number | null;
+  sortino: number | null;
+  calmar: number | null;
+  profitFactor: number | null;
+  expectancy: number | null;
+  annualizedReturnPct: number | null;
+  volatilityAnnualizedPct: number | null;
+  maxWinStreak: number;
+  maxLossStreak: number;
+  recoveryFactor: number | null;
   note: string;
 };
 type Payload = {
@@ -179,6 +189,60 @@ export default async function TrackRecordPage() {
         </figcaption>
       </figure>
 
+      {/* P&L calendar */}
+      <figure className="m-0 mt-12">
+        {data && data.series.length > 0 ? (
+          <PnlCalendar series={data.series} />
+        ) : (
+          <div className="grid h-28 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
+            <span className="num text-[0.75rem] uppercase tracking-[0.15em] text-[rgb(var(--bone-dim))]">
+              calendar — accumulating from live data
+            </span>
+          </div>
+        )}
+        <figcaption className="mt-2.5">
+          <Caption>Fig. 2 — daily P&L calendar · green profit / red loss · trailing 52 weeks</Caption>
+        </figcaption>
+      </figure>
+
+      {/* Quant ratios — mono tabular, gated at N<30 */}
+      <figure className="m-0 mt-12">
+        {!gated && m ? (
+          <div className="grid grid-cols-2 border-y border-[rgb(var(--bone)/0.11)] sm:grid-cols-3">
+            {[
+              { v: m.sortino != null ? m.sortino.toFixed(2) : "—", l: "Sortino" },
+              { v: m.calmar != null ? m.calmar.toFixed(2) : "—", l: "Calmar" },
+              { v: m.profitFactor != null ? m.profitFactor.toFixed(2) : "—", l: "Profit factor" },
+              { v: m.expectancy != null ? inr(m.expectancy) : "—", l: "Expectancy / day" },
+              { v: m.annualizedReturnPct != null ? `${m.annualizedReturnPct.toFixed(1)}%` : "—", l: "Ann. return" },
+              { v: m.volatilityAnnualizedPct != null ? `${m.volatilityAnnualizedPct.toFixed(1)}%` : "—", l: "Ann. volatility" },
+              { v: `${m.maxWinStreak}d`, l: "Win streak" },
+              { v: `${m.maxLossStreak}d`, l: "Loss streak" },
+              { v: m.recoveryFactor != null ? m.recoveryFactor.toFixed(2) : "—", l: "Recovery factor" },
+            ].map((r, i) => (
+              <div
+                key={r.l}
+                className={`px-4 py-4 ${i % 2 === 0 ? "border-r border-[rgb(var(--bone)/0.11)]" : ""} sm:border-r sm:[&:nth-child(3n)]:border-r-0 ${i < 7 ? "border-b border-[rgb(var(--bone)/0.11)] sm:[&:nth-last-child(-n+3)]:border-b-0" : ""}`}
+              >
+                <div className="num text-[1.4rem] leading-none tracking-tight tabular-nums text-[rgb(var(--bone))] md:text-[1.6rem]">
+                  {r.v}
+                </div>
+                <Caption className="mt-2 block">{r.l}</Caption>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid h-28 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
+            <span className="num text-[0.75rem] uppercase tracking-[0.15em] text-[rgb(var(--bone-dim))]">
+              ratios unlock at {m?.need ?? 30} active days{m ? ` · ${m.have}/${m.need}` : ""}
+            </span>
+          </div>
+        )}
+        <figcaption className="mt-2.5">
+          <Caption>Tab. 2 — risk-adjusted ratios · aggregate, per-active-day</Caption>
+        </figcaption>
+      </figure>
+
       {/* Follow / book CTA — the one amber CTA */}
       <section className="mt-14">
         <Rule className="mb-8" />
@@ -213,8 +277,9 @@ export default async function TrackRecordPage() {
           investment adviser.
         </p>
         <p className="num text-[0.8rem] text-[rgb(var(--bone-dim))]">
-          Method — daily aggregate mark-to-market on settled days; open-day
-          figures excluded from statistics. Sharpe is per-active-day, annualized
+          Method — history is FIFO-realized daily P&L, net of charges; the current
+          day is mark-to-market. Stats use settled days only; open-day figures are
+          excluded. Sharpe is per-active-day, annualized
           ×√252 (no-position days excluded, so not calendar-annualized), risk-free
           = 0. Drawdown-% is on a declared capital base. Stats display only after
           ≥{m?.need ?? 30} active days. Single account, single regime, no benchmark.
