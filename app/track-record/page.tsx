@@ -1,24 +1,55 @@
 import type { Metadata } from "next";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Caption, MetaGutter, Rule } from "@/components/lab/Primitives";
+import { TickNumber } from "@/components/lab/TickNumber";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Live Track Record",
   description:
-    "Charandeep Kapoor's live Dhan trading track record — P&L, Sharpe, drawdown and win-rate, updated daily. Illustrative only; not investment advice.",
+    "Charandeep Kapoor's live Dhan trading track record — aggregate P&L, Sharpe, drawdown and win-rate, updated daily. Illustrative only; not investment advice.",
 };
 
-// Phase 0 placeholder KPIs. Phase 3 replaces this with a daily fetch of
-// zerodha-tg-bot's /api/dhan/track-record (real ₹ series + computed metrics).
-const KPIS = [
-  { value: "—", label: "Net P&L (₹)", tone: "pos" },
-  { value: "—", label: "Sharpe ratio", tone: "accent" },
-  { value: "—", label: "Max drawdown", tone: "neg" },
-  { value: "—", label: "Win rate", tone: "accent" },
-  { value: "—", label: "Trades", tone: "neutral" },
-  { value: "—", label: "Track length", tone: "neutral" },
-];
+const TRACK_URL =
+  process.env.NEXT_PUBLIC_TRACK_RECORD_URL ||
+  "https://zerodha-tg-bot.vercel.app/api/dhan/track-record";
+
+// ── endpoint contract (aggregate ₹ only — no positions) ──────────────────────
+type SeriesPt = { date: string; net: number; cumulative: number };
+type Metrics = {
+  building: boolean;
+  have: number;
+  need: number;
+  activeDays: number;
+  cumulative: number | null;
+  sharpeAnnualized: number | null;
+  maxDrawdown: number | null;
+  maxDrawdownPct: number | null;
+  positiveDays: number | null;
+  note: string;
+};
+type Payload = {
+  ok: true;
+  asOf: string | null;
+  provisional: boolean;
+  series: SeriesPt[];
+  metrics: Metrics;
+  meta: { e0: number; note: string };
+};
+
+async function getTrackRecord(): Promise<Payload | null> {
+  try {
+    const res = await fetch(TRACK_URL, { next: { revalidate: 86400 } });
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json?.ok ? (json as Payload) : null;
+  } catch {
+    return null;
+  }
+}
+
+const inr = (n: number) =>
+  `${n < 0 ? "−" : ""}₹${Math.abs(Math.round(n)).toLocaleString("en-US")}`;
 
 const TONE: Record<string, string> = {
   pos: "text-[rgb(var(--pos))]",
@@ -27,13 +58,85 @@ const TONE: Record<string, string> = {
   neutral: "text-[rgb(var(--bone))]",
 };
 
-export default function TrackRecordPage() {
+/** Hairline-engraving equity curve (server-rendered SVG; provisional tip dashed). */
+function EquityCurve({ series, provisional }: { series: SeriesPt[]; provisional: boolean }) {
+  if (series.length < 2) {
+    return (
+      <div className="grid h-64 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
+        <span className="num text-[0.75rem] uppercase tracking-[0.15em] text-[rgb(var(--bone-dim))]">
+          accumulating — need ≥2 settled days
+        </span>
+      </div>
+    );
+  }
+  const W = 800;
+  const H = 260;
+  const P = 8;
+  const ys = series.map((s) => s.cumulative);
+  const min = Math.min(...ys, 0);
+  const max = Math.max(...ys, 0);
+  const span = max - min || 1;
+  const x = (i: number) => P + (i / (series.length - 1)) * (W - 2 * P);
+  const y = (v: number) => H - P - ((v - min) / span) * (H - 2 * P);
+  const pts = series.map((s, i) => [x(i), y(s.cumulative)] as const);
+  const solid = provisional ? pts.slice(0, -1) : pts;
+  const line = (p: readonly (readonly [number, number])[]) =>
+    p.map(([px, py], i) => `${i === 0 ? "M" : "L"}${px.toFixed(1)},${py.toFixed(1)}`).join(" ");
+  const zeroY = y(0);
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-64 w-full" preserveAspectRatio="none" aria-hidden>
+      {/* zero baseline */}
+      <line x1={P} y1={zeroY} x2={W - P} y2={zeroY} stroke="rgb(var(--bone) / 0.14)" strokeWidth="1" strokeDasharray="2 4" />
+      <path d={line(solid)} fill="none" stroke="rgb(var(--amber))" strokeOpacity="0.9" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+      {provisional && pts.length >= 2 && (
+        <path
+          d={line(pts.slice(-2))}
+          fill="none"
+          stroke="rgb(var(--amber))"
+          strokeOpacity="0.6"
+          strokeWidth="1.5"
+          strokeDasharray="3 3"
+          vectorEffect="non-scaling-stroke"
+        />
+      )}
+    </svg>
+  );
+}
+
+export default async function TrackRecordPage() {
+  const data = await getTrackRecord();
+  const m = data?.metrics;
+  const gated = !m || m.building; // hide stats until ≥ need active days
+
+  // KPI display strings (fall back to "—" until data accrues / gate passes)
+  const netStr = m?.cumulative != null ? inr(m.cumulative) : "—";
+  const sharpeStr = gated
+    ? m
+      ? `${m.have}/${m.need}`
+      : "—"
+    : m?.sharpeAnnualized != null
+      ? m.sharpeAnnualized.toFixed(2)
+      : "—";
+  const ddStr = !gated && m?.maxDrawdown != null ? inr(-Math.abs(m.maxDrawdown)) : "—";
+  const winStr = !gated && m?.positiveDays != null ? `${Math.round(m.positiveDays * 100)}%` : "—";
+  const daysStr = m ? String(m.activeDays) : "—";
+  const asOfStr = data?.asOf ?? "—";
+
+  const KPIS = [
+    { value: netStr, label: "Net P&L (₹)", tone: (m && m.cumulative != null && m.cumulative < 0 ? "neg" : "pos") },
+    { value: sharpeStr, label: gated ? "Sharpe (building)" : "Sharpe (ann.)", tone: "accent" },
+    { value: ddStr, label: "Max drawdown", tone: "neg" },
+    { value: winStr, label: "Positive days", tone: "accent" },
+    { value: daysStr, label: "Active days", tone: "neutral" },
+    { value: asOfStr, label: "As of", tone: "neutral" },
+  ];
+
   return (
     <PageShell>
       <PageIntro
         kicker="Live track record"
         title="My Dhan account, in the open"
-        lede="Real capital, real trades on my Dhan account — P&L, Sharpe, drawdown and win-rate, refreshed daily. Full transparency, nothing curated."
+        lede="Real capital on my Dhan account — aggregate P&L, Sharpe, drawdown and positive-day rate, refreshed daily. Results only; positions are never published."
       />
 
       {/* KPIs — mono tabular figure block */}
@@ -42,39 +145,41 @@ export default function TrackRecordPage() {
           {KPIS.map((k, i) => (
             <div
               key={k.label}
-              className={`px-4 py-5 ${
-                i % 2 === 0 ? "border-r border-[rgb(var(--bone)/0.11)]" : ""
-              } sm:border-r sm:[&:nth-child(3n)]:border-r-0 ${
-                i < KPIS.length - 2 ? "border-b border-[rgb(var(--bone)/0.11)] sm:border-b-0" : ""
-              }`}
+              className={`px-4 py-5 ${i % 2 === 0 ? "border-r border-[rgb(var(--bone)/0.11)]" : ""} sm:border-r sm:[&:nth-child(3n)]:border-r-0 ${i < KPIS.length - 2 ? "border-b border-[rgb(var(--bone)/0.11)] sm:border-b-0" : ""}`}
             >
-              <div
-                className={`num text-[2rem] leading-none tracking-tight tabular-nums md:text-[2.4rem] ${TONE[k.tone]}`}
-              >
-                {k.value}
+              <div className={`num text-[1.7rem] leading-none tracking-tight tabular-nums md:text-[2.1rem] ${TONE[k.tone]}`}>
+                <TickNumber value={k.value} />
               </div>
               <Caption className="mt-2 block">{k.label}</Caption>
             </div>
           ))}
         </div>
         <figcaption className="mt-2.5">
-          <Caption>Tab. 1 — account metrics · refreshed daily</Caption>
+          <Caption>
+            Tab. 1 — account metrics · refreshed daily{data ? "" : " · awaiting first settled day"}
+          </Caption>
         </figcaption>
       </figure>
 
-      {/* Equity curve — captioned figure placeholder (Phase 3: Recharts) */}
+      {/* Equity curve */}
       <figure className="m-0 mt-12">
-        <div className="grid h-64 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
-          <span className="num text-[0.75rem] uppercase tracking-[0.15em] text-[rgb(var(--bone-dim))]">
-            equity curve — live data wiring in progress
-          </span>
-        </div>
+        {data && data.series.length >= 2 ? (
+          <EquityCurve series={data.series} provisional={data.provisional} />
+        ) : (
+          <div className="grid h-64 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
+            <span className="num text-[0.75rem] uppercase tracking-[0.15em] text-[rgb(var(--bone-dim))]">
+              equity curve — accumulating from live data
+            </span>
+          </div>
+        )}
         <figcaption className="mt-2.5">
-          <Caption>Fig. 1 — cumulative equity · ₹ · to be wired</Caption>
+          <Caption>
+            Fig. 1 — cumulative P&L · ₹{data?.provisional ? " · dashed tip = today (provisional)" : ""}
+          </Caption>
         </figcaption>
       </figure>
 
-      {/* Follow / book CTA — the one amber CTA, hairline band (no card) */}
+      {/* Follow / book CTA — the one amber CTA */}
       <section className="mt-14">
         <Rule className="mb-8" />
         <MetaGutter meta={["§ follow", "mirror"]}>
@@ -96,17 +201,25 @@ export default function TrackRecordPage() {
         </MetaGutter>
       </section>
 
-      {/* Disclaimer */}
-      <p className="mt-12 max-w-[70ch] font-serif text-[0.9rem] leading-relaxed text-[rgb(var(--bone-dim))]">
-        <strong className="text-[rgb(var(--bone)/0.7)]">Disclaimer.</strong> This is
-        an illustrative record of my own personal trading account, shown for
-        transparency and educational purposes only. It is <em>not</em> investment
-        advice, a research recommendation, or a solicitation to buy or sell any
-        security or to copy any trade. Past performance is not indicative of future
-        results; trading in derivatives carries substantial risk of loss. I am not a
-        SEBI-registered investment adviser. Make your own decisions or consult a
-        registered adviser.
-      </p>
+      {/* Disclaimer + honest-stats notes */}
+      <div className="mt-12 max-w-[70ch] space-y-3 font-serif text-[0.9rem] leading-relaxed text-[rgb(var(--bone-dim))]">
+        <p>
+          <strong className="text-[rgb(var(--bone)/0.7)]">Disclaimer.</strong> An
+          illustrative record of my own personal trading account, shown for
+          transparency and educational purposes only. <em>Not</em> investment
+          advice, a research recommendation, or a solicitation to buy, sell or
+          copy any trade. Past performance is not indicative of future results;
+          derivatives carry substantial risk of loss. I am not a SEBI-registered
+          investment adviser.
+        </p>
+        <p className="num text-[0.8rem] text-[rgb(var(--bone-dim))]">
+          Method — daily aggregate mark-to-market on settled days; open-day
+          figures excluded from statistics. Sharpe is per-active-day, annualized
+          ×√252 (no-position days excluded, so not calendar-annualized), risk-free
+          = 0. Drawdown-% is on a declared capital base. Stats display only after
+          ≥{m?.need ?? 30} active days. Single account, single regime, no benchmark.
+        </p>
+      </div>
     </PageShell>
   );
 }
