@@ -277,9 +277,9 @@ export default async function TrackRecordPage() {
           investment adviser.
         </p>
         <p className="num text-[0.8rem] text-[rgb(var(--bone-dim))]">
-          Method — history is FIFO-realized daily P&L, net of charges; the current
-          day is mark-to-market. Stats use settled days only; open-day figures are
-          excluded. Sharpe is per-active-day, annualized
+          Method — history is FIFO-realized daily P&L reconstructed from the broker
+          trade export (gross of brokerage/STT); the current day is mark-to-market.
+          Stats use settled days only; open-day figures are excluded. Sharpe is per-active-day, annualized
           ×√252 (no-position days excluded, so not calendar-annualized), risk-free
           = 0. Drawdown-% is on a declared capital base. Stats display only after
           ≥{m?.need ?? 30} active days. Single account, single regime, no benchmark.
