@@ -272,6 +272,8 @@ export interface CaseStudy {
   links: CaseStudyLink[];
   /** Screenshots under /public/images/work/<slug>/ — captured in Phase 4. */
   shots?: { src: string; alt: string }[];
+  /** When no shots yet, render a captioned "live deployment" figure linking out. */
+  shotsPending?: boolean;
   /** Section-accent visualization key handled by Viz3D. */
   accent?: "fractal" | "spiral" | "orbits" | "none";
 }
@@ -432,6 +434,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
     links: [],
+    shotsPending: true,
     accent: "fractal",
   },
   {
@@ -474,6 +477,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: "PnL analytics", href: "https://delta-pnl-analytics.vercel.app" },
       { label: "Docs", href: "https://delta-mcp-docs-eta.vercel.app" },
     ],
+    shotsPending: true,
     accent: "none",
   },
 ];

@@ -137,6 +137,38 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
           </div>
         )}
 
+        {/* Screenshot-pending — a captioned live-deployment plate (swaps for a real shot) */}
+        {data.shotsPending && (!data.shots || data.shots.length === 0) && (
+          <Figure
+            className="mt-14"
+            label="Fig. 2"
+            caption={
+              data.links[0]
+                ? `live deployment · ${new URL(data.links[0].href).host}`
+                : "internal system · screenshot forthcoming"
+            }
+          >
+            {data.links[0] ? (
+              <a
+                href={data.links[0].href}
+                target="_blank"
+                rel="noreferrer"
+                className="group grid h-56 place-items-center border border-dashed border-[rgb(var(--bone)/0.16)] transition-colors hover:border-[rgb(var(--amber)/0.5)]"
+              >
+                <span className="num text-[0.8rem] uppercase tracking-[0.14em] text-[rgb(var(--bone-dim))] group-hover:text-[rgb(var(--amber))]">
+                  ▶ view live · {new URL(data.links[0].href).host}
+                </span>
+              </a>
+            ) : (
+              <div className="grid h-56 place-items-center border border-dashed border-[rgb(var(--bone)/0.16)]">
+                <span className="num text-[0.8rem] uppercase tracking-[0.14em] text-[rgb(var(--bone-dim))]">
+                  internal system · not publicly hosted
+                </span>
+              </div>
+            )}
+          </Figure>
+        )}
+
         {/* Colophon — full stack + links */}
         <div className="mt-14">
           <Rule className="mb-6" />
