@@ -109,7 +109,7 @@ export default function ResumePage() {
       <section className="mt-12">
         <Rule className="mb-8" />
         <MetaGutter meta={["§ 02", "history"]}>
-          <Experience />
+          <Experience showKicker={false} />
         </MetaGutter>
       </section>
 

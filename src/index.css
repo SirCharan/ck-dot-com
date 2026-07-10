@@ -18,11 +18,16 @@
     --rule: 229 223 211;
     --accent: 232 163 61;
     --positive: 127 184 138;
+    --pos: 127 184 138;
     --neg: 232 116 107;
     --bone: 232 228 218;
     --bone-dim: 140 136 126;
     --amber: 232 163 61;
     --slate: 107 138 175;
+    /* Ephemeris base surfaces — needed at :root for overlays mounted outside
+       the .terminal scope (e.g. RouteWipe in <body>). */
+    --ink-void: 11 11 13;
+    --ink-void-2: 16 16 19;
   }
 
   html {

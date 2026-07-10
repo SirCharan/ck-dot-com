@@ -1,9 +1,9 @@
 import { EXPERIENCE } from "@/data/site";
 
-export function Experience() {
+export function Experience({ showKicker = true }: { showKicker?: boolean }) {
   return (
     <section id="experience" className="py-10 md:py-14 rule">
-      <p className="kicker mb-6">Work</p>
+      {showKicker && <p className="kicker mb-6">Work</p>}
       <ul className="space-y-7">
         {EXPERIENCE.map((exp) => (
           <li key={`${exp.company}-${exp.duration}`} className="grid grid-cols-[1fr] md:grid-cols-[12rem_1fr] gap-2 md:gap-8">

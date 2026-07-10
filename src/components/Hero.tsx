@@ -25,7 +25,7 @@ export function Hero() {
         className="relative left-1/2 w-screen -translate-x-1/2 border-y border-[rgb(var(--bone)/0.1)] bg-[rgb(var(--ink-void-2))]"
       >
         {/* Eq. 1 — faint, in the left margin */}
-        <div className="pointer-events-none absolute left-4 top-1/2 hidden max-w-[8rem] -translate-y-1/2 md:block lg:left-8">
+        <div aria-hidden className="pointer-events-none absolute left-4 top-1/2 hidden max-w-[8rem] -translate-y-1/2 md:block lg:left-8">
           <p className="num text-[10px] leading-[1.7] tracking-tight text-[rgb(var(--bone)/0.2)]">
             Eq. 1
             <br />

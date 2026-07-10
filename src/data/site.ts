@@ -328,6 +328,10 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: "How it works", href: "https://drishti-explainer.vercel.app" },
       { label: "Research", href: "https://drishti-research.vercel.app" },
     ],
+    shots: [
+      { src: "/images/work/drishti/feed.png", alt: "Drishti live signal feed — direction, entry, stop, target per market" },
+      { src: "/images/work/drishti/howitworks.png", alt: "How Drishti works — the 15-minute decision-to-execution cycle" },
+    ],
     accent: "orbits",
   },
   {
@@ -382,6 +386,9 @@ export const CASE_STUDIES: CaseStudy[] = [
         label: "Pricing mechanism",
         href: "https://docs.timelock.trade/docs/protocol/mechanism/pricing",
       },
+    ],
+    shots: [
+      { src: "/images/work/timelock/protected-perps.jpg", alt: "Timelock Protected Perps — payoff structure: traders only profit, LPs earn premium for the downside" },
     ],
     accent: "spiral",
   },
