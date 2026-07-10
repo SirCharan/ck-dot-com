@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Providers } from "@/components/Providers";
 import { RootStructuredData } from "@/components/RootStructuredData";
+import { RouteWipe } from "@/components/lab/RouteWipe";
 import { grotesk, serif, mono } from "@/lib/fonts";
 import "@/index.css";
 
@@ -107,6 +108,7 @@ export default function RootLayout({
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
         </Script>
         <RootStructuredData />
+        <RouteWipe />
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -2,6 +2,7 @@ import { HERO, SITE } from "@/data/site";
 import { Hero3D } from "./Hero3D";
 import { StatTiles } from "./StatTiles";
 import { Caption, MetaGutter } from "./lab/Primitives";
+import { CrosshairCursor } from "./lab/CrosshairCursor";
 
 /**
  * Ephemeris hero — band composition, journal-figure style.
@@ -34,6 +35,7 @@ export function Hero() {
         <div className="relative mx-auto h-[58vh] min-h-[360px] w-full max-w-6xl px-6 py-8 md:h-[68vh] md:py-10">
           <div className="relative h-full w-full">
             <Hero3D />
+            <CrosshairCursor label="3-body" />
           </div>
         </div>
       </div>

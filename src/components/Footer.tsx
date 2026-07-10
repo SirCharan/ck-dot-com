@@ -1,10 +1,12 @@
 import { SITE } from "@/data/site";
+import { CopyContact } from "./lab/CopyContact";
 
 export function Footer() {
   return (
     <footer className="py-10 md:py-12 rule">
       <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-mute">
         <span className="display text-ink">{SITE.name}</span>
+        <CopyContact value="yourasianquant" label="@yourasianquant" />
         <a
           href={SITE.socials.linkedin}
           target="_blank"

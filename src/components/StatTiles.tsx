@@ -1,66 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import {
-  animate,
   motion,
-  useInView,
   useMotionValue,
   useSpring,
   useTransform,
   useReducedMotion,
 } from "framer-motion";
 import { HERO_STATS, type HeroStat } from "@/data/site";
-
-// "150%+" → { prefix:"", target:150, decimals:0, suffix:"%+" }
-function parseValue(v: string) {
-  const m = v.match(/^(\D*)(-?[\d.]+)(.*)$/);
-  if (!m) return { prefix: "", target: 0, decimals: 0, suffix: v };
-  const numStr = m[2];
-  const dot = numStr.indexOf(".");
-  return {
-    prefix: m[1],
-    target: parseFloat(numStr),
-    decimals: dot === -1 ? 0 : numStr.length - dot - 1,
-    suffix: m[3],
-  };
-}
+import { TickNumber } from "./lab/TickNumber";
 
 const toneClass: Record<NonNullable<HeroStat["tone"]>, string> = {
   pos: "text-[rgb(var(--positive))]",
   accent: "text-[rgb(var(--accent))]",
   neutral: "text-ink",
 };
-
-function CountValue({ value }: { value: string }) {
-  const reduced = useReducedMotion();
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const { prefix, target, decimals, suffix } = parseValue(value);
-  const [display, setDisplay] = useState(reduced ? target.toFixed(decimals) : "0");
-
-  useEffect(() => {
-    if (!inView) return;
-    if (reduced) {
-      setDisplay(target.toFixed(decimals));
-      return;
-    }
-    const controls = animate(0, target, {
-      duration: 1.1,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => setDisplay(v.toFixed(decimals)),
-    });
-    return () => controls.stop();
-  }, [inView, target, decimals, reduced]);
-
-  return (
-    <span ref={ref}>
-      {prefix}
-      {display}
-      {suffix}
-    </span>
-  );
-}
 
 function Tile({ stat }: { stat: HeroStat }) {
   const reduced = useReducedMotion();
@@ -102,7 +57,7 @@ function Tile({ stat }: { stat: HeroStat }) {
       <div
         className={`stat-value text-3xl md:text-[2.1rem] ${toneClass[stat.tone ?? "neutral"]}`}
       >
-        <CountValue value={stat.value} />
+        <TickNumber value={stat.value} />
       </div>
       <div className="mt-2 text-sm font-medium text-ink">{stat.label}</div>
       <div className="mt-0.5 text-xs text-mute">{stat.sub}</div>
