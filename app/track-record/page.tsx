@@ -122,17 +122,14 @@ function EquityCurve({ series, provisional }: { series: SeriesPt[]; provisional:
 export default async function TrackRecordPage() {
   const data = await getTrackRecord();
   const m = data?.metrics;
-  const gated = !m || m.building; // hide stats until ≥ need active days
+  // Ratios are shown as soon as there is any settled data — no 30-day gate.
+  // Individual ratios still null-guard (Sharpe/Sortino need ≥2 active days).
+  const gated = !m;
 
-  // KPI display strings (fall back to "—" until data accrues / gate passes)
+  // KPI display strings (fall back to "—" until data accrues)
   const netStr = m?.cumulative != null ? inr(m.cumulative) : "—";
-  const sharpeStr = gated
-    ? m
-      ? `${m.have}/${m.need}`
-      : "—"
-    : m?.sharpeAnnualized != null
-      ? m.sharpeAnnualized.toFixed(2)
-      : "—";
+  const sharpeStr =
+    m?.sharpeAnnualized != null ? m.sharpeAnnualized.toFixed(2) : "—";
   const ddStr = !gated && m?.maxDrawdown != null ? inr(-Math.abs(m.maxDrawdown)) : "—";
   const winStr = !gated && m?.positiveDays != null ? `${Math.round(m.positiveDays * 100)}%` : "—";
   const daysStr = m ? String(m.activeDays) : "—";
@@ -140,7 +137,7 @@ export default async function TrackRecordPage() {
 
   const KPIS = [
     { value: netStr, label: "Net P&L (₹)", tone: (m && m.cumulative != null && m.cumulative < 0 ? "neg" : "pos") },
-    { value: sharpeStr, label: gated ? "Sharpe (building)" : "Sharpe (ann.)", tone: "accent" },
+    { value: sharpeStr, label: "Sharpe (ann.)", tone: "accent" },
     { value: ddStr, label: "Max drawdown", tone: "neg" },
     { value: winStr, label: "Positive days", tone: "accent" },
     { value: daysStr, label: "Active days", tone: "neutral" },
@@ -244,12 +241,15 @@ export default async function TrackRecordPage() {
         ) : (
           <div className="grid h-28 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
             <span className="num text-[0.75rem] uppercase tracking-[0.15em] text-[rgb(var(--bone-dim))]">
-              ratios unlock at {m?.need ?? 30} active days{m ? ` · ${m.have}/${m.need}` : ""}
+              ratios — accumulating from live data
             </span>
           </div>
         )}
         <figcaption className="mt-2.5">
-          <Caption>Tab. 2 — risk-adjusted ratios · aggregate, per-active-day</Caption>
+          <Caption>
+            Tab. 2 — risk-adjusted ratios · per-active-day
+            {m ? ` · N=${m.activeDays} days (small sample)` : ""}
+          </Caption>
         </figcaption>
       </figure>
 
@@ -291,8 +291,9 @@ export default async function TrackRecordPage() {
           trade export (gross of brokerage/STT); the current day is mark-to-market.
           Stats use settled days only; open-day figures are excluded. Sharpe is per-active-day, annualized
           ×√252 (no-position days excluded, so not calendar-annualized), risk-free
-          = 0. Drawdown-% is on a declared capital base. Stats display only after
-          ≥{m?.need ?? 30} active days. Single account, single regime, no benchmark.
+          = 0. Drawdown-% is on a declared capital base. Ratios are shown from a
+          small sample ({m?.activeDays ?? 0} active days) and will move materially
+          as the record grows. Single account, single regime, no benchmark.
         </p>
       </div>
     </PageShell>
