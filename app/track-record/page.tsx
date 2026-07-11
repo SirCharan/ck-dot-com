@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Caption, MetaGutter, Rule } from "@/components/lab/Primitives";
 import { TickNumber } from "@/components/lab/TickNumber";
-import { PnlCalendar } from "@/components/track/PnlCalendar";
+import { PnlCalendarInteractive } from "@/components/track/PnlCalendarInteractive";
 import { ClientOnly } from "@/components/lab/ClientOnly";
+import { inr } from "@/lib/format";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -63,9 +64,6 @@ async function getTrackRecord(): Promise<Payload | null> {
     return null;
   }
 }
-
-const inr = (n: number) =>
-  `${n < 0 ? "−" : ""}₹${Math.abs(Math.round(n)).toLocaleString("en-US")}`;
 
 const TONE: Record<string, string> = {
   pos: "text-[rgb(var(--pos))]",
@@ -149,7 +147,7 @@ export default async function TrackRecordPage() {
       <PageIntro
         kicker="Live track record"
         title="My Dhan account, in the open"
-        lede="Real capital on my Dhan account — aggregate P&L, Sharpe, drawdown and positive-day rate, refreshed daily. Results only; positions are never published."
+        lede="Real capital on my Dhan account — aggregate P&L, Sharpe, drawdown and positive-day rate, refreshed daily. Click any day on the calendar to see the individual trades behind it."
       />
 
       {/* KPIs — mono tabular figure block */}
@@ -198,7 +196,7 @@ export default async function TrackRecordPage() {
           <ClientOnly
             fallback={<div className="h-[116px]" aria-hidden />}
           >
-            <PnlCalendar series={data.series} />
+            <PnlCalendarInteractive series={data.series} />
           </ClientOnly>
         ) : (
           <div className="grid h-28 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
@@ -208,7 +206,7 @@ export default async function TrackRecordPage() {
           </div>
         )}
         <figcaption className="mt-2.5">
-          <Caption>Fig. 2 — daily P&L calendar · green profit / red loss · trailing 52 weeks</Caption>
+          <Caption>Fig. 2 — daily P&L calendar · green profit / red loss · trailing 52 weeks · click a day for its trades</Caption>
         </figcaption>
       </figure>
 
@@ -287,8 +285,11 @@ export default async function TrackRecordPage() {
           investment adviser.
         </p>
         <p className="num text-[0.8rem] text-[rgb(var(--bone-dim))]">
-          Method — history is FIFO-realized daily P&L reconstructed from the broker
-          trade export (gross of brokerage/STT); the current day is mark-to-market.
+          Method — the daily calendar/curve is FIFO-realized daily P&L (gross of
+          brokerage/STT), with the current day mark-to-market. The per-day trade
+          drill-down is reconstructed separately from my Dhan trade book and shows
+          each fill's FIFO-realized P&L net of charges, so a day's trade total may
+          differ slightly from its calendar figure.
           Stats use settled days only; open-day figures are excluded. Sharpe is per-active-day, annualized
           ×√252 (no-position days excluded, so not calendar-annualized), risk-free
           = 0. Drawdown-% is on a declared capital base. Ratios are shown from a
