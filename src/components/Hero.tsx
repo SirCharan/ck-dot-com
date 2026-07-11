@@ -1,5 +1,5 @@
 import { HERO, SITE } from "@/data/site";
-import { Hero3D } from "./Hero3D";
+import { Ephemeris } from "./Ephemeris";
 import { StatTiles } from "./StatTiles";
 import { Caption, MetaGutter } from "./lab/Primitives";
 import { CrosshairCursor } from "./lab/CrosshairCursor";
@@ -8,8 +8,8 @@ import { CrosshairCursor } from "./lab/CrosshairCursor";
  * Ephemeris hero — band composition, journal-figure style.
  *
  *  1. A full-bleed sim band (ink-void-2) with 80–96px of vertical air holds the
- *     live three-body integration and NOTHING else. Eq. 1 sits faint in the
- *     left margin.
+ *     live inner-solar-system ephemeris and NOTHING else. Eq. 1 sits faint in
+ *     the left margin.
  *  2. The band's lower hairline + a mono Fig. 1 caption divide it from the copy.
  *  3. Below: the display heading (Space Grotesk) + serif intro, with a left
  *     meta gutter of mono tags. Never centred, never over the canvas.
@@ -29,21 +29,21 @@ export function Hero() {
           <p className="num text-[10px] leading-[1.7] tracking-tight text-[rgb(var(--bone)/0.2)]">
             Eq. 1
             <br />
-            r&#776;&#8305; = &minus;G &Sigma;&#8323;&#8322;&#8331;&#8305;&#8318; m&#11330; (r&#8305;&minus;r&#11330;) / |r&#8305;&minus;r&#11330;|&sup3;
+            T&sup2; = 4&pi;&sup2; a&sup3; / GM&#8857;
           </p>
         </div>
         <div className="relative mx-auto h-[58vh] min-h-[360px] w-full max-w-6xl px-6 py-8 md:h-[68vh] md:py-10">
           <div className="relative h-full w-full">
-            <Hero3D />
-            <CrosshairCursor label="3-body" />
+            <Ephemeris />
+            <CrosshairCursor label="ephemeris" />
           </div>
         </div>
       </div>
 
       {/* 2 — Fig. 1 caption (band's bottom border is the hairline) */}
       <Caption className="mt-3">
-        Fig. 1 — Restricted three-body problem · live integration · RK4 ·
-        dt=0.008
+        Fig. 1 — Inner solar-system ephemeris · heliocentric · mean elements ·
+        epoch J2000.0
       </Caption>
 
       {/* 3 — heading + serif intro, left meta gutter */}

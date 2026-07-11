@@ -2,23 +2,24 @@ import { expect, test } from "@playwright/test";
 
 /**
  * Reduced-motion + mobile fallback contract: on a 375px phone viewport with
- * prefers-reduced-motion, the hero shows the static SVG trajectory plate
- * (role=img, "three-body trajectory") and NO <canvas> (WebGL) ever mounts.
+ * prefers-reduced-motion, the hero shows the inner-solar-system ephemeris
+ * figure frozen at today's positions (its rAF loop never starts) and NO
+ * <canvas> (WebGL) ever mounts — the ephemeris is pure SVG on every client.
  */
 test.use({
   viewport: { width: 375, height: 812 },
   reducedMotion: "reduce",
 });
 
-test("mobile + reduced-motion shows the static plate and no canvas", async ({ page }) => {
+test("mobile + reduced-motion shows the frozen ephemeris and no canvas", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
-  // The plate is decorative (its Hero3D wrapper is aria-hidden), so query by
-  // test id rather than a11y role.
-  const plate = page.getByTestId("hero-static-plate");
-  await expect(plate).toBeVisible();
+  // The ephemeris SVG carries role=img + an aria-label, so query it by name.
+  const fig = page.getByRole("img", { name: /ephemeris/i });
+  await expect(fig).toBeVisible();
 
-  // Wait past the idle-callback window that would mount R3F on capable clients.
+  // Wait past any idle window; the ephemeris is SVG-only, so a canvas must
+  // never appear regardless of client capability.
   await page.waitForTimeout(2000);
 
   await expect(page.locator("canvas")).toHaveCount(0);

@@ -11,7 +11,7 @@ test("hero copy sits below the sim band, and Fig.1 caption is present", async ({
   const band = page.getByTestId("hero-sim-band");
   await expect(band).toBeVisible();
 
-  const caption = page.getByText(/Fig\.\s*1\s*—\s*Restricted three-body/);
+  const caption = page.getByText(/Fig\.\s*1\s*—\s*Inner solar-system ephemeris/);
   await expect(caption).toBeVisible();
 
   const h1 = page.locator("h1").first();
