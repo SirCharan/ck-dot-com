@@ -285,11 +285,10 @@ export default async function TrackRecordPage() {
           investment adviser.
         </p>
         <p className="num text-[0.8rem] text-[rgb(var(--bone-dim))]">
-          Method — the daily calendar/curve is FIFO-realized daily P&L (gross of
-          brokerage/STT), with the current day mark-to-market. The per-day trade
-          drill-down is reconstructed separately from my Dhan trade book and shows
-          each fill's FIFO-realized P&L net of charges, so a day's trade total may
-          differ slightly from its calendar figure.
+          Method — the daily calendar/curve and the per-day trade drill-down are
+          reconstructed from my Dhan trade book by the same FIFO engine: realized
+          P&L net of brokerage/STT, so each day's trades sum to its calendar
+          figure. The current day is mark-to-market (provisional).
           Stats use settled days only; open-day figures are excluded. Sharpe is per-active-day, annualized
           ×√252 (no-position days excluded, so not calendar-annualized), risk-free
           = 0. Drawdown-% is on a declared capital base. Ratios are shown from a
