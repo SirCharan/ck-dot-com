@@ -13,7 +13,6 @@ import { inr } from "@/lib/format";
 const CELL = 11;
 const GAP = 3;
 const TOP = 18;
-const WEEKS = 53;
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 type Cell = { iso: string; net: number | null; week: number; dow: number; month: number };
@@ -32,13 +31,19 @@ export function PnlCalendar({
   const byDate = new Map(series.map((s) => [s.date, s.net]));
   const maxAbs = Math.max(1, ...series.map((s) => Math.abs(s.net)));
 
-  // End at the latest data date (NOT new Date() — differs across the hydration
-  // boundary and corrupts month labels). Start 52 weeks back, aligned to Sunday.
+  // Frame the calendar to the actual track record: from the FIRST data month to
+  // the latest data day (deterministic from props — no new Date() — so the month
+  // labels don't diverge across the hydration boundary). Start = the Sunday on/
+  // before the 1st of the earliest data month, so the first column is that month.
   const maxIso = series.reduce((m, s) => (s.date > m ? s.date : m), series[0]?.date ?? "1970-01-01");
+  const minIso = series.reduce((m, s) => (s.date < m ? s.date : m), maxIso);
   const [ey, em, ed] = maxIso.split("-").map(Number);
   const end = new Date(Date.UTC(ey, (em || 1) - 1, ed || 1));
-  const start = new Date(end);
-  start.setUTCDate(end.getUTCDate() - 7 * (WEEKS - 1) - end.getUTCDay());
+  const [sy, sm] = minIso.split("-").map(Number);
+  const monthStart = new Date(Date.UTC(sy, (sm || 1) - 1, 1));
+  const start = new Date(monthStart);
+  start.setUTCDate(monthStart.getUTCDate() - monthStart.getUTCDay());
+  const WEEKS = Math.floor((end.getTime() - start.getTime()) / (7 * 86400000)) + 1;
 
   const cells: Cell[] = [];
   const d = new Date(start);
@@ -81,7 +86,7 @@ export function PnlCalendar({
 
   return (
     <div className="relative overflow-x-auto">
-      <svg width={W} height={H} role="img" aria-label="Daily P&L calendar (trailing 52 weeks)">
+      <svg width={W} height={H} role="img" aria-label="Daily P&L calendar (since first trade)">
         {monthLabels.map((m, k) => (
           <text key={k} x={m.x} y={11} className="num" fontSize="9" fill="rgb(var(--bone-dim))">
             {m.label}

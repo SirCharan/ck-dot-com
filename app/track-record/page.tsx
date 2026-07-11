@@ -206,7 +206,7 @@ export default async function TrackRecordPage() {
           </div>
         )}
         <figcaption className="mt-2.5">
-          <Caption>Fig. 2 — daily P&L calendar · green profit / red loss · trailing 52 weeks · click a day for its trades</Caption>
+          <Caption>Fig. 2 — daily P&L calendar · green profit / red loss · click a day for its trades</Caption>
         </figcaption>
       </figure>
 
