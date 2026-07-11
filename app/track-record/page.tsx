@@ -17,14 +17,22 @@ const TRACK_URL =
   process.env.NEXT_PUBLIC_TRACK_RECORD_URL ||
   "https://zerodha-tg-bot.vercel.app/api/dhan/track-record";
 
-// ── endpoint contract (aggregate ₹ only — no positions) ──────────────────────
-type SeriesPt = { date: string; net: number; cumulative: number };
+// ── endpoint contract ────────────────────────────────────────────────────────
+// gross = P&L before charges (matches the Dhan app); net = after brokerage/STT.
+type SeriesPt = {
+  date: string;
+  net: number;
+  gross: number;
+  cumulative: number;
+  grossCumulative: number;
+};
 type Metrics = {
   building: boolean;
   have: number;
   need: number;
   activeDays: number;
   cumulative: number | null;
+  grossCumulative: number | null;
   sharpeAnnualized: number | null;
   maxDrawdown: number | null;
   maxDrawdownPct: number | null;
@@ -86,13 +94,16 @@ function EquityCurve({ series, provisional }: { series: SeriesPt[]; provisional:
   const W = 800;
   const H = 260;
   const P = 8;
-  const ys = series.map((s) => s.cumulative);
+  // Curve plots GROSS cumulative (matches the calendar + Dhan app headline).
+  // Fall back to net cumulative if gross is absent (CDN may serve a pre-gross copy).
+  const gc = (s: SeriesPt) => s.grossCumulative ?? s.cumulative;
+  const ys = series.map(gc);
   const min = Math.min(...ys, 0);
   const max = Math.max(...ys, 0);
   const span = max - min || 1;
   const x = (i: number) => P + (i / (series.length - 1)) * (W - 2 * P);
   const y = (v: number) => H - P - ((v - min) / span) * (H - 2 * P);
-  const pts = series.map((s, i) => [x(i), y(s.cumulative)] as const);
+  const pts = series.map((s, i) => [x(i), y(gc(s))] as const);
   const solid = provisional ? pts.slice(0, -1) : pts;
   const line = (p: readonly (readonly [number, number])[]) =>
     p.map(([px, py], i) => `${i === 0 ? "M" : "L"}${px.toFixed(1)},${py.toFixed(1)}`).join(" ");
@@ -124,8 +135,11 @@ export default async function TrackRecordPage() {
   // Individual ratios still null-guard (Sharpe/Sortino need ≥2 active days).
   const gated = !m;
 
-  // KPI display strings (fall back to "—" until data accrues)
-  const netStr = m?.cumulative != null ? inr(m.cumulative) : "—";
+  // KPI display strings (fall back to "—" until data accrues). Headline P&L is
+  // GROSS (matches the Dhan app) with a net-of-charges sub-line.
+  const grossVal = m?.grossCumulative ?? m?.cumulative ?? null;
+  const grossStr = grossVal != null ? inr(grossVal) : "—";
+  const netSub = m?.cumulative != null ? `net ${inr(m.cumulative)}` : "";
   const sharpeStr =
     m?.sharpeAnnualized != null ? m.sharpeAnnualized.toFixed(2) : "—";
   const ddStr = !gated && m?.maxDrawdown != null ? inr(-Math.abs(m.maxDrawdown)) : "—";
@@ -133,8 +147,8 @@ export default async function TrackRecordPage() {
   const daysStr = m ? String(m.activeDays) : "—";
   const asOfStr = data?.asOf ?? "—";
 
-  const KPIS = [
-    { value: netStr, label: "Net P&L (₹)", tone: (m && m.cumulative != null && m.cumulative < 0 ? "neg" : "pos") },
+  const KPIS: { value: string; label: string; tone: string; sub?: string }[] = [
+    { value: grossStr, label: "P&L (₹) · gross", sub: netSub, tone: (grossVal != null && grossVal < 0 ? "neg" : "pos") },
     { value: sharpeStr, label: "Sharpe (ann.)", tone: "accent" },
     { value: ddStr, label: "Max drawdown", tone: "neg" },
     { value: winStr, label: "Positive days", tone: "accent" },
@@ -161,6 +175,11 @@ export default async function TrackRecordPage() {
               <div className={`num text-[1.7rem] leading-none tracking-tight tabular-nums md:text-[2.1rem] ${TONE[k.tone]}`}>
                 <TickNumber value={k.value} />
               </div>
+              {k.sub && (
+                <div className="num mt-1 text-[0.75rem] tabular-nums text-[rgb(var(--bone-dim))]">
+                  {k.sub}
+                </div>
+              )}
               <Caption className="mt-2 block">{k.label}</Caption>
             </div>
           ))}
@@ -185,7 +204,7 @@ export default async function TrackRecordPage() {
         )}
         <figcaption className="mt-2.5">
           <Caption>
-            Fig. 1 — cumulative P&L · ₹{data?.provisional ? " · dashed tip = today (provisional)" : ""}
+            Fig. 1 — cumulative P&L · gross ₹{data?.provisional ? " · dashed tip = today (provisional)" : ""}
           </Caption>
         </figcaption>
       </figure>
@@ -196,7 +215,9 @@ export default async function TrackRecordPage() {
           <ClientOnly
             fallback={<div className="h-[116px]" aria-hidden />}
           >
-            <PnlCalendarInteractive series={data.series} />
+            <PnlCalendarInteractive
+              series={data.series.map((s) => ({ date: s.date, net: s.gross ?? s.net }))}
+            />
           </ClientOnly>
         ) : (
           <div className="grid h-28 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
@@ -206,7 +227,7 @@ export default async function TrackRecordPage() {
           </div>
         )}
         <figcaption className="mt-2.5">
-          <Caption>Fig. 2 — daily P&L calendar · green profit / red loss · click a day for its trades</Caption>
+          <Caption>Fig. 2 — daily P&L calendar · gross · green profit / red loss · click a day for its trades</Caption>
         </figcaption>
       </figure>
 
@@ -285,10 +306,11 @@ export default async function TrackRecordPage() {
           investment adviser.
         </p>
         <p className="num text-[0.8rem] text-[rgb(var(--bone-dim))]">
-          Method — the daily calendar/curve and the per-day trade drill-down are
-          reconstructed from my Dhan trade book by the same FIFO engine: realized
-          P&L net of brokerage/STT, so each day's trades sum to its calendar
-          figure. The current day is mark-to-market (provisional).
+          Method — reconstructed from my Dhan trade book by FIFO. Headline, calendar
+          and curve show <em>gross</em> realized P&L (matching the Dhan app); the
+          net-of-charges figure (after brokerage/STT) is shown alongside, and each
+          day's drill-down lists both. Risk-adjusted ratios below are computed on the
+          net series. The current day is mark-to-market (provisional).
           Stats use settled days only; open-day figures are excluded. Sharpe is per-active-day, annualized
           ×√252 (no-position days excluded, so not calendar-annualized), risk-free
           = 0. Drawdown-% is on a declared capital base. Ratios are shown from a

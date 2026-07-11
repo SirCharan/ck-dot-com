@@ -13,6 +13,8 @@ const TRADES_FIXTURE = {
   ok: true,
   date: "MOCK",
   net: 1234.5,
+  gross: 1256.25,
+  charges: 21.75,
   trades: [
     { time: "2026-07-09 09:20:11", sym: "NIFTY 25000 CE", side: "BUY", qty: 75, price: 120.5, realized: 0, charges: 8.2 },
     { time: "2026-07-09 14:05:41", sym: "NIFTY 25000 CE", side: "SELL", qty: 75, price: 137.25, realized: 1256.25, charges: 13.55 },

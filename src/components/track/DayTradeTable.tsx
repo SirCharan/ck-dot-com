@@ -29,7 +29,7 @@ type TradeRow = {
 type State =
   | { k: "loading" }
   | { k: "error" }
-  | { k: "ok"; trades: TradeRow[]; net: number };
+  | { k: "ok"; trades: TradeRow[]; net: number; gross: number; charges: number };
 
 export function DayTradeTable({ date }: { date: string | null }) {
   const [state, setState] = useState<State | null>(null);
@@ -55,7 +55,13 @@ export function DayTradeTable({ date }: { date: string | null }) {
         if (!res.ok) throw new Error(String(res.status));
         const json = await res.json();
         const next: State = json?.ok
-          ? { k: "ok", trades: json.trades ?? [], net: json.net ?? 0 }
+          ? {
+              k: "ok",
+              trades: json.trades ?? [],
+              net: json.net ?? 0,
+              gross: json.gross ?? json.net ?? 0,
+              charges: json.charges ?? 0,
+            }
           : { k: "error" };
         cache.current.set(date, next);
         if (alive) setState(next);
@@ -106,9 +112,10 @@ export function DayTradeTable({ date }: { date: string | null }) {
                 </Caption>
               ))}
             </div>
-            {/* rows */}
+            {/* rows — per-trade P&L is GROSS (realized), so rows sum to the gross
+                calendar cell; charges are aggregated into the footer's net line. */}
             {state.trades.map((r, i) => {
-              const pnl = r.realized - r.charges;
+              const pnl = r.realized;
               return (
                 <div
                   key={i}
@@ -143,16 +150,24 @@ export function DayTradeTable({ date }: { date: string | null }) {
                 </div>
               );
             })}
-            {/* footer — day realized total */}
+            {/* footer — day gross total (rows sum here) + net sub-line */}
             <div className="grid grid-cols-[3.5rem_1fr_3.5rem_3rem_5.5rem_6rem] gap-x-3 border-t border-[rgb(var(--bone)/0.14)] pt-2">
               <span className="num col-span-5 text-[0.72rem] uppercase tracking-[0.12em] text-[rgb(var(--bone-dim))]">
-                Day total · realized, net of charges
+                Day total · gross
               </span>
               <span
                 className={`num text-right text-[0.85rem] font-medium tabular-nums ${
-                  state.net >= 0 ? "text-[rgb(var(--pos))]" : "text-[rgb(var(--neg))]"
+                  state.gross >= 0 ? "text-[rgb(var(--pos))]" : "text-[rgb(var(--neg))]"
                 }`}
               >
+                {inr(state.gross)}
+              </span>
+            </div>
+            <div className="grid grid-cols-[3.5rem_1fr_3.5rem_3rem_5.5rem_6rem] gap-x-3 pt-1">
+              <span className="num col-span-5 text-[0.7rem] tracking-[0.04em] text-[rgb(var(--bone-dim))]">
+                net of ₹{Math.abs(Math.round(state.charges)).toLocaleString("en-US")} charges
+              </span>
+              <span className="num text-right text-[0.78rem] tabular-nums text-[rgb(var(--bone-dim))]">
                 {inr(state.net)}
               </span>
             </div>
