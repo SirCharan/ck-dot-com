@@ -1,0 +1,411 @@
+{
+ "source": "Zerodha PQ4709 tradebook (F&O + commodities), FIFO realized P&L, gross of charges",
+ "window": {
+  "start": "2025-06-02",
+  "end": "2026-01-30"
+ },
+ "capitalInr": 1500000,
+ "peakInr": 1925715,
+ "endInr": 1881185,
+ "headline": {
+  "profit": "Rs 16.57L",
+  "capital": "Rs 15L",
+  "winRate": "73%",
+  "sharpe": "2.29",
+  "verifiedUrl": "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl"
+ },
+ "series": [
+  {
+   "date": "2025-06-02",
+   "cumulative": 20286
+  },
+  {
+   "date": "2025-06-03",
+   "cumulative": 29171
+  },
+  {
+   "date": "2025-06-04",
+   "cumulative": 29384
+  },
+  {
+   "date": "2025-06-05",
+   "cumulative": 69554
+  },
+  {
+   "date": "2025-06-06",
+   "cumulative": 77054
+  },
+  {
+   "date": "2025-06-09",
+   "cumulative": 91630
+  },
+  {
+   "date": "2025-06-10",
+   "cumulative": 107267
+  },
+  {
+   "date": "2025-06-11",
+   "cumulative": 107767
+  },
+  {
+   "date": "2025-06-12",
+   "cumulative": 122182
+  },
+  {
+   "date": "2025-06-13",
+   "cumulative": 149006
+  },
+  {
+   "date": "2025-06-16",
+   "cumulative": 158744
+  },
+  {
+   "date": "2025-06-17",
+   "cumulative": 159029
+  },
+  {
+   "date": "2025-06-18",
+   "cumulative": 160109
+  },
+  {
+   "date": "2025-06-19",
+   "cumulative": 160173
+  },
+  {
+   "date": "2025-06-20",
+   "cumulative": 166836
+  },
+  {
+   "date": "2025-06-23",
+   "cumulative": 169998
+  },
+  {
+   "date": "2025-06-24",
+   "cumulative": 172329
+  },
+  {
+   "date": "2025-06-25",
+   "cumulative": 173419
+  },
+  {
+   "date": "2025-06-26",
+   "cumulative": 179040
+  },
+  {
+   "date": "2025-06-27",
+   "cumulative": 183815
+  },
+  {
+   "date": "2025-07-01",
+   "cumulative": 185924
+  },
+  {
+   "date": "2025-07-02",
+   "cumulative": 186116
+  },
+  {
+   "date": "2025-07-03",
+   "cumulative": 188226
+  },
+  {
+   "date": "2025-07-04",
+   "cumulative": 224763
+  },
+  {
+   "date": "2025-07-22",
+   "cumulative": 241630
+  },
+  {
+   "date": "2025-07-24",
+   "cumulative": 247630
+  },
+  {
+   "date": "2025-07-28",
+   "cumulative": 250965
+  },
+  {
+   "date": "2025-07-31",
+   "cumulative": 257808
+  },
+  {
+   "date": "2025-08-04",
+   "cumulative": 267849
+  },
+  {
+   "date": "2025-08-07",
+   "cumulative": 270324
+  },
+  {
+   "date": "2025-08-08",
+   "cumulative": 280366
+  },
+  {
+   "date": "2025-08-13",
+   "cumulative": 287266
+  },
+  {
+   "date": "2025-08-18",
+   "cumulative": 297891
+  },
+  {
+   "date": "2025-08-19",
+   "cumulative": 315869
+  },
+  {
+   "date": "2025-08-20",
+   "cumulative": 322480
+  },
+  {
+   "date": "2025-08-21",
+   "cumulative": 330980
+  },
+  {
+   "date": "2025-08-22",
+   "cumulative": 334505
+  },
+  {
+   "date": "2025-08-25",
+   "cumulative": 334980
+  },
+  {
+   "date": "2025-08-26",
+   "cumulative": 335194
+  },
+  {
+   "date": "2025-09-01",
+   "cumulative": 347414
+  },
+  {
+   "date": "2025-09-02",
+   "cumulative": 351615
+  },
+  {
+   "date": "2025-09-03",
+   "cumulative": 355601
+  },
+  {
+   "date": "2025-09-04",
+   "cumulative": 365602
+  },
+  {
+   "date": "2025-09-05",
+   "cumulative": 372302
+  },
+  {
+   "date": "2025-09-08",
+   "cumulative": 378192
+  },
+  {
+   "date": "2025-09-11",
+   "cumulative": 383192
+  },
+  {
+   "date": "2025-09-15",
+   "cumulative": 389722
+  },
+  {
+   "date": "2025-09-17",
+   "cumulative": 396067
+  },
+  {
+   "date": "2025-09-22",
+   "cumulative": 398143
+  },
+  {
+   "date": "2025-09-23",
+   "cumulative": 407639
+  },
+  {
+   "date": "2025-09-25",
+   "cumulative": 410343
+  },
+  {
+   "date": "2025-09-29",
+   "cumulative": 380152
+  },
+  {
+   "date": "2025-10-03",
+   "cumulative": 383013
+  },
+  {
+   "date": "2025-10-06",
+   "cumulative": 387835
+  },
+  {
+   "date": "2025-10-07",
+   "cumulative": 390915
+  },
+  {
+   "date": "2025-10-08",
+   "cumulative": 396830
+  },
+  {
+   "date": "2025-10-09",
+   "cumulative": 400348
+  },
+  {
+   "date": "2025-10-10",
+   "cumulative": 503210
+  },
+  {
+   "date": "2025-10-13",
+   "cumulative": 509420
+  },
+  {
+   "date": "2025-10-14",
+   "cumulative": 510542
+  },
+  {
+   "date": "2025-10-15",
+   "cumulative": 517029
+  },
+  {
+   "date": "2025-10-16",
+   "cumulative": 521499
+  },
+  {
+   "date": "2025-10-17",
+   "cumulative": 658962
+  },
+  {
+   "date": "2025-10-20",
+   "cumulative": 686988
+  },
+  {
+   "date": "2025-10-21",
+   "cumulative": 653978
+  },
+  {
+   "date": "2025-10-23",
+   "cumulative": 654732
+  },
+  {
+   "date": "2025-10-24",
+   "cumulative": 663882
+  },
+  {
+   "date": "2025-10-27",
+   "cumulative": 663979
+  },
+  {
+   "date": "2025-10-28",
+   "cumulative": 706703
+  },
+  {
+   "date": "2025-10-29",
+   "cumulative": 706782
+  },
+  {
+   "date": "2025-10-30",
+   "cumulative": 711184
+  },
+  {
+   "date": "2025-11-03",
+   "cumulative": 712114
+  },
+  {
+   "date": "2025-11-04",
+   "cumulative": 716809
+  },
+  {
+   "date": "2025-11-07",
+   "cumulative": 717799
+  },
+  {
+   "date": "2025-11-10",
+   "cumulative": 718534
+  },
+  {
+   "date": "2025-11-11",
+   "cumulative": 725134
+  },
+  {
+   "date": "2025-11-13",
+   "cumulative": 740744
+  },
+  {
+   "date": "2025-11-17",
+   "cumulative": 741684
+  },
+  {
+   "date": "2025-11-19",
+   "cumulative": 742787
+  },
+  {
+   "date": "2025-11-20",
+   "cumulative": 745284
+  },
+  {
+   "date": "2025-11-24",
+   "cumulative": 737795
+  },
+  {
+   "date": "2025-11-25",
+   "cumulative": 761308
+  },
+  {
+   "date": "2025-12-01",
+   "cumulative": 812119
+  },
+  {
+   "date": "2025-12-04",
+   "cumulative": 814538
+  },
+  {
+   "date": "2025-12-05",
+   "cumulative": 817723
+  },
+  {
+   "date": "2025-12-08",
+   "cumulative": 821428
+  },
+  {
+   "date": "2025-12-16",
+   "cumulative": 822758
+  },
+  {
+   "date": "2025-12-18",
+   "cumulative": 829190
+  },
+  {
+   "date": "2025-12-19",
+   "cumulative": 843660
+  },
+  {
+   "date": "2025-12-23",
+   "cumulative": 846620
+  },
+  {
+   "date": "2025-12-24",
+   "cumulative": 873643
+  },
+  {
+   "date": "2025-12-29",
+   "cumulative": 940963
+  },
+  {
+   "date": "2025-12-30",
+   "cumulative": 981160
+  },
+  {
+   "date": "2026-01-07",
+   "cumulative": 1030370
+  },
+  {
+   "date": "2026-01-13",
+   "cumulative": 1162945
+  },
+  {
+   "date": "2026-01-22",
+   "cumulative": 1433530
+  },
+  {
+   "date": "2026-01-29",
+   "cumulative": 1925715
+  },
+  {
+   "date": "2026-01-30",
+   "cumulative": 1881185
+  }
+ ]
+}

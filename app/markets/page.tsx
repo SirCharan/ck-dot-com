@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageShell, PageIntro } from "@/components/PageShell";
-import { LivePortfolio } from "@/components/LivePortfolio";
+import { StockyGrowth } from "@/components/StockyGrowth";
 import { StockyModule } from "@/components/StockyModule";
 import { TOOLS } from "@/data/site";
 
@@ -18,10 +18,10 @@ export default function MarketsPage() {
       <PageIntro
         kicker="Indian stock market"
         title="Trading the Indian markets"
-        lede="Quant strategies and AI-driven trading on NSE — fine-tuned Claude on a custom Zerodha MCP, a live Dhan portfolio updated daily, and tools for options and research."
+        lede="Quant strategies and AI-driven trading on NSE — fine-tuned Claude on a custom Zerodha MCP. My live Dhan portfolio updates daily on the track record; Stocky's realized growth is below."
       />
 
-      <LivePortfolio />
+      <StockyGrowth />
       <StockyModule />
 
       {marketTools.length > 0 && (

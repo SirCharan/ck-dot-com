@@ -2,7 +2,7 @@ export const SITE = {
   name: "Charandeep Kapoor",
   handle: "yourasianquant",
   email: "",
-  location: "Bombay",
+  location: "Bangalore",
   socials: {
     linkedin: "https://www.linkedin.com/in/charandeep-kapoor/",
     twitter: "https://x.com/yourasianquant",
@@ -477,6 +477,32 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: "PnL analytics", href: "https://delta-pnl-analytics.vercel.app" },
       { label: "Docs", href: "https://delta-mcp-docs-eta.vercel.app" },
     ],
+    shotsPending: true,
+    accent: "none",
+  },
+  {
+    slug: "andrea-world",
+    title: "Andrea's World",
+    kicker: "Creator · Interactive 3D Web",
+    tagline:
+      "A playful, hand-built interactive 3D world on the web — a break from the trading work that shows the range: creative front-end, motion and spatial design.",
+    role: "Designer & Developer",
+    period: "2026",
+    stack: ["Next.js", "SVG / CSS 3D", "Motion", "Vercel"],
+    metrics: [
+      { value: "3D", label: "Interactive world", tone: "accent" },
+      { value: "Web", label: "No install", tone: "neutral" },
+      { value: "Live", label: "Shipped", tone: "pos" },
+    ],
+    sections: [
+      {
+        heading: "What it is",
+        body: [
+          "A small, joyful corner of the web — an explorable interactive world built for delight rather than data. It's the counterweight to the trading systems: proof that the same person who ships autonomous executors also cares about craft, motion and play.",
+        ],
+      },
+    ],
+    links: [{ label: "Enter the world", href: "https://andrea-world.vercel.app" }],
     shotsPending: true,
     accent: "none",
   },

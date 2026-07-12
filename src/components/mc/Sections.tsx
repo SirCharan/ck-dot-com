@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { CASE_STUDIES, SITE, BIO } from "@/data/site";
+import { SITE, BIO } from "@/data/site";
 import { getAllPosts } from "@/lib/blog";
 
 /**
- * Mission-Control landing sections (Phase 4). Server components, mc-scoped,
- * reusing the real content in src/data + the blog. Trading is one pillar of
- * several — Selected Work weighs Drishti / Timelock / Delta MCP / Support
- * Audit / Stocky / Perps evenly. Never surfaces the seed portfolio.json.
+ * Mission-Control landing — a TEASER hub. Each section shows a short, standout
+ * summary and links out to its full page (Work / Writing / About / Track
+ * record); the detail lives on those pages, not here. Trading is one pillar of
+ * several. Never surfaces the seed portfolio.json.
  */
 
 const STOCKY_VERIFIED = "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl";
@@ -28,10 +28,10 @@ export function McHeader() {
           CK<span className="text-accent">.</span>
         </Link>
         <nav className="hidden gap-6 font-mono text-[12.5px] text-[rgb(var(--mute))] sm:flex">
-          <a href="/#work" className="hover:text-ink">Work</a>
+          <Link href="/work" className="hover:text-ink">Work</Link>
           <Link href="/track-record" className="hover:text-ink">Track record</Link>
-          <a href="/#writing" className="hover:text-ink">Writing</a>
-          <a href="/#about" className="hover:text-ink">About</a>
+          <Link href="/blog" className="hover:text-ink">Writing</Link>
+          <Link href="/resume" className="hover:text-ink">About</Link>
         </nav>
         <a
           href={SITE.socials.topmate}
@@ -44,63 +44,53 @@ export function McHeader() {
   );
 }
 
-type WorkCard = { title: string; kicker: string; tagline: string; stat: string; href: string; external?: boolean };
-
-const WORK: WorkCard[] = [
-  ...CASE_STUDIES.map((cs) => ({
-    title: cs.title,
-    kicker: cs.kicker,
-    tagline: cs.tagline,
-    stat: cs.metrics[0] ? `${cs.metrics[0].value} · ${cs.metrics[0].label}` : "",
-    href: `/work/${cs.slug}`,
-  })),
-  {
-    title: "Stocky AI",
-    kicker: "Markets · Verified",
-    tagline: "An options engine run on real capital — publicly, third-party-verified returns.",
-    stat: "+150% ROI · Sharpe 2.29 · verified",
-    href: STOCKY_VERIFIED,
-    external: true,
-  },
-  {
-    title: "Perps at Delta",
-    kicker: "Product · Derivatives",
-    tagline: "Product on perpetual futures — payoff design, PM systems, and the writing behind them.",
-    stat: "exchange product · India",
-    href: "#about",
-  },
+// Standout work bullets — bold neon name + one line + link chips.
+type WorkItem = { title: string; line: string; live?: string; github?: string; detail?: string };
+const WORK: WorkItem[] = [
+  { title: "Drishti", line: "Live LLM signals that trade real money on a 15-minute cycle, 8 markets.", live: "https://drishti-beryl.vercel.app", detail: "/work/drishti" },
+  { title: "Timelock", line: "Oracle-less, liquidation-free DeFi derivatives — $7.3M volume, 1k+ users.", live: "https://perps.timelock.trade/", detail: "/work/timelock" },
+  { title: "Delta MCP", line: "The first official crypto-exchange MCP server — 21 tools for LLMs.", live: "https://delta-mcp.vercel.app", detail: "/work/delta-mcp" },
+  { title: "Stocky AI", line: "An options engine run on real capital — +150% ROI, externally verified.", live: STOCKY_VERIFIED, github: "https://github.com/SirCharan/Zerodha-MCP-Tradin", detail: "/markets" },
+  { title: "Delta Support Audit", line: "A nightly RAG system auditing 344 support articles for correctness.", detail: "/work/delta-support-audit" },
+  { title: "Andrea's World", line: "A playful, hand-built interactive 3D world on the web — for the joy of it.", live: "https://andrea-world.vercel.app", detail: "/work/andrea-world" },
 ];
+
+function Chip({ href, children, internal }: { href: string; children: React.ReactNode; internal?: boolean }) {
+  const cls = "font-mono text-[12px] text-[rgb(var(--mute))] hover:text-accent";
+  return internal ? (
+    <Link href={href} className={cls}>{children}</Link>
+  ) : (
+    <a href={href} className={cls}>{children}</a>
+  );
+}
 
 export function McWork() {
   return (
     <section id="work" className="mx-auto max-w-5xl px-6 py-16 md:py-20">
-      <Eyebrow label="Selected work" meta={`/ ${WORK.length}`} />
+      <Eyebrow label="Selected work" meta="what I've built" />
       <h2 className="mt-3 font-grotesk text-[clamp(1.6rem,3.4vw,2.6rem)] font-bold tracking-[-0.02em] text-ink">
         Things I&apos;ve built
       </h2>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {WORK.map((w) => {
-          const inner = (
-            <>
-              <div className="font-mono text-[11px] text-[rgb(var(--faint))]">{w.kicker}</div>
-              <h3 className="mt-2 font-grotesk text-[19px] font-semibold text-ink">{w.title}</h3>
-              <p className="mt-2 max-w-[34ch] text-[14px] leading-[1.5] text-[rgb(var(--mute))]">{w.tagline}</p>
-              <div className="mt-4 font-mono text-[12px] text-accent">{w.stat}</div>
-            </>
-          );
-          const cls =
-            "group block rounded-xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel))] p-5 transition-colors hover:border-accent";
-          return w.external ? (
-            <a key={w.title} href={w.href} className={cls}>
-              {inner}
-            </a>
-          ) : (
-            <Link key={w.title} href={w.href} className={cls}>
-              {inner}
-            </Link>
-          );
-        })}
-      </div>
+      <ul className="mt-8 border-t border-[rgb(var(--rule))]">
+        {WORK.map((w) => (
+          <li key={w.title} className="border-b border-[rgb(var(--rule))] py-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 className="font-grotesk text-[clamp(1.2rem,2.4vw,1.5rem)] font-bold tracking-[-0.01em] text-accent">
+                {w.title}
+              </h3>
+              <div className="flex flex-wrap gap-x-4">
+                {w.live && <Chip href={w.live}>live ↗</Chip>}
+                {w.github && <Chip href={w.github}>github ↗</Chip>}
+                {w.detail && <Chip href={w.detail} internal>details →</Chip>}
+              </div>
+            </div>
+            <p className="mt-1.5 max-w-[62ch] text-[15px] leading-[1.5] text-[rgb(var(--mute))]">{w.line}</p>
+          </li>
+        ))}
+      </ul>
+      <Link href="/work" className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline">
+        All work &amp; tools →
+      </Link>
     </section>
   );
 }
@@ -110,7 +100,7 @@ export function McTrackRecord() {
     <section className="border-y border-[rgb(var(--rule))] bg-[rgb(var(--panel))]">
       <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
         <Eyebrow label="Track record" meta="real capital" />
-        <div className="mt-6 grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+        <div className="mt-6 flex flex-wrap items-end justify-between gap-8">
           <div>
             <div className="flex flex-wrap gap-x-10 gap-y-4">
               {[
@@ -125,9 +115,9 @@ export function McTrackRecord() {
               ))}
             </div>
             <p className="mt-5 max-w-[52ch] text-[15px] leading-[1.6] text-[rgb(var(--mute))]">
-              Stocky&apos;s returns are externally verified on a public Sensibull PnL page. A separate live
-              Dhan account is <span className="text-ink">accumulating a smaller, honest sample</span> —
-              watch it grow on the track-record page.
+              Stocky is externally verified; a live Dhan account is{" "}
+              <span className="text-ink">accumulating a real, honest sample</span> — the full curve,
+              calendar and ratios update daily on the track-record page.
             </p>
           </div>
           <div className="flex flex-col gap-3 font-mono text-[13px]">
@@ -141,7 +131,7 @@ export function McTrackRecord() {
 }
 
 export function McWriting() {
-  const posts = getAllPosts().slice(0, 5);
+  const posts = getAllPosts().slice(0, 3);
   return (
     <section id="writing" className="mx-auto max-w-5xl px-6 py-16 md:py-20">
       <Eyebrow label="Writing" meta={`${getAllPosts().length} essays`} />
@@ -173,22 +163,16 @@ export function McAbout() {
     <section id="about" className="border-t border-[rgb(var(--rule))]">
       <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
         <Eyebrow label="About" meta="/ ck" />
-        <div className="mt-6 grid gap-10 md:grid-cols-[1.3fr_0.7fr]">
-          <div className="space-y-4">
-            {BIO.paragraphs.map((para) => (
-              <p key={para.slice(0, 24)} className="max-w-[54ch] font-serif text-[clamp(1rem,1.8vw,1.2rem)] leading-[1.6] text-[rgb(var(--mute))]">
-                {para}
-              </p>
-            ))}
-          </div>
-          <ul className="space-y-2 font-mono text-[12.5px] leading-[1.7] text-[rgb(var(--mute))]">
-            {BIO.highlights.map((h) => (
-              <li key={h.slice(0, 20)} className="border-l-2 border-[rgb(var(--line-hi))] pl-3">
-                {h}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <p className="mt-6 max-w-[60ch] font-serif text-[clamp(1.15rem,2vw,1.5rem)] leading-[1.5] text-ink">
+          AI Product Manager &amp; Engineer at Delta Exchange. I ship the whole thing — the model, the
+          protocol, the interface, and the essay explaining it.
+        </p>
+        <p className="mt-3 max-w-[58ch] font-serif text-[1rem] leading-[1.6] text-[rgb(var(--mute))]">
+          {BIO.highlights[3] /* IIT-K · JEE AIR 638 · Maths Olympiad AIR 3 */}
+        </p>
+        <Link href="/resume" className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline">
+          About &amp; résumé →
+        </Link>
       </div>
     </section>
   );
@@ -210,7 +194,7 @@ export function McContact() {
           <a href={s.linkedin} className="hover:text-accent">LinkedIn</a>
           <a href={s.github} className="hover:text-accent">GitHub</a>
           <a href={s.telegram} className="hover:text-accent">Telegram</a>
-          <span className="text-[rgb(var(--faint))]">© {new Date().getFullYear()} {SITE.name}</span>
+          <span className="text-[rgb(var(--faint))]">© {new Date().getFullYear()} {SITE.name} · Bangalore</span>
         </div>
       </div>
     </footer>

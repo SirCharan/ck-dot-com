@@ -9,7 +9,7 @@ import { HeroEquityView } from "./HeroEquityCurve";
  * view, so the whole tree renders server-side / JS-off.
  */
 
-const RANGE = "AI SYSTEMS · DEFI · MCP · WRITING";
+const RANGE = "AI PRODUCT MANAGER & ENGINEER · DELTA EXCHANGE";
 const STOCKY_VERIFIED = "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl";
 
 const TICKERS: { n: string; l: string; href?: string }[] = [
@@ -39,10 +39,12 @@ export async function MissionControlHero() {
           >
             Charandeep Kapoor
           </h1>
-          <p className="mt-5 max-w-[42ch] font-serif text-[clamp(1.05rem,1.7vw,1.35rem)] leading-[1.5] text-[rgb(var(--mute))]">
-            I build AI that trades real capital — it decides with Claude and{" "}
-            <span className="text-ink">executes real orders</span>. Product &amp; AI engineer at Delta
-            Exchange, Bombay.
+          <p className="mt-5 max-w-[44ch] font-serif text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.45] text-ink">
+            I build AI that trades markets — <span className="text-accent">and makes money</span>.
+          </p>
+          <p className="mt-3 max-w-[44ch] font-serif text-[clamp(1rem,1.5vw,1.15rem)] leading-[1.5] text-[rgb(var(--mute))]">
+            AI Product Manager &amp; Engineer at Delta Exchange. I ship trading systems, DeFi
+            derivatives and tooling — from Bangalore.
           </p>
 
           <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
