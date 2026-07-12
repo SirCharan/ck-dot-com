@@ -9,8 +9,8 @@ import cycle from "@/data/decision-cycle.json";
  * locks that contract so the later live feed (Phase 3) can swap the data safely.
  */
 describe("MissionControlHero", () => {
-  it("renders the decision from the data contract, not hardcoded", () => {
-    render(<MissionControlHero />);
+  it("renders the decision from the data contract, not hardcoded", async () => {
+    render(await MissionControlHero());
     // direction + asset badge
     expect(
       screen.getByText(new RegExp(`${cycle.direction}\\s+${cycle.asset.replace("USD", "")}`, "i"))
@@ -27,8 +27,8 @@ describe("MissionControlHero", () => {
     expect(screen.getByRole("heading", { name: /charandeep kapoor/i })).toBeTruthy();
   });
 
-  it("shows the resolved outcome when the cycle is resolved", () => {
-    render(<MissionControlHero />);
+  it("shows the resolved outcome when the cycle is resolved", async () => {
+    render(await MissionControlHero());
     if (cycle.resolved) {
       expect(screen.getByText(new RegExp(`resolved.*${cycle.result.r}R`))).toBeTruthy();
     }

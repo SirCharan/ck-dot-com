@@ -2,9 +2,7 @@
 
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import type cycleData from "@/data/decision-cycle.json";
-
-type Cycle = typeof cycleData;
+import type { CycleData } from "@/lib/cycle";
 
 /**
  * The telemetry panel — Phase-2 "come online" intro layered over the Phase-1
@@ -38,8 +36,17 @@ function Bar({ label, value, display, zero }: { label: string; value: number; di
   );
 }
 
-export function MissionControlPanel({ c }: { c: Cycle }) {
+export function MissionControlPanel({
+  c,
+  live = false,
+  asOf,
+}: {
+  c: CycleData;
+  live?: boolean;
+  asOf?: string;
+}) {
   const reduce = useReducedMotion();
+  const stamp = (asOf ?? c.timestampIST).slice(0, 10);
   const words = useMemo(() => c.reasoning.split(/(\s+)/), [c.reasoning]);
 
   const [zero, setZero] = useState(false); // bars start empty during boot
@@ -165,7 +172,7 @@ export function MissionControlPanel({ c }: { c: Cycle }) {
           ) : (
             <span className="text-amber">pending</span>
           )}{" "}
-          · latest archived cycle, replayed
+          · {live ? "live cycle" : "latest archived cycle"} · {stamp}
         </div>
       </div>
     </div>

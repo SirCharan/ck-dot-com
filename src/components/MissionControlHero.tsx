@@ -1,18 +1,15 @@
-import cycle from "@/data/decision-cycle.json";
+import { getCycle } from "@/lib/cycle";
 import { MissionControlPanel } from "./MissionControlPanel";
 
 /**
  * Mission-Control hero — the ground-up "Apollo, modernised" landing hero.
  *
  * Two planes: identity (left) + a live telemetry readout of ck's real trading
- * machine (right). This is the Phase-1 STATIC end-state — no motion, no live
- * fetch. It reads every value from src/data/decision-cycle.json (the committed
- * render contract), so a later ISR feed can swap the data without touching the
- * markup. Renders fully with JS off. Motion (Phase 2) and the live feed
- * (Phase 3) layer on top of exactly this.
+ * machine (right). Server component: the decision comes from getCycle() —
+ * Drishti's public R2 snapshot via ISR when configured, else the committed
+ * decision-cycle.json (the render contract). The motion (Phase 2) lives in the
+ * client MissionControlPanel; JS-off / reduced-motion get the full static panel.
  */
-
-type Cycle = typeof cycle;
 
 const RANGE = "AI systems · DeFi derivatives · MCP tooling · writing";
 
@@ -23,8 +20,8 @@ const TICKERS: { n: string; l: string; cite?: boolean }[] = [
   { n: "+150%", l: "Stocky · verified", cite: true },
 ];
 
-export function MissionControlHero() {
-  const c = cycle as Cycle;
+export async function MissionControlHero() {
+  const { cycle: c, live, asOf } = await getCycle();
   const year = new Date().getFullYear();
   return (
     <section
@@ -73,7 +70,7 @@ export function MissionControlHero() {
         </div>
 
         {/* telemetry */}
-        <MissionControlPanel c={c} />
+        <MissionControlPanel c={c} live={live} asOf={asOf} />
       </div>
       <p
         id="fn-stocky"
