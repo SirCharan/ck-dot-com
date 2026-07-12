@@ -28,10 +28,10 @@ export function McHeader() {
           CK<span className="text-accent">.</span>
         </Link>
         <nav className="hidden gap-6 font-mono text-[12.5px] text-[rgb(var(--mute))] sm:flex">
-          <a href="#work" className="hover:text-ink">Work</a>
+          <a href="/#work" className="hover:text-ink">Work</a>
           <Link href="/track-record" className="hover:text-ink">Track record</Link>
-          <a href="#writing" className="hover:text-ink">Writing</a>
-          <a href="#about" className="hover:text-ink">About</a>
+          <a href="/#writing" className="hover:text-ink">Writing</a>
+          <a href="/#about" className="hover:text-ink">About</a>
         </nav>
         <a
           href={SITE.socials.topmate}

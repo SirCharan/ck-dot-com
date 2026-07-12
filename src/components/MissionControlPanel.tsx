@@ -170,7 +170,7 @@ export function MissionControlPanel({
               {c.result.r}R
             </span>
           ) : (
-            <span className="text-amber">pending</span>
+            <span className="text-[rgb(var(--warn))]">pending</span>
           )}{" "}
           · {live ? "live cycle" : "latest archived cycle"} · {stamp}
         </div>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { CaseStudy as CaseStudyData } from "@/data/site";
 import { PageShell } from "./PageShell";
-import { Viz3D, type VizVariant } from "./viz/Viz3D";
 import { Caption, Figure, MetaGutter, Rule } from "./lab/Primitives";
 
 const TONE: Record<string, string> = {
@@ -84,17 +83,6 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
               <Caption>Tab. 1 — key metrics</Caption>
             </figcaption>
           </figure>
-        )}
-
-        {/* Accent visualization — captioned figure */}
-        {data.accent && data.accent !== "none" && (
-          <Figure
-            className="mt-12"
-            label="Fig. 1"
-            caption={`accent field · ${data.accent}`}
-          >
-            <Viz3D variant={data.accent as VizVariant} height={320} />
-          </Figure>
         )}
 
         {/* Body sections — hairline-ruled, § numbered in the gutter */}

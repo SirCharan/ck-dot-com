@@ -1,21 +1,13 @@
 import type { ReactNode } from "react";
-import { Header } from "./Header";
-import { Footer } from "./Footer";
-import { EquityThread } from "./EquityThread";
-import { GrainOverlay } from "./GrainOverlay";
+import { McHeader, McContact } from "./mc/Sections";
 
-/** Dark lab chrome shared by the homepage's siblings (section pages). */
+/** Mission-control chrome shared by the homepage's siblings (section pages). */
 export function PageShell({ children }: { children: ReactNode }) {
   return (
-    <div className="terminal relative min-h-dvh overflow-x-clip">
-      <div className="terminal-grid" />
-      <GrainOverlay />
-      <EquityThread />
-      <Header />
-      <main className="relative z-10 mx-auto max-w-3xl px-6">
-        {children}
-        <Footer />
-      </main>
+    <div className="mc relative min-h-dvh overflow-x-clip">
+      <McHeader />
+      <main className="relative z-10 mx-auto max-w-3xl px-6">{children}</main>
+      <McContact />
     </div>
   );
 }

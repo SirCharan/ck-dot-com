@@ -48,10 +48,18 @@
     --rule: 28 37 48;        /* #1C2530 hairline */
     --line-hi: 40 50 61;     /* #28323D top-highlight */
     --accent: 74 222 128;    /* #4ADE80 phosphor — the only "live/go" colour */
-    --amber: 255 176 0;      /* #FFB000 — strict state colour (attention) only */
+    --amber: 74 222 128;     /* alias → accent, so Ephemeris-era components unify to green */
+    --warn: 255 176 0;       /* #FFB000 — the true amber state colour (attention) */
     --positive: 127 227 159; /* desaturated CVD-safe up */
     --pos: 127 227 159;
     --neg: 232 116 107;      /* desaturated CVD-safe down */
+    /* Ephemeris token aliases → mission-control values, so the .terminal-era
+       sub-page components adopt the mc palette when PageShell switches to .mc. */
+    --bone: 230 238 245;     /* → ink */
+    --bone-dim: 147 164 181; /* → mute */
+    --slate: 147 164 181;    /* → mute (data) */
+    --ink-void: 11 15 20;    /* → bg */
+    --ink-void-2: 15 20 27;  /* → panel */
     color-scheme: dark;
   }
   .mc {

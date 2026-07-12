@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Experience } from "@/components/Experience";
-import { Viz3D } from "@/components/viz/Viz3D";
-import { Caption, Figure, MetaGutter, Rule } from "@/components/lab/Primitives";
+import { Caption, MetaGutter, Rule } from "@/components/lab/Primitives";
 import { ACADEMICS, CERTIFICATIONS, BIO, SITE } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -71,15 +70,6 @@ export default function ResumePage() {
         title="Experience & skillset"
         lede="AI Product Manager at Delta Exchange. Founder, quant, and builder at the intersection of models and markets."
       />
-
-      {/* Golden spiral — captioned figure */}
-      <Figure
-        className="mb-14"
-        label="Fig. 1"
-        caption="golden spiral · φ = 1.618 growth"
-      >
-        <Viz3D variant="spiral" height={280} />
-      </Figure>
 
       {/* Skills — mono tabular, grouped */}
       <section className="mt-12">
