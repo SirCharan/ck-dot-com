@@ -22,7 +22,7 @@ function Eyebrow({ label, meta }: { label: string; meta?: string }) {
 
 export function McHeader() {
   return (
-    <header className="sticky top-0 z-30 border-b border-[rgb(var(--rule))] bg-[rgb(var(--bg)/0.85)] backdrop-blur-[2px]">
+    <header className="sticky top-0 z-30 border-b border-[rgb(var(--rule))] bg-[rgb(var(--bg))]">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link href="/" className="font-grotesk text-[15px] font-bold tracking-tight text-ink">
           CK<span className="text-accent">.</span>
