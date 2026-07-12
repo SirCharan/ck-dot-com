@@ -20,8 +20,9 @@ describe("MissionControlHero", () => {
     expect(screen.getByText(cycle.target.toLocaleString())).toBeTruthy();
     // R:R value
     expect(screen.getByText(cycle.rr.toFixed(2))).toBeTruthy();
-    // the model's reasoning prose is present verbatim
-    expect(screen.getByText(cycle.reasoning)).toBeTruthy();
+    // the model's reasoning prose is present verbatim (word-split for the
+    // reveal animation, but every word stays in the DOM)
+    expect(screen.getByTestId("mc-reasoning").textContent).toContain(cycle.reasoning);
     // identity + name
     expect(screen.getByRole("heading", { name: /charandeep kapoor/i })).toBeTruthy();
   });

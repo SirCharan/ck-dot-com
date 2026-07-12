@@ -1,4 +1,5 @@
 import cycle from "@/data/decision-cycle.json";
+import { MissionControlPanel } from "./MissionControlPanel";
 
 /**
  * Mission-Control hero — the ground-up "Apollo, modernised" landing hero.
@@ -21,70 +22,6 @@ const TICKERS: { n: string; l: string; cite?: boolean }[] = [
   { n: "21", l: "Delta MCP tools" },
   { n: "+150%", l: "Stocky · verified", cite: true },
 ];
-
-function pct(v: number) {
-  return `${Math.round(v * 100)}%`;
-}
-
-function Bar({ label, value, display }: { label: string; value: number; display: string }) {
-  const w = Math.max(4, Math.min(100, Math.round(value * 100)));
-  return (
-    <div className="grid grid-cols-[88px_1fr_auto] items-center gap-3 text-[12px]">
-      <span className="font-mono uppercase tracking-[0.12em] text-[rgb(var(--faint))]">{label}</span>
-      <span className="h-[6px] overflow-hidden rounded-full bg-[rgb(var(--raised))]" role="presentation">
-        <span className="block h-full rounded-full bg-accent" style={{ width: `${w}%` }} />
-      </span>
-      <span className="font-mono tabular-nums text-ink">{display}</span>
-    </div>
-  );
-}
-
-function TelemetryPanel({ c }: { c: Cycle }) {
-  const rrScaled = Math.min(1, c.rr / 3); // 3.0 R:R fills the bar
-  return (
-    <div className="rounded-2xl border border-[rgb(var(--rule))] border-t-[rgb(var(--line-hi))] bg-[rgb(var(--panel))]">
-      <div className="flex items-center justify-between border-b border-[rgb(var(--rule))] px-4 py-3 font-mono text-[11px] tracking-[0.06em] text-[rgb(var(--faint))]">
-        <span>telemetry · {c.asset} cycle</span>
-        <span className="flex items-center gap-2 text-accent">
-          <span aria-hidden className="inline-block h-[7px] w-[7px] rounded-full bg-accent" />
-          nominal · next <span className="tabular-nums text-ink">03:41</span>
-        </span>
-      </div>
-      <div className="space-y-3 px-4 pt-4">
-        <Bar label="conviction" value={c.conviction} display={c.conviction.toFixed(2)} />
-        <Bar label="win rate" value={c.winRateAgg} display={pct(c.winRateAgg)} />
-        <Bar label="R:R" value={rrScaled} display={c.rr.toFixed(2)} />
-      </div>
-      <div className="mt-4 border-t border-[rgb(var(--rule))] px-4 py-4">
-        <div className="flex flex-wrap items-center gap-3 font-mono text-[13px]">
-          <span className="rounded-md bg-accent px-2.5 py-1 font-semibold uppercase tracking-[0.04em] text-[rgb(var(--bg))]">
-            ▸ {c.direction} {c.asset.replace("USD", "")}
-          </span>
-          <span className="text-[rgb(var(--mute))]">
-            e <span className="tabular-nums text-ink">{c.entry.toLocaleString()}</span> · sl{" "}
-            <span className="tabular-nums text-ink">{c.stop.toLocaleString()}</span> · tp{" "}
-            <span className="tabular-nums text-ink">{c.target.toLocaleString()}</span>
-          </span>
-        </div>
-        <p className="mt-3 max-w-[46ch] font-serif text-[14px] leading-[1.6] text-[rgb(var(--mute))]">
-          {c.reasoning}
-        </p>
-        <div className="mt-3 font-mono text-[12px] text-[rgb(var(--faint))]">
-          burn armed ·{" "}
-          {c.resolved ? (
-            <span className={c.result.outcome === "win" ? "text-positive" : "text-neg"}>
-              resolved {c.result.r > 0 ? "+" : ""}
-              {c.result.r}R
-            </span>
-          ) : (
-            <span className="text-amber">pending</span>
-          )}{" "}
-          · latest archived cycle, replayed
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export function MissionControlHero() {
   const c = cycle as Cycle;
@@ -136,7 +73,7 @@ export function MissionControlHero() {
         </div>
 
         {/* telemetry */}
-        <TelemetryPanel c={c} />
+        <MissionControlPanel c={c} />
       </div>
       <p
         id="fn-stocky"
