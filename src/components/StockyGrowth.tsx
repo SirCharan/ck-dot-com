@@ -35,11 +35,17 @@ export function StockyGrowth() {
         </div>
         <div className="mt-4 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-[rgb(var(--rule))] pt-4 font-mono text-[12.5px] text-[rgb(var(--mute))]">
           <span className="text-ink">
-            {H.capital} → <span className="text-accent">{H.profit} profit</span>
+            {H.capital} capital → <span className="text-accent">+{H.grossProfit} gross</span>
+          </span>
+          <span>
+            ·{" "}
+            <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent">
+              {H.profit} net verified ↗
+            </a>
           </span>
           <span>· {H.winRate} win</span>
           <span>· Sharpe {H.sharpe}</span>
-          <span className="text-[rgb(var(--faint))]">· Indian F&amp;O + commodities · gross</span>
+          <span className="text-[rgb(var(--faint))]">· curve = realized P&amp;L reconstructed from the Zerodha tradebook (gross)</span>
         </div>
       </div>
     </section>

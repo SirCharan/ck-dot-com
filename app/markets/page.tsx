@@ -7,7 +7,7 @@ import { TOOLS } from "@/data/site";
 export const metadata: Metadata = {
   title: "Indian Stock Market",
   description:
-    "Quant trading the Indian stock market — Stocky (Claude-driven Zerodha trading, 150%+ ROI verified), a live Dhan portfolio, voice trading, and market tooling.",
+    "Quant trading the Indian stock market — Stocky (Claude-driven Zerodha trading, ₹16.57L profit / +110%, verified), a live Dhan portfolio, voice trading, and market tooling.",
 };
 
 const marketTools = TOOLS.filter((t) => t.tags?.includes("Markets"));

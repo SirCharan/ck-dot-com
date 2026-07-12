@@ -7,9 +7,10 @@ import stocky from "@/data/stocky-curve.json";
 describe("StockyGrowth", () => {
   it("renders the verified-story headline + a curve, scoped to the real window", () => {
     const { container } = render(<StockyGrowth />);
-    expect(screen.getByText(/16\.57L profit/i)).toBeTruthy();
+    // gross curve figure + net verified figure BOTH shown (reconciled, not conflated)
+    expect(screen.getByText(/18\.8L gross/i)).toBeTruthy();
+    expect(screen.getByRole("link", { name: /16\.57L net verified/i }).getAttribute("href")).toContain("sensibull");
     expect(screen.getByText(/73% win/i)).toBeTruthy();
-    expect(screen.getByRole("link", { name: /verified/i }).getAttribute("href")).toContain("sensibull");
     expect(container.querySelector("path")).toBeTruthy(); // the curve renders
   });
 

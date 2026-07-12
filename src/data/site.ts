@@ -35,7 +35,7 @@ const STOCKY_VERIFIED =
   "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl";
 
 export const HERO_STATS: HeroStat[] = [
-  { value: "150%+", label: "Stocky AI ROI", sub: "9 mo · ₹15L · verified", href: STOCKY_VERIFIED, tone: "pos" },
+  { value: "+110%", label: "Stocky AI ROI", sub: "₹15L → ₹16.57L · verified", href: STOCKY_VERIFIED, tone: "pos" },
   { value: "2.29", label: "Sharpe ratio", sub: "Stocky AI", href: STOCKY_VERIFIED, tone: "accent" },
   { value: "73%", label: "Win rate", sub: "Stocky AI", href: STOCKY_VERIFIED, tone: "accent" },
   { value: "$7.3M", label: "Timelock volume", sub: "$2M TVL · 1k+ users", href: "https://perps.timelock.trade/", tone: "neutral" },
@@ -48,7 +48,7 @@ export const BIO = {
   ],
   highlights: [
     "AI Product Manager, Delta Exchange — perpetuals and AI-driven trading products.",
-    "Built Stocky: fine-tuned Claude on a custom Zerodha MCP — 150%+ ROI, Sharpe 2.29, 73% win rate on ₹15L.",
+    "Built Stocky: fine-tuned Claude on a custom Zerodha MCP — ₹15L → ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
     "Founded Timelock Trade — oracle-less, liquidation-free perps & options. $7.3M volume · $2M TVL · 1,000+ users.",
     "B.Tech, IIT Kanpur. JEE Advanced AIR 638 (99.96%ile). National Maths Olympiad AIR 3.",
   ],
@@ -166,10 +166,10 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Stocky AI",
-    one: "Claude-driven Zerodha trading — 150%+ ROI, Sharpe 2.29, 73% win rate.",
+    one: "Claude-driven Zerodha trading — ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
     long: [
       "Fine-tuned Claude 3.5 Sonnet and built a custom MCP server connecting it to Zerodha to trade the Indian stock market.",
-      "150%+ ROI over 9 months, Sharpe 2.29, 73% win rate, ₹15L capital.",
+      "₹16.57L profit (+110% ROI) over ~9 months, Sharpe 2.29, 73% win rate, ₹15L capital.",
     ],
     live: "https://stockai-red.vercel.app/",
     latest:

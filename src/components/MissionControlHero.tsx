@@ -16,7 +16,7 @@ const TICKERS: { n: string; l: string; href?: string }[] = [
   { n: "64%", l: "Drishti win · live" },
   { n: "$7.3M", l: "Timelock volume" },
   { n: "21", l: "Delta MCP tools" },
-  { n: "+150%", l: "Stocky · verified", href: STOCKY_VERIFIED },
+  { n: "+110%", l: "Stocky · verified", href: STOCKY_VERIFIED },
 ];
 
 export async function MissionControlHero() {

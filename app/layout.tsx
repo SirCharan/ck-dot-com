@@ -11,7 +11,7 @@ const GA_ID = "G-J6SY9N1Y3W";
 const SITE_URL = "https://charandeepkapoor.com";
 
 const DEFAULT_DESCRIPTION =
-  "Charandeep Kapoor — founder of Timelock Trade, creator of Stocky AI (Claude-driven Zerodha trading, 150%+ ROI). Six years across product, research, and VC in crypto and quant finance. Essays on perps, DeFi, and trading.";
+  "Charandeep Kapoor — founder of Timelock Trade, creator of Stocky AI (Claude-driven Zerodha trading, ₹16.57L profit / +110%). Six years across product, research, and VC in crypto and quant finance. Essays on perps, DeFi, and trading.";
 
 const DEFAULT_TITLE =
   "Charandeep Kapoor — Perpetuals, Quant Finance, AI Trading";

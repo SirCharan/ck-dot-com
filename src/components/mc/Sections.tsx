@@ -50,7 +50,7 @@ const WORK: WorkItem[] = [
   { title: "Drishti", line: "Live LLM signals that trade real money on a 15-minute cycle, 8 markets.", live: "https://drishti-beryl.vercel.app", detail: "/work/drishti" },
   { title: "Timelock", line: "Oracle-less, liquidation-free DeFi derivatives — $7.3M volume, 1k+ users.", live: "https://perps.timelock.trade/", detail: "/work/timelock" },
   { title: "Delta MCP", line: "The first official crypto-exchange MCP server — 21 tools for LLMs.", live: "https://delta-mcp.vercel.app", detail: "/work/delta-mcp" },
-  { title: "Stocky AI", line: "An options engine run on real capital — +150% ROI, externally verified.", live: STOCKY_VERIFIED, github: "https://github.com/SirCharan/Zerodha-MCP-Tradin", detail: "/markets" },
+  { title: "Stocky AI", line: "Fine-tuned Claude to trade Indian F&O & commodities on real capital — ₹15L → ₹16.57L profit (+110%), 73% win, externally verified.", live: STOCKY_VERIFIED, github: "https://github.com/SirCharan/Zerodha-MCP-Tradin", detail: "/markets" },
   { title: "Delta Support Audit", line: "A nightly RAG system auditing 344 support articles for correctness.", detail: "/work/delta-support-audit" },
   { title: "Andrea's World", line: "A playful, hand-built interactive 3D world on the web — for the joy of it.", live: "https://andrea-world.vercel.app", detail: "/work/andrea-world" },
 ];
@@ -104,7 +104,7 @@ export function McTrackRecord() {
           <div>
             <div className="flex flex-wrap gap-x-10 gap-y-4">
               {[
-                ["+150%", "Stocky ROI · verified"],
+                ["+110%", "Stocky ROI · verified"],
                 ["2.29", "Sharpe"],
                 ["73%", "Win rate"],
               ].map(([n, l]) => (
