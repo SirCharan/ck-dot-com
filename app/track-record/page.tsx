@@ -7,6 +7,7 @@ import { ClientOnly } from "@/components/lab/ClientOnly";
 import { inr } from "@/lib/format";
 import { SITE } from "@/data/site";
 import { getTrackRecord, type SeriesPt } from "@/lib/trackRecord";
+import { StockyTrackRecord } from "@/components/StockyTrackRecord";
 
 export const metadata: Metadata = {
   title: "Live Track Record",
@@ -100,10 +101,15 @@ export default async function TrackRecordPage() {
   return (
     <PageShell>
       <PageIntro
-        kicker="Live track record"
-        title="My Dhan account, in the open"
-        lede="Real capital on my Dhan account — aggregate P&L, Sharpe, drawdown and positive-day rate, refreshed daily. Click any day on the calendar to see the individual trades behind it."
+        kicker="Track record"
+        title="Real capital, in the open"
+        lede="Two records. First: Stocky — a year of AI-driven Zerodha trading, externally verified. Then my live Dhan account, accumulating in the open and refreshed daily."
       />
+
+      <StockyTrackRecord />
+
+      <section className="mt-16 pt-2">
+        <p className="kicker mb-3">Live · Dhan · accumulating</p>
 
       {/* KPIs — mono tabular figure block */}
       <figure className="m-0">
@@ -259,6 +265,7 @@ export default async function TrackRecordPage() {
           as the record grows. Single account, single regime, no benchmark.
         </p>
       </div>
+      </section>
     </PageShell>
   );
 }

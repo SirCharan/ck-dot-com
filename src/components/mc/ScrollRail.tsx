@@ -3,11 +3,23 @@
 import { useEffect, useState } from "react";
 
 /**
- * A thin neon progress rail down the left margin (lg+ only — it lives in the
- * otherwise-empty gutter). Fills with scroll position, with a soft glow for
- * strong neon-on-black contrast. prefers-reduced-motion → shown full and
- * static. Decorative + aria-hidden, so JS-off simply shows the empty track.
+ * Mission-Control side decor — bolder neon treatment in BOTH empty gutters (lg+
+ * only). Each side: a base rail + a scroll-progress fill + a bright neon "comet"
+ * flowing downward (CSS keyframe, staggered per side), over a faint drifting
+ * hexagon field so the margins read as ambient/textured, not empty. All
+ * aria-hidden + decorative; prefers-reduced-motion → static full rail, no flow
+ * (handled in CSS). See .mc-rail / .mc-comet / .mc-hex in src/index.css.
  */
+
+function Rail({ side, p, comet2 }: { side: "l" | "r"; p: number; comet2?: boolean }) {
+  return (
+    <div aria-hidden className={`mc-rail mc-rail-${side} hidden lg:block`}>
+      <div className="mc-rail-fill" style={{ height: `${Math.max(3, p * 100)}%` }} />
+      <div className={`mc-comet ${comet2 ? "mc-comet-2" : ""}`} />
+    </div>
+  );
+}
+
 export function ScrollRail() {
   const [p, setP] = useState(0);
 
@@ -31,14 +43,11 @@ export function ScrollRail() {
   }, []);
 
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed left-4 top-1/2 z-20 hidden h-[44vh] w-[2px] -translate-y-1/2 overflow-hidden rounded-full bg-[rgb(var(--rule))] lg:block xl:left-8"
-    >
-      <div
-        className="w-full rounded-full bg-accent transition-[height] duration-150 ease-out"
-        style={{ height: `${Math.max(4, p * 100)}%`, boxShadow: "0 0 8px rgb(var(--accent) / 0.7)" }}
-      />
-    </div>
+    <>
+      <div aria-hidden className="mc-hex mc-hex-l hidden lg:block" />
+      <div aria-hidden className="mc-hex mc-hex-r hidden lg:block" />
+      <Rail side="l" p={p} />
+      <Rail side="r" p={p} comet2 />
+    </>
   );
 }

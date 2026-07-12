@@ -1,10 +1,12 @@
 import type { ReactNode } from "react";
 import { McHeader, McContact } from "./mc/Sections";
+import { ScrollRail } from "./mc/ScrollRail";
 
 /** Mission-control chrome shared by the homepage's siblings (section pages). */
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div className="mc relative min-h-dvh overflow-x-clip">
+      <ScrollRail />
       <McHeader />
       <main className="relative z-10 mx-auto max-w-3xl px-6">{children}</main>
       <McContact />
