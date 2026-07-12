@@ -1,36 +1,50 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { MissionControlHero } from "./MissionControlHero";
-import cycle from "@/data/decision-cycle.json";
+import { HeroEquityView } from "./HeroEquityCurve";
+import type { Payload } from "@/lib/trackRecord";
 
-/**
- * The hero is a pure render of the committed decision-cycle contract — no value
- * is hardcoded in the markup. If the data changes, the panel changes. This
- * locks that contract so the later live feed (Phase 3) can swap the data safely.
- */
+afterEach(() => vi.unstubAllGlobals());
+
 describe("MissionControlHero", () => {
-  it("renders the decision from the data contract, not hardcoded", async () => {
+  it("renders identity, decluttered tickers, links; falls back honestly when the feed is down", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("net")));
     render(await MissionControlHero());
-    // direction + asset badge
-    expect(
-      screen.getByText(new RegExp(`${cycle.direction}\\s+${cycle.asset.replace("USD", "")}`, "i"))
-    ).toBeTruthy();
-    // levels come from data
-    expect(screen.getByText(cycle.entry.toLocaleString())).toBeTruthy();
-    expect(screen.getByText(cycle.target.toLocaleString())).toBeTruthy();
-    // R:R value
-    expect(screen.getByText(cycle.rr.toFixed(2))).toBeTruthy();
-    // the model's reasoning prose is present verbatim (word-split for the
-    // reveal animation, but every word stays in the DOM)
-    expect(screen.getByTestId("mc-reasoning").textContent).toContain(cycle.reasoning);
-    // identity + name
+
     expect(screen.getByRole("heading", { name: /charandeep kapoor/i })).toBeTruthy();
+    expect(screen.getByText(/64%/)).toBeTruthy();
+    expect(screen.getByText(/Delta MCP tools/)).toBeTruthy();
+
+    // Stocky ticker links straight to the verified page — no dangling ¹ marker.
+    const verified = screen.getByRole("link", { name: /Stocky · verified/i });
+    expect(verified.getAttribute("href")).toContain("sensibull");
+    expect(screen.queryByText("1", { selector: "sup" })).toBeNull();
+
+    // feed down → honest accumulating state, never a broken panel
+    expect(screen.getByText(/accumulating from Dhan/i)).toBeTruthy();
+    expect(screen.getByText(/See the work/i)).toBeTruthy();
+  });
+});
+
+describe("HeroEquityView", () => {
+  it("renders the real curve + return when there are ≥2 points", () => {
+    const data = {
+      ok: true,
+      asOf: "2026-07-12",
+      provisional: false,
+      series: [
+        { date: "a", net: 0, gross: 0, cumulative: 0, grossCumulative: 0 },
+        { date: "b", net: 100, gross: 120, cumulative: 100, grossCumulative: 120 },
+      ],
+      metrics: { grossCumulative: 120, annualizedReturnPct: 12.3 },
+      meta: { e0: 0, note: "" },
+    } as unknown as Payload;
+    render(<HeroEquityView data={data} />);
+    expect(screen.getByText(/ann\./)).toBeTruthy();
   });
 
-  it("shows the resolved outcome when the cycle is resolved", async () => {
-    render(await MissionControlHero());
-    if (cycle.resolved) {
-      expect(screen.getByText(new RegExp(`resolved.*${cycle.result.r}R`))).toBeTruthy();
-    }
+  it("shows the accumulating state when the payload is null", () => {
+    render(<HeroEquityView data={null} />);
+    expect(screen.getByText(/accumulating from Dhan/i)).toBeTruthy();
   });
 });

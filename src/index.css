@@ -39,16 +39,16 @@
      (--panel/--raised/--line-hi/--faint) via arbitrary utilities.
      ============================================ */
   .mc {
-    --bg: 11 15 20;          /* #0B0F14 ground */
-    --panel: 15 20 27;       /* #0F141B */
-    --raised: 20 26 34;      /* #141A22 */
+    --bg: 7 9 12;            /* #07090C deep near-black ground */
+    --panel: 13 17 22;       /* #0D1116 */
+    --raised: 19 24 31;      /* #13181F */
     --ink: 230 238 245;      /* #E6EEF5 */
     --mute: 147 164 181;     /* #93A4B5 */
     --faint: 112 134 152;    /* #708698 — AA-legible on all mc surfaces */
     --rule: 28 37 48;        /* #1C2530 hairline */
     --line-hi: 40 50 61;     /* #28323D top-highlight */
-    --accent: 74 222 128;    /* #4ADE80 phosphor — the only "live/go" colour */
-    --amber: 74 222 128;     /* alias → accent, so Ephemeris-era components unify to green */
+    --accent: 61 251 134;    /* #3DFB86 neon phosphor — the only "live/go" colour */
+    --amber: 61 251 134;     /* alias → accent, so Ephemeris-era components unify to green */
     --warn: 255 176 0;       /* #FFB000 — the true amber state colour (attention) */
     --positive: 127 227 159; /* desaturated CVD-safe up */
     --pos: 127 227 159;
