@@ -30,6 +30,36 @@
     --ink-void-2: 16 16 19;
   }
 
+  /* ============================================
+     MISSION CONTROL — the ground-up redesign scope.
+     Premium dark, single phosphor accent, no glass.
+     Wrap the new landing/sections in `.mc`; existing Tailwind
+     color utilities (bg/ink/mute/rule/accent/positive/neg/amber)
+     resolve to these values inside the scope. Extra surface tokens
+     (--panel/--raised/--line-hi/--faint) via arbitrary utilities.
+     ============================================ */
+  .mc {
+    --bg: 11 15 20;          /* #0B0F14 ground */
+    --panel: 15 20 27;       /* #0F141B */
+    --raised: 20 26 34;      /* #141A22 */
+    --ink: 230 238 245;      /* #E6EEF5 */
+    --mute: 147 164 181;     /* #93A4B5 */
+    --faint: 90 107 122;     /* #5A6B7A */
+    --rule: 28 37 48;        /* #1C2530 hairline */
+    --line-hi: 40 50 61;     /* #28323D top-highlight */
+    --accent: 74 222 128;    /* #4ADE80 phosphor — the only "live/go" colour */
+    --amber: 255 176 0;      /* #FFB000 — strict state colour (attention) only */
+    --positive: 127 227 159; /* desaturated CVD-safe up */
+    --pos: 127 227 159;
+    --neg: 232 116 107;      /* desaturated CVD-safe down */
+    color-scheme: dark;
+  }
+  .mc {
+    background: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-family: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+  }
+
   html {
     font-feature-settings: "kern", "liga", "calt";
     text-rendering: optimizeLegibility;

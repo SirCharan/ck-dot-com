@@ -1,15 +1,17 @@
-import { Space_Grotesk, Newsreader, JetBrains_Mono } from "next/font/google";
+import { Hanken_Grotesk, Newsreader, IBM_Plex_Mono } from "next/font/google";
 
-// Ephemeris tri-role type system.
-// Display / labels — Space Grotesk (tight, left-aligned).
-export const grotesk = Space_Grotesk({
+// Mission-Control type system (ground-up redesign, replaces the Ephemeris trio).
+// Display / UI — Hanken Grotesk, a warm humanist grotesque (pointedly NOT
+// Inter / Space Grotesk). Var name kept as --font-grotesk so existing
+// components keep resolving while the site migrates.
+export const grotesk = Hanken_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-grotesk",
   display: "swap",
 });
 
-// Prose — Newsreader, the notebook voice (optical sizing on by default).
+// Prose — Newsreader, kept for the essays' reading measure.
 export const serif = Newsreader({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
@@ -18,8 +20,9 @@ export const serif = Newsreader({
   display: "swap",
 });
 
-// Data — JetBrains Mono for every number, ticker, timestamp, coordinate, equation.
-export const mono = JetBrains_Mono({
+// Data / telemetry — IBM Plex Mono for every number, register, timestamp,
+// coordinate. Computing-heritage face that fits the guidance-computer concept.
+export const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-mono",
