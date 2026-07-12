@@ -97,7 +97,7 @@ export function MissionControlHero() {
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:py-24">
         {/* identity */}
         <div>
-          <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-accent">
+          <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-[rgb(var(--mute))]">
             <span aria-hidden className="mr-2 inline-block h-[7px] w-[7px] rounded-full bg-accent align-middle" />
             {RANGE}
           </p>
@@ -115,7 +115,11 @@ export function MissionControlHero() {
               <li key={t.l}>
                 <div className="font-grotesk text-[clamp(1.25rem,2.4vw,1.75rem)] font-bold tabular-nums text-ink">
                   {t.n}
-                  {t.cite && <sup className="ml-0.5 text-[10px] text-accent">1</sup>}
+                  {t.cite && (
+                    <a href="#fn-stocky" aria-describedby="fn-stocky" className="text-[rgb(var(--faint))] hover:text-accent">
+                      <sup className="ml-0.5 text-[10px]">1</sup>
+                    </a>
+                  )}
                 </div>
                 <div className="mt-0.5 font-mono text-[11px] text-[rgb(var(--faint))]">{t.l}</div>
               </li>
@@ -123,7 +127,7 @@ export function MissionControlHero() {
           </ul>
 
           <nav aria-label="Primary" className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[13px] text-[rgb(var(--mute))]">
-            <a href="#work" className="border-b-2 border-accent pb-0.5 text-ink hover:text-accent">
+            <a href="#work" className="border-b-2 border-[rgb(var(--line-hi))] pb-0.5 text-ink hover:text-accent">
               Selected work ↓
             </a>
             <a href="/track-record" className="hover:text-ink">Track record</a>
@@ -134,8 +138,12 @@ export function MissionControlHero() {
         {/* telemetry */}
         <TelemetryPanel c={c} />
       </div>
-      <p className="sr-only">
-        ¹ Stocky returns externally verified via a public Sensibull PnL page. Figure {year}.
+      <p
+        id="fn-stocky"
+        className="mx-auto max-w-6xl px-6 pb-6 font-mono text-[11px] text-[rgb(var(--faint))]"
+      >
+        <span className="text-[rgb(var(--mute))]">1</span> Stocky returns externally verified via a
+        public Sensibull PnL page. Figures as of {year}.
       </p>
     </section>
   );
