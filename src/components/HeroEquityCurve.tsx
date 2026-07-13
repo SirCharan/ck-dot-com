@@ -6,34 +6,10 @@ const pctY = (v: number) => `${v >= 0 ? "+" : ""}${v.toFixed(0)}%`;
 
 /**
  * Hero right-plane — ck's REAL live Dhan equity curve (never the seed
- * portfolio.json), with capital (₹) / date axes and a small honest machine
- * schematic beneath. Server component (ISR via getTrackRecord in the hero).
- * Feed down or thin (<2 pts) → honest "accumulating" state, never broken.
+ * portfolio.json), with % return / date axes. Server component (ISR via
+ * getTrackRecord in the hero). Feed down or thin (<2 pts) → honest
+ * "accumulating" state, never broken.
  */
-
-const NODES = ["features", "claude", "verdict", "executor"];
-
-function Schematic() {
-  const W = 400;
-  const H = 46;
-  const bw = 70;
-  const gap = (W - NODES.length * bw) / (NODES.length - 1);
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="mt-4 w-full" aria-hidden>
-      {NODES.map((_, i) => {
-        const x0 = i * (bw + gap);
-        return (
-          <g key={i}>
-            <rect x={x0} y={8} width={bw} height={26} rx={2} fill="none" stroke="rgb(var(--accent) / 0.55)" strokeWidth="1" />
-            {i < NODES.length - 1 && (
-              <line x1={x0 + bw} y1={21} x2={x0 + bw + gap} y2={21} stroke="rgb(var(--accent) / 0.4)" strokeWidth="1" />
-            )}
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
 
 export function HeroEquityView({ data }: { data: Payload | null }) {
   const series = data?.series ?? [];
@@ -85,20 +61,6 @@ export function HeroEquityView({ data }: { data: Payload | null }) {
           </span>
         </div>
       )}
-
-      <div className="mt-4 border-t border-[rgb(var(--rule))] pt-4">
-        <div className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-[rgb(var(--faint))]">
-          the machine
-        </div>
-        <Schematic />
-        <div className="grid grid-cols-4 font-mono text-[9px] uppercase tracking-[0.08em] text-[rgb(var(--faint))]">
-          {NODES.map((n) => (
-            <span key={n} className="text-center">
-              {n}
-            </span>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

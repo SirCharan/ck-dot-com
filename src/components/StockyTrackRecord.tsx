@@ -64,7 +64,19 @@ export function StockyTrackRecord() {
   const w = stocky.window;
   return (
     <section className="pt-2" aria-label="Stocky track record">
-      <p className="kicker mb-3">Stocky · Zerodha · 2025 · verified</p>
+      <div className="mb-3 flex flex-wrap items-center gap-2.5">
+        <span className="kicker">Stocky · Zerodha</span>
+        <span className="rounded-full border border-[rgb(var(--accent)/0.45)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-accent">
+          AI
+        </span>
+        <span className="rounded-full border border-[rgb(var(--faint)/0.4)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-[rgb(var(--faint))]">
+          retired
+        </span>
+      </div>
+      <p className="mb-6 max-w-[64ch] font-serif text-[1.05rem] leading-[1.6] text-[rgb(var(--bone)/0.84)]">
+        An AI system — a <span className="text-ink">{H.method}</span> model that read the market and placed every
+        trade itself, across Indian F&amp;O and commodities. It ran {H.run} and is now retired.
+      </p>
 
       {/* % return curve + reconciled headline */}
       <div className="rounded-2xl border border-[rgb(var(--rule))] border-t-[rgb(var(--line-hi))] bg-[rgb(var(--panel))] p-5">
@@ -79,7 +91,7 @@ export function StockyTrackRecord() {
         </div>
         <div className="mt-4 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-[rgb(var(--rule))] pt-4 font-mono text-[12.5px] text-[rgb(var(--mute))]">
           <span className="text-ink">
-            {H.capital} → <span className="text-accent">{H.roiNetPct}</span>
+            {H.capital} → {H.endNet} <span className="text-accent">({H.roiNetPct} net)</span>
           </span>
           <span>
             ·{" "}

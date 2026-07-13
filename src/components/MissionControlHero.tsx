@@ -2,22 +2,14 @@ import { getTrackRecord } from "@/lib/trackRecord";
 import { HeroEquityView } from "./HeroEquityCurve";
 
 /**
- * Mission-Control hero — "Apollo" language. Two planes: identity (left) + ck's
- * REAL live Dhan equity curve + a machine schematic (right). Oversized neon-green
- * name, amber eyebrow, serif lede, decluttered proof tickers. Async server
- * component: fetches the live Dhan track record (ISR) and passes it to a sync
- * view, so the whole tree renders server-side / JS-off.
+ * Mission-Control hero — "Apollo" language. Two planes: identity (left, with a
+ * founder/quant/AI-engineer credentials line) + ck's REAL live Dhan equity
+ * curve (right). Oversized neon-green name, amber eyebrow, serif lede. Async
+ * server component: fetches the live Dhan track record (ISR) and passes it to a
+ * sync view, so the whole tree renders server-side / JS-off.
  */
 
-const RANGE = "AI PRODUCT MANAGER & ENGINEER · DELTA EXCHANGE";
-const STOCKY_VERIFIED = "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl";
-
-const TICKERS: { n: string; l: string; href?: string }[] = [
-  { n: "64%", l: "Drishti win · live" },
-  { n: "$7.3M", l: "Timelock volume" },
-  { n: "8", l: "markets · Drishti live" },
-  { n: "+110%", l: "Stocky · verified", href: STOCKY_VERIFIED },
-];
+const RANGE = "FOUNDER · EX-QUANT · AI ENGINEER";
 
 export async function MissionControlHero() {
   const data = await getTrackRecord();
@@ -39,36 +31,23 @@ export async function MissionControlHero() {
           >
             Charandeep Kapoor
           </h1>
-          <p className="mt-5 max-w-[44ch] font-serif text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.45] text-ink">
+          <p className="mt-5 max-w-[46ch] font-serif text-[clamp(1.15rem,1.9vw,1.5rem)] leading-[1.45] text-ink">
             I build AI that trades markets — <span className="text-accent">and makes money</span>.
           </p>
-          <p className="mt-3 max-w-[44ch] font-serif text-[clamp(1rem,1.5vw,1.15rem)] leading-[1.5] text-[rgb(var(--mute))]">
-            AI Product Manager &amp; Engineer at Delta Exchange.
+          <p className="mt-4 max-w-[48ch] font-serif text-[clamp(1.02rem,1.5vw,1.2rem)] leading-[1.55] text-[rgb(var(--mute))]">
+            Founder of{" "}
+            <a href="https://perps.timelock.trade/" className="text-ink underline decoration-[rgb(var(--accent)/0.5)] underline-offset-4 hover:text-accent">
+              Timelock
+            </a>{" "}
+            &amp;{" "}
+            <a href="/markets" className="text-ink underline decoration-[rgb(var(--accent)/0.5)] underline-offset-4 hover:text-accent">
+              Stocky
+            </a>
+            {" "}· ex–hedge-fund quant · now{" "}
+            <span className="text-ink">AI Product Manager &amp; Engineer at Delta Exchange</span>.
           </p>
 
-          <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
-            {TICKERS.map((t) => {
-              const val = <span className="font-grotesk text-[1.05rem] font-bold tabular-nums text-ink">{t.n}</span>;
-              return (
-                <li key={t.l} className="font-mono text-[11px] text-[rgb(var(--faint))]">
-                  {t.href ? (
-                    <a href={t.href} className="hover:text-accent">
-                      {val} <span className="align-middle">{t.l} ↗</span>
-                    </a>
-                  ) : (
-                    <>
-                      {val} <span className="align-middle">{t.l}</span>
-                    </>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-
           <nav aria-label="Primary" className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[13px] text-[rgb(var(--mute))]">
-            <a href="/#work" className="border-b-2 border-accent pb-0.5 text-ink hover:text-accent">
-              See the work ↓
-            </a>
             <a href="/#writing" className="border-b border-[rgb(var(--line-hi))] pb-0.5 hover:text-ink">
               Read the essays
             </a>

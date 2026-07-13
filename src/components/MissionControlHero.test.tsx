@@ -7,24 +7,24 @@ import type { Payload } from "@/lib/trackRecord";
 afterEach(() => vi.unstubAllGlobals());
 
 describe("MissionControlHero", () => {
-  it("renders identity, decluttered tickers, links; falls back honestly when the feed is down", async () => {
+  it("renders identity + founder/quant credentials line; falls back honestly when the feed is down", async () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("net")));
     render(await MissionControlHero());
 
     expect(screen.getByRole("heading", { name: /charandeep kapoor/i })).toBeTruthy();
-    expect(screen.getByText(/64%/)).toBeTruthy();
-    expect(screen.getByText(/markets · Drishti live/)).toBeTruthy();
-    // Delta MCP was pulled from the hero tickers too
+    // credentials line replaced the proof tickers
+    expect(screen.getByText(/Founder of/i)).toBeTruthy();
+    expect(screen.getByText(/hedge-fund quant/i)).toBeTruthy();
+    expect(screen.getByText(/AI Product Manager/i)).toBeTruthy();
+    expect(screen.getByRole("link", { name: /Timelock/i }).getAttribute("href")).toContain("timelock");
+    expect(screen.getByRole("link", { name: /^Stocky$/i }).getAttribute("href")).toBe("/markets");
+    // the old ticker grid + "See the work" CTA are gone
+    expect(screen.queryByText(/See the work/i)).toBeNull();
     expect(screen.queryByText(/Delta MCP/)).toBeNull();
-
-    // Stocky ticker links straight to the verified page — no dangling ¹ marker.
-    const verified = screen.getByRole("link", { name: /Stocky · verified/i });
-    expect(verified.getAttribute("href")).toContain("sensibull");
-    expect(screen.queryByText("1", { selector: "sup" })).toBeNull();
 
     // feed down → honest accumulating state, never a broken panel
     expect(screen.getByText(/accumulating from Dhan/i)).toBeTruthy();
-    expect(screen.getByText(/See the work/i)).toBeTruthy();
+    expect(screen.getByText(/Read the essays/i)).toBeTruthy();
   });
 });
 

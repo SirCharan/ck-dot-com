@@ -71,7 +71,19 @@ export default async function TrackRecordPage() {
       <StockyTrackRecord />
 
       <section className="mt-16 pt-2">
-        <p className="kicker mb-3">Live · Dhan · accumulating</p>
+        <div className="mb-3 flex flex-wrap items-center gap-2.5">
+          <span className="kicker">Dhan · live</span>
+          <span className="rounded-full border border-[rgb(var(--bone)/0.28)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-[rgb(var(--bone-dim))]">
+            algorithmic
+          </span>
+          <span className="rounded-full border border-[rgb(var(--pos)/0.5)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-[rgb(var(--pos))]">
+            live
+          </span>
+        </div>
+        <p className="mb-6 max-w-[64ch] font-serif text-[1.05rem] leading-[1.6] text-[rgb(var(--bone)/0.84)]">
+          A rule-based algorithm — <span className="text-[rgb(var(--bone))]">no LLM in the loop</span> — trading my
+          own capital in the open. Reconstructed from the Dhan trade book every day and refreshed automatically.
+        </p>
 
       {/* KPIs — mono tabular figure block */}
       <figure className="m-0">

@@ -99,27 +99,65 @@ export function McWork() {
   );
 }
 
-function MiniCurve({
-  label,
+function Chp({ children, tone }: { children: React.ReactNode; tone: "on" | "off" }) {
+  const cls =
+    tone === "on"
+      ? "border-[rgb(var(--accent)/0.45)] text-accent"
+      : "border-[rgb(var(--faint)/0.4)] text-[rgb(var(--faint))]";
+  return (
+    <span className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] ${cls}`}>
+      {children}
+    </span>
+  );
+}
+
+function AccountBlock({
+  title,
+  method,
+  methodOn,
+  status,
+  statusOn,
   meta,
   headline,
+  sub,
+  blurb,
+  footer,
   children,
 }: {
-  label: string;
+  title: string;
+  method: string;
+  methodOn: boolean;
+  status: string;
+  statusOn: boolean;
   meta: string;
   headline: string;
+  sub: string;
+  blurb: React.ReactNode;
+  footer: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-xl border border-[rgb(var(--rule))] border-t-[rgb(var(--line-hi))] bg-[rgb(var(--bg))] p-4">
-      <div className="flex items-baseline justify-between font-mono text-[11px] tracking-[0.06em] text-[rgb(var(--faint))]">
-        <span>{label}</span>
-        <span className="text-accent">{meta}</span>
+    <div className="rounded-2xl border border-[rgb(var(--rule))] border-t-[rgb(var(--line-hi))] bg-[rgb(var(--bg))] p-6 md:p-7">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
+          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[rgb(var(--faint))]">{title}</span>
+          <Chp tone={methodOn ? "on" : "off"}>{method}</Chp>
+          <Chp tone={statusOn ? "on" : "off"}>{status}</Chp>
+        </div>
+        <span className="font-mono text-[11px] tracking-[0.06em] text-accent">{meta}</span>
       </div>
-      <div className="mt-2 font-grotesk text-[clamp(1.4rem,2.4vw,1.9rem)] font-bold tabular-nums text-ink">
-        {headline}
+
+      <div className="mt-5 grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] md:items-center">
+        <div>
+          <div className="font-grotesk text-[clamp(1.7rem,3.2vw,2.5rem)] font-bold tabular-nums leading-none text-ink">
+            {headline}
+          </div>
+          <div className="mt-2 font-mono text-[12.5px] text-accent">{sub}</div>
+          <p className="mt-4 max-w-[44ch] text-[14.5px] leading-[1.6] text-[rgb(var(--mute))]">{blurb}</p>
+          <div className="mt-5 font-mono text-[13px]">{footer}</div>
+        </div>
+        <div>{children}</div>
       </div>
-      <div className="mt-3">{children}</div>
     </div>
   );
 }
@@ -136,51 +174,72 @@ export async function McTrackRecord() {
     <section className="border-y border-[rgb(var(--rule))] bg-[rgb(var(--panel))]">
       <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
         <Eyebrow label="Track record" meta="real capital, two accounts" />
+        <p className="mt-4 max-w-[58ch] text-[15px] leading-[1.6] text-[rgb(var(--mute))]">
+          Two accounts, two methods — one an <span className="text-ink">AI that placed its own trades</span>, one a{" "}
+          <span className="text-ink">rule-based algorithm running live</span>. Both on real capital, shown in the open.
+        </p>
 
-        {/* Two % equity curves side by side — verified history + live sample */}
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <MiniCurve
-            label="Zerodha · Stocky · verified"
-            meta={`${stocky.window.start} → ${stocky.window.end}`}
-            headline={`${H.capital} → ${H.roiNetPct}`}
+        <div className="mt-10 space-y-6">
+          {/* Zerodha / Stocky — the AI account (retired) */}
+          <AccountBlock
+            title="Zerodha · Stocky"
+            method="AI"
+            methodOn
+            status="retired"
+            statusOn={false}
+            meta="Jun 2025 – May 2026"
+            headline="₹15L → ₹31.6L"
+            sub={`+110% net · ${H.winRate} win · Sharpe ${H.sharpe} · externally verified`}
+            blurb={
+              <>
+                A fine-tuned <span className="text-ink">Claude Haiku</span> model that read the market and placed
+                every trade itself — Indian F&amp;O and commodities. Ran for a year, then retired.
+              </>
+            }
+            footer={
+              <a href={STOCKY_VERIFIED} className="text-accent hover:underline">Verified PnL ↗</a>
+            }
           >
-            <EquityCurveSvg series={stocky.series} valueOf={(p) => p.pct} height={150} showAxes formatY={pctY} />
-          </MiniCurve>
+            <EquityCurveSvg series={stocky.series} valueOf={(p) => p.pct} height={190} showAxes formatY={pctY} />
+          </AccountBlock>
 
-          <MiniCurve
-            label="Dhan · live · accumulating"
-            meta={dhan?.asOf ? `as of ${dhan.asOf.slice(0, 10)}` : "daily"}
+          {/* Dhan — the algorithmic account (live) */}
+          <AccountBlock
+            title="Dhan · live"
+            method="algorithmic"
+            methodOn={false}
+            status="live"
+            statusOn
+            meta={dhan?.asOf ? `as of ${dhan.asOf.slice(0, 10)}` : "accumulating"}
             headline={`${dhanPct} return`}
+            sub="rule-based · no LLM in the loop · updates daily"
+            blurb={
+              <>
+                A <span className="text-ink">rule-based algorithm</span> — not AI — trading my own capital in the
+                open. Reconstructed from the trade book every day; a real, honest sample as it accrues.
+              </>
+            }
+            footer={
+              <Link href="/track-record" className="text-ink hover:text-accent">Live track record →</Link>
+            }
           >
             {dhan && dhan.series.length >= 2 ? (
               <EquityCurveSvg
                 series={dhan.series}
                 valueOf={(s) => (e0 > 0 ? (curveValue(s) / e0) * 100 : 0)}
-                height={150}
+                height={190}
                 showAxes
                 formatY={pctY}
                 provisional={dhan.provisional}
               />
             ) : (
-              <div className="grid h-[150px] place-items-center rounded-lg border border-dashed border-[rgb(var(--accent)/0.3)]">
+              <div className="grid h-[190px] place-items-center rounded-lg border border-dashed border-[rgb(var(--accent)/0.3)]">
                 <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[rgb(var(--mute))]">
                   accumulating from live data
                 </span>
               </div>
             )}
-          </MiniCurve>
-        </div>
-
-        <div className="mt-8 flex flex-wrap items-end justify-between gap-8">
-          <p className="max-w-[52ch] text-[15px] leading-[1.6] text-[rgb(var(--mute))]">
-            Stocky is externally verified ({H.winRate} win · Sharpe {H.sharpe}); the live Dhan account is{" "}
-            <span className="text-ink">accumulating a real, honest sample</span> — full curves,
-            calendar and ratios update daily on the track-record page.
-          </p>
-          <div className="flex flex-col gap-3 font-mono text-[13px]">
-            <a href={STOCKY_VERIFIED} className="text-accent hover:underline">Verified PnL ↗</a>
-            <Link href="/track-record" className="text-ink hover:text-accent">Live track record →</Link>
-          </div>
+          </AccountBlock>
         </div>
       </div>
     </section>
@@ -221,8 +280,9 @@ export function McAbout() {
       <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
         <Eyebrow label="About" meta="/ ck" />
         <p className="mt-6 max-w-[60ch] font-serif text-[clamp(1.15rem,2vw,1.5rem)] leading-[1.5] text-ink">
-          AI Product Manager &amp; Engineer at Delta Exchange. I ship the whole thing — the model, the
-          protocol, the interface, and the essay explaining it.
+          AI Product Manager &amp; Engineer at Delta Exchange. I work where a model meets a
+          market — where the AI has to be right <em>and</em> the trade has to fill. I&apos;ve founded
+          two trading companies, run a hedge-fund book, and now build those systems end to end.
         </p>
         <p className="mt-3 max-w-[58ch] font-serif text-[1rem] leading-[1.6] text-[rgb(var(--mute))]">
           {BIO.highlights[3] /* IIT-K · JEE AIR 638 · Maths Olympiad AIR 3 */}

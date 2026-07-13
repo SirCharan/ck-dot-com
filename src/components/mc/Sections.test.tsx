@@ -19,14 +19,19 @@ describe("Mission-Control landing (teaser) sections", () => {
     expect(links.some((a) => a.getAttribute("href") === "/work/andrea-world")).toBe(true);
   });
 
-  it("frames the track record honestly + links to the real pages", async () => {
+  it("frames the two accounts (AI vs algo) honestly + links to the real pages", async () => {
     render(await McTrackRecord());
-    expect(screen.getByText(/accumulating a real, honest sample/i)).toBeTruthy();
+    // two distinct subsections, each titled
+    expect(screen.getByText(/Zerodha · Stocky/i)).toBeTruthy();
+    expect(screen.getByText(/Dhan · live/i)).toBeTruthy();
+    // the AI-vs-algo distinction is explicit
+    expect(screen.getByText(/Claude Haiku/i)).toBeTruthy();
+    expect(screen.getAllByText(/rule-based/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText(/no LLM in the loop/i)).toBeTruthy();
+    // honest sample framing kept; never the seed portfolio numbers
+    expect(screen.getByText(/real, honest sample/i)).toBeTruthy();
+    expect(screen.queryByText(/23\.1L/)).toBeNull();
     expect(screen.getByText(/Verified PnL/i)).toBeTruthy();
-    expect(screen.queryByText(/23\.1L/)).toBeNull(); // never the seed portfolio numbers
-    // both accounts are teased: Zerodha (verified) + Dhan (live)
-    expect(screen.getByText(/Zerodha · Stocky · verified/i)).toBeTruthy();
-    expect(screen.getByText(/Dhan · live · accumulating/i)).toBeTruthy();
     expect(screen.getByRole("link", { name: /live track record/i }).getAttribute("href")).toBe("/track-record");
   });
 
