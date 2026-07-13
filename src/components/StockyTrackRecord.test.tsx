@@ -17,16 +17,20 @@ describe("StockyTrackRecord", () => {
     expect(container.querySelector("path")).toBeTruthy();
   });
 
-  it("embeds all 6 blog screenshots in blog order (heatmap → P&L; F&O overall → commodity)", () => {
+  it("embeds 10 screenshots in chronology order (incl. first- and second-loss pairs)", () => {
     const { container } = render(<StockyTrackRecord />);
     const imgs = [...container.querySelectorAll("img")];
-    expect(imgs).toHaveLength(6);
+    expect(imgs).toHaveLength(10);
     expect([...imgs].every((im) => im.getAttribute("alt"))).toBe(true);
 
     const srcs = imgs.map((im) => im.getAttribute("src") ?? "");
     expect(srcs).toEqual([
       "/images/stocky/stocky-heatmap-jun-sep.png",
       "/images/stocky/stocky-pnl-jun-sep.png",
+      "/images/stocky/stocky-heatmap-first-loss.png",
+      "/images/stocky/stocky-pnl-first-loss.png",
+      "/images/stocky/stocky-heatmap-second-loss.png",
+      "/images/stocky/stocky-pnl-second-loss.png",
       "/images/stocky/stocky-heatmap-jun-dec.png",
       "/images/stocky/stocky-pnl-jun-dec.png",
       "/images/stocky/stocky-fno-overall.png",

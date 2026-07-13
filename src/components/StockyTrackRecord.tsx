@@ -35,8 +35,18 @@ const MILESTONES: Milestone[] = [
   {
     date: "29 Sep 2025",
     title: "First loss",
-    note: "Over-traded volatile names (Eternal, Asian Paints, Tata Motors, BSE) · tightened the universe.",
+    note: "Over-traded volatile names (Eternal, Asian Paints, Tata Motors, BSE) · tightened the universe · net +2.87L after the red day.",
     stat: "1st loss day",
+    imgs: [
+      {
+        src: "/images/stocky/stocky-heatmap-first-loss.png",
+        cap: "F&O · calendar · to 29 Sep (1st red day)",
+      },
+      {
+        src: "/images/stocky/stocky-pnl-first-loss.png",
+        cap: "F&O · P&L · after first loss (+2.87L net)",
+      },
+    ],
   },
   {
     date: "Oct 2025",
@@ -46,8 +56,18 @@ const MILESTONES: Milestone[] = [
   {
     date: "Nov 2025",
     title: "Second loss",
-    note: "Second loss day of the run.",
+    note: "Second loss day of the run · net +3.94L through 24 Nov (two red days on the calendar).",
     stat: "2nd loss day",
+    imgs: [
+      {
+        src: "/images/stocky/stocky-heatmap-second-loss.png",
+        cap: "F&O · calendar · to 24 Nov (2nd red day)",
+      },
+      {
+        src: "/images/stocky/stocky-pnl-second-loss.png",
+        cap: "F&O · P&L · after second loss (+3.94L net)",
+      },
+    ],
   },
   {
     date: "Dec 2025",
