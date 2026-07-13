@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { SITE, BIO } from "@/data/site";
 import { getAllPosts } from "@/lib/blog";
+import { getTrackRecord, curveValue } from "@/lib/trackRecord";
+import { EquityCurveSvg } from "@/components/lab/EquityCurveSvg";
+import stocky from "@/data/stocky-curve.json";
+
+const pctY = (v: number) => `${v >= 0 ? "+" : ""}${Math.round(v)}%`;
 
 /**
  * Mission-Control landing — a TEASER hub. Each section shows a short, standout
@@ -49,7 +54,6 @@ type WorkItem = { title: string; line: string; live?: string; github?: string; d
 const WORK: WorkItem[] = [
   { title: "Drishti", line: "Live LLM signals that trade real money on a 15-minute cycle, 8 markets.", live: "https://drishti-beryl.vercel.app", detail: "/work/drishti" },
   { title: "Timelock", line: "Oracle-less, liquidation-free DeFi derivatives — $7.3M volume, 1k+ users.", live: "https://perps.timelock.trade/", detail: "/work/timelock" },
-  { title: "Delta MCP", line: "The first official crypto-exchange MCP server — 21 tools for LLMs.", live: "https://delta-mcp.vercel.app", detail: "/work/delta-mcp" },
   { title: "Stocky AI", line: "Fine-tuned Claude to trade Indian F&O & commodities on real capital — ₹15L → ₹16.57L profit (+110%), 73% win, externally verified.", live: STOCKY_VERIFIED, github: "https://github.com/SirCharan/Zerodha-MCP-Tradin", detail: "/markets" },
   { title: "Delta Support Audit", line: "A nightly RAG system auditing 344 support articles for correctness.", detail: "/work/delta-support-audit" },
   { title: "Andrea's World", line: "A playful, hand-built interactive 3D world on the web — for the joy of it.", live: "https://andrea-world.vercel.app", detail: "/work/andrea-world" },
@@ -95,31 +99,84 @@ export function McWork() {
   );
 }
 
-export function McTrackRecord() {
+function MiniCurve({
+  label,
+  meta,
+  headline,
+  children,
+}: {
+  label: string;
+  meta: string;
+  headline: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-xl border border-[rgb(var(--rule))] border-t-[rgb(var(--line-hi))] bg-[rgb(var(--bg))] p-4">
+      <div className="flex items-baseline justify-between font-mono text-[11px] tracking-[0.06em] text-[rgb(var(--faint))]">
+        <span>{label}</span>
+        <span className="text-accent">{meta}</span>
+      </div>
+      <div className="mt-2 font-grotesk text-[clamp(1.4rem,2.4vw,1.9rem)] font-bold tabular-nums text-ink">
+        {headline}
+      </div>
+      <div className="mt-3">{children}</div>
+    </div>
+  );
+}
+
+export async function McTrackRecord() {
+  const dhan = await getTrackRecord();
+  const H = stocky.headline;
+  const e0 = dhan?.meta?.e0 ?? 0;
+  const dhanGross = dhan?.metrics?.grossCumulative ?? dhan?.metrics?.cumulative ?? null;
+  const dhanPct =
+    dhanGross != null && e0 > 0 ? `${dhanGross >= 0 ? "+" : ""}${((dhanGross / e0) * 100).toFixed(1)}%` : "—";
+
   return (
     <section className="border-y border-[rgb(var(--rule))] bg-[rgb(var(--panel))]">
       <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
-        <Eyebrow label="Track record" meta="real capital" />
-        <div className="mt-6 flex flex-wrap items-end justify-between gap-8">
-          <div>
-            <div className="flex flex-wrap gap-x-10 gap-y-4">
-              {[
-                ["+110%", "Stocky ROI · verified"],
-                ["2.29", "Sharpe"],
-                ["73%", "Win rate"],
-              ].map(([n, l]) => (
-                <div key={l}>
-                  <div className="font-grotesk text-[clamp(1.6rem,3vw,2.4rem)] font-bold tabular-nums text-ink">{n}</div>
-                  <div className="mt-1 font-mono text-[11px] text-[rgb(var(--faint))]">{l}</div>
-                </div>
-              ))}
-            </div>
-            <p className="mt-5 max-w-[52ch] text-[15px] leading-[1.6] text-[rgb(var(--mute))]">
-              Stocky is externally verified; a live Dhan account is{" "}
-              <span className="text-ink">accumulating a real, honest sample</span> — the full curve,
-              calendar and ratios update daily on the track-record page.
-            </p>
-          </div>
+        <Eyebrow label="Track record" meta="real capital, two accounts" />
+
+        {/* Two % equity curves side by side — verified history + live sample */}
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <MiniCurve
+            label="Zerodha · Stocky · verified"
+            meta={`${stocky.window.start} → ${stocky.window.end}`}
+            headline={`${H.capital} → ${H.roiNetPct}`}
+          >
+            <EquityCurveSvg series={stocky.series} valueOf={(p) => p.pct} height={150} showAxes formatY={pctY} />
+          </MiniCurve>
+
+          <MiniCurve
+            label="Dhan · live · accumulating"
+            meta={dhan?.asOf ? `as of ${dhan.asOf.slice(0, 10)}` : "daily"}
+            headline={`${dhanPct} return`}
+          >
+            {dhan && dhan.series.length >= 2 ? (
+              <EquityCurveSvg
+                series={dhan.series}
+                valueOf={(s) => (e0 > 0 ? (curveValue(s) / e0) * 100 : 0)}
+                height={150}
+                showAxes
+                formatY={pctY}
+                provisional={dhan.provisional}
+              />
+            ) : (
+              <div className="grid h-[150px] place-items-center rounded-lg border border-dashed border-[rgb(var(--accent)/0.3)]">
+                <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[rgb(var(--mute))]">
+                  accumulating from live data
+                </span>
+              </div>
+            )}
+          </MiniCurve>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-end justify-between gap-8">
+          <p className="max-w-[52ch] text-[15px] leading-[1.6] text-[rgb(var(--mute))]">
+            Stocky is externally verified ({H.winRate} win · Sharpe {H.sharpe}); the live Dhan account is{" "}
+            <span className="text-ink">accumulating a real, honest sample</span> — full curves,
+            calendar and ratios update daily on the track-record page.
+          </p>
           <div className="flex flex-col gap-3 font-mono text-[13px]">
             <a href={STOCKY_VERIFIED} className="text-accent hover:underline">Verified PnL ↗</a>
             <Link href="/track-record" className="text-ink hover:text-accent">Live track record →</Link>
@@ -194,7 +251,7 @@ export function McContact() {
           <a href={s.linkedin} className="hover:text-accent">LinkedIn</a>
           <a href={s.github} className="hover:text-accent">GitHub</a>
           <a href={s.telegram} className="hover:text-accent">Telegram</a>
-          <span className="text-[rgb(var(--faint))]">© {new Date().getFullYear()} {SITE.name} · Bangalore</span>
+          <span className="text-[rgb(var(--faint))]">© {new Date().getFullYear()} {SITE.name}</span>
         </div>
       </div>
     </footer>

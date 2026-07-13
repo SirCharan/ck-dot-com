@@ -2,7 +2,7 @@ export const SITE = {
   name: "Charandeep Kapoor",
   handle: "yourasianquant",
   email: "",
-  location: "Bangalore",
+  location: "India",
   socials: {
     linkedin: "https://www.linkedin.com/in/charandeep-kapoor/",
     twitter: "https://x.com/yourasianquant",
@@ -17,7 +17,7 @@ export const SITE = {
 export const HERO = {
   lede:
     "AI Product Manager at Delta Exchange. I build perpetuals and AI-driven trading systems — and run a Claude-powered bot trading real capital across crypto and Indian equities.",
-  kicker: "Delta Exchange · Bombay",
+  kicker: "Delta Exchange",
 } as const;
 
 // Headline proof numbers for the data-forward hero. Stocky figures mirror
@@ -436,49 +436,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     links: [],
     shotsPending: true,
     accent: "fractal",
-  },
-  {
-    slug: "delta-mcp",
-    title: "Delta MCP",
-    kicker: "GTM Lead · Contributor",
-    tagline:
-      "Taking the first official MCP server for a crypto-derivatives exchange to market — and shipping the PnL tool that makes it useful.",
-    role: "Go-to-market lead + contributor",
-    period: "2026",
-    stack: [
-      "Model Context Protocol",
-      "FastMCP",
-      "Next.js 15",
-      "React 19 / Vite",
-      "FastAPI (serverless)",
-      "MIT-licensed",
-    ],
-    metrics: [
-      { value: "21", label: "MCP tools", tone: "accent" },
-      { value: "1st", label: "Official exchange MCP", tone: "pos" },
-      { value: "90-day", label: "India-first rollout", tone: "neutral" },
-    ],
-    sections: [
-      {
-        heading: "The bet",
-        body: [
-          "No crypto-derivatives venue had an official MCP server. Delta's read-only beta exposes 21 tools that let any LLM client query markets, positions and history directly — a first-mover surface for the agentic-trading era.",
-        ],
-      },
-      {
-        heading: "My part",
-        body: [
-          "I led the go-to-market — a Next.js microsite, a three-act 90-day India-first rollout plan, and launch copy — and contributed a queued PR porting a FIFO PnL analyzer into the server as the analyze_pnl tool.",
-        ],
-      },
-    ],
-    links: [
-      { label: "MCP site", href: "https://delta-mcp.vercel.app" },
-      { label: "PnL analytics", href: "https://delta-pnl-analytics.vercel.app" },
-      { label: "Docs", href: "https://delta-mcp-docs-eta.vercel.app" },
-    ],
-    shotsPending: true,
-    accent: "none",
   },
   {
     slug: "andrea-world",

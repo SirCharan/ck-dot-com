@@ -13,7 +13,9 @@ describe("MissionControlHero", () => {
 
     expect(screen.getByRole("heading", { name: /charandeep kapoor/i })).toBeTruthy();
     expect(screen.getByText(/64%/)).toBeTruthy();
-    expect(screen.getByText(/Delta MCP tools/)).toBeTruthy();
+    expect(screen.getByText(/markets · Drishti live/)).toBeTruthy();
+    // Delta MCP was pulled from the hero tickers too
+    expect(screen.queryByText(/Delta MCP/)).toBeNull();
 
     // Stocky ticker links straight to the verified page — no dangling ¹ marker.
     const verified = screen.getByRole("link", { name: /Stocky · verified/i });
@@ -37,10 +39,12 @@ describe("HeroEquityView", () => {
         { date: "b", net: 100, gross: 120, cumulative: 100, grossCumulative: 120 },
       ],
       metrics: { grossCumulative: 120, annualizedReturnPct: 12.3 },
-      meta: { e0: 0, note: "" },
+      meta: { e0: 1000, note: "" },
     } as unknown as Payload;
     render(<HeroEquityView data={data} />);
-    expect(screen.getByText(/ann\./)).toBeTruthy();
+    // caption now leads with % return (120/1000 = +12.0%), ₹ gross in fine print
+    expect(screen.getByText(/\+12\.0% return/)).toBeTruthy();
+    expect(screen.getByText(/gross/)).toBeTruthy();
   });
 
   it("shows the accumulating state when the payload is null", () => {

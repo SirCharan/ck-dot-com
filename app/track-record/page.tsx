@@ -6,8 +6,11 @@ import { PnlCalendarInteractive } from "@/components/track/PnlCalendarInteractiv
 import { ClientOnly } from "@/components/lab/ClientOnly";
 import { inr } from "@/lib/format";
 import { SITE } from "@/data/site";
-import { getTrackRecord, type SeriesPt } from "@/lib/trackRecord";
+import { getTrackRecord, curveValue } from "@/lib/trackRecord";
 import { StockyTrackRecord } from "@/components/StockyTrackRecord";
+import { EquityCurveSvg } from "@/components/lab/EquityCurveSvg";
+
+const pctY = (v: number) => `${v >= 0 ? "+" : ""}${v.toFixed(0)}%`;
 
 export const metadata: Metadata = {
   title: "Live Track Record",
@@ -22,53 +25,6 @@ const TONE: Record<string, string> = {
   neutral: "text-[rgb(var(--bone))]",
 };
 
-/** Hairline-engraving equity curve (server-rendered SVG; provisional tip dashed). */
-function EquityCurve({ series, provisional }: { series: SeriesPt[]; provisional: boolean }) {
-  if (series.length < 2) {
-    return (
-      <div className="grid h-64 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
-        <span className="num text-[0.75rem] uppercase tracking-[0.15em] text-[rgb(var(--bone-dim))]">
-          accumulating — need ≥2 settled days
-        </span>
-      </div>
-    );
-  }
-  const W = 800;
-  const H = 260;
-  const P = 8;
-  // Curve plots GROSS cumulative (matches the calendar + Dhan app headline).
-  // Fall back to net cumulative if gross is absent (CDN may serve a pre-gross copy).
-  const gc = (s: SeriesPt) => s.grossCumulative ?? s.cumulative;
-  const ys = series.map(gc);
-  const min = Math.min(...ys, 0);
-  const max = Math.max(...ys, 0);
-  const span = max - min || 1;
-  const x = (i: number) => P + (i / (series.length - 1)) * (W - 2 * P);
-  const y = (v: number) => H - P - ((v - min) / span) * (H - 2 * P);
-  const pts = series.map((s, i) => [x(i), y(gc(s))] as const);
-  const solid = provisional ? pts.slice(0, -1) : pts;
-  const line = (p: readonly (readonly [number, number])[]) =>
-    p.map(([px, py], i) => `${i === 0 ? "M" : "L"}${px.toFixed(1)},${py.toFixed(1)}`).join(" ");
-  const zeroY = y(0);
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-64 w-full" preserveAspectRatio="none" aria-hidden>
-      {/* zero baseline */}
-      <line x1={P} y1={zeroY} x2={W - P} y2={zeroY} stroke="rgb(var(--bone) / 0.14)" strokeWidth="1" strokeDasharray="2 4" />
-      <path d={line(solid)} fill="none" stroke="rgb(var(--amber))" strokeOpacity="0.9" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
-      {provisional && pts.length >= 2 && (
-        <path
-          d={line(pts.slice(-2))}
-          fill="none"
-          stroke="rgb(var(--amber))"
-          strokeOpacity="0.6"
-          strokeWidth="1.5"
-          strokeDasharray="3 3"
-          vectorEffect="non-scaling-stroke"
-        />
-      )}
-    </svg>
-  );
-}
 
 export default async function TrackRecordPage() {
   const data = await getTrackRecord();
@@ -80,8 +36,14 @@ export default async function TrackRecordPage() {
   // KPI display strings (fall back to "—" until data accrues). Headline P&L is
   // GROSS (matches the Dhan app) with a net-of-charges sub-line.
   const grossVal = m?.grossCumulative ?? m?.cumulative ?? null;
-  const grossStr = grossVal != null ? inr(grossVal) : "—";
-  const netSub = m?.cumulative != null ? `net ${inr(m.cumulative)}` : "";
+  const e0 = data?.meta?.e0 ?? 0;
+  // Headline is RETURN % (capital-based); ₹ figures move to the fine print.
+  const retPctStr =
+    grossVal != null && e0 > 0 ? `${grossVal >= 0 ? "+" : ""}${((grossVal / e0) * 100).toFixed(1)}%` : "—";
+  const inrSub =
+    grossVal != null
+      ? `gross ${inr(grossVal)}${m?.cumulative != null ? ` · net ${inr(m.cumulative)}` : ""}`
+      : "";
   const sharpeStr =
     m?.sharpeAnnualized != null ? m.sharpeAnnualized.toFixed(2) : "—";
   const ddStr = !gated && m?.maxDrawdown != null ? inr(-Math.abs(m.maxDrawdown)) : "—";
@@ -90,7 +52,7 @@ export default async function TrackRecordPage() {
   const asOfStr = data?.asOf ?? "—";
 
   const KPIS: { value: string; label: string; tone: string; sub?: string }[] = [
-    { value: grossStr, label: "P&L (₹) · gross", sub: netSub, tone: (grossVal != null && grossVal < 0 ? "neg" : "pos") },
+    { value: retPctStr, label: "Return · gross", sub: inrSub, tone: (grossVal != null && grossVal < 0 ? "neg" : "pos") },
     { value: sharpeStr, label: "Sharpe (ann.)", tone: "accent" },
     { value: ddStr, label: "Max drawdown", tone: "neg" },
     { value: winStr, label: "Positive days", tone: "accent" },
@@ -141,7 +103,15 @@ export default async function TrackRecordPage() {
       {/* Equity curve */}
       <figure className="m-0 mt-12">
         {data && data.series.length >= 2 ? (
-          <EquityCurve series={data.series} provisional={data.provisional} />
+          <EquityCurveSvg
+            series={data.series}
+            valueOf={(s) => (e0 > 0 ? (curveValue(s) / e0) * 100 : 0)}
+            height={280}
+            showAxes
+            formatY={pctY}
+            stroke="rgb(var(--accent))"
+            provisional={data.provisional}
+          />
         ) : (
           <div className="grid h-64 place-items-center border border-dashed border-[rgb(var(--bone)/0.14)]">
             <span className="num text-[0.75rem] uppercase tracking-[0.15em] text-[rgb(var(--bone-dim))]">
@@ -151,7 +121,7 @@ export default async function TrackRecordPage() {
         )}
         <figcaption className="mt-2.5">
           <Caption>
-            Fig. 1 — cumulative P&L · gross ₹{data?.provisional ? " · dashed tip = today (provisional)" : ""}
+            Fig. 1 — cumulative return · % of capital ({e0 > 0 ? inr(e0) : "—"} base) · gross{data?.provisional ? " · dashed tip = today (provisional)" : ""}
           </Caption>
         </figcaption>
       </figure>

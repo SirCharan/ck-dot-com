@@ -15,7 +15,7 @@ const STOCKY_VERIFIED = "https://web.sensibull.com/verified-pnl/imported-hare/lo
 const TICKERS: { n: string; l: string; href?: string }[] = [
   { n: "64%", l: "Drishti win · live" },
   { n: "$7.3M", l: "Timelock volume" },
-  { n: "21", l: "Delta MCP tools" },
+  { n: "8", l: "markets · Drishti live" },
   { n: "+110%", l: "Stocky · verified", href: STOCKY_VERIFIED },
 ];
 
@@ -43,8 +43,7 @@ export async function MissionControlHero() {
             I build AI that trades markets — <span className="text-accent">and makes money</span>.
           </p>
           <p className="mt-3 max-w-[44ch] font-serif text-[clamp(1rem,1.5vw,1.15rem)] leading-[1.5] text-[rgb(var(--mute))]">
-            AI Product Manager &amp; Engineer at Delta Exchange. I ship trading systems, DeFi
-            derivatives and tooling — from Bangalore.
+            AI Product Manager &amp; Engineer at Delta Exchange.
           </p>
 
           <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">

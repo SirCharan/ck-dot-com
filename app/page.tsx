@@ -6,7 +6,7 @@ import { ScrollRail } from "@/components/mc/ScrollRail";
 export const metadata: Metadata = {
   title: "Charandeep Kapoor — AI Product Manager & Engineer",
   description:
-    "Product & AI engineer at Delta Exchange, Bombay. I build AI systems that trade real capital, DeFi derivatives, exchange tooling — and write about how markets work.",
+    "Product & AI engineer at Delta Exchange. I build AI systems that trade real capital, DeFi derivatives, exchange tooling — and write about how markets work.",
   openGraph: {
     type: "website",
     url: "https://charandeepkapoor.com/",

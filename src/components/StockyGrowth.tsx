@@ -1,6 +1,7 @@
 import stocky from "@/data/stocky-curve.json";
 import { EquityCurveSvg } from "./lab/EquityCurveSvg";
-import { inrCompact } from "@/lib/format";
+
+const pctY = (v: number) => `${v >= 0 ? "+" : ""}${Math.round(v)}%`;
 
 /**
  * Stocky AI growth curve — the real Zerodha (PQ4709) realized-P&L account
@@ -12,14 +13,13 @@ import { inrCompact } from "@/lib/format";
 const H = stocky.headline;
 
 export function StockyGrowth() {
-  const cap = stocky.capitalInr;
   const w = stocky.window;
   return (
     <section className="py-10 rule" id="stocky">
       <p className="kicker mb-3">Stocky AI · fine-tuned Claude on a Zerodha MCP</p>
       <div className="rounded-2xl border border-[rgb(var(--rule))] border-t-[rgb(var(--line-hi))] bg-[rgb(var(--panel))] p-5">
         <div className="flex items-center justify-between font-mono text-[11px] tracking-[0.06em] text-[rgb(var(--faint))]">
-          <span>Zerodha · realized P&amp;L · {w.start} → {w.end}</span>
+          <span>Zerodha · return % · {w.start} → {w.end}</span>
           <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
             verified ↗
           </a>
@@ -27,10 +27,10 @@ export function StockyGrowth() {
         <div className="mt-4">
           <EquityCurveSvg
             series={stocky.series}
-            valueOf={(p) => cap + p.cumulative}
+            valueOf={(p) => p.pct}
             height={240}
             showAxes
-            formatY={inrCompact}
+            formatY={pctY}
           />
         </div>
         <div className="mt-4 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-[rgb(var(--rule))] pt-4 font-mono text-[12.5px] text-[rgb(var(--mute))]">
@@ -45,7 +45,7 @@ export function StockyGrowth() {
           </span>
           <span>· {H.winRate} win</span>
           <span>· Sharpe {H.sharpe}</span>
-          <span className="text-[rgb(var(--faint))]">· curve = realized P&amp;L reconstructed from the Zerodha tradebook (gross)</span>
+          <span className="text-[rgb(var(--faint))]">· curve = realized P&amp;L, % of ₹15L, holding-period-smoothed (Zerodha tradebook)</span>
         </div>
       </div>
     </section>
