@@ -1,11 +1,10 @@
+import Link from "next/link";
 import stocky from "@/data/stocky-curve.json";
 import { EquityCurveSvg } from "./lab/EquityCurveSvg";
 
 /**
- * Stocky (Zerodha) track record — the verified history, shown FIRST on
- * /track-record above the live Dhan account. A % return equity curve
- * (holding-period-smoothed, from the PQ4709 tradebook) + a chronological
- * timeline from content/blog/stocky-ai.md, with the real blog images inline.
+ * Stocky (Zerodha) track record — verified history first on /track-record.
+ * Chronology + image placement mirror content/blog/stocky-ai.md (heatmap → P&L).
  * Reconciled labelling (net verified vs gross) — never "+150%".
  */
 
@@ -14,61 +13,60 @@ const pctY = (v: number) => `${v >= 0 ? "+" : ""}${Math.round(v)}%`;
 
 type Shot = { src: string; cap: string };
 type Milestone = { date: string; title: string; note: string; stat?: string; imgs?: Shot[] };
-// Text + image placement mirror the blog (content/blog/stocky-ai.md). Each image
-// carries a caption describing exactly what the screenshot shows, so the images
-// match the text.
+
+/** Image order matches the blog markdown (heatmap then P&L; F&O overall then commodity). */
 const MILESTONES: Milestone[] = [
   {
     date: "Jun 2025",
     title: "Stocky goes live",
-    note: "Claude shipped its MCP server — a game-changer. I fine-tuned a Claude Haiku model and gave it ₹15L to trade three weekly expiries: Bank Nifty (Wed), Nifty (Thu), Sensex (Fri).",
+    note: "Claude MCP + fine-tuned Haiku · ₹15L · Bank Nifty / Nifty / Sensex weeklies.",
     stat: "₹15L capital",
   },
   {
     date: "Jun–Sep 2025",
     title: "Four months, zero losses",
-    note: "Made ₹3.6L by September — ~₹90k/month on auto-pilot. Four months, 51 trading days, zero losses. Felt invincible.",
+    note: "₹3.6L by September · ~₹90k/mo auto-pilot · 51 days · 0 losses.",
     stat: "+₹3.6L · 51 days · 0 losses",
     imgs: [
-      { src: "/images/stocky/stocky-pnl-jun-sep.png", cap: "F&O · P&L · Jun–Sep 2025" },
       { src: "/images/stocky/stocky-heatmap-jun-sep.png", cap: "F&O · calendar · Jun–Sep (all green)" },
+      { src: "/images/stocky/stocky-pnl-jun-sep.png", cap: "F&O · P&L · Jun–Sep 2025" },
     ],
   },
   {
     date: "29 Sep 2025",
     title: "First loss",
-    note: "Hit my first loss on 29 September. It hurt. The logs showed I'd been over-trading volatile names — Eternal, Asian Paints, Tata Motors, BSE — so I tightened the universe.",
+    note: "Over-traded volatile names (Eternal, Asian Paints, Tata Motors, BSE) · tightened the universe.",
     stat: "1st loss day",
   },
   {
     date: "Oct 2025",
     title: "Adapt & rebound",
-    note: "Bad news: Bank Nifty's weekly expiry — my bread and butter — moved to monthly. Changed a lot and explored Deepseek. October was a blast again.",
+    note: "Bank Nifty weekly → monthly · explored Deepseek · October rebounded hard.",
   },
   {
     date: "Nov 2025",
     title: "Second loss",
-    note: "Faced the run's second loss day in November.",
+    note: "Second loss day of the run.",
     stat: "2nd loss day",
   },
   {
     date: "Dec 2025",
     title: "Six months in",
-    note: "Closed the first six months of Stocky at ₹5.32L PnL — 212 profitable days, only 2 loss days.",
+    note: "₹5.32L PnL · 212 profitable days · only 2 loss days.",
     stat: "₹5.32L · 2 loss days",
     imgs: [
-      { src: "/images/stocky/stocky-pnl-jun-dec.png", cap: "F&O · P&L · Jun–Dec 2025" },
       { src: "/images/stocky/stocky-heatmap-jun-dec.png", cap: "F&O · calendar · Jun–Dec (2 red days)" },
+      { src: "/images/stocky/stocky-pnl-jun-dec.png", cap: "F&O · P&L · Jun–Dec 2025" },
     ],
   },
   {
     date: "Year one",
     title: "₹15L → ₹16.57L",
-    note: "Commodities ₹14.2L + F&O ₹2.37L = ₹16.57L total. 73% win, Sharpe 2.29, Sortino 5.98 — externally verified.",
+    note: "Commodities ₹14.2L + F&O ₹2.37L = ₹16.57L · 73% win · Sharpe 2.29 · externally verified.",
     stat: "₹16.57L net · verified",
     imgs: [
-      { src: "/images/stocky/stocky-commodity-overall.png", cap: "Commodity · overall" },
       { src: "/images/stocky/stocky-fno-overall.png", cap: "F&O · overall" },
+      { src: "/images/stocky/stocky-commodity-overall.png", cap: "Commodity · overall" },
     ],
   },
 ];
@@ -86,15 +84,16 @@ export function StockyTrackRecord() {
           retired
         </span>
       </div>
-      <p className="mb-6 max-w-[64ch] font-serif text-[1.05rem] leading-[1.6] text-[rgb(var(--bone)/0.84)]">
-        An AI system — a <span className="text-ink">{H.method}</span> model that read the market and placed every
-        trade itself, across Indian F&amp;O and commodities. It ran {H.run} and is now retired.
+      <p className="mb-6 max-w-[52ch] font-serif text-[1.05rem] leading-[1.6] text-[rgb(var(--bone)/0.84)]">
+        Fine-tuned <span className="text-ink">{H.method}</span> placed every trade itself — Indian F&amp;O and
+        commodities · {H.run} · now retired.
       </p>
 
-      {/* % return curve + reconciled headline */}
       <div className="rounded-2xl border border-[rgb(var(--rule))] border-t-[rgb(var(--line-hi))] bg-[rgb(var(--panel))] p-5">
         <div className="flex items-center justify-between font-mono text-[11px] tracking-[0.06em] text-[rgb(var(--faint))]">
-          <span>Zerodha · return % · {w.start} → {w.end}</span>
+          <span>
+            Zerodha · return % · {w.start} → {w.end}
+          </span>
           <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
             verified ↗
           </a>
@@ -118,7 +117,6 @@ export function StockyTrackRecord() {
         </div>
       </div>
 
-      {/* chronological timeline with blog images */}
       <ol className="mt-8 border-l border-[rgb(var(--rule))] pl-6">
         {MILESTONES.map((m) => (
           <li key={m.date} className="relative pb-8 last:pb-0">
@@ -132,19 +130,22 @@ export function StockyTrackRecord() {
               <h3 className="font-grotesk text-[1.05rem] font-semibold text-ink">{m.title}</h3>
               {m.stat && <span className="font-mono text-[11px] text-[rgb(var(--faint))]">· {m.stat}</span>}
             </div>
-            <p className="mt-1 max-w-[62ch] text-[14px] leading-[1.55] text-[rgb(var(--mute))]">{m.note}</p>
+            <p className="mt-1 max-w-[58ch] text-[14px] leading-[1.5] text-[rgb(var(--mute))]">{m.note}</p>
             {m.imgs && (
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 {m.imgs.map((shot) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <figure key={shot.src} className="m-0">
+                  <figure
+                    key={shot.src}
+                    className="m-0 overflow-hidden rounded-xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel))] p-2 shadow-[inset_0_1px_0_rgb(255_255_255/0.04)]"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={shot.src}
                       alt={`Stocky — ${shot.cap}`}
                       loading="lazy"
-                      className="w-full rounded-lg border border-[rgb(var(--rule))]"
+                      className="h-auto w-full rounded-lg object-contain"
                     />
-                    <figcaption className="mt-1.5 font-mono text-[11px] text-[rgb(var(--faint))]">
+                    <figcaption className="mt-2 px-0.5 font-mono text-[11px] text-[rgb(var(--faint))]">
                       {shot.cap}
                     </figcaption>
                   </figure>
@@ -154,6 +155,13 @@ export function StockyTrackRecord() {
           </li>
         ))}
       </ol>
+
+      <Link
+        href="/blog/stocky-ai"
+        className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline"
+      >
+        Full story →
+      </Link>
     </section>
   );
 }
