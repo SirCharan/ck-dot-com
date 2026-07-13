@@ -35,7 +35,7 @@ const STOCKY_VERIFIED =
   "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl";
 
 export const HERO_STATS: HeroStat[] = [
-  { value: "+110%", label: "Stocky AI ROI", sub: "₹15L → ₹16.57L · verified", href: STOCKY_VERIFIED, tone: "pos" },
+  { value: "+110%", label: "Stocky AI ROI", sub: "₹15L → ₹31.57L · verified", href: STOCKY_VERIFIED, tone: "pos" },
   { value: "2.29", label: "Sharpe ratio", sub: "Stocky AI", href: STOCKY_VERIFIED, tone: "accent" },
   { value: "73%", label: "Win rate", sub: "Stocky AI", href: STOCKY_VERIFIED, tone: "accent" },
   { value: "$7.3M", label: "Timelock volume", sub: "$2M TVL · 1k+ users", href: "https://perps.timelock.trade/", tone: "neutral" },
@@ -48,7 +48,7 @@ export const BIO = {
   ],
   highlights: [
     "AI Product Manager, Delta Exchange — perpetuals and AI-driven trading products.",
-    "Built Stocky: fine-tuned Claude on a custom Zerodha MCP — ₹15L → ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
+    "Built Stocky: fine-tuned Claude on a custom Zerodha MCP — ₹15L → ₹31.57L (+110% / ₹16.57L profit), Sharpe 2.29, 73% win rate.",
     "Founded Timelock Trade — oracle-less, liquidation-free perps & options. $7.3M volume · $2M TVL · 1,000+ users.",
     "B.Tech, IIT Kanpur. JEE Advanced AIR 638 (99.96%ile). National Maths Olympiad AIR 3.",
   ],

@@ -162,7 +162,7 @@ export async function McTrackRecord() {
             status="retired"
             statusOn={false}
             meta="Jun 2025 – May 2026"
-            headline="₹15L → ₹31.6L"
+            headline="₹15L → ₹31.57L"
             sub={`+110% net · ${H.winRate} win · Sharpe ${H.sharpe} · verified`}
             blurb={
               <>

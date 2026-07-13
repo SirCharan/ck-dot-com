@@ -81,9 +81,9 @@ const MILESTONES: Milestone[] = [
   },
   {
     date: "Year one",
-    title: "₹15L → ₹16.57L",
-    note: "Commodities ₹14.2L + F&O ₹2.37L = ₹16.57L · 73% win · Sharpe 2.29 · externally verified.",
-    stat: "₹16.57L net · verified",
+    title: "₹15L → ₹31.57L",
+    note: "Commodities ₹14.2L + F&O ₹2.37L = ₹16.57L profit · 73% win · Sharpe 2.29 · externally verified.",
+    stat: "₹16.57L profit · verified",
     imgs: [
       { src: "/images/stocky/stocky-fno-overall.png", cap: "F&O · overall" },
       { src: "/images/stocky/stocky-commodity-overall.png", cap: "Commodity · overall" },
