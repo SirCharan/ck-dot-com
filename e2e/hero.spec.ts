@@ -1,31 +1,25 @@
 import { expect, test } from "@playwright/test";
 
 /**
- * Hero layout contract: the copy (Fig.1 caption + h1) must sit BELOW the sim
- * band — text never overlaps the canvas/plate ("never centred, never over the
- * canvas"). Also asserts the mono Fig.1 caption is present.
+ * Hero contract (mission-control, full-viewport landing screen):
+ * - the name h1 and the founder/quant credentials line render
+ * - the live Dhan curve card is present
+ * - on desktop the hero fills most of the viewport (full-screen landing)
  */
-test("hero copy sits below the sim band, and Fig.1 caption is present", async ({ page }) => {
+test("full-height hero renders identity + live curve", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/", { waitUntil: "networkidle" });
 
-  const band = page.getByTestId("hero-sim-band");
-  await expect(band).toBeVisible();
-
-  const caption = page.getByText(/Fig\.\s*1\s*—\s*Inner solar-system ephemeris/);
-  await expect(caption).toBeVisible();
-
   const h1 = page.locator("h1").first();
-  await expect(h1).toBeVisible();
+  await expect(h1).toHaveText(/Charandeep Kapoor/);
 
-  const bandBox = await band.boundingBox();
-  const captionBox = await caption.boundingBox();
-  const h1Box = await h1.boundingBox();
-  expect(bandBox).not.toBeNull();
-  expect(captionBox).not.toBeNull();
-  expect(h1Box).not.toBeNull();
+  await expect(page.getByText(/FOUNDER · EX-QUANT · AI ENGINEER/)).toBeVisible();
+  await expect(page.getByText(/Founder of/)).toBeVisible();
+  await expect(page.getByText(/portfolio · Dhan · return %/)).toBeVisible();
 
-  const bandBottom = bandBox!.y + bandBox!.height;
-  // Caption and heading must start at or below the band's bottom edge (no overlap).
-  expect(captionBox!.y).toBeGreaterThanOrEqual(bandBottom - 1);
-  expect(h1Box!.y).toBeGreaterThanOrEqual(bandBottom - 1);
+  // Full-screen landing: the hero section should fill most of the viewport.
+  const hero = page.getByRole("region", { name: /mission control/i });
+  const box = await hero.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.height).toBeGreaterThan(720); // ~80% of 900px
 });

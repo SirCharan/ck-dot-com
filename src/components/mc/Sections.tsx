@@ -3,6 +3,7 @@ import { SITE, BIO } from "@/data/site";
 import { getAllPosts } from "@/lib/blog";
 import { getTrackRecord, curveValue } from "@/lib/trackRecord";
 import { EquityCurveSvg } from "@/components/lab/EquityCurveSvg";
+import { FadeIn } from "@/components/FadeIn";
 import stocky from "@/data/stocky-curve.json";
 
 const pctY = (v: number) => `${v >= 0 ? "+" : ""}${Math.round(v)}%`;
@@ -16,10 +17,13 @@ const pctY = (v: number) => `${v >= 0 ? "+" : ""}${Math.round(v)}%`;
 
 const STOCKY_VERIFIED = "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl";
 
-function Eyebrow({ label, meta }: { label: string; meta?: string }) {
+function Eyebrow({ n, label, meta }: { n?: string; label: string; meta?: string }) {
   return (
     <div className="flex items-baseline justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-[rgb(var(--faint))]">
-      <span>{label}</span>
+      <span>
+        {n && <span className="text-accent">{n} / </span>}
+        {label}
+      </span>
       {meta && <span className="text-accent">{meta}</span>}
     </div>
   );
@@ -27,8 +31,8 @@ function Eyebrow({ label, meta }: { label: string; meta?: string }) {
 
 export function McHeader() {
   return (
-    <header className="sticky top-0 z-30 border-b border-[rgb(var(--rule))] bg-[rgb(var(--bg))]">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <header className="sticky top-0 z-30 border-b border-[rgb(var(--rule))] bg-[rgb(var(--bg)/0.9)] backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="font-grotesk text-[15px] font-bold tracking-tight text-ink">
           CK<span className="text-accent">.</span>
         </Link>
@@ -70,16 +74,21 @@ function Chip({ href, children, internal }: { href: string; children: React.Reac
 
 export function McWork() {
   return (
-    <section id="work" className="mx-auto max-w-5xl px-6 py-16 md:py-20">
-      <Eyebrow label="Selected work" meta="what I've built" />
-      <h2 className="mt-3 font-grotesk text-[clamp(1.6rem,3.4vw,2.6rem)] font-bold tracking-[-0.02em] text-ink">
-        Things I&apos;ve built
-      </h2>
+    <section id="work" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <FadeIn>
+        <Eyebrow n="01" label="Selected work" meta="what I've built" />
+        <h2 className="mt-3 font-grotesk text-[clamp(1.6rem,3.4vw,2.6rem)] font-bold tracking-[-0.02em] text-ink">
+          Things I&apos;ve built
+        </h2>
+      </FadeIn>
       <ul className="mt-8 border-t border-[rgb(var(--rule))]">
         {WORK.map((w) => (
-          <li key={w.title} className="border-b border-[rgb(var(--rule))] py-5">
+          <li
+            key={w.title}
+            className="group -mx-4 rounded-lg border-b border-[rgb(var(--rule))] px-4 py-5 transition-colors hover:bg-[rgb(var(--panel)/0.55)]"
+          >
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="font-grotesk text-[clamp(1.2rem,2.4vw,1.5rem)] font-bold tracking-[-0.01em] text-accent">
+              <h3 className="font-grotesk text-[clamp(1.2rem,2.4vw,1.5rem)] font-bold tracking-[-0.01em] text-accent transition-[text-shadow] group-hover:[text-shadow:0_0_18px_rgb(var(--accent)/0.4)]">
                 {w.title}
               </h3>
               <div className="flex flex-wrap gap-x-4">
@@ -137,7 +146,7 @@ function AccountBlock({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-[rgb(var(--rule))] border-t-[rgb(var(--line-hi))] bg-[rgb(var(--bg))] p-6 md:p-7">
+    <div className="mc-glass rounded-2xl p-6 md:p-7">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2.5">
           <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[rgb(var(--faint))]">{title}</span>
@@ -171,13 +180,15 @@ export async function McTrackRecord() {
     dhanGross != null && e0 > 0 ? `${dhanGross >= 0 ? "+" : ""}${((dhanGross / e0) * 100).toFixed(1)}%` : "—";
 
   return (
-    <section className="border-y border-[rgb(var(--rule))] bg-[rgb(var(--panel))]">
-      <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
-        <Eyebrow label="Track record" meta="real capital, two accounts" />
-        <p className="mt-4 max-w-[58ch] text-[15px] leading-[1.6] text-[rgb(var(--mute))]">
-          Two accounts, two methods — one an <span className="text-ink">AI that placed its own trades</span>, one a{" "}
-          <span className="text-ink">rule-based algorithm running live</span>. Both on real capital, shown in the open.
-        </p>
+    <section className="border-y border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)]">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <FadeIn>
+          <Eyebrow n="02" label="Track record" meta="real capital, two accounts" />
+          <p className="mt-4 max-w-[58ch] text-[15px] leading-[1.6] text-[rgb(var(--mute))]">
+            Two accounts, two methods — one an <span className="text-ink">AI that placed its own trades</span>, one a{" "}
+            <span className="text-ink">rule-based algorithm running live</span>. Both on real capital, shown in the open.
+          </p>
+        </FadeIn>
 
         <div className="mt-10 space-y-6">
           {/* Zerodha / Stocky — the AI account (retired) */}
@@ -249,11 +260,13 @@ export async function McTrackRecord() {
 export function McWriting() {
   const posts = getAllPosts().slice(0, 3);
   return (
-    <section id="writing" className="mx-auto max-w-5xl px-6 py-16 md:py-20">
-      <Eyebrow label="Writing" meta={`${getAllPosts().length} essays`} />
-      <h2 className="mt-3 font-grotesk text-[clamp(1.6rem,3.4vw,2.6rem)] font-bold tracking-[-0.02em] text-ink">
-        On markets, machines &amp; building
-      </h2>
+    <section id="writing" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <FadeIn>
+        <Eyebrow n="03" label="Writing" meta={`${getAllPosts().length} essays`} />
+        <h2 className="mt-3 font-grotesk text-[clamp(1.6rem,3.4vw,2.6rem)] font-bold tracking-[-0.02em] text-ink">
+          On markets, machines &amp; building
+        </h2>
+      </FadeIn>
       <ul className="mt-8 border-t border-[rgb(var(--rule))]">
         {posts.map((p) => (
           <li key={p.slug}>
@@ -276,20 +289,22 @@ export function McWriting() {
 
 export function McAbout() {
   return (
-    <section id="about" className="border-t border-[rgb(var(--rule))]">
-      <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
-        <Eyebrow label="About" meta="/ ck" />
-        <p className="mt-6 max-w-[60ch] font-serif text-[clamp(1.15rem,2vw,1.5rem)] leading-[1.5] text-ink">
-          AI Product Manager &amp; Engineer at Delta Exchange. I work where a model meets a
-          market — where the AI has to be right <em>and</em> the trade has to fill. I&apos;ve founded
-          two trading companies, run a hedge-fund book, and now build those systems end to end.
-        </p>
-        <p className="mt-3 max-w-[58ch] font-serif text-[1rem] leading-[1.6] text-[rgb(var(--mute))]">
-          {BIO.highlights[3] /* IIT-K · JEE AIR 638 · Maths Olympiad AIR 3 */}
-        </p>
-        <Link href="/resume" className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline">
-          About &amp; résumé →
-        </Link>
+    <section id="about" className="border-y border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)]">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <FadeIn>
+          <Eyebrow n="04" label="About" meta="/ ck" />
+          <p className="mt-6 max-w-[60ch] font-serif text-[clamp(1.15rem,2vw,1.5rem)] leading-[1.5] text-ink">
+            AI Product Manager &amp; Engineer at Delta Exchange. I work where a model meets a
+            market — where the AI has to be right <em>and</em> the trade has to fill. I&apos;ve founded
+            two trading companies, run a hedge-fund book, and now build those systems end to end.
+          </p>
+          <p className="mt-3 max-w-[58ch] font-serif text-[1rem] leading-[1.6] text-[rgb(var(--mute))]">
+            {BIO.highlights[3] /* IIT-K · JEE AIR 638 · Maths Olympiad AIR 3 */}
+          </p>
+          <Link href="/resume" className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline">
+            About &amp; résumé →
+          </Link>
+        </FadeIn>
       </div>
     </section>
   );
@@ -299,8 +314,8 @@ export function McContact() {
   const s = SITE.socials;
   return (
     <footer id="contact" className="border-t border-[rgb(var(--rule))]">
-      <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
-        <Eyebrow label="Contact" meta="↓" />
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <Eyebrow n="05" label="Contact" meta="↓" />
         <h2 className="mt-4 font-grotesk text-[clamp(1.8rem,4.5vw,3.4rem)] font-bold leading-[1.02] tracking-[-0.02em] text-ink">
           Let&apos;s build something.{" "}
           <a href={s.topmate} className="text-accent hover:underline">Book a call ↗</a>

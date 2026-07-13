@@ -60,7 +60,12 @@
     --slate: 147 164 181;    /* → mute (data) */
     --ink-void: 11 15 20;    /* → bg */
     --ink-void-2: 15 20 27;  /* → panel */
+    --hdr: 4rem;             /* sticky header height — full-height hero subtracts this */
+    --frame-inset: 1rem;     /* console-frame + rail inset from the viewport edge */
     color-scheme: dark;
+  }
+  @media (min-width: 1280px) {
+    .mc { --frame-inset: 1.5rem; }
   }
   .mc {
     background: rgb(var(--bg));
@@ -1135,23 +1140,85 @@
   .blog-post-nav-title { font-size: 0.85rem; }
 }
 
-/* ── Mission-Control side decor: neon rails + drifting hex field (both gutters) ── */
+/* ── Mission-Control ambient backdrop: neon bloom + grid + scanline sweep ──
+   All layers are fixed inset:0 pointer-events:none. Use inset:0 (never 100vw)
+   so the scrollbar never triggers horizontal overflow. Content sits at z-10. */
+.mc-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 620px at 50% -12%, rgb(var(--accent) / 0.07), transparent 68%),
+    radial-gradient(900px 700px at 100% 110%, rgb(var(--accent) / 0.04), transparent 60%),
+    repeating-linear-gradient(to right, rgb(var(--line-hi) / 0.22) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(to bottom, rgb(var(--line-hi) / 0.22) 0 1px, transparent 1px 40px),
+    rgb(var(--bg));
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 55%, rgb(0 0 0 / 0.6) 100%);
+  mask-image: radial-gradient(circle at 50% 40%, #000 55%, rgb(0 0 0 / 0.6) 100%);
+}
+.mc-scan {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgb(var(--ink) / 0.035) 0 1px, transparent 1px 4px);
+  opacity: 0.5;
+}
+.mc-scan::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 42vh;
+  background: linear-gradient(to bottom, transparent, rgb(var(--accent) / 0.05), transparent);
+  animation: mc-sweep 7s linear infinite;
+}
+@keyframes mc-sweep {
+  from { transform: translateY(-45vh); }
+  to { transform: translateY(105vh); }
+}
+
+/* ── Console frame: fixed inset border + corner brackets, under the header ── */
+.mc-frame {
+  position: fixed;
+  inset: var(--hdr) 0 0 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.mc-frame-box {
+  position: absolute;
+  inset: var(--frame-inset);
+  border: 1px solid rgb(var(--rule));
+  box-shadow: inset 0 0 60px rgb(var(--accent) / 0.04);
+}
+.mc-frame-corner { position: absolute; color: rgb(var(--accent) / 0.5); }
+
+/* ── Glass panel: blur + highlight border on the near-black ground ── */
+.mc-glass {
+  background:
+    linear-gradient(rgb(255 255 255 / 0.03), rgb(255 255 255 / 0.03)),
+    rgb(var(--panel) / 0.55);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  border: 1px solid rgb(255 255 255 / 0.06);
+  border-top-color: rgb(var(--line-hi));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 20px 44px -22px rgb(0 0 0 / 0.65);
+}
+
+/* ── Side rails (kept) — now aligned to the console frame line ── */
 .mc-rail {
   position: fixed;
   top: 0;
   height: 100vh;
-  width: 3px;
+  width: 2px;
   z-index: 6;
   overflow: hidden;
   background: rgb(var(--rule));
   pointer-events: none;
 }
-.mc-rail-l { left: 1.25rem; }
-.mc-rail-r { right: 1.25rem; }
-@media (min-width: 1280px) {
-  .mc-rail-l { left: 2rem; }
-  .mc-rail-r { right: 2rem; }
-}
+.mc-rail-l { left: var(--frame-inset); }
+.mc-rail-r { right: var(--frame-inset); }
 .mc-rail-fill {
   position: absolute;
   left: 0;
@@ -1176,26 +1243,15 @@
   from { transform: translateY(-130%); }
   to { transform: translateY(620%); }
 }
-.mc-hex {
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  width: 104px;
-  z-index: 3;
-  opacity: 0.07;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='46'%3E%3Cpath d='M20 2 L38 13 L38 33 L20 44 L2 33 L2 13 Z' fill='none' stroke='%233DFB86' stroke-width='1'/%3E%3C/svg%3E");
-  background-size: 40px 46px;
-  animation: mc-drift 22s linear infinite;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+/* ── Hero scroll cue — a bobbing dot inside a mouse outline ── */
+.mc-scrollcue-dot { animation: mc-bob 1.8s ease-in-out infinite; }
+@keyframes mc-bob {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.4; }
 }
-.mc-hex-l { left: 0; }
-.mc-hex-r { right: 0; transform: scaleX(-1); }
-@keyframes mc-drift {
-  to { background-position: 0 46px; }
-}
+
 @media (prefers-reduced-motion: reduce) {
   .mc-comet { display: none; }
-  .mc-hex { animation: none; }
+  .mc-scan::after { animation: none; display: none; }
+  .mc-scrollcue-dot { animation: none; }
 }

@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 
 /**
- * Mission-Control side decor — bolder neon treatment in BOTH empty gutters (lg+
- * only). Each side: a base rail + a scroll-progress fill + a bright neon "comet"
- * flowing downward (CSS keyframe, staggered per side), over a faint drifting
- * hexagon field so the margins read as ambient/textured, not empty. All
- * aria-hidden + decorative; prefers-reduced-motion → static full rail, no flow
- * (handled in CSS). See .mc-rail / .mc-comet / .mc-hex in src/index.css.
+ * Mission-Control side decor — a base rail + a scroll-progress fill + a bright
+ * neon "comet" flowing downward (CSS keyframe, staggered per side) in BOTH
+ * gutters (lg+ only), aligned to the console frame line. The ambient grid/bloom
+ * texture now lives in <AmbientBackdrop> (the old drifting hex field is retired
+ * so textures don't compete). All aria-hidden + decorative; prefers-reduced-
+ * motion → static full rail, no flow (CSS). See .mc-rail / .mc-comet.
  */
 
 function Rail({ side, p, comet2 }: { side: "l" | "r"; p: number; comet2?: boolean }) {
@@ -44,8 +44,6 @@ export function ScrollRail() {
 
   return (
     <>
-      <div aria-hidden className="mc-hex mc-hex-l hidden lg:block" />
-      <div aria-hidden className="mc-hex mc-hex-r hidden lg:block" />
       <Rail side="l" p={p} />
       <Rail side="r" p={p} comet2 />
     </>
