@@ -1180,6 +1180,62 @@
   to { transform: translateY(105vh); }
 }
 
+/* ── Section neon wash — full-bleed glow, content keeps side margins ── */
+.mc-section-neon {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.mc-section-neon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 12% 20%, rgb(var(--accent) / 0.14), transparent 58%),
+    radial-gradient(ellipse 55% 50% at 88% 75%, rgb(var(--accent) / 0.10), transparent 55%),
+    radial-gradient(ellipse 90% 40% at 50% 100%, rgb(var(--accent) / 0.06), transparent 60%),
+    linear-gradient(180deg, rgb(var(--panel) / 0.35), rgb(var(--bg) / 0.2) 40%, rgb(var(--panel) / 0.4));
+}
+.mc-section-neon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgb(var(--accent) / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--accent) / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 20%, transparent 75%);
+}
+.mc-section-neon > * {
+  position: relative;
+  z-index: 1;
+}
+/* Content column: intentional side margin vs full shell */
+.mc-section-inner {
+  margin-inline: auto;
+  width: 100%;
+  max-width: min(var(--mc-shell), 100% - 2.5rem);
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .mc-section-inner {
+    max-width: min(var(--mc-shell), 100% - 5rem);
+    padding-inline: 1.75rem;
+  }
+}
+@media (min-width: 1280px) {
+  .mc-section-inner {
+    max-width: min(80rem, 100% - 8rem); /* ~1280, roomier side gutters on ultrawide */
+    padding-inline: 2rem;
+  }
+}
+
 /* ── Console frame: fixed inset border + corner brackets, under the header ── */
 .mc-frame {
   position: fixed;

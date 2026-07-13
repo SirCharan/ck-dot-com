@@ -72,12 +72,14 @@ export function McHeader() {
 
 export function McWork() {
   return (
-    <section id="work" className={`${shell} py-20 md:py-28`}>
-      <FadeIn>
-        <Eyebrow n="01" label="Selected work" />
-      </FadeIn>
-      <div className="mt-8">
-        <WorkBento />
+    <section id="work" className="mc-section-neon border-y border-[rgb(var(--rule))] py-20 md:py-28">
+      <div className="mc-section-inner">
+        <FadeIn>
+          <Eyebrow n="01" label="Selected work" />
+        </FadeIn>
+        <div className="mt-8">
+          <WorkBento />
+        </div>
       </div>
     </section>
   );
@@ -159,8 +161,8 @@ export async function McTrackRecord() {
       : "—";
 
   return (
-    <section className="border-y border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)]">
-      <div className={`${shell} py-20 md:py-28`}>
+    <section className="mc-section-neon border-y border-[rgb(var(--rule))]">
+      <div className="mc-section-inner py-20 md:py-28">
         <FadeIn>
           <Eyebrow n="02" label="Track record" />
         </FadeIn>
@@ -321,14 +323,14 @@ export function McContact() {
         <div className="mt-12 flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
           <Image
             src="/images/signature-neon-trans.png"
-            alt={`${SITE.name} signature`}
-            width={160}
-            height={160}
-            className="h-20 w-auto opacity-90 drop-shadow-[0_0_18px_rgb(var(--accent)/0.45)] sm:h-24"
+            alt={`${SITE.name} CK monogram signature`}
+            width={200}
+            height={200}
+            className="h-24 w-auto opacity-95 drop-shadow-[0_0_22px_rgb(var(--accent)/0.5)] sm:h-28"
             priority={false}
           />
           <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[rgb(var(--faint))]">
-            signed · ck
+            signed · ck monogram
           </p>
         </div>
       </div>

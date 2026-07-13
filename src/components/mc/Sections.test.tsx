@@ -6,15 +6,15 @@ import { SITE } from "@/data/site";
 describe("Mission-Control landing (teaser) sections", () => {
   it("lists the work pillars as bento cards with links (incl. Andrea's World)", () => {
     render(<McWork />);
-    for (const title of ["Drishti", "Timelock", "Stocky AI", "Delta Support Audit"]) {
+    for (const title of ["Drishti", "Timelock", "Stocky AI", "Delta Support Audit", "Andrea's World"]) {
       expect(screen.getByRole("heading", { name: new RegExp(title, "i") })).toBeTruthy();
     }
     expect(screen.queryByRole("heading", { name: /Delta MCP/i })).toBeNull();
-    expect(screen.queryByRole("heading", { name: /Andrea/i })).toBeNull();
     expect(screen.getByRole("link", { name: /all work/i }).getAttribute("href")).toBe("/work");
     const links = screen.getAllByRole("link");
     expect(links.some((a) => a.getAttribute("href")?.startsWith("http"))).toBe(true);
     expect(links.some((a) => a.getAttribute("href") === "/work/delta-support-audit")).toBe(true);
+    expect(links.some((a) => a.getAttribute("href") === "/work/andrea-world")).toBe(true);
   });
 
   it("frames the two accounts (AI vs algo) honestly + links to the real pages", async () => {

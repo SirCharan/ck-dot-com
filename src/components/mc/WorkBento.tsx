@@ -15,7 +15,7 @@ export type WorkBentoItem = {
 const STOCKY_VERIFIED =
   "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl";
 
-/** Four equal tiles: Drishti · Timelock · Stocky · Delta Support Audit. */
+/** Primary 2×2: Drishti · Timelock · Stocky · Delta Support Audit. Andrea sits below. */
 export function defaultWorkBentoItems(): WorkBentoItem[] {
   const bySlug = Object.fromEntries(CASE_STUDIES.map((c) => [c.slug, c]));
   const cover = (slug: string, fallback: string, alt: string) => {
@@ -61,6 +61,19 @@ export function defaultWorkBentoItems(): WorkBentoItem[] {
   ];
 }
 
+export function andreaWorkItem(): WorkBentoItem {
+  const bySlug = Object.fromEntries(CASE_STUDIES.map((c) => [c.slug, c]));
+  const shot = bySlug["andrea-world"]?.shots?.[0];
+  return {
+    title: "Andrea's World",
+    line: bySlug["andrea-world"]?.tagline ?? "Hand-built interactive 3D web world.",
+    cover: shot?.src ?? "/images/work/andrea-world/cover.png",
+    coverAlt: shot?.alt ?? "Andrea's World interactive island",
+    live: "https://andrea-world.vercel.app",
+    detail: "/work/andrea-world",
+  };
+}
+
 function Chip({ href, children, internal }: { href: string; children: React.ReactNode; internal?: boolean }) {
   const cls =
     "relative z-10 font-mono text-[12px] text-[rgb(var(--mute))] transition-colors hover:text-accent";
@@ -75,10 +88,20 @@ function Chip({ href, children, internal }: { href: string; children: React.Reac
   );
 }
 
-function Card({ item, priority }: { item: WorkBentoItem; priority?: boolean }) {
+function Card({
+  item,
+  priority,
+  className = "",
+}: {
+  item: WorkBentoItem;
+  priority?: boolean;
+  className?: string;
+}) {
   const detailHref = item.detail ?? "#";
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)] transition-[border-color,box-shadow] hover:border-[rgb(var(--accent)/0.45)] hover:shadow-[0_0_28px_-8px_rgb(var(--accent)/0.35)]">
+    <article
+      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)] transition-[border-color,box-shadow] hover:border-[rgb(var(--accent)/0.45)] hover:shadow-[0_0_28px_-8px_rgb(var(--accent)/0.35)] ${className}`}
+    >
       <Link href={detailHref} className="absolute inset-0 z-0" aria-label={`${item.title} details`} />
       <div className="relative aspect-[16/10] overflow-hidden border-b border-[rgb(var(--rule))]">
         <Image
@@ -117,13 +140,17 @@ function Card({ item, priority }: { item: WorkBentoItem; priority?: boolean }) {
 
 export function WorkBento({
   items = defaultWorkBentoItems(),
+  below,
   footerHref = "/work",
   footerLabel = "All work & tools →",
 }: {
   items?: WorkBentoItem[];
+  /** Optional row under the 2×2 (e.g. Andrea). */
+  below?: WorkBentoItem[];
   footerHref?: string;
   footerLabel?: string;
 }) {
+  const under = below ?? [andreaWorkItem()];
   return (
     <div>
       <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
@@ -131,6 +158,13 @@ export function WorkBento({
           <Card key={item.title} item={item} priority={i === 0} />
         ))}
       </div>
+      {under.length > 0 && (
+        <div className={`mt-4 grid gap-4 lg:gap-5 ${under.length === 1 ? "sm:grid-cols-1" : "sm:grid-cols-2"}`}>
+          {under.map((item) => (
+            <Card key={item.title} item={item} className={under.length === 1 ? "sm:max-w-xl" : ""} />
+          ))}
+        </div>
+      )}
       {footerHref && (
         <Link href={footerHref} className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline">
           {footerLabel}
