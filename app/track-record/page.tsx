@@ -65,7 +65,7 @@ export default async function TrackRecordPage() {
       <PageIntro
         kicker="Track record"
         title="Real capital, in the open"
-        lede="Two records. First: Stocky — a year of AI-driven Zerodha trading, externally verified. Then my live Dhan account, accumulating in the open and refreshed daily."
+        lede="Stocky (AI, verified) and live Dhan (rule-based algo) — both on real capital."
       />
 
       <StockyTrackRecord />
@@ -80,9 +80,9 @@ export default async function TrackRecordPage() {
             live
           </span>
         </div>
-        <p className="mb-6 max-w-[64ch] font-serif text-[1.05rem] leading-[1.6] text-[rgb(var(--bone)/0.84)]">
-          A rule-based algorithm — <span className="text-[rgb(var(--bone))]">no LLM in the loop</span> — trading my
-          own capital in the open. Reconstructed from the Dhan trade book every day and refreshed automatically.
+        <p className="mb-6 max-w-[52ch] font-serif text-[1.05rem] leading-[1.6] text-[rgb(var(--bone)/0.84)]">
+          Rule-based algo — <span className="text-[rgb(var(--bone))]">no LLM</span> — rebuilt daily from the Dhan
+          trade book.
         </p>
 
       {/* KPIs — mono tabular figure block */}

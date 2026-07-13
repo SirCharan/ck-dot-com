@@ -12,51 +12,64 @@ import { EquityCurveSvg } from "./lab/EquityCurveSvg";
 const H = stocky.headline;
 const pctY = (v: number) => `${v >= 0 ? "+" : ""}${Math.round(v)}%`;
 
-type Milestone = { date: string; title: string; note: string; stat?: string; imgs?: string[] };
+type Shot = { src: string; cap: string };
+type Milestone = { date: string; title: string; note: string; stat?: string; imgs?: Shot[] };
+// Text + image placement mirror the blog (content/blog/stocky-ai.md). Each image
+// carries a caption describing exactly what the screenshot shows, so the images
+// match the text.
 const MILESTONES: Milestone[] = [
   {
     date: "Jun 2025",
     title: "Stocky goes live",
-    note: "Fine-tuned Claude on the new MCP server and funded it ₹15L. Traded three weekly expiries — Bank Nifty (Wed), Nifty (Thu), Sensex (Fri).",
+    note: "Claude shipped its MCP server — a game-changer. I fine-tuned a Claude Haiku model and gave it ₹15L to trade three weekly expiries: Bank Nifty (Wed), Nifty (Thu), Sensex (Fri).",
     stat: "₹15L capital",
   },
   {
     date: "Jun–Sep 2025",
     title: "Four months, zero losses",
-    note: "~₹90k/month on auto-pilot across 51 trading days — felt invincible.",
-    stat: "+₹3.6L · 0 losses",
-    imgs: ["/images/stocky/stocky-pnl-jun-sep.png", "/images/stocky/stocky-heatmap-jun-sep.png"],
+    note: "Made ₹3.6L by September — ~₹90k/month on auto-pilot. Four months, 51 trading days, zero losses. Felt invincible.",
+    stat: "+₹3.6L · 51 days · 0 losses",
+    imgs: [
+      { src: "/images/stocky/stocky-pnl-jun-sep.png", cap: "F&O · P&L · Jun–Sep 2025" },
+      { src: "/images/stocky/stocky-heatmap-jun-sep.png", cap: "F&O · calendar · Jun–Sep (all green)" },
+    ],
   },
   {
     date: "29 Sep 2025",
     title: "First loss",
-    note: "Over-trading volatile names (Eternal, Asian Paints, Tata Motors, BSE). Read the logs, tightened the universe.",
+    note: "Hit my first loss on 29 September. It hurt. The logs showed I'd been over-trading volatile names — Eternal, Asian Paints, Tata Motors, BSE — so I tightened the universe.",
     stat: "1st loss day",
   },
   {
     date: "Oct 2025",
     title: "Adapt & rebound",
-    note: "Bank Nifty's weekly expiry moved to monthly; explored Deepseek. October was a blast again.",
+    note: "Bad news: Bank Nifty's weekly expiry — my bread and butter — moved to monthly. Changed a lot and explored Deepseek. October was a blast again.",
   },
   {
     date: "Nov 2025",
     title: "Second loss",
-    note: "The run's second loss day.",
+    note: "Faced the run's second loss day in November.",
     stat: "2nd loss day",
   },
   {
     date: "Dec 2025",
     title: "Six months in",
-    note: "Closed the first half-year strong.",
-    stat: "₹5.32L · 212 win / 2 loss days",
-    imgs: ["/images/stocky/stocky-pnl-jun-dec.png", "/images/stocky/stocky-heatmap-jun-dec.png"],
+    note: "Closed the first six months of Stocky at ₹5.32L PnL — 212 profitable days, only 2 loss days.",
+    stat: "₹5.32L · 2 loss days",
+    imgs: [
+      { src: "/images/stocky/stocky-pnl-jun-dec.png", cap: "F&O · P&L · Jun–Dec 2025" },
+      { src: "/images/stocky/stocky-heatmap-jun-dec.png", cap: "F&O · calendar · Jun–Dec (2 red days)" },
+    ],
   },
   {
     date: "Year one",
     title: "₹15L → ₹16.57L",
-    note: "Commodities ₹14.2L + F&O ₹2.37L. 73% win, Sharpe 2.29, Sortino 5.98 — externally verified.",
+    note: "Commodities ₹14.2L + F&O ₹2.37L = ₹16.57L total. 73% win, Sharpe 2.29, Sortino 5.98 — externally verified.",
     stat: "₹16.57L net · verified",
-    imgs: ["/images/stocky/stocky-commodity-overall.png", "/images/stocky/stocky-fno-overall.png"],
+    imgs: [
+      { src: "/images/stocky/stocky-commodity-overall.png", cap: "Commodity · overall" },
+      { src: "/images/stocky/stocky-fno-overall.png", cap: "F&O · overall" },
+    ],
   },
 ];
 
@@ -122,15 +135,19 @@ export function StockyTrackRecord() {
             <p className="mt-1 max-w-[62ch] text-[14px] leading-[1.55] text-[rgb(var(--mute))]">{m.note}</p>
             {m.imgs && (
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                {m.imgs.map((src) => (
+                {m.imgs.map((shot) => (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={src}
-                    src={src}
-                    alt={`Stocky — ${m.title}`}
-                    loading="lazy"
-                    className="w-full rounded-lg border border-[rgb(var(--rule))]"
-                  />
+                  <figure key={shot.src} className="m-0">
+                    <img
+                      src={shot.src}
+                      alt={`Stocky — ${shot.cap}`}
+                      loading="lazy"
+                      className="w-full rounded-lg border border-[rgb(var(--rule))]"
+                    />
+                    <figcaption className="mt-1.5 font-mono text-[11px] text-[rgb(var(--faint))]">
+                      {shot.cap}
+                    </figcaption>
+                  </figure>
                 ))}
               </div>
             )}

@@ -14,7 +14,8 @@ test("full-height hero renders identity + live curve", async ({ page }) => {
   await expect(h1).toHaveText(/Charandeep Kapoor/);
 
   await expect(page.getByText(/FOUNDER · EX-QUANT · AI ENGINEER/)).toBeVisible();
-  await expect(page.getByText(/Founder of/)).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Timelock$/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Stocky$/i })).toBeVisible();
   await expect(page.getByText(/portfolio · Dhan · return %/)).toBeVisible();
 
   // Full-screen landing: the hero section should fill most of the viewport.

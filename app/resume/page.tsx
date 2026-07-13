@@ -68,14 +68,14 @@ export default function ResumePage() {
       <PageIntro
         kicker="Résumé"
         title="Experience & skillset"
-        lede="AI Product Manager at Delta Exchange. Founder, quant, and builder at the intersection of models and markets."
+        lede="AI Product Manager at Delta Exchange — models meet markets."
       />
 
       {/* Skills — mono tabular, grouped */}
       <section className="mt-12">
         <Rule className="mb-8" />
         <MetaGutter meta={["§ 01", "skills"]}>
-          <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
+          <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             {SKILLS.map((s) => (
               <div key={s.group}>
                 <Caption className="text-[rgb(var(--bone))]">{s.group}</Caption>

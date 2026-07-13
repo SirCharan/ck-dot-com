@@ -283,8 +283,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "drishti",
     title: "Drishti",
     kicker: "Creator · Live AI Trading Signals",
-    tagline:
-      "An LLM decides, a machine executes: live, regime-aware trading signals for Delta crypto perpetuals, trading real capital.",
+    tagline: "Live LLM signals · 15-min cycle · 8 markets · real capital.",
     role: "Creator, sole builder & operator",
     period: "Apr 2026 – Present",
     stack: [
@@ -340,8 +339,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "timelock",
     title: "Timelock Trade",
     kicker: "Founder · Oracle-less DeFi Derivatives",
-    tagline:
-      "A house of finance where traders can only profit and LPs earn premium for taking the other side — no oracles, no liquidations.",
+    tagline: "Oracle-less DeFi perps · $7.3M vol · 1k+ users.",
     role: "Founder — led a team of 6 (tech, product, design, BD, marketing)",
     period: "Apr 2025 – Apr 2026",
     stack: [
@@ -398,8 +396,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "delta-support-audit",
     title: "Delta Support Audit",
     kicker: "Builder · RAG Quality System",
-    tagline:
-      "A production system that reads Delta's entire support knowledge base every night and flags where it contradicts the source of truth.",
+    tagline: "Nightly RAG audit of support articles for factual drift.",
     role: "Builder & triager",
     period: "2026",
     stack: [
@@ -433,8 +430,15 @@ export const CASE_STUDIES: CaseStudy[] = [
         ],
       },
     ],
-    links: [],
-    shotsPending: true,
+    links: [
+      { label: "Live audit", href: "https://delta-support-audit.vercel.app/" },
+    ],
+    shots: [
+      {
+        src: "/images/work/delta-support-audit/cover.png",
+        alt: "Delta Support Audit — daily AI audit of Delta India support content with impact metrics",
+      },
+    ],
     accent: "fractal",
   },
   {
@@ -442,7 +446,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Andrea's World",
     kicker: "Creator · Interactive 3D Web",
     tagline:
-      "A playful, hand-built interactive 3D world on the web — a break from the trading work that shows the range: creative front-end, motion and spatial design.",
+      "A playful, hand-built interactive 3D world on the web — craft, motion, and play.",
     role: "Designer & Developer",
     period: "2026",
     stack: ["Next.js", "SVG / CSS 3D", "Motion", "Vercel"],
@@ -460,7 +464,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
     links: [{ label: "Enter the world", href: "https://andrea-world.vercel.app" }],
-    shotsPending: true,
+    shots: [
+      {
+        src: "/images/work/andrea-world/cover.png",
+        alt: "Andrea's World — interactive 3D island with character, landmarks, and Linkin Park stage",
+      },
+    ],
     accent: "none",
   },
 ];

@@ -62,6 +62,7 @@
     --ink-void-2: 15 20 27;  /* → panel */
     --hdr: 4rem;             /* sticky header height — full-height hero subtracts this */
     --frame-inset: 1rem;     /* console-frame + rail inset from the viewport edge */
+    --mc-shell: 90rem;       /* 1440px content shell — hugs rails on wide viewports */
     color-scheme: dark;
   }
   @media (min-width: 1280px) {

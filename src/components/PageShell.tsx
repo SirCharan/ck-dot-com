@@ -8,7 +8,9 @@ export function PageShell({ children }: { children: ReactNode }) {
     <div className="mc relative min-h-dvh overflow-x-clip">
       <ScrollRail />
       <McHeader />
-      <main className="relative z-10 mx-auto max-w-3xl px-6">{children}</main>
+      <main className="relative z-10 mx-auto max-w-[var(--mc-shell)] px-6 md:px-8">
+        {children}
+      </main>
       <McContact />
     </div>
   );
