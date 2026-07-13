@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SITE, BIO } from "@/data/site";
 import { getAllPosts } from "@/lib/blog";
@@ -31,8 +32,18 @@ export function McHeader() {
   return (
     <header className="sticky top-0 z-30 border-b border-[rgb(var(--rule))] bg-[rgb(var(--bg)/0.9)] backdrop-blur-md">
       <div className={`flex items-center justify-between py-4 ${shell}`}>
-        <Link href="/" className="font-grotesk text-[15px] font-bold tracking-tight text-ink">
-          CK<span className="text-accent">.</span>
+        <Link href="/" className="flex items-center gap-2 font-grotesk text-[15px] font-bold tracking-tight text-ink">
+          <Image
+            src="/images/signature-neon-trans.png"
+            alt=""
+            width={36}
+            height={36}
+            className="h-8 w-8 object-contain drop-shadow-[0_0_10px_rgb(var(--accent)/0.5)]"
+            aria-hidden
+          />
+          <span>
+            CK<span className="text-accent">.</span>
+          </span>
         </Link>
         <nav className="hidden gap-6 font-mono text-[12.5px] text-[rgb(var(--mute))] sm:flex">
           <Link href="/work" className="hover:text-ink">
@@ -305,6 +316,20 @@ export function McContact() {
           <span className="text-[rgb(var(--faint))]">
             © {new Date().getFullYear()} {SITE.name}
           </span>
+        </div>
+
+        <div className="mt-12 flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <Image
+            src="/images/signature-neon-trans.png"
+            alt={`${SITE.name} signature`}
+            width={160}
+            height={160}
+            className="h-20 w-auto opacity-90 drop-shadow-[0_0_18px_rgb(var(--accent)/0.45)] sm:h-24"
+            priority={false}
+          />
+          <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[rgb(var(--faint))]">
+            signed · ck
+          </p>
         </div>
       </div>
     </footer>

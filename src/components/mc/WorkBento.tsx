@@ -10,13 +10,12 @@ export type WorkBentoItem = {
   live?: string;
   github?: string;
   detail?: string;
-  featured?: boolean;
 };
 
 const STOCKY_VERIFIED =
   "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl";
 
-/** Home + /work shared covers. Prefer CASE_STUDIES shots[0]; Stocky is markets pillar. */
+/** Four equal tiles: Drishti · Timelock · Stocky · Delta Support Audit. */
 export function defaultWorkBentoItems(): WorkBentoItem[] {
   const bySlug = Object.fromEntries(CASE_STUDIES.map((c) => [c.slug, c]));
   const cover = (slug: string, fallback: string, alt: string) => {
@@ -31,7 +30,6 @@ export function defaultWorkBentoItems(): WorkBentoItem[] {
       ...cover("drishti", "/images/work/drishti/feed.png", "Drishti live feed"),
       live: "https://drishti-beryl.vercel.app",
       detail: "/work/drishti",
-      featured: true,
     },
     {
       title: "Timelock",
@@ -60,13 +58,6 @@ export function defaultWorkBentoItems(): WorkBentoItem[] {
       live: "https://delta-support-audit.vercel.app/",
       detail: "/work/delta-support-audit",
     },
-    {
-      title: "Andrea's World",
-      line: bySlug["andrea-world"]?.tagline ?? "Hand-built interactive 3D web world.",
-      ...cover("andrea-world", "/images/work/andrea-world/cover.png", "Andrea's World interactive island"),
-      live: "https://andrea-world.vercel.app",
-      detail: "/work/andrea-world",
-    },
   ];
 }
 
@@ -87,26 +78,14 @@ function Chip({ href, children, internal }: { href: string; children: React.Reac
 function Card({ item, priority }: { item: WorkBentoItem; priority?: boolean }) {
   const detailHref = item.detail ?? "#";
   return (
-    <article
-      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)] transition-[border-color,box-shadow] hover:border-[rgb(var(--accent)/0.45)] hover:shadow-[0_0_28px_-8px_rgb(var(--accent)/0.35)] ${
-        item.featured ? "lg:col-span-7 lg:row-span-2" : "lg:col-span-5"
-      }`}
-    >
-      <Link
-        href={detailHref}
-        className="absolute inset-0 z-0"
-        aria-label={`${item.title} details`}
-      />
-      <div
-        className={`relative overflow-hidden border-b border-[rgb(var(--rule))] ${
-          item.featured ? "aspect-[16/10] lg:aspect-auto lg:min-h-[16rem] lg:flex-1" : "aspect-[16/10]"
-        }`}
-      >
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)] transition-[border-color,box-shadow] hover:border-[rgb(var(--accent)/0.45)] hover:shadow-[0_0_28px_-8px_rgb(var(--accent)/0.35)]">
+      <Link href={detailHref} className="absolute inset-0 z-0" aria-label={`${item.title} details`} />
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-[rgb(var(--rule))]">
         <Image
           src={item.cover}
           alt={item.coverAlt}
           fill
-          sizes={item.featured ? "(min-width:1024px) 58vw, 100vw" : "(min-width:1024px) 40vw, 100vw"}
+          sizes="(min-width:1024px) 45vw, 100vw"
           className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
           priority={priority}
         />
@@ -145,34 +124,13 @@ export function WorkBento({
   footerHref?: string;
   footerLabel?: string;
 }) {
-  const [featured, ...rest] = items;
-  // Layout: featured left (spans 2 rows) + first of rest stacked right; remaining full-width row of 3
-  const side = rest.slice(0, 2);
-  const bottom = rest.slice(2);
-
   return (
     <div>
-      <div className="grid gap-4 lg:grid-cols-12 lg:gap-5">
-        {featured && <Card item={{ ...featured, featured: true }} priority />}
-        {side.map((item) => (
-          <Card key={item.title} item={{ ...item, featured: false }} />
+      <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+        {items.map((item, i) => (
+          <Card key={item.title} item={item} priority={i === 0} />
         ))}
       </div>
-      {bottom.length > 0 && (
-        <div
-          className={`mt-4 grid gap-4 lg:gap-5 ${
-            bottom.length === 1
-              ? "lg:grid-cols-1"
-              : bottom.length === 2
-                ? "lg:grid-cols-2"
-                : "lg:grid-cols-3"
-          }`}
-        >
-          {bottom.map((item) => (
-            <Card key={item.title} item={{ ...item, featured: false }} />
-          ))}
-        </div>
-      )}
       {footerHref && (
         <Link href={footerHref} className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline">
           {footerLabel}
