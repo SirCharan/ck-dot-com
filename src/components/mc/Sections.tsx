@@ -38,7 +38,7 @@ export function McHeader() {
             alt=""
             width={36}
             height={36}
-            className="h-8 w-8 object-contain"
+            className="h-8 w-8 object-contain grayscale brightness-[1.9]"
             aria-hidden
           />
           <span>CK.</span>
@@ -324,7 +324,7 @@ export function McContact() {
             alt={`${SITE.name} CK monogram signature`}
             width={200}
             height={200}
-            className="h-24 w-auto opacity-95 sm:h-28"
+            className="h-24 w-auto opacity-95 grayscale brightness-[1.9] sm:h-28"
             priority={false}
           />
           <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[rgb(var(--faint))]">
