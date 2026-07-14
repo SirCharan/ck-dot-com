@@ -27,7 +27,11 @@ export function defaultWorkBentoItems(): WorkBentoItem[] {
     {
       title: "Drishti",
       line: bySlug.drishti?.tagline ?? "Live LLM signals · real capital.",
-      ...cover("drishti", "/images/work/drishti/feed.png", "Drishti live feed"),
+      ...cover(
+        "drishti",
+        "/images/work/drishti/equity-curve.png",
+        "Drishti equity curve and live stats",
+      ),
       live: "https://drishti-beryl.vercel.app",
       detail: "/work/drishti",
     },

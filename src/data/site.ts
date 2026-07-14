@@ -330,6 +330,10 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: "Research", href: "https://drishti-research.vercel.app" },
     ],
     shots: [
+      {
+        src: "/images/work/drishti/equity-curve.png",
+        alt: "Drishti live equity curve — balance, drawdown, CAGR, Sharpe with win/loss stats",
+      },
       { src: "/images/work/drishti/feed.png", alt: "Drishti live signal feed — direction, entry, stop, target per market" },
       { src: "/images/work/drishti/howitworks.png", alt: "How Drishti works — the 15-minute decision-to-execution cycle" },
     ],

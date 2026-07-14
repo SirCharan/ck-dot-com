@@ -21,9 +21,9 @@ const WORK = [
     title: "Drishti",
     line: "Live LLM signals · 15-min cycle · real capital on Delta",
     detail: "/work/drishti",
-    cover: "/images/work/drishti/feed.png",
+    cover: "/images/work/drishti/equity-curve.png",
     chip: "live system",
-    alt: "Drishti live signal feed",
+    alt: "Drishti equity curve and win/loss stats from the live dashboard",
   },
   {
     title: "Stocky AI",
