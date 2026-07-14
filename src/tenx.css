@@ -84,9 +84,16 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(1rem, 3vw, 2rem);
-  background: rgba(3, 5, 10, 0.55);
-  backdrop-filter: blur(16px) saturate(1.2);
-  border-bottom: 1px solid var(--tx-line);
+  background: rgba(3, 5, 10, 0.35);
+  backdrop-filter: blur(12px) saturate(1.15);
+  border-bottom: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tx-nav-solid {
+  background: rgba(3, 5, 10, 0.82);
+  border-bottom-color: var(--tx-line);
+  box-shadow: 0 12px 40px -24px rgba(0, 0, 0, 0.8);
 }
 
 .tx-nav-brand {
@@ -173,6 +180,11 @@
   background: var(--tx-go-dim);
 }
 
+.tx-btn-sm {
+  padding: 0.55rem 1.05rem;
+  font-size: 0.82rem;
+}
+
 .tx-main {
   position: relative;
   z-index: 2;
@@ -200,30 +212,34 @@
   }
 }
 
+.tx-hero-left {
+  position: relative;
+  z-index: 1;
+}
+
 .tx-hero-orb {
   position: absolute;
   width: min(55vw, 420px);
   height: min(55vw, 420px);
   border-radius: 50%;
-  left: 8%;
-  top: 18%;
-  background: radial-gradient(circle, rgba(61, 251, 134, 0.28), transparent 68%);
-  filter: blur(6px);
-  animation: tx-breathe 7s ease-in-out infinite;
+  left: 6%;
+  top: 14%;
+  background: radial-gradient(circle, rgba(61, 251, 134, 0.3), transparent 68%);
+  filter: blur(8px);
   pointer-events: none;
   z-index: 0;
+  will-change: transform, opacity;
 }
 
-@keyframes tx-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.65;
-  }
-  50% {
-    transform: scale(1.14);
-    opacity: 1;
-  }
+.tx-hero-orb-2 {
+  width: min(40vw, 280px);
+  height: min(40vw, 280px);
+  left: auto;
+  right: 8%;
+  top: 55%;
+  background: radial-gradient(circle, rgba(139, 108, 255, 0.22), transparent 70%);
+  filter: blur(10px);
+  opacity: 0.7;
 }
 
 .tx-kicker {
@@ -268,12 +284,23 @@
   z-index: 1;
 }
 
+.tx-name-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+
 .tx-name .tx-name-line {
   display: block;
-  background: linear-gradient(105deg, #fff 0%, #fff 42%, var(--tx-go) 78%, var(--tx-cyan) 100%);
+  background: linear-gradient(105deg, #fff 0%, #fff 40%, var(--tx-go) 72%, var(--tx-cyan) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  will-change: transform, opacity;
+}
+
+.tx-meta-strong {
+  color: var(--tx-ink);
 }
 
 .tx-lede {
@@ -335,6 +362,62 @@
     0 0 0 1px rgba(255, 255, 255, 0.03),
     0 30px 80px -30px rgba(61, 251, 134, 0.35);
   overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Hero curve */
+.tx-curve-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.tx-curve-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.tx-curve-y {
+  position: absolute;
+  inset: 0 auto 1.1rem 0;
+  width: 2.6rem;
+  pointer-events: none;
+}
+
+.tx-curve-y span {
+  position: absolute;
+  right: 0;
+  font-size: 0.62rem;
+  color: var(--tx-faint);
+  transform: translateY(-50%);
+}
+
+.tx-curve-x {
+  position: absolute;
+  left: 3rem;
+  right: 0.5rem;
+  bottom: 0;
+  height: 1rem;
+  pointer-events: none;
+}
+
+.tx-curve-x span {
+  position: absolute;
+  bottom: 0;
+  font-size: 0.62rem;
+  color: var(--tx-faint);
+}
+
+.tx-curve-empty {
+  display: grid;
+  place-items: center;
+  border: 1px dashed rgba(61, 251, 134, 0.3);
+  border-radius: 12px;
+  color: var(--tx-mute);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
 }
 
 .tx-proof-card::before {
@@ -388,9 +471,16 @@
   gap: 0.65rem;
   max-width: 90rem;
   margin: 0 auto;
-  padding: 0.5rem clamp(1.1rem, 4vw, 2.5rem) 0.5rem;
+  padding: 1.25rem clamp(1.1rem, 4vw, 2.5rem) 0.75rem;
   position: relative;
   z-index: 2;
+}
+
+.tx-section-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
 }
 
 @media (min-width: 800px) {
@@ -752,6 +842,8 @@
   font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  text-decoration: none;
+  z-index: 2;
 }
 
 @media (min-width: 1024px) {
@@ -764,10 +856,37 @@
   opacity: 0.7;
 }
 
+.tx-scroll-dot {
+  animation: tx-scroll-bob 1.6s ease-in-out infinite;
+}
+
+@keyframes tx-scroll-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+/* Smooth in-page anchors under fixed nav */
+.tx {
+  scroll-padding-top: calc(var(--tx-hdr) + 0.75rem);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .tx-hero-orb,
   .tx-kicker-dot,
-  .tx-progress {
+  .tx-progress,
+  .tx-scroll-dot {
     animation: none !important;
   }
   .tx-stat,
@@ -775,5 +894,12 @@
   .tx-btn,
   .tx-toy {
     transition: none !important;
+  }
+  .tx-name-line,
+  .tx-hero-copy-in,
+  .tx-proof-card,
+  .tx-hero-kicker {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

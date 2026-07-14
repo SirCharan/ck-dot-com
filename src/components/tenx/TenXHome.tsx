@@ -2,17 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
   useReducedMotion,
   useScroll,
   useSpring,
-  type Variants,
 } from "framer-motion";
-import { EquityCurveSvg } from "@/components/lab/EquityCurveSvg";
-import { curveValue, type Payload } from "@/lib/trackRecord";
-import { inr } from "@/lib/format";
+import { HeroStage } from "./HeroStage";
+import { CountStat } from "./CountStat";
+import type { Payload } from "@/lib/trackRecord";
 import { PROOF, STOCKY_VERIFIED } from "@/components/spikes/proof";
 
 const ease = [0.23, 1, 0.32, 1] as const;
@@ -21,27 +20,26 @@ const WORK = [
   {
     title: "Drishti",
     line: "Live LLM signals · 15-min cycle · real capital on Delta",
-    href: "https://drishti-beryl.vercel.app",
     detail: "/work/drishti",
     cover: "/images/work/drishti/feed.png",
     chip: "live system",
-    priority: true,
+    alt: "Drishti live signal feed",
   },
   {
     title: "Stocky AI",
     line: "+110% verified · Sharpe 2.29 · Claude traded for a year",
-    href: STOCKY_VERIFIED,
     detail: "/markets",
     cover: "/images/stocky/stocky-terminal.png",
     chip: "verified pnl",
+    alt: "Stocky terminal dashboard",
   },
   {
     title: "Timelock",
     line: "Oracle-less DeFi perps · $7.3M volume · founded end-to-end",
-    href: "https://perps.timelock.trade/",
     detail: "/work/timelock",
     cover: "/images/work/timelock/protected-perps.jpg",
     chip: "founded",
+    alt: "Timelock protected perps diagram",
   },
 ] as const;
 
@@ -57,71 +55,20 @@ const TERM = [
   { c: "dim", t: "$ _" },
 ] as const;
 
-function MagLink({
-  href,
-  className,
-  children,
-  external,
-}: {
-  href: string;
-  className?: string;
-  children: React.ReactNode;
-  external?: boolean;
-}) {
-  if (external) {
-    return (
-      <motion.a
-        href={href}
-        className={className}
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{ type: "spring", stiffness: 420, damping: 28 }}
-      >
-        {children}
-      </motion.a>
-    );
-  }
-  return (
-    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} style={{ display: "inline-flex" }}>
-      <Link href={href} className={className}>
-        {children}
-      </Link>
-    </motion.div>
-  );
-}
-
 export function TenXHome({ dhan }: { dhan: Payload | null }) {
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 32, mass: 0.2 });
   const [curiosity, setCuriosity] = useState(0);
   const [termKey, setTermKey] = useState(0);
+  const [navSolid, setNavSolid] = useState(false);
 
-  const series = dhan?.series ?? [];
-  const e0 = dhan?.meta?.e0 ?? 0;
-  const gross = dhan?.metrics?.grossCumulative ?? dhan?.metrics?.cumulative ?? null;
-  const retPct =
-    gross != null && e0 > 0 ? `${gross >= 0 ? "+" : ""}${((gross / e0) * 100).toFixed(1)}%` : null;
-  const enough = series.length >= 2;
-
-  const fadeUp: Variants = useMemo(
-    () =>
-      reduce
-        ? { hidden: {}, show: {} }
-        : {
-            hidden: { opacity: 0, y: 28 },
-            show: (i: number) => ({
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.65, delay: 0.06 * i, ease },
-            }),
-          },
-    [reduce],
-  );
-
-  const pctY = (v: number) => `${v >= 0 ? "+" : ""}${v.toFixed(0)}%`;
+  useEffect(() => {
+    const onScroll = () => setNavSolid(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className="tx">
@@ -129,7 +76,7 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
       <div className="tx-grain" aria-hidden />
       {!reduce && <motion.div className="tx-progress" style={{ scaleX }} />}
 
-      <header className="tx-nav">
+      <header className={`tx-nav${navSolid ? " tx-nav-solid" : ""}`}>
         <Link href="/" className="tx-nav-brand">
           <Image
             src="/images/signature-neon-trans.png"
@@ -138,6 +85,7 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
             height={36}
             className="h-7 w-7 object-contain"
             aria-hidden
+            priority
           />
           CK<span style={{ color: "var(--tx-go)" }}>.</span>
         </Link>
@@ -148,161 +96,34 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
           <Link href="/track-record">Track record</Link>
           <Link href="/blog">Writing</Link>
         </nav>
-        <a className="tx-btn tx-btn-go" href={PROOF.links.topmate} target="_blank" rel="noreferrer">
+        <a
+          className="tx-btn tx-btn-go tx-btn-sm"
+          href={PROOF.links.topmate}
+          target="_blank"
+          rel="noreferrer"
+        >
           Book a call
         </a>
       </header>
 
       <div className="tx-main">
-        {/* HERO */}
-        <section className="tx-hero" aria-label="Hero">
-          <div className="tx-hero-orb" aria-hidden />
-          <div>
-            <motion.p className="tx-kicker tx-mono" custom={0} variants={fadeUp} initial="hidden" animate="show">
-              <span className="tx-kicker-dot" aria-hidden />
-              Live systems · real capital · Delta Exchange
-            </motion.p>
+        <HeroStage dhan={dhan} />
 
-            <motion.h1 className="tx-name" custom={1} variants={fadeUp} initial="hidden" animate="show">
-              <span className="tx-name-line">Charandeep</span>
-              <span className="tx-name-line">Kapoor</span>
-            </motion.h1>
-
-            <motion.p
-              className="tx-lede tx-serif"
-              custom={2}
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-            >
-              I build AI that trades markets — <em>for real</em>. Verified bots, live signals, products
-              people actually use.
-            </motion.p>
-
-            <motion.div
-              className="tx-meta-row tx-mono"
-              custom={3}
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-            >
-              <a href={PROOF.links.timelock} target="_blank" rel="noreferrer">
-                Timelock
-              </a>
-              <span aria-hidden>·</span>
-              <Link href="/markets">Stocky</Link>
-              <span aria-hidden>·</span>
-              <span>ex-quant</span>
-              <span aria-hidden>·</span>
-              <span style={{ color: "var(--tx-ink)" }}>Delta Exchange</span>
-            </motion.div>
-
-            <motion.div
-              className="tx-actions"
-              custom={4}
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-            >
-              <MagLink href={PROOF.links.topmate} className="tx-btn tx-btn-go" external>
-                Book a call
-              </MagLink>
-              <MagLink href="#proof" className="tx-btn tx-btn-ghost">
-                See the proof
-              </MagLink>
-              <MagLink href={PROOF.links.twitter} className="tx-btn tx-btn-ghost" external>
-                @yourasianquant
-              </MagLink>
-            </motion.div>
-          </div>
-
-          <motion.div
-            className="tx-proof-card"
-            initial={reduce ? false : { opacity: 0, y: 36, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.75, delay: 0.25, ease }}
-          >
-            <div className="tx-proof-head tx-mono">
-              <span>portfolio · Dhan · return %</span>
-              <span className="live">
-                <span className="tx-kicker-dot" style={{ width: 6, height: 6 }} aria-hidden />
-                {dhan?.asOf ? `as of ${dhan.asOf.slice(0, 10)}` : "live"}
-              </span>
-            </div>
-            {enough ? (
-              <EquityCurveSvg
-                series={series}
-                valueOf={(s) => (e0 > 0 ? (curveValue(s) / e0) * 100 : 0)}
-                height={200}
-                showAxes
-                formatY={pctY}
-                provisional={dhan?.provisional ?? false}
-                stroke="#3dfb86"
-                glow
-              />
-            ) : (
-              <div
-                style={{
-                  height: 200,
-                  display: "grid",
-                  placeItems: "center",
-                  border: "1px dashed rgba(61,251,134,0.3)",
-                  borderRadius: 12,
-                }}
-              >
-                <span className="tx-mono" style={{ fontSize: 11, color: "var(--tx-mute)", letterSpacing: "0.12em" }}>
-                  LIVE P&amp;L · ACCUMULATING
-                </span>
-              </div>
-            )}
-            <div className="tx-proof-foot tx-mono">
-              {retPct && <strong>{retPct} return</strong>}
-              {gross != null && <span>· {gross >= 0 ? "+" : ""}{inr(gross)} gross</span>}
-              <span>· updates daily ~00:00 IST</span>
-            </div>
-          </motion.div>
-
-          <div className="tx-scroll-cue tx-mono" aria-hidden>
-            <svg width="18" height="28" viewBox="0 0 18 28" fill="none">
-              <rect x="1" y="1" width="16" height="26" rx="8" stroke="currentColor" strokeWidth="1.2" />
-              <motion.circle
-                cx="9"
-                cy="9"
-                r="2.2"
-                fill="var(--tx-go)"
-                animate={reduce ? undefined : { y: [0, 8, 0] }}
-                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </svg>
-            scroll
-          </div>
-        </section>
-
-        {/* STATS — always visible (no opacity trap); light lift on enter */}
         <section className="tx-stats" id="proof" aria-label="Proof metrics">
           {PROOF.stats.map((s, i) => (
-            <motion.a
+            <CountStat
               key={s.label}
+              display={s.value}
+              label={s.label}
+              sub={s.sub}
               href={s.href}
-              target="_blank"
-              rel="noreferrer"
-              className="tx-stat"
-              initial={reduce ? false : { y: 16 }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: i * 0.05, ease }}
-              onClick={() => setCuriosity((c) => c + 1)}
-            >
-              <strong className="tx-mono">{s.value}</strong>
-              <span className="tx-mono">{s.label}</span>
-              <small>{s.sub}</small>
-            </motion.a>
+              delay={i * 80}
+            />
           ))}
         </section>
 
-        {/* WORK */}
         <section className="tx-section" id="work">
-          <p className="tx-section-label tx-mono">02 · Selected work</p>
+          <p className="tx-section-label tx-mono">01 · Selected work</p>
           <h2>Things that actually shipped</h2>
           <p className="tx-sub tx-serif">
             Live products and trading systems — not mockups. Most of them still running.
@@ -314,17 +135,20 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
                 key={w.title}
                 href={w.detail}
                 className="tx-work-card"
-                initial={reduce ? false : { y: 20 }}
+                initial={reduce ? false : { y: 18 }}
                 whileInView={{ y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.45, delay: i * 0.06, ease }}
+                whileHover={reduce ? undefined : { y: -6 }}
               >
                 <div className="tx-work-media">
                   <Image
                     src={w.cover}
-                    alt=""
+                    alt={w.alt}
                     fill
-                    sizes={i === 0 ? "(min-width:900px) 50vw, 100vw" : "(min-width:900px) 40vw, 100vw"}
+                    sizes={
+                      i === 0 ? "(min-width:900px) 50vw, 100vw" : "(min-width:900px) 40vw, 100vw"
+                    }
                     priority={i === 0}
                     style={{ objectFit: "cover", objectPosition: "top" }}
                   />
@@ -338,26 +162,34 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
             ))}
           </div>
 
-          <div style={{ marginTop: "1.5rem" }}>
+          <div className="tx-section-cta">
             <Link href="/work" className="tx-btn tx-btn-ghost">
               All work &amp; tools →
             </Link>
+            <a
+              href={STOCKY_VERIFIED}
+              className="tx-btn tx-btn-ghost"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Verified Stocky PnL ↗
+            </a>
           </div>
         </section>
 
-        {/* PLAY */}
         <section className="tx-section" id="play">
-          <p className="tx-section-label tx-mono">03 · Lab</p>
+          <p className="tx-section-label tx-mono">02 · Lab</p>
           <h2>Poke the machine</h2>
           <p className="tx-sub tx-serif">
-            Same numbers as the verified track record — just more fun to touch. Curiosity is a feature.
+            Same numbers as the verified track record — just more fun to touch. Curiosity is a
+            feature.
           </p>
 
           <div className="tx-play">
             <motion.div
               key={termKey}
               className="tx-term tx-mono"
-              initial={reduce ? false : { opacity: 0.4 }}
+              initial={reduce ? false : { opacity: 0.5 }}
               animate={{ opacity: 1 }}
             >
               <div className="tx-term-bar" aria-hidden>
@@ -396,13 +228,18 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
                 ))}
               </div>
               {curiosity > 0 && (
-                <p className="tx-curiosity tx-mono">
+                <p className="tx-curiosity tx-mono" role="status">
                   curiosity {curiosity}
                   {curiosity >= 8 ? " · ok, you get it — book the call" : " · keep going"}
                 </p>
               )}
               <div className="tx-actions" style={{ marginTop: "1.25rem" }}>
-                <a className="tx-btn tx-btn-go" href={PROOF.links.topmate} target="_blank" rel="noreferrer">
+                <a
+                  className="tx-btn tx-btn-go"
+                  href={PROOF.links.topmate}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Book a call
                 </a>
                 <Link className="tx-btn tx-btn-ghost" href="/track-record">
@@ -413,9 +250,8 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
           </div>
         </section>
 
-        {/* CONTACT */}
         <section className="tx-section tx-contact" id="contact">
-          <p className="tx-section-label tx-mono">04 · Contact</p>
+          <p className="tx-section-label tx-mono">03 · Contact</p>
           <h2>
             Let&apos;s build something.{" "}
             <a href={PROOF.links.topmate} target="_blank" rel="noreferrer">
@@ -448,7 +284,7 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
               className="h-24 w-auto"
             />
             <p className="tx-footer-note tx-mono">
-              © {new Date().getFullYear()} {PROOF.name} · wow track preview
+              © {new Date().getFullYear()} {PROOF.name}
             </p>
           </div>
         </section>
