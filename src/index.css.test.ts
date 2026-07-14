@@ -3,24 +3,40 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 /**
- * Token / style sanity guard for the Ephemeris design system.
+ * Token / style guard for the PHOSPHOR design system.
  * Reads src/index.css from disk (framework-agnostic) and asserts the
- * design-system contract holds, including the anti-AI "no blur" rule.
+ * design-system contract: the phosphor law ("only live money glows") is
+ * encoded in the .mc scope, and the anti-AI-slop tells stay out.
  */
 const css = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
 
-describe("index.css design-system contract", () => {
-  it("documents the phi-scale type ramp", () => {
-    expect(css).toMatch(/phi-scale \(type ramp\): 15 · 20 · 30 · 48 · 78px/);
-  });
+// Isolate the first `.mc {` token block for scoped assertions.
+const mcStart = css.indexOf(".mc {");
+const mcBlock = css.slice(mcStart, css.indexOf("\n  }", mcStart));
 
-  it("defines the core Ephemeris tokens", () => {
-    for (const token of ["--ink-void", "--bone", "--amber"]) {
-      expect(css, `${token} defined`).toMatch(new RegExp(`${token}\\s*:`));
+describe("index.css PHOSPHOR contract", () => {
+  it("defines the eight PHOSPHOR tokens in the .mc scope", () => {
+    for (const token of [
+      "--black",
+      "--ivory",
+      "--ash",
+      "--phosphor",
+      "--phosphor-dim",
+      "--loss",
+      "--surface",
+      "--hairline",
+    ]) {
+      expect(mcBlock, `${token} defined in .mc`).toMatch(new RegExp(`${token}\\s*:`));
     }
   });
 
-  it("does NOT use backdrop-blur (anti-AI-slop guard)", () => {
-    expect(css).not.toMatch(/backdrop-blur/);
+  it("has removed the dead .terminal scope", () => {
+    // .terminal-grid etc. may still exist (Phase 2 cleanup); only the
+    // token-remapping `.terminal {` scope must be gone.
+    expect(css).not.toMatch(/(^|\s)\.terminal\s*\{/m);
+  });
+
+  it("uses no text-shadow glow anywhere (banned tell #1)", () => {
+    expect(css).not.toMatch(/text-shadow/);
   });
 });

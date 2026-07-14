@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 /* ============================================
-   EPHEMERIS — a quant-engineer's dark lab-notebook.
-   phi-scale (type ramp): 15 · 20 · 30 · 48 · 78px.
-   Palette is bespoke; the .terminal scope (below) re-maps
-   the semantic tokens so existing components inherit it.
-   The blog (.blog-root) stays light, untouched.
+   PHOSPHOR — the only thing that glows is live money.
+   Matte warm ivory ink on a green-tinged near-black; phosphor
+   green (#3DFB86) is EARNED — it may only color real, live data.
+   All chrome (glass/grid/scanline/comet/brackets) is gone;
+   separation is hairlines + space. The .mc scope carries the
+   tokens. The blog (.blog-root) stays light, untouched.
    ============================================ */
 @layer base {
   :root {
@@ -31,42 +32,50 @@
   }
 
   /* ============================================
-     MISSION CONTROL — the ground-up redesign scope.
-     Premium dark, single phosphor accent, no glass.
-     Wrap the new landing/sections in `.mc`; existing Tailwind
-     color utilities (bg/ink/mute/rule/accent/positive/neg/amber)
-     resolve to these values inside the scope. Extra surface tokens
-     (--panel/--raised/--line-hi/--faint) via arbitrary utilities.
+     PHOSPHOR scope. Wrap every non-blog surface in `.mc`.
+     Base tokens are in channel form (R G B) so `rgb(var(--x) / a)`
+     utilities keep resolving; --surface/--hairline/--phosphor-dim
+     are full rgba values used directly. The one law: --phosphor
+     (and its --accent/--amber/--positive aliases) may ONLY color
+     real, live data — never headings, nav, buttons, or the monogram.
      ============================================ */
   .mc {
-    --bg: 7 9 12;            /* #07090C deep near-black ground */
-    --panel: 13 17 22;       /* #0D1116 */
-    --raised: 19 24 31;      /* #13181F */
-    --ink: 230 238 245;      /* #E6EEF5 */
-    --mute: 147 164 181;     /* #93A4B5 */
-    --faint: 112 134 152;    /* #708698 — AA-legible on all mc surfaces */
-    --rule: 28 37 48;        /* #1C2530 hairline */
-    --line-hi: 40 50 61;     /* #28323D top-highlight */
-    --accent: 61 251 134;    /* #3DFB86 neon phosphor — the only "live/go" colour */
-    --amber: 61 251 134;     /* alias → accent, so Ephemeris-era components unify to green */
-    --warn: 255 176 0;       /* #FFB000 — the true amber state colour (attention) */
-    --positive: 127 227 159; /* desaturated CVD-safe up */
-    --pos: 127 227 159;
-    --neg: 232 116 107;      /* desaturated CVD-safe down */
-    /* Ephemeris token aliases → mission-control values, so the .terminal-era
-       sub-page components adopt the mc palette when PageShell switches to .mc. */
-    --bone: 230 238 245;     /* → ink */
-    --bone-dim: 147 164 181; /* → mute */
-    --slate: 147 164 181;    /* → mute (data) */
-    --ink-void: 11 15 20;    /* → bg */
-    --ink-void-2: 15 20 27;  /* → panel */
+    /* PHOSPHOR base palette */
+    --black: 10 12 11;       /* #0A0C0B warm green-tinged near-black ground */
+    --ivory: 242 239 230;    /* #F2EFE6 warm matte primary ink */
+    --ash: 138 143 138;      /* #8A8F8A muted ink — captions, kickers, metadata */
+    --phosphor: 61 251 134;  /* #3DFB86 — LIVE DATA ONLY */
+    --loss: 242 105 92;      /* #F2695C desaturated warm red, CVD-checked vs phosphor */
+    --phosphor-dim: rgba(61, 251, 134, 0.55); /* secondary data strokes / chart grids */
+    --surface: rgba(242, 239, 230, 0.03);     /* the ONE raised surface */
+    --hairline: rgba(242, 239, 230, 0.08);    /* all separation */
+
+    /* Semantic vars the Tailwind config + rgb(var()) utilities consume,
+       mapped onto the PHOSPHOR set (channel form). */
+    --bg: 10 12 11;          /* → black */
+    --ink: 242 239 230;      /* → ivory */
+    --mute: 138 143 138;     /* → ash */
+    --faint: 138 143 138;    /* → ash (captions / axis labels) */
+    --rule: 29 30 29;        /* ivory @ ~8% flattened on black — hairline */
+    --line-hi: 38 40 39;     /* slightly brighter warm hairline (top-highlight) */
+    --accent: 61 251 134;    /* → phosphor (LIVE DATA ONLY) */
+    --positive: 61 251 134;  /* → phosphor (positive delta) */
+    --pos: 61 251 134;
+    --neg: 242 105 92;       /* → loss */
+    /* raised surfaces (opaque channel form for bg-[rgb(var(--x))] cards) */
+    --panel: 15 17 16;       /* faint warm raised over black */
+    --raised: 20 23 21;
+    /* Ephemeris/Mission-Control-era aliases → PHOSPHOR, so legacy sub-page
+       components inherit the palette (remaining green uses are all live data). */
+    --amber: 61 251 134;     /* → phosphor */
+    --bone: 242 239 230;     /* → ivory */
+    --bone-dim: 138 143 138; /* → ash */
+    --slate: 138 143 138;    /* → ash */
+    --ink-void: 10 12 11;    /* → black (dark text on ivory buttons, overlays) */
+    --ink-void-2: 15 17 16;  /* → panel */
     --hdr: 4rem;             /* sticky header height — full-height hero subtracts this */
-    --frame-inset: 1rem;     /* console-frame + rail inset from the viewport edge */
-    --mc-shell: 90rem;       /* 1440px content shell — hugs rails on wide viewports */
+    --mc-shell: 90rem;       /* 1440px content shell */
     color-scheme: dark;
-  }
-  @media (min-width: 1280px) {
-    .mc { --frame-inset: 1.5rem; }
   }
   .mc {
     background: rgb(var(--bg));
@@ -146,38 +155,6 @@
     color: rgb(var(--bone));
     text-decoration-color: rgb(var(--bone));
   }
-}
-
-/* ============================================
-   Ephemeris — dark lab scope (home + section pages).
-   Re-maps the semantic tokens so existing components
-   inherit the bespoke palette. Blog (.blog-root) stays light.
-   ============================================ */
-.terminal {
-  --bg: 11 11 13;          /* --ink-void  #0B0B0D warm near-black */
-  --ink: 232 228 218;      /* --bone      #E8E4DA paper ink       */
-  --mute: 140 136 126;     /* --bone-dim  #8C887E muted           */
-  --rule: 42 41 38;        /* bone @ ~0.12 over void (hairline)   */
-  --accent: 232 163 61;    /* --amber     #E8A33D signal          */
-  --positive: 127 184 138; /* --pos       #7FB88A                 */
-  --neg: 232 116 107;      /* --neg       #E8746B                 */
-
-  /* raw Ephemeris tokens (for rgb(var(--x)/a) use) */
-  --ink-void: 11 11 13;
-  --ink-void-2: 16 16 19;  /* sim band #101013 */
-  --bone: 232 228 218;
-  --bone-dim: 140 136 126;
-  --amber: 232 163 61;
-  --slate: 107 138 175;    /* data / 3rd body */
-  --pos: 127 184 138;
-  /* the ONLY elevated surface = a faint bone overlay */
-  --surface-0: 11 11 13;
-  --surface-1: 11 11 13;
-  --surface-2: 16 16 19;
-
-  color-scheme: dark;
-  background: rgb(var(--ink-void));
-  color: rgb(var(--bone));
 }
 
 /* Retired dot-grid/aurora — now a bare, near-inert warm base.
