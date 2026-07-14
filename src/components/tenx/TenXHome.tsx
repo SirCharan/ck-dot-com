@@ -278,7 +278,7 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
           </div>
         </section>
 
-        {/* STATS */}
+        {/* STATS — always visible (no opacity trap); light lift on enter */}
         <section className="tx-stats" id="proof" aria-label="Proof metrics">
           {PROOF.stats.map((s, i) => (
             <motion.a
@@ -287,10 +287,10 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
               target="_blank"
               rel="noreferrer"
               className="tx-stat"
-              initial={reduce ? false : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.45, delay: i * 0.05, ease }}
+              initial={reduce ? false : { y: 16 }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: i * 0.05, ease }}
               onClick={() => setCuriosity((c) => c + 1)}
             >
               <strong className="tx-mono">{s.value}</strong>
@@ -302,22 +302,8 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
 
         {/* WORK */}
         <section className="tx-section" id="work">
-          <motion.p
-            className="tx-section-label tx-mono"
-            initial={reduce ? false : { opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            02 · Selected work
-          </motion.p>
-          <motion.h2
-            initial={reduce ? false : { opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, ease }}
-          >
-            Things that actually shipped
-          </motion.h2>
+          <p className="tx-section-label tx-mono">02 · Selected work</p>
+          <h2>Things that actually shipped</h2>
           <p className="tx-sub tx-serif">
             Live products and trading systems — not mockups. Most of them still running.
           </p>
@@ -328,10 +314,10 @@ export function TenXHome({ dhan }: { dhan: Payload | null }) {
                 key={w.title}
                 href={w.detail}
                 className="tx-work-card"
-                initial={reduce ? false : { opacity: 0, y: 36 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-12%" }}
-                transition={{ duration: 0.55, delay: i * 0.07, ease }}
+                initial={reduce ? false : { y: 20 }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: i * 0.06, ease }}
               >
                 <div className="tx-work-media">
                   <Image

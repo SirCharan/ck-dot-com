@@ -388,7 +388,9 @@
   gap: 0.65rem;
   max-width: 90rem;
   margin: 0 auto;
-  padding: 0 clamp(1.1rem, 4vw, 2.5rem) 1rem;
+  padding: 0.5rem clamp(1.1rem, 4vw, 2.5rem) 0.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 @media (min-width: 800px) {
@@ -516,8 +518,13 @@
 .tx-work-media {
   position: relative;
   flex: 1;
-  min-height: 10rem;
+  min-height: 12rem;
+  width: 100%;
   background: #080a0f;
+}
+
+.tx-work-card:first-child .tx-work-media {
+  min-height: 16rem;
 }
 
 .tx-work-media img {
