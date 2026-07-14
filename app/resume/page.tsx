@@ -62,24 +62,60 @@ function LedgerRow({ title, detail }: { title: string; detail: string }) {
   );
 }
 
+// "By the numbers" — signature stats, consistent with the landing + track record.
+const STATS: { value: string; label: string }[] = [
+  { value: "+110%", label: "Stocky ROI · verified" },
+  { value: "$7.3M", label: "Timelock volume" },
+  { value: "AIR 638", label: "JEE Advanced · IIT-K" },
+  { value: "2.29", label: "Stocky Sharpe" },
+];
+
 export default function ResumePage() {
   return (
     <PageShell>
       <PageIntro
-        kicker="Résumé"
+        kicker="About"
         title="Experience & skillset"
-        lede="AI Product Manager at Delta Exchange — models meet markets."
+        lede="AI Product Manager & Engineer at Delta Exchange — where models meet markets."
       />
 
-      {/* Skills — mono tabular, grouped */}
+      {/* Profile — the bio, in ck's own words */}
+      <section className="mt-4">
+        <MetaGutter meta={["§ 01", "profile"]}>
+          <div className="max-w-[64ch] space-y-4">
+            {BIO.paragraphs.map((p) => (
+              <p key={p.slice(0, 24)} className="font-serif text-[1.1rem] leading-[1.65] text-[rgb(var(--bone)/0.9)]">
+                {p}
+              </p>
+            ))}
+          </div>
+        </MetaGutter>
+      </section>
+
+      {/* By the numbers — signature glass stat cards */}
       <section className="mt-12">
         <Rule className="mb-8" />
-        <MetaGutter meta={["§ 01", "skills"]}>
-          <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+        <MetaGutter meta={["§ 02", "by the numbers"]}>
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {STATS.map((s) => (
+              <div key={s.label} className="mc-glass rounded-xl p-5">
+                <div className="num text-[1.9rem] leading-none tracking-tight text-accent">{s.value}</div>
+                <div className="mt-2 font-mono text-[11px] leading-snug text-[rgb(var(--bone-dim))]">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </MetaGutter>
+      </section>
+
+      {/* Skills — glass group cards */}
+      <section className="mt-12">
+        <Rule className="mb-8" />
+        <MetaGutter meta={["§ 03", "skills"]}>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {SKILLS.map((s) => (
-              <div key={s.group}>
+              <div key={s.group} className="mc-glass rounded-xl p-5">
                 <Caption className="text-[rgb(var(--bone))]">{s.group}</Caption>
-                <ul className="mt-2 space-y-1">
+                <ul className="mt-3 space-y-1.5">
                   {s.items.map((i) => (
                     <li
                       key={i}
@@ -98,17 +134,17 @@ export default function ResumePage() {
       {/* Experience — reused journal grid */}
       <section className="mt-12">
         <Rule className="mb-8" />
-        <MetaGutter meta={["§ 02", "history"]}>
+        <MetaGutter meta={["§ 04", "history"]}>
           <Experience showKicker={false} />
         </MetaGutter>
       </section>
 
-      {/* Education + certifications — mono tabular ledgers */}
+      {/* Education + certifications — glass ledgers */}
       <section className="mt-12">
         <Rule className="mb-8" />
-        <MetaGutter meta={["§ 03", "credentials"]}>
-          <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
-            <div>
+        <MetaGutter meta={["§ 05", "credentials"]}>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="mc-glass rounded-xl p-5">
               <Caption className="text-[rgb(var(--bone))]">Education & honors</Caption>
               <ul className="mt-3 border-t border-[rgb(var(--bone)/0.11)]">
                 {ACADEMICS.map((a) => (
@@ -116,7 +152,7 @@ export default function ResumePage() {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className="mc-glass rounded-xl p-5">
               <Caption className="text-[rgb(var(--bone))]">Certifications</Caption>
               <ul className="mt-3 border-t border-[rgb(var(--bone)/0.11)]">
                 {CERTIFICATIONS.map((c) => (
