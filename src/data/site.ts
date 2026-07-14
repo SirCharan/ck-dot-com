@@ -388,7 +388,14 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
     shots: [
-      { src: "/images/work/timelock/protected-perps.jpg", alt: "Timelock Protected Perps — payoff structure: traders only profit, LPs earn premium for the downside" },
+      {
+        src: "/images/work/timelock/perps-terminal.jpg",
+        alt: "Timelock Protected Perps trading terminal — WMON/USDC chart, Long/Short ticket, Monad testnet",
+      },
+      {
+        src: "/images/work/timelock/protected-perps.jpg",
+        alt: "Timelock Protected Perps — payoff structure: traders only profit, LPs earn premium for the downside",
+      },
     ],
     accent: "spiral",
   },

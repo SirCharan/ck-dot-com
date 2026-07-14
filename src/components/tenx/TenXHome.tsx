@@ -37,9 +37,9 @@ const WORK = [
     title: "Timelock",
     line: "Oracle-less DeFi perps · $7.3M volume · founded end-to-end",
     detail: "/work/timelock",
-    cover: "/images/work/timelock/protected-perps.jpg",
+    cover: "/images/work/timelock/perps-terminal.jpg",
     chip: "founded",
-    alt: "Timelock protected perps diagram",
+    alt: "Timelock Protected Perps trading terminal — WMON/USDC chart and order ticket",
   },
 ] as const;
 

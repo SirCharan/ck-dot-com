@@ -34,7 +34,11 @@ export function defaultWorkBentoItems(): WorkBentoItem[] {
     {
       title: "Timelock",
       line: bySlug.timelock?.tagline ?? "Oracle-less DeFi perps.",
-      ...cover("timelock", "/images/work/timelock/protected-perps.jpg", "Timelock Protected Perps"),
+      ...cover(
+        "timelock",
+        "/images/work/timelock/perps-terminal.jpg",
+        "Timelock Protected Perps trading terminal",
+      ),
       live: "https://perps.timelock.trade/",
       detail: "/work/timelock",
     },
