@@ -1,19 +1,22 @@
 import Link from "next/link";
+import { TenXShell } from "@/components/tenx/TenXShell";
 
 export default function NotFound() {
   return (
-    <div
-      className="min-h-screen flex flex-col items-center justify-center px-4"
-      style={{ background: "var(--deep-bg)", color: "white" }}
-    >
-      <h1 className="font-orbitron text-4xl font-bold mb-4">404</h1>
-      <p className="text-gray-400 mb-6">Page not found.</p>
-      <Link
-        href="/"
-        className="font-orbitron text-sm uppercase tracking-wider text-[var(--neon-purple)] hover:text-[var(--neon-cyan)] transition-colors"
-      >
-        ← Back to Home
-      </Link>
-    </div>
+    <TenXShell progress={false}>
+      <section className="tx-page-intro" style={{ minHeight: "50vh", paddingTop: "4rem" }}>
+        <p className="tx-section-label tx-mono">404</p>
+        <h1 className="tx-page-title">Page not found</h1>
+        <p className="tx-sub tx-serif">That route doesn&apos;t exist — or it moved.</p>
+        <div className="tx-section-cta">
+          <Link href="/" className="tx-btn tx-btn-go">
+            Home
+          </Link>
+          <Link href="/work" className="tx-btn tx-btn-ghost">
+            Work
+          </Link>
+        </div>
+      </section>
+    </TenXShell>
   );
 }

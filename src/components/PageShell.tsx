@@ -1,28 +1,15 @@
 import type { ReactNode } from "react";
-import { McHeader, McContact } from "./mc/Sections";
-import { ScrollRail } from "./mc/ScrollRail";
-import { AmbientBackdrop } from "./mc/AmbientBackdrop";
-import { ConsoleFrame } from "./mc/ConsoleFrame";
+import { TenXShell } from "@/components/tenx/TenXShell";
+import { TenXPageIntro } from "@/components/tenx/TenXPageIntro";
 
-/** Mission-control chrome shared by the homepage's siblings (section pages).
- * Mirrors the landing (app/page.tsx): ambient neon backdrop + console frame +
- * scroll rails behind content, content lifted to z-10. */
+/**
+ * Site shell for dark app routes — now TenX (Grok), not Mission-Control (Claude).
+ * Existing pages keep importing PageShell / PageIntro; they get the TenX system.
+ */
 export function PageShell({ children }: { children: ReactNode }) {
-  return (
-    <div className="mc relative min-h-dvh overflow-x-clip">
-      <AmbientBackdrop />
-      <ConsoleFrame />
-      <ScrollRail />
-      <McHeader />
-      <div className="relative z-10">
-        <main className="mx-auto max-w-[var(--mc-shell)] px-6 md:px-8">{children}</main>
-        <McContact />
-      </div>
-    </div>
-  );
+  return <TenXShell>{children}</TenXShell>;
 }
 
-/** Compact page intro (kicker + serif title + lede) for section pages. */
 export function PageIntro({
   kicker,
   title,
@@ -32,11 +19,5 @@ export function PageIntro({
   title: string;
   lede: string;
 }) {
-  return (
-    <section className="pt-12 pb-8 md:pt-16 md:pb-10">
-      <p className="kicker mb-4">{kicker}</p>
-      <h1 className="display text-4xl leading-[1.05] text-ink md:text-6xl">{title}</h1>
-      <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-ink/85">{lede}</p>
-    </section>
-  );
+  return <TenXPageIntro kicker={kicker} title={title} lede={lede} />;
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Providers } from "@/components/Providers";
 import { RootStructuredData } from "@/components/RootStructuredData";
-import { RouteWipe } from "@/components/lab/RouteWipe";
 import { grotesk, serif, mono } from "@/lib/fonts";
 import "@/index.css";
 
@@ -11,10 +10,10 @@ const GA_ID = "G-J6SY9N1Y3W";
 const SITE_URL = "https://charandeepkapoor.com";
 
 const DEFAULT_DESCRIPTION =
-  "Charandeep Kapoor — founder of Timelock Trade, creator of Stocky AI (Claude-driven Zerodha trading, ₹16.57L profit / +110%). Six years across product, research, and VC in crypto and quant finance. Essays on perps, DeFi, and trading.";
+  "Charandeep Kapoor — AI Product Manager & Engineer at Delta Exchange. Stocky +110% verified. Drishti live signals. Timelock founder. Real capital, real systems. Essays on perps, markets, and building.";
 
 const DEFAULT_TITLE =
-  "Charandeep Kapoor — Perpetuals, Quant Finance, AI Trading";
+  "Charandeep Kapoor — AI that trades real markets";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -108,7 +107,6 @@ export default function RootLayout({
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
         </Script>
         <RootStructuredData />
-        <RouteWipe />
         <Providers>{children}</Providers>
       </body>
     </html>

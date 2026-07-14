@@ -18,7 +18,7 @@ export default function MarketsPage() {
       <PageIntro
         kicker="Indian stock market"
         title="Trading the Indian markets"
-        lede="Quant strategies and AI-driven trading on NSE — fine-tuned Claude on a custom Zerodha MCP. My live Dhan portfolio updates daily on the track record; Stocky's realized growth is below."
+        lede="Stocky traded Indian F&O for a year on real capital — verified. Live Dhan book updates on the track record. Builds and tools below."
       />
 
       <StockyGrowth />

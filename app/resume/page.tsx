@@ -75,8 +75,8 @@ export default function ResumePage() {
     <PageShell>
       <PageIntro
         kicker="About"
-        title="Experience & skillset"
-        lede="AI Product Manager & Engineer at Delta Exchange — where models meet markets."
+        title="Background"
+        lede="AI Product Manager & Engineer at Delta Exchange. I ship systems that trade real capital — and the products around them."
       />
 
       {/* Profile — the bio, in ck's own words */}

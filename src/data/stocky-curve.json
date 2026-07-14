@@ -1,5 +1,5 @@
 {
-  "source": "Zerodha PQ4709 tradebook (F&O + commodities), FIFO realized P&L spread across each trade’s holding period (approx MTM), % of Rs 15L capital",
+  "source": "Zerodha PQ4709 tradebook (F&O + commodities), FIFO realized P&L spread across each trade’s holding period (approx MTM), % of ₹15L capital",
   "window": {
     "start": "2025-06-02",
     "end": "2026-05-19"
@@ -8,14 +8,14 @@
   "endPct": 116.29,
   "peakPct": 116.71,
   "headline": {
-    "profit": "Rs 16.57L",
-    "grossProfit": "Rs 18.8L",
+    "profit": "₹16.57L",
+    "grossProfit": "₹18.8L",
     "roiNetPct": "+110%",
-    "capital": "Rs 15L",
+    "capital": "₹15L",
     "winRate": "73%",
     "sharpe": "2.29",
     "verifiedUrl": "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl",
-    "endNet": "Rs 31.57L",
+    "endNet": "₹31.57L",
     "method": "fine-tuned Claude Haiku",
     "run": "Jun 2025 – May 2026"
   },

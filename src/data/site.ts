@@ -16,7 +16,7 @@ export const SITE = {
 
 export const HERO = {
   lede:
-    "AI Product Manager at Delta Exchange. I build perpetuals and AI-driven trading systems — and run a Claude-powered bot trading real capital across crypto and Indian equities.",
+    "AI Product Manager at Delta Exchange. I build perpetuals and AI-driven trading systems that run on real capital — crypto and Indian markets.",
   kicker: "Delta Exchange",
 } as const;
 
@@ -44,7 +44,7 @@ export const HERO_STATS: HeroStat[] = [
 export const BIO = {
   paragraphs: [
     "I'm an AI Product Manager at Delta Exchange, building perpetual futures and AI-driven trading tools at India's largest crypto derivatives exchange. Earlier I founded Timelock Trade (oracle-less, liquidation-free derivatives) and led 0→1 DeFi products at Diffusion Labs, with earlier stints at Stader, Heru, and Tykhe Ventures.",
-    "I blend math and finance to ship products and quant strategies that live at the intersection of models and markets — from protocol design to Claude-driven bots that trade real capital.",
+    "I ship products and quant systems where models meet markets — protocol design, exchange tooling, and AI bots that trade real capital.",
   ],
   highlights: [
     "AI Product Manager, Delta Exchange — perpetuals and AI-driven trading products.",

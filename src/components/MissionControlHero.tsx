@@ -35,7 +35,7 @@ export async function MissionControlHero() {
             Charandeep Kapoor
           </h1>
           <p className="mt-6 max-w-[46ch] font-serif text-[clamp(1.2rem,2vw,1.6rem)] leading-[1.45] text-ink">
-            I build AI that trades markets — <span className="text-accent">and makes money</span>.
+            I build AI that trades markets — <span className="text-accent">for real</span>.
           </p>
 
           <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1.5 font-mono text-[12.5px] text-[rgb(var(--mute))]">

@@ -16,7 +16,7 @@ export default function WorkPage() {
       <PageIntro
         kicker="Proof of work"
         title="Things I've shipped"
-        lede="Live products and trading systems — most of it built fast with Claude."
+        lede="Live products and trading systems on real capital — not mockups, not vapor."
       />
 
       <section className="py-10 rule">

@@ -65,7 +65,7 @@ export default async function TrackRecordPage() {
       <PageIntro
         kicker="Track record"
         title="Real capital, in the open"
-        lede="Stocky (AI, verified) and live Dhan (rule-based algo) — both on real capital."
+        lede="Stocky (AI, verified) and live Dhan (rule-based algo) — same book I run, shown for transparency."
       />
 
       <StockyTrackRecord />

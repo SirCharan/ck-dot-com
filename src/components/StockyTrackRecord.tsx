@@ -105,7 +105,7 @@ export function StockyTrackRecord() {
         </span>
       </div>
       <p className="mb-6 max-w-[52ch] font-serif text-[1.05rem] leading-[1.6] text-[rgb(var(--bone)/0.84)]">
-        Fine-tuned <span className="text-ink">{H.method}</span> placed every trade itself — Indian F&amp;O and
+        <span className="text-ink">{H.method}</span> placed every trade itself — Indian F&amp;O and
         commodities · {H.run} · now retired.
       </p>
 
