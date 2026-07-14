@@ -20,7 +20,7 @@ export function HeroEquityView({ data }: { data: Payload | null }) {
   const enough = series.length >= 2;
 
   return (
-    <div className="mc-glass relative min-h-[16rem] rounded-2xl p-4">
+    <div className="mc-panel relative min-h-[16rem] rounded-2xl p-4">
       <div className="flex items-center justify-between font-mono text-[11px] tracking-[0.06em] text-[rgb(var(--faint))]">
         <span>portfolio · Dhan · return %</span>
         <span className="flex items-center gap-2 text-accent">

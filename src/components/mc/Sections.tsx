@@ -30,7 +30,7 @@ function Eyebrow({ n, label }: { n?: string; label: string }) {
 
 export function McHeader() {
   return (
-    <header className="sticky top-0 z-30 border-b border-[rgb(var(--rule))] bg-[rgb(var(--bg)/0.9)] backdrop-blur-md">
+    <header className="sticky top-0 z-30 border-b border-[rgb(var(--rule))] bg-[rgb(var(--bg))]">
       <div className={`flex items-center justify-between py-4 ${shell}`}>
         <Link href="/" className="flex items-center gap-2 font-grotesk text-[15px] font-bold tracking-tight text-ink">
           <Image
@@ -70,7 +70,7 @@ export function McHeader() {
 
 export function McWork() {
   return (
-    <section id="work" className="mc-section-neon border-y border-[rgb(var(--rule))] py-20 md:py-28">
+    <section id="work" className="border-y border-[rgb(var(--rule))] py-20 md:py-28">
       <div className="mc-section-inner">
         <FadeIn>
           <Eyebrow n="01" label="Selected work" />
@@ -121,7 +121,7 @@ function AccountBlock({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mc-glass flex h-full flex-col rounded-2xl p-6 md:p-7">
+    <div className="mc-panel flex h-full flex-col rounded-2xl p-6 md:p-7">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2.5">
           <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[rgb(var(--faint))]">
@@ -159,7 +159,7 @@ export async function McTrackRecord() {
       : "—";
 
   return (
-    <section className="mc-section-neon border-y border-[rgb(var(--rule))]">
+    <section className="border-y border-[rgb(var(--rule))]">
       <div className="mc-section-inner py-20 md:py-28">
         <FadeIn>
           <Eyebrow n="02" label="Track record" />

@@ -155,6 +155,13 @@
     color: rgb(var(--ink));
     text-decoration-color: rgb(var(--ink) / 0.7);
   }
+
+  /* The ONE raised surface: a faint ivory film + hairline (replaces the old
+     glass panel; no blur, no glow). Separation is surface + hairline + space. */
+  .mc-panel {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+  }
 }
 
 /* Retired dot-grid/aurora — now a bare, near-inert warm base.
@@ -232,7 +239,7 @@
   inset: 0;
   z-index: 50;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 140px 140px;
   background-repeat: repeat;
@@ -1118,81 +1125,9 @@
   .blog-post-nav-title { font-size: 0.85rem; }
 }
 
-/* ── Mission-Control ambient backdrop: neon bloom + grid + scanline sweep ──
-   All layers are fixed inset:0 pointer-events:none. Use inset:0 (never 100vw)
-   so the scrollbar never triggers horizontal overflow. Content sits at z-10. */
-.mc-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(1200px 620px at 50% -12%, rgb(var(--accent) / 0.07), transparent 68%),
-    radial-gradient(900px 700px at 100% 110%, rgb(var(--accent) / 0.04), transparent 60%),
-    repeating-linear-gradient(to right, rgb(var(--line-hi) / 0.22) 0 1px, transparent 1px 40px),
-    repeating-linear-gradient(to bottom, rgb(var(--line-hi) / 0.22) 0 1px, transparent 1px 40px),
-    rgb(var(--bg));
-  -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 55%, rgb(0 0 0 / 0.6) 100%);
-  mask-image: radial-gradient(circle at 50% 40%, #000 55%, rgb(0 0 0 / 0.6) 100%);
-}
-.mc-scan {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: repeating-linear-gradient(to bottom, rgb(var(--ink) / 0.035) 0 1px, transparent 1px 4px);
-  opacity: 0.5;
-}
-.mc-scan::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 42vh;
-  background: linear-gradient(to bottom, transparent, rgb(var(--accent) / 0.05), transparent);
-  animation: mc-sweep 7s linear infinite;
-}
-@keyframes mc-sweep {
-  from { transform: translateY(-45vh); }
-  to { transform: translateY(105vh); }
-}
+/* PHOSPHOR: ambient neon layer, scanline sweep, and section neon washes
+   removed. Sections are plain bordered blocks; separation is hairline + space. */
 
-/* ── Section neon wash — full-bleed glow, content keeps side margins ── */
-.mc-section-neon {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-}
-.mc-section-neon::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 55% at 12% 20%, rgb(var(--accent) / 0.14), transparent 58%),
-    radial-gradient(ellipse 55% 50% at 88% 75%, rgb(var(--accent) / 0.10), transparent 55%),
-    radial-gradient(ellipse 90% 40% at 50% 100%, rgb(var(--accent) / 0.06), transparent 60%),
-    linear-gradient(180deg, rgb(var(--panel) / 0.35), rgb(var(--bg) / 0.2) 40%, rgb(var(--panel) / 0.4));
-}
-.mc-section-neon::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.35;
-  background-image:
-    linear-gradient(rgb(var(--accent) / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(var(--accent) / 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 20%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 20%, transparent 75%);
-}
-.mc-section-neon > * {
-  position: relative;
-  z-index: 1;
-}
 /* Content column: intentional side margin vs full shell */
 .mc-section-inner {
   margin-inline: auto;
@@ -1213,70 +1148,9 @@
   }
 }
 
-/* ── Console frame: fixed inset border + corner brackets, under the header ── */
-.mc-frame {
-  position: fixed;
-  inset: var(--hdr) 0 0 0;
-  z-index: 4;
-  pointer-events: none;
-}
-.mc-frame-box {
-  position: absolute;
-  inset: var(--frame-inset);
-  border: 1px solid rgb(var(--rule));
-  box-shadow: inset 0 0 60px rgb(var(--accent) / 0.04);
-}
-.mc-frame-corner { position: absolute; color: rgb(var(--accent) / 0.5); }
+/* PHOSPHOR: console frame + corner brackets, the blurred glass panel, and
+   side rails + neon comet removed. The one raised surface is the mc-panel. */
 
-/* ── Glass panel: blur + highlight border on the near-black ground ── */
-.mc-glass {
-  background:
-    linear-gradient(rgb(255 255 255 / 0.03), rgb(255 255 255 / 0.03)),
-    rgb(var(--panel) / 0.55);
-  -webkit-backdrop-filter: blur(10px) saturate(1.1);
-  backdrop-filter: blur(10px) saturate(1.1);
-  border: 1px solid rgb(255 255 255 / 0.06);
-  border-top-color: rgb(var(--line-hi));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 20px 44px -22px rgb(0 0 0 / 0.65);
-}
-
-/* ── Side rails (kept) — now aligned to the console frame line ── */
-.mc-rail {
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  width: 2px;
-  z-index: 6;
-  overflow: hidden;
-  background: rgb(var(--rule));
-  pointer-events: none;
-}
-.mc-rail-l { left: var(--frame-inset); }
-.mc-rail-r { right: var(--frame-inset); }
-.mc-rail-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  background: rgb(var(--accent));
-  opacity: 0.45;
-  box-shadow: 0 0 6px rgb(var(--accent) / 0.5);
-}
-.mc-comet {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 22%;
-  border-radius: 3px;
-  background: linear-gradient(to bottom, transparent, rgb(var(--accent)), transparent);
-  box-shadow: 0 0 16px rgb(var(--accent) / 0.9);
-  animation: mc-flow 3.2s linear infinite;
-}
-.mc-comet-2 { animation-duration: 4s; animation-delay: 1.6s; }
-@keyframes mc-flow {
-  from { transform: translateY(-130%); }
-  to { transform: translateY(620%); }
-}
 /* ── Hero scroll cue — a bobbing dot inside a mouse outline ── */
 .mc-scrollcue-dot { animation: mc-bob 1.8s ease-in-out infinite; }
 @keyframes mc-bob {
@@ -1285,7 +1159,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mc-comet { display: none; }
-  .mc-scan::after { animation: none; display: none; }
   .mc-scrollcue-dot { animation: none; }
 }

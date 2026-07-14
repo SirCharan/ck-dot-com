@@ -2,8 +2,8 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach } from "vitest";
 
-// jsdom lacks these APIs; framer-motion (FadeIn's whileInView) and ScrollRail
-// need them present so components render instead of throwing under test.
+// jsdom lacks these APIs; framer-motion (FadeIn's whileInView) and the
+// reduced-motion guards need them present so components render under test.
 if (!("IntersectionObserver" in globalThis)) {
   class IO {
     root = null;

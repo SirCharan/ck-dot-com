@@ -39,4 +39,9 @@ describe("index.css PHOSPHOR contract", () => {
   it("uses no text-shadow glow anywhere (banned tell #1)", () => {
     expect(css).not.toMatch(/text-shadow/);
   });
+
+  it("uses no backdrop-filter/blur outside the blog (banned tell #3)", () => {
+    // .blog-root is exempt; it carries no blur, so a whole-file check holds.
+    expect(css).not.toMatch(/backdrop-filter|backdrop-blur/);
+  });
 });

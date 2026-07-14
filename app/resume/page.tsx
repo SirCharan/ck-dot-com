@@ -98,7 +98,7 @@ export default function ResumePage() {
         <MetaGutter meta={["§ 02", "by the numbers"]}>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {STATS.map((s) => (
-              <div key={s.label} className="mc-glass rounded-xl p-5">
+              <div key={s.label} className="mc-panel rounded-xl p-5">
                 <div className="num text-[1.9rem] leading-none tracking-tight text-ink">{s.value}</div>
                 <div className="mt-2 font-mono text-[11px] leading-snug text-[rgb(var(--bone-dim))]">{s.label}</div>
               </div>
@@ -113,7 +113,7 @@ export default function ResumePage() {
         <MetaGutter meta={["§ 03", "skills"]}>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {SKILLS.map((s) => (
-              <div key={s.group} className="mc-glass rounded-xl p-5">
+              <div key={s.group} className="mc-panel rounded-xl p-5">
                 <Caption className="text-[rgb(var(--bone))]">{s.group}</Caption>
                 <ul className="mt-3 space-y-1.5">
                   {s.items.map((i) => (
@@ -144,7 +144,7 @@ export default function ResumePage() {
         <Rule className="mb-8" />
         <MetaGutter meta={["§ 05", "credentials"]}>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="mc-glass rounded-xl p-5">
+            <div className="mc-panel rounded-xl p-5">
               <Caption className="text-[rgb(var(--bone))]">Education & honors</Caption>
               <ul className="mt-3 border-t border-[rgb(var(--bone)/0.11)]">
                 {ACADEMICS.map((a) => (
@@ -152,7 +152,7 @@ export default function ResumePage() {
                 ))}
               </ul>
             </div>
-            <div className="mc-glass rounded-xl p-5">
+            <div className="mc-panel rounded-xl p-5">
               <Caption className="text-[rgb(var(--bone))]">Certifications</Caption>
               <ul className="mt-3 border-t border-[rgb(var(--bone)/0.11)]">
                 {CERTIFICATIONS.map((c) => (

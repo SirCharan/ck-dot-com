@@ -1,18 +1,11 @@
 import type { ReactNode } from "react";
 import { McHeader, McContact } from "./mc/Sections";
-import { ScrollRail } from "./mc/ScrollRail";
-import { AmbientBackdrop } from "./mc/AmbientBackdrop";
-import { ConsoleFrame } from "./mc/ConsoleFrame";
 
-/** Mission-control chrome shared by the homepage's siblings (section pages).
- * Mirrors the landing (app/page.tsx): ambient neon backdrop + console frame +
- * scroll rails behind content, content lifted to z-10. */
+/** Shared shell for the homepage's sibling section pages: one header, content,
+ * one footer. PHOSPHOR: no ambient chrome — separation is hairline + space. */
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div className="mc relative min-h-dvh overflow-x-clip">
-      <AmbientBackdrop />
-      <ConsoleFrame />
-      <ScrollRail />
       <McHeader />
       <div className="relative z-10">
         <main className="mx-auto max-w-[var(--mc-shell)] px-6 md:px-8">{children}</main>
