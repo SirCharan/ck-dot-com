@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { motion, useReducedMotion } from "framer-motion";
 import { HeroCurve } from "./HeroCurve";
+import { MoneyMachine } from "./MoneyMachine";
 import { inr } from "@/lib/format";
 import type { Payload } from "@/lib/trackRecord";
 import { PROOF } from "@/components/spikes/proof";
@@ -217,9 +218,12 @@ export function HeroStage({ dhan }: { dhan: Payload | null }) {
         </h1>
 
         <p className="tx-lede tx-serif tx-hero-copy-in">
-          I build AI that trades markets — <em>for real</em>. Verified bots, live signals, products
-          people actually use.
+          Using AI to build a <em>money printing machine</em>.
         </p>
+
+        <div className="tx-hero-copy-in">
+          <MoneyMachine />
+        </div>
 
         <div className="tx-meta-row tx-mono tx-hero-copy-in">
           <a href={PROOF.links.timelock} target="_blank" rel="noreferrer">
