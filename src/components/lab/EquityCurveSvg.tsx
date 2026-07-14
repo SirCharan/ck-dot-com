@@ -13,7 +13,7 @@ export function EquityCurveSvg<T extends Pt>({
   valueOf,
   height = 200,
   stroke = "rgb(var(--accent))",
-  glow = true,
+  glow = false,
   showAxes = false,
   formatY,
   provisional = false,

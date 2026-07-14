@@ -144,16 +144,16 @@
   }
 
   .link-ink {
-    color: rgb(var(--amber));
+    color: rgb(var(--ink));
     text-decoration: underline;
-    text-decoration-color: rgb(var(--amber) / 0.4);
+    text-decoration-color: rgb(var(--ink) / 0.3);
     text-underline-offset: 3px;
     transition: color 150ms ease, text-decoration-color 150ms ease;
   }
 
   .link-ink:hover {
-    color: rgb(var(--bone));
-    text-decoration-color: rgb(var(--bone));
+    color: rgb(var(--ink));
+    text-decoration-color: rgb(var(--ink) / 0.7);
   }
 }
 

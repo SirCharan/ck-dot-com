@@ -76,7 +76,7 @@ export function andreaWorkItem(): WorkBentoItem {
 
 function Chip({ href, children, internal }: { href: string; children: React.ReactNode; internal?: boolean }) {
   const cls =
-    "relative z-10 font-mono text-[12px] text-[rgb(var(--mute))] transition-colors hover:text-accent";
+    "relative z-10 font-mono text-[12px] text-[rgb(var(--mute))] transition-colors hover:text-ink";
   return internal ? (
     <Link href={href} className={cls}>
       {children}
@@ -100,7 +100,7 @@ function Card({
   const detailHref = item.detail ?? "#";
   return (
     <article
-      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)] transition-[border-color,box-shadow] hover:border-[rgb(var(--accent)/0.45)] hover:shadow-[0_0_28px_-8px_rgb(var(--accent)/0.35)] ${className}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)] transition-[border-color] hover:border-[rgb(var(--ink)/0.16)] ${className}`}
     >
       <Link href={detailHref} className="absolute inset-0 z-0" aria-label={`${item.title} details`} />
       <div className="relative aspect-[16/10] overflow-hidden border-b border-[rgb(var(--rule))]">
@@ -119,7 +119,7 @@ function Card({
       </div>
       <div className="relative z-10 flex flex-1 flex-col p-4 md:p-5">
         <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-          <h3 className="font-grotesk text-[clamp(1.15rem,2vw,1.45rem)] font-bold tracking-[-0.01em] text-accent transition-[text-shadow] group-hover:[text-shadow:0_0_18px_rgb(var(--accent)/0.4)]">
+          <h3 className="font-grotesk text-[clamp(1.15rem,2vw,1.45rem)] font-bold tracking-[-0.01em] text-ink">
             {item.title}
           </h3>
           <div className="flex flex-wrap gap-x-3">
@@ -166,7 +166,7 @@ export function WorkBento({
         </div>
       )}
       {footerHref && (
-        <Link href={footerHref} className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline">
+        <Link href={footerHref} className="mt-6 inline-block font-mono text-[13px] text-ink underline decoration-[rgb(var(--ink)/0.3)] underline-offset-2 hover:decoration-[rgb(var(--ink)/0.6)]">
           {footerLabel}
         </Link>
       )}

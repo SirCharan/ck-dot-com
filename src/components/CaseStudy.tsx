@@ -5,7 +5,7 @@ import { Caption, Figure, MetaGutter, Rule } from "./lab/Primitives";
 
 const TONE: Record<string, string> = {
   pos: "text-[rgb(var(--pos))]",
-  accent: "text-[rgb(var(--amber))]",
+  accent: "text-[rgb(var(--ink))]",
   neutral: "text-[rgb(var(--bone))]",
 };
 
@@ -141,9 +141,9 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
                 href={data.links[0].href}
                 target="_blank"
                 rel="noreferrer"
-                className="group grid h-56 place-items-center border border-dashed border-[rgb(var(--bone)/0.16)] transition-colors hover:border-[rgb(var(--amber)/0.5)]"
+                className="group grid h-56 place-items-center border border-dashed border-[rgb(var(--bone)/0.16)] transition-colors hover:border-[rgb(var(--ink)/0.3)]"
               >
-                <span className="num text-[0.8rem] uppercase tracking-[0.14em] text-[rgb(var(--bone-dim))] group-hover:text-[rgb(var(--amber))]">
+                <span className="num text-[0.8rem] uppercase tracking-[0.14em] text-[rgb(var(--bone-dim))] group-hover:text-[rgb(var(--ink))]">
                   ▶ view live · {new URL(data.links[0].href).host}
                 </span>
               </a>

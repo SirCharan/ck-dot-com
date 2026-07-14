@@ -99,7 +99,7 @@ export default function ResumePage() {
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {STATS.map((s) => (
               <div key={s.label} className="mc-glass rounded-xl p-5">
-                <div className="num text-[1.9rem] leading-none tracking-tight text-accent">{s.value}</div>
+                <div className="num text-[1.9rem] leading-none tracking-tight text-ink">{s.value}</div>
                 <div className="mt-2 font-mono text-[11px] leading-snug text-[rgb(var(--bone-dim))]">{s.label}</div>
               </div>
             ))}

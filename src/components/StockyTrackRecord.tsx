@@ -97,7 +97,7 @@ export function StockyTrackRecord() {
     <section className="pt-2" aria-label="Stocky track record">
       <div className="mb-3 flex flex-wrap items-center gap-2.5">
         <span className="kicker">Stocky · Zerodha</span>
-        <span className="rounded-full border border-[rgb(var(--accent)/0.45)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-accent">
+        <span className="rounded-full border border-[rgb(var(--ink)/0.3)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-ink">
           AI
         </span>
         <span className="rounded-full border border-[rgb(var(--faint)/0.4)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-[rgb(var(--faint))]">
@@ -114,7 +114,7 @@ export function StockyTrackRecord() {
           <span>
             Zerodha · return % · {w.start} → {w.end}
           </span>
-          <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+          <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-[rgb(var(--ink)/0.3)] underline-offset-2 hover:decoration-[rgb(var(--ink)/0.6)]">
             verified ↗
           </a>
         </div>
@@ -127,7 +127,7 @@ export function StockyTrackRecord() {
           </span>
           <span>
             ·{" "}
-            <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent">
+            <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ink">
               {H.profit} net verified ↗
             </a>
           </span>
@@ -142,11 +142,10 @@ export function StockyTrackRecord() {
           <li key={m.date} className="relative pb-8 last:pb-0">
             <span
               aria-hidden
-              className="absolute -left-[27px] top-1.5 h-[9px] w-[9px] rounded-full bg-accent"
-              style={{ boxShadow: "0 0 8px rgb(var(--accent) / 0.7)" }}
+              className="absolute -left-[27px] top-1.5 h-[9px] w-[9px] rounded-full bg-[rgb(var(--faint))]"
             />
             <div className="flex flex-wrap items-baseline gap-x-3">
-              <span className="font-mono text-[12px] uppercase tracking-[0.1em] text-accent">{m.date}</span>
+              <span className="font-mono text-[12px] uppercase tracking-[0.1em] text-[rgb(var(--mute))]">{m.date}</span>
               <h3 className="font-grotesk text-[1.05rem] font-semibold text-ink">{m.title}</h3>
               {m.stat && <span className="font-mono text-[11px] text-[rgb(var(--faint))]">· {m.stat}</span>}
             </div>
@@ -178,7 +177,7 @@ export function StockyTrackRecord() {
 
       <Link
         href="/blog/stocky-ai"
-        className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline"
+        className="mt-6 inline-block font-mono text-[13px] text-ink underline decoration-[rgb(var(--ink)/0.3)] underline-offset-2 hover:decoration-[rgb(var(--ink)/0.6)]"
       >
         Full story →
       </Link>

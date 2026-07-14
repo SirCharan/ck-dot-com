@@ -216,7 +216,7 @@ export default async function TrackRecordPage() {
             href={SITE.socials.topmate}
             target="_blank"
             rel="noreferrer"
-            className="num mt-6 inline-block bg-[rgb(var(--amber))] px-5 py-2.5 text-[0.8rem] font-medium uppercase tracking-[0.08em] text-[rgb(var(--ink-void))] transition-opacity hover:opacity-90"
+            className="num mt-6 inline-block bg-[rgb(var(--ink))] px-5 py-2.5 text-[0.8rem] font-medium uppercase tracking-[0.08em] text-[rgb(var(--bg))] transition-opacity hover:opacity-90"
           >
             Book a call on Topmate ↗
           </a>

@@ -22,7 +22,7 @@ const shell = "mx-auto max-w-[var(--mc-shell)] px-6 md:px-8";
 function Eyebrow({ n, label }: { n?: string; label: string }) {
   return (
     <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-[rgb(var(--faint))]">
-      {n && <span className="text-accent">{n} / </span>}
+      {n && <span>{n} / </span>}
       {label}
     </div>
   );
@@ -38,12 +38,10 @@ export function McHeader() {
             alt=""
             width={36}
             height={36}
-            className="h-8 w-8 object-contain drop-shadow-[0_0_10px_rgb(var(--accent)/0.5)]"
+            className="h-8 w-8 object-contain"
             aria-hidden
           />
-          <span>
-            CK<span className="text-accent">.</span>
-          </span>
+          <span>CK.</span>
         </Link>
         <nav className="hidden gap-6 font-mono text-[12.5px] text-[rgb(var(--mute))] sm:flex">
           <Link href="/work" className="hover:text-ink">
@@ -61,7 +59,7 @@ export function McHeader() {
         </nav>
         <a
           href={SITE.socials.topmate}
-          className="rounded-md bg-accent px-3 py-1.5 font-mono text-[12.5px] text-[rgb(var(--bg))]"
+          className="rounded-md bg-[rgb(var(--ink))] px-3 py-1.5 font-mono text-[12.5px] text-[rgb(var(--bg))]"
         >
           Book a call
         </a>
@@ -88,7 +86,7 @@ export function McWork() {
 function Chp({ children, tone }: { children: React.ReactNode; tone: "on" | "off" }) {
   const cls =
     tone === "on"
-      ? "border-[rgb(var(--accent)/0.45)] text-accent"
+      ? "border-[rgb(var(--ink)/0.3)] text-ink"
       : "border-[rgb(var(--faint)/0.4)] text-[rgb(var(--faint))]";
   return (
     <span className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] ${cls}`}>
@@ -132,7 +130,7 @@ function AccountBlock({
           <Chp tone={methodOn ? "on" : "off"}>{method}</Chp>
           <Chp tone={statusOn ? "on" : "off"}>{status}</Chp>
         </div>
-        <span className="font-mono text-[11px] tracking-[0.06em] text-accent">{meta}</span>
+        <span className="font-mono text-[11px] tracking-[0.06em] text-[rgb(var(--faint))]">{meta}</span>
       </div>
 
       <div className="mt-5 flex flex-1 flex-col gap-5">
@@ -140,7 +138,7 @@ function AccountBlock({
           <div className="font-grotesk text-[clamp(1.7rem,3.2vw,2.5rem)] font-bold tabular-nums leading-none text-ink">
             {headline}
           </div>
-          <div className="mt-2 font-mono text-[12.5px] text-accent">{sub}</div>
+          <div className="mt-2 font-mono text-[12.5px] text-[rgb(var(--mute))]">{sub}</div>
           <p className="mt-3 max-w-[44ch] text-[14.5px] leading-[1.5] text-[rgb(var(--mute))]">{blurb}</p>
           <div className="mt-4 font-mono text-[13px]">{footer}</div>
         </div>
@@ -184,7 +182,7 @@ export async function McTrackRecord() {
               </>
             }
             footer={
-              <a href={STOCKY_VERIFIED} className="text-accent hover:underline">
+              <a href={STOCKY_VERIFIED} className="text-ink underline decoration-[rgb(var(--ink)/0.3)] underline-offset-2 hover:decoration-[rgb(var(--ink)/0.6)]">
                 Verified PnL ↗
               </a>
             }
@@ -208,7 +206,7 @@ export async function McTrackRecord() {
               </>
             }
             footer={
-              <Link href="/track-record" className="text-ink hover:text-accent">
+              <Link href="/track-record" className="text-ink hover:text-ink">
                 Live track record →
               </Link>
             }
@@ -259,7 +257,7 @@ export function McWriting() {
           </li>
         ))}
       </ul>
-      <Link href="/blog" className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline">
+      <Link href="/blog" className="mt-6 inline-block font-mono text-[13px] text-ink underline decoration-[rgb(var(--ink)/0.3)] underline-offset-2 hover:decoration-[rgb(var(--ink)/0.6)]">
         All writing →
       </Link>
     </section>
@@ -278,7 +276,7 @@ export function McAbout() {
           <p className="mt-3 font-mono text-[13px] text-[rgb(var(--mute))]">
             {BIO.highlights[3]}
           </p>
-          <Link href="/resume" className="mt-6 inline-block font-mono text-[13px] text-accent hover:underline">
+          <Link href="/resume" className="mt-6 inline-block font-mono text-[13px] text-ink underline decoration-[rgb(var(--ink)/0.3)] underline-offset-2 hover:decoration-[rgb(var(--ink)/0.6)]">
             About &amp; résumé →
           </Link>
         </FadeIn>
@@ -295,24 +293,24 @@ export function McContact() {
         <Eyebrow n="05" label="Contact" />
         <h2 className="mt-4 font-grotesk text-[clamp(1.8rem,4.5vw,3.4rem)] font-bold leading-[1.02] tracking-[-0.02em] text-ink">
           Let&apos;s build something.{" "}
-          <a href={s.topmate} className="text-accent hover:underline">
+          <a href={s.topmate} className="text-ink underline decoration-[rgb(var(--ink)/0.3)] underline-offset-2 hover:decoration-[rgb(var(--ink)/0.6)]">
             Book a call ↗
           </a>
         </h2>
         <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[13px] text-[rgb(var(--mute))]">
-          <a href={s.topmate} className="hover:text-accent">
+          <a href={s.topmate} className="hover:text-ink">
             Topmate ↗
           </a>
-          <a href={s.twitter} className="hover:text-accent">
+          <a href={s.twitter} className="hover:text-ink">
             X / @{SITE.handle}
           </a>
-          <a href={s.linkedin} className="hover:text-accent">
+          <a href={s.linkedin} className="hover:text-ink">
             LinkedIn
           </a>
-          <a href={s.github} className="hover:text-accent">
+          <a href={s.github} className="hover:text-ink">
             GitHub
           </a>
-          <a href={s.telegram} className="hover:text-accent">
+          <a href={s.telegram} className="hover:text-ink">
             Telegram
           </a>
           <span className="text-[rgb(var(--faint))]">
@@ -326,7 +324,7 @@ export function McContact() {
             alt={`${SITE.name} CK monogram signature`}
             width={200}
             height={200}
-            className="h-24 w-auto opacity-95 drop-shadow-[0_0_22px_rgb(var(--accent)/0.5)] sm:h-28"
+            className="h-24 w-auto opacity-95 sm:h-28"
             priority={false}
           />
           <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[rgb(var(--faint))]">

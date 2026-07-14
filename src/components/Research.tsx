@@ -13,7 +13,7 @@ export function Research() {
                 href={r.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="display text-lg text-ink hover:text-accent transition-colors"
+                className="display text-lg text-ink hover:text-ink transition-colors"
               >
                 {r.title}
               </a>

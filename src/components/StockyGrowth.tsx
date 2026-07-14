@@ -20,7 +20,7 @@ export function StockyGrowth() {
       <div className="rounded-2xl border border-[rgb(var(--rule))] border-t-[rgb(var(--line-hi))] bg-[rgb(var(--panel))] p-5">
         <div className="flex items-center justify-between font-mono text-[11px] tracking-[0.06em] text-[rgb(var(--faint))]">
           <span>Zerodha · return % · {w.start} → {w.end}</span>
-          <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+          <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-[rgb(var(--ink)/0.3)] underline-offset-2 hover:decoration-[rgb(var(--ink)/0.6)]">
             verified ↗
           </a>
         </div>
@@ -39,7 +39,7 @@ export function StockyGrowth() {
           </span>
           <span>
             ·{" "}
-            <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent">
+            <a href={H.verifiedUrl} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-ink">
               {H.profit} net verified ↗
             </a>
           </span>
