@@ -119,12 +119,12 @@
     font-feature-settings: "tnum", "lnum", "zero";
   }
 
-  /* Display role — Space Grotesk, tight, LEFT-aligned always. */
+  /* Display role — Bricolage Grotesque, weight 800, tight, LEFT-aligned always. */
   .display {
     font-family: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
-    font-weight: 500;
+    font-weight: 800;
     line-height: 1.08;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     text-align: left;
   }
 
