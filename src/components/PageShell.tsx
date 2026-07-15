@@ -1,13 +1,14 @@
 import type { ReactNode } from "react";
-import { TenXShell } from "@/components/tenx/TenXShell";
-import { TenXPageIntro } from "@/components/tenx/TenXPageIntro";
+import { PressShell, PressFrame } from "@/press/components/PressShell";
+import { pressSans, pressSerif, pressMono } from "@/press/fonts";
 
-/**
- * Site shell for dark app routes — now TenX (Grok), not Mission-Control (Claude).
- * Existing pages keep importing PageShell / PageIntro; they get the TenX system.
- */
+/** Dark routes use PROOF PRESS shell (greenfield). */
 export function PageShell({ children }: { children: ReactNode }) {
-  return <TenXShell>{children}</TenXShell>;
+  return (
+    <div className={`${pressSans.variable} ${pressSerif.variable} ${pressMono.variable}`}>
+      <PressShell>{children}</PressShell>
+    </div>
+  );
 }
 
 export function PageIntro({
@@ -19,5 +20,5 @@ export function PageIntro({
   title: string;
   lede: string;
 }) {
-  return <TenXPageIntro kicker={kicker} title={title} lede={lede} />;
+  return <PressFrame kicker={kicker} title={title} lede={lede} />;
 }

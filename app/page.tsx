@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { TenXHome } from "@/components/tenx/TenXHome";
+import { PressHome } from "@/press/components/PressHome";
 import { getTrackRecord } from "@/lib/trackRecord";
-import "@/tenx.css";
+import { pressSans, pressSerif, pressMono } from "@/press/fonts";
 
 export const metadata: Metadata = {
-  title: "Charandeep Kapoor — AI that trades real markets",
+  title: "Charandeep Kapoor — Proof Press",
   description:
-    "AI Product Manager & Engineer at Delta Exchange. Stocky +110% verified. Drishti live signals. Timelock founder. Real capital, real systems.",
+    "Using AI to build a money printing machine. Stocky +110% verified. Drishti live. Timelock founder. Product & AI at Delta Exchange.",
   robots: { index: false, follow: false },
 };
 
 export default async function Home() {
   const dhan = await getTrackRecord();
-  return <TenXHome dhan={dhan} />;
+  return (
+    <div className={`${pressSans.variable} ${pressSerif.variable} ${pressMono.variable}`}>
+      <PressHome dhan={dhan} />
+    </div>
+  );
 }
