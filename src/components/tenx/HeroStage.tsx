@@ -70,12 +70,13 @@ export function HeroStage({ dhan }: { dhan: Payload | null }) {
 
       const ctx = gsap.context(() => {
         // Prevent FOUC: hide choreographed bits immediately
-        gsap.set(".tx-name-line", { yPercent: 110, opacity: 0 });
-        gsap.set([".tx-hero-kicker", ".tx-hero-copy-in"], { y: 18, opacity: 0 });
-        gsap.set(".tx-proof-card", { y: 36, opacity: 0, scale: 0.97 });
-        gsap.set(".tx-scroll-cue", { opacity: 0 });
-        gsap.set(".tx-hero-orb", { scale: 0.65, opacity: 0 });
-        gsap.set(".tx-hero-orb-2", { scale: 0.7, opacity: 0 });
+        // Anti-slop: content stays visible; motion only lifts in (no opacity trap)
+        gsap.set(".tx-name-line", { yPercent: 40, opacity: 0.35 });
+        gsap.set([".tx-hero-kicker", ".tx-hero-copy-in"], { y: 12, opacity: 0.4 });
+        gsap.set(".tx-proof-card", { y: 20, opacity: 0.5, scale: 0.99 });
+        gsap.set(".tx-scroll-cue", { opacity: 0.3 });
+        gsap.set(".tx-hero-orb", { scale: 0.9, opacity: 0.2 });
+        gsap.set(".tx-hero-orb-2", { scale: 0.9, opacity: 0.15 });
 
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
@@ -203,9 +204,8 @@ export function HeroStage({ dhan }: { dhan: Payload | null }) {
       <div className="tx-hero-orb tx-hero-orb-2" aria-hidden />
 
       <div className="tx-hero-left">
-        <p className="tx-kicker tx-mono tx-hero-kicker">
-          <span className="tx-kicker-dot" aria-hidden />
-          Live systems · real capital · Delta Exchange
+        <p className="tx-kicker tx-hero-kicker">
+          Product &amp; AI at Delta Exchange
         </p>
 
         <h1 className="tx-name">

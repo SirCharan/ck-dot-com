@@ -108,7 +108,7 @@ function Card({
   const detailHref = item.detail ?? "#";
   return (
     <article
-      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)] transition-[border-color,box-shadow,transform] hover:border-[rgb(var(--accent)/0.45)] hover:shadow-[0_20px_50px_-28px_rgb(var(--accent)/0.45)] hover:-translate-y-1 ${className}`}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgb(var(--rule))] bg-[rgb(var(--panel)/0.55)] transition-[border-color,box-shadow,transform] hover:border-[rgb(var(--accent)/0.45)] hover:border-[rgb(var(--accent)/0.4)] ${className}`}
     >
       <Link href={detailHref} className="absolute inset-0 z-0" aria-label={`${item.title} details`} />
       <div className="relative aspect-[16/10] overflow-hidden border-b border-[rgb(var(--rule))]">
