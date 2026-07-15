@@ -73,8 +73,8 @@ export function HeroCurve({
       >
         <defs>
           <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#3dfb86" stopOpacity="0.28" />
-            <stop offset="100%" stopColor="#3dfb86" stopOpacity="0" />
+            <stop offset="0%" stopColor="#5fd68a" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="#5fd68a" stopOpacity="0" />
           </linearGradient>
           <filter id={glowId} x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="2.5" result="b" />
@@ -106,7 +106,7 @@ export function HeroCurve({
           className="tx-curve-line"
           d={lineD}
           fill="none"
-          stroke="#3dfb86"
+          stroke="#5fd68a"
           strokeWidth="2.25"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -117,7 +117,7 @@ export function HeroCurve({
         {last && (
           <g className="tx-curve-dot">
             <circle cx={last[0]} cy={last[1]} r="8" fill="rgba(61,251,134,0.2)" />
-            <circle cx={last[0]} cy={last[1]} r="3.5" fill="#3dfb86" />
+            <circle cx={last[0]} cy={last[1]} r="3.5" fill="#5fd68a" />
           </g>
         )}
       </svg>
