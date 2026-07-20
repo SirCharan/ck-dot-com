@@ -4,7 +4,7 @@ export function PressMachine() {
     <div className="press-machine" aria-label="Power, hardware, and compute into an AI machine that prints money">
       <svg viewBox="0 0 520 172" fill="none" role="img">
         <defs>
-          <linearGradient id="pf" x1="0" y1="0" x2="1" y2="0">
+          <linearGradient id="pf" gradientUnits="userSpaceOnUse" x1="108" y1="0" x2="394" y2="0">
             <stop offset="0%" stopColor="#4ecf7a" stopOpacity="0.15" />
             <stop offset="100%" stopColor="#4ecf7a" stopOpacity="0.95" />
           </linearGradient>
