@@ -82,6 +82,17 @@ export function andreaWorkItem(): WorkBentoItem {
   };
 }
 
+export function secondBrainWorkItem(): WorkBentoItem {
+  return {
+    title: "Second Brain",
+    line: "Local-first memory for Claude Code — every AI session captured to Markdown on your disk. Open source.",
+    cover: "/images/work/second-brain/cover.png",
+    coverAlt: "Second Brain — the chat ends, the memory stays",
+    github: "https://github.com/SirCharan/second-brain",
+    detail: "/second-brain",
+  };
+}
+
 function Chip({ href, children, internal }: { href: string; children: React.ReactNode; internal?: boolean }) {
   const cls =
     "relative z-10 font-mono text-[12px] text-[rgb(var(--mute))] transition-colors hover:text-accent";
@@ -158,7 +169,7 @@ export function WorkBento({
   footerHref?: string;
   footerLabel?: string;
 }) {
-  const under = below ?? [andreaWorkItem()];
+  const under = below ?? [andreaWorkItem(), secondBrainWorkItem()];
   return (
     <div>
       <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">

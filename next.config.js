@@ -26,6 +26,15 @@ const nextConfig = {
         source: "/andrea-world/:path*",
         destination: "https://andrea-world.vercel.app/andrea-world/:path*",
       },
+      // second-brain Multi-Zone (SirCharan/second-brain site-final, basePath /second-brain)
+      {
+        source: "/second-brain",
+        destination: "https://second-brain-final-psi.vercel.app/second-brain",
+      },
+      {
+        source: "/second-brain/:path*",
+        destination: "https://second-brain-final-psi.vercel.app/second-brain/:path*",
+      },
     ];
   },
   async headers() {
