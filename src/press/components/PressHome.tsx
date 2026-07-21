@@ -32,12 +32,20 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
     () => {
       if (reduce || !root.current) return;
       const ctx = gsap.context(() => {
-        gsap.from(".ph-reveal", {
-          y: 28,
-          opacity: 0.25,
+        gsap.from(".ph-line-in", {
+          yPercent: 115,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: "expo.out",
+        });
+
+        gsap.from(".ph-fade", {
+          y: 22,
+          opacity: 0,
           duration: 0.7,
-          stagger: 0.08,
+          stagger: 0.09,
           ease: "power3.out",
+          delay: 0.18,
           clearProps: "all",
         });
 
@@ -47,7 +55,7 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
           duration: 0.8,
           stagger: 0.06,
           ease: "power2.out",
-          delay: 0.15,
+          delay: 0.5,
         });
 
         gsap.from(".press-ticket", {
@@ -85,25 +93,28 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
     <PressShell bare>
       <div ref={root}>
         <section className="press-hero" aria-label="Hero">
-          <p className="press-frame-k press-serif ph-reveal">Delta Exchange · systems that trade</p>
-          <h1 className="press-hero-name ph-reveal">
-            Charandeep
-            <br />
-            Kapoor
-          </h1>
-          <p className="press-hero-line press-serif ph-reveal">
-            Using AI to build a <em>money printing machine</em>.
-          </p>
-          <div className="press-hero-actions ph-reveal">
-            <a className="press-btn press-btn-go" href={PROOF.socials.topmate} target="_blank" rel="noreferrer">
-              Book a call
-            </a>
-            <a className="press-btn press-btn-ghost" href="#proof">
-              See the proof
-            </a>
-          </div>
-          <div className="ph-reveal">
-            <PressMachine />
+          <div className="press-hero-grid">
+            <div className="press-hero-copy">
+              <p className="press-frame-k press-serif ph-fade">Delta Exchange · systems that trade</p>
+              <h1 className="press-hero-name">
+                <span className="ph-line"><span className="ph-line-in">Charandeep</span></span>
+                <span className="ph-line"><span className="ph-line-in">Kapoor</span></span>
+              </h1>
+              <p className="press-hero-line press-serif ph-fade">
+                Using AI to build a <em>money printing machine</em>.
+              </p>
+              <div className="press-hero-actions ph-fade">
+                <a className="press-btn press-btn-go" href={PROOF.socials.topmate} target="_blank" rel="noreferrer">
+                  Book a call
+                </a>
+                <a className="press-btn press-btn-ghost" href="#proof">
+                  See the proof
+                </a>
+              </div>
+            </div>
+            <div className="press-hero-art ph-fade">
+              <PressMachine />
+            </div>
           </div>
         </section>
 

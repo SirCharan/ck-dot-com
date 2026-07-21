@@ -228,6 +228,10 @@
 .press-hero-line em {
   font-style: normal;
   color: var(--p-go);
+  transition: text-shadow 0.2s;
+}
+.press-hero-line em:hover {
+  text-shadow: 0 0 14px rgba(78, 207, 122, 0.55);
 }
 
 .press-hero-actions {
@@ -260,11 +264,91 @@
   margin: 0 0 2rem;
 }
 
+/* Hero two-column grid */
+.press-hero-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .press-hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+.press-hero-art {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Name — per-line clip/mask reveal */
+.ph-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.2em;
+  margin-bottom: -0.12em;
+}
+.ph-line-in {
+  display: block;
+}
+
 /* Press machine */
 .press-machine {
   margin-top: 2.5rem;
   width: 100%;
-  max-width: 48rem;
+  max-width: 40rem;
+}
+@media (min-width: 900px) {
+  .press-machine {
+    margin-top: 0;
+    max-width: none;
+  }
+}
+
+/* interactive machine — CSS only */
+.pm-flow {
+  stroke-dasharray: 6 10;
+  animation: pm-flow 1.4s linear infinite;
+}
+@keyframes pm-flow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+.pm-out {
+  animation: pm-glow 2.8s ease-in-out infinite;
+}
+@keyframes pm-glow {
+  50% {
+    filter: drop-shadow(0 0 6px rgba(78, 207, 122, 0.45));
+  }
+}
+.pm-tile,
+.pm-label {
+  transition: stroke 0.15s, stroke-opacity 0.15s, fill-opacity 0.15s;
+}
+.pm-node:hover .pm-tile {
+  stroke: var(--p-go);
+  stroke-opacity: 0.6;
+}
+.pm-node:hover .pm-flow {
+  animation-duration: 0.7s;
+}
+.pm-node:hover .pm-label {
+  fill-opacity: 0.9;
+}
+.pm-core {
+  transition: filter 0.15s;
+}
+.pm-core:hover {
+  filter: drop-shadow(0 0 8px rgba(78, 207, 122, 0.4));
+}
+.pm-core:hover ~ .pm-flow {
+  animation-duration: 0.7s;
+}
+.pm-core:hover ~ .pm-out {
+  stroke-width: 2;
+  filter: drop-shadow(0 0 10px rgba(78, 207, 122, 0.55));
 }
 
 .press-machine svg {
@@ -512,5 +596,8 @@
   .press * {
     animation: none !important;
     transition: none !important;
+  }
+  .press .pm-flow {
+    stroke-dasharray: none !important;
   }
 }
