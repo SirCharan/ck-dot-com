@@ -17,6 +17,15 @@ const nextConfig = {
         destination:
           "https://remark42-production-fcfc.up.railway.app/:path*",
       },
+      // andrea-world Multi-Zone (aindrila-travels repo, WORLD_HOME=1, basePath /andrea-world)
+      {
+        source: "/andrea-world",
+        destination: "https://andrea-world.vercel.app/andrea-world/world",
+      },
+      {
+        source: "/andrea-world/:path*",
+        destination: "https://andrea-world.vercel.app/andrea-world/:path*",
+      },
     ];
   },
   async headers() {

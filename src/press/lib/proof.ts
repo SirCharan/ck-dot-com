@@ -54,5 +54,12 @@ export const PROOF = {
       cover: "/images/work/timelock/perps-terminal.jpg",
       alt: "Timelock trading terminal",
     },
+    {
+      title: "Second Brain",
+      line: "Local-first memory for Claude Code · open source",
+      href: "https://second-brain.charandeepkapoor.com",
+      cover: "/images/work/second-brain/cover.png",
+      alt: "Second Brain — the chat ends, the memory stays",
+    },
   ],
 } as const;
