@@ -71,7 +71,7 @@ export const EXPERIENCE: Experience[] = [
       "Building perpetuals and AI-driven trading products at India's largest crypto derivatives exchange.",
     bullets: [
       { html: "Product for AI / LLM features across the trading, signals and research stack." },
-      { html: "Perpetual futures and options on crypto — design, growth and quant tooling." },
+      { html: "Perpetual futures and options on crypto: design, growth and quant tooling." },
     ],
   },
   {
@@ -83,7 +83,7 @@ export const EXPERIENCE: Experience[] = [
     bullets: [
       { html: "Claude-driven signals on a 15-minute, regime-aware cycle across 8 perpetual markets." },
       { html: "Live executor places real, risk-managed orders (reduce-only SL/TP) on Delta." },
-      { html: '<a href="https://drishti-beryl.vercel.app">Live dashboard</a> — signals, equity curve and stats, updated continuously.' },
+      { html: '<a href="https://drishti-beryl.vercel.app">Live dashboard</a>: signals, equity curve and stats, updated continuously.' },
     ],
   },
   {
@@ -115,8 +115,8 @@ export const EXPERIENCE: Experience[] = [
     duration: "Jun 2023 – Jul 2024",
     one: "Led socials and education; traded live algos on BTC and ETH.",
     bullets: [
-      { html: '<strong>BTC ATM Short Straddles</strong> — 2,860% return in 1 year (<a href="https://www.delta.exchange/blog/the-algo-trading-strategy-which-made-2860-returns-in-the-past-2-years">blog</a>).' },
-      { html: '<strong>Refined MACD</strong> — 100% in 2 years (<a href="https://www.delta.exchange/blog/optimising-returns-pairing-ma-crossovers-with-a-trend-indicator?category=all">blog</a>).' },
+      { html: '<strong>BTC ATM Short Straddles</strong>: 2,860% return in 1 year (<a href="https://www.delta.exchange/blog/the-algo-trading-strategy-which-made-2860-returns-in-the-past-2-years">blog</a>).' },
+      { html: '<strong>Refined MACD</strong>: 100% in 2 years (<a href="https://www.delta.exchange/blog/optimising-returns-pairing-ma-crossovers-with-a-trend-indicator?category=all">blog</a>).' },
       { html: "Grew YouTube from 3K → 25K subscribers (+733%) in ~6 months." },
     ],
   },
@@ -159,14 +159,14 @@ export const TOOL_TAGS = ["Delta", "Markets", "AI", "Tools"] as const;
 export const TOOLS: Tool[] = [
   {
     title: "Drishti",
-    one: "Live LLM-driven trading signals for Delta crypto perpetuals — 15-min regime-aware cycles with a real-money executor.",
+    one: "Live LLM-driven trading signals for Delta crypto perpetuals. 15-min regime-aware cycles with a real-money executor.",
     live: "https://drishti-beryl.vercel.app",
     liveLabel: "Live",
     tags: ["Delta", "AI"],
   },
   {
     title: "Stocky AI",
-    one: "Claude-driven Zerodha trading — ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
+    one: "Claude-driven Zerodha trading. ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
     long: [
       "Fine-tuned Claude 3.5 Sonnet and built a custom MCP server connecting it to Zerodha to trade the Indian stock market.",
       "₹16.57L profit (+110% ROI) over ~9 months, Sharpe 2.29, 73% win rate, ₹15L capital.",

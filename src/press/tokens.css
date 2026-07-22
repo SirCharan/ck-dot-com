@@ -163,6 +163,20 @@
 }
 .press-btn-sm { padding: 0.5rem 0.95rem; font-size: 0.8rem; }
 
+/* filter-pill active state (Proof-of-Work) */
+.press-btn-ghost[aria-pressed="true"] {
+  border-color: rgba(78, 207, 122, 0.4);
+  color: var(--p-ink);
+}
+
+/* a11y focus baseline for interactive plates/tickets */
+.press-ticket:focus-visible,
+.press-plate:focus-visible,
+a.press-ticket:focus-visible {
+  outline: 2px solid var(--p-go);
+  outline-offset: 2px;
+}
+
 .press-main { position: relative; z-index: 2; }
 
 .press-page {
