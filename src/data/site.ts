@@ -16,7 +16,7 @@ export const SITE = {
 
 export const HERO = {
   lede:
-    "AI Product Manager at Delta Exchange. I build perpetuals and AI-driven trading systems that run on real capital — crypto and Indian markets.",
+    "AI Product Manager at Delta Exchange. I build perpetuals and AI-driven trading systems, and run a Claude-powered bot trading real capital across crypto and Indian equities.",
   kicker: "Delta Exchange",
 } as const;
 
@@ -44,12 +44,12 @@ export const HERO_STATS: HeroStat[] = [
 export const BIO = {
   paragraphs: [
     "I'm an AI Product Manager at Delta Exchange, building perpetual futures and AI-driven trading tools at India's largest crypto derivatives exchange. Earlier I founded Timelock Trade (oracle-less, liquidation-free derivatives) and led 0→1 DeFi products at Diffusion Labs, with earlier stints at Stader, Heru, and Tykhe Ventures.",
-    "I ship products and quant systems where models meet markets: protocol design, exchange tooling, and AI bots that trade real capital.",
+    "I blend math and finance to ship products and quant strategies that live at the intersection of models and markets, from protocol design to Claude-driven bots that trade real capital.",
   ],
   highlights: [
-    "AI Product Manager, Delta Exchange — perpetuals and AI-driven trading products.",
-    "Built Stocky: fine-tuned Claude on a custom Zerodha MCP — ₹15L → ₹31.57L (+110% / ₹16.57L profit), Sharpe 2.29, 73% win rate.",
-    "Founded Timelock Trade — oracle-less, liquidation-free perps & options. $7.3M volume · $2M TVL · 1,000+ users.",
+    "AI Product Manager, Delta Exchange, perpetuals and AI-driven trading products.",
+    "Built Stocky: fine-tuned Claude on a custom Zerodha MCP, ₹15L → ₹31.57L (+110% / ₹16.57L profit), Sharpe 2.29, 73% win rate.",
+    "Founded Timelock Trade, oracle-less, liquidation-free perps & options. $7.3M volume · $2M TVL · 1,000+ users.",
     "B.Tech, IIT Kanpur. JEE Advanced AIR 638 (99.96%ile). National Maths Olympiad AIR 3.",
   ],
 } as const;
@@ -71,7 +71,7 @@ export const EXPERIENCE: Experience[] = [
       "Building perpetuals and AI-driven trading products at India's largest crypto derivatives exchange.",
     bullets: [
       { html: "Product for AI / LLM features across the trading, signals and research stack." },
-      { html: "Perpetual futures and options on crypto: design, growth and quant tooling." },
+      { html: "Perpetual futures and options on crypto, design, growth and quant tooling." },
     ],
   },
   {
@@ -79,11 +79,11 @@ export const EXPERIENCE: Experience[] = [
     position: "Creator · AI Trading Signals",
     duration: "Apr 2026 – Present",
     one:
-      "Built and run Drishti — a live, LLM-driven trading-signal system for Delta crypto perpetuals.",
+      "Built and run Drishti, a live, LLM-driven trading-signal system for Delta crypto perpetuals.",
     bullets: [
       { html: "Claude-driven signals on a 15-minute, regime-aware cycle across 8 perpetual markets." },
       { html: "Live executor places real, risk-managed orders (reduce-only SL/TP) on Delta." },
-      { html: '<a href="https://drishti-beryl.vercel.app">Live dashboard</a>: signals, equity curve and stats, updated continuously.' },
+      { html: '<a href="https://drishti-beryl.vercel.app">Live dashboard</a>, signals, equity curve and stats, updated continuously.' },
     ],
   },
   {
@@ -93,7 +93,7 @@ export const EXPERIENCE: Experience[] = [
     one:
       "Bootstrapped Timelock and led 6 across tech, product, design, BD and marketing.",
     bullets: [
-      { html: "House of Finance (perps, options, prediction markets, binary options) — decentralized, oracle-less, liquidation-free." },
+      { html: "House of Finance (perps, options, prediction markets, binary options), decentralized, oracle-less, liquidation-free." },
       { html: "$7.3M trading volume · $2M TVL · 1,000+ active users on Monad testnet." },
       { html: '<a href="https://docs.timelock.trade/docs">Docs</a> · <a href="https://perps.timelock.trade/">Perps</a> · <a href="https://swap.timelock.trade/">Swap</a>' },
     ],
@@ -106,7 +106,7 @@ export const EXPERIENCE: Experience[] = [
     bullets: [
       { html: "Defined roadmap and led a 15-person team across product, eng, design and growth for Methlab." },
       { html: "Scaled Methlab to 20,000+ users and $50M TVL in 6 months." },
-      { html: 'Launched <a href="https://puffthedragon.xyz/">Puff</a>, a +EV prediction marketplace — $75M market cap, $2.5M revenue.' },
+      { html: 'Launched <a href="https://puffthedragon.xyz/">Puff</a>, a +EV prediction marketplace, $75M market cap, $2.5M revenue.' },
     ],
   },
   {
@@ -115,8 +115,8 @@ export const EXPERIENCE: Experience[] = [
     duration: "Jun 2023 – Jul 2024",
     one: "Led socials and education; traded live algos on BTC and ETH.",
     bullets: [
-      { html: '<strong>BTC ATM Short Straddles</strong>: 2,860% return in 1 year (<a href="https://www.delta.exchange/blog/the-algo-trading-strategy-which-made-2860-returns-in-the-past-2-years">blog</a>).' },
-      { html: '<strong>Refined MACD</strong>: 100% in 2 years (<a href="https://www.delta.exchange/blog/optimising-returns-pairing-ma-crossovers-with-a-trend-indicator?category=all">blog</a>).' },
+      { html: '<strong>BTC ATM Short Straddles</strong>, 2,860% return in 1 year (<a href="https://www.delta.exchange/blog/the-algo-trading-strategy-which-made-2860-returns-in-the-past-2-years">blog</a>).' },
+      { html: '<strong>Refined MACD</strong>, 100% in 2 years (<a href="https://www.delta.exchange/blog/optimising-returns-pairing-ma-crossovers-with-a-trend-indicator?category=all">blog</a>).' },
       { html: "Grew YouTube from 3K → 25K subscribers (+733%) in ~6 months." },
     ],
   },
@@ -151,6 +151,12 @@ export interface Tool {
   latestLabel?: string;
   verified?: string;
   tags?: string[];
+  /** Drives the /work status seal: live (go) · verified (metal) · archived (mute). */
+  status: "live" | "verified" | "archived";
+  /** Cover image under /images/work/<slug>/ for the featured plates. */
+  cover?: string;
+  /** Internal case-study / detail route. */
+  detail?: string;
 }
 
 export const SKILLS: { group: string; items: string[] }[] = [
@@ -197,14 +203,17 @@ export const TOOL_TAGS = ["Delta", "Markets", "AI", "Tools"] as const;
 export const TOOLS: Tool[] = [
   {
     title: "Drishti",
-    one: "Live LLM-driven trading signals for Delta crypto perpetuals. 15-min regime-aware cycles with a real-money executor.",
+    one: "Live LLM-driven trading signals for Delta crypto perpetuals: 15-min regime-aware cycles with a real-money executor.",
     live: "https://drishti-beryl.vercel.app",
     liveLabel: "Live",
     tags: ["Delta", "AI"],
+    status: "live",
+    cover: "/images/work/drishti/feed.png",
+    detail: "/work/drishti",
   },
   {
     title: "Stocky AI",
-    one: "Claude-driven Zerodha trading. ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
+    one: "Claude-driven Zerodha trading: ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
     long: [
       "Fine-tuned Claude 3.5 Sonnet and built a custom MCP server connecting it to Zerodha to trade the Indian stock market.",
       "₹16.57L profit (+110% ROI) over ~9 months, Sharpe 2.29, 73% win rate, ₹15L capital.",
@@ -216,6 +225,47 @@ export const TOOLS: Tool[] = [
     verified:
       "https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl",
     tags: ["Markets", "AI"],
+    status: "verified",
+    cover: "/images/stocky/stocky-terminal.png",
+    detail: "/markets",
+  },
+  {
+    title: "Timelock",
+    one: "Oracle-less, liquidation-free DeFi perps: $7.3M volume, $2M TVL, 1k+ users.",
+    live: "https://perps.timelock.trade/",
+    liveLabel: "Perps",
+    tags: ["Markets"],
+    status: "live",
+    cover: "/images/work/timelock/perps-terminal.jpg",
+    detail: "/work/timelock",
+  },
+  {
+    title: "Delta Support Audit",
+    one: "Nightly RAG audit of Delta support articles for factual drift and coverage gaps.",
+    live: "https://delta-support-audit.vercel.app/",
+    liveLabel: "Live audit",
+    tags: ["Delta", "AI"],
+    status: "live",
+    cover: "/images/work/delta-support-audit/cover.png",
+    detail: "/work/delta-support-audit",
+  },
+  {
+    title: "Second Brain",
+    one: "Local-first memory for Claude Code · open source.",
+    tags: ["AI", "Tools"],
+    status: "live",
+    cover: "/images/work/second-brain/cover.png",
+    detail: "/second-brain",
+  },
+  {
+    title: "Andrea's World",
+    one: "A hand-built interactive 3D web world: craft, motion, and play.",
+    live: "https://andrea-world.vercel.app",
+    liveLabel: "Enter",
+    tags: ["Tools"],
+    status: "live",
+    cover: "/images/work/andrea-world/cover.png",
+    detail: "/work/andrea-world",
   },
   {
     title: "Voice-Powered Zerodha Trading",
@@ -228,6 +278,7 @@ export const TOOLS: Tool[] = [
       "https://www.linkedin.com/posts/charandeep-kapoor_itc-claude-zerodha-activity-7330161190741987329-Ge1d",
     liveLabel: "Demo",
     tags: ["Markets", "AI"],
+    status: "archived",
   },
   {
     title: "Option Premium Calculator",
@@ -235,33 +286,36 @@ export const TOOLS: Tool[] = [
     github: "https://github.com/SirCharan/option-bloom-calculator",
     live: "https://option-premium-calculator.vercel.app/",
     tags: ["Tools"],
+    status: "live",
   },
   {
     title: "Voice-Activated Delta Trading Bot",
     one: "Voice-activated crypto trading via Claude MCP + Delta Exchange API.",
     long: [
-      'Voice-activated trading via Claude\'s MCP server + Delta Exchange API. "Buy 1000 rupees of Ethereum" → executed in under an hour of build time.',
+      'Voice-activated trading via Claude\'s MCP server + Delta Exchange API. "Buy 1000 rupees of Ethereum" then executed in under an hour of build time.',
     ],
     github: "https://github.com/SirCharan/Delta",
     live:
       "https://www.linkedin.com/posts/charandeep-kapoor_crypto-claude-vibecoding-activity-7334621565780721664-SDqO",
     liveLabel: "Demo",
     tags: ["Delta", "AI"],
+    status: "archived",
   },
   {
     title: "Market Matters with CK",
     one: "ChatGPT wrapper for daily stock market updates and insights.",
     live: "https://chatgpt.com/share/684fbf8b-196c-800f-a41f-9502a50cc8a9",
     tags: ["Markets", "AI"],
+    status: "archived",
   },
 ];
 
 export const RESEARCH = [
   {
-    title: "Options Pricing — Timelock Protocol",
+    title: "Options Pricing, Timelock Protocol",
     venue: "Protocol Docs",
     one:
-      "Oracle-less option pricing — Black-Scholes adapted for crypto, implied volatility from Uniswap data, theta approximated via Dirac distributions.",
+      "Oracle-less option pricing: Black-Scholes adapted for crypto, implied volatility from Uniswap data, theta approximated via Dirac distributions.",
     href: "https://docs.timelock.trade/docs/protocol/mechanism/pricing",
   },
 ];
@@ -308,7 +362,7 @@ export interface CaseStudy {
   metrics: CaseStudyMetric[];
   sections: CaseStudySection[];
   links: CaseStudyLink[];
-  /** Screenshots under /public/images/work/<slug>/ — captured in Phase 4. */
+  /** Screenshots under /public/images/work/<slug>/, captured in Phase 4. */
   shots?: { src: string; alt: string }[];
   /** When no shots yet, render a captioned "live deployment" figure linking out. */
   shotsPending?: boolean;
@@ -343,21 +397,21 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         heading: "The idea",
         body: [
-          "Drishti asks a frontier LLM one disciplined question every cycle: given everything the market is showing right now, is there an edge — and if so, where are entry, stop and target? The model reasons first, then emits a structured decision the system can act on.",
+          "Drishti asks a frontier LLM one disciplined question every cycle: given everything the market is showing right now, is there an edge, and if so, where are entry, stop and target? The model reasons first, then emits a structured decision the system can act on.",
           "It runs a 15-minute, regime-aware cycle across 8 Delta crypto perpetual markets, with 30+ engineered features per asset (CVD, IV term structure, basis, global long/short, OI by exchange, Coinbase premium and more).",
         ],
       },
       {
         heading: "From signal to real orders",
         body: [
-          "A live executor turns accepted signals into real, risk-managed orders on Delta India — reduce-only stop-loss and take-profit brackets, fixed sizing, a guardian process, and hard kill-switches.",
+          "A live executor turns accepted signals into real, risk-managed orders on Delta India, reduce-only stop-loss and take-profit brackets, fixed sizing, a guardian process, and hard kill-switches.",
           "The publisher runs as a systemd service on a VM, writes snapshots to Cloudflare R2, and a Vercel front-end renders signals, the equity curve and closed-trade stats continuously.",
         ],
       },
       {
         heading: "What it demonstrates",
         body: [
-          "Prompt and context engineering under real money, cost-aware model routing, and an operational loop that has to be right every 15 minutes — not just in a notebook.",
+          "Prompt and context engineering under real money, cost-aware model routing, and an operational loop that has to be right every 15 minutes, not just in a notebook.",
         ],
       },
     ],
@@ -368,12 +422,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: "Research", href: "https://drishti-research.vercel.app" },
     ],
     shots: [
-      {
-        src: "/images/work/drishti/equity-curve.png",
-        alt: "Drishti live equity curve — balance, drawdown, CAGR, Sharpe with win/loss stats",
-      },
-      { src: "/images/work/drishti/feed.png", alt: "Drishti live signal feed — direction, entry, stop, target per market" },
-      { src: "/images/work/drishti/howitworks.png", alt: "How Drishti works — the 15-minute decision-to-execution cycle" },
+      { src: "/images/work/drishti/feed.png", alt: "Drishti live signal feed, direction, entry, stop, target per market" },
+      { src: "/images/work/drishti/howitworks.png", alt: "How Drishti works, the 15-minute decision-to-execution cycle" },
     ],
     accent: "orbits",
   },
@@ -382,7 +432,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Timelock Trade",
     kicker: "Founder · Oracle-less DeFi Derivatives",
     tagline: "Oracle-less DeFi perps · $7.3M vol · 1k+ users.",
-    role: "Founder — led a team of 6 (tech, product, design, BD, marketing)",
+    role: "Founder, led a team of 6 (tech, product, design, BD, marketing)",
     period: "Apr 2025 – Apr 2026",
     stack: [
       "Monad testnet",
@@ -403,13 +453,13 @@ export const CASE_STUDIES: CaseStudy[] = [
         heading: "The thesis",
         body: [
           "On-chain derivatives break in two places: they depend on price oracles that can be manipulated, and they liquidate users at the worst possible moment. Timelock removed both.",
-          "\"Protected Perps\" let traders only realize profit; the downside is borne by liquidity providers who are paid a premium for it — a structurally different risk transfer than a standard perp.",
+          "\"Protected Perps\" let traders only realize profit; the downside is borne by liquidity providers who are paid a premium for it, a structurally different risk transfer than a standard perp.",
         ],
       },
       {
         heading: "The hard part: pricing without an oracle",
         body: [
-          "Options were priced with a Black-Scholes model adapted for crypto, implied volatility derived from Uniswap pool data, and theta approximated via Dirac distributions — so the protocol could quote fair prices without trusting an external feed.",
+          "Options were priced with a Black-Scholes model adapted for crypto, implied volatility derived from Uniswap pool data, and theta approximated via Dirac distributions, so the protocol could quote fair prices without trusting an external feed.",
           "The product spanned perps, options, prediction markets and binary options.",
         ],
       },
@@ -430,14 +480,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
     shots: [
-      {
-        src: "/images/work/timelock/perps-terminal.jpg",
-        alt: "Timelock Protected Perps trading terminal — WMON/USDC chart, Long/Short ticket, Monad testnet",
-      },
-      {
-        src: "/images/work/timelock/protected-perps.jpg",
-        alt: "Timelock Protected Perps — payoff structure: traders only profit, LPs earn premium for the downside",
-      },
+      { src: "/images/work/timelock/perps-terminal.jpg", alt: "Timelock Protected Perps trading terminal on Monad testnet" },
+      { src: "/images/work/timelock/protected-perps.jpg", alt: "Timelock Protected Perps, payoff structure: traders only profit, LPs earn premium for the downside" },
     ],
     accent: "spiral",
   },
@@ -467,7 +511,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         heading: "The problem",
         body: [
-          "Support content drifts. Freshdesk articles quietly fall out of step with the product docs and guides that are the real source of truth — and nobody notices until a customer is misled.",
+          "Support content drifts. Freshdesk articles quietly fall out of step with the product docs and guides that are the real source of truth, and nobody notices until a customer is misled.",
           "The system embeds 344 support articles (1,067 chunks) into a vector store and compares them against the canonical docs for contradictions and coverage gaps.",
         ],
       },
@@ -475,7 +519,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         heading: "How it works",
         body: [
           "RAG detectors classify each article for conflicts, contradictions and coverage gaps. P0 issues page a Slack channel; the full report lands in Notion. A Vercel cron runs the whole sweep at 04:00 IST.",
-          "On a 100-article trial it caught 14/14 P0 issues (100% true-positive) with a combined P0+P1 false-positive rate of 5–9% — at $2.45 and four minutes per run.",
+          "On a 100-article trial it caught 14/14 P0 issues (100% true-positive) with a combined P0+P1 false-positive rate of 5–9%, at $2.45 and four minutes per run.",
         ],
       },
     ],
@@ -485,7 +529,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     shots: [
       {
         src: "/images/work/delta-support-audit/cover.png",
-        alt: "Delta Support Audit — daily AI audit of Delta India support content with impact metrics",
+        alt: "Delta Support Audit, daily AI audit of Delta India support content with impact metrics",
       },
     ],
     accent: "fractal",
@@ -495,7 +539,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Andrea's World",
     kicker: "Creator · Interactive 3D Web",
     tagline:
-      "A playful, hand-built interactive 3D world on the web — craft, motion, and play.",
+      "A playful, hand-built interactive 3D world on the web, craft, motion, and play.",
     role: "Designer & Developer",
     period: "2026",
     stack: ["Next.js", "SVG / CSS 3D", "Motion", "Vercel"],
@@ -508,7 +552,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         heading: "What it is",
         body: [
-          "A small, joyful corner of the web — an explorable interactive world built for delight rather than data. It's the counterweight to the trading systems: proof that the same person who ships autonomous executors also cares about craft, motion and play.",
+          "A small, joyful corner of the web, an explorable interactive world built for delight rather than data. It's the counterweight to the trading systems: proof that the same person who ships autonomous executors also cares about craft, motion and play.",
         ],
       },
     ],
@@ -516,7 +560,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     shots: [
       {
         src: "/images/work/andrea-world/cover.png",
-        alt: "Andrea's World — interactive 3D island with character, landmarks, and Linkin Park stage",
+        alt: "Andrea's World, interactive 3D island with character, landmarks, and Linkin Park stage",
       },
     ],
     accent: "none",

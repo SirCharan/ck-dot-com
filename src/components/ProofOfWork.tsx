@@ -3,33 +3,47 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { TOOLS, TOOL_TAGS, type Tool } from "@/data/site";
-import { Caption } from "./lab/Primitives";
 
 /**
- * Proof of Work — a hairline-ruled index / ledger, not a card grid.
- * Each entry is a row: a mono §-number in the left rail, the title + one-liner
- * to its right, and mono links. Filter pills cross-filter; rows reflow.
+ * Proof of Work: the full index. One ledger, one row per build. The left rail
+ * is a mono status seal (live/verified/archived), tonal-colored, not a §number.
+ * Filter pills cross-filter; rows reflow. Content is always visible (no entrance
+ * opacity gate); only exit + layout animate, and only when motion is allowed.
  */
 
 const FILTERS = ["All", ...TOOL_TAGS] as const;
 
-function ToolRow({ tool, n }: { tool: Tool; n: number }) {
+const SEAL: Record<Tool["status"], { label: string; color: string }> = {
+  live: { label: "LIVE", color: "var(--p-go)" },
+  verified: { label: "VERIFIED", color: "var(--p-metal)" },
+  archived: { label: "ARCHIVED", color: "var(--p-mute)" },
+};
+
+function ToolRow({ tool, last }: { tool: Tool; last: boolean }) {
+  const seal = SEAL[tool.status];
   return (
-    <div className="grid grid-cols-1 gap-x-8 gap-y-2 py-6 md:grid-cols-[4rem,1fr]">
-      <div className="num text-[0.8rem] leading-none tracking-tight text-[rgb(var(--bone-dim))] md:pt-1.5">
-        {String(n).padStart(2, "0")}
+    <div
+      className="grid grid-cols-[5rem_1fr] gap-x-5 py-6"
+      style={{ borderBottom: last ? "none" : "1px solid var(--p-line)" }}
+    >
+      <div
+        className="press-mono"
+        style={{ fontSize: "0.62rem", letterSpacing: "0.12em", color: seal.color, paddingTop: "0.4rem" }}
+      >
+        {seal.label}
       </div>
       <div className="min-w-0">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="display text-[1.25rem] leading-snug text-[rgb(var(--bone))]">
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "0.4rem 0.9rem" }}>
+          <span className="press-serif" style={{ fontSize: "1.2rem", color: "var(--p-ink)", lineHeight: 1.25 }}>
             {tool.title}
           </span>
           {tool.tags && (
-            <span className="flex flex-wrap gap-x-3">
+            <span style={{ display: "flex", flexWrap: "wrap", gap: "0 0.75rem" }}>
               {tool.tags.map((t) => (
                 <span
                   key={t}
-                  className="num text-[0.65rem] uppercase tracking-[0.1em] text-[rgb(var(--bone-dim))]"
+                  className="press-mono"
+                  style={{ fontSize: "0.6rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--p-faint)" }}
                 >
                   {t}
                 </span>
@@ -37,47 +51,27 @@ function ToolRow({ tool, n }: { tool: Tool; n: number }) {
             </span>
           )}
         </div>
-        <p className="mt-1.5 max-w-[64ch] font-serif text-[1.05rem] leading-[1.55] text-[rgb(var(--bone)/0.72)]">
+        <p className="press-ticket-sub" style={{ maxWidth: "64ch" }}>
           {tool.one}
         </p>
-        <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
+        <div style={{ marginTop: "0.65rem", display: "flex", flexWrap: "wrap", gap: "0 1.25rem" }}>
           {tool.live && (
-            <a
-              href={tool.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-ink num text-[0.8rem]"
-            >
+            <a href={tool.live} target="_blank" rel="noopener noreferrer" className="link-ink press-mono" style={{ fontSize: "0.8rem" }}>
               {tool.liveLabel ?? "Live"} →
             </a>
           )}
           {tool.github && (
-            <a
-              href={tool.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-ink num text-[0.8rem]"
-            >
+            <a href={tool.github} target="_blank" rel="noopener noreferrer" className="link-ink press-mono" style={{ fontSize: "0.8rem" }}>
               Code →
             </a>
           )}
           {tool.verified && (
-            <a
-              href={tool.verified}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-ink num text-[0.8rem]"
-            >
-              Verified →
+            <a href={tool.verified} target="_blank" rel="noopener noreferrer" className="link-ink press-mono" style={{ fontSize: "0.8rem" }}>
+              Verified ↗
             </a>
           )}
           {tool.latest && (
-            <a
-              href={tool.latest}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-ink num text-[0.8rem]"
-            >
+            <a href={tool.latest} target="_blank" rel="noopener noreferrer" className="link-ink press-mono" style={{ fontSize: "0.8rem" }}>
               {tool.latestLabel ?? "Latest"} →
             </a>
           )}
@@ -93,44 +87,40 @@ export function ProofOfWork() {
 
   const shown = useMemo(
     () => (filter === "All" ? TOOLS : TOOLS.filter((t) => t.tags?.includes(filter))),
-    [filter]
+    [filter],
   );
 
   return (
-    <section id="tools" className="rule py-10 md:py-14">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <Caption>Proof of work · index</Caption>
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter projects">
-          {FILTERS.map((f) => (
-            <button
-              key={f}
-              type="button"
-              className="pill"
-              data-active={filter === f}
-              aria-pressed={filter === f}
-              onClick={() => setFilter(f)}
-            >
-              {f}
-            </button>
-          ))}
-        </div>
+    <section className="press-section" id="tools">
+      <h2>Full index</h2>
+      <div
+        role="group"
+        aria-label="Filter projects"
+        style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", margin: "0 0 1.75rem" }}
+      >
+        {FILTERS.map((f) => (
+          <button
+            key={f}
+            type="button"
+            className="press-btn press-btn-ghost press-btn-sm"
+            aria-pressed={filter === f}
+            onClick={() => setFilter(f)}
+          >
+            {f}
+          </button>
+        ))}
       </div>
 
-      <motion.div
-        layout={!reduced}
-        className="divide-y divide-[rgb(var(--bone)/0.11)] border-t border-[rgb(var(--bone)/0.11)]"
-      >
-        <AnimatePresence mode="popLayout">
+      <motion.div layout={!reduced} className="press-ledger">
+        <AnimatePresence mode="popLayout" initial={false}>
           {shown.map((tool, i) => (
             <motion.div
               key={tool.title}
               layout={!reduced}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 6 }}
-              transition={{ duration: 0.18, ease: [0.2, 0, 0, 1] }}
+              exit={reduced ? undefined : { opacity: 0, transition: { duration: 0.12 } }}
+              transition={{ duration: 0.2, ease: [0.2, 0, 0, 1] }}
             >
-              <ToolRow tool={tool} n={i + 1} />
+              <ToolRow tool={tool} last={i === shown.length - 1} />
             </motion.div>
           ))}
         </AnimatePresence>

@@ -9,6 +9,8 @@ import "@/press/tokens.css";
 const NAV = [
   { href: "/work", label: "Work" },
   { href: "/track-record", label: "Track record" },
+  { href: "/markets", label: "Markets" },
+  { href: "/delta", label: "Delta" },
   { href: "/blog", label: "Writing" },
   { href: "/resume", label: "About" },
 ] as const;
