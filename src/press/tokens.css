@@ -615,3 +615,48 @@ a.press-ticket:focus-visible {
     stroke-dasharray: none !important;
   }
 }
+
+/* Print / PDF export (Résumé) — clean black-on-white, chrome hidden */
+@media print {
+  .press-nav,
+  .press-foot,
+  .press-atmos,
+  .press-grain,
+  .press-sheet,
+  .print-hide {
+    display: none !important;
+  }
+  .press,
+  .press-main,
+  .press-page {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  .press-page { padding: 0 !important; max-width: none !important; }
+  .press-section { break-inside: avoid; padding: 0.6rem 0 !important; }
+  .press-ledger, .press-ticket { break-inside: avoid; border-color: #ddd !important; background: #fff !important; }
+  .press-section h2 { color: #111 !important; }
+  a { color: #111 !important; text-decoration: none !important; }
+  .press-ticket-val { color: #111 !important; }
+}
+
+/* Hero live-proof strip (static dot; no glow ring per anti-slop) */
+.press-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+  text-decoration: none;
+  color: var(--p-mute);
+  font-size: 0.82rem;
+  transition: color 0.15s;
+}
+.press-live:hover { color: var(--p-ink); }
+.press-live strong { color: var(--p-go); font-weight: 600; }
+.press-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background: var(--p-go);
+  flex-shrink: 0;
+}

@@ -3,6 +3,7 @@ import { PageShell, PageIntro } from "@/components/PageShell";
 import { Experience } from "@/components/Experience";
 import { ACADEMICS, CERTIFICATIONS, BIO, SITE, SKILLS } from "@/data/site";
 import { PROOF } from "@/press/lib/proof";
+import { PrintButton } from "@/components/PrintButton";
 
 export const metadata: Metadata = {
   title: "Résumé",
@@ -41,6 +42,10 @@ export default function ResumePage() {
         title="Background"
         lede="AI Product Manager and Engineer at Delta Exchange. I ship systems that trade real capital, and the products around them."
       />
+
+      <div style={{ maxWidth: "var(--p-max)", margin: "0 auto", padding: "0 clamp(1.1rem, 4vw, 2.5rem)" }}>
+        <PrintButton />
+      </div>
 
       <section className="press-section">
         <h2>Profile</h2>

@@ -252,10 +252,24 @@ export const TOOLS: Tool[] = [
   {
     title: "Second Brain",
     one: "Local-first memory for Claude Code · open source.",
+    live: "/second-brain",
+    liveLabel: "Live",
+    github: "https://github.com/SirCharan/second-brain",
     tags: ["AI", "Tools"],
     status: "live",
     cover: "/images/work/second-brain/cover.png",
-    detail: "/second-brain",
+    detail: "/work/second-brain",
+  },
+  {
+    title: "Lakshay",
+    one: "Intraday AI signals for NSE F&O: 5-min cycles, Dhan data, paper track record.",
+    live: "https://lakshya-cyan.vercel.app/",
+    liveLabel: "Live",
+    github: "https://github.com/SirCharan/lakshay",
+    tags: ["Markets", "AI"],
+    status: "live",
+    cover: "/images/work/lakshay/cover.png",
+    detail: "/work/lakshay",
   },
   {
     title: "Andrea's World",
@@ -564,5 +578,105 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
     accent: "none",
+  },
+  {
+    slug: "second-brain",
+    title: "Second Brain",
+    kicker: "Creator · Local-first memory for Claude Code",
+    tagline: "The chat ends. The memory stays.",
+    role: "Creator, sole builder, open source",
+    period: "Jul 2026 – Present",
+    stack: [
+      "Claude Code plugin",
+      "Model Context Protocol",
+      "Markdown vault (Obsidian-compatible)",
+      "Node.js / TypeScript",
+      "Next.js / Vercel",
+    ],
+    metrics: [
+      { value: "100%", label: "Local first", tone: "accent" },
+      { value: "Markdown", label: "On your disk", tone: "neutral" },
+      { value: "MCP", label: "Recall + capture", tone: "accent" },
+      { value: "Apache-2.0", label: "Open source", tone: "neutral" },
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        body: [
+          "Every AI session starts from zero. You explain the same context, the model solves it, then the window closes and the reasoning is gone. Switch models or clear the chat and the memory walks away with it.",
+        ],
+      },
+      {
+        heading: "How it works",
+        body: [
+          "Second Brain captures every Claude Code session into Markdown on your own machine, in an Obsidian-compatible vault. It recalls the relevant notes back into new prompts, and snapshots state before the context is compacted so nothing is lost.",
+          "It installs as a Claude Code plugin (or a one-line install.sh) and runs entirely on your disk. No cloud, no lock-in.",
+        ],
+      },
+      {
+        heading: "Why it matters",
+        body: [
+          "Memory becomes an asset you own, not a session you rent. The longer you work, the more the vault compounds, and it moves with you across every model and machine.",
+        ],
+      },
+    ],
+    links: [
+      { label: "Live", href: "https://charandeepkapoor.com/second-brain" },
+      { label: "GitHub", href: "https://github.com/SirCharan/second-brain" },
+    ],
+    shots: [
+      { src: "/images/work/second-brain/hero.png", alt: "Second Brain landing: the chat ends, the memory stays, with a live knowledge-graph" },
+    ],
+    accent: "fractal",
+  },
+  {
+    slug: "lakshay",
+    title: "Lakshay",
+    kicker: "Creator · Intraday AI Signals for NSE F&O",
+    tagline: "5-min AI signals for Indian futures, on a paper track record.",
+    role: "Creator, sole builder & operator",
+    period: "Jun 2026 – Present",
+    stack: [
+      "Claude via OpenRouter",
+      "Dhan market data",
+      "Python / systemd on VM",
+      "ORB / VWAP / supertrend + options",
+      "Kite (live-gated executor)",
+      "Next.js / Vercel",
+    ],
+    metrics: [
+      { value: "8", label: "NSE instruments", tone: "accent" },
+      { value: "5 min", label: "Decision cycle", tone: "neutral" },
+      { value: "09:15", label: "To 15:30 IST session", tone: "neutral" },
+      { value: "Paper", label: "Track record mode", tone: "accent" },
+    ],
+    sections: [
+      {
+        heading: "What it is",
+        body: [
+          "Lakshay is the NSE sibling of Drishti: an intraday AI signal system for Indian stock-market futures. It runs 5-minute, regime-aware cycles through the trading session from 09:15 to a ~15:15 square-off, across NIFTY, BANKNIFTY and front-month equity futures.",
+        ],
+      },
+      {
+        heading: "How it decides",
+        body: [
+          "Each cycle builds features from Dhan data (ORB, VWAP, supertrend, EMA stack, RSI regime, volume) plus an options layer (PCR, max pain, option-chain blocks) and India VIX. Claude reasons over the evidence, grades its own conviction, and emits at most one signal per instrument with entry, stop and target.",
+        ],
+      },
+      {
+        heading: "Paper first, live-gated",
+        body: [
+          "The public dashboard shows a paper track record. Real orders are double-gated behind an explicit flag, so the system proves itself on paper before a rupee is at risk. A conservative risk gate (reward-to-risk floor, level-aware sides) filters every signal.",
+        ],
+      },
+    ],
+    links: [
+      { label: "Live dashboard", href: "https://lakshya-cyan.vercel.app/" },
+      { label: "GitHub", href: "https://github.com/SirCharan/lakshay" },
+    ],
+    shots: [
+      { src: "/images/work/lakshay/cover.png", alt: "Lakshay dashboard: NSE F&O 5-min AI signals, win rate, per-asset performance and signals log" },
+    ],
+    accent: "orbits",
   },
 ];

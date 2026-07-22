@@ -44,14 +44,7 @@ export const metadata: Metadata = {
     siteName: "Charandeep Kapoor",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Charandeep Kapoor",
-      },
-    ],
+    // og:image comes from the file-based opengraph-image.tsx (root + per route).
   },
   twitter: {
     card: "summary_large_image",
@@ -59,7 +52,7 @@ export const metadata: Metadata = {
     creator: "@yourasianquant",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: ["/og-image.jpg"],
+    // twitter:image is derived from opengraph-image.tsx.
   },
   robots: {
     index: true,

@@ -111,6 +111,13 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
                   See the proof
                 </a>
               </div>
+              <a href="/track-record" className="press-live ph-fade" aria-label="Live track record">
+                <span className="press-live-dot" aria-hidden />
+                <span className="press-mono">
+                  Live · Stocky <strong>+110%</strong> verified · Dhan book rebuilt daily
+                  {dhan?.asOf ? ` · as of ${dhan.asOf}` : ""}
+                </span>
+              </a>
             </div>
             <div className="press-hero-art ph-fade">
               <PressMachine />
