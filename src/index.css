@@ -16,13 +16,13 @@
     --ink: 22 21 19;
     --mute: 92 87 79;
     --rule: 229 223 211;
-    --accent: 232 163 61;
+    --accent: 78 207 122;
     --positive: 127 184 138;
     --pos: 127 184 138;
     --neg: 232 116 107;
     --bone: 232 228 218;
     --bone-dim: 140 136 126;
-    --amber: 232 163 61;
+    --amber: 201 146 58;
     --slate: 107 138 175;
     /* Ephemeris base surfaces — needed at :root for overlays mounted outside
        the .terminal scope (e.g. RouteWipe in <body>). */
@@ -47,8 +47,8 @@
     --faint: 112 134 152;    /* #708698 — AA-legible on all mc surfaces */
     --rule: 28 37 48;        /* #1C2530 hairline */
     --line-hi: 40 50 61;     /* #28323D top-highlight */
-    --accent: 61 251 134;    /* #3DFB86 neon phosphor — the only "live/go" colour */
-    --amber: 61 251 134;     /* alias → accent, so Ephemeris-era components unify to green */
+    --accent: 78 207 122;    /* #4ECF7A press green — unified with the home "live/go" colour */
+    --amber: 78 207 122;     /* alias → accent, so Ephemeris-era components unify to green */
     --warn: 255 176 0;       /* #FFB000 — the true amber state colour (attention) */
     --positive: 127 227 159; /* desaturated CVD-safe up */
     --pos: 127 227 159;
@@ -158,7 +158,7 @@
   --ink: 232 228 218;      /* --bone      #E8E4DA paper ink       */
   --mute: 140 136 126;     /* --bone-dim  #8C887E muted           */
   --rule: 42 41 38;        /* bone @ ~0.12 over void (hairline)   */
-  --accent: 232 163 61;    /* --amber     #E8A33D signal          */
+  --accent: 78 207 122;    /* #4ECF7A press green — unified signal */
   --positive: 127 184 138; /* --pos       #7FB88A                 */
   --neg: 232 116 107;      /* --neg       #E8746B                 */
 
@@ -167,7 +167,7 @@
   --ink-void-2: 16 16 19;  /* sim band #101013 */
   --bone: 232 228 218;
   --bone-dim: 140 136 126;
-  --amber: 232 163 61;
+  --amber: 201 146 58;     /* #C9923A press amber */
   --slate: 107 138 175;    /* data / 3rd body */
   --pos: 127 184 138;
   /* the ONLY elevated surface = a faint bone overlay */
