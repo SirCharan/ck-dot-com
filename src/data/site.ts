@@ -44,7 +44,7 @@ export const HERO_STATS: HeroStat[] = [
 export const BIO = {
   paragraphs: [
     "I'm an AI Product Manager at Delta Exchange, building perpetual futures and AI-driven trading tools at India's largest crypto derivatives exchange. Earlier I founded Timelock Trade (oracle-less, liquidation-free derivatives) and led 0→1 DeFi products at Diffusion Labs, with earlier stints at Stader, Heru, and Tykhe Ventures.",
-    "I ship products and quant systems where models meet markets — protocol design, exchange tooling, and AI bots that trade real capital.",
+    "I ship products and quant systems where models meet markets: protocol design, exchange tooling, and AI bots that trade real capital.",
   ],
   highlights: [
     "AI Product Manager, Delta Exchange — perpetuals and AI-driven trading products.",
@@ -152,6 +152,44 @@ export interface Tool {
   verified?: string;
   tags?: string[];
 }
+
+export const SKILLS: { group: string; items: string[] }[] = [
+  {
+    group: "AI / LLM",
+    items: [
+      "Claude (Opus/Sonnet)",
+      "Prompt & context engineering",
+      "Model Context Protocol (MCP)",
+      "RAG / vector search",
+      "Agentic tool-calling",
+      "Cost-aware model routing",
+    ],
+  },
+  {
+    group: "Markets & quant",
+    items: [
+      "Perpetual futures & options",
+      "Options pricing (Black-Scholes)",
+      "Delta-neutral strategies",
+      "Backtesting & signal research",
+      "Risk management",
+    ],
+  },
+  {
+    group: "Build",
+    items: [
+      "Next.js / React / TypeScript",
+      "Python",
+      "Solidity / DeFi",
+      "Vercel / Cloudflare",
+      "Redis / vector DBs",
+    ],
+  },
+  {
+    group: "Product",
+    items: ["0-to-1 product", "Team leadership", "GTM & growth", "Protocol design"],
+  },
+];
 
 // Filter pills for the Proof-of-Work grid (order matters; "All" is implicit).
 export const TOOL_TAGS = ["Delta", "Markets", "AI", "Tools"] as const;

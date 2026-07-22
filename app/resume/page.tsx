@@ -1,74 +1,37 @@
 import type { Metadata } from "next";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Experience } from "@/components/Experience";
-import { Caption, MetaGutter, Rule } from "@/components/lab/Primitives";
-import { ACADEMICS, CERTIFICATIONS, BIO, SITE } from "@/data/site";
+import { ACADEMICS, CERTIFICATIONS, BIO, SITE, SKILLS } from "@/data/site";
+import { PROOF } from "@/press/lib/proof";
 
 export const metadata: Metadata = {
   title: "Résumé",
   description:
-    "Charandeep Kapoor — AI Product Manager at Delta Exchange. Experience, skills, education and certifications.",
+    "Charandeep Kapoor, AI Product Manager at Delta Exchange. Experience, skills, education and certifications.",
 };
 
-const SKILLS: { group: string; items: string[] }[] = [
-  {
-    group: "AI / LLM",
-    items: [
-      "Claude (Opus/Sonnet)",
-      "Prompt & context engineering",
-      "Model Context Protocol (MCP)",
-      "RAG / vector search",
-      "Agentic tool-calling",
-      "Cost-aware model routing",
-    ],
-  },
-  {
-    group: "Markets & quant",
-    items: [
-      "Perpetual futures & options",
-      "Options pricing (Black-Scholes)",
-      "Delta-neutral strategies",
-      "Backtesting & signal research",
-      "Risk management",
-    ],
-  },
-  {
-    group: "Build",
-    items: [
-      "Next.js / React / TypeScript",
-      "Python",
-      "Solidity / DeFi",
-      "Vercel / Cloudflare",
-      "Redis / vector DBs",
-    ],
-  },
-  {
-    group: "Product",
-    items: ["0→1 product", "Team leadership", "GTM & growth", "Protocol design"],
-  },
-];
-
-/** A hairline-ruled ledger row: label left, mono detail right. */
+/** Hairline-ruled ledger row: label left, mono detail right. */
 function LedgerRow({ title, detail }: { title: string; detail: string }) {
   return (
-    <li className="flex items-baseline justify-between gap-4 border-b border-[rgb(var(--bone)/0.11)] py-3">
-      <span className="font-serif text-[1.02rem] leading-snug text-[rgb(var(--bone)/0.9)]">
+    <li
+      style={{
+        display: "flex",
+        alignItems: "baseline",
+        justifyContent: "space-between",
+        gap: "1rem",
+        borderTop: "1px solid var(--p-line)",
+        padding: "0.7rem 0",
+      }}
+    >
+      <span className="press-serif" style={{ fontSize: "1rem", lineHeight: 1.3, color: "var(--p-ink)" }}>
         {title}
       </span>
-      <span className="num shrink-0 text-[0.8rem] text-[rgb(var(--bone-dim))]">
+      <span className="press-mono" style={{ flexShrink: 0, fontSize: "0.78rem", color: "var(--p-mute)" }}>
         {detail}
       </span>
     </li>
   );
 }
-
-// "By the numbers" — signature stats, consistent with the landing + track record.
-const STATS: { value: string; label: string }[] = [
-  { value: "+110%", label: "Stocky ROI · verified" },
-  { value: "$7.3M", label: "Timelock volume" },
-  { value: "AIR 638", label: "JEE Advanced · IIT-K" },
-  { value: "2.29", label: "Stocky Sharpe" },
-];
 
 export default function ResumePage() {
   return (
@@ -76,100 +39,84 @@ export default function ResumePage() {
       <PageIntro
         kicker="About"
         title="Background"
-        lede="AI Product Manager & Engineer at Delta Exchange. I ship systems that trade real capital — and the products around them."
+        lede="AI Product Manager and Engineer at Delta Exchange. I ship systems that trade real capital, and the products around them."
       />
 
-      {/* Profile — the bio, in ck's own words */}
-      <section className="mt-4">
-        <MetaGutter meta={["§ 01", "profile"]}>
-          <div className="max-w-[64ch] space-y-4">
-            {BIO.paragraphs.map((p) => (
-              <p key={p.slice(0, 24)} className="font-serif text-[1.1rem] leading-[1.65] text-[rgb(var(--bone)/0.9)]">
-                {p}
-              </p>
-            ))}
-          </div>
-        </MetaGutter>
+      <section className="press-section">
+        <h2>Profile</h2>
+        <div style={{ maxWidth: "64ch", display: "grid", gap: "1rem" }}>
+          {BIO.paragraphs.map((p) => (
+            <p key={p.slice(0, 24)} className="press-serif" style={{ fontSize: "1.1rem", lineHeight: 1.65, color: "var(--p-mute)", margin: 0 }}>
+              {p}
+            </p>
+          ))}
+        </div>
       </section>
 
-      {/* By the numbers — signature glass stat cards */}
-      <section className="mt-12">
-        <Rule className="mb-8" />
-        <MetaGutter meta={["§ 02", "by the numbers"]}>
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {STATS.map((s) => (
-              <div key={s.label} className="mc-glass rounded-xl p-5">
-                <div className="num text-[1.9rem] leading-none tracking-tight text-accent">{s.value}</div>
-                <div className="mt-2 font-mono text-[11px] leading-snug text-[rgb(var(--bone-dim))]">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </MetaGutter>
+      <section className="press-section">
+        <h2>By the numbers</h2>
+        <div className="press-tickets">
+          {PROOF.tickets.map((t) => (
+            <a key={t.label} className="press-ticket" href={t.href} target="_blank" rel="noopener noreferrer">
+              <div className="press-ticket-val">{t.value}</div>
+              <div className="press-ticket-label">{t.label}</div>
+              <div className="press-ticket-sub">{t.sub}</div>
+            </a>
+          ))}
+        </div>
       </section>
 
-      {/* Skills — glass group cards */}
-      <section className="mt-12">
-        <Rule className="mb-8" />
-        <MetaGutter meta={["§ 03", "skills"]}>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {SKILLS.map((s) => (
-              <div key={s.group} className="mc-glass rounded-xl p-5">
-                <Caption className="text-[rgb(var(--bone))]">{s.group}</Caption>
-                <ul className="mt-3 space-y-1.5">
-                  {s.items.map((i) => (
-                    <li
-                      key={i}
-                      className="num text-[0.82rem] leading-relaxed text-[rgb(var(--bone)/0.78)]"
-                    >
-                      {i}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </MetaGutter>
-      </section>
-
-      {/* Experience — reused journal grid */}
-      <section className="mt-12">
-        <Rule className="mb-8" />
-        <MetaGutter meta={["§ 04", "history"]}>
-          <Experience showKicker={false} />
-        </MetaGutter>
-      </section>
-
-      {/* Education + certifications — glass ledgers */}
-      <section className="mt-12">
-        <Rule className="mb-8" />
-        <MetaGutter meta={["§ 05", "credentials"]}>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="mc-glass rounded-xl p-5">
-              <Caption className="text-[rgb(var(--bone))]">Education & honors</Caption>
-              <ul className="mt-3 border-t border-[rgb(var(--bone)/0.11)]">
-                {ACADEMICS.map((a) => (
-                  <LedgerRow key={a.title} title={a.title} detail={a.detail} />
+      <section className="press-section">
+        <h2>Skills</h2>
+        <div style={{ display: "grid", gap: "0.75rem", gridTemplateColumns: "repeat(auto-fit, minmax(15rem, 1fr))" }}>
+          {SKILLS.map((s) => (
+            <div key={s.group} className="press-ledger">
+              <div className="press-ledger-head"><span>{s.group}</span></div>
+              <ul style={{ display: "grid", gap: "0.35rem", listStyle: "none", padding: 0, margin: 0 }}>
+                {s.items.map((i) => (
+                  <li key={i} style={{ fontSize: "0.9rem", lineHeight: 1.5, color: "var(--p-mute)" }}>{i}</li>
                 ))}
               </ul>
             </div>
-            <div className="mc-glass rounded-xl p-5">
-              <Caption className="text-[rgb(var(--bone))]">Certifications</Caption>
-              <ul className="mt-3 border-t border-[rgb(var(--bone)/0.11)]">
-                {CERTIFICATIONS.map((c) => (
-                  <LedgerRow key={c.title} title={c.title} detail={c.detail} />
-                ))}
-              </ul>
-            </div>
-          </div>
-        </MetaGutter>
+          ))}
+        </div>
       </section>
 
-      <p className="mt-12 max-w-[64ch] font-serif text-[1.05rem] leading-[1.6] text-[rgb(var(--bone)/0.78)]">
-        {BIO.highlights[0]}{" "}
-        <a href={SITE.socials.linkedin} className="link-ink">
-          Full profile on LinkedIn ↗
-        </a>
-      </p>
+      <section className="press-section">
+        <h2>History</h2>
+        <Experience showKicker={false} />
+      </section>
+
+      <section className="press-section">
+        <h2>Credentials</h2>
+        <div style={{ display: "grid", gap: "0.75rem", gridTemplateColumns: "repeat(auto-fit, minmax(18rem, 1fr))" }}>
+          <div className="press-ledger">
+            <div className="press-ledger-head"><span>Education &amp; honors</span></div>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {ACADEMICS.map((a) => (
+                <LedgerRow key={a.title} title={a.title} detail={a.detail} />
+              ))}
+            </ul>
+          </div>
+          <div className="press-ledger">
+            <div className="press-ledger-head"><span>Certifications</span></div>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {CERTIFICATIONS.map((c) => (
+                <LedgerRow key={c.title} title={c.title} detail={c.detail} />
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="press-section">
+        <p className="press-serif" style={{ margin: 0, color: "var(--p-mute)" }}>
+          Full profile on{" "}
+          <a href={SITE.socials.linkedin} className="link-ink" target="_blank" rel="noopener noreferrer">
+            LinkedIn ↗
+          </a>
+        </p>
+      </section>
     </PageShell>
   );
 }
