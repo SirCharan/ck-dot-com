@@ -10,6 +10,17 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  async redirects() {
+    return [
+      // Whispr landing lives on its own Vercel project (no /whispr basePath),
+      // so redirect instead of rewriting/proxying.
+      {
+        source: "/whispr",
+        destination: "https://whispr-black-chi.vercel.app/",
+        permanent: false,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {

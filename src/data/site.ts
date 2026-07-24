@@ -261,6 +261,15 @@ export const TOOLS: Tool[] = [
     detail: "/work/second-brain",
   },
   {
+    title: "Whispr",
+    one: "Local Whisper dictation for macOS: hold a hotkey, speak, text lands in any app. Fully on-device, free.",
+    live: "/whispr",
+    liveLabel: "Live",
+    github: "https://github.com/SirCharan/whispr",
+    tags: ["AI", "Tools"],
+    status: "live",
+  },
+  {
     title: "Lakshay",
     one: "Intraday AI signals for NSE F&O: 5-min cycles, Dhan data, paper track record.",
     live: "https://lakshya-cyan.vercel.app/",
