@@ -5,7 +5,7 @@ import { RootStructuredData } from "@/components/RootStructuredData";
 import { grotesk, serif, mono } from "@/lib/fonts";
 import "@/index.css";
 
-const GA_ID = "G-J6SY9N1Y3W";
+const GA_ID = "G-5710J6PDZT";
 
 const SITE_URL = "https://charandeepkapoor.com";
 
