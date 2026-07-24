@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Charandeep Kapoor — Proof Press",
   description:
     "Using AI to build a money printing machine. Stocky +110% verified. Drishti live. Timelock founder. Product & AI at Delta Exchange.",
-  robots: { index: false, follow: false },
+  alternates: { canonical: "/" },
 };
 
 export default async function Home() {

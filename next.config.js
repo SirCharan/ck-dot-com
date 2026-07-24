@@ -12,11 +12,16 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Whispr landing lives on its own Vercel project (no /whispr basePath),
-      // so redirect instead of rewriting/proxying.
+      // OpenWispr landing lives on its own Vercel project (no basePath),
+      // so redirect instead of rewriting/proxying. /whispr kept for old links.
+      {
+        source: "/openwispr",
+        destination: "https://openwispr.vercel.app/",
+        permanent: false,
+      },
       {
         source: "/whispr",
-        destination: "https://whispr-black-chi.vercel.app/",
+        destination: "https://openwispr.vercel.app/",
         permanent: false,
       },
     ];

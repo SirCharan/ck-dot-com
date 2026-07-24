@@ -6,6 +6,7 @@ import { BuildsList } from "@/components/BuildsList";
 import { TOOLS } from "@/data/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/markets" },
   title: "Indian Stock Market",
   description:
     "Quant trading the Indian stock market. Stocky ran Claude-driven Zerodha trades for a year on real capital (₹16.57L profit, +110%, verified), plus a live Dhan book, voice trading, and options tooling.",

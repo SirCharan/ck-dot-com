@@ -16,12 +16,12 @@ export function BlogStructuredData({ post, slug }: BlogStructuredDataProps) {
     description: post.excerpt || post.title,
     url,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated || post.date,
     author: {
       "@type": "Person",
       name: "Charandeep Kapoor",
       url: SITE_URL,
-      jobTitle: "Crypto & Quant Finance Expert",
+      jobTitle: "AI Product Manager",
     },
     publisher: {
       "@type": "Organization",

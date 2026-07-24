@@ -7,6 +7,7 @@ import { Research } from "@/components/Research";
 import { TOOLS } from "@/data/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work" },
   title: "Proof of Work",
   description:
     "Live projects and research by Charandeep Kapoor: AI trading systems, MCP servers, options tooling, and protocol research across crypto and Indian equities.",

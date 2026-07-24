@@ -1,19 +1,21 @@
 /* TEAM */
 Developer: Charandeep Kapoor
+Role: AI Product Manager, Delta Exchange
 Site: https://charandeepkapoor.com
 Twitter: @yourasianquant
 GitHub: github.com/SirCharan
 Location: India
 
 /* PRODUCTS */
-Stocky AI: AI-powered Zerodha trading (100%+ ROI)
-Stocky Terminal: Open-source Bloomberg Terminal alternative (terminal.stockyai.xyz)
-Stocky LLM: Fine-tuned trading models
-Stocky Fun: Live vision APIs for trading
-Stocky Analyse: Hedge fund level portfolio analysis
+Drishti: Live LLM trading signals for Delta crypto perpetuals (real capital)
+Stocky: Claude-driven Zerodha trading (+110% verified, Sharpe 2.29)
+Timelock Trade: Oracle-less, liquidation-free DeFi derivatives ($7.3M volume)
+Lakshay: Intraday AI signals for NSE F&O
+Second Brain: Local-first memory for Claude Code (open source)
+OpenWispr: On-device Whisper dictation for macOS (free, open source)
 
 /* SITE */
-Last update: 2026
+Last update: 2026-07-24
 Standards: HTML5, CSS3
 Components: React, Next.js, Tailwind CSS, Framer Motion
 Software: Vercel

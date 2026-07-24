@@ -6,6 +6,7 @@ import { PROOF } from "@/press/lib/proof";
 import { PrintButton } from "@/components/PrintButton";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resume" },
   title: "Résumé",
   description:
     "Charandeep Kapoor, AI Product Manager at Delta Exchange. Experience, skills, education and certifications.",

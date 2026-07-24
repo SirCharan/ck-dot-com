@@ -261,13 +261,14 @@ export const TOOLS: Tool[] = [
     detail: "/work/second-brain",
   },
   {
-    title: "Whispr",
-    one: "Local Whisper dictation for macOS: hold a hotkey, speak, text lands in any app. Fully on-device, free.",
-    live: "/whispr",
+    title: "OpenWispr",
+    one: "Say it. It's typed. Open-source dictation that never leaves your Mac: hold fn, speak, on-device Whisper pastes it at the cursor.",
+    live: "/openwispr",
     liveLabel: "Live",
-    github: "https://github.com/SirCharan/whispr",
+    github: "https://github.com/SirCharan/openwispr",
     tags: ["AI", "Tools"],
     status: "live",
+    cover: "/images/work/openwispr/cover.png",
   },
   {
     title: "Lakshay",

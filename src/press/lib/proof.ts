@@ -61,5 +61,12 @@ export const PROOF = {
       cover: "/images/work/second-brain/cover.png",
       alt: "Second Brain — the chat ends, the memory stays",
     },
+    {
+      title: "OpenWispr",
+      line: "Say it. It's typed. On-device dictation for macOS · open source",
+      href: "/openwispr",
+      cover: "/images/work/openwispr/cover.png",
+      alt: "OpenWispr — open-source dictation that never leaves your Mac",
+    },
   ],
 } as const;

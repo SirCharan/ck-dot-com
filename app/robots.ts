@@ -29,11 +29,31 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
       {
+        userAgent: "Perplexity-User",
+        allow: "/",
+      },
+      {
         userAgent: "OAI-SearchBot",
         allow: "/",
       },
       {
-        userAgent: "Claude-Web",
+        userAgent: "GPTBot",
+        allow: "/",
+      },
+      {
+        userAgent: "ChatGPT-User",
+        allow: "/",
+      },
+      {
+        userAgent: "ClaudeBot",
+        allow: "/",
+      },
+      {
+        userAgent: "Claude-SearchBot",
+        allow: "/",
+      },
+      {
+        userAgent: "Claude-User",
         allow: "/",
       },
       {
@@ -45,15 +65,11 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
       {
-        userAgent: "GPTBot",
-        allow: "/",
-      },
-      {
         userAgent: "Google-Extended",
         allow: "/",
       },
       {
-        userAgent: "ChatGPT-User",
+        userAgent: "Google-CloudVertexBot",
         allow: "/",
       },
       {
@@ -62,6 +78,26 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: "meta-externalagent",
+        allow: "/",
+      },
+      {
+        userAgent: "meta-externalfetcher",
+        allow: "/",
+      },
+      {
+        userAgent: "MistralAI-User",
+        allow: "/",
+      },
+      {
+        userAgent: "CCBot",
+        allow: "/",
+      },
+      {
+        userAgent: "Amazonbot",
+        allow: "/",
+      },
+      {
+        userAgent: "DuckAssistBot",
         allow: "/",
       },
     ],

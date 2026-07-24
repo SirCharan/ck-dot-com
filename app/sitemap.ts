@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { CASE_STUDIES } from "@/data/site";
 
 const SITE_URL = "https://charandeepkapoor.com";
 
@@ -39,6 +40,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/resume`,
+      lastModified: today,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/track-record`,
+      lastModified: today,
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/llms.txt`,
       lastModified: today,
       changeFrequency: "monthly" as const,
@@ -62,11 +75,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.75,
     },
+    {
+      url: `${SITE_URL}/llms-full.txt`,
+      lastModified: today,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
   ];
+
+  const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDIES.map((cs) => ({
+    url: `${SITE_URL}/work/${cs.slug}`,
+    lastModified: today,
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
 
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: post.date || today,
+    lastModified: post.updated || post.date || today,
     changeFrequency: "yearly" as const,
     priority: 0.85,
   }));
@@ -79,5 +105,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPages, ...blogMdPages];
+  return [...staticPages, ...caseStudyPages, ...blogPages, ...blogMdPages];
 }

@@ -11,6 +11,7 @@ import { EquityCurveSvg } from "@/components/lab/EquityCurveSvg";
 const pctY = (v: number) => `${v >= 0 ? "+" : ""}${v.toFixed(0)}%`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/track-record" },
   title: "Live Track Record",
   description:
     "Charandeep Kapoor's live Dhan trading track record: aggregate P&L, Sharpe, drawdown and win-rate, updated daily. Illustrative only; not investment advice.",

@@ -1,9 +1,20 @@
 /**
  * Root-level structured data injected on every page.
- * Enhances AI discoverability (Perplexity, ChatGPT) and E-E-A-T signals.
+ * Enhances AI discoverability (Perplexity, ChatGPT, Claude) and E-E-A-T signals.
  */
 
+import { SITE } from "@/data/site";
+
 const SITE_URL = "https://charandeepkapoor.com";
+
+// Identity profiles only (no booking links) — sourced from SITE.socials so
+// URLs can't drift from the rest of the site.
+const SAME_AS = [
+  SITE.socials.twitter,
+  SITE.socials.linkedin,
+  SITE.socials.github,
+  SITE.socials.telegram,
+];
 
 export function RootStructuredData() {
   const personSchema = {
@@ -12,48 +23,37 @@ export function RootStructuredData() {
     name: "Charandeep Kapoor",
     url: SITE_URL,
     image: `${SITE_URL}/og-image.jpg`,
-    jobTitle: "Crypto, Quant Finance & Mathematics Expert",
+    jobTitle: "AI Product Manager",
     description:
-      "6+ years in crypto, quant finance and product. Creator of Stocky AI (AI-powered Zerodha trading, 100%+ ROI) and Stocky Terminal (open-source Bloomberg Terminal alternative). Writes on protected perps, DeFi, trading psychology, and building systems.",
+      "AI Product Manager at Delta Exchange, India's largest crypto derivatives exchange. Creator of Drishti (live LLM trading signals for crypto perpetuals) and Stocky (Claude-driven Zerodha trading, +110% verified, ₹16.57L profit, Sharpe 2.29). Founder of Timelock Trade (oracle-less, liquidation-free DeFi derivatives, $7.3M volume). Writes on markets, trading psychology, AI, and building systems.",
     alumniOf: {
       "@type": "CollegeOrUniversity",
       name: "IIT Kanpur",
     },
-    sameAs: [
-      "https://twitter.com/yourasianquant",
-      "https://linkedin.com/in/charandeepkapoor",
-      "https://github.com/SirCharan",
-      "https://stockyai.xyz",
-      "https://terminal.stockyai.xyz",
-      "https://llm.stockyai.xyz",
-    ],
-    affiliation: {
-      "@type": "Organization",
-      name: "Stocky AI",
-      url: "https://stockyai.xyz",
-      description:
-        "AI-powered Zerodha trading system for Indian stock and commodity markets with 100%+ ROI and 73% win rate.",
-    },
+    sameAs: SAME_AS,
     worksFor: {
       "@type": "Organization",
-      name: "Crypto & FinTech Industry",
+      name: "Delta Exchange",
+      url: "https://www.delta.exchange",
+      description: "India's largest crypto derivatives exchange.",
     },
     knowsAbout: [
-      "Cryptocurrency",
+      "AI Product Management",
+      "Large Language Models",
+      "Claude",
+      "Model Context Protocol",
+      "LLM Trading Systems",
+      "Cryptocurrency Derivatives",
+      "Perpetual Futures",
+      "Options Trading",
       "Quantitative Finance",
       "Algorithmic Trading",
       "DeFi",
       "Protected Perpetuals",
-      "Blockchain",
+      "Drishti",
       "Stocky AI",
-      "AI Trading Systems",
+      "Indian Stock Market",
       "Zerodha API Trading",
-      "Bloomberg Terminal Alternative",
-      "OSINT Dashboard",
-      "Geopolitical Intelligence",
-      "Market Intelligence",
-      "Options Trading",
-      "Commodities Trading",
     ],
   };
 
@@ -63,23 +63,26 @@ export function RootStructuredData() {
     name: "Charandeep Kapoor",
     url: SITE_URL,
     description:
-      "Portfolio and writings of Charandeep Kapoor — crypto, quant finance, and mathematics expert. Creator of Stocky AI and Stocky Terminal.",
+      "Portfolio and writings of Charandeep Kapoor — AI Product Manager at Delta Exchange. Live AI trading systems (Drishti, Stocky, Lakshay), DeFi derivatives (Timelock), open-source tools (Second Brain, OpenWispr), and essays on markets and building.",
     about: {
       "@type": "Thing",
-      name: "AI-powered trading systems, open-source market intelligence, DeFi derivatives and quantitative finance research",
+      name: "AI-powered trading systems, crypto derivatives product, LLM tooling, and quantitative finance",
     },
     keywords: [
       "Charandeep Kapoor",
+      "AI Product Manager",
+      "Delta Exchange",
+      "Drishti AI trading signals",
       "Stocky AI",
-      "Stocky Terminal",
-      "AI trading India",
       "Zerodha AI trading bot",
-      "quantitative finance research",
-      "protected perps",
-      "DeFi derivatives",
-      "algorithmic trading strategies",
-      "Bloomberg Terminal alternative",
-      "open source terminal",
+      "Lakshay NSE signals",
+      "Timelock protected perps",
+      "Second Brain Claude Code",
+      "OpenWispr macOS dictation",
+      "Model Context Protocol",
+      "LLM trading systems",
+      "quantitative finance",
+      "crypto derivatives",
     ],
     author: {
       "@type": "Person",
@@ -102,73 +105,86 @@ export function RootStructuredData() {
     },
   };
 
-  const stockyTerminalSchema = {
+  const author = {
+    "@type": "Person",
+    name: "Charandeep Kapoor",
+    url: SITE_URL,
+  };
+
+  const drishtiSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Stocky Terminal",
-    url: "https://terminal.stockyai.xyz",
+    name: "Drishti",
+    url: "https://drishti-beryl.vercel.app",
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web Browser",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
     description:
-      "Free, open-source Bloomberg Terminal alternative with 12+ interactive data panels, 27+ map layers, AI-powered trade signals, and daily market briefs delivered to 70+ subscribers.",
-    author: {
-      "@type": "Person",
-      name: "Charandeep Kapoor",
-      url: SITE_URL,
-    },
-    license: "https://opensource.org/licenses/AGPL-3.0",
-    codeRepository: "https://github.com/SirCharan/stocky-terminal",
-    featureList: [
-      "12+ interactive data panels (NSE/BSE/MCX, crypto, forex, news)",
-      "27+ layer interactive map (geopolitical OSINT, earthquakes, wildfires, trade routes)",
-      "AI-powered trade signals via Groq (Llama 3.1 8B)",
-      "Automated daily market briefs at 8AM and 8PM IST",
-      "Email delivery to 70+ subscribers",
-      "25+ Vercel Edge Function API endpoints",
-      "Data from 30+ sources (Reuters, Bloomberg, USGS, NASA, ACLED)",
-      "Region selectors: India, Global, Asia, MENA, Europe, Americas, USA",
-    ],
+      "Live LLM-driven trading signals for Delta Exchange crypto perpetuals: 15-minute regime-aware cycles across 8 markets, with a real-money executor placing risk-managed orders (reduce-only stop-loss/take-profit).",
+    author,
   };
 
   const stockyAiSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "Stocky AI",
-    url: "https://stockyai.xyz",
+    url: "https://stockai-red.vercel.app/",
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web Browser",
     description:
-      "AI trading assistant for Indian stock markets. 15L to 37.62L in eight months. Fine-tuned LLM on Claude Opus 4.6 for NSE/BSE. Full portfolio automation, market briefs, and 7 tools (Inshorts, Tijori, LiveMint, Kite, Sensibull, TradingView, Moneycontrol) in one conversation.",
-    author: {
-      "@type": "Person",
-      name: "Charandeep Kapoor",
-      url: SITE_URL,
-    },
+      "Claude-driven Zerodha trading for the Indian stock market via a custom MCP server. ₹16.57L profit (+110% ROI) on ₹15L capital over ~9 months, Sharpe 2.29, 73% win rate — verified P&L on Sensibull.",
+    author,
   };
+
+  const secondBrainSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Second Brain",
+    url: `${SITE_URL}/second-brain`,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "macOS, Linux, Windows",
+    description:
+      "Local-first memory for Claude Code: captures every session into an Obsidian-compatible Markdown vault on your own machine and recalls it into new prompts. Open source (Apache-2.0).",
+    license: "https://www.apache.org/licenses/LICENSE-2.0",
+    codeRepository: "https://github.com/SirCharan/second-brain",
+    author,
+  };
+
+  const openWisprSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "OpenWispr",
+    url: `${SITE_URL}/openwispr`,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "macOS",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    description:
+      "Free, open-source, on-device dictation for macOS: hold a hotkey, speak, and Whisper-transcribed text is pasted at the cursor in any app. 100% local — no cloud, no subscription.",
+    codeRepository: "https://github.com/SirCharan/openwispr",
+    author,
+  };
+
+  const schemas = [
+    personSchema,
+    websiteSchema,
+    drishtiSchema,
+    stockyAiSchema,
+    secondBrainSchema,
+    openWisprSchema,
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(stockyTerminalSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(stockyAiSchema) }}
-      />
+      {schemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
     </>
   );
 }

@@ -27,6 +27,7 @@ const STOCKY_ORDER = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/blog" },
   title: "Writings",
   description:
     "Essays on protected perps, DeFi, trading psychology, crypto markets, AI, and life philosophy. By Charandeep Kapoor, crypto and quant finance expert.",

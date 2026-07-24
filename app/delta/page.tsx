@@ -4,6 +4,7 @@ import { BuildsList } from "@/components/BuildsList";
 import { EXPERIENCE, TOOLS } from "@/data/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/delta" },
   title: "Work at Delta Exchange",
   description:
     "AI Product Manager at Delta Exchange, India's largest crypto derivatives exchange. I build perpetual futures, options, and the AI features across the trading and research stack.",

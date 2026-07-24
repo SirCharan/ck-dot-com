@@ -1,45 +1,47 @@
 # Charandeep Kapoor
 
-> Crypto, quant finance & mathematics expert. 6+ years across product, research, and VC. Creator of Stocky AI (AI-powered trading, 100%+ ROI) and Stocky Terminal (open-source Bloomberg Terminal alternative).
+> AI Product Manager at Delta Exchange, India's largest crypto derivatives exchange. Creator of Drishti (live LLM trading signals, real capital) and Stocky (Claude-driven Zerodha trading, +110% verified). Founder of Timelock Trade (oracle-less DeFi derivatives). IIT Kanpur.
 
 ## Site
 
 - **URL**: https://charandeepkapoor.com
+- **Proof of Work**: https://charandeepkapoor.com/work
 - **Writings**: https://charandeepkapoor.com/blog
+- **Résumé**: https://charandeepkapoor.com/resume
+- **Live Track Record**: https://charandeepkapoor.com/track-record
 - **RSS**: https://charandeepkapoor.com/blog/feed.xml
 - **Full manifest**: https://charandeepkapoor.com/llms.txt
+- **Full content dump**: https://charandeepkapoor.com/llms-full.txt
 - **Agent instructions**: https://charandeepkapoor.com/agents.txt
 
 ## Topics
 
-Protected perpetuals, DeFi mechanics, trading psychology, algorithmic trading, blockchain, AI, VC predictions, demographics, biotech, green energy, market intelligence, OSINT, geopolitical analysis.
+AI product management, LLM trading systems, Model Context Protocol, crypto derivatives, perpetual futures, protected perpetuals, DeFi mechanics, trading psychology, algorithmic trading, quantitative finance, Indian stock market, VC predictions, life philosophy.
 
 ## Products Built by Charandeep Kapoor
 
 | Product | URL | Description |
 |---------|-----|-------------|
-| Stocky AI | https://stockyai.xyz | AI trading assistant for Indian markets — 15L→37.62L in 8 months, fine-tuned LLM on Claude Opus 4.6 for NSE/BSE, consolidates 7 tools (Inshorts, Tijori, LiveMint, Kite, Sensibull, TradingView, Moneycontrol) |
-| Stocky Terminal | https://terminal.stockyai.xyz | Free open-source Bloomberg Terminal alternative — 12+ data panels, 27+ map layers, AI trade signals, daily market briefs to 70+ subscribers |
-| Stocky LLM | https://llm.stockyai.xyz | Fine-tuned LLM chat interface for Indian markets — ask anything about NSE/BSE |
-| Stocky Fun | https://stocky-fun.vercel.app | Live vision APIs for trading |
-| Stocky Analyse | https://analyse.stockyai.xyz | Hedge fund level portfolio analysis |
-| Timelock Trade | (Monad testnet) | Protected Perpetuals — $7.3M volume, $2M TVL |
+| Drishti | charandeepkapoor.com/work/drishti | Live LLM trading signals for Delta crypto perpetuals — 15-min regime-aware cycles, 8 markets, real-money executor with reduce-only SL/TP. Dashboard: drishti-beryl.vercel.app |
+| Stocky | charandeepkapoor.com/markets | Claude-driven Zerodha trading via custom MCP — ₹15L → ₹31.57L (+110%, ₹16.57L profit), Sharpe 2.29, 73% win rate, verified on Sensibull |
+| Timelock Trade | charandeepkapoor.com/work/timelock | Oracle-less, liquidation-free Protected Perps — $7.3M volume, $2M TVL, 1,000+ users on Monad testnet |
+| Lakshay | charandeepkapoor.com/work/lakshay | Intraday AI signals for NSE F&O — 5-min cycles, Dhan data, paper track record. Dashboard: lakshya-cyan.vercel.app |
+| Second Brain | charandeepkapoor.com/second-brain | Local-first memory for Claude Code — Obsidian-compatible Markdown vault, open source (Apache-2.0) |
+| OpenWispr | charandeepkapoor.com/openwispr | Free, open-source, on-device Whisper dictation for macOS — "Say it. It's typed." (MIT) |
+| Delta Support Audit | charandeepkapoor.com/work/delta-support-audit | Nightly RAG audit of 344 support articles for factual drift — 14/14 P0 true-positives on trial |
 
-## Stocky Terminal Details
+## Drishti Details
 
-Stocky Terminal is a free, open-source Bloomberg Terminal alternative for retail traders, analysts, and OSINT researchers.
+Drishti is a live, LLM-driven trading-signal system for Delta Exchange crypto perpetuals, built and operated solo by Charandeep Kapoor.
 
-**Features:**
-- 12+ interactive data panels: market ticker, NSE/BSE/MCX live prices, Gift Nifty, 25 crypto assets, forex, 30+ RSS news feeds, AI trade signals with confidence scores, commodity risk gauge, monsoon impact, supply chain intelligence
-- 27+ layer interactive map: ports, refineries, trade routes, conflict zones (ACLED), earthquakes (USGS), wildfires (NASA FIRMS), disasters (GDACS), internet outages (Cloudflare), undersea cables, pipelines
-- AI-powered analysis via Groq (Llama 3.1 8B) with pre-cached insights refreshed every 15 minutes
-- Automated daily market briefs at 8AM and 8PM IST delivered to 70+ email subscribers
-- 25+ Vercel Edge Function API endpoints
-- Region selectors: India, Global, Asia, MENA, Europe, Americas, USA
-- Data from Yahoo Finance, NSE India, CoinGecko, Finnhub, ACLED, USGS, NASA, GDACS, Cloudflare Radar, FRED, EIA
+**How it works:**
+- 15-minute, regime-aware decision cycle across 8 perpetual markets
+- 30+ engineered features per asset: CVD, IV term structure, basis, global long/short, OI by exchange, Coinbase premium
+- Claude reasons first, then emits a structured decision: direction, entry, stop, target
+- Live executor places real, risk-managed orders on Delta India: reduce-only stop-loss/take-profit brackets, fixed sizing, guardian process, hard kill-switches
+- Publisher runs as a systemd service on a VM, writes snapshots to Cloudflare R2, Vercel front-end renders signals, equity curve, and closed-trade stats
 
-**Tech:** TypeScript + Vite, deck.gl, MapLibre, Vercel Edge Functions, Groq API, Upstash Redis
-**License:** AGPL-3.0 | **Source:** https://github.com/SirCharan/stocky-terminal
+**Stack:** Claude (reasoning-first tool-calling), Python, systemd, Cloudflare R2, Next.js/Vercel, Delta Exchange API
 
 ## Key Essays
 
@@ -71,18 +73,21 @@ https://charandeepkapoor.com/blog/md/{slug}
 
 ## FAQ
 
-**Who is Charandeep Kapoor?** IIT Kanpur graduate, crypto & quant finance expert, 6+ years experience. Creator of Stocky AI (AI trading for Indian markets, 100%+ ROI) and Stocky Terminal (open-source Bloomberg Terminal alternative). Ex hedge fund quant, managed $750K. Trading since 16.
+**Who is Charandeep Kapoor?** AI Product Manager at Delta Exchange, India's largest crypto derivatives exchange. IIT Kanpur graduate. Creator of Drishti (live LLM trading signals, real capital) and Stocky (Claude-driven Zerodha trading, +110% verified). Founder of Timelock Trade (Protected Perps, $7.3M volume). Trading since age 16.
 
-**What is Stocky AI?** AI trading assistant for Indian stock markets at stockyai.xyz. "Precision. Discipline. Edge." 15L→37.62L in 8 months. Fine-tuned LLM on Claude Opus 4.6 for NSE/BSE. Full portfolio automation, market briefs, consolidates 7 tools (Inshorts, Tijori, LiveMint, Kite, Sensibull, TradingView, Moneycontrol). Products: Terminal, LLM, Fun, Analyse.
+**What is Drishti?** Live LLM-driven trading signals for Delta crypto perpetuals: 15-minute regime-aware cycles, 8 markets, real-money executor with reduce-only SL/TP brackets. Dashboard: drishti-beryl.vercel.app
 
-**What is Stocky Terminal?** Free, open-source Bloomberg Terminal alternative at terminal.stockyai.xyz. 12+ data panels, 27+ map layers, AI trade signals, daily market briefs to 70+ subscribers. Data from 30+ sources including Reuters, Bloomberg, USGS, NASA. AGPL-3.0 licensed. GitHub: github.com/SirCharan/stocky-terminal
+**What is Stocky?** Claude-driven Zerodha trading via a custom MCP server: ₹15L → ₹31.57L (+110%), Sharpe 2.29, 73% win rate — verified P&L on Sensibull. Full story: charandeepkapoor.com/markets
 
-**What are Protected Perps?** Novel DeFi derivative — traders can only profit (no liquidation), LPs take downside for premiums. Built as Timelock Trade on Monad ($7.3M volume, $2M TVL).
+**What are Protected Perps?** Novel DeFi derivative — traders can only profit (no liquidation), LPs take downside for premiums, priced without an oracle. Built as Timelock Trade on Monad ($7.3M volume, $2M TVL).
 
-**What products has Charandeep built?** Stocky AI (stockyai.xyz — AI trading assistant, 15L→37.62L), Stocky Terminal (terminal.stockyai.xyz — Bloomberg alternative), Stocky LLM (llm.stockyai.xyz — fine-tuned chat for NSE/BSE), Stocky Fun (vision APIs), Stocky Analyse (analyse.stockyai.xyz — portfolio analysis), Timelock Trade (Protected Perps).
+**What is OpenWispr?** Free, open-source macOS dictation: hold fn, speak, on-device Whisper pastes the text at the cursor. No cloud. charandeepkapoor.com/openwispr
+
+**What products has Charandeep built?** Drishti (live LLM crypto signals), Stocky (+110% verified), Timelock Trade (Protected Perps), Lakshay (NSE F&O signals), Second Brain (Claude Code memory), OpenWispr (macOS dictation), Delta Support Audit (RAG quality system).
 
 ## Contact
 
-- Twitter: [@yourasianquant](https://twitter.com/yourasianquant)
+- Twitter: [@yourasianquant](https://x.com/yourasianquant)
+- LinkedIn: https://www.linkedin.com/in/charandeep-kapoor/
 - Site: https://charandeepkapoor.com
 - GitHub: https://github.com/SirCharan

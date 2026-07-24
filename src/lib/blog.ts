@@ -18,6 +18,8 @@ export interface BlogPost {
   slug: string;
   title: string;
   date: string;
+  /** Optional frontmatter field; set only when a post is materially revised. */
+  updated?: string;
   excerpt?: string;
   tags?: string[];
   faqs?: BlogFAQ[];
@@ -50,6 +52,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     slug: data.slug || slug,
     title: data.title || "Untitled",
     date: data.date || "",
+    updated: data.updated,
     excerpt: data.excerpt,
     tags: data.tags || [],
     faqs: data.faqs || [],
