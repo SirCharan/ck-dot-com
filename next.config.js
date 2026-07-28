@@ -12,22 +12,26 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // OpenWispr landing lives on its own Vercel project (no basePath),
-      // so redirect instead of rewriting/proxying. /whispr kept for old links.
-      {
-        source: "/openwispr",
-        destination: "https://openwispr.vercel.app/",
-        permanent: false,
-      },
+      // /whispr kept as a redirect for old links; /openwispr is served in-place (rewrite below).
       {
         source: "/whispr",
-        destination: "https://openwispr.vercel.app/",
+        destination: "/openwispr",
         permanent: false,
       },
     ];
   },
   async rewrites() {
     return [
+      // OpenWispr landing served in-place at charandeepkapoor.com/openwispr (its own root-served
+      // Vercel project; the page uses absolute asset URLs so no basePath is needed).
+      {
+        source: "/openwispr",
+        destination: "https://openwispr.vercel.app/",
+      },
+      {
+        source: "/openwispr/:path*",
+        destination: "https://openwispr.vercel.app/:path*",
+      },
       {
         source: "/remark42/:path*",
         destination:
