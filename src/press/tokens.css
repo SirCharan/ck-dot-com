@@ -618,8 +618,239 @@ a.press-ticket:focus-visible {
   }
 }
 
-/* Print / PDF export (Résumé) — clean black-on-white, chrome hidden */
+/* ── Résumé ────────────────────────────────────────────────────────────────
+   Two-column document. Rail (skills, credentials) sits FIRST in the DOM so a
+   PDF text layer extracts linearly for ATS parsers; the visual order is set by
+   the grid, not by source order.
+
+   The composition decision: every record's date sits in a fixed right-hand
+   slot, so the dates in "Selected systems" and "Experience" share one vertical
+   register down the whole column. Alignment is the feature — nothing is
+   allowed to go ragged with content length. */
+.resume {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: calc(var(--p-hdr) + clamp(2rem, 6vw, 3.5rem)) clamp(1.1rem, 4vw, 2.5rem)
+    clamp(3rem, 8vw, 5rem);
+}
+
+.resume-name {
+  font-family: var(--press-serif), Georgia, serif;
+  font-size: clamp(2.1rem, 5.5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin: 0;
+  color: var(--p-ink);
+}
+.resume-title {
+  font-size: 1.02rem;
+  color: var(--p-mute);
+  margin: 0.45rem 0 0;
+}
+
+/* Contact: sans, not mono. Mono here would make it a costume; it is only used
+   below for dates and hosts, which are genuinely data. */
+.resume-contact {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.1rem;
+  padding: 0;
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--p-mute);
+}
+.resume-contact a {
+  color: var(--p-mute);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.resume-contact a:hover {
+  color: var(--p-ink);
+  border-bottom-color: var(--p-line);
+}
+
+.resume-grid {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  margin-top: clamp(2rem, 5vw, 2.75rem);
+  padding-top: clamp(1.5rem, 4vw, 2rem);
+  border-top: 1px solid var(--p-line);
+}
+/* Collapsed to one column, the profile and experience must come FIRST. The rail
+   leads in source order only so the PDF text layer extracts linearly for ATS;
+   a human on a phone should not meet the skills list before the profile. */
+.resume-main { order: 1; }
+.resume-rail { order: 2; }
+@media (min-width: 860px) {
+  .resume-grid {
+    /* Rail second visually, first in source — set explicitly, both columns
+       starting on the same top baseline. */
+    grid-template-columns: 1fr minmax(13rem, 16rem);
+    align-items: start;
+  }
+  .resume-rail { grid-column: 2; grid-row: 1; }
+  .resume-main { grid-column: 1; grid-row: 1; }
+}
+
+.resume-block + .resume-block { margin-top: clamp(1.5rem, 3vw, 2rem); }
+
+/* Two distinct label treatments for two distinct roles, so the page does not
+   wear one tracked-caps costume everywhere. */
+.resume-main h2 {
+  font-family: var(--press-serif), Georgia, serif;
+  font-size: 1.16rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--p-ink);
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--p-line);
+}
+.resume-rail h2 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--p-mute);
+  margin: 0 0 0.7rem;
+}
+
+.resume-profile {
+  font-family: var(--press-serif), Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--p-mute);
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* A record: company/system on the left, its date or host in the right slot. */
+.resume-rec + .resume-rec { margin-top: 0.85rem; }
+.resume-rec-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 0.9rem;
+}
+.resume-rec-name {
+  font-family: var(--press-serif), Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--p-ink);
+  margin: 0;
+}
+.resume-rec-name a { color: inherit; text-decoration: none; }
+.resume-rec-role {
+  font-family: var(--press-sans), system-ui, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--p-mute);
+}
+.resume-rec-role::before { content: "·"; margin: 0 0.4rem; color: var(--p-faint); }
+.resume-rec-when {
+  font-family: var(--press-mono), ui-monospace, monospace;
+  font-size: 0.74rem;
+  color: var(--p-mute);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+/* On a narrow screen the two-slot header squeezes the role until it wraps under
+   its own date. Stack instead: company/role on one line, date beneath. */
+@media (max-width: 620px) {
+  .resume-rec-head { grid-template-columns: 1fr; gap: 0.1rem; }
+  .resume-rec-when { text-align: left; }
+}
+
+.resume-rec-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0.35rem 0 0;
+  display: grid;
+  gap: 0.22rem;
+}
+.resume-rec-bullets li {
+  position: relative;
+  padding-left: 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--p-mute);
+}
+.resume-rec-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  /* Centred on the first line's x-height, not guessed off the top. */
+  top: 0.62em;
+  width: 4px;
+  height: 1px;
+  background: var(--p-faint);
+}
+.resume-rec-one,
+.resume-rec-line {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--p-mute);
+  margin: 0.2rem 0 0;
+  max-width: 68ch;
+}
+
+.resume-rail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+.resume-skill-group { font-size: 0.85rem; line-height: 1.5; }
+.resume-skill-group dt {
+  color: var(--p-ink);
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.15rem;
+}
+.resume-skill-group dd { color: var(--p-mute); margin: 0; }
+
+/* Rail rows stack. Side-by-side in a 52mm rail wraps the title and goes
+   ragged; stacking keeps every row clean at any content length. */
+.resume-row {
+  display: block;
+  padding: 0.4rem 0;
+  border-top: 1px solid var(--p-line);
+  font-size: 0.85rem;
+}
+.resume-row:first-child { border-top: 0; padding-top: 0; }
+.resume-row-title {
+  display: block;
+  color: var(--p-ink);
+  line-height: 1.3;
+}
+/* Data (ranks, years): mono, tabular. */
+.resume-row-detail {
+  display: block;
+  font-family: var(--press-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  color: var(--p-mute);
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.05rem;
+}
+/* Prose (certification names): sans. Mono here would be a costume. */
+.resume-row-note {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  color: var(--p-mute);
+  margin-top: 0.05rem;
+}
+
+/* Print / PDF export (Résumé) — clean black-on-white, chrome hidden.
+   Target: exactly ONE A4 page. scripts/build-resume.ts asserts it. */
 @media print {
+  @page { size: A4; margin: 12mm; }
+
   .press-nav,
   .press-foot,
   .press-atmos,
@@ -630,16 +861,86 @@ a.press-ticket:focus-visible {
   }
   .press,
   .press-main,
-  .press-page {
+  .press-page,
+  .resume {
     background: #fff !important;
     color: #111 !important;
   }
+  /* `min-height: 100dvh` resolves to the FULL page height in print, which
+     overflows the printable area (page minus @page margin) and emits a second,
+     near-empty page. A paged document has no use for a viewport min-height. */
+  .press { min-height: 0 !important; overflow: visible !important; }
   .press-page { padding: 0 !important; max-width: none !important; }
   .press-section { break-inside: avoid; padding: 0.6rem 0 !important; }
   .press-ledger, .press-ticket { break-inside: avoid; border-color: #ddd !important; background: #fff !important; }
   .press-section h2 { color: #111 !important; }
   a { color: #111 !important; text-decoration: none !important; }
   .press-ticket-val { color: #111 !important; }
+
+  /* Résumé print sizing. Real black on white — no mid-grey text that prints
+     illegible. Rules drop to a light grey so they read as structure, not ink. */
+  .resume {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 9.5pt;
+    line-height: 1.35;
+  }
+  .resume-name { font-size: 21pt !important; color: #111 !important; }
+  .resume-title { font-size: 10.5pt !important; color: #333 !important; margin-top: 2pt !important; }
+  .resume-contact {
+    font-size: 8.3pt !important;
+    color: #333 !important;
+    margin-top: 6pt !important;
+    gap: 1pt 10pt !important;
+  }
+  .resume-contact a { color: #333 !important; border: 0 !important; }
+
+  /* Two columns held in print, same source-order mapping as on screen. */
+  .resume-grid {
+    grid-template-columns: 1fr 56mm !important;
+    margin-top: 8pt !important;
+    padding-top: 7pt !important;
+    border-top-color: #bbb !important;
+    gap: 9mm !important;
+  }
+  .resume-rail { grid-column: 2 !important; grid-row: 1 !important; }
+  .resume-main { grid-column: 1 !important; grid-row: 1 !important; }
+
+  .resume-block + .resume-block { margin-top: 9pt !important; }
+  .resume-main h2 {
+    font-size: 11pt !important;
+    color: #111 !important;
+    margin-bottom: 5pt !important;
+    padding-bottom: 3pt !important;
+    border-bottom-color: #bbb !important;
+  }
+  .resume-rail h2 { font-size: 7.4pt !important; color: #555 !important; margin-bottom: 4pt !important; }
+  .resume-profile { font-size: 9.6pt !important; color: #222 !important; line-height: 1.45 !important; }
+
+  .resume-rec { break-inside: avoid; }
+  .resume-rec + .resume-rec { margin-top: 6pt !important; }
+  .resume-rec-name { font-size: 9.8pt !important; color: #111 !important; }
+  .resume-rec-role { font-size: 8.6pt !important; color: #444 !important; }
+  .resume-rec-when { font-size: 7.6pt !important; color: #555 !important; }
+  .resume-rec-bullets { gap: 1pt !important; margin-top: 2pt !important; }
+  .resume-rec-bullets li { font-size: 8.8pt !important; color: #222 !important; line-height: 1.35 !important; }
+  .resume-rec-bullets li::before { background: #777 !important; }
+  .resume-rec-one, .resume-rec-line { font-size: 8.8pt !important; color: #222 !important; line-height: 1.35 !important; }
+
+  .resume-rail-list { gap: 5pt !important; }
+  .resume-skill-group { font-size: 8.4pt !important; break-inside: avoid; }
+  .resume-skill-group dt { font-size: 8.4pt !important; color: #111 !important; }
+  .resume-skill-group dd { color: #333 !important; }
+  .resume-row {
+    font-size: 8.4pt !important;
+    padding: 2.4pt 0 !important;
+    border-top-color: #ddd !important;
+    break-inside: avoid;
+  }
+  .resume-row-title { color: #111 !important; }
+  .resume-row-detail { font-size: 7.4pt !important; color: #555 !important; }
+  .resume-row-note { font-size: 7.8pt !important; color: #444 !important; }
 }
 
 /* Hero live-proof strip (static dot; no glow ring per anti-slop) */

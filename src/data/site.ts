@@ -135,7 +135,7 @@ export const EXPERIENCE: Experience[] = [
   {
     company: "Tykhe Block Ventures",
     position: "VC Analyst",
-    duration: "Mar 2023 – Nov 2023",
+    duration: "Mar 2022 – Nov 2023",
     one: "Technical due diligence on DeFi protocols; supported NFTPerp on derivative pricing.",
   },
 ];

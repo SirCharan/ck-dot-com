@@ -11,6 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "e2e": "playwright test",
+    "resume:pdf": "node scripts/build-resume.mjs",
+    "resume:docx": "node scripts/build-resume-docx.mjs",
     "pull:pnl": "tsx scripts/refresh-pnl.ts",
     "pull:portfolio": "tsx scripts/refresh-portfolio.ts"
   },
@@ -47,6 +49,7 @@
     "@types/react-syntax-highlighter": "^15.5.11",
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.20",
+    "docx": "^9.7.1",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "globals": "^15.9.0",

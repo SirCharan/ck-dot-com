@@ -1,128 +1,183 @@
 import type { Metadata } from "next";
-import { PageShell, PageIntro } from "@/components/PageShell";
-import { Experience } from "@/components/Experience";
-import { ACADEMICS, CERTIFICATIONS, BIO, SITE, SKILLS } from "@/data/site";
-import { PROOF } from "@/press/lib/proof";
+import { PageShell } from "@/components/PageShell";
 import { PrintButton } from "@/components/PrintButton";
+import { RESUME, type ResumeRole } from "@/data/resume";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/resume" },
   title: "Résumé",
   description:
-    "Charandeep Kapoor, AI Product Manager at Delta Exchange. Experience, skills, education and certifications.",
+    "Charandeep Kapoor, AI Product Manager at Delta Exchange. One page: shipped AI systems, experience, skills, education and certifications.",
 };
 
-/** Hairline-ruled ledger row: label left, mono detail right. */
-function LedgerRow({ title, detail }: { title: string; detail: string }) {
+/** Strip scheme and www so a printed link reads as a plain host, not a URL. */
+function host(url: string): string {
+  return url.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/$/, "");
+}
+
+/** Hostname only. A long path would dominate the record's right-hand slot. */
+function hostOnly(url: string): string {
+  return host(url).split("/")[0];
+}
+
+/**
+ * Rail row. Stacked, not a two-column register: the rail is too narrow to hold
+ * title and detail side by side without the title wrapping and going ragged.
+ * `data` sets ranks and dates in mono (they are data); `text` keeps prose in
+ * sans, because mono on prose is a costume.
+ */
+function Row({
+  title,
+  detail,
+  variant = "data",
+}: {
+  title: string;
+  detail: string;
+  variant?: "data" | "text";
+}) {
   return (
-    <li
-      style={{
-        display: "flex",
-        alignItems: "baseline",
-        justifyContent: "space-between",
-        gap: "1rem",
-        borderTop: "1px solid var(--p-line)",
-        padding: "0.7rem 0",
-      }}
-    >
-      <span className="press-serif" style={{ fontSize: "1rem", lineHeight: 1.3, color: "var(--p-ink)" }}>
-        {title}
-      </span>
-      <span className="press-mono" style={{ flexShrink: 0, fontSize: "0.78rem", color: "var(--p-mute)" }}>
-        {detail}
-      </span>
+    <li className="resume-row">
+      <span className="resume-row-title">{title}</span>
+      {detail ? (
+        <span className={variant === "data" ? "resume-row-detail" : "resume-row-note"}>
+          {detail}
+        </span>
+      ) : null}
     </li>
   );
 }
 
+function Record({ role }: { role: ResumeRole }) {
+  return (
+    <article className="resume-rec">
+      <div className="resume-rec-head">
+        <h3 className="resume-rec-name">
+          {role.company}
+          <span className="resume-rec-role">{role.position}</span>
+        </h3>
+        <span className="resume-rec-when">{role.duration}</span>
+      </div>
+      {role.bullets?.length ? (
+        <ul className="resume-rec-bullets">
+          {role.bullets.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
+      ) : null}
+      {role.one ? <p className="resume-rec-one">{role.one}</p> : null}
+    </article>
+  );
+}
+
 export default function ResumePage() {
+  const { name, title, contact, profile, systems, experience, skills, academics, certifications } =
+    RESUME;
+
   return (
     <PageShell>
-      <PageIntro
-        kicker="About"
-        title="Background"
-        lede="AI Product Manager and Engineer at Delta Exchange. I ship systems that trade real capital, and the products around them."
-      />
+      <div className="resume">
+        <header>
+          <h1 className="resume-name">{name}</h1>
+          <p className="resume-title">{title}</p>
+          <ul className="resume-contact">
+            <li>{contact.location}</li>
+            {contact.phone ? <li>{contact.phone}</li> : null}
+            <li>
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            </li>
+            <li>
+              <a href={`https://${contact.site}`}>{contact.site}</a>
+            </li>
+            {/* Shortened to the conventional résumé forms so the contact row
+                holds one line instead of orphaning a single item onto a second. */}
+            <li>
+              <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+                {host(contact.linkedin).replace(/^linkedin\.com\//, "")}
+              </a>
+            </li>
+            <li>
+              <a href={contact.github} target="_blank" rel="noopener noreferrer">
+                {host(contact.github)}
+              </a>
+            </li>
+            <li>
+              <a href={contact.twitter} target="_blank" rel="noopener noreferrer">
+                @{host(contact.twitter).split("/").pop()}
+              </a>
+            </li>
+          </ul>
+          <div style={{ marginTop: "1.1rem" }}>
+            <PrintButton />
+          </div>
+        </header>
 
-      <div style={{ maxWidth: "var(--p-max)", margin: "0 auto", padding: "0 clamp(1.1rem, 4vw, 2.5rem)" }}>
-        <PrintButton />
-      </div>
+        {/* Rail is FIRST in source so the PDF text layer extracts linearly for
+            ATS parsers; the grid places it in the right-hand column. */}
+        <div className="resume-grid">
+          <aside className="resume-rail">
+            <section className="resume-block">
+              <h2>Skills</h2>
+              <dl className="resume-rail-list">
+                {skills.map((g) => (
+                  <div key={g.group} className="resume-skill-group">
+                    <dt>{g.group}</dt>
+                    <dd>{g.items.join(" · ")}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
 
-      <section className="press-section">
-        <h2>Profile</h2>
-        <div style={{ maxWidth: "64ch", display: "grid", gap: "1rem" }}>
-          {BIO.paragraphs.map((p) => (
-            <p key={p.slice(0, 24)} className="press-serif" style={{ fontSize: "1.1rem", lineHeight: 1.65, color: "var(--p-mute)", margin: 0 }}>
-              {p}
-            </p>
-          ))}
-        </div>
-      </section>
-
-      <section className="press-section">
-        <h2>By the numbers</h2>
-        <div className="press-tickets">
-          {PROOF.tickets.map((t) => (
-            <a key={t.label} className="press-ticket" href={t.href} target="_blank" rel="noopener noreferrer">
-              <div className="press-ticket-val">{t.value}</div>
-              <div className="press-ticket-label">{t.label}</div>
-              <div className="press-ticket-sub">{t.sub}</div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <section className="press-section">
-        <h2>Skills</h2>
-        <div style={{ display: "grid", gap: "0.75rem", gridTemplateColumns: "repeat(auto-fit, minmax(15rem, 1fr))" }}>
-          {SKILLS.map((s) => (
-            <div key={s.group} className="press-ledger">
-              <div className="press-ledger-head"><span>{s.group}</span></div>
-              <ul style={{ display: "grid", gap: "0.35rem", listStyle: "none", padding: 0, margin: 0 }}>
-                {s.items.map((i) => (
-                  <li key={i} style={{ fontSize: "0.9rem", lineHeight: 1.5, color: "var(--p-mute)" }}>{i}</li>
+            <section className="resume-block">
+              <h2>Education &amp; honours</h2>
+              <ul className="resume-rail-list" style={{ gap: 0 }}>
+                {academics.map((a) => (
+                  <Row key={a.title} title={a.title} detail={a.detail} />
                 ))}
               </ul>
-            </div>
-          ))}
-        </div>
-      </section>
+            </section>
 
-      <section className="press-section">
-        <h2>History</h2>
-        <Experience showKicker={false} />
-      </section>
+            <section className="resume-block">
+              <h2>Certifications</h2>
+              <ul className="resume-rail-list" style={{ gap: 0 }}>
+                {certifications.map((c) => (
+                  <Row key={c.title} title={c.title} detail={c.detail} variant="text" />
+                ))}
+              </ul>
+            </section>
+          </aside>
 
-      <section className="press-section">
-        <h2>Credentials</h2>
-        <div style={{ display: "grid", gap: "0.75rem", gridTemplateColumns: "repeat(auto-fit, minmax(18rem, 1fr))" }}>
-          <div className="press-ledger">
-            <div className="press-ledger-head"><span>Education &amp; honors</span></div>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {ACADEMICS.map((a) => (
-                <LedgerRow key={a.title} title={a.title} detail={a.detail} />
+          <main className="resume-main">
+            <section className="resume-block">
+              <p className="resume-profile">{profile}</p>
+            </section>
+
+            <section className="resume-block">
+              <h2>Selected systems</h2>
+              {systems.map((s) => (
+                <article key={s.name} className="resume-rec">
+                  <div className="resume-rec-head">
+                    <h3 className="resume-rec-name">
+                      <a href={s.href} target="_blank" rel="noopener noreferrer">
+                        {s.name}
+                      </a>
+                    </h3>
+                    {/* The host prints as readable text, so the link survives paper. */}
+                    <span className="resume-rec-when">{hostOnly(s.href)}</span>
+                  </div>
+                  <p className="resume-rec-line">{s.line}</p>
+                </article>
               ))}
-            </ul>
-          </div>
-          <div className="press-ledger">
-            <div className="press-ledger-head"><span>Certifications</span></div>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {CERTIFICATIONS.map((c) => (
-                <LedgerRow key={c.title} title={c.title} detail={c.detail} />
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+            </section>
 
-      <section className="press-section">
-        <p className="press-serif" style={{ margin: 0, color: "var(--p-mute)" }}>
-          Full profile on{" "}
-          <a href={SITE.socials.linkedin} className="link-ink" target="_blank" rel="noopener noreferrer">
-            LinkedIn ↗
-          </a>
-        </p>
-      </section>
+            <section className="resume-block">
+              <h2>Experience</h2>
+              {experience.map((role) => (
+                <Record key={`${role.company}-${role.duration}`} role={role} />
+              ))}
+            </section>
+          </main>
+        </div>
+      </div>
     </PageShell>
   );
 }
