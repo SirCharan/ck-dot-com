@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CASE_STUDIES } from "./site";
+import { PROOF } from "@/press/lib/proof";
 
 /** CASE_STUDIES schema guard — powers the /work/<slug> pages. */
 describe("CASE_STUDIES schema", () => {
@@ -53,5 +54,20 @@ describe("CASE_STUDIES schema", () => {
   it("slugs are unique", () => {
     const slugs = CASE_STUDIES.map((c) => c.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
+  });
+});
+
+/** The press home "Ships that run" grid. */
+describe("PROOF.ships", () => {
+  it("lists Andrea's World, linking the live world through the multi-zone rewrite", () => {
+    const s = PROOF.ships.find((x) => x.title === "Andrea's World");
+    expect(s?.href).toBe("/andrea-world");
+    expect(s?.cover).toBe("/images/work/andrea-world/cover.png");
+  });
+
+  it("marks exactly one ship as the full-width plate, and it is the last one", () => {
+    const wide = PROOF.ships.filter((s) => "wide" in s && s.wide);
+    expect(wide).toHaveLength(1);
+    expect(PROOF.ships[PROOF.ships.length - 1].title).toBe(wide[0].title);
   });
 });

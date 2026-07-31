@@ -147,14 +147,26 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
             Live systems and products. Most of them still on.
           </p>
           <div className="press-ships">
-            {PROOF.ships.map((s, i) => (
-              <Link key={s.title} href={s.href} className="press-plate">
+            {PROOF.ships.map((s, i) => {
+              const wide = "wide" in s && s.wide;
+              return (
+              <Link
+                key={s.title}
+                href={s.href}
+                className={wide ? "press-plate press-plate-wide" : "press-plate"}
+              >
                 <div className="press-plate-media">
                   <Image
                     src={s.cover}
                     alt={s.alt}
                     fill
-                    sizes={i === 0 ? "(min-width:900px) 55vw, 100vw" : "(min-width:900px) 40vw, 100vw"}
+                    sizes={
+                      wide
+                        ? "(min-width:900px) 72rem, 100vw"
+                        : i === 0
+                          ? "(min-width:900px) 55vw, 100vw"
+                          : "(min-width:900px) 40vw, 100vw"
+                    }
                     priority={i === 0}
                     style={{ objectFit: "cover", objectPosition: "top" }}
                   />
@@ -164,7 +176,8 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
                   <p>{s.line}</p>
                 </div>
               </Link>
-            ))}
+              );
+            })}
           </div>
           <div style={{ marginTop: "1.25rem" }}>
             <Link href="/work" className="press-btn press-btn-ghost">

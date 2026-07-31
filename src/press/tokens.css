@@ -424,6 +424,8 @@ a.press-ticket:focus-visible {
     grid-auto-rows: minmax(14rem, auto);
   }
   .press-ships a:first-child { grid-row: span 2; min-height: 22rem; }
+  /* the 3D world reads as a wide band, so the grid closes with no empty cell */
+  .press-ships a.press-plate-wide { grid-column: 1 / -1; min-height: 22rem; }
 }
 
 .press-plate {

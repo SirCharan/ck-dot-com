@@ -68,5 +68,13 @@ export const PROOF = {
       cover: "/images/work/openwispr/cover.png",
       alt: "OpenWispr — open-source dictation that never leaves your Mac",
     },
+    {
+      title: "Andrea's World",
+      line: "Hand-built interactive 3D world · pure craft",
+      href: "/andrea-world",
+      cover: "/images/work/andrea-world/cover.png",
+      alt: "Andrea's World — interactive 3D island with landmarks, rides and a Linkin Park stage",
+      wide: true,
+    },
   ],
 } as const;
