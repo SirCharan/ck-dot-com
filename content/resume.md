@@ -18,15 +18,12 @@ systems:
   - name: Drishti
     href: https://drishtisignals.in
     line: >-
-      Live LLM signals on Delta crypto perpetuals, 3,600+ users. A 15-minute
-      regime-aware Claude cycle across 8 markets, with a risk-managed live
-      executor.
+      Live Claude signals on Delta crypto perpetuals, 3,600+ users.
   - name: Stocky
     href: https://charandeepkapoor.com/markets
     hrefLabel: charandeepkapoor.com/markets
     line: >-
-      Fine-tuned Claude on a custom Zerodha MCP and let it trade Indian F&O for
-      a year. ₹15L to ₹31.57L, +110%, Sharpe 2.29, 73% win rate.
+      Claude traded Indian F&O a year. ₹15L to ₹31.57L, +110%, Sharpe 2.29.
     # Optional trailing link. Renders as an anchor on the web page and the PDF;
     # the DOCX appends the bare URL, since a label alone is useless to a parser.
     proof:
@@ -36,14 +33,15 @@ systems:
     href: https://charandeepkapoor.com/openwispr
     hrefLabel: charandeepkapoor.com/openwispr
     line: >-
-      Open-source dictation for macOS. Hold fn, speak, and on-device Whisper
-      pastes the text at the cursor. Audio never leaves the machine.
+      Open-source on-device dictation for macOS.
+  - name: Stocky Terminal
+    line: >-
+      India's Bloomberg terminal: real-time NSE/BSE and MCX intelligence.
   - name: Second Brain
     href: https://charandeepkapoor.com/second-brain
     hrefLabel: charandeepkapoor.com/second-brain
     line: >-
-      Local-first memory for Claude Code. A file-backed vault plus hooks that
-      capture each session and recall it in the next. Open source.
+      Local-first memory for Claude Code. Open source.
 
 experience:
   - company: Delta Exchange
@@ -51,12 +49,16 @@ experience:
     duration: Apr 2026 – Present
     bullets:
       - Own the AI and LLM surface across the trading, signals and research stack.
+      - "Shipped the official Delta Exchange MCP server: 40 tools, market data through to guarded trading execution."
+      - "Ran the launch: docs at mcp.delta.exchange, GTM microsite, 90-day rollout."
+      - Built the AI quant PnL tearsheet and packaged it as a pure-stdlib MCP tool.
+      - "Delta Support Audit: nightly RAG pass catching drift in support articles."
       - "Product for perpetual futures and options: design, growth and quant tooling."
   - company: Timelock Trade
     position: Founder
     duration: Apr 2025 – Apr 2026
     bullets:
-      - "Bootstrapped a decentralized house of finance: perps, options, prediction and binary markets, oracle-less and liquidation-free by design."
+      - Bootstrapped a decentralized, liquidation-free derivatives house.
       - $7.3M trading volume, $2M TVL, 1,000+ users on Monad testnet.
       - Led 6 across engineering, product, design, BD and marketing.
   - company: Diffusion Labs
@@ -64,13 +66,13 @@ experience:
     duration: Dec 2023 – Apr 2025
     bullets:
       - "0-to-1 lead for DeFi protocols: prediction markets to liquidation-free lending."
-      - Scaled Methlab to 20,000+ users and $50M TVL in 6 months with a team of 15.
+      - Scaled Methlab to 20,000+ users and $50M TVL in 6 months.
       - Launched Puff, a +EV prediction marketplace. $75M market cap, $2.5M ARR.
   - company: Delta Exchange
     position: Product & Growth Consultant
     duration: Jun 2023 – Jul 2024
     bullets:
-      - Ran live algos on BTC and ETH. ATM short straddles returned 2,860% in a year; a refined MACD returned 100% over two.
+      - "Live algos on BTC/ETH: ATM straddles +2,860%/yr, MACD +100% over two."
       - Grew YouTube 3K to 25K subscribers in six months; led education and socials.
   - company: Stader Labs
     position: Analyst

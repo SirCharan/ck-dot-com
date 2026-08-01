@@ -116,7 +116,7 @@ const children = [
   ...R.systems.flatMap((s) => [
     rowWithRight(
       [new TextRun({ text: s.name, bold: true, size: 20, font: FONT })],
-      s.hrefLabel ?? s.href.replace(/^https?:\/\//, "").replace(/\/$/, ""),
+      s.hrefLabel ?? (s.href ? s.href.replace(/^https?:\/\//, "").replace(/\/$/, "") : ""),
     ),
     // A bare "verified" label is useless to a parser, so the DOCX carries the URL.
     body(s.proof ? `${s.line} (${s.proof.label}: ${s.proof.href.replace(/^https?:\/\//, "")})` : s.line),

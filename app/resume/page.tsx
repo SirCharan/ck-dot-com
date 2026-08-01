@@ -81,10 +81,10 @@ export default function ResumePage() {
           <p className="resume-title">{title}</p>
           <ul className="resume-contact">
             {contact.phone ? <li>{contact.phone}</li> : null}
-            {/* Named label, per ck. NOTE: the literal address is what an ATS
-                parses, so the DOCX still prints it in full. */}
+            {/* Literal address, not a label: an ATS can only parse what is
+                actually in the text. */}
             <li>
-              <a href={`mailto:${contact.email}`}>Email</a>
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
             </li>
             <li>
               <a href={`https://${contact.site}`}>{contact.site}</a>
@@ -159,12 +159,20 @@ export default function ResumePage() {
                 <article key={s.name} className="resume-rec">
                   <div className="resume-rec-head">
                     <h3 className="resume-rec-name">
-                      <a href={s.href} target="_blank" rel="noopener noreferrer">
-                        {s.name}
-                      </a>
+                      {s.href ? (
+                        <a href={s.href} target="_blank" rel="noopener noreferrer">
+                          {s.name}
+                        </a>
+                      ) : (
+                        s.name
+                      )}
                     </h3>
                     {/* The host prints as readable text, so the link survives paper. */}
-                    <span className="resume-rec-when">{s.hrefLabel ?? hostOnly(s.href)}</span>
+                    {s.href || s.hrefLabel ? (
+                      <span className="resume-rec-when">
+                        {s.hrefLabel ?? hostOnly(s.href ?? "")}
+                      </span>
+                    ) : null}
                   </div>
                   <p className="resume-rec-line">
                     {s.line}

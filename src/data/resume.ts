@@ -26,7 +26,8 @@ export interface ResumeContact {
 
 export interface ResumeSystem {
   name: string;
-  href: string;
+  /** Optional: omitted when the project has no public URL worth linking. */
+  href?: string;
   /** Overrides the right-slot host label when the bare hostname is unhelpful. */
   hrefLabel?: string;
   line: string;
