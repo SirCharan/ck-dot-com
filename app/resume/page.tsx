@@ -167,10 +167,18 @@ export default function ResumePage() {
                         s.name
                       )}
                     </h3>
-                    {/* The host prints as readable text, so the link survives paper. */}
+                    {/* The host prints as readable text so the link survives paper,
+                        and is itself an anchor so it is clickable on screen and in
+                        the PDF, not just decoration next to the name. */}
                     {s.href || s.hrefLabel ? (
                       <span className="resume-rec-when">
-                        {s.hrefLabel ?? hostOnly(s.href ?? "")}
+                        {s.href ? (
+                          <a href={s.href} target="_blank" rel="noopener noreferrer">
+                            {s.hrefLabel ?? hostOnly(s.href)}
+                          </a>
+                        ) : (
+                          s.hrefLabel
+                        )}
                       </span>
                     ) : null}
                   </div>
