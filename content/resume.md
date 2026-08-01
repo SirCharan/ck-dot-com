@@ -33,7 +33,8 @@ systems:
       label: verified
       href: https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl
   - name: OpenWispr
-    href: https://openwispr.vercel.app
+    href: https://charandeepkapoor.com/openwispr
+    hrefLabel: charandeepkapoor.com/openwispr
     line: >-
       Open-source dictation for macOS. Hold fn, speak, and on-device Whisper
       pastes the text at the cursor. Audio never leaves the machine.
@@ -56,21 +57,21 @@ experience:
     duration: Apr 2025 – Apr 2026
     bullets:
       - "Bootstrapped a decentralized house of finance: perps, options, prediction and binary markets, oracle-less and liquidation-free by design."
-      - $7.3M trading volume, $2M TVL, 1,000+ users on Monad testnet (perps.timelock.trade).
-      - Led 6 people across engineering, product, design, business development and marketing.
+      - $7.3M trading volume, $2M TVL, 1,000+ users on Monad testnet.
+      - Led 6 across engineering, product, design, BD and marketing.
   - company: Diffusion Labs
     position: Product Manager
     duration: Dec 2023 – Apr 2025
     bullets:
-      - 0-to-1 lead for DeFi protocols, from prediction markets to liquidation-free lending.
-      - Scaled Methlab to 20,000+ users and $50M TVL in 6 months, directing a 15-person team.
-      - Launched Puff, a positive-EV prediction marketplace. $75M market cap, $2.5M ARR.
+      - "0-to-1 lead for DeFi protocols: prediction markets to liquidation-free lending."
+      - Scaled Methlab to 20,000+ users and $50M TVL in 6 months with a team of 15.
+      - Launched Puff, a +EV prediction marketplace. $75M market cap, $2.5M ARR.
   - company: Delta Exchange
-    position: Product & Growth
+    position: Product & Growth Consultant
     duration: Jun 2023 – Jul 2024
     bullets:
       - Ran live algos on BTC and ETH. ATM short straddles returned 2,860% in a year; a refined MACD returned 100% over two.
-      - Led education and socials, growing YouTube from 3K to 25K subscribers in six months.
+      - Grew YouTube 3K to 25K subscribers in six months; led education and socials.
   - company: Stader Labs
     position: Analyst
     duration: Mar 2023 – Nov 2023
@@ -78,7 +79,7 @@ experience:
   - company: Heru Finance
     position: Trader & Investment Analyst
     duration: May 2022 – Feb 2023
-    one: Ran a $1M fund targeting 30%+ delta-neutral yields; hedged over $5M of portfolio exposure.
+    one: Ran a $1M fund at 30%+ delta-neutral yields; hedged $5M+ of exposure.
 
 skills:
   - group: AI & LLM

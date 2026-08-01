@@ -80,10 +80,11 @@ export default function ResumePage() {
           <h1 className="resume-name">{name}</h1>
           <p className="resume-title">{title}</p>
           <ul className="resume-contact">
-            <li>{contact.location}</li>
             {contact.phone ? <li>{contact.phone}</li> : null}
+            {/* Named label, per ck. NOTE: the literal address is what an ATS
+                parses, so the DOCX still prints it in full. */}
             <li>
-              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              <a href={`mailto:${contact.email}`}>Email</a>
             </li>
             <li>
               <a href={`https://${contact.site}`}>{contact.site}</a>
@@ -121,7 +122,7 @@ export default function ResumePage() {
                 {skills.map((g) => (
                   <div key={g.group} className="resume-skill-group">
                     <dt>{g.group}</dt>
-                    <dd>{g.items.join(" · ")}</dd>
+                    <dd>{g.items.join(", ")}</dd>
                   </div>
                 ))}
               </dl>
@@ -148,6 +149,7 @@ export default function ResumePage() {
 
           <main className="resume-main">
             <section className="resume-block">
+              <h2>Summary</h2>
               <p className="resume-profile">{profile}</p>
             </section>
 

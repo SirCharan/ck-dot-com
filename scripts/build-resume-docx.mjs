@@ -81,6 +81,8 @@ const bullet = (text) =>
     children: [new TextRun({ text, size: 19, font: FONT, color: "222222" })],
   });
 
+// Literal email and location on purpose: the PDF shows a friendly "Email"
+// label, but an ATS can only parse the address if the text is actually present.
 const contactLine = [
   R.contact.location,
   R.contact.phone,
@@ -107,7 +109,7 @@ const children = [
     children: [new TextRun({ text: contactLine, size: 17, font: FONT, color: "444444" })],
   }),
 
-  heading("Profile"),
+  heading("Summary"),
   body(profile),
 
   heading("Selected systems"),

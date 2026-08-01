@@ -798,6 +798,17 @@ a.press-ticket:focus-visible {
   max-width: 68ch;
 }
 
+/* Never leave a single word alone on a last line. Chromium honours this when
+   generating the PDF, so it fixes the print output too, not just the screen. */
+.resume-profile,
+.resume-rec-line,
+.resume-rec-one,
+.resume-rec-bullets li,
+.resume-row-title,
+.resume-skill-group dd {
+  text-wrap: pretty;
+}
+
 /* Trailing proof link. A static underline, never an animated or growing one:
    it must read as a link at rest, including on paper. */
 .resume-proof {
