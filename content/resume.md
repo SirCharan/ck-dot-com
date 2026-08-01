@@ -18,8 +18,9 @@ systems:
   - name: Drishti
     href: https://drishtisignals.in
     line: >-
-      Live Claude signals on Delta crypto perpetuals, 3,600+ users. 15-minute
-      regime-aware cycle, 8 markets, reduce-only stops and a loss breaker.
+      Live Claude signals on Delta crypto perpetuals, 40k+ users. 15-minute
+      regime-aware cycle, 8 markets, reduce-only stops and a loss breaker. Paid
+      Meta and Google campaigns, tracked in PostHog.
   - name: Stocky
     href: https://charandeepkapoor.com/markets
     hrefLabel: charandeepkapoor.com/markets
