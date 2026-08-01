@@ -41,6 +41,10 @@ describe("résumé content", () => {
       expect(s.name.length, `system name non-empty`).toBeGreaterThan(0);
       expect(s.href.startsWith("http"), `${s.name} href is absolute`).toBe(true);
       expect(s.line.length, `${s.name} line non-empty`).toBeGreaterThan(0);
+      if (s.proof) {
+        expect(s.proof.label.length, `${s.name} proof label non-empty`).toBeGreaterThan(0);
+        expect(s.proof.href.startsWith("http"), `${s.name} proof href is absolute`).toBe(true);
+      }
     }
   });
 

@@ -116,7 +116,8 @@ const children = [
       [new TextRun({ text: s.name, bold: true, size: 20, font: FONT })],
       s.href.replace(/^https?:\/\//, "").replace(/\/$/, ""),
     ),
-    body(s.line),
+    // A bare "verified" label is useless to a parser, so the DOCX carries the URL.
+    body(s.proof ? `${s.line} (${s.proof.label}: ${s.proof.href.replace(/^https?:\/\//, "")})` : s.line),
   ]),
 
   heading("Experience"),

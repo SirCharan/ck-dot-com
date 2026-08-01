@@ -88,21 +88,21 @@ export default function ResumePage() {
             <li>
               <a href={`https://${contact.site}`}>{contact.site}</a>
             </li>
-            {/* Shortened to the conventional résumé forms so the contact row
-                holds one line instead of orphaning a single item onto a second. */}
+            {/* Named links, not raw hosts. The PDF keeps them as real link
+                annotations, so they stay clickable in a viewer. */}
             <li>
               <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
-                {host(contact.linkedin).replace(/^linkedin\.com\//, "")}
+                LinkedIn
               </a>
             </li>
             <li>
               <a href={contact.github} target="_blank" rel="noopener noreferrer">
-                {host(contact.github)}
+                GitHub
               </a>
             </li>
             <li>
               <a href={contact.twitter} target="_blank" rel="noopener noreferrer">
-                @{host(contact.twitter).split("/").pop()}
+                Twitter
               </a>
             </li>
           </ul>
@@ -164,7 +164,22 @@ export default function ResumePage() {
                     {/* The host prints as readable text, so the link survives paper. */}
                     <span className="resume-rec-when">{hostOnly(s.href)}</span>
                   </div>
-                  <p className="resume-rec-line">{s.line}</p>
+                  <p className="resume-rec-line">
+                    {s.line}
+                    {s.proof ? (
+                      <>
+                        {" "}
+                        <a
+                          className="resume-proof"
+                          href={s.proof.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {s.proof.label}
+                        </a>
+                      </>
+                    ) : null}
+                  </p>
                 </article>
               ))}
             </section>

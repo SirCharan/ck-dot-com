@@ -25,12 +25,12 @@ systems:
     href: https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl
     line: >-
       Fine-tuned Claude on a custom Zerodha MCP and let it trade Indian F&O for
-      a year. ₹15L to ₹31.57L, +110%, Sharpe 2.29, 73% win rate, verified.
-  - name: Timelock Trade
-    href: https://perps.timelock.trade/
-    line: >-
-      Oracle-less, liquidation-free perps and options, designed and shipped end
-      to end. $7.3M volume, $2M TVL, 1,000+ users on Monad testnet.
+      a year. ₹15L to ₹31.57L, +110%, Sharpe 2.29, 73% win rate.
+    # Optional trailing link. Renders as an anchor on the web page and the PDF;
+    # the DOCX appends the bare URL, since a label alone is useless to a parser.
+    proof:
+      label: verified
+      href: https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl
 
 experience:
   - company: Delta Exchange
@@ -44,6 +44,7 @@ experience:
     duration: Apr 2025 – Apr 2026
     bullets:
       - Bootstrapped a decentralized house of finance, perps and options through prediction and binary markets, oracle-less and liquidation-free by design.
+      - $7.3M trading volume, $2M TVL, 1,000+ users on Monad testnet (perps.timelock.trade).
       - Led 6 people across engineering, product, design, business development and marketing.
   - company: Diffusion Labs
     position: Product Manager
@@ -51,7 +52,7 @@ experience:
     bullets:
       - 0-to-1 lead for DeFi protocols, from prediction markets to liquidation-free lending.
       - Scaled Methlab to 20,000+ users and $50M TVL in 6 months, directing a 15-person team.
-      - Launched Puff, a positive-EV prediction marketplace. $75M market cap, $2.5M revenue.
+      - Launched Puff, a positive-EV prediction marketplace. $75M market cap, $2.5M ARR.
   - company: Delta Exchange
     position: Product & Growth
     duration: Jun 2023 – Jul 2024
@@ -74,10 +75,10 @@ experience:
 skills:
   - group: AI & LLM
     items:
-      - Claude (Opus / Sonnet)
-      - Context & prompt engineering
-      - Model Context Protocol (MCP)
-      - Agentic tool-calling
+      - Agentic AI, multi-step tool-calling
+      - LLM systems in production (Claude)
+      - Prompt & context engineering
+      - MCP, RAG, cost-aware routing
   - group: Markets
     items:
       - Perpetual futures & options

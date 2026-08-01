@@ -28,6 +28,8 @@ export interface ResumeSystem {
   name: string;
   href: string;
   line: string;
+  /** Optional trailing link, e.g. third-party verification of the numbers. */
+  proof?: { label: string; href: string };
 }
 
 export interface ResumeRole {

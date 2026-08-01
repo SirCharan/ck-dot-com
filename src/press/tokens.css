@@ -798,6 +798,17 @@ a.press-ticket:focus-visible {
   max-width: 68ch;
 }
 
+/* Trailing proof link. A static underline, never an animated or growing one:
+   it must read as a link at rest, including on paper. */
+.resume-proof {
+  color: var(--p-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+.resume-proof:hover { color: var(--p-go); }
+
 .resume-rail-list {
   list-style: none;
   padding: 0;
@@ -927,6 +938,9 @@ a.press-ticket:focus-visible {
   .resume-rec-bullets li { font-size: 8.8pt !important; color: #222 !important; line-height: 1.35 !important; }
   .resume-rec-bullets li::before { background: #777 !important; }
   .resume-rec-one, .resume-rec-line { font-size: 8.8pt !important; color: #222 !important; line-height: 1.35 !important; }
+  /* The global print rule strips underlines from links; the proof link keeps
+     its underline so it still reads as a link on paper. */
+  .resume-proof { color: #111 !important; text-decoration: underline !important; }
 
   .resume-rail-list { gap: 5pt !important; }
   .resume-skill-group { font-size: 8.4pt !important; break-inside: avoid; }
