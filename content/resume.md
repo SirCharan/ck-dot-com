@@ -18,12 +18,14 @@ systems:
   - name: Drishti
     href: https://drishtisignals.in
     line: >-
-      Live Claude signals on Delta crypto perpetuals, 3,600+ users.
+      Live Claude signals on Delta crypto perpetuals, 3,600+ users. 15-minute
+      regime-aware cycle, 8 markets, reduce-only stops and a loss breaker.
   - name: Stocky
     href: https://charandeepkapoor.com/markets
     hrefLabel: charandeepkapoor.com/markets
     line: >-
-      Claude traded Indian F&O a year. ₹15L to ₹31.57L, +110%, Sharpe 2.29.
+      Fine-tuned Claude on a custom Zerodha MCP and let it trade Indian F&O for
+      a year. ₹15L to ₹31.57L, +110%, Sharpe 2.29, 73% win rate.
     # Optional trailing link. Renders as an anchor on the web page and the PDF;
     # the DOCX appends the bare URL, since a label alone is useless to a parser.
     proof:
@@ -33,15 +35,18 @@ systems:
     href: https://charandeepkapoor.com/openwispr
     hrefLabel: charandeepkapoor.com/openwispr
     line: >-
-      Open-source on-device dictation for macOS.
+      Open-source dictation for macOS. Hold fn, speak, and on-device Whisper
+      pastes at the cursor. Audio never leaves the machine.
   - name: Stocky Terminal
     line: >-
-      India's Bloomberg terminal: real-time NSE/BSE and MCX intelligence.
+      India's Bloomberg terminal: real-time NSE/BSE equities and MCX commodities
+      with geopolitical OSINT and monsoon tracking.
   - name: Second Brain
     href: https://charandeepkapoor.com/second-brain
     hrefLabel: charandeepkapoor.com/second-brain
     line: >-
-      Local-first memory for Claude Code. Open source.
+      Local-first memory for Claude Code. A file-backed vault plus hooks that
+      capture each session and recall it in the next. Open source.
 
 experience:
   - company: Delta Exchange
@@ -49,9 +54,7 @@ experience:
     duration: Apr 2026 – Present
     bullets:
       - Own the AI and LLM surface across the trading, signals and research stack.
-      - "Shipped the official Delta Exchange MCP server: 40 tools, market data through to guarded trading execution."
-      - "Ran the launch: docs at mcp.delta.exchange, GTM microsite, 90-day rollout."
-      - Built the AI quant PnL tearsheet and packaged it as a pure-stdlib MCP tool.
+      - Built the Delta Exchange MCP server, market and trading tools, and led the docs and marketing rollout.
       - "Delta Support Audit: nightly RAG pass catching drift in support articles."
       - "Product for perpetual futures and options: design, growth and quant tooling."
   - company: Timelock Trade
@@ -74,10 +77,6 @@ experience:
     bullets:
       - "Live algos on BTC/ETH: ATM straddles +2,860%/yr, MACD +100% over two."
       - Grew YouTube 3K to 25K subscribers in six months; led education and socials.
-  - company: Stader Labs
-    position: Analyst
-    duration: Mar 2023 – Nov 2023
-    one: On-chain analytics and treasury optimization for multi-chain staking.
   - company: Heru Finance
     position: Trader & Investment Analyst
     duration: May 2022 – Feb 2023
