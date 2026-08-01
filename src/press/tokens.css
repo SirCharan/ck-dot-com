@@ -543,7 +543,10 @@ a.press-ticket:focus-visible {
 .press-copy {
   margin-top: 2.5rem;
   font-size: 0.75rem;
-  color: var(--p-faint);
+  /* --p-faint is 2.78:1 on --p-bg and fails WCAG AA, so it must not carry text.
+     axe flagged this footer line; --p-mute is 5.51:1. Same fix already applied
+     to the résumé dates, ranks and rail labels. */
+  color: var(--p-mute);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
