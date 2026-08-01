@@ -894,67 +894,67 @@ a.press-ticket:focus-visible {
     max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 9.5pt;
+    font-size: 10.1pt;
     line-height: 1.35;
   }
-  .resume-name { font-size: 21pt !important; color: #111 !important; }
-  .resume-title { font-size: 10.5pt !important; color: #333 !important; margin-top: 2pt !important; }
+  .resume-name { font-size: 22.3pt !important; color: #111 !important; }
+  .resume-title { font-size: 11.1pt !important; color: #333 !important; margin-top: 2.1pt !important; }
   .resume-contact {
-    font-size: 8.3pt !important;
+    font-size: 8.8pt !important;
     color: #333 !important;
-    margin-top: 6pt !important;
-    gap: 1pt 10pt !important;
+    margin-top: 6.4pt !important;
+    gap: 1.1pt 10.6pt !important;
   }
   .resume-contact a { color: #333 !important; border: 0 !important; }
 
   /* Two columns held in print, same source-order mapping as on screen. */
   .resume-grid {
     grid-template-columns: 1fr 56mm !important;
-    margin-top: 8pt !important;
-    padding-top: 7pt !important;
+    margin-top: 8.5pt !important;
+    padding-top: 7.4pt !important;
     border-top-color: #bbb !important;
     gap: 9mm !important;
   }
   .resume-rail { grid-column: 2 !important; grid-row: 1 !important; }
   .resume-main { grid-column: 1 !important; grid-row: 1 !important; }
 
-  .resume-block + .resume-block { margin-top: 9pt !important; }
+  .resume-block + .resume-block { margin-top: 9.5pt !important; }
   .resume-main h2 {
-    font-size: 11pt !important;
+    font-size: 11.7pt !important;
     color: #111 !important;
-    margin-bottom: 5pt !important;
-    padding-bottom: 3pt !important;
+    margin-bottom: 5.3pt !important;
+    padding-bottom: 3.2pt !important;
     border-bottom-color: #bbb !important;
   }
-  .resume-rail h2 { font-size: 7.4pt !important; color: #555 !important; margin-bottom: 4pt !important; }
-  .resume-profile { font-size: 9.6pt !important; color: #222 !important; line-height: 1.45 !important; }
+  .resume-rail h2 { font-size: 7.8pt !important; color: #555 !important; margin-bottom: 4.2pt !important; }
+  .resume-profile { font-size: 10.2pt !important; color: #222 !important; line-height: 1.45 !important; }
 
   .resume-rec { break-inside: avoid; }
-  .resume-rec + .resume-rec { margin-top: 6pt !important; }
-  .resume-rec-name { font-size: 9.8pt !important; color: #111 !important; }
-  .resume-rec-role { font-size: 8.6pt !important; color: #444 !important; }
-  .resume-rec-when { font-size: 7.6pt !important; color: #555 !important; }
-  .resume-rec-bullets { gap: 1pt !important; margin-top: 2pt !important; }
-  .resume-rec-bullets li { font-size: 8.8pt !important; color: #222 !important; line-height: 1.35 !important; }
+  .resume-rec + .resume-rec { margin-top: 6.4pt !important; }
+  .resume-rec-name { font-size: 10.4pt !important; color: #111 !important; }
+  .resume-rec-role { font-size: 9.1pt !important; color: #444 !important; }
+  .resume-rec-when { font-size: 8.1pt !important; color: #555 !important; }
+  .resume-rec-bullets { gap: 1.1pt !important; margin-top: 2.1pt !important; }
+  .resume-rec-bullets li { font-size: 9.3pt !important; color: #222 !important; line-height: 1.35 !important; }
   .resume-rec-bullets li::before { background: #777 !important; }
-  .resume-rec-one, .resume-rec-line { font-size: 8.8pt !important; color: #222 !important; line-height: 1.35 !important; }
+  .resume-rec-one, .resume-rec-line { font-size: 9.3pt !important; color: #222 !important; line-height: 1.35 !important; }
   /* The global print rule strips underlines from links; the proof link keeps
      its underline so it still reads as a link on paper. */
   .resume-proof { color: #111 !important; text-decoration: underline !important; }
 
-  .resume-rail-list { gap: 5pt !important; }
-  .resume-skill-group { font-size: 8.4pt !important; break-inside: avoid; }
-  .resume-skill-group dt { font-size: 8.4pt !important; color: #111 !important; }
+  .resume-rail-list { gap: 5.3pt !important; }
+  .resume-skill-group { font-size: 8.9pt !important; break-inside: avoid; }
+  .resume-skill-group dt { font-size: 8.9pt !important; color: #111 !important; }
   .resume-skill-group dd { color: #333 !important; }
   .resume-row {
-    font-size: 8.4pt !important;
-    padding: 2.4pt 0 !important;
+    font-size: 8.9pt !important;
+    padding: 2.5pt 0 !important;
     border-top-color: #ddd !important;
     break-inside: avoid;
   }
   .resume-row-title { color: #111 !important; }
-  .resume-row-detail { font-size: 7.4pt !important; color: #555 !important; }
-  .resume-row-note { font-size: 7.8pt !important; color: #444 !important; }
+  .resume-row-detail { font-size: 7.8pt !important; color: #555 !important; }
+  .resume-row-note { font-size: 8.3pt !important; color: #444 !important; }
 }
 
 /* Hero live-proof strip (static dot; no glow ring per anti-slop) */

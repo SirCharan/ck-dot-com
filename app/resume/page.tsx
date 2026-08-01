@@ -162,7 +162,7 @@ export default function ResumePage() {
                       </a>
                     </h3>
                     {/* The host prints as readable text, so the link survives paper. */}
-                    <span className="resume-rec-when">{hostOnly(s.href)}</span>
+                    <span className="resume-rec-when">{s.hrefLabel ?? hostOnly(s.href)}</span>
                   </div>
                   <p className="resume-rec-line">
                     {s.line}

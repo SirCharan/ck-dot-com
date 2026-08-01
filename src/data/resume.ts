@@ -27,6 +27,8 @@ export interface ResumeContact {
 export interface ResumeSystem {
   name: string;
   href: string;
+  /** Overrides the right-slot host label when the bare hostname is unhelpful. */
+  hrefLabel?: string;
   line: string;
   /** Optional trailing link, e.g. third-party verification of the numbers. */
   proof?: { label: string; href: string };

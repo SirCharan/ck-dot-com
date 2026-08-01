@@ -16,13 +16,14 @@ contact:
 
 systems:
   - name: Drishti
-    href: https://drishti-beryl.vercel.app
+    href: https://drishtisignals.in
     line: >-
-      Live LLM signal system on Delta crypto perpetuals. Claude runs a
-      15-minute, regime-aware cycle across 8 markets; an executor places
-      reduce-only stop and limit orders behind a daily loss breaker.
+      Live LLM signals on Delta crypto perpetuals, 3,600+ users. A 15-minute
+      regime-aware Claude cycle across 8 markets, with a risk-managed live
+      executor.
   - name: Stocky
-    href: https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl
+    href: https://charandeepkapoor.com/markets
+    hrefLabel: charandeepkapoor.com/markets
     line: >-
       Fine-tuned Claude on a custom Zerodha MCP and let it trade Indian F&O for
       a year. ₹15L to ₹31.57L, +110%, Sharpe 2.29, 73% win rate.
@@ -31,6 +32,17 @@ systems:
     proof:
       label: verified
       href: https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl
+  - name: OpenWispr
+    href: https://openwispr.vercel.app
+    line: >-
+      Open-source dictation for macOS. Hold fn, speak, and on-device Whisper
+      pastes the text at the cursor. Audio never leaves the machine.
+  - name: Second Brain
+    href: https://charandeepkapoor.com/second-brain
+    hrefLabel: charandeepkapoor.com/second-brain
+    line: >-
+      Local-first memory for Claude Code. A file-backed vault plus hooks that
+      capture each session and recall it in the next. Open source.
 
 experience:
   - company: Delta Exchange
@@ -38,12 +50,12 @@ experience:
     duration: Apr 2026 – Present
     bullets:
       - Own the AI and LLM surface across the trading, signals and research stack.
-      - Product for perpetual futures and options, covering design, growth and quant tooling.
+      - "Product for perpetual futures and options: design, growth and quant tooling."
   - company: Timelock Trade
     position: Founder
     duration: Apr 2025 – Apr 2026
     bullets:
-      - Bootstrapped a decentralized house of finance, perps and options through prediction and binary markets, oracle-less and liquidation-free by design.
+      - "Bootstrapped a decentralized house of finance: perps, options, prediction and binary markets, oracle-less and liquidation-free by design."
       - $7.3M trading volume, $2M TVL, 1,000+ users on Monad testnet (perps.timelock.trade).
       - Led 6 people across engineering, product, design, business development and marketing.
   - company: Diffusion Labs
@@ -66,11 +78,7 @@ experience:
   - company: Heru Finance
     position: Trader & Investment Analyst
     duration: May 2022 – Feb 2023
-    one: Ran a $500K fund targeting 30%+ delta-neutral yields; hedged over $5M of portfolio exposure.
-  - company: Tykhe Block Ventures
-    position: VC Analyst
-    duration: Mar 2022 – Nov 2023
-    one: Technical due diligence on DeFi protocols; advised NFTPerp on derivative pricing.
+    one: Ran a $1M fund targeting 30%+ delta-neutral yields; hedged over $5M of portfolio exposure.
 
 skills:
   - group: AI & LLM
@@ -101,20 +109,19 @@ academics:
     detail: AIR 638 (99.96%ile)
   - title: JEE Main 2018
     detail: AIR 272 (99.98%ile)
-  - title: CAT 2023
-    detail: 99.85%ile
+  # All three sittings, positionally matched, in one row rather than three.
+  - title: CAT 2022 · 2023 · 2024
+    detail: 99.79 · 99.85 · 98.85%ile
   - title: National Maths Olympiad
     detail: AIR 3
 
 certifications:
-  - title: NISM Series VA
-    detail: Mutual Fund Distributor
-  - title: NISM Series VIII
-    detail: Equity Derivatives
-  - title: NISM Series XV
-    detail: Research Analyst
+  # Three NISM series in one positionally-matched row, as with CAT above. Frees
+  # rail height so the whole résumé can carry larger type on one page.
+  - title: NISM Series VA · VIII · XV
+    detail: Mutual Funds · Equity Derivatives · Research Analyst
   - title: NTSE, KVPY
     detail: Scholar
 ---
 
-AI Product Manager at Delta Exchange, India's largest crypto derivatives exchange, where I own the LLM surface across trading, signals and research. I build the systems as well as the roadmap: Claude-driven agents that place real orders, size real risk, and carry a year of verified P&L behind them.
+AI Product Manager at Delta Exchange, India's largest crypto derivatives exchange, where I own the LLM surface across trading, signals and research.

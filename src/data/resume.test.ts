@@ -30,6 +30,11 @@ describe("résumé content", () => {
       for (const key of ["company", "position", "duration"] as const) {
         expect(role[key].length, `${where}.${key} non-empty`).toBeGreaterThan(0);
       }
+      for (const b of role.bullets ?? []) {
+        // An unquoted "word: word" YAML list item parses as an object, not a
+        // string, and crashes the render. Keep this assertion.
+        expect(typeof b, `${where} bullet is a string, not a YAML mapping`).toBe("string");
+      }
       const hasBullets = Array.isArray(role.bullets) && role.bullets.length > 0;
       const hasOne = typeof role.one === "string" && role.one.length > 0;
       expect(hasBullets || hasOne, `${where} has bullets or a one-liner`).toBe(true);
@@ -58,7 +63,7 @@ describe("résumé content", () => {
   // ── One-page budget ───────────────────────────────────────────────────────
   it("stays inside the one-page budget", () => {
     expect(skillCount(), "skills across all groups").toBeLessThanOrEqual(13);
-    expect(RESUME.systems.length, "systems").toBeLessThanOrEqual(3);
+    expect(RESUME.systems.length, "systems").toBeLessThanOrEqual(4);
     expect(RESUME.experience.length, "roles").toBeLessThanOrEqual(7);
     expect(RESUME.academics.length, "academics rows").toBeLessThanOrEqual(5);
     expect(RESUME.certifications.length, "certification rows").toBeLessThanOrEqual(4);
