@@ -28,7 +28,7 @@ AI product management, LLM trading systems, Model Context Protocol, crypto deriv
 | Lakshay | charandeepkapoor.com/work/lakshay | Intraday AI signals for NSE F&O — 5-min cycles, Dhan data, paper track record. Dashboard: lakshya-cyan.vercel.app |
 | Second Brain | charandeepkapoor.com/second-brain | Local-first memory for Claude Code — Obsidian-compatible Markdown vault, open source (Apache-2.0) |
 | OpenWispr | charandeepkapoor.com/openwispr | Free, open-source, on-device Whisper dictation for macOS — "Say it. It's typed." (MIT) |
-| Delta Support Audit | charandeepkapoor.com/work/delta-support-audit | Nightly RAG audit of 344 support articles for factual drift — 14/14 P0 true-positives on trial |
+| Delta Support Audit | charandeepkapoor.com/work/delta-support-audit | RAG audit of 217 Delta India support articles for factual drift — 291 findings, 222 verified fixed (76%) |
 
 ## Drishti Details
 

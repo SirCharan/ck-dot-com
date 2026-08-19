@@ -4,7 +4,9 @@
   --p-elev: #12141a;
   --p-ink: #f0eee6;
   --p-mute: #8c877c;
-  --p-faint: #5c584f;
+  /* #5c584f was 2.78:1 on --p-bg and 2.60:1 on --p-elev — a WCAG AA fail for the
+     10-12px labels it drives. #847e71 keeps the warm hue and clears 4.5:1 on both. */
+  --p-faint: #847e71;
   --p-line: rgba(240, 238, 230, 0.1);
   --p-go: #4ecf7a;
   --p-go-dim: rgba(78, 207, 122, 0.12);

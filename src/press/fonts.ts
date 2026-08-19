@@ -7,10 +7,12 @@ export const pressSans = Instrument_Sans({
   display: "swap",
 });
 
+// No italic axis: the only <em> in the press scope (the hero line) is styled
+// font-style: normal, so the 64.5KB italic file was downloaded and never rendered.
 export const pressSerif = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   variable: "--press-serif",
   display: "swap",
 });

@@ -17,7 +17,6 @@
     "pull:portfolio": "tsx scripts/refresh-portfolio.ts"
   },
   "dependencies": {
-    "@formkit/auto-animate": "^0.9.0",
     "@gsap/react": "^2.1.2",
     "@radix-ui/react-collapsible": "^1.1.0",
     "@radix-ui/react-slider": "^1.2.0",

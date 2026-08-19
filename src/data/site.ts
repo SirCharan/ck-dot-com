@@ -241,7 +241,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Delta Support Audit",
-    one: "Nightly RAG audit of Delta support articles for factual drift and coverage gaps.",
+    one: "RAG audit of Delta support articles that found 291 contradictions. 222 verified fixed.",
     live: "https://delta-support-audit.vercel.app/",
     liveLabel: "Live audit",
     tags: ["Delta", "AI"],
@@ -290,6 +290,16 @@ export const TOOLS: Tool[] = [
     status: "live",
     cover: "/images/work/andrea-world/cover.png",
     detail: "/work/andrea-world",
+  },
+  {
+    title: "SQL with Pookie",
+    one: "A cozy SQL course disguised as a game about a bear. 24 chapters, 208 exercises.",
+    live: "https://sqlwithpookie.vercel.app",
+    liveLabel: "Play it",
+    tags: ["Tools", "AI"],
+    status: "live",
+    cover: "/images/work/sqlwithpookie/cover.webp",
+    detail: "/work/sqlwithpookie",
   },
   {
     title: "Voice-Powered Zerodha Trading",
@@ -513,7 +523,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "delta-support-audit",
     title: "Delta Support Audit",
     kicker: "Builder · RAG Quality System",
-    tagline: "Nightly RAG audit of support articles for factual drift.",
+    tagline: "Found 291 contradictions between support articles and the docs. 222 are fixed.",
     role: "Builder & triager",
     period: "2026",
     stack: [
@@ -526,24 +536,32 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Vercel Cron",
     ],
     metrics: [
-      { value: "344", label: "Articles audited", tone: "accent" },
-      { value: "14/14", label: "P0 true-positives (trial)", tone: "pos" },
-      { value: "~4 min", label: "Wall-clock / run", tone: "neutral" },
-      { value: "$2.45", label: "Cost / run", tone: "neutral" },
+      { value: "217", label: "Articles audited", tone: "accent" },
+      { value: "291", label: "Drift findings", tone: "neutral" },
+      { value: "222", label: "Verified fixed", tone: "pos" },
+      { value: "$5.36", label: "Cost / full sweep", tone: "neutral" },
     ],
     sections: [
       {
         heading: "The problem",
         body: [
-          "Support content drifts. Freshdesk articles quietly fall out of step with the product docs and guides that are the real source of truth, and nobody notices until a customer is misled.",
-          "The system embeds 344 support articles (1,067 chunks) into a vector store and compares them against the canonical docs for contradictions and coverage gaps.",
+          "Support content drifts. Articles fall out of step with the guides and developer docs that are the real source of truth, and nobody notices until a customer acts on the wrong number.",
+          "One live article told users their NEFT deposits would be rejected and refunded. The official guide described NEFT as supported, with a 30-minute ETA. Both were published at the same time.",
+        ],
+      },
+      {
+        heading: "What it caught",
+        body: [
+          "217 published articles, audited against the canonical India guide and the developer docs. 291 findings: 35 P0, 62 coverage gaps, 190 spelling and grammar, 4 conflicts.",
+          "222 are now verified fixed, 76% of all drift. Every resolved finding gets an automated re-check that confirms the original quote no longer appears in the live article.",
+          "One article had shipped with its own authoring instruction still in the body: “Write a proper article on it. Dont make it too long.”",
         ],
       },
       {
         heading: "How it works",
         body: [
-          "RAG detectors classify each article for conflicts, contradictions and coverage gaps. P0 issues page a Slack channel; the full report lands in Notion. A Vercel cron runs the whole sweep at 04:00 IST.",
-          "On a 100-article trial it caught 14/14 P0 issues (100% true-positive) with a combined P0+P1 false-positive rate of 5–9%, at $2.45 and four minutes per run.",
+          "Each article is embedded into a vector store and compared against the docs. RAG detectors classify it for contradictions, coverage gaps and conflicts. P0 issues page a Slack channel. The full triage sheet lands in Notion and Google Sheets, where a human sets the verdict.",
+          "A full sweep costs $5.36 and takes 11 minutes. It ran daily at 04:00 IST through the Phase 1 push. The schedule is paused now that the backlog is cleared, and the dashboard serves the completed report.",
         ],
       },
     ],
@@ -553,7 +571,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     shots: [
       {
         src: "/images/work/delta-support-audit/cover.png",
-        alt: "Delta Support Audit, daily AI audit of Delta India support content with impact metrics",
+        alt: "Delta Support Audit report: 217 articles audited, 291 drift findings, 222 verified fixed",
       },
     ],
     accent: "fractal",
@@ -585,6 +603,57 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         src: "/images/work/andrea-world/cover.png",
         alt: "Andrea's World, interactive 3D island with character, landmarks, and Linkin Park stage",
+      },
+    ],
+    accent: "none",
+  },
+  {
+    slug: "sqlwithpookie",
+    title: "SQL with Pookie",
+    kicker: "Creator · Learning Game",
+    tagline: "A cozy SQL course disguised as a game about a bear. 24 chapters, 208 exercises.",
+    role: "Designer & Developer",
+    period: "2026",
+    stack: [
+      "Next.js 15 / React 19",
+      "Tailwind v4",
+      "TypeScript",
+      "PWA / service worker",
+      "localStorage",
+    ],
+    metrics: [
+      { value: "24", label: "Chapters", tone: "accent" },
+      { value: "208", label: "Exercises", tone: "neutral" },
+      { value: "0", label: "Accounts needed", tone: "pos" },
+      { value: "100", label: "Lighthouse a11y", tone: "neutral" },
+    ],
+    sections: [
+      {
+        heading: "What it is",
+        body: [
+          "SQL tutorials read like reference manuals. This one is a game about a bear who runs an ice cream shop, and you learn to query his order notebook.",
+          "It started as a gift. I wrote it as a native iOS app first, then hit a wall I could not code my way through: no signing setup, no App Store. So I rebuilt it as a web app that installs to the home screen and works offline. A year of trading systems, and the thing that beat me was a provisioning profile.",
+        ],
+      },
+      {
+        heading: "How it teaches",
+        body: [
+          "24 chapters, 208 exercises, four drill types: pick the keyword, predict the output, assemble the query from tiles, and solve a scenario. Every chapter carries a story, so JOIN is two notebooks about the same customers rather than a Venn diagram.",
+          "No account, no email, no install. Progress lives in localStorage, which means it also vanishes if you clear your browser. That is the trade for asking nothing of you.",
+        ],
+      },
+      {
+        heading: "What it does not do",
+        body: [
+          "It does not run a live SQL engine. You read, predict and assemble queries; you never point one at a real database. That is the honest limit of the format, and it is the next thing to fix.",
+        ],
+      },
+    ],
+    links: [{ label: "Play it", href: "https://sqlwithpookie.vercel.app" }],
+    shots: [
+      {
+        src: "/images/work/sqlwithpookie/cover.webp",
+        alt: "SQL with Pookie: intro screen, home screen with streak and XP, and a multiple-choice SQL exercise",
       },
     ],
     accent: "none",

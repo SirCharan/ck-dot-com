@@ -1,7 +1,7 @@
 /** Signature SVG: power · hardware · compute → AI PRESS → money. Interactive via CSS (see tokens.css). */
 export function PressMachine() {
   return (
-    <div className="press-machine" aria-label="Power, hardware, and compute into an AI machine that prints money">
+    <div className="press-machine" role="img" aria-label="Power, hardware, and compute into an AI machine that prints money">
       <svg viewBox="0 0 600 220" fill="none" role="img" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="pf" gradientUnits="userSpaceOnUse" x1="168" y1="0" x2="472" y2="0">

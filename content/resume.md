@@ -56,7 +56,7 @@ experience:
     bullets:
       - Own the AI and LLM surface across the trading, signals and research stack.
       - Built the Delta Exchange MCP server, market and trading tools, and led the docs and marketing rollout.
-      - "Delta Support Audit: nightly RAG pass catching drift in support articles."
+      - "Delta Support Audit: RAG pass over 217 support articles, 291 drift findings, 222 verified fixed."
       - "Product for perpetual futures and options: design, growth and quant tooling."
   - company: Timelock Trade
     position: Founder

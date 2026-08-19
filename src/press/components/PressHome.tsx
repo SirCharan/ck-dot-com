@@ -39,9 +39,11 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
           ease: "expo.out",
         });
 
+        // Position-only entrances. Opacity gating is banned in this repo:
+        // it hides real content behind an animation, tanks the axe contrast
+        // audit (which samples mid-fade) and makes the page feel slow.
         gsap.from(".ph-fade", {
           y: 22,
-          opacity: 0,
           duration: 0.7,
           stagger: 0.09,
           ease: "power3.out",
@@ -50,7 +52,6 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
         });
 
         gsap.from(".pm-in, .pm-core, .pm-out, .pm-flow", {
-          opacity: 0.2,
           y: 16,
           duration: 0.8,
           stagger: 0.06,
@@ -60,7 +61,6 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
 
         gsap.from(".press-ticket", {
           y: 24,
-          opacity: 0.3,
           duration: 0.55,
           stagger: 0.08,
           ease: "power2.out",
@@ -73,7 +73,6 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
 
         gsap.from(".press-plate", {
           y: 20,
-          opacity: 0.35,
           duration: 0.5,
           stagger: 0.07,
           ease: "power2.out",
@@ -111,7 +110,9 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
                   See the proof
                 </a>
               </div>
-              <a href="/track-record" className="press-live ph-fade" aria-label="Live track record">
+              {/* No aria-label: it overrode the visible text and failed WCAG 2.5.3
+                  (Label in Name). The visible copy is the accessible name. */}
+              <a href="/track-record" className="press-live ph-fade">
                 <span className="press-live-dot" aria-hidden />
                 <span className="press-mono">
                   Live · Stocky <strong>+110%</strong> verified · Dhan book rebuilt daily

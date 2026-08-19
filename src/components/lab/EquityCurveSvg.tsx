@@ -107,8 +107,16 @@ export function EquityCurveSvg<T extends Pt>({
         yTicks.map((t, k) => (
           <div
             key={`y${k}`}
-            className="absolute font-mono text-[10px] text-[rgb(var(--faint))]"
-            style={{ left: 0, width: PL - 6, textAlign: "right", top: PT + y(t) - 6 }}
+            className="absolute font-mono text-[10px]"
+            style={{
+              left: 0,
+              width: PL - 6,
+              textAlign: "right",
+              top: PT + y(t) - 6,
+              // Prefer the Proof Press token; fall back to the mc palette on
+              // legacy surfaces. The bare mc --faint fails AA on press grounds.
+              color: "var(--p-faint, rgb(var(--faint)))",
+            }}
           >
             {formatY(t)}
           </div>
@@ -118,12 +126,13 @@ export function EquityCurveSvg<T extends Pt>({
         xIdx.map((idx, k) => (
           <div
             key={`x${k}`}
-            className="absolute font-mono text-[10px] text-[rgb(var(--faint))]"
+            className="absolute font-mono text-[10px]"
             style={{
               bottom: 2,
               left: `calc(${PL}px + ${idx / (series.length - 1)} * (100% - ${PL + PR}px))`,
               transform:
                 k === 0 ? "translateX(0)" : k === xIdx.length - 1 ? "translateX(-100%)" : "translateX(-50%)",
+              color: "var(--p-faint, rgb(var(--faint)))",
             }}
           >
             {series[idx].date.slice(2, 7)}
