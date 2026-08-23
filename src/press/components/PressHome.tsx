@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useReducedMotion } from "framer-motion";
 import { EquityCurveSvg } from "@/components/lab/EquityCurveSvg";
+import { CurveReveal } from "@/components/lab/CurveReveal";
 import { curveValue, type Payload } from "@/lib/trackRecord";
 import { inr } from "@/lib/format";
 import { PROOF } from "@/press/lib/proof";
@@ -195,19 +196,25 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
           <div className="press-ledger">
             <div className="press-ledger-head press-mono">
               <span>Dhan · return %</span>
-              <span>{dhan?.asOf ? dhan.asOf.slice(0, 10) : "live"}</span>
+              <span style={{ whiteSpace: "nowrap" }}>{dhan?.asOf ? dhan.asOf.slice(0, 10) : "live"}</span>
             </div>
             {enough ? (
+              <CurveReveal>
               <EquityCurveSvg
                 series={series}
                 valueOf={(s) => (e0 > 0 ? (curveValue(s) / e0) * 100 : 0)}
                 height={200}
                 showAxes
                 formatY={pctY}
+                formatAnnot={(v) => `${v >= 0 ? "+" : ""}${v.toFixed(1)}%`}
                 provisional={dhan?.provisional ?? false}
-                stroke="#4ecf7a"
+                stroke="var(--p-go)"
                 glow={false}
+                annotate
+                tipLabel={retPct ?? undefined}
+                showDayCount
               />
+              </CurveReveal>
             ) : (
               <div
                 style={{

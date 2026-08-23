@@ -1312,3 +1312,27 @@
   .mc-scan::after { animation: none; display: none; }
   .mc-scrollcue-dot { animation: none; }
 }
+
+/* ── EquityCurveSvg draw-in — line is visible by default; the class only
+      RE-RUNS the stroke as a draw once the chart scrolls into view. ── */
+.ecs-armed .ecs-draw {
+  stroke-dasharray: 2;
+  animation: ecs-draw 1.1s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@keyframes ecs-draw {
+  from { stroke-dashoffset: 2; }
+  to { stroke-dashoffset: 0; }
+}
+.ecs-armed .ecs-fill-in { animation: ecs-fill 0.5s ease-out 0.85s both; }
+@keyframes ecs-fill {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecs-armed .ecs-draw, .ecs-armed .ecs-fill-in { animation: none; }
+}
+
+/* Narrow screens: the day-count caption cedes the axis row to the month ticks. */
+@media (max-width: 480px) {
+  .ecs-days { display: none; }
+}

@@ -7,6 +7,7 @@ import { SITE } from "@/data/site";
 import { getTrackRecord, curveValue } from "@/lib/trackRecord";
 import { StockyTrackRecord } from "@/components/StockyTrackRecord";
 import { EquityCurveSvg } from "@/components/lab/EquityCurveSvg";
+import { CurveReveal } from "@/components/lab/CurveReveal";
 
 const pctY = (v: number) => `${v >= 0 ? "+" : ""}${v.toFixed(0)}%`;
 
@@ -102,18 +103,24 @@ export default async function TrackRecordPage() {
         <div className="press-ledger" style={{ marginTop: "2.5rem" }}>
           <div className="press-ledger-head press-mono">
             <span>Cumulative return · % of capital</span>
-            <span>{asOfStr}</span>
+            <span style={{ whiteSpace: "nowrap" }}>{asOfStr}</span>
           </div>
           {data && data.series.length >= 2 ? (
+            <CurveReveal>
             <EquityCurveSvg
               series={data.series}
               valueOf={(s) => (e0 > 0 ? (curveValue(s) / e0) * 100 : 0)}
               height={280}
               showAxes
               formatY={pctY}
+              formatAnnot={(v) => `${v >= 0 ? "+" : ""}${v.toFixed(1)}%`}
               glow={false}
               provisional={data.provisional}
+              annotate
+              tipLabel={retPctStr === "n/a" ? undefined : retPctStr}
+              showDayCount
             />
+            </CurveReveal>
           ) : (
             <div
               className="press-mono"
