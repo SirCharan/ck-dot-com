@@ -100,9 +100,9 @@ export default async function TrackRecordPage() {
           Account metrics · refreshed daily{data ? "" : " · awaiting first settled day"}
         </p>
         {since && (
-          <p className="press-mono" style={caption}>
+          <p className="press-mono" style={{ ...caption, maxWidth: "62ch" }}>
             Window: {since} onward. The book traded before that date; those days are
-            excluded here.{m ? ` ${m.activeDays} active days — early sample.` : ""}
+            excluded here.
           </p>
         )}
 
