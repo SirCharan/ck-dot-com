@@ -214,6 +214,7 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
                 annotate
                 tipLabel={retPct ?? undefined}
                 showDayCount
+                zeroOrigin
               />
               </CurveReveal>
             ) : (

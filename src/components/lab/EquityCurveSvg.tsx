@@ -35,6 +35,7 @@ export function EquityCurveSvg<T extends Pt>({
   formatAnnot,
   tipLabel,
   showDayCount = false,
+  zeroOrigin = false,
 }: {
   series: T[];
   valueOf: (p: T) => number;
@@ -52,6 +53,13 @@ export function EquityCurveSvg<T extends Pt>({
   /** Live figure annotated at the line tip (e.g. "+1.2%"). */
   tipLabel?: string;
   showDayCount?: boolean;
+  /**
+   * Plot a 0 point before the first day so the line starts at the baseline. Day one's
+   * own P&L is a real step, not the starting level: without this the Dhan curve opened
+   * at −4.3% (2026-08-03 lost ₹42,797) as if the window began mid-drawdown.
+   * The origin is NOT a trading day — the day count and month ticks ignore it.
+   */
+  zeroOrigin?: boolean;
 }) {
   if (series.length < 2) {
     return (
@@ -73,13 +81,21 @@ export function EquityCurveSvg<T extends Pt>({
   const plotH = Math.max(1, height - PT - PB);
   const W = 800;
 
+  // Plotted arrays, optionally led by a 0 origin. Everything below indexes these, so
+  // `n` — not series.length — drives the geometry; series.length stays the day count.
   const vals = series.map(valueOf);
+  const dates = series.map((s) => s.date);
+  if (zeroOrigin) {
+    vals.unshift(0);
+    dates.unshift(dates[0]);
+  }
+  const n = vals.length;
   const min = Math.min(...vals);
   const max = Math.max(...vals);
   const span = max - min || 1;
-  const x = (i: number) => (i / (series.length - 1)) * W;
+  const x = (i: number) => (i / (n - 1)) * W;
   const y = (v: number) => plotH - ((v - min) / span) * plotH;
-  const pts = series.map((s, i) => [x(i), y(valueOf(s))] as const);
+  const pts = vals.map((v, i) => [x(i), y(v)] as const);
   const solid = provisional ? pts.slice(0, -1) : pts;
   const line = (p: readonly (readonly [number, number])[]) =>
     p.map(([px, py], i) => `${i ? "L" : "M"}${px.toFixed(1)},${py.toFixed(1)}`).join(" ");
@@ -87,7 +103,7 @@ export function EquityCurveSvg<T extends Pt>({
   const lastVal = vals[vals.length - 1];
 
   const crossing = min < 0 && max > 0;
-  const uid = `ecs${series.length}-${Math.round(min * 100)}-${Math.round(max * 100)}`;
+  const uid = `ecs${n}-${Math.round(min * 100)}-${Math.round(max * 100)}`;
   const y0 = y(0);
   // Closed ribbon between the line and the waterline; the two clips carve it
   // into the above-zero and below-zero tints.
@@ -125,22 +141,22 @@ export function EquityCurveSvg<T extends Pt>({
   // X ticks at month boundaries (index 0 + each first trading day of a month).
   const monthIdx: number[] = [];
   if (showAxes) {
-    for (let i = 0; i < series.length; i++) {
-      if (i === 0 || series[i].date.slice(0, 7) !== series[i - 1].date.slice(0, 7)) monthIdx.push(i);
+    for (let i = 0; i < n; i++) {
+      if (i === 0 || dates[i].slice(0, 7) !== dates[i - 1].slice(0, 7)) monthIdx.push(i);
     }
     // A years-long series would crowd the axis — thin to ≤8 boundaries.
     while (monthIdx.length > 8) {
       for (let i = monthIdx.length - 2; i > 0; i -= 2) monthIdx.splice(i, 1);
     }
   }
-  const multiYear = series[0].date.slice(0, 4) !== series[series.length - 1].date.slice(0, 4);
+  const multiYear = dates[0].slice(0, 4) !== dates[n - 1].slice(0, 4);
   const monthLabel = (d: string) => {
     const m = MONTHS[Number(d.slice(5, 7)) - 1] ?? d.slice(2, 7);
     return multiYear ? `${m} ’${d.slice(2, 4)}` : m;
   };
 
   // Overlay geometry: % positions inside the padded plot box.
-  const px = (i: number) => (i / (series.length - 1)) * 100;
+  const px = (i: number) => (i / (n - 1)) * 100;
   const plotLeft = (pct: number) => `calc(${PL}px + ${pct / 100} * (100% - ${PL + PR}px))`;
 
   return (
@@ -241,9 +257,9 @@ export function EquityCurveSvg<T extends Pt>({
         <div
           className="ecs-fill-in pointer-events-none absolute font-mono text-[11px] font-semibold"
           style={{
-            left: plotLeft(px(series.length - 1)),
+            left: plotLeft(px(n - 1)),
             top: PT + y(lastVal) - 7,
-            transform: px(series.length - 1) > 82 ? "translateX(calc(-100% - 9px))" : "translateX(9px)",
+            transform: px(n - 1) > 82 ? "translateX(calc(-100% - 9px))" : "translateX(9px)",
             color: tipStroke,
           }}
         >
@@ -262,10 +278,10 @@ export function EquityCurveSvg<T extends Pt>({
           {
             idx: bestIdx,
             text: bestIdx >= 0 ? `best day ${fmtA(vals[bestIdx] - vals[bestIdx - 1])}` : "",
-            dy: bestIdx === series.length - 1 ? 10 : y(vals[bestIdx]) / plotH < 0.25 ? 8 : -18,
+            dy: bestIdx === n - 1 ? 10 : y(vals[bestIdx]) / plotH < 0.25 ? 8 : -18,
           },
         ]
-          .filter((a) => a.idx >= 0 && (a.idx < series.length - 1 || a.idx === bestIdx))
+          .filter((a) => a.idx >= 0 && (a.idx < n - 1 || a.idx === bestIdx))
           .map((a) => (
             <div
               key={`a${a.idx}`}
@@ -334,7 +350,7 @@ export function EquityCurveSvg<T extends Pt>({
               color: "var(--p-faint, rgb(var(--faint)))",
             }}
           >
-            {monthLabel(series[idx].date)}
+            {monthLabel(dates[idx])}
           </div>
         ))}
       {showAxes && showDayCount && (

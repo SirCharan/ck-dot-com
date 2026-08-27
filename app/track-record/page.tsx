@@ -126,6 +126,7 @@ export default async function TrackRecordPage() {
               annotate
               tipLabel={retPctStr === "n/a" ? undefined : retPctStr}
               showDayCount
+              zeroOrigin
             />
             </CurveReveal>
           ) : (
