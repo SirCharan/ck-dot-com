@@ -61,13 +61,20 @@ export function PnlCalendar({
     i++;
   }
 
+  // The grid pads back to the Sunday before the first data month, so week 0 can sit
+  // in the PREVIOUS month — labelling it printed "JulAug" once the record started
+  // 1 Aug 2026 (a Saturday). Skip any month before the first data month, and never
+  // print two labels inside two columns of each other.
+  const firstMonth = minIso.slice(0, 7);
   const monthLabels: { x: number; label: string }[] = [];
   let lastMonth = -1;
   for (const c of cells) {
-    if (c.dow === 0 && c.month !== lastMonth) {
-      monthLabels.push({ x: c.week * (CELL + GAP), label: MONTHS[c.month] });
-      lastMonth = c.month;
-    }
+    if (c.dow !== 0 || c.month === lastMonth || c.iso.slice(0, 7) < firstMonth) continue;
+    lastMonth = c.month;
+    const x = c.week * (CELL + GAP);
+    const prev = monthLabels[monthLabels.length - 1];
+    if (prev && x - prev.x < 2 * (CELL + GAP)) continue;
+    monthLabels.push({ x, label: MONTHS[c.month] });
   }
 
   const fill = (net: number | null): string => {

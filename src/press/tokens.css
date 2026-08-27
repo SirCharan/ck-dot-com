@@ -491,6 +491,11 @@ a.press-ticket:focus-visible {
   flex-wrap: wrap;
   gap: 0.35rem 1rem;
   justify-content: space-between;
+}
+/* When the head wraps on a narrow screen the trailing as-of stamp must stay right,
+   or it reads as a third label rather than a timestamp. */
+.press-ledger-head > :last-child {
+  margin-left: auto;
   font-size: 0.75rem;
   color: var(--p-faint);
   margin-bottom: 0.75rem;

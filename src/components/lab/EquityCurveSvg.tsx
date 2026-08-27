@@ -45,6 +45,10 @@ export function EquityCurveSvg<T extends Pt>({
   glow?: boolean;
   showAxes?: boolean;
   formatY?: (v: number) => string;
+  /**
+   * The last point is today's live figure: drawn dashed, and excluded from the day
+   * count so the chart agrees with the settled-day stats beside it.
+   */
   provisional?: boolean;
   /** Mark the deepest drawdown trough + the best single step. */
   annotate?: boolean;
@@ -255,7 +259,7 @@ export function EquityCurveSvg<T extends Pt>({
       {/* live figure at the line tip */}
       {tipLabel && last && (
         <div
-          className="ecs-fill-in pointer-events-none absolute font-mono text-[11px] font-semibold"
+          className="ecs-chip ecs-fill-in pointer-events-none absolute font-mono text-[11px] font-semibold"
           style={{
             left: plotLeft(px(n - 1)),
             top: PT + y(lastVal) - 7,
@@ -285,12 +289,14 @@ export function EquityCurveSvg<T extends Pt>({
           .map((a) => (
             <div
               key={`a${a.idx}`}
-              className="ecs-fill-in pointer-events-none absolute font-mono text-[10px]"
+              className="ecs-chip ecs-fill-in pointer-events-none absolute font-mono text-[10px]"
               style={{
                 left: plotLeft(px(a.idx)),
                 top: PT + y(vals[a.idx]) + a.dy,
                 transform: px(a.idx) > 78 ? "translateX(-100%)" : px(a.idx) < 8 ? "none" : "translateX(-50%)",
-                color: "var(--p-faint, rgb(var(--faint)))",
+                // --p-faint is the weakest text on the ground; these labels carry the
+                // chart's story, so they get the readable step up.
+                color: "var(--p-mute, rgb(var(--mute)))",
                 whiteSpace: "nowrap",
               }}
             >
@@ -358,7 +364,7 @@ export function EquityCurveSvg<T extends Pt>({
           className="ecs-days absolute font-mono text-[10px]"
           style={{ bottom: 2, right: 0, color: "var(--p-faint, rgb(var(--faint)))" }}
         >
-          {series.length} trading days
+          {series.length - (provisional ? 1 : 0)} trading days
         </div>
       )}
     </div>

@@ -147,3 +147,20 @@ describe("EquityCurveSvg zeroOrigin", () => {
     expect(Number(firstY)).toBeCloseTo(84, 0); // bottom of the plot = the −4.3% low
   });
 });
+
+describe("EquityCurveSvg day count", () => {
+  const dhan = [
+    { date: "2026-08-03", v: -4.3 },
+    { date: "2026-08-04", v: -2.1 },
+    { date: "2026-08-26", v: 8.8 },
+  ];
+
+  it("excludes the provisional tip so the count matches the settled-day stats", () => {
+    // The page shows "18 active days" next to the chart; counting today's live point
+    // as a trading day made the two contradict each other on one screen.
+    const { container } = render(
+      <EquityCurveSvg series={dhan} valueOf={(p) => p.v} showAxes showDayCount provisional />
+    );
+    expect(container.querySelector(".ecs-days")!.textContent).toBe("2 trading days");
+  });
+});

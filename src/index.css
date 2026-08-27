@@ -1332,6 +1332,15 @@
   .ecs-armed .ecs-draw, .ecs-armed .ecs-fill-in { animation: none; }
 }
 
+/* Annotation labels sit ON the plot, so a steep line strikes through them — a
+   one-month window made "+8.8%" read as "+3.8%". A ground-coloured chip keeps them
+   readable without moving them off their point. */
+.ecs-chip {
+  background: var(--p-bg);
+  padding: 0 3px;
+  border-radius: 2px;
+}
+
 /* Narrow screens: the day-count caption cedes the axis row to the month ticks. */
 @media (max-width: 480px) {
   .ecs-days { display: none; }
