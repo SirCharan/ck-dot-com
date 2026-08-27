@@ -9,7 +9,7 @@ import { useGSAP } from "@gsap/react";
 import { useReducedMotion } from "framer-motion";
 import { EquityCurveSvg } from "@/components/lab/EquityCurveSvg";
 import { CurveReveal } from "@/components/lab/CurveReveal";
-import { curveValue, type Payload } from "@/lib/trackRecord";
+import { curveValue, formatWindowStart, type Payload } from "@/lib/trackRecord";
 import { inr } from "@/lib/format";
 import { PROOF } from "@/press/lib/proof";
 import { PressShell } from "./PressShell";
@@ -26,6 +26,7 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
   const gross = dhan?.metrics?.grossCumulative ?? dhan?.metrics?.cumulative ?? null;
   const retPct =
     gross != null && e0 > 0 ? `${gross >= 0 ? "+" : ""}${((gross / e0) * 100).toFixed(1)}%` : null;
+  const since = formatWindowStart(dhan?.meta?.from);
   const enough = series.length >= 2;
   const pctY = (v: number) => `${v >= 0 ? "+" : ""}${v.toFixed(0)}%`;
 
@@ -195,7 +196,7 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
           </p>
           <div className="press-ledger">
             <div className="press-ledger-head press-mono">
-              <span>Dhan · return %</span>
+              <span>Dhan · return %{since ? ` · since ${since}` : ""}</span>
               <span style={{ whiteSpace: "nowrap" }}>{dhan?.asOf ? dhan.asOf.slice(0, 10) : "live"}</span>
             </div>
             {enough ? (

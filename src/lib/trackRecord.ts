@@ -38,7 +38,8 @@ export type Payload = {
   provisional: boolean;
   series: SeriesPt[];
   metrics: Metrics;
-  meta: { e0: number; note: string };
+  /** `from` is the first day the API publishes — the window start (ISO). */
+  meta: { e0: number; from?: string; note: string };
 };
 
 export const TRACK_URL =
@@ -63,3 +64,15 @@ export async function getTrackRecord(): Promise<Payload | null> {
 
 /** Curve value: gross cumulative, falling back to net cumulative. */
 export const curveValue = (s: SeriesPt): number => s.grossCumulative ?? s.cumulative;
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/**
+ * Window-start label: "2026-08-01" → "1 Aug 2026". Read from `meta.from` so the copy
+ * follows the API and cannot drift from the data. Null when the API omits it.
+ */
+export function formatWindowStart(from?: string | null): string | null {
+  const m = from ? /^(\d{4})-(\d{2})-(\d{2})$/.exec(from) : null;
+  const month = m ? MONTHS[Number(m[2]) - 1] : undefined;
+  return m && month ? `${Number(m[3])} ${month} ${m[1]}` : null;
+}

@@ -488,6 +488,8 @@ a.press-ticket:focus-visible {
 
 .press-ledger-head {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
   justify-content: space-between;
   font-size: 0.75rem;
   color: var(--p-faint);

@@ -4,7 +4,7 @@ import { PnlCalendarInteractive } from "@/components/track/PnlCalendarInteractiv
 import { ClientOnly } from "@/components/lab/ClientOnly";
 import { inr } from "@/lib/format";
 import { SITE } from "@/data/site";
-import { getTrackRecord, curveValue } from "@/lib/trackRecord";
+import { getTrackRecord, curveValue, formatWindowStart } from "@/lib/trackRecord";
 import { StockyTrackRecord } from "@/components/StockyTrackRecord";
 import { EquityCurveSvg } from "@/components/lab/EquityCurveSvg";
 import { CurveReveal } from "@/components/lab/CurveReveal";
@@ -39,6 +39,7 @@ export default async function TrackRecordPage() {
   const winStr = !gated && m?.positiveDays != null ? `${Math.round(m.positiveDays * 100)}%` : "n/a";
   const daysStr = m ? String(m.activeDays) : "n/a";
   const asOfStr = data?.asOf ?? "n/a";
+  const since = formatWindowStart(data?.meta?.from);
 
   const KPIS: { value: string; label: string; sub?: string }[] = [
     { value: retPctStr, label: "Return", sub: inrSub },
@@ -98,11 +99,17 @@ export default async function TrackRecordPage() {
         <p className="press-mono" style={caption}>
           Account metrics · refreshed daily{data ? "" : " · awaiting first settled day"}
         </p>
+        {since && (
+          <p className="press-mono" style={caption}>
+            Window: {since} onward. The book traded before that date; those days are
+            excluded here.{m ? ` ${m.activeDays} active days — early sample.` : ""}
+          </p>
+        )}
 
         {/* Equity curve */}
         <div className="press-ledger" style={{ marginTop: "2.5rem" }}>
           <div className="press-ledger-head press-mono">
-            <span>Cumulative return · % of capital</span>
+            <span>Cumulative return · % of capital{since ? ` · since ${since}` : ""}</span>
             <span style={{ whiteSpace: "nowrap" }}>{asOfStr}</span>
           </div>
           {data && data.series.length >= 2 ? (
