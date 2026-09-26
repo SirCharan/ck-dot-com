@@ -4,7 +4,7 @@
 # Budget is enforced by src/data/resume.test.ts — it fails if content creeps back
 # past what fits on one A4 page. Edit here, never in the page component.
 name: Charandeep Kapoor
-title: AI Product Manager & Engineer
+title: Senior Product Manager · Crypto Derivatives & AI
 contact:
   email: charandeepkapoor3@gmail.com
   phone: ""
@@ -18,9 +18,8 @@ systems:
   - name: Drishti
     href: https://drishtisignals.in
     line: >-
-      Live Claude signals on Delta crypto perpetuals, 40k+ users. 15-minute
-      regime-aware cycle, 8 markets, reduce-only stops and a loss breaker. Paid
-      Meta and Google campaigns, tracked in PostHog.
+      Live Claude signals on Delta perpetuals, 40k+ users from paid Meta and
+      Google. 15-minute cycle, 8 markets, reduce-only stops, loss breaker.
   - name: Stocky
     href: https://charandeepkapoor.com/markets
     hrefLabel: charandeepkapoor.com/markets
@@ -54,15 +53,15 @@ experience:
     position: AI Product Manager
     duration: Apr 2026 – Present
     bullets:
-      - Own the AI and LLM surface across the trading, signals and research stack.
-      - Built the Delta Exchange MCP server, market and trading tools, and led the docs and marketing rollout.
-      - "Delta Support Audit: RAG pass over 217 support articles, 291 drift findings, 222 verified fixed."
+      - Joined via acqui-hire after Zerodha and Dhan held acquisition talks.
+      - "Shipped the official Delta Exchange MCP server (40 tools, market data to guarded execution) and ran its launch: docs, GTM microsite, 90-day plan."
+      - "Support Audit: RAG pass over 217 articles, 291 drift findings, 222 fixed."
       - "Product for perpetual futures and options: design, growth and quant tooling."
   - company: Timelock Trade
     position: Founder
     duration: Apr 2025 – Apr 2026
     bullets:
-      - Bootstrapped a decentralized, liquidation-free derivatives house.
+      - "Bootstrapped a liquidation-free exchange: perps, options, prediction markets."
       - $7.3M trading volume, $2M TVL, 1,000+ users on Monad testnet.
       - Led 6 across engineering, product, design, BD and marketing.
   - company: Diffusion Labs
@@ -103,6 +102,7 @@ skills:
   - group: Product
     items:
       - 0-to-1 delivery
+      - PRDs, funnel metrics & GTM
       - Team leadership
 
 academics:
@@ -127,4 +127,4 @@ certifications:
     detail: Scholar
 ---
 
-AI Product Manager at Delta Exchange, India's largest crypto derivatives exchange, where I own the LLM surface across trading, signals and research.
+Product manager for crypto derivatives and AI. I own the LLM surface at Delta Exchange, India's largest crypto derivatives exchange, and have shipped AI signal products with 40k+ users.

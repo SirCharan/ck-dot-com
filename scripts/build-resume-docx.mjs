@@ -27,9 +27,22 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const ROOT = process.cwd();
-const OUT = path.join(ROOT, "public", "charandeep-kapoor-resume.docx");
+// RESUME_VARIANT=vc builds the venture résumé from content/resume-vc.md.
+const VC = process.env.RESUME_VARIANT === "vc";
+const MASTER = path.join(process.cwd(), "content", VC ? "resume-vc.md" : "resume.md");
+const OUT_DIR = process.env.RESUME_OUT_DIR ?? path.join(process.cwd(), "public");
+const BASENAME = VC ? "charandeep-kapoor-vc-resume" : "charandeep-kapoor-resume";
 
-const { data: R, content } = matter(fs.readFileSync(path.join(ROOT, "content", "resume.md"), "utf8"));
+// Unfilled placeholders must never reach public/. ALLOW_TODO=1 is for drafts,
+// paired with RESUME_OUT_DIR pointing somewhere private.
+if (fs.readFileSync(MASTER, "utf8").includes("[[TODO") && !process.env.ALLOW_TODO) {
+  console.error(`FAIL: ${path.relative(process.cwd(), MASTER)} still has [[TODO]] slots. Fill them, or ALLOW_TODO=1 RESUME_OUT_DIR=<tmp> for a draft.`);
+  process.exit(1);
+}
+const OUT = path.join(OUT_DIR, `${BASENAME}.docx`);
+
+const { data: R, content } = matter(fs.readFileSync(MASTER, "utf8"));
+const LABELS = { systems: "Selected systems", experience: "Experience", ...R.labels };
 const profile = content.trim();
 
 const FONT = "Arial"; // A metrically boring, universally parseable face. ATS first.
@@ -112,7 +125,7 @@ const children = [
   heading("Summary"),
   body(profile),
 
-  heading("Selected systems"),
+  heading(LABELS.systems),
   ...R.systems.flatMap((s) => [
     rowWithRight(
       [new TextRun({ text: s.name, bold: true, size: 20, font: FONT })],
@@ -122,7 +135,7 @@ const children = [
     body(s.proof ? `${s.line} (${s.proof.label}: ${s.proof.href.replace(/^https?:\/\//, "")})` : s.line),
   ]),
 
-  heading("Experience"),
+  heading(LABELS.experience),
   ...R.experience.flatMap((role) => {
     const head = rowWithRight(
       [

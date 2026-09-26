@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { RESUME, skillCount } from "./resume";
+import { loadResume, skillCount } from "./resume";
 
 /**
  * Résumé guard. Two jobs:
@@ -8,7 +8,9 @@ import { RESUME, skillCount } from "./resume";
  *     creep back in. If a limit here fails, either cut content or accept a
  *     2-page résumé deliberately (and change these numbers on purpose).
  */
-describe("résumé content", () => {
+describe.each(["resume", "resume-vc"])("résumé content: %s", (variant) => {
+  const RESUME = loadResume(variant);
+
   it("has identity and a profile", () => {
     expect(RESUME.name).toBe("Charandeep Kapoor");
     expect(RESUME.title.length).toBeGreaterThan(0);
@@ -62,7 +64,7 @@ describe("résumé content", () => {
 
   // ── One-page budget ───────────────────────────────────────────────────────
   it("stays inside the one-page budget", () => {
-    expect(skillCount(), "skills across all groups").toBeLessThanOrEqual(13);
+    expect(skillCount(RESUME), "skills across all groups").toBeLessThanOrEqual(13);
     expect(RESUME.systems.length, "systems").toBeLessThanOrEqual(5);
     expect(RESUME.experience.length, "roles").toBeLessThanOrEqual(7);
     expect(RESUME.academics.length, "academics rows").toBeLessThanOrEqual(5);
