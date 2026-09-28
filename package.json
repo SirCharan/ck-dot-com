@@ -15,6 +15,10 @@
     "resume:docx": "node scripts/build-resume-docx.mjs",
     "resume:vc:pdf": "RESUME_VARIANT=vc node scripts/build-resume.mjs",
     "resume:vc:docx": "RESUME_VARIANT=vc node scripts/build-resume-docx.mjs",
+    "resume:eng:pdf": "RESUME_VARIANT=eng node scripts/build-resume.mjs",
+    "resume:eng:docx": "RESUME_VARIANT=eng node scripts/build-resume-docx.mjs",
+    "resume:trackk:pdf": "RESUME_VARIANT=trackk RESUME_OUT_DIR=$HOME/Downloads node scripts/build-resume.mjs",
+    "resume:trackk:docx": "RESUME_VARIANT=trackk RESUME_OUT_DIR=$HOME/Downloads node scripts/build-resume-docx.mjs",
     "pull:pnl": "tsx scripts/refresh-pnl.ts",
     "pull:portfolio": "tsx scripts/refresh-portfolio.ts"
   },

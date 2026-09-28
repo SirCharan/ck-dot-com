@@ -10,5 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default function ResumePage() {
-  return <ResumeView resume={RESUME} />;
+  return (
+    <ResumeView
+      resume={RESUME}
+      pdfHref="/charandeep-kapoor-resume.pdf"
+      alt={{ label: "Engineering version", href: "/resume/eng" }}
+    />
+  );
 }

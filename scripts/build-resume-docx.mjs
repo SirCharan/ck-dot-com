@@ -27,11 +27,11 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const ROOT = process.cwd();
-// RESUME_VARIANT=vc builds the venture résumé from content/resume-vc.md.
-const VC = process.env.RESUME_VARIANT === "vc";
-const MASTER = path.join(process.cwd(), "content", VC ? "resume-vc.md" : "resume.md");
+// RESUME_VARIANT=<v> builds content/resume-<v>.md (vc, eng, trackk).
+const V = process.env.RESUME_VARIANT ?? "";
+const MASTER = path.join(process.cwd(), "content", `resume${V ? "-" + V : ""}.md`);
 const OUT_DIR = process.env.RESUME_OUT_DIR ?? path.join(process.cwd(), "public");
-const BASENAME = VC ? "charandeep-kapoor-vc-resume" : "charandeep-kapoor-resume";
+const BASENAME = `charandeep-kapoor${V ? "-" + V : ""}-resume`;
 
 // Unfilled placeholders must never reach public/. ALLOW_TODO=1 is for drafts,
 // paired with RESUME_OUT_DIR pointing somewhere private.

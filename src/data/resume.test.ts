@@ -8,7 +8,7 @@ import { loadResume, skillCount } from "./resume";
  *     creep back in. If a limit here fails, either cut content or accept a
  *     2-page résumé deliberately (and change these numbers on purpose).
  */
-describe.each(["resume", "resume-vc"])("résumé content: %s", (variant) => {
+describe.each(["resume", "resume-vc", "resume-eng", "resume-trackk"])("résumé content: %s", (variant) => {
   const RESUME = loadResume(variant);
 
   it("has identity and a profile", () => {

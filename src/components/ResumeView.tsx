@@ -61,7 +61,15 @@ function Record({ role }: { role: ResumeRole }) {
   );
 }
 
-export function ResumeView({ resume }: { resume: Resume }) {
+export function ResumeView({
+  resume,
+  pdfHref,
+  alt,
+}: {
+  resume: Resume;
+  pdfHref?: string;
+  alt?: { label: string; href: string };
+}) {
   const { name, title, contact, profile, systems, experience, skills, academics, certifications } =
     resume;
   const labels = { systems: "Selected systems", experience: "Experience", ...resume.labels };
@@ -100,9 +108,11 @@ export function ResumeView({ resume }: { resume: Resume }) {
               </a>
             </li>
           </ul>
-          <div style={{ marginTop: "1.1rem" }}>
-            <PrintButton />
-          </div>
+          {pdfHref || alt ? (
+            <div style={{ marginTop: "1.1rem" }}>
+              <PrintButton pdfHref={pdfHref} alt={alt} />
+            </div>
+          ) : null}
         </header>
 
         {/* Rail is FIRST in source so the PDF text layer extracts linearly for
