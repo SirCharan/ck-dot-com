@@ -4,23 +4,24 @@ import { Nav } from "@/components/claude-browse/Nav";
 import { Hero } from "@/components/claude-browse/Hero";
 import { Reveal } from "@/components/claude-browse/Reveal";
 import {
-  Bento,
   Close,
-  Engines,
   Faq,
   Footer,
+  HowItWorks,
   Install,
-  Ledger,
   Measured,
+  Problem,
   Proof,
+  Safe,
+  Windows,
   WorksWith,
 } from "@/components/claude-browse/Sections";
 
 const DESCRIPTION =
-  "claude-browse is an open-source Claude Code plugin. A Sonnet sub-agent does the browsing so the main model reads a summary of 12 lines or fewer.";
+  "Give Claude Code a browser and keep your chat light. A helper reads websites for you and brings back a short answer. Open source, MIT, no API key.";
 
 export const metadata: Metadata = {
-  title: "claude-browse, browse the web without filling your context",
+  title: "claude-browse: give Claude Code a browser, keep your chat light",
   description: DESCRIPTION,
   alternates: { canonical: "/claude-browse" },
   openGraph: {
@@ -40,11 +41,12 @@ export default async function ClaudeBrowsePage() {
       <main>
         <Hero />
         <WorksWith />
+        <Problem />
         <Proof />
-        <Engines />
+        <HowItWorks />
         <Measured />
-        <Ledger />
-        <Bento />
+        <Windows />
+        <Safe />
         <Install />
         <Faq />
         <Close />

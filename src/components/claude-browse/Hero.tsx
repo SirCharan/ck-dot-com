@@ -201,7 +201,7 @@ export function Replay() {
         </pre>
         <div className="cb-card-f">
           <span>
-            <b>{MEASURED.summary}</b> tokens to the main model
+            <b>{MEASURED.summary}</b> tokens reach your chat
           </span>
           <span>
             <b>{MEASURED.seconds} s</b>
@@ -216,18 +216,21 @@ export function Hero() {
   return (
     <section className="cb-wrap cb-hero">
       <div className="cb-hero-copy">
-        <p className="cb-k">Open-source Claude Code plugin</p>
+        <p className="cb-k">Open source · Free · Built for Claude Code</p>
         <h1 className="cb-h1">
-          Browse the web without filling your <em>context</em>.
+          Give Claude Code a browser. Keep your chat <em>light</em>.
         </h1>
-        <p className="cb-sub">Sonnet browses. Your main model reads 12 lines.</p>
+        <p className="cb-sub">
+          claude-browse sends a helper to read websites for you and brings back a short answer. Pages never pile
+          up in your chat, so it stays fast and cheap.
+        </p>
         <div className="cb-actions">
           <CopyButton className="cb-btn cb-btn-fill" />
           <a className="cb-btn cb-btn-ghost" href={REPO}>
             Read the source
           </a>
         </div>
-        <p className="cb-micro">MIT · Python stdlib · macOS and Linux</p>
+        <p className="cb-micro">MIT · No API key · macOS and Linux</p>
       </div>
       <div className="cb-hero-art">
         <div className="cb-panel">

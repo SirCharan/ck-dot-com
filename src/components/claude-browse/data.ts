@@ -18,23 +18,23 @@ export const LEDGER = "$ browse ls\nNAME        STACK          PURPOSE          
 export const DOCTOR = "PASS agent-browser 0.38.1\nPASS browser-harness on PATH\nWARN Chrome CDP 9222 not reachable | fix: start Chrome with --remote-debugging-port=9222\nPASS ledger ok\nWARN version-mismatched daemons: default, etihad-bcn, ey-book, kayak | fix: browse reap --restart-mismatch\nPASS /Users/ck/.claude-browse writable";
 
 export const COMPARE: [string, string, string][] = [
-  ["Runs in", "Its own headless daemon", "The Chrome you already have open"],
-  ["Sees your logins", "No. Clean profile", "Yes. Whatever that Chrome is signed in to"],
-  ["Reads the page as", "Accessibility tree with @e refs", "CDP helpers: page_info, js, cdp"],
-  ["Domain allowlist", "Enforced. Exit 3", "Advisory"],
-  ["Picked when", "Public pages, checks, scraping", "You say \"my Chrome\" or the page needs your login"],
+  ["Where it runs", "A hidden browser just for the helper", "The Chrome you already have open"],
+  ["Sees your logins", "No. It starts clean", "Yes. Whatever you are signed in to"],
+  ["How it reads pages", "A structured map of the page, not pixels", "Talks to Chrome directly"],
+  ["Sites it can visit", "Only the ones you allow", "Any, with a warning"],
+  ["Best for", "Public pages, checks, research", "Sites that need your account"],
 ];
 
 export const FAQ: [string, string][] = [
-  ["Is it open source?", "Yes. claude-browse uses the MIT licence and is written with the Python standard library. Every line is in the repo."],
-  ["Which engine runs by default?", "Vercel's agent-browser. It runs an isolated headless daemon and returns accessibility snapshots with @e refs."],
-  ["Can it use my logged-in Chrome?", "Yes. The browser-harness engine drives your own Chrome over CDP, so pages see your existing logins. The router picks it when you ask or when the page needs a login."],
-  ["How do I stop idle daemons piling up?", "Run browse reap. It closes idle daemons, deletes orphan state files and flags daemons on a stale binary. Add --dry-run first to see the list without changing anything."],
-  ["Can I limit which sites it visits?", "Yes. Each session carries a domain allowlist. A request outside it exits with code 3, and the agent reports the blocked domain instead of trying elsewhere."],
+  ["Is it free?", "Yes. It is open source under the MIT licence and needs no extra API key. It runs inside the Claude Code you already use."],
+  ["Which browser does it use?", "By default a private, hidden browser that starts clean. If a site needs your account, it can use your own Chrome instead."],
+  ["Can it see my passwords or logins?", "Only in the \"your own Chrome\" mode, and only what that Chrome is already signed in to. The private browser sees nothing of yours."],
+  ["What if a window gets left open?", "Run browse ls to see every window and browse reap to close the idle ones. Add --dry-run to see the list before anything closes."],
+  ["Can I keep it to certain sites?", "Yes. Name the sites when you start. Anything else is refused before the browser moves."],
 ];
 
 export const STEPS: [string, string, string][] = [
   ["01", "Add the plugin", INSTALL],
-  ["02", "Check the machine", "browse doctor"],
-  ["03", "Browse from any session", COMMAND],
+  ["02", "Check your setup", "browse doctor"],
+  ["03", "Ask your first question", COMMAND],
 ];

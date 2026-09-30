@@ -7,13 +7,43 @@ const n = (v: number) => v.toLocaleString("en-US");
 export function WorksWith() {
   return (
     <section className="cb-wrap cb-section cb-section-tight cb-r">
-      <div className="cb-works" aria-label="Runs with">
+      <div className="cb-works" aria-label="Works with">
         <span>Claude Code</span>
         <span>Claude Sonnet</span>
         <span>agent-browser</span>
         <span>browser-harness</span>
         <span>macOS</span>
         <span>Linux</span>
+      </div>
+    </section>
+  );
+}
+
+export function Problem() {
+  const cards: [string, string][] = [
+    [
+      "A page is a lot of text",
+      `One Hacker News front page is about ${n(MEASURED.full)} tokens. A token is roughly a word, and tokens are what you pay for.`,
+    ],
+    ["Your chat keeps all of it", "Every new message re-sends the whole conversation, pages included."],
+    ["So everything after gets slower and pricier", "One browse becomes a tax on every reply that follows it."],
+  ];
+  return (
+    <section id="problem" className="cb-wrap cb-section cb-r">
+      <div className="cb-head">
+        <span className="cb-k">The problem</span>
+        <h2 className="cb-h2">
+          Every page you open stays in the chat.{" "}
+          <span className="tail">And you pay for it again on every message.</span>
+        </h2>
+      </div>
+      <div className="cb-problem">
+        {cards.map(([t, b]) => (
+          <div className="cb-cell" key={t}>
+            <h3>{t}</h3>
+            <p>{b}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -27,15 +57,69 @@ export function Proof() {
           <div className="n">
             <em>≈{MEASURED.summary}</em> tokens
           </div>
-          <div className="l">reached your main model</div>
+          <div className="l">is all your chat receives from one page</div>
         </div>
         <div>
-          <div className="n">{MEASURED.seconds} s</div>
-          <div className="l">one page, end to end</div>
+          <div className="n">{MEASURED.seconds} seconds</div>
+          <div className="l">from question to answer</div>
         </div>
         <div>
           <div className="n">12 lines</div>
-          <div className="l">max reply to your main model</div>
+          <div className="l">is the longest reply allowed</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function HowItWorks() {
+  const steps: [string, string][] = [
+    ["You ask", "Type /browse and a question, in any Claude Code session."],
+    ["A helper opens a browser", "A Sonnet sub-agent loads the page, clicks and reads. Your chat waits."],
+    ["It writes back, briefly", "At most 12 lines: the answer, the key facts, the sources."],
+    ["The pages are thrown away", "Only the short reply enters your chat."],
+  ];
+  return (
+    <section id="how" className="cb-wrap cb-section cb-r">
+      <div className="cb-head">
+        <span className="cb-k">How it works</span>
+        <h2 className="cb-h2">
+          You ask. A helper browses. You get <em>the short version</em>.
+        </h2>
+      </div>
+      <div className="cb-feature">
+        <ol className="cb-steplist">
+          {steps.map(([t, b], i) => (
+            <li key={t}>
+              <span className="num">0{i + 1}</span>
+              <span className="t">{t}</span>
+              <span className="b">{b}</span>
+            </li>
+          ))}
+        </ol>
+        <div>
+          <p className="cb-subhead">Two ways to browse</p>
+          <div className="cb-glass">
+            <table className="cb-table">
+              <thead>
+                <tr>
+                  <th />
+                  <th className="is-go">A private browser</th>
+                  <th>Your own Chrome</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARE.map(([k, a, b]) => (
+                  <tr key={k}>
+                    <td>{k}</td>
+                    <td>{a}</td>
+                    <td>{b}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="cb-legend">The helper picks one for each task, and tells you which it used.</p>
         </div>
       </div>
     </section>
@@ -44,16 +128,16 @@ export function Proof() {
 
 export function Measured() {
   const rows: [string, number, boolean][] = [
-    ["Full snapshot", MEASURED.full, false],
-    ["Compact interactive", MEASURED.compact, false],
-    ["What you read", MEASURED.summary, true],
+    ["The whole page", MEASURED.full, false],
+    ["Just the clickable parts", MEASURED.compact, false],
+    ["What your chat received", MEASURED.summary, true],
   ];
   return (
     <section id="measured" className="cb-wrap cb-section cb-r">
       <div className="cb-head">
         <span className="cb-k">Measured</span>
         <h2 className="cb-h2">
-          Same page. <em>Three sizes.</em> <span className="tail">Hacker News front page, {MEASURED.date}.</span>
+          One page, <em>measured</em>. <span className="tail">The same Hacker News front page, three sizes.</span>
         </h2>
       </div>
       <div className="cb-measured">
@@ -90,11 +174,10 @@ export function Measured() {
             ))}
           </div>
           <p className="cb-body" style={{ marginTop: 28 }}>
-            Sonnet reads the page. Your main model reads the reply. The difference is what you stop paying for on
-            every later turn.
+            The helper reads the whole page. Your chat only gets the answer. That gap is what you stop paying for.
           </p>
           <p className="cb-legend">
-            {MEASURED.version} · characters divided by four · one page, one run
+            {MEASURED.date} · {MEASURED.version} · one page, one run · tokens counted as characters divided by four
           </p>
         </div>
       </div>
@@ -102,61 +185,22 @@ export function Measured() {
   );
 }
 
-export function Engines() {
-  return (
-    <section id="engines" className="cb-wrap cb-section cb-r">
-      <div className="cb-feature">
-        <div className="cb-feature-text">
-          <span className="cb-k">Engines</span>
-          <h2 className="cb-h2" style={{ marginTop: 14 }}>
-            Two engines. <em>One command.</em> <span className="tail">The router picks, and the summary says which.</span>
-          </h2>
-          <p className="cb-body">
-            <b>agent-browser</b> runs an isolated headless daemon and returns snapshots with @e refs.{" "}
-            <b>browser-harness</b> drives the Chrome you are signed in to. The router picks.
-          </p>
-        </div>
-        <div className="cb-glass">
-          <table className="cb-table">
-            <thead>
-              <tr>
-                <th />
-                <th className="is-go">agent-browser</th>
-                <th>browser-harness</th>
-              </tr>
-            </thead>
-            <tbody>
-              {COMPARE.map(([k, a, b]) => (
-                <tr key={k}>
-                  <td>{k}</td>
-                  <td>{a}</td>
-                  <td>{b}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function Ledger() {
+export function Windows() {
   const html = LEDGER.replace(/^\$ (.*)$/gm, "<b>$ $1</b>")
     .replace(/version-mismatch/g, "<i>version-mismatch</i>")
     .replace(/^(would close .*)$/gm, "<u>$1</u>");
   return (
-    <section id="ledger" className="cb-wrap cb-section cb-r">
+    <section id="windows" className="cb-wrap cb-section cb-r">
       <div className="cb-feature is-flip">
         <div className="cb-feature-text">
-          <span className="cb-k">Ledger</span>
+          <span className="cb-k">Always know what is open</span>
           <h2 className="cb-h2" style={{ marginTop: 14 }}>
-            Every session <em>leaves a record</em>.{" "}
-            <span className="tail">Purpose, owner, engine, allowed domains, last use.</span>
+            Every browser window is <em>on record</em>.{" "}
+            <span className="tail">Who opened it, why, and when it was last used.</span>
           </h2>
           <p className="cb-body">
-            <code>browse ls</code> names each session, its task and its owner. <code>browse reap</code> closes the
-            idle ones, deletes orphan files and flags a stale binary. <code>--dry-run</code> shows the list first.
+            One command lists every window the helper opened. Another closes the ones nobody is using, and shows
+            you the list first if you ask.
           </p>
         </div>
         <pre className="cb-term" dangerouslySetInnerHTML={{ __html: html }} />
@@ -165,26 +209,23 @@ export function Ledger() {
   );
 }
 
-export function Bento() {
+export function Safe() {
   const doctor = DOCTOR.split("\n")
     .slice(0, 4)
     .map((l) => l.replace(/^(PASS|WARN)/, "<i>$1</i>"))
     .join("\n");
   return (
-    <section className="cb-wrap cb-section cb-r">
+    <section id="safe" className="cb-wrap cb-section cb-r">
+      <div className="cb-head">
+        <span className="cb-k">Built to be safe</span>
+        <h2 className="cb-h2">
+          It stays where you point it. <span className="tail">And it cleans up after itself.</span>
+        </h2>
+      </div>
       <div className="cb-bento">
         <div className="cb-cell">
-          <h3>Read 12 lines, not the page</h3>
-          <p>One shape every time.</p>
-          <div className="cb-chips">
-            {["RESULT", "KEY DATA", "SOURCES", "ARTIFACTS", "SESSION", "BLOCKERS"].map((k) => (
-              <span key={k}>{k}</span>
-            ))}
-          </div>
-        </div>
-        <div className="cb-cell">
-          <h3>Stay inside the allowlist</h3>
-          <p>Off-list domains are refused before the browser moves.</p>
+          <h3>Stays on the sites you allow</h3>
+          <p>Name the sites when you start. Anything else is refused before the browser moves.</p>
           <div className="cb-mini">
             $ browse run ab-smoke open https://evil.com{"\n"}
             <i>policy: evil.com not in allowed_domains</i>
@@ -192,16 +233,25 @@ export function Bento() {
           </div>
         </div>
         <div className="cb-cell">
-          <h3>Reap what you forgot</h3>
-          <p>Idle daemons close. Orphan files go. Stale binaries get flagged.</p>
+          <h3>Never keeps page text</h3>
+          <p>The log records what happened and a short fingerprint of each page. Never the words on it.</p>
+          <div className="cb-mini">
+            {'{"action": "snapshot", "ok": true, "ms": 499, "snapshot_ref": "'}
+            <i>7c1d40a9</i>
+            {'"}'}
+          </div>
+        </div>
+        <div className="cb-cell">
+          <h3>Closes only what it started</h3>
+          <p>Before closing a window it checks the process is its own browser. Nothing else is touched.</p>
           <div className="cb-mini">
             $ browse reap --idle-hours 4 --dry-run{"\n"}
             <i>would close</i> kayak (idle 10d 15h){"\n"}reap: closed 1, orphans removed 6, flagged 4, dry-run
           </div>
         </div>
         <div className="cb-cell">
-          <h3>Check the machine</h3>
-          <p>What is installed, what is reachable, what to fix.</p>
+          <h3>Tells you what is wrong</h3>
+          <p>One command checks what is installed, what is reachable and what to fix.</p>
           <div className="cb-mini" dangerouslySetInnerHTML={{ __html: `$ browse doctor\n${doctor}` }} />
         </div>
       </div>
@@ -214,7 +264,7 @@ export function Install() {
     <section id="install" className="cb-wrap cb-section cb-center cb-r">
       <span className="cb-k">Install</span>
       <h2 className="cb-h2" style={{ marginTop: 14 }}>
-        Three commands to the first run.
+        Three commands. <em>Two minutes.</em>
       </h2>
       <div className="cb-steps">
         {STEPS.map(([num, t, c]) => (
@@ -234,7 +284,7 @@ export function Faq() {
     <section id="faq" className="cb-wrap cb-section cb-r">
       <div className="cb-head">
         <span className="cb-k">Questions</span>
-        <h2 className="cb-h2">Fair questions.</h2>
+        <h2 className="cb-h2">Things people ask.</h2>
       </div>
       <div className="cb-faq">
         {FAQ.map(([q, a]) => (
@@ -252,9 +302,7 @@ export function Close() {
   return (
     <section className="cb-wrap cb-section cb-center cb-close cb-r">
       <h2 className="cb-h2">
-        Let a sub-agent
-        <br className="cb-br" />
-        <em>read the web</em>.
+        Let a helper do <em>the browsing</em>.
       </h2>
       <InstallRow center />
     </section>
@@ -267,7 +315,7 @@ export function Footer() {
       <div className="cb-wrap cb-foot-in">
         <span className="cb-brand">claude-browse</span>
         <span>MIT</span>
-        <span>Python stdlib</span>
+        <span>No API key</span>
         <a href={REPO}>GitHub</a>
         <span className="grow" />
         <Link href="/">by Charandeep Kapoor</Link>
