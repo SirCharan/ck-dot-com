@@ -9,6 +9,6 @@ export default function OG() {
   return ogResponse({
     kicker: "Open source · Claude Code plugin",
     title: "claude-browse",
-    stat: "Give Claude Code a browser. Keep your chat light.",
+    stat: "Give Claude a browser. Keep your chat light.",
   });
 }
