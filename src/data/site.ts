@@ -212,6 +212,14 @@ export const TOOLS: Tool[] = [
     detail: "/work/drishti",
   },
   {
+    title: "claude-browse",
+    one: "Open-source Claude Code plugin. A Sonnet sub-agent drives the browser so the main model reads a summary of twelve lines or fewer.",
+    github: "https://github.com/SirCharan/claude-browse",
+    tags: ["AI", "Tools"],
+    status: "live",
+    detail: "/work/claude-browse",
+  },
+  {
     title: "Stocky AI",
     one: "Claude-driven Zerodha trading: ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
     long: [
@@ -460,6 +468,77 @@ export const CASE_STUDIES: CaseStudy[] = [
       { src: "/images/work/drishti/howitworks.png", alt: "How Drishti works, the 15-minute decision-to-execution cycle" },
     ],
     accent: "orbits",
+  },
+  {
+    slug: "claude-browse",
+    title: "claude-browse",
+    kicker: "Creator · Open-source Claude Code plugin",
+    tagline: "Browsing from Claude Code that keeps the page out of the expensive context.",
+    role: "Creator and sole maintainer",
+    period: "2026 – Present",
+    stack: [
+      "Claude Code plugin",
+      "Claude Sonnet sub-agent",
+      "agent-browser",
+      "browser-harness",
+      "Chrome DevTools Protocol",
+      "Python",
+      "MIT licence",
+    ],
+    metrics: [
+      { value: "2", label: "Engines, one router", tone: "accent" },
+      { value: "MIT", label: "Licence", tone: "neutral" },
+      { value: "12 lines", label: "Max summary to the main model", tone: "accent" },
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        body: [
+          "A browser tool call returns a page. A page is thousands of tokens of markup, tree nodes and text, and the model that asked for it is usually the most expensive one in the session. Every click adds another page to the context, and the context is what you pay for on every later turn.",
+          "Browser sessions also pile up. Daemons started for one task outlive it, nobody remembers which session owns which, and an old daemon keeps running a binary that the CLI has since replaced.",
+        ],
+      },
+      {
+        heading: "The split",
+        body: [
+          "The main model never touches the page. It hands the task to a Sonnet sub-agent, the sub-agent does the clicking and reading, and what comes back is a summary of at most twelve lines.",
+          "Page noise stays on the sub-agent side of that boundary. It is thrown away when the sub-agent finishes, so the main context only grows by the summary.",
+        ],
+      },
+      {
+        heading: "One router, two engines",
+        body: [
+          "Vercel's agent-browser is the fast path: an isolated daemon that returns accessibility-tree snapshots with @e references, so the agent can act on elements by ref instead of guessing selectors.",
+          "browser-use's browser-harness is the other path. It drives your real, logged-in Chrome over CDP, which matters when the site needs your session or blocks fresh profiles. The router picks between them per task.",
+        ],
+      },
+      {
+        heading: "The session ledger",
+        body: [
+          "The ledger records which browser session belongs to which task, who owns it, which engine it runs on, which domains it may visit, and when it was last used. browse ls prints it.",
+          "A reaper works from the same records. It closes idle daemons, deletes orphan state files, and flags any daemon still running an older binary than the CLI.",
+        ],
+      },
+      {
+        heading: "Install",
+        body: [
+          "Two commands: claude plugin marketplace add SirCharan/claude-browse, then claude plugin install claude-browse. The source is on GitHub under the MIT licence.",
+        ],
+      },
+      {
+        heading: "What I'd do next",
+        body: [
+          "Measure it. The premise is that keeping pages out of the main context saves tokens, and I have not yet published a measured number, so this page makes no such claim.",
+          "After that, structured output from browser-harness, which today has no allowlist enforcement, and screenshots of the real tool on this page.",
+        ],
+      },
+    ],
+    links: [
+      { label: "GitHub", href: "https://github.com/SirCharan/claude-browse" },
+      { label: "Landing page", href: "https://charandeepkapoor.com/claude-browse" },
+    ],
+    shotsPending: true,
+    accent: "none",
   },
   {
     slug: "timelock",

@@ -7,7 +7,7 @@ import { expect, test } from "@playwright/test";
  * ZERO uncaught page errors. This is the guard against the R3F hero crash
  * (React 19 + fiber@9 / drei@10) silently regressing.
  */
-const ROUTES = ["/", "/work", "/work/drishti", "/resume", "/track-record", "/blog"];
+const ROUTES = ["/", "/work", "/work/drishti", "/work/claude-browse", "/claude-browse", "/resume", "/track-record", "/blog"];
 
 for (const route of ROUTES) {
   test(`${route} loads with no console errors`, async ({ page }) => {
