@@ -72,7 +72,6 @@ export function DhanRecord({ data }: { data: Payload | null }) {
 
   return (
     <section className="press-section">
-      <h2>Dhan, the live book</h2>
       <div
         className="press-ledger-head press-mono"
         style={{ maxWidth: "34rem" }}
