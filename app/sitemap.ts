@@ -58,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${SITE_URL}/dhan`,
+      lastModified: today,
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/llms.txt`,
       lastModified: today,
       changeFrequency: "monthly" as const,

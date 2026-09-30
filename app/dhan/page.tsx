@@ -1,36 +1,27 @@
 import type { Metadata } from "next";
 import { PageShell, PageIntro } from "@/components/PageShell";
+import { DhanRecord } from "@/components/track/DhanRecord";
 import { SITE } from "@/data/site";
-import { deriveDhanStats, getTrackRecord } from "@/lib/trackRecord";
-import { StockyTrackRecord } from "@/components/StockyTrackRecord";
-import { DhanTeaser } from "@/components/track/DhanTeaser";
-import { DhanDisclaimer } from "@/components/track/DhanRecord";
+import { getTrackRecord } from "@/lib/trackRecord";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/track-record" },
-  title: "Live Track Record",
+  alternates: { canonical: "/dhan" },
+  title: "Dhan track record — Charandeep Kapoor",
   description:
     "Charandeep Kapoor's live Dhan trading track record: aggregate P&L, Sharpe, drawdown and win-rate, updated daily. Illustrative only; not investment advice.",
 };
 
-export default async function TrackRecordPage() {
+export default async function DhanPage() {
   const data = await getTrackRecord();
-  const { m } = deriveDhanStats(data);
-
   return (
     <PageShell>
       <PageIntro
-        kicker="Track record"
-        title="Real capital, in the open"
-        lede="Stocky (AI, verified) and live Dhan (rule-based algo): the same book I run, shown for transparency."
+        kicker="Dhan · live"
+        title="The live book"
+        lede="A rule-based algorithm, no LLM in the loop, trading my own capital. Rebuilt from the trade book every evening."
       />
 
-      <StockyTrackRecord />
-
-      <DhanTeaser data={data} />
-      <section className="press-section">
-        <DhanDisclaimer m={m} />
-      </section>
+      <DhanRecord data={data} />
 
       <section className="press-section">
         <p className="press-serif" style={{ margin: 0, color: "var(--p-mute)", fontSize: "1.05rem" }}>
