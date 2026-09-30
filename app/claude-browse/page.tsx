@@ -41,8 +41,8 @@ export default async function ClaudeBrowsePage() {
         <Hero />
         <WorksWith />
         <Proof />
-        <Measured />
         <Engines />
+        <Measured />
         <Ledger />
         <Bento />
         <Install />

@@ -15,7 +15,6 @@ export function WorksWith() {
         <span>macOS</span>
         <span>Linux</span>
       </div>
-      <p className="cb-works-cap">Runs on the Claude Code you already have. No key to add.</p>
     </section>
   );
 }
@@ -28,15 +27,15 @@ export function Proof() {
           <div className="n">
             <em>≈{MEASURED.summary}</em> tokens
           </div>
-          <div className="l">what your main model read from one page</div>
+          <div className="l">reached your main model</div>
         </div>
         <div>
           <div className="n">{MEASURED.seconds} s</div>
-          <div className="l">one Hacker News front page, end to end</div>
+          <div className="l">one page, end to end</div>
         </div>
         <div>
-          <div className="n">4 daemons</div>
-          <div className="l">found idle for 10 days on one laptop</div>
+          <div className="n">12 lines</div>
+          <div className="l">max reply to your main model</div>
         </div>
       </div>
     </section>
@@ -54,23 +53,51 @@ export function Measured() {
       <div className="cb-head">
         <span className="cb-k">Measured</span>
         <h2 className="cb-h2">
-          One Hacker News front page, <em>three sizes</em>. <span className="tail">One page, one run.</span>
+          Same page. <em>Three sizes.</em> <span className="tail">Hacker News front page, {MEASURED.date}.</span>
         </h2>
       </div>
-      <div className="cb-bars">
-        {rows.map(([l, v, go]) => (
-          <div className={`cb-bar${go ? " is-go" : ""}`} key={l}>
-            <span className="l">{l}</span>
-            <span className="t">
-              <span className="f" style={{ width: `${Math.max((v / MEASURED.full) * 100, 1.2)}%` }} />
-            </span>
-            <span className="v">≈{n(v)} tokens</span>
+      <div className="cb-measured">
+        <div className="cb-shot" aria-label="The Hacker News front page, with the three sizes marked">
+          <div className="cb-shot-bar">
+            <span className="cb-y">Y</span>
+            <span className="cb-shot-url">news.ycombinator.com</span>
           </div>
-        ))}
+          <div className="cb-shot-img">
+            <img src="/images/claude-browse/hn.webp" alt="" width={1200} height={760} loading="lazy" />
+            {rows.map(([l, v, go]) => (
+              <div
+                key={l}
+                className={`cb-size${go ? " is-go" : ""}`}
+                style={{ height: `${Math.max((v / MEASURED.full) * 100, 4)}%` }}
+              >
+                <span>
+                  {l} · ≈{n(v)} tokens
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div className="cb-bars">
+            {rows.map(([l, v, go]) => (
+              <div className={`cb-bar${go ? " is-go" : ""}`} key={l}>
+                <span className="l">{l}</span>
+                <span className="t">
+                  <span className="f" style={{ width: `${Math.max((v / MEASURED.full) * 100, 1.2)}%` }} />
+                </span>
+                <span className="v">≈{n(v)}</span>
+              </div>
+            ))}
+          </div>
+          <p className="cb-body" style={{ marginTop: 28 }}>
+            Sonnet reads the page. Your main model reads the reply. The difference is what you stop paying for on
+            every later turn.
+          </p>
+          <p className="cb-legend">
+            {MEASURED.version} · characters divided by four · one page, one run
+          </p>
+        </div>
       </div>
-      <p className="cb-legend">
-        Measured {MEASURED.date} with {MEASURED.version} · counts are characters divided by four · the summary is the whole reply, unedited
-      </p>
     </section>
   );
 }
@@ -85,12 +112,8 @@ export function Engines() {
             Two engines. <em>One command.</em> <span className="tail">The router picks, and the summary says which.</span>
           </h2>
           <p className="cb-body">
-            <b>agent-browser</b> is the default. It runs an isolated headless daemon and returns accessibility
-            snapshots with @e refs, so the agent acts on elements instead of guessing selectors.
-          </p>
-          <p className="cb-body">
-            <b>browser-harness</b> drives the Chrome you are already signed in to, over CDP. The router picks it when
-            you say so or when the page needs your login.
+            <b>agent-browser</b> runs an isolated headless daemon and returns snapshots with @e refs.{" "}
+            <b>browser-harness</b> drives the Chrome you are signed in to. The router picks.
           </p>
         </div>
         <div className="cb-glass">
@@ -132,13 +155,8 @@ export function Ledger() {
             <span className="tail">Purpose, owner, engine, allowed domains, last use.</span>
           </h2>
           <p className="cb-body">
-            I found 4 browser daemons on my laptop that had run for 10 days on a binary three versions old. Nothing
-            could say why.
-          </p>
-          <p className="cb-body">
-            Now <code>browse ls</code> lists every session with its task and the Claude session that opened it.{" "}
-            <code>browse reap</code> closes the idle ones, deletes orphan state files and flags a stale binary. Run it
-            with <code>--dry-run</code> first; it changes nothing.
+            <code>browse ls</code> names each session, its task and its owner. <code>browse reap</code> closes the
+            idle ones, deletes orphan files and flags a stale binary. <code>--dry-run</code> shows the list first.
           </p>
         </div>
         <pre className="cb-term" dangerouslySetInnerHTML={{ __html: html }} />
@@ -157,7 +175,7 @@ export function Bento() {
       <div className="cb-bento">
         <div className="cb-cell">
           <h3>Read 12 lines, not the page</h3>
-          <p>The sub-agent returns one shape every time, so the main model never parses a page.</p>
+          <p>One shape every time.</p>
           <div className="cb-chips">
             {["RESULT", "KEY DATA", "SOURCES", "ARTIFACTS", "SESSION", "BLOCKERS"].map((k) => (
               <span key={k}>{k}</span>
@@ -166,7 +184,7 @@ export function Bento() {
         </div>
         <div className="cb-cell">
           <h3>Stay inside the allowlist</h3>
-          <p>Each session names the domains it may visit. Anything else is refused before the browser moves.</p>
+          <p>Off-list domains are refused before the browser moves.</p>
           <div className="cb-mini">
             $ browse run ab-smoke open https://evil.com{"\n"}
             <i>policy: evil.com not in allowed_domains</i>
@@ -175,7 +193,7 @@ export function Bento() {
         </div>
         <div className="cb-cell">
           <h3>Reap what you forgot</h3>
-          <p>Idle daemons close. Orphan state files go. A daemon on an older binary than the CLI gets flagged.</p>
+          <p>Idle daemons close. Orphan files go. Stale binaries get flagged.</p>
           <div className="cb-mini">
             $ browse reap --idle-hours 4 --dry-run{"\n"}
             <i>would close</i> kayak (idle 10d 15h){"\n"}reap: closed 1, orphans removed 6, flagged 4, dry-run
@@ -183,7 +201,7 @@ export function Bento() {
         </div>
         <div className="cb-cell">
           <h3>Check the machine</h3>
-          <p>One command tells you what is installed, what is reachable and what to fix.</p>
+          <p>What is installed, what is reachable, what to fix.</p>
           <div className="cb-mini" dangerouslySetInnerHTML={{ __html: `$ browse doctor\n${doctor}` }} />
         </div>
       </div>
@@ -238,7 +256,6 @@ export function Close() {
         <br className="cb-br" />
         <em>read the web</em>.
       </h2>
-      <p className="cb-sub">Install claude-browse and run your first /browse.</p>
       <InstallRow center />
     </section>
   );

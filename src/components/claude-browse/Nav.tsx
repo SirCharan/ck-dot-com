@@ -10,8 +10,8 @@ export function Nav({ stars }: { stars: number | null }) {
           claude-browse
         </Link>
         <nav className="cb-nav-links" aria-label="Sections">
-          <a href="#measured">Measured</a>
           <a href="#engines">Engines</a>
+          <a href="#measured">Measured</a>
           <a href="#ledger">Ledger</a>
           <a href="#install">Install</a>
           <a href="#faq">FAQ</a>
