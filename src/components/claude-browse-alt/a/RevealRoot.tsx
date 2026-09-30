@@ -18,7 +18,8 @@ export function RevealRoot() {
       el.classList.add("ra-rv-armed");
       io.observe(el);
     });
-    return () => io.disconnect();
+    const all = window.setTimeout(() => els.forEach((el) => el.classList.add("ra-rv-in")), 1500);
+    return () => { io.disconnect(); window.clearTimeout(all); };
   }, []);
   return null;
 }

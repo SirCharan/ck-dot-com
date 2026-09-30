@@ -23,7 +23,8 @@ export function Live() {
       { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
     );
     nodes.forEach((n) => io.observe(n));
-    return () => io.disconnect();
+    const all = window.setTimeout(() => nodes.forEach((n) => n.classList.add("ss-in")), 1500);
+    return () => { io.disconnect(); window.clearTimeout(all); };
   }, []);
   return null;
 }
