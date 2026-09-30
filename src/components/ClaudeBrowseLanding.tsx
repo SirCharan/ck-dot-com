@@ -1,228 +1,456 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const REPO = "https://github.com/SirCharan/claude-browse";
-const INSTALL = [
-  "claude plugin marketplace add SirCharan/claude-browse",
-  "claude plugin install claude-browse",
+const INSTALL =
+  "claude plugin marketplace add SirCharan/claude-browse && claude plugin install claude-browse";
+
+/* Real output from one run on 30 Sep 2026. Not edited. */
+const SUMMARY = [
+  ["RESULT:", " The current top story on Hacker News is \"Livenerf: Has Opus 5.5 been nerfed yet?\", with 561 points and 239 comments."],
+  ["KEY DATA:", ""],
+  ["", "- Title: Livenerf: Has Opus 5.5 been nerfed yet?"],
+  ["", "- Points: 561"],
+  ["", "- Comments: 239"],
+  ["", "- Linked URL: https://github.com/ninjahawk/livenerf"],
+  ["SOURCES:", " https://news.ycombinator.com"],
+  ["ARTIFACTS:", " none"],
+  ["SESSION:", " ab-hn-top (ab, closed) | BLOCKERS: none"],
 ];
 
-const FLOW = [
-  { name: "Main model", line: "Sends one task and reads one summary." },
-  { name: "Sonnet agent", line: "Clicks, reads and retries on the page." },
-  { name: "Engine", line: "agent-browser or browser-harness runs the browser." },
-  { name: "Summary", line: "Twelve lines or fewer go back up." },
+/* First lines of the real compact snapshot of the same page. */
+const NOISE = `- link [ref=e101]
+- link "Hacker News" [ref=e102]
+- link "new" [ref=e103]
+- link "past" [ref=e104]
+- link "comments" [ref=e105]
+- link "ask" [ref=e106]
+- link "show" [ref=e107]
+- link "jobs" [ref=e108]
+- link "submit" [ref=e109]
+- link "login" [ref=e110]
+- cell "1." [ref=e10]
+- link [ref=e261]
+- cell "Livenerf: Has Opus 5.5 been nerfed yet? (github.com/ninjahawk)" [ref=e11]
+  - link "Livenerf: Has Opus 5.5 been nerfed yet?" [ref=e111]
+  - link "github.com/ninjahawk" [ref=e112]
+- cell "563 points by bryan0 9 hours ago | hide | 239 comments" [ref=e12]
+  - link "bryan0" [ref=e113]
+  - link "9 hours ago" [ref=e262]
+  - link "hide" [ref=e114]
+  - link "239 comments" [ref=e115]
+- cell "2." [ref=e13]
+- link [ref=e263]
+- cell "September 2026: The world today, as seen by one Polish guy (tomwojcik.com)" [ref=e
+  - link "September 2026: The world today, as seen by one Polish guy" [ref=e116]
+  - link "tomwojcik.com" [ref=e117]
+- cell "25 points by marjancek 1 hour ago | hide | 1 comment" [ref=e15]
+  - link "marjancek" [ref=e118]
+  - link "1 hour ago" [ref=e264]
+  - link "hide" [ref=e119]
+  - link "1 comment" [ref=e120]
+- cell "3." [ref=e16]
+- link [ref=e265]
+- cell "Solving Factorio Quality (exyr.org)" [ref=e17]
+  - link "Solving Factorio Quality" [ref=e121]
+  - link "exyr.org" [ref=e122]
+- cell "43 points by laurenth 2 hours ago | hide | 12 comments" [ref=e18]
+  - link "laurenth" [ref=e123]
+  - link "2 hours ago" [ref=e266]
+  - link "hide" [ref=e124]
+  - link "12 comments" [ref=e125]`.split("\n");
+
+const LEDGER = `$ browse ls
+NAME        STACK          PURPOSE           OWNER     AGE      IDLE     PID    STATE
+default     agent-browser  legacy (unknown)  6e2be8ee  7d 16h   7d 16h   74432  version-mismatch
+ey-book     agent-browser  legacy (unknown)  6e2be8ee  10d 15h  10d 15h  81395  version-mismatch
+kayak       agent-browser  legacy (unknown)  6e2be8ee  10d 15h  10d 15h  81228  version-mismatch
+etihad-bcn  agent-browser  legacy (unknown)  6e2be8ee  10d 15h  10d 15h  80833  version-mismatch
+
+$ browse reap --dry-run --restart-mismatch
+would close default (version mismatch)
+would close etihad-bcn (version mismatch)
+would close ey-book (version mismatch)
+would close kayak (version mismatch)
+reap: closed 4, orphans removed 0, flagged 4, dry-run`;
+
+const COMPARE: [string, string, string][] = [
+  ["Runs in", "Its own headless daemon", "The Chrome you already have open"],
+  ["Sees your logins", "No. Clean profile", "Yes. Whatever that Chrome is signed in to"],
+  ["Page as", "Accessibility tree with @e refs", "CDP helpers, page_info, js"],
+  ["Domain allowlist", "Enforced, exit 3", "Advisory only"],
+  ["Picked when", "Public pages, checks, scraping", "You say \"my Chrome\" or the site needs your session"],
 ];
 
-const LEDGER_HEAD = ["NAME", "STACK", "PURPOSE", "OWNER", "URL", "IDLE", "STATE"];
-const LEDGER_ROWS = [
-  ["hn-top", "agent-browser", "read top story", "sess-4f2a", "news.ycombinator.com", "2m", "live"],
-  ["gh-issues", "browser-harness", "triage own issues", "sess-91c0", "github.com", "11m", "live"],
-  ["docs-old", "agent-browser", "check api page", "sess-0b7e", "docs.example.com", "3h", "stale binary"],
+const STEPS: [string, string, string][] = [
+  ["01", "Install the plugin", INSTALL],
+  ["02", "Check the machine", "browse doctor"],
+  ["03", "Browse from any session", "/browse \"top story on Hacker News, with points\""],
 ];
 
-const COMPARE_HEAD = ["", "agent-browser", "browser-harness"];
-const COMPARE_ROWS = [
-  ["Isolation", "Separate profile per daemon", "None. Uses your own Chrome"],
-  ["Login state", "Starts logged out", "Your existing logins"],
-  ["Speed", "Fast, local daemon", "Slower, drives a full browser over CDP"],
-  ["Best for", "Public pages, scraping, checks", "Sites that need your session"],
-  ["Daemon", "Yes, one per session", "Attaches to Chrome you already run"],
+const FAQ: [string, string][] = [
+  [
+    "Does it see my logged-in sites?",
+    "Only when the router picks browser-harness, which attaches to your real Chrome over CDP. The default engine, agent-browser, starts from a clean profile and sees nothing of yours.",
+  ],
+  [
+    "What does the ledger actually stop?",
+    "Forgotten windows. Each session records its task, the Claude session that opened it, the engine, the domains it may visit and when it was last used. browse ls shows them, browse reap closes the ones nobody is using.",
+  ],
+  [
+    "Will the reaper kill something it should not?",
+    "It closes a daemon through agent-browser first, signals only a process that ps confirms is agent-browser, skips headed and profiled sessions unless you pass --force, and never touches the browsers directory. Run --dry-run first; it changes nothing.",
+  ],
+  [
+    "Which models are involved?",
+    "Your main Claude Code model plans and reads the summary. A Sonnet sub-agent browses. Nothing else, and no key to add.",
+  ],
+  [
+    "How do I take it out again?",
+    "claude plugin uninstall claude-browse. Run browse reap first if you want live daemons closed and their state files removed.",
+  ],
 ];
 
-const FACTS = [
-  { v: "2", l: "Engines, one router" },
-  { v: "MIT", l: "Licence" },
-  { v: "12 lines", l: "Max summary to the main model" },
-  { v: "1", l: "Session ledger with a reaper" },
-];
+const CSS = `
+.cbl { --cbl-w: var(--p-max); }
+.cbl.is-js .cbl-up { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
+.cbl.is-js .cbl-up.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .cbl .cbl-up { opacity: 1; transform: none; transition: none; } }
 
-const FAQ = [
-  {
-    q: "Does it see my logged-in sites?",
-    a: "Only through browser-harness, which attaches to your real Chrome over CDP and so sees whatever that browser is signed in to. agent-browser starts from a clean profile and does not.",
-  },
-  {
-    q: "What does the ledger stop?",
-    a: "Lost and duplicate sessions. Every session is recorded with its task, owner, engine, allowed domains and last use, so you can see what is running and why. Domain allowlists are enforced for agent-browser only. browser-harness gives no structured output to check against.",
-  },
-  {
-    q: "How does reaping work?",
-    a: "The reaper reads the ledger. It closes daemons that have been idle too long, deletes state files whose daemon is gone, and flags daemons running an older binary than the CLI. Profiled or headed sessions are skipped unless you force it, since closing them can lose a login.",
-  },
-  {
-    q: "Which models run?",
-    a: "Your main Claude Code model plans and reads the summary. A Sonnet sub-agent does the browsing. No other model is involved.",
-  },
-  {
-    q: "How do I uninstall?",
-    a: "Run claude plugin uninstall claude-browse. Run browse reap first if you want live daemons closed and their state files removed.",
-  },
-];
+.cbl-k { font-family: var(--press-mono); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--p-metal); margin: 0 0 1rem; }
+.cbl-h { font-family: var(--press-serif); font-weight: 500; letter-spacing: -.028em; line-height: 1.02; margin: 0 0 1rem; color: var(--p-ink); }
+.cbl-h em { font-style: normal; color: var(--p-go); }
+.cbl-sub { color: var(--p-mute); font-size: 1.08rem; line-height: 1.55; max-width: 38rem; margin: 0 0 2rem; }
 
-function Table({ head, rows, caption, sample }: { head: string[]; rows: string[][]; caption: string; sample?: boolean }) {
+.cbl-hero { max-width: var(--cbl-w); margin: 0 auto; padding: clamp(3rem, 9vw, 6.5rem) clamp(1.1rem, 4vw, 2.5rem) clamp(2.5rem, 6vw, 4rem); }
+.cbl-hero .cbl-h { font-size: clamp(2.6rem, 7.2vw, 5.6rem); max-width: 14ch; }
+.cbl-install { display: flex; flex-wrap: wrap; gap: .6rem; align-items: stretch; max-width: 46rem; }
+.cbl-cmd { flex: 1 1 22rem; display: flex; align-items: center; gap: .6rem; border: 1px solid var(--p-line); background: var(--p-elev); border-radius: 6px; padding: .8rem .95rem; font-family: var(--press-mono); font-size: .82rem; line-height: 1.45; color: var(--p-ink); overflow-wrap: anywhere; }
+.cbl-cmd b { color: var(--p-go); font-weight: 500; }
+.cbl-meta { font-family: var(--press-mono); font-size: .72rem; color: var(--p-faint); margin: .9rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; }
+.cbl-meta a { color: var(--p-mute); text-decoration: none; border-bottom: 1px solid var(--p-line); }
+.cbl-meta a:hover { color: var(--p-ink); }
+
+.cbl-split { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: clamp(2.5rem, 6vw, 4rem); align-items: stretch; }
+@media (min-width: 900px) { .cbl-split { grid-template-columns: 1.05fr auto 1fr; } }
+.cbl-pane { position: relative; border: 1px solid var(--p-line); border-radius: 8px; background: var(--p-elev); overflow: hidden; display: flex; flex-direction: column; min-height: 22rem; max-height: 26rem; }
+.cbl-pane-h { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem .95rem; border-bottom: 1px solid var(--p-line); font-family: var(--press-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--p-faint); }
+.cbl-pane-f { margin-top: auto; padding: .7rem .95rem; border-top: 1px solid var(--p-line); font-family: var(--press-mono); font-size: .74rem; color: var(--p-mute); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.cbl-pane-f strong { color: var(--p-ink); font-weight: 500; font-size: 1.05rem; }
+.cbl-noise { position: relative; flex: 1 1 auto; height: 19rem; min-height: 0; overflow: hidden; padding: .8rem .95rem 0; font-family: var(--press-mono); font-size: .66rem; line-height: 1.55; color: var(--p-faint); white-space: pre; }
+.cbl-noise-roll { animation: cbl-roll 28s linear infinite; }
+@keyframes cbl-roll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@media (prefers-reduced-motion: reduce) { .cbl-noise-roll { animation: none; } }
+.cbl-noise::after { content: ""; position: absolute; inset: auto 0 0 0; height: 45%; background: linear-gradient(to bottom, transparent, var(--p-elev)); pointer-events: none; }
+.cbl-arrow { display: flex; align-items: center; justify-content: center; font-family: var(--press-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--p-metal); padding: .5rem 0; }
+@media (min-width: 900px) { .cbl-arrow { writing-mode: vertical-rl; transform: rotate(180deg); padding: 0 .4rem; } }
+.cbl-pane.is-out { border-color: color-mix(in srgb, var(--p-go) 55%, var(--p-line)); box-shadow: 0 0 0 1px color-mix(in srgb, var(--p-go) 18%, transparent), 0 30px 60px -40px color-mix(in srgb, var(--p-go) 45%, transparent); }
+.cbl-sum { flex: 1; padding: .9rem .95rem; font-family: var(--press-mono); font-size: .78rem; line-height: 1.6; color: var(--p-ink); white-space: pre-wrap; overflow-wrap: anywhere; }
+.cbl-sum b { color: var(--p-go); font-weight: 500; }
+
+.cbl-section { max-width: var(--cbl-w); margin: 0 auto; padding: clamp(3.5rem, 9vw, 6.5rem) clamp(1.1rem, 4vw, 2.5rem); border-top: 1px solid var(--p-line); }
+.cbl-section .cbl-h { font-size: clamp(1.9rem, 4.2vw, 3rem); max-width: 22ch; }
+
+.cbl-math { display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: center; }
+@media (min-width: 720px) { .cbl-math { grid-template-columns: 1fr auto 1fr; } }
+.cbl-big { border: 1px solid var(--p-line); border-radius: 8px; background: var(--p-elev); padding: 1.6rem 1.5rem 1.3rem; }
+.cbl-big .n { font-family: var(--press-serif); font-size: clamp(3rem, 7vw, 5.2rem); line-height: 1; letter-spacing: -.03em; color: var(--p-ink); }
+.cbl-big.is-go .n { color: var(--p-go); }
+.cbl-big .l { font-family: var(--press-mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--p-faint); margin-top: .9rem; }
+.cbl-big .d { color: var(--p-mute); font-size: .92rem; margin-top: .35rem; }
+.cbl-vs { text-align: center; font-family: var(--press-serif); font-style: italic; color: var(--p-faint); font-size: 1.1rem; }
+.cbl-note { font-family: var(--press-mono); font-size: .72rem; color: var(--p-faint); margin: 1.1rem 0 0; max-width: 46rem; line-height: 1.6; }
+
+.cbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.cbl-table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 30rem; }
+@media (max-width: 640px) { .cbl-table { font-size: .82rem; } .cbl-table th, .cbl-table td { padding: .7rem .6rem; } }
+.cbl-table th, .cbl-table td { text-align: left; padding: .85rem .9rem; border-top: 1px solid var(--p-line); vertical-align: top; }
+.cbl-table th { font-family: var(--press-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--p-faint); font-weight: 500; border-top: 0; }
+.cbl-table th.is-go { color: var(--p-go); }
+.cbl-table td:first-child { color: var(--p-mute); font-size: .84rem; width: 9rem; }
+.cbl-table td:nth-child(2) { color: var(--p-ink); }
+.cbl-table td:nth-child(3) { color: var(--p-mute); }
+
+.cbl-term { border: 1px solid var(--p-line); border-radius: 8px; background: var(--p-bg); padding: 1rem 1.1rem; font-family: var(--press-mono); font-size: .74rem; line-height: 1.6; color: var(--p-mute); white-space: pre; overflow-x: auto; }
+.cbl-term b { color: var(--p-ink); font-weight: 500; }
+.cbl-term i { font-style: normal; color: var(--p-metal); }
+.cbl-term u { text-decoration: none; color: var(--p-go); }
+
+.cbl-steps { display: grid; grid-template-columns: 1fr; gap: .8rem; }
+@media (min-width: 760px) { .cbl-steps { grid-template-columns: repeat(3, 1fr); } }
+.cbl-step { border: 1px solid var(--p-line); border-radius: 8px; background: var(--p-elev); padding: 1.2rem 1.2rem 1.1rem; display: flex; flex-direction: column; gap: .6rem; }
+.cbl-step .num { font-family: var(--press-serif); color: var(--p-metal); font-size: 1.4rem; }
+.cbl-step .t { font-family: var(--press-serif); font-size: 1.25rem; color: var(--p-ink); }
+.cbl-step code { font-family: var(--press-mono); font-size: .76rem; color: var(--p-mute); background: var(--p-bg); border: 1px solid var(--p-line); border-radius: 5px; padding: .55rem .65rem; overflow-wrap: anywhere; margin-top: auto; }
+
+.cbl-faq details { border-top: 1px solid var(--p-line); }
+.cbl-faq details:last-child { border-bottom: 1px solid var(--p-line); }
+.cbl-faq summary { cursor: pointer; list-style: none; padding: 1.1rem 0; font-family: var(--press-serif); font-size: 1.2rem; color: var(--p-ink); display: flex; justify-content: space-between; gap: 1rem; }
+.cbl-faq summary::-webkit-details-marker { display: none; }
+.cbl-faq summary::after { content: "+"; color: var(--p-go); font-family: var(--press-mono); }
+.cbl-faq details[open] summary::after { content: "\\2013"; }
+.cbl-faq p { margin: 0 0 1.2rem; color: var(--p-mute); line-height: 1.6; max-width: 46rem; }
+
+.cbl-close { text-align: left; padding-bottom: 0; overflow: hidden; }
+.cbl-close .cbl-h { font-size: clamp(2.4rem, 6vw, 4.6rem); max-width: 16ch; }
+.cbl-mark { font-family: var(--press-serif); font-size: clamp(3rem, 11.5vw, 10.5rem); line-height: .85; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1px var(--p-line); margin: clamp(2rem, 6vw, 4rem) 0 -0.12em; user-select: none; white-space: nowrap; }
+`;
+
+function useReveal() {
+  const root = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = root.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const nodes = Array.from(el.querySelectorAll<HTMLElement>(".cbl-up"));
+    el.classList.add("is-js");
+    const io = new IntersectionObserver(
+      (es) => es.forEach((e) => e.isIntersecting && e.target.classList.add("is-in")),
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
+    );
+    nodes.forEach((n) => io.observe(n));
+    const all = window.setTimeout(() => nodes.forEach((n) => n.classList.add("is-in")), 1000);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(all);
+    };
+  }, []);
+  return root;
+}
+
+function Copy({ text }: { text: string }) {
+  const [done, setDone] = useState(false);
   return (
-    <div className={`cbl-scroll${sample ? " cbl-sample" : ""}`}>
-      <table className="cbl-table press-mono">
-        <caption className="cbl-caption">{caption}</caption>
-        <thead>
-          <tr>
-            {head.map((h, i) => (
-              <th key={i} scope="col">
-                {h}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r[0]}>
-              {r.map((c, i) => (i === 0 ? <th key={i} scope="row">{c}</th> : <td key={i}>{c}</td>))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <button
+      type="button"
+      className="press-btn press-btn-go"
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(text);
+          setDone(true);
+          setTimeout(() => setDone(false), 1600);
+        } catch {
+          /* clipboard blocked: the text is selectable */
+        }
+      }}
+      aria-live="polite"
+    >
+      {done ? "Copied" : "Copy"}
+    </button>
+  );
+}
+
+function Install() {
+  return (
+    <div className="cbl-install">
+      <code className="cbl-cmd">
+        <b>$</b>
+        <span>{INSTALL}</span>
+      </code>
+      <Copy text={INSTALL} />
     </div>
   );
 }
 
 export function ClaudeBrowseLanding() {
-  const [copied, setCopied] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(INSTALL.join("\n"));
-      setCopied(true);
-      if (timer.current) clearTimeout(timer.current);
-      timer.current = setTimeout(() => setCopied(false), 1800);
-    } catch {
-      setCopied(false);
-    }
-  }
-
+  const root = useReveal();
   return (
-    <>
-      <style>{`
-.cbl-install{border:1px solid var(--p-line);border-radius:8px;background:var(--p-elev);padding:1rem 1.15rem;max-width:40rem}
-.cbl-install pre{margin:0;font-size:.85rem;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
-.cbl-install pre span{color:var(--p-faint);user-select:none}
-.cbl-tickets{grid-template-columns:repeat(2,1fr)}@media (min-width:900px){.cbl-tickets{grid-template-columns:repeat(4,1fr)}}@media (max-width:480px){.cbl-tickets{grid-template-columns:1fr}}
-.cbl-hero{padding:0 0 clamp(2.5rem,6vw,4rem)}
-.cbl-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;position:relative;padding-top:2.25rem}
-.cbl-bound{position:absolute;top:0;left:calc(25% + .375rem);width:calc(50% - .75rem);border:1px dashed var(--p-metal);border-bottom:0;border-radius:6px 6px 0 0;height:1.8rem;text-align:center;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--p-metal);line-height:1.8rem}
-.cbl-node{border:1px solid var(--p-line);border-radius:6px;background:var(--p-elev);padding:1rem}
-.cbl-node.is-noise{border-color:var(--p-metal)}
-.cbl-node h3{margin:0 0 .35rem;font-size:1rem}
-.cbl-node p{margin:0;color:var(--p-mute);font-size:.88rem;line-height:1.45}
-.cbl-scroll{overflow-x:auto}
-.cbl-table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.8rem}
-.cbl-table th,.cbl-table td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--p-line);white-space:nowrap;font-weight:400}
-.cbl-table thead th{color:var(--p-faint);font-size:.7rem;letter-spacing:.08em}
-.cbl-table tbody th{color:var(--p-ink);font-weight:600}
-.cbl-caption{caption-side:bottom;text-align:left;padding:.6rem .8rem 0;color:var(--p-faint);font-size:.75rem}
-.cbl-faq details{border-bottom:1px solid var(--p-line);padding:.9rem 0}
-.cbl-faq summary{cursor:pointer;font-weight:600;list-style:none}
-.cbl-faq summary::-webkit-details-marker{display:none}
-.cbl-faq summary::before{content:"+";display:inline-block;width:1.25rem;color:var(--p-go)}
-.cbl-faq details[open] summary::before{content:"-"}
-.cbl-faq p{margin:.6rem 0 0 1.25rem;color:var(--p-mute);line-height:1.55;max-width:42rem}
-@media (max-width:640px){.cbl-flow{grid-template-columns:1fr;padding-top:0}.cbl-bound{position:static;width:auto;height:auto;border:1px dashed var(--p-metal);border-radius:6px;padding:.3rem;order:1;line-height:1.4}.cbl-node:nth-child(2){order:0}.cbl-node:nth-child(3){order:2}.cbl-node:nth-child(4){order:3}.cbl-node:nth-child(5){order:4}
-.cbl-table{table-layout:fixed;min-width:0;font-size:.8rem}.cbl-table th,.cbl-table td{padding:.45rem .4rem;white-space:normal;overflow-wrap:anywhere}.cbl-table th:first-child{width:28%}.cbl-sample .cbl-table{table-layout:auto;min-width:34rem}.cbl-sample .cbl-table th,.cbl-sample .cbl-table td{white-space:nowrap;padding:.6rem .8rem}}
-`}</style>
+    <div className="cbl" ref={root}>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-      <div className="cbl-hero">
-        <div className="cbl-install">
-          <pre className="press-mono">
-            {INSTALL.map((c) => (
-              <div key={c}>
-                <span>$ </span>
-                {c}
+      <section className="cbl-hero">
+        <p className="cbl-k">Open source · Claude Code plugin · MIT</p>
+        <h1 className="cbl-h">
+          Sonnet reads the page.
+          <br />
+          <em>You read five lines.</em>
+        </h1>
+        <p className="cbl-sub">
+          claude-browse hands every browse in Claude Code to a Sonnet sub-agent. The page, the clicks,
+          the retries and the screenshots stay with it. Your main model gets a summary of at most twelve
+          lines, and your context stays small.
+        </p>
+        <Install />
+        <p className="cbl-meta">
+          <a href={REPO}>Star on GitHub</a>
+          <span>Python stdlib · macOS and Linux</span>
+          <span>agent-browser 0.38+ · browser-harness optional</span>
+        </p>
+
+        <div className="cbl-split">
+          <div className="cbl-pane">
+            <div className="cbl-pane-h">
+              <span>What Sonnet read</span>
+              <span>news.ycombinator.com</span>
+            </div>
+            <div className="cbl-noise" aria-hidden>
+              <div className="cbl-noise-roll">{[...NOISE, ...NOISE].join("\n")}</div>
+            </div>
+            <div className="cbl-pane-f">
+              <span>full snapshot, one page</span>
+              <span>
+                <strong>≈6,400</strong> tokens
+              </span>
+            </div>
+          </div>
+          <div className="cbl-arrow">/browse</div>
+          <div className="cbl-pane is-out">
+            <div className="cbl-pane-h">
+              <span>What you read</span>
+              <span>11 s later</span>
+            </div>
+            <pre className="cbl-sum">
+              {SUMMARY.map(([k, v], i) => (
+                <span key={i}>
+                  {k ? <b>{k}</b> : null}
+                  {v}
+                  {"\n"}
+                </span>
+              ))}
+            </pre>
+            <div className="cbl-pane-f">
+              <span>the whole reply, unedited</span>
+              <span>
+                <strong>≈90</strong> tokens
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="cbl-section">
+        <div className="cbl-up">
+          <p className="cbl-k">The honest math</p>
+          <h2 className="cbl-h">One page in. Five lines out.</h2>
+          <p className="cbl-sub">
+            Every turn after a browse re-sends whatever the browse put in the context. Keep the page out
+            and the tax never starts.
+          </p>
+          <div className="cbl-math">
+            <div className="cbl-big">
+              <div className="n">≈6,400</div>
+              <div className="l">tokens, the page</div>
+              <div className="d">Accessibility snapshot of one Hacker News front page.</div>
+            </div>
+            <div className="cbl-vs">against</div>
+            <div className="cbl-big is-go">
+              <div className="n">≈90</div>
+              <div className="l">tokens, what you read</div>
+              <div className="d">The nine-line summary above, the only thing that reached the main model.</div>
+            </div>
+          </div>
+          <p className="cbl-note">
+            Measured 30 Sep 2026 with agent-browser 0.38.1. The compact interactive snapshot of the same
+            page is about 3,350 tokens. Counts are characters divided by four. One page, one run, no
+            average claimed.
+          </p>
+        </div>
+      </section>
+
+      <section className="cbl-section">
+        <div className="cbl-up">
+          <p className="cbl-k">How it routes</p>
+          <h2 className="cbl-h">Two engines. One decision.</h2>
+          <p className="cbl-sub">
+            Vercel&apos;s agent-browser is the default: fast, isolated, cheap to read. browser-use&apos;s
+            browser-harness is for the times a site needs the Chrome you are already signed in to. The
+            Sonnet agent picks, and it says which one it used.
+          </p>
+          <div className="cbl-scroll">
+            <table className="cbl-table">
+              <thead>
+                <tr>
+                  <th />
+                  <th className="is-go">agent-browser</th>
+                  <th>browser-harness</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARE.map(([k, a, b]) => (
+                  <tr key={k}>
+                    <td>{k}</td>
+                    <td>{a}</td>
+                    <td>{b}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="cbl-section">
+        <div className="cbl-up">
+          <p className="cbl-k">The ledger</p>
+          <h2 className="cbl-h">Every window has a name.</h2>
+          <p className="cbl-sub">
+            I found four browser daemons on my laptop that had been running for ten days, on a binary
+            three versions old, and nothing could tell me why. Now each session records its task, the
+            Claude session that opened it, the engine, the domains it may visit and when it was last
+            used. This is the real output from that laptop.
+          </p>
+          <pre
+            className="cbl-term"
+            dangerouslySetInnerHTML={{
+              __html: LEDGER.replace(/^\$ (.*)$/gm, "<b>$ $1</b>")
+                .replace(/version-mismatch/g, "<i>version-mismatch</i>")
+                .replace(/^(would close .*)$/gm, "<u>$1</u>"),
+            }}
+          />
+        </div>
+      </section>
+
+      <section className="cbl-section">
+        <div className="cbl-up">
+          <p className="cbl-k">Install</p>
+          <h2 className="cbl-h">Running in three steps.</h2>
+          <div className="cbl-steps">
+            {STEPS.map(([n, t, c]) => (
+              <div className="cbl-step" key={n}>
+                <span className="num">{n}</span>
+                <span className="t">{t}</span>
+                <code>{c}</code>
               </div>
             ))}
-          </pre>
-        </div>
-        <div className="press-hero-actions">
-          <button type="button" className="press-btn press-btn-go" onClick={copy}>
-            Copy install commands
-          </button>
-          <a className="press-btn press-btn-ghost" href={REPO} target="_blank" rel="noreferrer">
-            View on GitHub
-          </a>
-          <span className="press-mono" role="status" aria-live="polite" style={{ alignSelf: "center", fontSize: "0.8rem", color: "var(--p-go)" }}>
-            {copied ? "Copied" : ""}
-          </span>
-        </div>
-      </div>
-
-      <section className="press-section" id="flow">
-        <h2>How a browse call flows</h2>
-        <p className="press-section-sub press-serif">
-          The page is read twice, clicked many times, and never shown to the main model.
-        </p>
-        <div className="cbl-flow">
-          <div className="cbl-bound press-mono">page noise stays here</div>
-          {FLOW.map((n, i) => (
-            <div key={n.name} className={`cbl-node${i === 1 || i === 2 ? " is-noise" : ""}`}>
-              <h3>{n.name}</h3>
-              <p>{n.line}</p>
-            </div>
-          ))}
+          </div>
+          <p className="cbl-note">
+            After that the browse-router skill sends any browsing request to the Sonnet agent on its own.
+            browse ls and browse reap are there when you want to look under the desk.
+          </p>
         </div>
       </section>
 
-      <section className="press-section" id="ledger">
-        <h2>The ledger</h2>
-        <p className="press-section-sub press-serif">
-          Every live session is on record. browse ls prints the list.
-        </p>
-        <div className="press-ledger">
-          <Table sample head={LEDGER_HEAD} rows={LEDGER_ROWS} caption="Sample output" />
-        </div>
-      </section>
-
-      <section className="press-section" id="engines">
-        <h2>Two engines</h2>
-        <p className="press-section-sub press-serif">
-          The router picks per task. You can also name one.
-        </p>
-        <div className="press-ledger">
-          <Table head={COMPARE_HEAD} rows={COMPARE_ROWS} caption="agent-browser and browser-harness compared" />
-        </div>
-      </section>
-
-      <section className="press-section" id="facts">
-        <div className="press-tickets cbl-tickets">
-          {FACTS.map((f) => (
-            <div key={f.l} className="press-ticket">
-              <div className="press-ticket-val press-mono">{f.v}</div>
-              <div className="press-ticket-label">{f.l}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="press-section" id="faq">
-        <h2>Questions</h2>
-        <div className="cbl-faq">
-          {FAQ.map((f) => (
-            <details key={f.q}>
-              <summary>{f.q}</summary>
-              <p>{f.a}</p>
+      <section className="cbl-section">
+        <div className="cbl-up cbl-faq">
+          <p className="cbl-k">Fair questions</p>
+          <h2 className="cbl-h">Fair questions.</h2>
+          {FAQ.map(([q, a]) => (
+            <details key={q}>
+              <summary>{q}</summary>
+              <p>{a}</p>
             </details>
           ))}
         </div>
       </section>
 
-      <section className="press-section" id="get">
-        <a className="press-plate" href={REPO} target="_blank" rel="noreferrer" style={{ minHeight: "9rem" }}>
-          <div className="press-plate-body">
-            <h3>Read the source on GitHub</h3>
-            <p className="press-mono">SirCharan/claude-browse · MIT licence</p>
-          </div>
-        </a>
+      <section className="cbl-section cbl-close">
+        <div className="cbl-up">
+          <p className="cbl-k">Ready when you are</p>
+          <h2 className="cbl-h">
+            Browse everything. <em>Read five lines.</em>
+          </h2>
+          <Install />
+          <p className="cbl-meta">
+            <a href={REPO}>GitHub</a>
+            <a href={`${REPO}#readme`}>Install guide</a>
+            <span>MIT</span>
+          </p>
+        </div>
+        <div className="cbl-mark" aria-hidden>
+          claude-browse
+        </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PressShell, PressFrame } from "@/press/components/PressShell";
+import { PressShell } from "@/press/components/PressShell";
 import { ClaudeBrowseLanding } from "@/components/ClaudeBrowseLanding";
 
 const DESCRIPTION =
@@ -20,11 +20,6 @@ export const metadata: Metadata = {
 export default function ClaudeBrowsePage() {
   return (
     <PressShell>
-      <PressFrame
-        kicker="Open source · Claude Code plugin"
-        title="claude-browse"
-        lede="Browsing from Claude Code that keeps the page out of the expensive context."
-      />
       <ClaudeBrowseLanding />
     </PressShell>
   );
