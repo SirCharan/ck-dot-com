@@ -1,26 +1,55 @@
 import type { Metadata } from "next";
-import { PressShell } from "@/press/components/PressShell";
-import { ClaudeBrowseLanding } from "@/components/ClaudeBrowseLanding";
+import { githubStars } from "@/lib/githubStars";
+import { Nav } from "@/components/claude-browse/Nav";
+import { Hero } from "@/components/claude-browse/Hero";
+import { Reveal } from "@/components/claude-browse/Reveal";
+import {
+  Bento,
+  Close,
+  Engines,
+  Faq,
+  Footer,
+  Install,
+  Ledger,
+  Measured,
+  Proof,
+  WorksWith,
+} from "@/components/claude-browse/Sections";
 
 const DESCRIPTION =
-  "claude-browse is an open-source Claude Code plugin. A Sonnet sub-agent does the browsing so the main model reads a summary of twelve lines or fewer.";
+  "claude-browse is an open-source Claude Code plugin. A Sonnet sub-agent does the browsing so the main model reads a summary of 12 lines or fewer.";
 
 export const metadata: Metadata = {
-  title: "claude-browse, browsing from Claude Code",
+  title: "claude-browse, browse the web without filling your context",
   description: DESCRIPTION,
   alternates: { canonical: "/claude-browse" },
   openGraph: {
-    title: "claude-browse, browsing from Claude Code",
+    title: "claude-browse",
     description: DESCRIPTION,
     url: "/claude-browse",
     type: "website",
   },
 };
 
-export default function ClaudeBrowsePage() {
+export default async function ClaudeBrowsePage() {
+  const stars = await githubStars("SirCharan/claude-browse");
   return (
-    <PressShell>
-      <ClaudeBrowseLanding />
-    </PressShell>
+    <>
+      <Reveal />
+      <Nav stars={stars} />
+      <main>
+        <Hero />
+        <WorksWith />
+        <Proof />
+        <Measured />
+        <Engines />
+        <Ledger />
+        <Bento />
+        <Install />
+        <Faq />
+        <Close />
+      </main>
+      <Footer />
+    </>
   );
 }

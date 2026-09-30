@@ -9,6 +9,6 @@ export default function OG() {
   return ogResponse({
     kicker: "Open source · Claude Code plugin",
     title: "claude-browse",
-    stat: "Faster browsing, fewer tokens.",
+    stat: "Browse the web without filling your context.",
   });
 }
