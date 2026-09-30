@@ -45,15 +45,15 @@
 .cb-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* Type */
-.cb-k, .cb-ch-n { display: inline-block; position: relative; font-family: var(--cb-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cb-accent); }
-.cb-h1 { font-family: var(--cb-serif); font-weight: 400; font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1; letter-spacing: -0.035em; margin-top: 18px; }
-.cb-h2 { font-family: var(--cb-serif); font-weight: 400; font-size: clamp(2rem, 4.6vw, 3.6rem); line-height: 1.04; letter-spacing: -0.03em; max-width: 20ch; margin-top: var(--cb-s2); }
-.cb-k::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 28px; height: 2px; background: var(--cb-accent); transform-origin: left; }
+.cb-k, .cb-ch-n { display: inline-block; position: relative; margin-bottom: 18px; padding-bottom: 6px; font-family: var(--cb-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cb-accent); }
+.cb-h1 { font-family: var(--cb-serif); font-weight: 400; font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1; letter-spacing: -0.035em; margin: 0 0 26px; }
+.cb-h2 { font-family: var(--cb-serif); font-weight: 400; font-size: clamp(2rem, 4.6vw, 3.6rem); line-height: 1.04; letter-spacing: -0.03em; max-width: 20ch; margin: 0 0 24px; }
+.cb-k::after { content: ""; position: absolute; left: 0; bottom: 0; width: 28px; height: 2px; background: var(--cb-accent); transform-origin: left; }
 .cb-ch-n::after { content: none; }
-.cb-h3 { font-family: var(--cb-serif); font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.08; letter-spacing: -0.02em; margin: var(--cb-s2) 0; }
+.cb-h3 { font-family: var(--cb-serif); font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.08; letter-spacing: -0.02em; margin: 6px 0 18px; }
 .cb-h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 var(--cb-s2); }
 .cb em { font-style: italic; color: var(--cb-accent); }
-.cb-lead { color: var(--cb-mute); font-size: 1.15rem; line-height: 1.55; max-width: 36rem; margin-top: var(--cb-s2); }
+.cb-lead { color: var(--cb-mute); font-size: 1.15rem; line-height: 1.55; max-width: 36rem; margin: 0 0 8px; }
 .cb-small, .cb figcaption { color: var(--cb-faint); font-size: 0.9rem; margin-top: var(--cb-s2); }
 .cb-ch-copy p, .cb-card > p { color: var(--cb-mute); max-width: 34rem; }
 
@@ -66,7 +66,7 @@
 .cb-btn-ghost { color: var(--cb-ink); border-color: var(--cb-line-2); }
 .cb-btn-ghost:hover { border-color: var(--cb-ink); }
 .cb-btn-sm { height: 36px; padding: 0 14px; font-size: 14px; }
-.cb-cmd { display: block; max-width: 100%; overflow-x: auto; white-space: nowrap; font-size: 13px; color: var(--cb-mute); background: var(--cb-surface); border: 1px solid var(--cb-line); border-radius: 10px; padding: 10px 14px; }
+.cb-cmd { display: block; max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; color: var(--cb-mute); background: var(--cb-surface); border: 1px solid var(--cb-line); border-radius: 10px; padding: 10px 14px; }
 .cb-cmd b { color: var(--cb-accent); font-weight: 500; }
 
 /* Nav */
@@ -165,7 +165,7 @@
 
 /* Side by side step lists */
 .cb-list { display: grid; gap: 10px; }
-.cb-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; padding: 12px 14px; border-radius: 12px; background: var(--cb-surface-2); border: 1px solid var(--cb-line); color: var(--cb-mute); }
+.cb-list li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: center; gap: 10px 12px; padding: 12px 14px; border-radius: 12px; background: var(--cb-surface-2); border: 1px solid var(--cb-line); color: var(--cb-mute); }
 .cb-list-n { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font: 12px var(--cb-mono); color: var(--cb-faint); border: 1px solid var(--cb-line-2); }
 .cb-list.is-with li { color: var(--cb-ink); }
 .cb-list.is-with .cb-list-n { color: var(--cb-accent); border-color: var(--cb-accent); }
@@ -224,7 +224,7 @@
 .cb-steps li > div { min-width: 0; padding-top: 14px; }
 .cb-step-n { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--cb-accent); color: var(--cb-accent); display: grid; place-items: center; font: 1.3rem var(--cb-serif); }
 .cb-step-cmd { display: flex; gap: 10px; align-items: center; }
-.cb-step-cmd code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; font-size: 13px; color: var(--cb-mute); background: var(--cb-surface); border: 1px solid var(--cb-line); border-radius: 10px; padding: 9px 12px; }
+.cb-step-cmd code { flex: 1; min-width: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; color: var(--cb-mute); background: var(--cb-surface); border: 1px solid var(--cb-line); border-radius: 10px; padding: 9px 12px; }
 .cb-faq-h { margin-top: var(--cb-s5); }
 .cb-faq { max-width: 820px; }
 .cb-faq details { border-top: 1px solid var(--cb-line); }
@@ -333,3 +333,35 @@
   .cb-step-cmd code { flex-basis: 100%; }
   .cb-ch-scene, .cb-hero-art { padding: 10px; border-radius: 18px; }
 }
+
+/* Rhythm pass 2026-09-30: air between neighbours, tame the mode icons, wrap commands */
+.cb-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.cb-modes > div { min-width: 0; }
+.cb-modes svg { display: block; width: auto; height: 96px; max-width: 100%; margin: 4px 0 16px; }
+.cb-modes b { display: block; font-size: 1.05rem; margin-bottom: 6px; }
+.cb-modes p { color: var(--cb-mute); margin: 8px 0 0; }
+.cb-wrap > p + .cb-card, .cb-wrap > .cb-card + .cb-card, .cb-wrap > .cb-card + .cb-two, .cb-wrap > .cb-two + .cb-card, .cb-wrap > .cb-two + .cb-two { margin-top: 24px; }
+.cb-three + p { margin: 28px 0 14px; }
+.cb-ch-copy .cb-h3 { margin-top: 10px; }
+.cb-ch-copy p { margin-top: 0; }
+.cb-steps li > div { padding-top: 12px; }
+.cb-step-cmd { align-items: flex-start; }
+.cb-close-row { margin-top: 40px; }
+.cb-close .cb-lead { margin-top: 18px; }
+.cb-stats { margin-top: 64px; }
+@media (max-width: 720px) {
+  .cb-modes { grid-template-columns: 1fr; gap: 22px; }
+  .cb-modes svg { height: 72px; }
+  .cb-list li { grid-template-columns: 26px minmax(0, 1fr); padding: 10px 12px; }
+  .cb-list li .cb-badge { grid-column: 2; justify-self: start; }
+  .cb-h2 { margin-bottom: 18px; }
+}
+
+/* Specificity fix: the .cb h1/h2/p reset outranked the class rules above. */
+.cb .cb-h1 { margin: 0 0 26px; }
+.cb .cb-h2 { margin: 0 0 24px; }
+.cb .cb-h3 { margin: 6px 0 18px; }
+.cb .cb-lead { margin: 0 0 8px; }
+.cb .cb-ch-copy p { margin-top: 0; }
+.cb .cb-close .cb-lead { margin: 18px auto 0; }
+@media (max-width: 720px) { .cb .cb-h2 { margin-bottom: 18px; } .cb .cb-h1 { margin-bottom: 20px; } }
