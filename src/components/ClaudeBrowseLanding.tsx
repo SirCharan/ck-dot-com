@@ -124,7 +124,7 @@ const CSS = `
 .cbl-sub { color: var(--p-mute); font-size: 1.08rem; line-height: 1.55; max-width: 38rem; margin: 0 0 2rem; }
 
 .cbl-hero { max-width: var(--cbl-w); margin: 0 auto; padding: clamp(3rem, 9vw, 6.5rem) clamp(1.1rem, 4vw, 2.5rem) clamp(2.5rem, 6vw, 4rem); }
-.cbl-hero .cbl-h { font-size: clamp(2.6rem, 7.2vw, 5.6rem); max-width: 14ch; }
+.cbl-hero .cbl-h { font-size: clamp(2.4rem, 6.2vw, 4.9rem); max-width: 24ch; }
 .cbl-install { display: flex; flex-wrap: wrap; gap: .6rem; align-items: stretch; max-width: 46rem; }
 .cbl-cmd { flex: 1 1 22rem; display: flex; align-items: center; gap: .6rem; border: 1px solid var(--p-line); background: var(--p-elev); border-radius: 6px; padding: .8rem .95rem; font-family: var(--press-mono); font-size: .82rem; line-height: 1.45; color: var(--p-ink); overflow-wrap: anywhere; }
 .cbl-cmd b { color: var(--p-go); font-weight: 500; }
