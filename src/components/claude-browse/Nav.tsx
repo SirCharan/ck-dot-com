@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { REPO } from "./data";
-import { CopyButton } from "./Hero";
 
 export function Nav({ stars }: { stars: number | null }) {
   return (
@@ -23,7 +22,7 @@ export function Nav({ stars }: { stars: number | null }) {
             </svg>
             <span>GitHub{stars ? ` · ${stars.toLocaleString("en-US")}` : ""}</span>
           </a>
-          <CopyButton className="cb-btn cb-btn-fill cb-btn-sm" label="Install" />
+          <a className="cb-btn cb-btn-fill cb-btn-sm" href="#install">Install</a>
           <Link href="/" className="cb-by">
             by CK.
           </Link>

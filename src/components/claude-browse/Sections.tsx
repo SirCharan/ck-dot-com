@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { COMPARE, DOCTOR, FAQ, LEDGER, MEASURED, REPO, STEPS } from "./data";
+import { COMPARE, FAQ, LEDGER, MEASURED, REPO } from "./data";
 import { InstallRow } from "./Hero";
+import { InstallStepper, SafePanel } from "./Panels";
 
 const n = (v: number) => v.toLocaleString("en-US");
 
@@ -19,11 +20,48 @@ export function WorksWith() {
   );
 }
 
+function Flow() {
+  const turns = [1, 2, 3, 4];
+  const cost = (i: number, per: number) => n(i * per);
+  return (
+    <div className="cb-flow" aria-label="Four messages, with and without claude-browse">
+      <div className="cb-flow-col">
+        <div className="cb-flow-h">Without claude-browse</div>
+        {turns.map((i) => (
+          <div className={`cb-msg cb-m${i}`} key={i}>
+            <span className="who">message {i}</span>
+            <span className="blocks">
+              {turns.slice(0, i).map((k) => (
+                <span className="blk" key={k} />
+              ))}
+            </span>
+            <span className="cost">{cost(i, MEASURED.full)} tokens paid so far</span>
+          </div>
+        ))}
+        <p className="cb-flow-cap">The page rides along with every message after it.</p>
+      </div>
+      <div className="cb-flow-col is-go">
+        <div className="cb-flow-h">With claude-browse</div>
+        {turns.map((i) => (
+          <div className={`cb-msg cb-m${i}`} key={i}>
+            <span className="who">message {i}</span>
+            <span className="blocks">
+              <span className="blk is-go" />
+            </span>
+            <span className="cost">{cost(i, MEASURED.summary)} tokens paid so far</span>
+          </div>
+        ))}
+        <p className="cb-flow-cap">Only the short reply rides along.</p>
+      </div>
+    </div>
+  );
+}
+
 export function Problem() {
   const cards: [string, string][] = [
     [
       "A page is a lot of text",
-      `One Hacker News front page is about ${n(MEASURED.full)} tokens. A token is roughly a word, and tokens are what you pay for.`,
+      `One Y Combinator news page is about ${n(MEASURED.full)} tokens. A token is roughly a word, and tokens are what you pay for.`,
     ],
     ["Your chat keeps all of it", "Every new message re-sends the whole conversation, pages included."],
     ["So everything after gets slower and pricier", "One browse becomes a tax on every reply that follows it."],
@@ -37,6 +75,7 @@ export function Problem() {
           <span className="tail">And you pay for it again on every message.</span>
         </h2>
       </div>
+      <Flow />
       <div className="cb-problem">
         {cards.map(([t, b]) => (
           <div className="cb-cell" key={t}>
@@ -137,11 +176,11 @@ export function Measured() {
       <div className="cb-head">
         <span className="cb-k">Measured</span>
         <h2 className="cb-h2">
-          One page, <em>measured</em>. <span className="tail">The same Hacker News front page, three sizes.</span>
+          One page, <em>measured</em>. <span className="tail">The same Y Combinator news page, three sizes.</span>
         </h2>
       </div>
       <div className="cb-measured">
-        <div className="cb-shot" aria-label="The Hacker News front page, with the three sizes marked">
+        <div className="cb-shot" aria-label="The Y Combinator news page, with the three sizes marked">
           <div className="cb-shot-bar">
             <span className="cb-y">Y</span>
             <span className="cb-shot-url">news.ycombinator.com</span>
@@ -210,10 +249,6 @@ export function Windows() {
 }
 
 export function Safe() {
-  const doctor = DOCTOR.split("\n")
-    .slice(0, 4)
-    .map((l) => l.replace(/^(PASS|WARN)/, "<i>$1</i>"))
-    .join("\n");
   return (
     <section id="safe" className="cb-wrap cb-section cb-r">
       <div className="cb-head">
@@ -222,39 +257,7 @@ export function Safe() {
           It stays where you point it. <span className="tail">And it cleans up after itself.</span>
         </h2>
       </div>
-      <div className="cb-bento">
-        <div className="cb-cell">
-          <h3>Stays on the sites you allow</h3>
-          <p>Name the sites when you start. Anything else is refused before the browser moves.</p>
-          <div className="cb-mini">
-            $ browse run ab-smoke open https://evil.com{"\n"}
-            <i>policy: evil.com not in allowed_domains</i>
-            {"\n"}exit 3
-          </div>
-        </div>
-        <div className="cb-cell">
-          <h3>Never keeps page text</h3>
-          <p>The log records what happened and a short fingerprint of each page. Never the words on it.</p>
-          <div className="cb-mini">
-            {'{"action": "snapshot", "ok": true, "ms": 499, "snapshot_ref": "'}
-            <i>7c1d40a9</i>
-            {'"}'}
-          </div>
-        </div>
-        <div className="cb-cell">
-          <h3>Closes only what it started</h3>
-          <p>Before closing a window it checks the process is its own browser. Nothing else is touched.</p>
-          <div className="cb-mini">
-            $ browse reap --idle-hours 4 --dry-run{"\n"}
-            <i>would close</i> kayak (idle 10d 15h){"\n"}reap: closed 1, orphans removed 6, flagged 4, dry-run
-          </div>
-        </div>
-        <div className="cb-cell">
-          <h3>Tells you what is wrong</h3>
-          <p>One command checks what is installed, what is reachable and what to fix.</p>
-          <div className="cb-mini" dangerouslySetInnerHTML={{ __html: `$ browse doctor\n${doctor}` }} />
-        </div>
-      </div>
+      <SafePanel />
     </section>
   );
 }
@@ -266,15 +269,7 @@ export function Install() {
       <h2 className="cb-h2" style={{ marginTop: 14 }}>
         Three commands. <em>Two minutes.</em>
       </h2>
-      <div className="cb-steps">
-        {STEPS.map(([num, t, c]) => (
-          <div className="cb-step" key={num}>
-            <span className="n">{num}</span>
-            <span className="t">{t}</span>
-            <code>{c}</code>
-          </div>
-        ))}
-      </div>
+      <InstallStepper />
     </section>
   );
 }

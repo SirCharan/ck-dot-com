@@ -3,8 +3,20 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { COMMAND, INSTALL, MEASURED, NOISE, REPO, SUMMARY } from "./data";
 
-export function CopyButton({ className, label = "Install the plugin" }: { className: string; label?: string }) {
-  const [done, setDone] = useState(false);
+export function CopyButton({
+  className,
+  label = "Copy install command",
+  done = "Copied to clipboard",
+  text = INSTALL,
+  icon = true,
+}: {
+  className: string;
+  label?: string;
+  done?: string;
+  text?: string;
+  icon?: boolean;
+}) {
+  const [ok, setOk] = useState(false);
   return (
     <button
       type="button"
@@ -12,15 +24,21 @@ export function CopyButton({ className, label = "Install the plugin" }: { classN
       aria-live="polite"
       onClick={async () => {
         try {
-          await navigator.clipboard.writeText(INSTALL);
-          setDone(true);
-          setTimeout(() => setDone(false), 1600);
+          await navigator.clipboard.writeText(text);
+          setOk(true);
+          setTimeout(() => setOk(false), 1600);
         } catch {
           /* clipboard blocked: the command is printed on the page */
         }
       }}
     >
-      {done ? "Copied" : label}
+      {icon ? (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+          <rect x="9" y="9" width="12" height="12" rx="2" />
+          <path d="M5 15V5a2 2 0 0 1 2-2h10" />
+        </svg>
+      ) : null}
+      {ok ? done : label}
     </button>
   );
 }
@@ -32,7 +50,7 @@ export function InstallRow({ center }: { center?: boolean }) {
         <b>$</b>
         <span>{INSTALL}</span>
       </code>
-      <CopyButton className="cb-btn cb-btn-fill" label="Copy" />
+      <CopyButton className="cb-btn cb-btn-fill" label="Copy" done="Copied" icon={false} />
     </div>
   );
 }
@@ -218,7 +236,7 @@ export function Hero() {
       <div className="cb-hero-copy">
         <p className="cb-k">Open source · Free · Built for Claude Code</p>
         <h1 className="cb-h1">
-          Give Claude Code a browser. Keep your chat <em>light</em>.
+          Give Claude a browser. Keep your chat <em>light</em>.
         </h1>
         <p className="cb-sub">
           claude-browse sends a helper to read websites for you and brings back a short answer. Pages never pile
