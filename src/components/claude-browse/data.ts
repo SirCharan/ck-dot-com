@@ -15,6 +15,8 @@ export const NOISE: string[] = ["- link [ref=e101]", "- link \"Hacker News\" [re
 
 export const LEDGER = "$ browse ls\nNAME        STACK          PURPOSE           OWNER     AGE      IDLE     PID    STATE\ndefault     agent-browser  legacy (unknown)  6e2be8ee  7d 16h   7d 16h   74432  version-mismatch\ney-book     agent-browser  legacy (unknown)  6e2be8ee  10d 15h  10d 15h  81395  version-mismatch\nkayak       agent-browser  legacy (unknown)  6e2be8ee  10d 15h  10d 15h  81228  version-mismatch\netihad-bcn  agent-browser  legacy (unknown)  6e2be8ee  10d 15h  10d 15h  80833  version-mismatch\n\n$ browse reap --dry-run --restart-mismatch\nwould close default (version mismatch)\nwould close etihad-bcn (version mismatch)\nwould close ey-book (version mismatch)\nwould close kayak (version mismatch)\nreap: closed 4, orphans removed 0, flagged 4, dry-run";
 
+
+/* Only the noindex /claude-browse-alt pages use this. */
 export const DOCTOR = "PASS agent-browser 0.38.1\nPASS browser-harness on PATH\nWARN Chrome CDP 9222 not reachable | fix: start Chrome with --remote-debugging-port=9222\nPASS ledger ok\nWARN version-mismatched daemons: default, etihad-bcn, ey-book, kayak | fix: browse reap --restart-mismatch\nPASS /Users/ck/.claude-browse writable";
 
 export const COMPARE: [string, string, string][] = [
@@ -35,6 +37,5 @@ export const FAQ: [string, string][] = [
 
 export const STEPS: [string, string, string][] = [
   ["01", "Add the plugin", INSTALL],
-  ["02", "Check your setup", "browse doctor"],
-  ["03", "Ask your first question", COMMAND],
+  ["02", "Ask your first question", COMMAND],
 ];

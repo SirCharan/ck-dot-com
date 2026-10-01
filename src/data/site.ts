@@ -212,7 +212,7 @@ export const TOOLS: Tool[] = [
     detail: "/work/drishti",
   },
   {
-    title: "claude-browse",
+    title: "Claude Browse",
     one: "Open-source Claude Code plugin. A Sonnet sub-agent drives the browser so the main model reads a summary of twelve lines or fewer.",
     github: "https://github.com/SirCharan/claude-browse",
     tags: ["AI", "Tools"],
@@ -471,7 +471,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: "claude-browse",
-    title: "claude-browse",
+    title: "Claude Browse",
     kicker: "Creator · Open-source Claude Code plugin",
     tagline: "Browsing from Claude Code that keeps the page out of the expensive context.",
     role: "Creator and sole maintainer",

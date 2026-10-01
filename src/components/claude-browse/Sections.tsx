@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import { COMMAND, COMPARE, DOCTOR, FAQ, INSTALL, LEDGER, MEASURED, NOISE, REPO, STEPS, SUMMARY } from "@/components/claude-browse/data";
+import { COMMAND, COMPARE, FAQ, INSTALL, LEDGER, MEASURED, NOISE, REPO, STEPS, SUMMARY } from "@/components/claude-browse/data";
 import { CopyButton } from "./Client";
 import { HeroScene, SceneFill, SceneLeave, SceneReap, SceneReturn, SceneWall } from "./Scenes";
 import { CostChart, Flow, Fingerprint, ModeIcon, Num, SiteGate, SizeBars, Timeline } from "./Charts";
@@ -53,12 +53,12 @@ export function Nav({ stars }: { stars: number | null }) {
   return (
     <nav className="cb-nav" aria-label="Main">
       <div className="cb-wrap cb-nav-in">
-        <a href="#top" className="cb-brand">claude-browse</a>
+        <a href="#top" className="cb-brand">Claude Browse</a>
         <ul className="cb-nav-links">
           {links.map(([id, label]) => <li key={id}><a href={`#${id}`}>{label}</a></li>)}
         </ul>
         <div className="cb-nav-right">
-          <a href={REPO} className="cb-gh" aria-label={stars ? `claude-browse on GitHub, ${fmt(stars)} stars` : "claude-browse on GitHub"}>
+          <a href={REPO} className="cb-gh" aria-label={stars ? `Claude Browse on GitHub, ${fmt(stars)} stars` : "Claude Browse on GitHub"}>
             <GitHubIcon /><span>GitHub</span>
             {stars ? <span className="cb-stars">{fmt(stars)}</span> : null}
           </a>
@@ -106,6 +106,48 @@ export function Example() {
         </figure>
       </div>
       <p className="cb-ratio cb-r"><b><Num n={RATIO} suffix="x" /></b><span>The note your chat gets is about {RATIO} times smaller than the whole page.</span></p>
+    </Sec>
+  );
+}
+
+export function Onboard() {
+  return (
+    <Sec id="first">
+      <Head id="first" k="Getting started" title={<>Your first two minutes. <em>Here is what you see.</em></>} />
+      <ol className="cb-steps cb-onboard">
+        <li className="cb-r">
+          <span className="cb-step-n">01</span>
+          <div>
+            <h3 className="cb-h4">Paste the install line</h3>
+            <p>Run it once in your terminal. Claude Code adds the plugin.</p>
+            <div className="cb-step-cmd"><code>{INSTALL}</code><CopyButton small text={INSTALL} label="Copy command" /></div>
+          </div>
+        </li>
+        <li className="cb-r">
+          <span className="cb-step-n">02</span>
+          <div>
+            <h3 className="cb-h4">Ask with /browse</h3>
+            <p>Type your question in Claude Code, the way you would ask a person.</p>
+            <p className="cb-note-cmd"><b>you</b> {COMMAND}</p>
+          </div>
+        </li>
+        <li className="cb-r">
+          <span className="cb-step-n">03</span>
+          <div>
+            <h3 className="cb-h4">The helper goes to work</h3>
+            <p>A Sonnet helper opens a hidden browser and reads the page. Your chat sees none of this.</p>
+            <pre className="cb-term cb-onboard-term"><code>{NOISE.slice(10, 14).join("\n")}{"\n"}…</code></pre>
+          </div>
+        </li>
+        <li className="cb-r">
+          <span className="cb-step-n">04</span>
+          <div>
+            <h3 className="cb-h4">Read the short reply</h3>
+            <p>About {MEASURED.seconds} seconds later, a note of about {MEASURED.summary} tokens lands in your chat.</p>
+            <pre className="cb-term cb-reply cb-onboard-term"><code>{[SUMMARY[0], SUMMARY[SUMMARY.length - 1]].map(([k, v]) => <span key={k} className="cb-line"><b>{k}</b>{v}{"\n"}</span>)}</code></pre>
+          </div>
+        </li>
+      </ol>
     </Sec>
   );
 }
@@ -165,7 +207,7 @@ export function Split() {
           <p className="cb-small">The page becomes part of the chat for good.</p>
         </div>
         <div className="cb-card cb-note-card cb-r">
-          <span className="cb-tag">With claude-browse</span>
+          <span className="cb-tag">With Claude Browse</span>
           <Steps acc steps={[
             ["You ask with /browse"],
             ["A helper (a Sonnet sub-agent) opens a browser"],
@@ -241,7 +283,7 @@ export function Trust() {
       <Chapter n="05" title="Idle windows get swept away." scene={<SceneReap />}>
         <p>Type <code>browse reap</code> to close the windows nobody is using. Add <code>--dry-run</code> first, and it only shows what it would close. Windows still at work stay open. In the real run below, it found 4 windows from an older version.</p>
       </Chapter>
-      <div className="cb-three">
+      <div className="cb-two cb-trust-cards">
         <div className="cb-card cb-r">
           <SiteGate />
           <h3 className="cb-h4">Only the sites you name</h3>
@@ -251,11 +293,6 @@ export function Trust() {
           <Fingerprint />
           <h3 className="cb-h4">A fingerprint, not the words</h3>
           <p>The log keeps a short fingerprint of each page. It never stores what the page said.</p>
-        </div>
-        <div className="cb-card cb-r">
-          <pre className="cb-term cb-doctor"><code>{DOCTOR.split("\n").map((l) => <span key={l} className={l.startsWith("WARN") ? "is-warn" : "is-pass"}>{l}{"\n"}</span>)}</code></pre>
-          <h3 className="cb-h4">A quick health check</h3>
-          <p><code>browse doctor</code> checks each part of your setup. When something is off, it prints the fix.</p>
         </div>
       </div>
       <figure className="cb-r cb-ledger">
@@ -267,16 +304,15 @@ export function Trust() {
 }
 
 export function Start() {
-  const titles = ["Add the plugin", "Check your setup", "Ask your first question"];
   return (
     <Sec id="start" alt>
-      <Head id="start" k="Start" title={<>Three steps to <em>your first answer.</em></>} />
+      <Head id="start" k="Start" title={<>Two steps to <em>your first answer.</em></>} />
       <ol className="cb-steps">
-        {STEPS.map(([n, , cmd], i) => (
+        {STEPS.map(([n, title, cmd]) => (
           <li key={n} className="cb-r">
             <span className="cb-step-n">{n}</span>
             <div>
-              <h3 className="cb-h4">{titles[i]}</h3>
+              <h3 className="cb-h4">{title}</h3>
               <div className="cb-step-cmd"><code>{cmd}</code><CopyButton small text={cmd} label="Copy command" /></div>
             </div>
           </li>
@@ -300,7 +336,7 @@ export function Close() {
     <section className="cb-close" aria-labelledby="close">
       <div className="cb-wrap">
         <h2 id="close" className="cb-h1 cb-r">Keep your chat light.<br /><em>Give Claude a browser.</em></h2>
-        <p className="cb-lead cb-r">Copy the install line, run browse doctor, then ask your first question.</p>
+        <p className="cb-lead cb-r">Copy the install line, then ask your first question.</p>
         <div className="cb-close-row cb-r">
           <code className="cb-cmd"><b>$</b> {INSTALL}</code>
           <CopyButton />
@@ -314,7 +350,7 @@ export function Footer() {
   return (
     <footer className="cb-foot">
       <div className="cb-wrap cb-foot-in">
-        <span className="cb-brand">claude-browse</span>
+        <span className="cb-brand">Claude Browse</span>
         <span>MIT licence</span>
         <a href={REPO}>GitHub</a>
         <a href="#start">Install</a>
