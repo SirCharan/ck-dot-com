@@ -69,12 +69,11 @@ export default async function TrackRecordPage() {
   return (
     <PageShell>
       <PageIntro
-        kicker="Track record"
+        kicker="Stock market"
         title="Real capital, in the open"
-        lede="Stocky (AI, verified) and live Dhan (rule-based algo): the same book I run, shown for transparency."
+        lede="Live Dhan (rule-based algo) and Stocky (AI, verified): the same book I run, shown for transparency."
       />
 
-      <StockyTrackRecord />
 
       <section className="press-section">
         <h2>Dhan, the live book</h2>
@@ -233,6 +232,8 @@ export default async function TrackRecordPage() {
           </p>
         </div>
       </section>
+
+      <StockyTrackRecord />
 
       <section className="press-section">
         <p className="press-serif" style={{ margin: 0, color: "var(--p-mute)", fontSize: "1.05rem" }}>

@@ -26,7 +26,7 @@ export default function BlogLayout({
             </Link>
             <span className="blog-nav-sep">·</span>
             <Link href="/track-record" className="blog-nav-link">
-              Track record
+              Stock market
             </Link>
             <span className="blog-nav-sep">·</span>
             <Link href="/blog" className="blog-nav-link">
