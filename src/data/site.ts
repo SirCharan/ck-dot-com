@@ -217,6 +217,7 @@ export const TOOLS: Tool[] = [
     github: "https://github.com/SirCharan/claude-browse",
     tags: ["AI", "Tools"],
     status: "live",
+    cover: "/images/work/claude-browse/cover.png",
     detail: "/work/claude-browse",
   },
   {
@@ -277,6 +278,7 @@ export const TOOLS: Tool[] = [
     tags: ["AI", "Tools"],
     status: "live",
     cover: "/images/work/openwispr/cover.png",
+    detail: "/work/openwispr",
   },
   {
     title: "Lakshay",
@@ -786,6 +788,49 @@ export const CASE_STUDIES: CaseStudy[] = [
       { src: "/images/work/second-brain/hero.png", alt: "Second Brain landing: the chat ends, the memory stays, with a live knowledge-graph" },
     ],
     accent: "fractal",
+  },
+  {
+    slug: "openwispr",
+    title: "OpenWispr",
+    kicker: "Creator · On-device dictation for macOS",
+    tagline: "Say it. It's typed.",
+    role: "Creator, sole builder, open source",
+    period: "2026 – Present",
+    stack: [
+      "WhisperKit",
+      "Apple Neural Engine",
+      "macOS",
+      "Next.js / Vercel",
+    ],
+    metrics: [
+      { value: "MIT", label: "Licence", tone: "neutral" },
+      { value: "macOS", label: "Platform", tone: "accent" },
+      { value: "Open source", label: "Free to use", tone: "neutral" },
+      { value: "On-device", label: "No cloud", tone: "accent" },
+    ],
+    sections: [
+      {
+        heading: "What it does",
+        body: [
+          "OpenWispr is dictation that never leaves your Mac. Hold fn, speak, then release. The text is pasted at the cursor in any app.",
+        ],
+      },
+      {
+        heading: "How it works",
+        body: [
+          "On-device Whisper runs through WhisperKit on the Apple Neural Engine. It transcribes locally and cleans your words before it pastes them.",
+          "There is no cloud and no subscription. Your audio stays on the machine.",
+        ],
+      },
+    ],
+    links: [
+      { label: "Live", href: "https://charandeepkapoor.com/openwispr" },
+      { label: "GitHub", href: "https://github.com/SirCharan/openwispr" },
+    ],
+    shots: [
+      { src: "/images/work/openwispr/cover.png", alt: "OpenWispr: open-source dictation that never leaves your Mac" },
+    ],
+    accent: "none",
   },
   {
     slug: "lakshay",

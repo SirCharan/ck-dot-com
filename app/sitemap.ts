@@ -46,6 +46,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${SITE_URL}/second-brain`,
+      lastModified: today,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    },
+    {
+      url: `${SITE_URL}/openwispr`,
+      lastModified: today,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    },
+    {
       url: `${SITE_URL}/resume`,
       lastModified: today,
       changeFrequency: "monthly" as const,

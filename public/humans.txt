@@ -12,6 +12,7 @@ Stocky: Claude-driven Zerodha trading (+110% verified, Sharpe 2.29)
 Timelock Trade: Oracle-less, liquidation-free DeFi derivatives ($7.3M volume)
 Lakshay: Intraday AI signals for NSE F&O
 Second Brain: Local-first memory for Claude Code (open source)
+Claude Browse: Web browsing plugin for Claude Code, replies in 12 lines or fewer (open source)
 OpenWispr: On-device Whisper dictation for macOS (free, open source)
 
 /* SITE */

@@ -14,7 +14,14 @@ export const metadata: Metadata = {
 };
 
 // Flagship plates, in display order (first spans two rows via .press-ships).
-const FEATURED = ["Drishti", "Stocky AI", "Timelock", "Second Brain"]
+const FEATURED = [
+  "Drishti",
+  "Stocky AI",
+  "Timelock",
+  "Second Brain",
+  "Claude Browse",
+  "OpenWispr",
+]
   .map((title) => TOOLS.find((t) => t.title === title))
   .filter((t): t is NonNullable<typeof t> => Boolean(t));
 
@@ -30,7 +37,7 @@ export default function WorkPage() {
       <section className="press-section" id="featured">
         <h2>Featured</h2>
         <p className="press-section-sub press-serif">
-          Four systems I keep pointing people to.
+          Six projects I keep pointing people to.
         </p>
         <div className="press-ships">
           {FEATURED.map((t, i) => (

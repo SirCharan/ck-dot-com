@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { githubStars } from "@/lib/githubStars";
 import { Motion } from "@/components/claude-browse/Client";
-import { Close, Footer, Hero, How, Nav, Proof, Split, Start, Story, Trust, Example } from "@/components/claude-browse/Sections";
+import { Close, Footer, Hero, How, Nav, Onboard, Proof, Split, Start, Story, Trust, Example } from "@/components/claude-browse/Sections";
 
 const TITLE = "Claude Browse: give Claude a browser, keep your chat light";
 const DESCRIPTION =
@@ -41,6 +41,7 @@ export default async function ClaudeBrowsePage() {
       <main>
         <Hero />
         <Example />
+        <Onboard />
         <Story />
         <Split />
         <How />

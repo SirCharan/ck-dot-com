@@ -17,6 +17,7 @@ Personal portfolio — AI Product Manager at Delta Exchange, India's largest cry
 - Timelock Trade: https://charandeepkapoor.com/work/timelock (oracle-less, liquidation-free Protected Perps — $7.3M volume, $2M TVL, 1k+ users)
 - Lakshay: https://charandeepkapoor.com/work/lakshay (intraday AI signals for NSE F&O — 5-min cycles, paper track record)
 - Second Brain: https://charandeepkapoor.com/second-brain (local-first memory for Claude Code, open source)
+- Claude Browse: https://charandeepkapoor.com/claude-browse (open-source Claude Code plugin, a Sonnet helper browses and replies in 12 lines or fewer)
 - OpenWispr: https://charandeepkapoor.com/openwispr (free, open-source, on-device Whisper dictation for macOS — "Say it. It's typed.")
 - Delta Support Audit: https://charandeepkapoor.com/work/delta-support-audit (nightly RAG audit of support content)
 
@@ -27,4 +28,4 @@ Full content dump (one file): https://charandeepkapoor.com/llms-full.txt
 
 ## Keywords
 
-Charandeep Kapoor, AI Product Manager, Delta Exchange, Drishti, LLM trading signals, Stocky AI, Zerodha AI trading, protected perps, Timelock, DeFi derivatives, Lakshay NSE signals, Second Brain Claude Code, OpenWispr macOS dictation, Model Context Protocol, quantitative finance, trading psychology
+Charandeep Kapoor, AI Product Manager, Delta Exchange, Drishti, LLM trading signals, Stocky AI, Zerodha AI trading, protected perps, Timelock, DeFi derivatives, Lakshay NSE signals, Second Brain Claude Code, Claude Browse Claude Code plugin, OpenWispr macOS dictation, Model Context Protocol, quantitative finance, trading psychology

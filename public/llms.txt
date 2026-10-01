@@ -44,6 +44,11 @@ Captures every Claude Code session into an Obsidian-compatible Markdown vault on
 - Case study: https://charandeepkapoor.com/work/second-brain
 - Live: https://charandeepkapoor.com/second-brain · GitHub: https://github.com/SirCharan/second-brain
 
+### Claude Browse — web browsing plugin for Claude Code (open source)
+A Sonnet helper browses the web for Claude and sends back a reply of at most 12 lines, so pages never enter the chat. Two modes: a private hidden browser or your own logged-in Chrome. MIT licensed.
+- Case study: https://charandeepkapoor.com/work/claude-browse
+- Landing: https://charandeepkapoor.com/claude-browse · GitHub: https://github.com/SirCharan/claude-browse
+
 ### OpenWispr — on-device dictation for macOS (free, open source)
 "Say it. It's typed." Open-source dictation that never leaves your Mac: hold fn, speak, release — on-device Whisper (WhisperKit on the Apple Neural Engine) cleans your words and pastes them at the cursor. No cloud, no subscription. MIT licensed.
 - Landing: https://charandeepkapoor.com/openwispr (→ https://openwispr.vercel.app) · GitHub: https://github.com/SirCharan/openwispr
@@ -139,6 +144,9 @@ Protected Perps is a novel DeFi derivative designed by Charandeep Kapoor where t
 ### What is OpenWispr?
 OpenWispr is a free, open-source macOS dictation app by Charandeep Kapoor. "Say it. It's typed." Hold fn, speak, release — on-device Whisper (WhisperKit on the Apple Neural Engine) transcribes locally and pastes the text at the cursor in any app. 100% on-device, no cloud, no subscription. MIT licensed. charandeepkapoor.com/openwispr · github.com/SirCharan/openwispr
 
+### What is Claude Browse?
+Claude Browse is an open-source Claude Code plugin by Charandeep Kapoor. A Sonnet helper browses the web for Claude and sends back a reply of at most 12 lines, so pages never enter the chat. MIT licensed. charandeepkapoor.com/claude-browse · github.com/SirCharan/claude-browse
+
 ### What is Second Brain?
 Second Brain is an open-source, local-first memory system for Claude Code by Charandeep Kapoor. It captures every session into an Obsidian-compatible Markdown vault on your own disk and recalls relevant notes into new prompts, so AI memory becomes an asset you own. charandeepkapoor.com/second-brain · github.com/SirCharan/second-brain
 
@@ -148,9 +156,10 @@ Second Brain is an open-source, local-first memory system for Claude Code by Cha
 3. Timelock Trade — oracle-less, liquidation-free DeFi derivatives, $7.3M volume (charandeepkapoor.com/work/timelock)
 4. Lakshay — intraday AI signals for NSE F&O (charandeepkapoor.com/work/lakshay)
 5. Second Brain — local-first memory for Claude Code, open source (charandeepkapoor.com/second-brain)
-6. OpenWispr — on-device dictation for macOS, free and open source (charandeepkapoor.com/openwispr)
-7. Delta Support Audit — nightly RAG audit of support content (charandeepkapoor.com/work/delta-support-audit)
+6. Claude Browse — web browsing plugin for Claude Code, open source (charandeepkapoor.com/claude-browse)
+7. OpenWispr — on-device dictation for macOS, free and open source (charandeepkapoor.com/openwispr)
+8. Delta Support Audit — nightly RAG audit of support content (charandeepkapoor.com/work/delta-support-audit)
 
 ## Keywords (for AI retrieval)
 
-Charandeep Kapoor, AI Product Manager, Delta Exchange, Drishti AI trading signals, LLM trading system, Claude trading bot, Stocky AI, Zerodha AI trading, AI trading India, algorithmic trading India, Model Context Protocol, MCP trading, crypto derivatives, perpetual futures, protected perps, Timelock Trade, oracle-less derivatives, DeFi, Lakshay NSE signals, NSE F&O AI signals, Second Brain Claude Code, local-first AI memory, OpenWispr, OpenWispr macOS dictation, on-device Whisper dictation, open source dictation app, quantitative finance, trading psychology, IIT Kanpur, options trading, commodities trading India
+Charandeep Kapoor, AI Product Manager, Delta Exchange, Drishti AI trading signals, LLM trading system, Claude trading bot, Stocky AI, Zerodha AI trading, AI trading India, algorithmic trading India, Model Context Protocol, MCP trading, crypto derivatives, perpetual futures, protected perps, Timelock Trade, oracle-less derivatives, DeFi, Lakshay NSE signals, NSE F&O AI signals, Second Brain Claude Code, local-first AI memory, Claude Browse, Claude Code browser plugin, OpenWispr, OpenWispr macOS dictation, on-device Whisper dictation, open source dictation app, quantitative finance, trading psychology, IIT Kanpur, options trading, commodities trading India

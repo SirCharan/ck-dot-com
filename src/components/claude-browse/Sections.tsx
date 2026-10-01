@@ -49,7 +49,7 @@ function Chapter({ n, title, children, scene, flip }: { n: string; title: string
 }
 
 export function Nav({ stars }: { stars: number | null }) {
-  const links: [string, string][] = [["example", "Example"], ["story", "Story"], ["how", "How it works"], ["proof", "Proof"], ["trust", "Trust"], ["start", "Start"]];
+  const links: [string, string][] = [["example", "Example"], ["first", "First steps"], ["story", "Story"], ["how", "How it works"], ["proof", "Proof"], ["trust", "Trust"], ["start", "Start"]];
   return (
     <nav className="cb-nav" aria-label="Main">
       <div className="cb-wrap cb-nav-in">

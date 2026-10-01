@@ -62,6 +62,13 @@ export const PROOF = {
       alt: "Second Brain — the chat ends, the memory stays",
     },
     {
+      title: "Claude Browse",
+      line: "A helper browses for Claude, replies in 12 lines · open source",
+      href: "/claude-browse",
+      cover: "/images/work/claude-browse/cover.png",
+      alt: "Claude Browse: a Claude Code plugin that keeps web pages out of the chat",
+    },
+    {
       title: "OpenWispr",
       line: "Say it. It's typed. On-device dictation for macOS · open source",
       href: "/openwispr",

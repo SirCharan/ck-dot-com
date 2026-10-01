@@ -63,7 +63,7 @@ export function RootStructuredData() {
     name: "Charandeep Kapoor",
     url: SITE_URL,
     description:
-      "Portfolio and writings of Charandeep Kapoor — AI Product Manager at Delta Exchange. Live AI trading systems (Drishti, Stocky, Lakshay), DeFi derivatives (Timelock), open-source tools (Second Brain, OpenWispr), and essays on markets and building.",
+      "Portfolio and writings of Charandeep Kapoor — AI Product Manager at Delta Exchange. Live AI trading systems (Drishti, Stocky, Lakshay), DeFi derivatives (Timelock), open-source tools (Claude Browse, Second Brain, OpenWispr), and essays on markets and building.",
     about: {
       "@type": "Thing",
       name: "AI-powered trading systems, crypto derivatives product, LLM tooling, and quantitative finance",
@@ -78,6 +78,7 @@ export function RootStructuredData() {
       "Lakshay NSE signals",
       "Timelock protected perps",
       "Second Brain Claude Code",
+      "Claude Browse Claude Code plugin",
       "OpenWispr macOS dictation",
       "Model Context Protocol",
       "LLM trading systems",
@@ -149,6 +150,25 @@ export function RootStructuredData() {
     author,
   };
 
+  const claudeBrowseSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Claude Browse",
+    url: `${SITE_URL}/claude-browse`,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "macOS, Linux",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    description:
+      "Open-source Claude Code plugin. A Sonnet helper browses the web for Claude and sends back a reply of at most 12 lines, so pages never enter the chat. MIT licensed.",
+    license: "https://opensource.org/licenses/MIT",
+    codeRepository: "https://github.com/SirCharan/claude-browse",
+    author,
+  };
+
   const openWisprSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -173,6 +193,7 @@ export function RootStructuredData() {
     drishtiSchema,
     stockyAiSchema,
     secondBrainSchema,
+    claudeBrowseSchema,
     openWisprSchema,
   ];
 

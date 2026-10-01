@@ -27,6 +27,7 @@ AI product management, LLM trading systems, Model Context Protocol, crypto deriv
 | Timelock Trade | charandeepkapoor.com/work/timelock | Oracle-less, liquidation-free Protected Perps — $7.3M volume, $2M TVL, 1,000+ users on Monad testnet |
 | Lakshay | charandeepkapoor.com/work/lakshay | Intraday AI signals for NSE F&O — 5-min cycles, Dhan data, paper track record. Dashboard: lakshya-cyan.vercel.app |
 | Second Brain | charandeepkapoor.com/second-brain | Local-first memory for Claude Code — Obsidian-compatible Markdown vault, open source (Apache-2.0) |
+| Claude Browse | charandeepkapoor.com/claude-browse | Open-source Claude Code plugin. A Sonnet helper browses the web and replies in 12 lines or fewer (MIT) |
 | OpenWispr | charandeepkapoor.com/openwispr | Free, open-source, on-device Whisper dictation for macOS — "Say it. It's typed." (MIT) |
 | Delta Support Audit | charandeepkapoor.com/work/delta-support-audit | RAG audit of 217 Delta India support articles for factual drift — 291 findings, 222 verified fixed (76%) |
 
@@ -81,9 +82,11 @@ https://charandeepkapoor.com/blog/md/{slug}
 
 **What are Protected Perps?** Novel DeFi derivative — traders can only profit (no liquidation), LPs take downside for premiums, priced without an oracle. Built as Timelock Trade on Monad ($7.3M volume, $2M TVL).
 
+**What is Claude Browse?** Open-source Claude Code plugin: a Sonnet helper browses the web for Claude and sends back a reply of 12 lines or fewer, so pages never enter the chat. charandeepkapoor.com/claude-browse
+
 **What is OpenWispr?** Free, open-source macOS dictation: hold fn, speak, on-device Whisper pastes the text at the cursor. No cloud. charandeepkapoor.com/openwispr
 
-**What products has Charandeep built?** Drishti (live LLM crypto signals), Stocky (+110% verified), Timelock Trade (Protected Perps), Lakshay (NSE F&O signals), Second Brain (Claude Code memory), OpenWispr (macOS dictation), Delta Support Audit (RAG quality system).
+**What products has Charandeep built?** Drishti (live LLM crypto signals), Stocky (+110% verified), Timelock Trade (Protected Perps), Lakshay (NSE F&O signals), Second Brain (Claude Code memory), Claude Browse (Claude Code browsing plugin), OpenWispr (macOS dictation), Delta Support Audit (RAG quality system).
 
 ## Contact
 

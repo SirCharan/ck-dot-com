@@ -381,3 +381,28 @@
 .cb-onboard .cb-note-cmd { margin: 0; }
 .cb-onboard-term { font-size: 12px; margin: 0; max-width: 640px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .cb-trust-cards { margin-top: var(--cb-s4); }
+/* Pixel review fixes (onboarding, trust row, ledger, start, footer). */
+.cb-steps.cb-onboard { max-width: 1000px; }
+.cb-onboard-term, .cb-onboard .cb-step-cmd { max-width: 760px; }
+.cb .cb-onboard .cb-note-cmd { background: var(--cb-term); border: 1px solid var(--cb-line); border-radius: 12px; padding: 14px 16px; max-width: 760px; margin: 0; }
+.cb .cb-ledger { margin-top: var(--cb-s4); }
+.cb .cb-ledger figcaption { margin: 0 0 10px; }
+.cb-trust-cards { margin-top: var(--cb-s3); }
+.cb-trust-cards .cb-card { display: flex; flex-direction: column; }
+.cb-trust-cards .cb-svg { margin-block: auto; max-width: 460px; margin-inline: auto; width: 100%; }
+.cb-trust-cards .cb-h4 { margin-top: var(--cb-s3); }
+@media (min-width: 961px) {
+  #start .cb-steps { max-width: none; grid-template-columns: 1fr 1fr; gap: var(--cb-s4); }
+  #start .cb-steps li::before { display: none; }
+}
+@media (max-width: 640px) {
+  .cb-ledger .cb-term { font-size: 11px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .cb-foot-in { gap: 8px 18px; }
+  .cb-foot-in .cb-brand { flex-basis: 100%; }
+}
+
+/* Site header (PressShell, fixed, 3.75rem) sits above; the product bar sticks just under it. */
+.cb { padding-top: 3.75rem; }
+.cb-nav { top: 3.75rem; }
+.cb-sec, .cb-hero { scroll-margin-top: calc(3.75rem + 64px); }
+@media (max-width: 720px) { .cb-nav-in { height: 52px; } .cb-sec, .cb-hero { scroll-margin-top: calc(3.75rem + 52px); } }

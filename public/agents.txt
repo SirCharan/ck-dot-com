@@ -2,7 +2,7 @@
 
 SITE: https://charandeepkapoor.com
 AUTHOR: Charandeep Kapoor – AI Product Manager at Delta Exchange; builder of live AI trading systems
-PRODUCTS: Drishti (live LLM trading signals), Stocky (Claude-driven Zerodha trading, +110% verified), Timelock (oracle-less DeFi derivatives), Lakshay (NSE F&O AI signals), Second Brain (Claude Code memory), OpenWispr (macOS dictation)
+PRODUCTS: Drishti (live LLM trading signals), Stocky (Claude-driven Zerodha trading, +110% verified), Timelock (oracle-less DeFi derivatives), Lakshay (NSE F&O AI signals), Second Brain (Claude Code memory), Claude Browse (Claude Code browsing plugin), OpenWispr (macOS dictation)
 
 ## About
 
@@ -29,6 +29,7 @@ Personal portfolio and writings. AI Product Manager at Delta Exchange, India's l
 - Timelock Trade: https://charandeepkapoor.com/work/timelock — oracle-less, liquidation-free Protected Perps ($7.3M volume, $2M TVL, 1k+ users). Perps: https://perps.timelock.trade
 - Lakshay: https://charandeepkapoor.com/work/lakshay — intraday AI signals for NSE F&O (5-min cycles, Dhan data, paper track record). Dashboard: https://lakshya-cyan.vercel.app
 - Second Brain: https://charandeepkapoor.com/second-brain — local-first memory for Claude Code (open source, Apache-2.0). GitHub: https://github.com/SirCharan/second-brain
+- Claude Browse: https://charandeepkapoor.com/claude-browse — open-source Claude Code plugin; a Sonnet helper browses the web and replies in 12 lines or fewer (MIT). GitHub: https://github.com/SirCharan/claude-browse
 - OpenWispr: https://charandeepkapoor.com/openwispr — free, open-source, on-device Whisper dictation for macOS (MIT). GitHub: https://github.com/SirCharan/openwispr
 - Delta Support Audit: https://charandeepkapoor.com/work/delta-support-audit — nightly RAG audit of support articles for factual drift
 
@@ -66,8 +67,11 @@ A: A Claude-driven trading system for the Indian stock market: fine-tuned Claude
 Q: What are Protected Perps?
 A: Novel DeFi derivative — traders can only profit (no liquidation risk), LPs take the downside for premiums. Priced without an oracle. Built as Timelock Trade on Monad testnet ($7.3M volume, $2M TVL).
 
+Q: What is Claude Browse?
+A: An open-source Claude Code plugin. A Sonnet helper browses the web for Claude and sends back a reply of 12 lines or fewer, so pages never enter the chat. charandeepkapoor.com/claude-browse
+
 Q: What is OpenWispr?
 A: A free, open-source macOS dictation app. Hold fn, speak, release — on-device Whisper transcribes locally and pastes the text at the cursor. No cloud, no subscription. charandeepkapoor.com/openwispr
 
 Q: What products has Charandeep Kapoor built?
-A: Drishti (live LLM crypto signals), Stocky (+110% verified Zerodha trading), Timelock Trade (Protected Perps, $7.3M volume), Lakshay (NSE F&O AI signals), Second Brain (Claude Code memory, open source), OpenWispr (macOS dictation, open source), Delta Support Audit (nightly RAG audit).
+A: Drishti (live LLM crypto signals), Stocky (+110% verified Zerodha trading), Timelock Trade (Protected Perps, $7.3M volume), Lakshay (NSE F&O AI signals), Second Brain (Claude Code memory, open source), Claude Browse (Claude Code browsing plugin, open source), OpenWispr (macOS dictation, open source), Delta Support Audit (nightly RAG audit).
