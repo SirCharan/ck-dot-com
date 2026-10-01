@@ -49,7 +49,7 @@ function Chapter({ n, title, children, scene, flip }: { n: string; title: string
 }
 
 export function Nav({ stars }: { stars: number | null }) {
-  const links: [string, string][] = [["story", "Story"], ["how", "How it works"], ["proof", "Proof"], ["trust", "Trust"], ["start", "Start"]];
+  const links: [string, string][] = [["example", "Example"], ["story", "Story"], ["how", "How it works"], ["proof", "Proof"], ["trust", "Trust"], ["start", "Start"]];
   return (
     <nav className="cb-nav" aria-label="Main">
       <div className="cb-wrap cb-nav-in">
@@ -86,14 +86,27 @@ export function Hero() {
         </div>
         <div className="cb-hero-art"><HeroScene /></div>
       </div>
-      <div className="cb-wrap">
-        <dl className="cb-stats cb-r">
-          <div><dt>Page to note</dt><dd><Num n={MEASURED.full} /> <span>to</span> <Num n={MEASURED.summary} /> <small>tokens</small></dd></div>
-          <div><dt>One full run</dt><dd><Num n={MEASURED.seconds} /> <small>seconds</small></dd></div>
-          <div><dt>Longest note</dt><dd><Num n={12} /> <small>lines</small></dd></div>
-        </dl>
-      </div>
     </section>
+  );
+}
+
+export function Example() {
+  return (
+    <Sec id="example" alt>
+      <Head id="example" k="A real example" title={<>Ask about Y Combinator&apos;s news page. <em>Get {SUMMARY.length} lines back.</em></>} />
+      <div className="cb-proof cb-example">
+        <figure className="cb-card cb-r">
+          <Image src="/images/claude-browse/hn.webp" width={1200} height={760} alt="Y Combinator's news page as the helper saw it on 30 Sep 2026, with the top story at number 1." className="cb-shot" />
+          <figcaption><b>What the helper read</b> · about {fmt(MEASURED.full)} tokens</figcaption>
+        </figure>
+        <figure className="cb-card cb-note-card cb-r">
+          <p className="cb-note-cmd"><b>you</b> {COMMAND}</p>
+          <pre className="cb-term cb-reply"><code>{SUMMARY.map(([k, v], i) => <span key={i} className="cb-line">{k ? <b>{k}</b> : null}{v}{"\n"}</span>)}</code></pre>
+          <figcaption><b>What your chat got</b> · about {MEASURED.summary} tokens, unedited</figcaption>
+        </figure>
+      </div>
+      <p className="cb-ratio cb-r"><b><Num n={RATIO} suffix="x" /></b><span>The note your chat gets is about {RATIO} times smaller than the whole page.</span></p>
+    </Sec>
   );
 }
 
@@ -102,13 +115,13 @@ export function Story() {
     <Sec id="story">
       <Head id="story" k="The story" title={<>Web pages are heavy. <em>Your chat should not carry them.</em></>} />
       <Chapter n="01" title="Your chat fills up with pages." scene={<SceneFill />}>
-        <p>When Claude reads a web page itself, the whole page lands in your chat. One news page is about {fmt(MEASURED.full)} tokens. A token is roughly a word, and tokens are what you pay for. Every later message sends the whole chat again, pages included.</p>
+        <p>One news page is about {fmt(MEASURED.full)} tokens, and every later message sends it again.</p>
       </Chapter>
       <Chapter n="02" title="A helper goes out instead." scene={<SceneLeave />} flip>
-        <p>With claude-browse, Claude sends a helper. The helper is a second, smaller Claude (Sonnet) with its own browser. It opens the page, reads it, and clicks where it needs to. None of that reading happens in your chat.</p>
+        <p>A second, smaller Claude opens the page in its own browser. Your chat never sees it.</p>
       </Chapter>
       <Chapter n="03" title="It comes back with a short note." scene={<SceneReturn />}>
-        <p>The helper returns a note of 12 lines at most. It says what it found, the key facts, the sources and any problems. The pages stay behind. In the measured run, the note was about {MEASURED.summary} tokens.</p>
+        <p>At most 12 lines, about {MEASURED.summary} tokens. The pages stay behind.</p>
       </Chapter>
     </Sec>
   );
@@ -139,7 +152,7 @@ const KEYS: [string, string][] = [
 export function Split() {
   return (
     <Sec id="split" alt>
-      <Head id="split" k="Side by side" title={<>A helper reads the page. <em>Your chat gets the answer.</em></>} lead="You ask Claude the way you always do. A second, smaller Claude (a sub-agent) does the browsing and reports back." />
+      <Head id="split" k="Side by side" title={<>A helper reads the page. <em>Your chat gets the answer.</em></>} />
       <div className="cb-two">
         <div className="cb-card cb-r">
           <span className="cb-tag cb-tag-mute">Without</span>
@@ -183,7 +196,7 @@ export function Split() {
 export function How() {
   return (
     <Sec id="how">
-      <Head id="how" k="How it works" title={<>One question, one trip, <em>one short note.</em></>} lead="You ask in your chat as usual. The web work happens next door, and only the note comes back." />
+      <Head id="how" k="How it works" title={<>One question, one trip, <em>one short note.</em></>} />
       <Flow />
       <div className="cb-card cb-r cb-gap">
         <h3 className="cb-h4">Two ways to browse</h3>
@@ -205,25 +218,12 @@ export function How() {
 export function Proof() {
   return (
     <Sec id="proof" alt>
-      <Head id="proof" k="Proof" title={<>One real page, <em>weighed three ways.</em></>} lead={`You ask for the top story on Y Combinator's news page. Here is what each part weighed on ${MEASURED.date}.`} />
+      <Head id="proof" k="Proof" title={<>One real page, <em>weighed three ways.</em></>} lead={`Measured on ${MEASURED.date}.`} />
       <SizeBars />
-      <p className="cb-ratio cb-r"><b><Num n={RATIO} suffix="x" /></b><span>The note your chat gets is about {RATIO} times smaller than the whole page.</span></p>
-      <div className="cb-proof">
-        <figure className="cb-card cb-r">
-          <Image src="/images/claude-browse/hn.webp" width={1200} height={760} alt="Y Combinator's news page as the helper saw it on 30 Sep 2026, with the top story at number 1." className="cb-shot" />
-          <figcaption>What the helper saw. It read the page as a map of clickable parts.</figcaption>
-          <pre className="cb-term cb-noise" aria-label="First lines of the page map the helper read"><code>{NOISE.slice(0, 16).join("\n")}</code></pre>
-        </figure>
-        <figure className="cb-card cb-note-card cb-r">
-          <p className="cb-note-cmd"><b>you</b> {COMMAND}</p>
-          <pre className="cb-term cb-reply"><code>{SUMMARY.map(([k, v], i) => <span key={i} className="cb-line">{k ? <b>{k}</b> : null}{v}{"\n"}</span>)}</code></pre>
-          <figcaption>What your chat got: the whole reply, unedited. {SUMMARY.length} lines, about {MEASURED.summary} tokens.</figcaption>
-        </figure>
-      </div>
       <div className="cb-two cb-two-wide">
         <div className="cb-r">
           <h3 className="cb-h3">Why a small note matters later</h3>
-          <p className="cb-lead">Each new message carries the whole chat again. A page in your chat gets paid for over and over.</p>
+          <p className="cb-lead">A page in your chat is paid for again on every message.</p>
         </div>
         <CostChart />
       </div>
@@ -270,7 +270,7 @@ export function Start() {
   const titles = ["Add the plugin", "Check your setup", "Ask your first question"];
   return (
     <Sec id="start" alt>
-      <Head id="start" k="Start" title={<>Three steps to <em>your first answer.</em></>} lead="It is free, open source, and needs no API key. It works on macOS and Linux." />
+      <Head id="start" k="Start" title={<>Three steps to <em>your first answer.</em></>} />
       <ol className="cb-steps">
         {STEPS.map(([n, , cmd], i) => (
           <li key={n} className="cb-r">

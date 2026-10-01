@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { githubStars } from "@/lib/githubStars";
 import { Motion } from "@/components/claude-browse/Client";
-import { Close, Footer, Hero, How, Nav, Proof, Split, Start, Story, Trust } from "@/components/claude-browse/Sections";
+import { Close, Footer, Hero, How, Nav, Proof, Split, Start, Story, Trust, Example } from "@/components/claude-browse/Sections";
 
 const DESCRIPTION =
   "Give Claude a browser and keep your chat light. A helper reads websites for you and brings back a short note. Open source, MIT, no API key.";
@@ -21,6 +21,7 @@ export default async function ClaudeBrowsePage() {
       <Nav stars={stars} />
       <main>
         <Hero />
+        <Example />
         <Story />
         <Split />
         <How />
