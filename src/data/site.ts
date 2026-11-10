@@ -198,7 +198,7 @@ export const SKILLS: { group: string; items: string[] }[] = [
 ];
 
 // Filter pills for the Proof-of-Work grid (order matters; "All" is implicit).
-export const TOOL_TAGS = ["Delta", "Markets", "AI", "Tools"] as const;
+export const TOOL_TAGS = ["Delta", "Markets", "AI", "Tools", "Sites"] as const;
 
 export const TOOLS: Tool[] = [
   {
@@ -228,6 +228,62 @@ export const TOOLS: Tool[] = [
     tags: ["Tools"],
     status: "live",
     cover: "/images/work/calculator-sites/cover.png",
+  },
+  {
+    title: "Find My Zodiac",
+    one: "Find your zodiac sign from your date of birth, with the dates of all 12 signs and compatibility between any two. Free. English and Hindi.",
+    live: "https://findmyzodiac.com",
+    liveLabel: "Visit",
+    tags: ["Sites"],
+    status: "live",
+  },
+  {
+    title: "Solulu",
+    one: "A free Lo Shu grid calculator: missing numbers, mulank, bhagyank and life path from a birth date, every sum shown. English and Hindi.",
+    live: "https://getsolulu.com",
+    liveLabel: "Visit",
+    tags: ["Sites"],
+    status: "live",
+  },
+  {
+    title: "The Flames Game",
+    one: "Type two names and watch the FLAMES game strike out shared letters and land on Friends, Lovers or Marriage. Free. English and Hindi.",
+    live: "https://theflamesgame.com",
+    liveLabel: "Visit",
+    tags: ["Sites"],
+    status: "live",
+  },
+  {
+    title: "Lucky Vehicle Number",
+    one: "Enter a number plate and your birth day to see if the vehicle number suits your mulank, every sum shown. Free. English and Hindi.",
+    live: "https://luckyvehiclenumber.com",
+    liveLabel: "Visit",
+    tags: ["Sites"],
+    status: "live",
+  },
+  {
+    title: "Home Loans Calculator",
+    one: "A free home loan calculator for India: EMI, total interest and prepayment savings, no login. English and Hindi.",
+    live: "https://homeloanscalculator.in",
+    liveLabel: "Visit",
+    tags: ["Sites"],
+    status: "live",
+  },
+  {
+    title: "Homes Loan Calculator",
+    one: "A free home loan EMI calculator for India with prepayment and rate-change effects and a yearly schedule. English and Hindi.",
+    live: "https://homesloancalculator.in",
+    liveLabel: "Visit",
+    tags: ["Sites"],
+    status: "live",
+  },
+  {
+    title: "IPO Allotment Check",
+    one: "Pick an IPO, enter your PAN and see whether you were allotted shares, not allotted or have no record. Free. English and Hindi.",
+    live: "https://ipoallotmentcheck.com",
+    liveLabel: "Visit",
+    tags: ["Sites"],
+    status: "live",
   },
   {
     title: "CryptoBacktest",
