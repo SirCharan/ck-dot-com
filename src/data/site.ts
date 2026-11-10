@@ -151,8 +151,8 @@ export interface Tool {
   latestLabel?: string;
   verified?: string;
   tags?: string[];
-  /** Drives the /work status seal: live (go) · verified (metal) · archived (mute). */
-  status: "live" | "verified" | "archived";
+  /** Drives the /work status seal: live (go) · verified (metal) · archived and building (mute). */
+  status: "live" | "verified" | "archived" | "building";
   /** Cover image under /images/work/<slug>/ for the featured plates. */
   cover?: string;
   /** Internal case-study / detail route. */
@@ -203,7 +203,7 @@ export const TOOL_TAGS = ["Delta", "Markets", "AI", "Tools"] as const;
 export const TOOLS: Tool[] = [
   {
     title: "Drishti",
-    one: "Live LLM-driven trading signals for Delta crypto perpetuals: 15-min regime-aware cycles with a real-money executor.",
+    one: "Live LLM-driven trading signals for Delta crypto perpetuals: 15-min regime-aware cycles with a real-money executor. The public ledger at drishtisignals.in shows about a 60% win rate over 2,500+ decisive signals (all-time, Nov 2026). Android app on Google Play.",
     live: "https://drishti-beryl.vercel.app",
     liveLabel: "Live",
     tags: ["Delta", "AI"],
@@ -271,7 +271,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "OpenWispr",
-    one: "Say it. It's typed. Open-source dictation that never leaves your Mac: hold fn, speak, on-device Whisper pastes it at the cursor.",
+    one: "Say it. It's typed. Open-source dictation that never leaves your Mac: hold fn, speak, on-device Whisper pastes it at the cursor. v0.19 added browsable meeting transcripts.",
     live: "/openwispr",
     liveLabel: "Live",
     github: "https://github.com/SirCharan/openwispr",
@@ -310,6 +310,20 @@ export const TOOLS: Tool[] = [
     status: "live",
     cover: "/images/work/sqlwithpookie/cover.webp",
     detail: "/work/sqlwithpookie",
+  },
+  {
+    title: "Calculator sites",
+    one: "Eight free sites in English and Hindi, each with its own llms.txt: numerology, zodiac, kundli matching and home-loan calculators.",
+    live: "https://findmyzodiac.com",
+    liveLabel: "Find my zodiac",
+    tags: ["Tools"],
+    status: "live",
+  },
+  {
+    title: "CryptoBacktest",
+    one: "Backtested crypto strategies that run on your own Delta Exchange India account, paper mode by default. In progress and not public: the web app is built, the execution engine is not.",
+    tags: ["Markets", "Tools"],
+    status: "building",
   },
   {
     title: "Voice-Powered Zerodha Trading",
@@ -453,6 +467,12 @@ export const CASE_STUDIES: CaseStudy[] = [
         ],
       },
       {
+        heading: "Public ledger and Android app",
+        body: [
+          "Every signal is published to a never-deleted ledger at drishtisignals.in. As of November 2026 it shows about a 60% win rate over 2,500+ decisive signals, all-time, taken from the site's live stats API. There is also an Android app on Google Play.",
+        ],
+      },
+      {
         heading: "What it demonstrates",
         body: [
           "Prompt and context engineering under real money, cost-aware model routing, and an operational loop that has to be right every 15 minutes, not just in a notebook.",
@@ -462,6 +482,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     links: [
       { label: "Live dashboard", href: "https://drishti-beryl.vercel.app" },
       { label: "App + APK", href: "https://drishti-signals.vercel.app" },
+      { label: "Signal ledger", href: "https://www.drishtisignals.in" },
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=in.drishtisignals.app" },
       { label: "How it works", href: "https://drishti-explainer.vercel.app" },
       { label: "Research", href: "https://drishti-research.vercel.app" },
     ],

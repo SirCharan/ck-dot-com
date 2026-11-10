@@ -20,9 +20,9 @@ systems:
   - name: Drishti
     href: https://drishtisignals.in
     line: >-
-      Claude signals plus a separate executor daemon on Delta perps: reduce-only
-      stops, OCO, orphan guardian, loss breaker, 289 tests. Pro book 56.3% win
-      rate on 343 decided signals to Aug 2026. 40k+ users.
+      Claude signals, executor daemon on Delta perps: reduce-only stops, loss
+      breaker, 289 tests. Public ledger: about 60% win rate over 2,500+ decisive
+      signals, all-time, Nov 2026. Android app. 40k+ users.
   - name: Stocky
     href: https://charandeepkapoor.com/markets
     hrefLabel: charandeepkapoor.com/markets
@@ -48,8 +48,8 @@ systems:
     href: https://charandeepkapoor.com/openwispr
     hrefLabel: charandeepkapoor.com/openwispr
     line: >-
-      On-device macOS dictation. Rust core (serde, regex, chrono) in a Tauri
-      shell, WhisperKit on the Neural Engine. Open source.
+      On-device macOS dictation and meeting transcription. Rust core (serde,
+      regex, chrono) in a Tauri shell, WhisperKit on the Neural Engine. MIT, v0.19.0.
 
 experience:
   - company: Delta Exchange

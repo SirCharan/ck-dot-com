@@ -47,7 +47,8 @@ systems:
     href: https://drishtisignals.in
     line: >-
       Live Claude signals on Delta perpetuals, 40k+ users. Built and operated
-      end to end, with live execution and a loss breaker.
+      end to end, with live execution. Public ledger: about 60% win rate over
+      2,500+ decisive signals, all-time, Nov 2026.
 
 experience:
   - company: Tykhe Block Ventures

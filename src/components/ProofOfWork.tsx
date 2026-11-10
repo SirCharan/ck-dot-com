@@ -6,7 +6,7 @@ import { TOOLS, TOOL_TAGS, type Tool } from "@/data/site";
 
 /**
  * Proof of Work: the full index. One ledger, one row per build. The left rail
- * is a mono status seal (live/verified/archived), tonal-colored, not a §number.
+ * is a mono status seal (live/verified/archived/building), tonal-colored, not a §number.
  * Filter pills cross-filter; rows reflow. Content is always visible (no entrance
  * opacity gate); only exit + layout animate, and only when motion is allowed.
  */
@@ -17,6 +17,7 @@ const SEAL: Record<Tool["status"], { label: string; color: string }> = {
   live: { label: "LIVE", color: "var(--p-go)" },
   verified: { label: "VERIFIED", color: "var(--p-metal)" },
   archived: { label: "ARCHIVED", color: "var(--p-mute)" },
+  building: { label: "IN PROGRESS", color: "var(--p-mute)" },
 };
 
 function ToolRow({ tool, last }: { tool: Tool; last: boolean }) {

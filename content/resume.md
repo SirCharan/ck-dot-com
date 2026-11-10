@@ -19,7 +19,8 @@ systems:
     href: https://drishtisignals.in
     line: >-
       Live Claude signals on Delta perpetuals, 40k+ users from paid Meta and
-      Google. 15-minute cycle, 8 markets, reduce-only stops, loss breaker.
+      Google. Public ledger: about 60% win rate over 2,500+ decisive signals,
+      all-time, Nov 2026. Android app on Google Play.
   - name: Stocky
     href: https://charandeepkapoor.com/markets
     hrefLabel: charandeepkapoor.com/markets
@@ -35,18 +36,19 @@ systems:
     href: https://charandeepkapoor.com/openwispr
     hrefLabel: charandeepkapoor.com/openwispr
     line: >-
-      Open-source dictation for macOS. Hold fn, speak, and on-device Whisper
-      pastes at the cursor. Audio never leaves the machine.
+      Open-source (MIT) on-device dictation and meeting transcription for
+      macOS. Hold fn, speak, and it pastes at the cursor. Latest release v0.19.0.
   - name: Stocky Terminal
     line: >-
       India's Bloomberg terminal: real-time NSE/BSE equities and MCX commodities
       with geopolitical OSINT and monsoon tracking.
-  - name: Second Brain
-    href: https://charandeepkapoor.com/second-brain
-    hrefLabel: charandeepkapoor.com/second-brain
+  - name: Calculator sites
+    href: https://findmyzodiac.com
+    hrefLabel: findmyzodiac.com
     line: >-
-      Local-first memory for Claude Code. A file-backed vault plus hooks that
-      capture each session and recall it in the next. Open source.
+      Eight free English and Hindi calculator and astrology sites, including
+      findmyzodiac.com, getsolulu.com and two home-loan EMI calculators. Each
+      is readable by AI agents (llms.txt).
 
 experience:
   - company: Delta Exchange

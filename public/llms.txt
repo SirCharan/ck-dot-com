@@ -24,6 +24,8 @@ Track record: built Stocky, a fine-tuned Claude system trading the Indian stock 
 Live LLM-driven trading signals for Delta Exchange crypto perpetuals. A 15-minute, regime-aware cycle across 8 perpetual markets with 30+ engineered features per asset (CVD, IV term structure, basis, global long/short, OI by exchange, Coinbase premium). A live executor places real, risk-managed orders (reduce-only stop-loss/take-profit brackets, fixed sizing, guardian process, kill-switches).
 - Case study: https://charandeepkapoor.com/work/drishti
 - Live dashboard: https://drishti-beryl.vercel.app
+- Public signal ledger (never deleted; about 60% win rate over 2,500+ decisive signals, all-time, Nov 2026): https://www.drishtisignals.in
+- Android app: https://play.google.com/store/apps/details?id=in.drishtisignals.app
 
 ### Stocky — Claude-driven Zerodha trading (verified +110%)
 Fine-tuned Claude connected to Zerodha through a custom MCP server, trading the Indian stock market on real capital. ₹15L → ₹31.57L (+110%, ₹16.57L profit) over ~9 months. Sharpe 2.29, 73% win rate. Verified P&L: https://web.sensibull.com/verified-pnl/imported-hare/longterm-pnl
@@ -50,12 +52,19 @@ A Sonnet helper browses the web for Claude and sends back a reply of at most 12 
 - Landing: https://charandeepkapoor.com/claude-browse · GitHub: https://github.com/SirCharan/claude-browse
 
 ### OpenWispr — on-device dictation for macOS (free, open source)
-"Say it. It's typed." Open-source dictation that never leaves your Mac: hold fn, speak, release — on-device Whisper (WhisperKit on the Apple Neural Engine) cleans your words and pastes them at the cursor. No cloud, no subscription. MIT licensed.
+"Say it. It's typed." Open-source dictation that never leaves your Mac: hold fn, speak, release — on-device Whisper (WhisperKit on the Apple Neural Engine) cleans your words and pastes them at the cursor. No cloud, no subscription. MIT licensed. v0.19 added browsable meeting transcripts, usage insights and per-app control.
 - Landing: https://charandeepkapoor.com/openwispr (→ https://openwispr.vercel.app) · GitHub: https://github.com/SirCharan/openwispr
 
 ### Delta Support Audit — nightly RAG quality system
 Embeds 344 support articles and audits them nightly against canonical docs for factual drift and coverage gaps. 14/14 P0 true-positives on trial, ~$2.45 and 4 minutes per run.
 - Case study: https://charandeepkapoor.com/work/delta-support-audit
+
+### Calculator sites — eight free sites in English and Hindi
+Each site serves its own llms.txt: getsolulu.com (Lo Shu grid numerology), theflamesgame.com (FLAMES name game), luckyvehiclenumber.com (number-plate numerology), findmyzodiac.com (zodiac sign and compatibility), homeloanscalculator.in and homesloancalculator.in (home-loan EMI and prepayment), kundliscore-pied.vercel.app and vivahkundli.vercel.app (kundli matching).
+- Live: https://findmyzodiac.com
+
+### CryptoBacktest — backtested crypto strategies (in progress)
+Backtested crypto strategies that run on your own Delta Exchange India account, paper mode by default. In progress and not public: the web app is built, the execution engine is not.
 
 ## Essays (Protected Perps Series)
 
