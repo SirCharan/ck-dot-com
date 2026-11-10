@@ -16,8 +16,20 @@ import { chromium } from "@playwright/test";
 import fs from "node:fs";
 import path from "node:path";
 
-const URL = process.env.RESUME_URL ?? "http://localhost:3000/resume";
-const OUT = path.join(process.cwd(), "public", "charandeep-kapoor-resume.pdf");
+// RESUME_VARIANT=<v> builds content/resume-<v>.md from /resume/<v> (vc, eng, trackk).
+const V = process.env.RESUME_VARIANT ?? "";
+const MASTER = path.join(process.cwd(), "content", `resume${V ? "-" + V : ""}.md`);
+const OUT_DIR = process.env.RESUME_OUT_DIR ?? path.join(process.cwd(), "public");
+const BASENAME = `charandeep-kapoor${V ? "-" + V : ""}-resume`;
+
+// Unfilled placeholders must never reach public/. ALLOW_TODO=1 is for drafts,
+// paired with RESUME_OUT_DIR pointing somewhere private.
+if (fs.readFileSync(MASTER, "utf8").includes("[[TODO") && !process.env.ALLOW_TODO) {
+  console.error(`FAIL: ${path.relative(process.cwd(), MASTER)} still has [[TODO]] slots. Fill them, or ALLOW_TODO=1 RESUME_OUT_DIR=<tmp> for a draft.`);
+  process.exit(1);
+}
+const URL = process.env.RESUME_URL ?? `http://localhost:3000/resume${V ? "/" + V : ""}`;
+const OUT = path.join(OUT_DIR, `${BASENAME}.pdf`);
 
 /**
  * Page count, parsed from the PDF itself.

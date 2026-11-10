@@ -11,7 +11,6 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const RESUME_PATH = path.join(process.cwd(), "content", "resume.md");
 
 export interface ResumeContact {
   email: string;
@@ -56,6 +55,8 @@ export interface ResumeLedgerRow {
 
 export interface Resume {
   name: string;
+  /** Optional section headings; the VC variant renames the two main blocks. */
+  labels?: { systems?: string; experience?: string };
   title: string;
   contact: ResumeContact;
   profile: string;
@@ -66,13 +67,14 @@ export interface Resume {
   certifications: ResumeLedgerRow[];
 }
 
-function read(): Resume {
-  const file = fs.readFileSync(RESUME_PATH, "utf8");
+/** `variant` is the master's basename in /content: "resume" or "resume-vc". */
+export function loadResume(variant = "resume"): Resume {
+  const file = fs.readFileSync(path.join(process.cwd(), "content", `${variant}.md`), "utf8");
   const { data, content } = matter(file);
   return { ...(data as Omit<Resume, "profile">), profile: content.trim() };
 }
 
-export const RESUME: Resume = read();
+export const RESUME: Resume = loadResume();
 
 /** Flat skill count — the rail budget the test guards. */
 export function skillCount(r: Resume = RESUME): number {
