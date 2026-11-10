@@ -76,6 +76,13 @@ export const PROOF = {
       alt: "OpenWispr — open-source dictation that never leaves your Mac",
     },
     {
+      title: "Calculator sites",
+      line: "Eight free calculators in English and Hindi · live",
+      href: "https://findmyzodiac.com",
+      cover: "/images/work/calculator-sites/cover.png",
+      alt: "Find My Zodiac, one of eight free calculator sites",
+    },
+    {
       title: "Andrea's World",
       line: "Hand-built interactive 3D world · pure craft",
       href: "/andrea-world",

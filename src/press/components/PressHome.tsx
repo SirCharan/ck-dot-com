@@ -152,11 +152,14 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
           <div className="press-ships">
             {PROOF.ships.map((s, i) => {
               const wide = "wide" in s && s.wide;
+              const external = s.href.startsWith("http");
+              const Tag = external ? "a" : Link;
               return (
-              <Link
+              <Tag
                 key={s.title}
                 href={s.href}
                 className={wide ? "press-plate press-plate-wide" : "press-plate"}
+                {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
               >
                 <div className="press-plate-media">
                   <Image
@@ -178,7 +181,7 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
                   <h3>{s.title}</h3>
                   <p>{s.line}</p>
                 </div>
-              </Link>
+              </Tag>
               );
             })}
           </div>

@@ -21,6 +21,7 @@ const FEATURED = [
   "Second Brain",
   "Claude Browse",
   "OpenWispr",
+  "Calculator sites",
 ]
   .map((title) => TOOLS.find((t) => t.title === title))
   .filter((t): t is NonNullable<typeof t> => Boolean(t));
@@ -37,7 +38,7 @@ export default function WorkPage() {
       <section className="press-section" id="featured">
         <h2>Featured</h2>
         <p className="press-section-sub press-serif">
-          Six projects I keep pointing people to.
+          Seven projects I keep pointing people to.
         </p>
         <div className="press-ships">
           {FEATURED.map((t, i) => (

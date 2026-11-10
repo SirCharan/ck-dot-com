@@ -221,6 +221,21 @@ export const TOOLS: Tool[] = [
     detail: "/work/claude-browse",
   },
   {
+    title: "Calculator sites",
+    one: "Eight free sites in English and Hindi, each with its own llms.txt: numerology, zodiac, kundli matching and home-loan calculators.",
+    live: "https://findmyzodiac.com",
+    liveLabel: "Find my zodiac",
+    tags: ["Tools"],
+    status: "live",
+    cover: "/images/work/calculator-sites/cover.png",
+  },
+  {
+    title: "CryptoBacktest",
+    one: "Backtested crypto strategies that run on your own Delta Exchange India account, paper mode by default. In progress and not public: the web app is built, the execution engine is not.",
+    tags: ["Markets", "Tools"],
+    status: "building",
+  },
+  {
     title: "Stocky AI",
     one: "Claude-driven Zerodha trading: ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
     long: [
@@ -310,20 +325,6 @@ export const TOOLS: Tool[] = [
     status: "live",
     cover: "/images/work/sqlwithpookie/cover.webp",
     detail: "/work/sqlwithpookie",
-  },
-  {
-    title: "Calculator sites",
-    one: "Eight free sites in English and Hindi, each with its own llms.txt: numerology, zodiac, kundli matching and home-loan calculators.",
-    live: "https://findmyzodiac.com",
-    liveLabel: "Find my zodiac",
-    tags: ["Tools"],
-    status: "live",
-  },
-  {
-    title: "CryptoBacktest",
-    one: "Backtested crypto strategies that run on your own Delta Exchange India account, paper mode by default. In progress and not public: the web app is built, the execution engine is not.",
-    tags: ["Markets", "Tools"],
-    status: "building",
   },
   {
     title: "Voice-Powered Zerodha Trading",
