@@ -12,6 +12,7 @@ import { CurveReveal } from "@/components/lab/CurveReveal";
 import { curveValue, formatWindowStart, type Payload } from "@/lib/trackRecord";
 import { inr } from "@/lib/format";
 import { PROOF } from "@/press/lib/proof";
+import { isRewritten } from "@/press/lib/links";
 import { PressShell } from "./PressShell";
 import { PressMachine } from "./PressMachine";
 
@@ -153,7 +154,8 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
             {PROOF.ships.map((s, i) => {
               const wide = "wide" in s && s.wide;
               const external = s.href.startsWith("http");
-              const Tag = external ? "a" : Link;
+              const plain = external || isRewritten(s.href);
+              const Tag = plain ? "a" : Link;
               return (
               <Tag
                 key={s.title}
@@ -174,7 +176,7 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
                           : "(min-width:900px) 40vw, 100vw"
                     }
                     priority={i === 0}
-                    style={{ objectFit: "cover", objectPosition: "top" }}
+                    style={{ objectFit: "contain", objectPosition: "center" }}
                   />
                 </div>
                 <div className="press-plate-body">

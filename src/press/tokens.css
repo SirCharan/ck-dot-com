@@ -431,12 +431,11 @@ a.press-ticket:focus-visible {
 }
 
 .press-plate {
-  position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--p-line);
   border-radius: 6px;
   overflow: hidden;
-  min-height: 14rem;
   text-decoration: none;
   color: inherit;
   background: var(--p-elev);
@@ -444,26 +443,20 @@ a.press-ticket:focus-visible {
 }
 .press-plate:hover { border-color: rgba(78, 207, 122, 0.4); }
 .press-plate-media {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  flex: 1 1 auto;
+  aspect-ratio: 16 / 10;
+  background: var(--p-bg);
 }
+.press-plate-wide .press-plate-media { aspect-ratio: 5 / 2; }
 .press-plate-media img {
-  object-fit: cover;
-  object-position: top;
-}
-.press-plate-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10, 11, 13, 0.95) 0%, transparent 55%);
+  object-fit: contain;
+  object-position: center;
 }
 .press-plate-body {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1.15rem 1.2rem;
-  z-index: 2;
+  padding: 1rem 1.2rem 1.1rem;
+  border-top: 1px solid var(--p-line);
+  background: var(--p-elev);
 }
 .press-plate-body h3 {
   margin: 0 0 0.25rem;
@@ -526,8 +519,10 @@ a.press-ticket:focus-visible {
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin: 0 0 0.75rem;
-  max-width: 16ch;
+  max-width: none;
+  text-wrap: balance;
 }
+.press-foot h2 a { white-space: nowrap; }
 .press-foot h2 a {
   color: var(--p-go);
   text-decoration: none;
