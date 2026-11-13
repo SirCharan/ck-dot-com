@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PressHome } from "@/press/components/PressHome";
 import { getTrackRecord } from "@/lib/trackRecord";
+import { getDrishtiStats } from "@/press/lib/drishti";
 import { pressSans, pressSerif, pressMono } from "@/press/fonts";
 
 export const metadata: Metadata = {
@@ -11,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const dhan = await getTrackRecord();
+  const [dhan, drishti] = await Promise.all([getTrackRecord(), getDrishtiStats()]);
   return (
     <div className={`${pressSans.variable} ${pressSerif.variable} ${pressMono.variable}`}>
-      <PressHome dhan={dhan} />
+      <PressHome dhan={dhan} drishti={drishti} />
     </div>
   );
 }

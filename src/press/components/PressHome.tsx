@@ -12,15 +12,20 @@ import { CurveReveal } from "@/components/lab/CurveReveal";
 import { curveValue, formatWindowStart, type Payload } from "@/lib/trackRecord";
 import { inr } from "@/lib/format";
 import { PROOF } from "@/press/lib/proof";
+import type { DrishtiStats } from "@/press/lib/drishti";
 import { isRewritten } from "@/press/lib/links";
 import { PressShell } from "./PressShell";
-import { PressMachine } from "./PressMachine";
+import { PressHandshake } from "./PressHandshake";
+import { AndreaLead } from "./AndreaLead";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export function PressHome({ dhan }: { dhan: Payload | null }) {
+export function PressHome({ dhan, drishti }: { dhan: Payload | null; drishti: DrishtiStats | null }) {
   const reduce = useReducedMotion();
   const root = useRef<HTMLDivElement>(null);
+
+  const lead = PROOF.ships.find((x) => x.title === "Andrea's World");
+  const rest = PROOF.ships.filter((x) => x.title !== "Andrea's World");
 
   const series = dhan?.series ?? [];
   const e0 = dhan?.meta?.e0 ?? 0;
@@ -54,33 +59,13 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
           clearProps: "all",
         });
 
-        gsap.from(".pm-in, .pm-core, .pm-out, .pm-flow", {
-          y: 16,
-          duration: 0.8,
-          stagger: 0.06,
-          ease: "power2.out",
-          delay: 0.5,
-        });
-
-        gsap.from(".press-ticket", {
-          y: 24,
-          duration: 0.55,
-          stagger: 0.08,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".press-tickets",
-            start: "top 85%",
-            once: true,
-          },
-        });
-
         gsap.from(".press-plate", {
           y: 20,
           duration: 0.5,
           stagger: 0.07,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: ".press-ships",
+            trigger: ".press-bento",
             start: "top 85%",
             once: true,
           },
@@ -97,7 +82,7 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
         <section className="press-hero" aria-label="Hero">
           <div className="press-hero-grid">
             <div className="press-hero-copy">
-              <p className="press-frame-k press-serif ph-fade">Delta Exchange · systems that trade</p>
+              <p className="press-hero-id ph-fade">AI Product Manager at Delta Exchange. <span>2x founder.</span></p>
               <h1 className="press-hero-name">
                 <span className="ph-line"><span className="ph-line-in">Charandeep</span></span>
                 <span className="ph-line"><span className="ph-line-in">Kapoor</span></span>
@@ -124,22 +109,21 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
               </a>
             </div>
             <div className="press-hero-art ph-fade">
-              <PressMachine />
+              <PressHandshake triggerSelector=".press-hero" />
             </div>
           </div>
-        </section>
-
-        <section className="press-section" id="proof">
-          <h2>Stamped proof</h2>
-          <p className="press-section-sub press-serif">
-            Real capital. External verification. Not a backtest deck.
-          </p>
-          <div className="press-tickets">
-            {PROOF.tickets.map((t) => (
-              <a key={t.label} className="press-ticket" href={t.href} target="_blank" rel="noreferrer">
-                <div className="press-ticket-val press-mono">{t.value}</div>
-                <div className="press-ticket-label press-mono">{t.label}</div>
-                <div className="press-ticket-sub">{t.sub}</div>
+          <div className="press-hero-stats ph-fade" id="proof">
+            {PROOF.tickets.map((t, i) => (
+              <a
+                key={t.label}
+                className={i === 0 ? "press-stat press-stat-lead" : "press-stat"}
+                href={t.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="press-stat-val press-mono">{t.value}</span>
+                <span className="press-stat-label press-mono">{t.label}</span>
+                <span className="press-stat-sub">{t.sub}</span>
               </a>
             ))}
           </div>
@@ -150,46 +134,60 @@ export function PressHome({ dhan }: { dhan: Payload | null }) {
           <p className="press-section-sub press-serif">
             Live systems and products. Most of them still on.
           </p>
-          <div className="press-ships">
-            {PROOF.ships.map((s, i) => {
-              const wide = "wide" in s && s.wide;
+          {lead && <AndreaLead title={lead.title} line={lead.line} cover={lead.cover} alt={lead.alt} />}
+          <div className="press-bento">
+            {rest.map((s) => {
               const external = s.href.startsWith("http");
               const plain = external || isRewritten(s.href);
               const Tag = plain ? "a" : Link;
+              const span2 = s.title === "Calculator sites";
+              if (s.title === "Drishti" && drishti) {
+                return (
+                  <Tag key={s.title} href={s.href} className="press-plate">
+                    <div className="press-plate-live">
+                      <span className="press-live-k press-mono">
+                        <span className="press-live-dot" aria-hidden /> Live ledger
+                      </span>
+                      <span className="press-live-big press-mono">{drishti.winRate.toFixed(1)}%</span>
+                      <span className="press-live-row press-mono">win rate, all-time</span>
+                      <span className="press-live-row press-mono">
+                        {drishti.wins.toLocaleString("en-US")} W / {drishti.losses.toLocaleString("en-US")} L
+                        {drishti.open != null ? ` · ${drishti.open} open` : ""}
+                      </span>
+                    </div>
+                    <div className="press-plate-body">
+                      <h3>{s.title}</h3>
+                      <p>{s.line}</p>
+                    </div>
+                  </Tag>
+                );
+              }
               return (
-              <Tag
-                key={s.title}
-                href={s.href}
-                className={wide ? "press-plate press-plate-wide" : "press-plate"}
-                {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-              >
-                <div className="press-plate-media">
-                  <Image
-                    src={s.cover}
-                    alt={s.alt}
-                    fill
-                    sizes={
-                      wide
-                        ? "(min-width:900px) 72rem, 100vw"
-                        : i === 0
-                          ? "(min-width:900px) 55vw, 100vw"
-                          : "(min-width:900px) 40vw, 100vw"
-                    }
-                    priority={i === 0}
-                    style={{ objectFit: "contain", objectPosition: "center" }}
-                  />
-                </div>
-                <div className="press-plate-body">
-                  <h3>{s.title}</h3>
-                  <p>{s.line}</p>
-                </div>
-              </Tag>
+                <Tag
+                  key={s.title}
+                  href={s.href}
+                  className={span2 ? "press-plate press-plate-span2" : "press-plate"}
+                  {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+                >
+                  <div className="press-plate-media">
+                    <Image
+                      src={s.cover}
+                      alt={s.alt}
+                      fill
+                      sizes={span2 ? "(min-width:900px) 40vw, 100vw" : "(min-width:900px) 24rem, 100vw"}
+                    />
+                  </div>
+                  <div className="press-plate-body">
+                    <h3>{s.title}</h3>
+                    <p>{s.line}</p>
+                  </div>
+                </Tag>
               );
             })}
-          </div>
-          <div style={{ marginTop: "1.25rem" }}>
-            <Link href="/work" className="press-btn press-btn-ghost">
-              All work
+            <Link href="/work" className="press-plate press-plate-more">
+              <strong>All work</strong>
+              <span>Every build, grouped by the role I was in.</span>
+              <em>See the timeline →</em>
             </Link>
           </div>
         </section>
