@@ -140,7 +140,6 @@ export function PressHome({ dhan, drishti }: { dhan: Payload | null; drishti: Dr
               const external = s.href.startsWith("http");
               const plain = external || isRewritten(s.href);
               const Tag = plain ? "a" : Link;
-              const span2 = s.title === "Calculator sites";
               if (s.title === "Drishti" && drishti) {
                 return (
                   <Tag key={s.title} href={s.href} className="press-plate">
@@ -166,7 +165,7 @@ export function PressHome({ dhan, drishti }: { dhan: Payload | null; drishti: Dr
                 <Tag
                   key={s.title}
                   href={s.href}
-                  className={span2 ? "press-plate press-plate-span2" : "press-plate"}
+                  className="press-plate"
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 >
                   <div className="press-plate-media">
@@ -174,7 +173,7 @@ export function PressHome({ dhan, drishti }: { dhan: Payload | null; drishti: Dr
                       src={s.cover}
                       alt={s.alt}
                       fill
-                      sizes={span2 ? "(min-width:900px) 40vw, 100vw" : "(min-width:900px) 24rem, 100vw"}
+                      sizes="(min-width:900px) 24rem, 100vw"
                     />
                   </div>
                   <div className="press-plate-body">
