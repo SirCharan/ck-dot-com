@@ -1158,3 +1158,30 @@ a.press-ticket:focus-visible {
 .press-plate-more strong { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em; }
 .press-plate-more span { color: var(--p-mute); font-size: 0.9rem; }
 .press-plate-more em { font-style: normal; color: var(--p-go); font-size: 0.9rem; }
+
+/* ── /work timeline ── */
+.pw-timeline { display: grid; gap: 2.5rem; }
+.pw-era {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--p-line);
+}
+.pw-era::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 0.55rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 9px;
+  background: var(--p-bg);
+  border: 1px solid var(--p-metal);
+}
+.pw-era-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 1rem; margin-bottom: 0.5rem; }
+.pw-era-head h3 { margin: 0; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; }
+.pw-era-head span { font-size: 0.75rem; letter-spacing: 0.06em; color: var(--p-metal); text-transform: uppercase; }
+.pw-rows { list-style: none; margin: 0; padding: 0; }
+.pw-row { padding: 1.1rem 0 0.4rem; border-top: 1px solid var(--p-line); }
+.pw-row:first-child { border-top: 0; }
+.pw-empty { margin: 0; }
+.pw-filter { min-height: 44px; }

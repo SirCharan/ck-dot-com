@@ -157,7 +157,20 @@ export interface Tool {
   cover?: string;
   /** Internal case-study / detail route. */
   detail?: string;
+  /** Era key on the /work timeline (see ERAS). Omitted entries land in "Also". */
+  era?: EraKey;
 }
+
+export type EraKey = "delta" | "timelock" | "diffusion" | "deltaConsult" | "heru";
+
+/** Newest first. Names and dates from content/resume.md. */
+export const ERAS: { key: EraKey; company: string; role: string; dates: string }[] = [
+  { key: "delta", company: "Delta Exchange", role: "AI Product Manager", dates: "Apr 2026 – present" },
+  { key: "timelock", company: "Timelock Trade", role: "Founder", dates: "Apr 2025 – Apr 2026" },
+  { key: "diffusion", company: "Diffusion Labs", role: "Product Manager", dates: "Dec 2023 – Apr 2025" },
+  { key: "deltaConsult", company: "Delta Exchange", role: "Product & Growth Consultant", dates: "Jun 2023 – Jul 2024" },
+  { key: "heru", company: "Heru Finance", role: "Trader & Investment Analyst", dates: "May 2022 – Feb 2023" },
+];
 
 export const SKILLS: { group: string; items: string[] }[] = [
   {
@@ -203,6 +216,7 @@ export const TOOL_TAGS = ["Delta", "Markets", "AI", "Tools", "Sites"] as const;
 export const TOOLS: Tool[] = [
   {
     title: "Drishti",
+    era: "delta",
     one: "Live LLM-driven trading signals for Delta crypto perpetuals: 15-min regime-aware cycles with a real-money executor. The public ledger at drishtisignals.in shows about a 60% win rate over 2,500+ decisive signals (all-time, Nov 2026). Android app on Google Play.",
     live: "https://drishti-beryl.vercel.app",
     liveLabel: "Live",
@@ -213,6 +227,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Claude Browse",
+    era: "delta",
     one: "Open-source Claude Code plugin. A Sonnet sub-agent drives the browser so the main model reads a summary of twelve lines or fewer.",
     github: "https://github.com/SirCharan/claude-browse",
     tags: ["AI", "Tools"],
@@ -222,6 +237,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Calculator sites",
+    era: "delta",
     one: "Eight free sites in English and Hindi, each with its own llms.txt: numerology, zodiac, kundli matching and home-loan calculators.",
     live: "https://findmyzodiac.com",
     liveLabel: "Find my zodiac",
@@ -231,6 +247,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Find My Zodiac",
+    era: "delta",
     one: "Find your zodiac sign from your date of birth, with the dates of all 12 signs and compatibility between any two. Free. English and Hindi.",
     live: "https://findmyzodiac.com",
     liveLabel: "Visit",
@@ -239,6 +256,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Solulu",
+    era: "delta",
     one: "A free Lo Shu grid calculator: missing numbers, mulank, bhagyank and life path from a birth date, every sum shown. English and Hindi.",
     live: "https://getsolulu.com",
     liveLabel: "Visit",
@@ -247,6 +265,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "The Flames Game",
+    era: "delta",
     one: "Type two names and watch the FLAMES game strike out shared letters and land on Friends, Lovers or Marriage. Free. English and Hindi.",
     live: "https://theflamesgame.com",
     liveLabel: "Visit",
@@ -255,6 +274,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Lucky Vehicle Number",
+    era: "delta",
     one: "Enter a number plate and your birth day to see if the vehicle number suits your mulank, every sum shown. Free. English and Hindi.",
     live: "https://luckyvehiclenumber.com",
     liveLabel: "Visit",
@@ -263,6 +283,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Home Loans Calculator",
+    era: "delta",
     one: "A free home loan calculator for India: EMI, total interest and prepayment savings, no login. English and Hindi.",
     live: "https://homeloanscalculator.in",
     liveLabel: "Visit",
@@ -271,6 +292,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Homes Loan Calculator",
+    era: "delta",
     one: "A free home loan EMI calculator for India with prepayment and rate-change effects and a yearly schedule. English and Hindi.",
     live: "https://homesloancalculator.in",
     liveLabel: "Visit",
@@ -279,6 +301,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "IPO Allotment Check",
+    era: "delta",
     one: "Pick an IPO, enter your PAN and see whether you were allotted shares, not allotted or have no record. Free. English and Hindi.",
     live: "https://ipoallotmentcheck.com",
     liveLabel: "Visit",
@@ -287,12 +310,14 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "CryptoBacktest",
+    era: "delta",
     one: "Backtested crypto strategies that run on your own Delta Exchange India account, paper mode by default. In progress and not public: the web app is built, the execution engine is not.",
     tags: ["Markets", "Tools"],
     status: "building",
   },
   {
     title: "Stocky AI",
+    era: "timelock",
     one: "Claude-driven Zerodha trading: ₹16.57L profit (+110%), Sharpe 2.29, 73% win rate.",
     long: [
       "Fine-tuned Claude 3.5 Sonnet and built a custom MCP server connecting it to Zerodha to trade the Indian stock market.",
@@ -311,6 +336,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Timelock",
+    era: "timelock",
     one: "Oracle-less, liquidation-free DeFi perps: $7.3M volume, $2M TVL, 1k+ users.",
     live: "https://perps.timelock.trade/",
     liveLabel: "Perps",
@@ -321,6 +347,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Delta Support Audit",
+    era: "delta",
     one: "RAG audit of Delta support articles that found 291 contradictions. 222 verified fixed.",
     live: "https://delta-support-audit.vercel.app/",
     liveLabel: "Live audit",
@@ -331,6 +358,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Second Brain",
+    era: "delta",
     one: "Local-first memory for Claude Code · open source.",
     live: "/second-brain",
     liveLabel: "Live",
@@ -342,6 +370,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "OpenWispr",
+    era: "delta",
     one: "Say it. It's typed. Open-source dictation that never leaves your Mac: hold fn, speak, on-device Whisper pastes it at the cursor. v0.19 added browsable meeting transcripts.",
     live: "/openwispr",
     liveLabel: "Live",
@@ -353,6 +382,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Lakshay",
+    era: "delta",
     one: "Intraday AI signals for NSE F&O: 5-min cycles, Dhan data, paper track record.",
     live: "https://lakshya-cyan.vercel.app/",
     liveLabel: "Live",
@@ -364,6 +394,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Andrea's World",
+    era: "delta",
     one: "A hand-built interactive 3D web world: craft, motion, and play.",
     live: "https://andrea-world.vercel.app",
     liveLabel: "Enter",
@@ -374,6 +405,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "SQL with Pookie",
+    era: "delta",
     one: "A cozy SQL course disguised as a game about a bear. 24 chapters, 208 exercises.",
     live: "https://sqlwithpookie.vercel.app",
     liveLabel: "Play it",
@@ -384,6 +416,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Voice-Powered Zerodha Trading",
+    era: "timelock",
     one: "Hands-free stock trades and backtests on Zerodha via MCP.",
     long: [
       "Voice-powered trading automation using Model Context Protocol to execute hands-free stock trades and backtests on Zerodha.",
@@ -405,6 +438,7 @@ export const TOOLS: Tool[] = [
   },
   {
     title: "Voice-Activated Delta Trading Bot",
+    era: "timelock",
     one: "Voice-activated crypto trading via Claude MCP + Delta Exchange API.",
     long: [
       'Voice-activated trading via Claude\'s MCP server + Delta Exchange API. "Buy 1000 rupees of Ethereum" then executed in under an hour of build time.',
